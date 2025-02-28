@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,24 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="C++语言的设计与演化是C++作者Bjarne Stroustrup撰写的一本关于C++从构思设计到实际实现中思考权衡的过程的书，也(应该)是市面上唯一一本语言设计者站在语言设计的视角所写的书。 有很多问题我们不应该只知道How，更应该知道Why，因为这样可以从更深层次地理解这个东西。所幸的是《C++语言的设计与演化》就是这么一本书。最近在读期间明白了很多之前在C++中只知道How而不知道Why的">
+  <meta name="description" content="C++ Language Design and Evolution is a book written by C++ author Bjarne Stroustrup, discussing the thought process and trade-offs from the conception and design to the actual implementation of C++. I">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读《C++语言的设计与演化》及一些疑问的解答">
-<meta property="og:url" content="https://imzlp.com/posts/30227/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="C++语言的设计与演化是C++作者Bjarne Stroustrup撰写的一本关于C++从构思设计到实际实现中思考权衡的过程的书，也(应该)是市面上唯一一本语言设计者站在语言设计的视角所写的书。 有很多问题我们不应该只知道How，更应该知道Why，因为这样可以从更深层次地理解这个东西。所幸的是《C++语言的设计与演化》就是这么一本书。最近在读期间明白了很多之前在C++中只知道How而不知道Why的">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Reading &quot;D&amp;E&quot; and answers to some questions">
+<meta property="og:url" content="https://en.imzlp.com/posts/30227/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="C++ Language Design and Evolution is a book written by C++ author Bjarne Stroustrup, discussing the thought process and trade-offs from the conception and design to the actual implementation of C++. I">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-09-09T08:15:46.000Z">
 <meta property="article:modified_time" content="2016-09-09T08:15:46.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/30227/">
+<link rel="canonical" href="https://en.imzlp.com/posts/30227/">
 
 
 <script id="page-configurations">
@@ -45,11 +45,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>读《C++语言的设计与演化》及一些疑问的解答 | 循迹研究室</title>
+  <title>Reading "D&E" and answers to some questions | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -89,7 +89,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -99,7 +99,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,7 +110,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -129,24 +129,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -156,7 +156,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -166,7 +166,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -174,14 +174,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -189,26 +189,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -224,7 +224,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -243,7 +243,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -262,12 +262,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -285,27 +285,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/30227/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/30227/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          读《C++语言的设计与演化》及一些疑问的解答<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-09-09-30227.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/30227/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Reading "D&E" and answers to some questions<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-09-09-30227.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/30227/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Reading "D&E" and answers to some questions</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">读《C++语言的设计与演化》及一些疑问的解答</sub>
           </div>
         
 
@@ -314,43 +314,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-09-09 08:15 08:15:46:15" itemprop="dateCreated datePublished" datetime="2016-09-09T08:15:46+00:00">2016-09-09 08:15</time>
+              <time title="Created: 2016-09-09 08:15 08:15:46:15" itemprop="dateCreated datePublished" datetime="2016-09-09T08:15:46+00:00">2016-09-09 08:15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/30227/" class="post-meta-item leancloud_visitors" data-flag-title="读《C++语言的设计与演化》及一些疑问的解答" title="阅读次数">
+            <span id="/posts/30227/" class="post-meta-item leancloud_visitors" data-flag-title="Reading "D&E" and answers to some questions" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.5k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -362,41 +362,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1096216/">C++语言的设计与演化</a>是C++作者Bjarne Stroustrup撰写的一本关于C++从构思设计到实际实现中思考权衡的过程的书，也(应该)是市面上唯一一本语言设计者站在<strong>语言设计</strong>的视角所写的书。</p>
-<p>有很多问题我们不应该只知道<strong>How</strong>，更应该知道<strong>Why</strong>，因为这样可以从更深层次地理解这个东西。所幸的是《C++语言的设计与演化》就是这么一本书。最近在读期间明白了很多之前在C++中只知道<strong>How</strong>而不知道<strong>Why</strong>的东西(为了与C兼容C++真是割舍了太多)，这篇文章算是一篇读书笔记和关于<strong>Why</strong>的记录，我会逐步整理出来。</p>
+        <p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1096216/">C++ Language Design and Evolution</a> is a book written by C++ author Bjarne Stroustrup, discussing the thought process and trade-offs from the conception and design to the actual implementation of C++. It is arguably the only book on the market written from the perspective of a <strong>language designer</strong> on <strong>language design</strong>.</p>
+<p>There are many issues where we should not only know <strong>How</strong>, but also understand <strong>Why</strong>, as this allows for a deeper comprehension of the subject. Fortunately, “C++ Language Design and Evolution” is precisely that kind of book. Recently, I realized many aspects of C++ that I only knew <strong>How</strong> but did not understand <strong>Why</strong> (too much was sacrificed for compatibility with C), and this article serves as a reading note and a record of <strong>Why</strong>, which I will gradually organize.</p>
 <span id="more"></span>
 
-<h3 id="什么是面向对象编程？"><a href="#什么是面向对象编程？" class="headerlink" title="什么是面向对象编程？"></a>什么是面向对象编程？</h3><p>·····这篇有关于“什么是”的论文(<a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwi5m-eFopTQAhVGh1QKHb_CAPQQFgg6MAM&url=http://plan9.aichi-u.ac.jp/OOP.pdf&usg=AFQjCNHpEfbd4h01xEZ7gOPZ1_6WpM3WnQ">What is ‘‘Object-Oriented Programming’’? (1991 revised version)</a>)则定义了一组我认为指出数据抽象和面向对象程序设计的语言应该解决的问题，并给出了所需要的语言特征范例。<br>结果是重申了C++的“多范型”性质的重要性：<br>“面向对象的程序设计是利用继承机制的程序设计。数据抽象是使用用户定义类型的程序设计。除了少许例外，面向对象的程序设计将能够而且应该支持数据抽象。这些技术需要有效的正确支持。数据抽象从本质上需要在语言特征的形式上得到支持，而面向对象程序设计则更进一步地需要得到程序设计环境的支持，为了达到通用性，支持数据抽象或者面向对象的语言又必须能有效利用传统硬件。”</p>
-<p>更多关于C++和面向对象的内容可以看这几篇文章:<br><a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwji-eHSoZTQAhVhllQKHf9ZAL4QFggiMAE&url=http://www.stroustrup.com/oopsla.pdf&usg=AFQjCNGUz6uKPt_yKAPVq4M0mhjLrBmsMg">Why C++ is not just an Object-Oriented Programming Language</a><br><a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwi5m-eFopTQAhVGh1QKHb_CAPQQFgg6MAM&url=http://plan9.aichi-u.ac.jp/OOP.pdf&usg=AFQjCNHpEfbd4h01xEZ7gOPZ1_6WpM3WnQ">What is ‘‘Object-Oriented Programming’’? (1991 revised version)</a><br>以及<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SOLID_%28%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%29">SOLID（单一功能、开闭原则、里氏替换、接口隔离以及依赖反转）</a></p>
-<h3 id="为什么C-没有垃圾回收-GC-机制？"><a href="#为什么C-没有垃圾回收-GC-机制？" class="headerlink" title="为什么C++没有垃圾回收(GC)机制？"></a>为什么C++没有垃圾回收(GC)机制？</h3><p>在1985年之前的一段时间里也考虑过垃圾回收的可能性，但后来还是相信，对一个已经被用在实时处理和硬核心系统(例如设备驱动程序)的语言而言，这种特性是不合适的。在那段日子里垃圾回收还没有今天这样复杂，而与今天的系统相比，一般计算机的处理能力和存储能力也是非常低的。</p>
-<p>如果带类的C(甚至是C++)被定义成需要垃圾回收的语言，它一定会更优雅些，但也会是一个死胎。</p>
-<h3 id="C-与C的关系？"><a href="#C-与C的关系？" class="headerlink" title="C++与C的关系？"></a>C++与C的关系？</h3><p>···兼容性问题的另一个方面更要紧：”C++应该以什么方式与C不同，以便达到它自己的目标？”还有”C++应该以什么方式与C兼容，才能达到它的目标？“</p>
-<p>···一个共同的意见逐渐浮现出来：在C++和ANSI C之间不应该存在无故的不兼容性[Stroustrup,1986]，而确实应该有一些不兼容性，只要它不是<strong>无故的</strong>。···这个原则后来被广泛地理解为：<strong>C++，尽可能地与C靠近，但又不过分靠近。</strong></p>
-<p>例如下面的代码，在C中是合法的：</p>
+<h3 id="What-is-Object-Oriented-Programming"><a href="#What-is-Object-Oriented-Programming" class="headerlink" title="What is Object-Oriented Programming?"></a>What is Object-Oriented Programming?</h3><p>·····This paper about “What is” (<a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwi5m-eFopTQAhVGh1QKHb_CAPQQFgg6MAM&url=http://plan9.aichi-u.ac.jp/OOP.pdf&usg=AFQjCNHpEfbd4h01xEZ7gOPZ1_6WpM3WnQ">What is ‘‘Object-Oriented Programming’’? (1991 revised version)</a>) defines a set of issues that I believe the language of data abstraction and object-oriented programming should address, along with examples of necessary language features. The result reiterates the importance of C++’s “multi-paradigm” nature:<br>“Object-oriented programming is programming using inheritance mechanisms. Data abstraction is programming using user-defined types. With few exceptions, object-oriented programming will be able to and should support data abstraction. These techniques require effective and correct support. Data abstraction essentially needs to be supported in the form of language features, while object-oriented programming further requires support from programming environments. To achieve universality, a language supporting data abstraction or object-oriented features must effectively utilize traditional hardware.”</p>
+<p>More content about C++ and object orientation can be found in these articles:<br><a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwji-eHSoZTQAhVhllQKHf9ZAL4QFggiMAE&url=http://www.stroustrup.com/oopsla.pdf&usg=AFQjCNGUz6uKPt_yKAPVq4M0mhjLrBmsMg">Why C++ is not just an Object-Oriented Programming Language</a><br><a target="_blank" rel="noopener" href="https://www.google.com.ph/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwi5m-eFopTQAhVGh1QKHb_CAPQQFgg6MAM&url=http://plan9.aichi-u.ac.jp/OOP.pdf&usg=AFQjCNHpEfbd4h01xEZ7gOPZ1_6WpM3WnQ">What is ‘‘Object-Oriented Programming’’? (1991 revised version)</a><br>and <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SOLID_%28%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%29">SOLID (Single Responsibility, Open/Closed Principle, Liskov Substitution, Interface Segregation, and Dependency Inversion)</a></p>
+<h3 id="Why-does-C-not-have-a-Garbage-Collection-GC-mechanism"><a href="#Why-does-C-not-have-a-Garbage-Collection-GC-mechanism" class="headerlink" title="Why does C++ not have a Garbage Collection (GC) mechanism?"></a>Why does C++ not have a Garbage Collection (GC) mechanism?</h3><p>Before 1985, there was consideration for the possibility of garbage collection, but it was later believed that such a feature was inappropriate for a language already used in real-time processing and hard-core systems (for example, device drivers). In those days, garbage collection was not as complex as it is today, and compared to today’s systems, the processing and storage capabilities of general computers were very low.</p>
+<p>Had C (or even C++) been defined as a language requiring garbage collection, it would certainly have been more elegant, but it also would have been a stillborn concept.</p>
+<h3 id="What-is-the-relationship-between-C-and-C"><a href="#What-is-the-relationship-between-C-and-C" class="headerlink" title="What is the relationship between C++ and C?"></a>What is the relationship between C++ and C?</h3><p>···Another aspect of compatibility issues is more critical: “In what way should C++ differ from C in order to achieve its own goals?” and “In what way should C++ be compatible with C to reach its goals?”</p>
+<p>···A common opinion gradually emerged: there should not be arbitrary incompatibilities between C++ and ANSI C [Stroustrup, 1986], but certain incompatibilities should exist as long as they are not <strong>arbitrary</strong>.···This principle has been widely understood as: <strong>C++, as much as possible, should be close to C but not excessively so.</strong></p>
+<p>For example, the following code is valid in C:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">outer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">inner</span></span></span><br><span class="line"><span class="class">	&#123;</span></span><br><span class="line">		<span class="type">int</span> i;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="type">int</span> j;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">inner</span> <span class="title">x</span>=</span>&#123;<span class="number">1</span>&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,x.i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>但是在C++中却是非法的：</p>
+<p>However, it is illegal in C++:</p>
 <blockquote>
 <p>error: variable has incomplete type ‘struct inner’</p>
 </blockquote>
-<p>因为在C++中具有命名空间(此处类作用域)的概念，在C++中这么写才对：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">outer</span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">inner</span>&#123;</span><br><span class="line">		<span class="type">int</span> i;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="type">int</span> j;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">  	<span class="comment">// 当然在C++中此处的struct写不写也是无所谓的</span></span><br><span class="line">  	<span class="comment">// 我通过对比两者的中间代码(LLVM/Clang中的&quot;-S&quot;,&quot;-emit-llvm&quot;)发现二者并无区别</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">outer</span>::inner x=&#123;<span class="number">1</span>&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,x.i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Because C++ has the concept of namespaces (in this case, class scope), the correct way to write it in C++ is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">outer</span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">inner</span>&#123;</span><br><span class="line">		<span class="type">int</span> i;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="type">int</span> j;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">  	<span class="comment">// Of course, in C++ it does not matter whether &#x27;struct&#x27; is written here or not</span></span><br><span class="line">  	<span class="comment">// I found through comparing the intermediate code (using &quot;-S&quot;, &quot;-emit-llvm&quot; in LLVM/Clang) that there is no difference between both.</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">outer</span>::inner x=&#123;<span class="number">1</span>&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,x.i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>还有类似这样的：</p>
+<p>Similarly, consider this case:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">outer</span>&#123;</span><br><span class="line">&#125;val;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">sizeof</span>(val));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这份代码在C和C++的编译器(GCC/G++)下编译运行的结果是完全不同的(GCC:0/G++:1)。<br>看下列中间代码：</p>
+<p>This code produces completely different results when compiled and run under C and C++ compilers (GCC/G++): (GCC:0/G++:1).<br>See the following intermediate code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GCC</span></span><br><span class="line">%<span class="keyword">struct</span>.outer = type &#123;&#125;</span><br><span class="line">@x = common global %<span class="keyword">struct</span>.outer zeroinitializer, align <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// G++</span></span><br><span class="line">%<span class="keyword">struct</span>.outer = type &#123; i8 &#125;</span><br><span class="line">@x = global %<span class="keyword">struct</span>.outer zeroinitializer, align <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>事实上在用G++编译(C++方式编译)outer时，他有一个隐藏的1byte大小，那是被编译器安插进去的一个char。这使得这一个class的两个对象在内存中具有独一无二的地址。(深度探索C++对象模型P84)</p>
-<p>因为 C++ 中由于实例化的原因（空类同样可以被实例化），每个实例必须在内存中都有一个独一无二的地址，为了达到这个目的，编译器往往会给一个空类隐含的加一个字节，这样空类在实例化后就能在内存得到了独一无二的地址。</p>
-<p>通过查阅C++标准(ISOIEC:144882:2014(C++14))找到了这个定义(Classes-P214)：</p>
+<p>In fact, when compiling (C++ style) <code>outer</code> with G++, it has a hidden 1-byte size that is inserted by the compiler. This ensures that two objects of this class have unique addresses in memory. (Deep Exploration of C++ Object Model P84)</p>
+<p>Because, due to instantiation reasons in C++, each instance must have a unique address in memory, the compiler often adds an implicit byte to an empty class to ensure that an empty class will receive a unique address upon instantiation.</p>
+<p>By consulting the C++ standard (ISOIEC:144882:2014 (C++14)), the definition was found (Classes-P214):</p>
 <blockquote>
-<p><strong>Complete objects and member subobjects of class type shall have nonzero size.</strong> [^108][Note: Class objects can be assigned, passed as arguments to functions, and returned by functions (except objects of classes for which copying or moving has been restricted; see 12.8). Other plausible operators, such as equality comparison,can be defined by the user; see 13.5. —end note ]<br>[^108]: Base class subobjects are not so constrained.</p>
+<p><strong>Complete objects and member subobjects of class type shall have nonzero size.</strong> [^108][Note: Class objects can be assigned, passed as arguments to functions, and returned by functions (except objects of classes for which copying or moving has been restricted; see 12.8). Other plausible operators, such as equality comparison, can be defined by the user; see 13.5. —end note ]<br>[^108]: Base class subobjects are not so constrained.</p>
 </blockquote>
-<p>可以看到脚注108[^108]所描述的这种情况：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">X</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Y</span>: X&#123;&#125;;</span><br><span class="line"><span class="comment">// 此时使用sizeof来计算X和Y的大小应该是多少？</span></span><br><span class="line">cout&lt;&lt;<span class="built_in">sizeof</span>(X)&lt;&lt;endl</span><br><span class="line">  	&lt;&lt;<span class="built_in">sizeof</span>(Y)&lt;&lt;endl;</span><br><span class="line"><span class="comment">// 输出结果均为 1</span></span><br></pre></td></tr></table></figure>
+<p>This situation described by footnote 108[^108]:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">X</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Y</span>: X&#123;&#125;;</span><br><span class="line"><span class="comment">// At this point, what should the sizes of X and Y be when using sizeof?</span></span><br><span class="line">cout&lt;&lt;<span class="built_in">sizeof</span>(X)&lt;&lt;endl</span><br><span class="line">  	&lt;&lt;<span class="built_in">sizeof</span>(Y)&lt;&lt;endl;</span><br><span class="line"><span class="comment">// The output should be 1 for both</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="C-03和C-11发布时间间隔久远的原因-TC-PL4"><a href="#C-03和C-11发布时间间隔久远的原因-TC-PL4" class="headerlink" title="C++03和C++11发布时间间隔久远的原因(TC++PL4)"></a>C++03和C++11发布时间间隔久远的原因(TC++PL4)</h3><blockquote>
-<p>**[TC++PL 4th]**One reason for the long gap between the two standards is that most members of the committee(including me) were under the mistaken impression that the ISO rules required a ‘‘waiting period’’ after a standard was issued before starting work on new features. Consequently, serious work on new language features did not start until 2002. Other reasons included the increased size of modern languages and their foundation libraries.</p>
+
+<h3 id="The-long-interval-between-C-03-and-C-11-release-dates-TC-PL4"><a href="#The-long-interval-between-C-03-and-C-11-release-dates-TC-PL4" class="headerlink" title="The long interval between C++03 and C++11 release dates (TC++PL4)"></a>The long interval between C++03 and C++11 release dates (TC++PL4)</h3><blockquote>
+<p><strong>[TC++PL 4th]</strong> One reason for the long gap between the two standards is that most members of the committee (including me) were under the mistaken impression that the ISO rules required a ‘‘waiting period’’ after a standard was issued before starting work on new features. Consequently, serious work on new language features did not start until 2002. Other reasons included the increased size of modern languages and their foundation libraries.</p>
 </blockquote>
 
     </div>
@@ -408,7 +409,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -418,7 +419,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -428,37 +429,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/30227/" target="_blank">读《C++语言的设计与演化》及一些疑问的解答</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/09/09 08:15<br/>
+             <span>Title:</span><a href="/posts/30227/" target="_blank">Reading "D&E" and answers to some questions</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/09/09 08:15<br/>
              
-             <span>本文字数:</span><span class="page-count">2.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">4.5k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/30227/" target="_blank" title="读《C++语言的设计与演化》及一些疑问的解答">https://imzlp.com/posts/30227/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/30227/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/30227/" target="_blank" title="Reading "D&E" and answers to some questions">https://en.imzlp.com/posts/30227/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/30227/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -478,12 +479,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/35673/" rel="prev" title="总结我的几个编码习惯">
-      <i class="fa fa-chevron-left"></i> 总结我的几个编码习惯
+    <a href="/posts/35673/" rel="prev" title="Summarize some of my coding habits">
+      <i class="fa fa-chevron-left"></i> Summarize some of my coding habits
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/64044/" rel="next" title="使用Unreal Engine 4采集360°全景视频">
-      使用Unreal Engine 4采集360°全景视频 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/64044/" rel="next" title="Capturing 360° panoramic video with Unreal Engine 4">
+      Capturing 360° panoramic video with Unreal Engine 4 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -554,25 +555,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是面向对象编程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88C-%E6%B2%A1%E6%9C%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-GC-%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么C++没有垃圾回收(GC)机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%B8%8EC%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">C++与C的关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-03%E5%92%8CC-11%E5%8F%91%E5%B8%83%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94%E4%B9%85%E8%BF%9C%E7%9A%84%E5%8E%9F%E5%9B%A0-TC-PL4"><span class="nav-number">4.</span> <span class="nav-text">C++03和C++11发布时间间隔久远的原因(TC++PL4)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Object-Oriented-Programming"><span class="nav-number">1.</span> <span class="nav-text">What is Object-Oriented Programming?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-does-C-not-have-a-Garbage-Collection-GC-mechanism"><span class="nav-number">2.</span> <span class="nav-text">Why does C++ not have a Garbage Collection (GC) mechanism?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-relationship-between-C-and-C"><span class="nav-number">3.</span> <span class="nav-text">What is the relationship between C++ and C?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-long-interval-between-C-03-and-C-11-release-dates-TC-PL4"><span class="nav-number">4.</span> <span class="nav-text">The long interval between C++03 and C++11 release dates (TC++PL4)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -580,19 +581,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -630,10 +631,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -660,9 +661,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -671,12 +669,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -829,7 +827,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/30227/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/30227/',]
       });
       });
   </script>
@@ -852,12 +850,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

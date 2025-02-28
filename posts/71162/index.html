@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在前一篇文章UE中资源自修正的设计与实现方案中，我介绍了利用ResScannerUE的资产检查进行过滤，然后自动化处理的实现方案。 在通常情况下，如果想要检查资源内的某个属性，就需要把资产加载进来，获取对象： 但是，如果想要批量地检查资源的属性，用这种形式挨个加载资源的耗时很久，尤其是在没有DDC的情况下，加载资源就会触发DDC缓存的构建，这部分耗时很久，对于机器性能占比也较高。 而且随着资产规模">
+  <meta name="description" content="In the previous article Design and Implementation of Resource Self-Correction in UE, I introduced the implementation plan of filtering using the asset inspection of ResScannerUE, followed by automated">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE中利用反射为资产建立属性缓存">
-<meta property="og:url" content="https://imzlp.com/posts/71162/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在前一篇文章UE中资源自修正的设计与实现方案中，我介绍了利用ResScannerUE的资产检查进行过滤，然后自动化处理的实现方案。 在通常情况下，如果想要检查资源内的某个属性，就需要把资产加载进来，获取对象： 但是，如果想要批量地检查资源的属性，用这种形式挨个加载资源的耗时很久，尤其是在没有DDC的情况下，加载资源就会触发DDC缓存的构建，这部分耗时很久，对于机器性能占比也较高。 而且随着资产规模">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Use reflection to create properties cache for assets in UE">
+<meta property="og:url" content="https://en.imzlp.com/posts/71162/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the previous article Design and Implementation of Resource Self-Correction in UE, I introduced the implementation plan of filtering using the asset inspection of ResScannerUE, followed by automated">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/105204.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/114517.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/144553.png">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/150904.png">
 <meta property="article:published_time" content="2023-10-25T15:27:37.000Z">
 <meta property="article:modified_time" content="2023-10-25T15:27:37.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="反射">
 <meta property="article:tag" content="资源管理">
@@ -54,7 +54,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/105204.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/71162/">
+<link rel="canonical" href="https://en.imzlp.com/posts/71162/">
 
 
 <script id="page-configurations">
@@ -63,11 +63,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE中利用反射为资产建立属性缓存 | 循迹研究室</title>
+  <title>Use reflection to create properties cache for assets in UE | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -107,7 +107,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -117,7 +117,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -128,7 +128,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -147,24 +147,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -174,7 +174,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -184,7 +184,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -192,14 +192,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -207,26 +207,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -242,7 +242,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -261,7 +261,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -280,12 +280,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -303,27 +303,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/71162/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/71162/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE中利用反射为资产建立属性缓存<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2023-10-25-71162.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/71162/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Use reflection to create properties cache for assets in UE<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2023-10-25-71162.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/71162/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Use reflection to create properties cache for assets in UE</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE中利用反射为资产建立属性缓存</sub>
           </div>
         
 
@@ -332,47 +332,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2023-10-25 15:27 15:27:37:27" itemprop="dateCreated datePublished" datetime="2023-10-25T15:27:37+00:00">2023-10-25 15:27</time>
+              <time title="Created: 2023-10-25 15:27 15:27:37:27" itemprop="dateCreated datePublished" datetime="2023-10-25T15:27:37+00:00">2023-10-25 15:27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/71162/" class="post-meta-item leancloud_visitors" data-flag-title="UE中利用反射为资产建立属性缓存" title="阅读次数">
+            <span id="/posts/71162/" class="post-meta-item leancloud_visitors" data-flag-title="Use reflection to create properties cache for assets in UE" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.6k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -384,86 +384,91 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在前一篇文章<a href="https://imzlp.com/posts/19901/">UE中资源自修正的设计与实现方案</a>中，我介绍了利用ResScannerUE的资产检查进行过滤，然后自动化处理的实现方案。</p>
-<p>在通常情况下，如果想要检查资源内的某个属性，就需要把资产加载进来，获取对象：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/105204.png"></p>
-<p>但是，如果想要批量地检查资源的属性，用这种形式挨个加载资源的耗时很久，尤其是在没有DDC的情况下，加载资源就会触发DDC缓存的构建，这部分耗时很久，对于机器性能占比也较高。</p>
-<p>而且随着资产规模的扩大，如果想要完整扫描一遍工程里的所有资源，耗时就会异常夸张。所以，我设想能否实现一种无需加载资源，但能够获取资源内属性的方法。</p>
-<p>经过研究发现，通过一种取巧的方法做到这一点，利用了反射、资产序列化、以及AssetRegistry的特性组合起来。并且是非侵入式的，无需修改任何现有资源类型的代码。</p>
-<p>本篇文章会介绍其实现原理，以及对引擎中相关逻辑的分析，并介绍该机制在工程中的实际应用。</p>
+        <p>In the previous article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/19901/">Design and Implementation of Resource Self-Correction in UE</a>, I introduced the implementation plan of filtering using the asset inspection of ResScannerUE, followed by automated processing.</p>
+<p>Normally, if you want to check a certain property within a resource, you need to load the asset and retrieve the object:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/105204.png"></p>
+<p>However, if you want to check the properties of many resources in bulk, loading resources one by one in this way takes a long time, especially in the absence of DDC, where loading resources triggers the construction of DDC cache, which is time-consuming and has a high performance overhead.</p>
+<p>As the size of the assets increases, scanning all resources in a project completely can be extraordinarily time-consuming. Therefore, I wonder if it’s possible to implement a method that does not require loading resources but can still retrieve properties within resources.</p>
+<p>After research, I found a clever way to achieve this by combining reflection, asset serialization, and the features of AssetRegistry. Moreover, this is a non-intrusive approach that does not require modifying any existing resource type code.</p>
+<p>This article will introduce the implementation principles and analyze the related logic in the engine, as well as present the practical application of this mechanism in the project.</p>
 <span id="more"></span>
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在最初的设想中，我的一个思路是在编辑时把资源的属性缓存下来单独存储，并会记录缓存所属资源的UUID值，用于验证资源与缓存的一致性，后续就从这个缓存中统一读取。</p>
-<p>但后来放弃了这个想法，因为资源变更涉及到很多的人，每个人本地都是一个独立的运行环境，该如何同步生成的属性缓存呢？如果每台机器独立生成，假如多人编辑同一份资源，该如何解决冲突呢？由一个问题带出多个潜在的问题，在这种情况只能用作本地的临时缓存，而无法作为通用的全局数据。</p>
-<p>但期望建立资产属性缓存的总体思路没变，关键就是<strong>如何把属性缓存起来</strong>能够在<strong>整个项目中共用</strong>。流程如下：</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In my initial conception, one of my ideas was to cache the properties of resources during editing separately, recording the UUID value of the cached resource to verify the consistency between the resource and its cache, and then uniformly reading from this cache later.</p>
+<p>However, I later abandoned this idea because changes to resources involve many people, and each person has a separate local runtime environment. How should the generated property caches be synchronized? If each machine generates independently, how should conflicts be resolved when multiple people edit the same resource? One problem leads to multiple potential issues, and in this case, it can only serve as a local temporary cache rather than a universal global data source.</p>
+<p>Nevertheless, the overall idea of establishing a property cache for assets has not changed. The key is <strong>how to cache properties</strong> to be <strong>shared across the entire project</strong>. The process is as follows:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/114517.png"></p>
-<p>并且最好不需要额外的管理和同步成本，完全无感知是最好的。</p>
-<h2 id="属性缓存"><a href="#属性缓存" class="headerlink" title="属性缓存"></a>属性缓存</h2><p>本篇文章的核心部分，在于建立资产的属性缓存，以及如何存储。</p>
-<p>在UE中，其实本身能够对部分属性的值进行缓存。在ContentBrowser中鼠标Hover资源，就会弹出资源的AssetTips展示资产的基础信息以及部分属性：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/144553.png" alt="AnimSequence"></p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230918154313.png" alt="Texture"><br>而引擎获取展示出来的这些属性和值，不需要加载资源。这些属性都是在资产所属的类型的C++里标记了<code>AssetRegistrySearchable</code>的，以<code>UTexture</code>为例：</p>
+<p>Moreover, it should ideally require no additional management or synchronization cost; the best approach would be completely non-intrusive.</p>
+<h2 id="Property-Cache"><a href="#Property-Cache" class="headerlink" title="Property Cache"></a>Property Cache</h2><p>The core part of this article lies in establishing the asset property cache and how to store it.</p>
+<p>In UE, it’s possible to cache the values of certain properties. When you hover over a resource in the Content Browser, the asset’s basic information and some properties will pop up in AssetTips:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/144553.png" alt="AnimSequence"></p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230918154313.png" alt="Texture"></p>
+<p>The engine can obtain and display these properties and values without loading resources. These properties are marked as <code>AssetRegistrySearchable</code> in the C++ of the respective asset type. Taking <code>UTexture</code> as an example:</p>
 <figure class="highlight cpp"><figcaption><span>Engine/Texture.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** A bias to the index of the top mip level to use. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=LevelOfDetail, meta=(DisplayName=<span class="string">&quot;LOD Bias&quot;</span>), AssetRegistrySearchable)</span><br><span class="line">int32 LODBias;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Compression settings to use when building the texture. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=Compression, AssetRegistrySearchable)</span><br><span class="line">TEnumAsByte&lt;<span class="keyword">enum</span> <span class="title class_">TextureCompressionSettings</span>&gt; CompressionSettings;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** The texture filtering mode to use when sampling this texture. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=Texture, AssetRegistrySearchable, AdvancedDisplay)</span><br><span class="line">TEnumAsByte&lt;<span class="keyword">enum</span> <span class="title class_">TextureFilter</span>&gt; Filter;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** The texture mip load options. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category = Texture, AssetRegistrySearchable, AdvancedDisplay)</span><br><span class="line">ETextureMipLoadOptions MipLoadOptions;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Texture group this texture belongs to */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=LevelOfDetail, meta=(DisplayName=<span class="string">&quot;Texture Group&quot;</span>), AssetRegistrySearchable)</span><br><span class="line">TEnumAsByte&lt;<span class="keyword">enum</span> <span class="title class_">TextureGroup</span>&gt; LODGroup;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** This should be unchecked if using alpha channels individually as masks. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=Texture, meta=(DisplayName=<span class="string">&quot;sRGB&quot;</span>), AssetRegistrySearchable)</span><br><span class="line">uint8 SRGB:<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
-<p>它们会在保存资产时被序列化到uasset之内，并且会在引擎启动时为资产生成AssetData的数据并添加到AssetRegistry，用于在编辑器内快速筛选资产（如只展示某种类型的资源），这也是ContentBrowser中能够快速搜索和过滤资产的原因。</p>
-<p>而我就是要利用这个特性来实现对资源属性缓存需求。</p>
-<h3 id="属性反射FLAG"><a href="#属性反射FLAG" class="headerlink" title="属性反射FLAG"></a>属性反射FLAG</h3><p>前面讲到了，能够在AssetTips中展示的属性，都是被标记了为<code>AssetRegistrySearchable</code>的，那么我们要分析一下，<code>UPROPERTY</code>的这个反射标记具体做了什么内容。</p>
-<p>同样以<code>UTexture</code>中的<code>CompressionSettings</code>与<code>SRGB</code>为例:</p>
+<p>They will be serialized into the uasset upon asset saving and will generate AssetData for the asset at engine startup, adding it to AssetRegistry for quick filtering of assets in the editor (for instance, to display only a certain type of resource), which is also the reason why assets can be quickly searched and filtered in the Content Browser.</p>
+<p>I intend to utilize this feature to satisfy the demand for resource property caching.</p>
+<h3 id="Property-Reflection-FLAG"><a href="#Property-Reflection-FLAG" class="headerlink" title="Property Reflection FLAG"></a>Property Reflection FLAG</h3><p>As mentioned earlier, the properties displayed in AssetTips are marked as <code>AssetRegistrySearchable</code>, so let’s analyze what the reflection marker <code>UPROPERTY</code> specifically does.</p>
+<p>Taking <code>CompressionSettings</code> and <code>SRGB</code> from <code>UTexture</code> as examples:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Compression settings to use when building the texture. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=Compression, AssetRegistrySearchable)</span><br><span class="line">TEnumAsByte&lt;<span class="keyword">enum</span> <span class="title class_">TextureCompressionSettings</span>&gt; CompressionSettings;</span><br><span class="line"><span class="comment">/** This should be unchecked if using alpha channels individually as masks. */</span></span><br><span class="line"><span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=Texture, meta=(DisplayName=<span class="string">&quot;sRGB&quot;</span>), AssetRegistrySearchable)</span><br><span class="line">uint8 SRGB:<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>其反射属性生成的反射代码为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CompressionSettings</span></span><br><span class="line"><span class="type">const</span> UE4CodeGen_Private::FBytePropertyParams Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings = &#123; </span><br><span class="line">    <span class="string">&quot;CompressionSettings&quot;</span>, </span><br><span class="line">    <span class="literal">nullptr</span>, </span><br><span class="line">    (EPropertyFlags)<span class="number">0x0010010000000005</span>, </span><br><span class="line">    UE4CodeGen_Private::EPropertyGenFlags::Byte, </span><br><span class="line">    RF_Public|RF_Transient|RF_MarkAsNative, </span><br><span class="line">    <span class="number">1</span>, </span><br><span class="line">    <span class="built_in">STRUCT_OFFSET</span>(UTexture, CompressionSettings), </span><br><span class="line">    Z_Construct_UEnum_Engine_TextureCompressionSettings, </span><br><span class="line">    <span class="built_in">METADATA_PARAMS</span>(Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings_MetaData, <span class="built_in">UE_ARRAY_COUNT</span>(Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings_MetaData)) </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SRGB</span></span><br><span class="line"><span class="type">const</span> UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UTexture_Statics::NewProp_SRGB = &#123; </span><br><span class="line">    <span class="string">&quot;SRGB&quot;</span>, </span><br><span class="line">    <span class="literal">nullptr</span>, </span><br><span class="line">    (EPropertyFlags)<span class="number">0x0010010000000005</span>, </span><br><span class="line">    UE4CodeGen_Private::EPropertyGenFlags::Bool , </span><br><span class="line">    RF_Public|RF_Transient|RF_MarkAsNative, </span><br><span class="line">    <span class="number">1</span>, </span><br><span class="line">    <span class="built_in">sizeof</span>(uint8), </span><br><span class="line">    <span class="built_in">sizeof</span>(UTexture), </span><br><span class="line">    &amp;Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_SetBit, </span><br><span class="line">    <span class="built_in">METADATA_PARAMS</span>(Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_MetaData, <span class="built_in">UE_ARRAY_COUNT</span>(Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_MetaData)) </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>它们的共同之处，是<code>PropertyFlags</code>都为<code>0x0010010000000005</code>，它是一个掩码方式存储的值，具有多个FLAG值：</p>
+<p>The reflection code generated from these reflection properties is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CompressionSettings</span></span><br><span class="line"><span class="type">const</span> UE4CodeGen_Private::FBytePropertyParams Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings = &#123; </span><br><span class="line">    <span class="string">&quot;CompressionSettings&quot;</span>, </span><br><span class="line">    <span class="literal">nullptr</span>, </span><br><span class="line">    (EPropertyFlags)<span class="number">0x0010010000000005</span>, </span><br><span class="line">    UE4CodeGen_Private::EPropertyGenFlags::Byte, </span><br><span class="line">    RF_Public|RF_Transient|RF_MarkAsNative, </span><br><span class="line">    <span class="number">1</span>, </span><br><span class="line">    <span class="built_in">STRUCT_OFFSET</span>(UTexture, CompressionSettings), </span><br><span class="line">    Z_Construct_UEnum_Engine_TextureCompressionSettings, </span><br><span class="line">    <span class="built_in">METADATA_PARAMS</span>(Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings_MetaData, <span class="built_in">UE_ARRAY_COUNT</span>(Z_Construct_UClass_UTexture_Statics::NewProp_CompressionSettings_MetaData)) </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SRGB</span></span><br><span class="line"><span class="type">const</span> UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UTexture_Statics::NewProp_SRGB = &#123; </span><br><span class="line">    <span class="string">&quot;SRGB&quot;</span>, </span><br><span class="line">    <span class="literal">nullptr</span>, </span><br><span class="line">    (EPropertyFlags)<span class="number">0x0010010000000005</span>, </span><br><span class="line">    UE4CodeGen_Private::EPropertyGenFlags::Bool, </span><br><span class="line">    RF_Public|RF_Transient|RF_MarkAsNative, </span><br><span class="line">    <span class="number">1</span>, </span><br><span class="line">    <span class="built_in">sizeof</span>(uint8), </span><br><span class="line">    <span class="built_in">sizeof</span>(UTexture), </span><br><span class="line">    &amp;Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_SetBit, </span><br><span class="line">    <span class="built_in">METADATA_PARAMS</span>(Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_MetaData, <span class="built_in">UE_ARRAY_COUNT</span>(Z_Construct_UClass_UTexture_Statics::NewProp_SRGB_MetaData)) </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>They share a common <code>PropertyFlags</code> value of <code>0x0010010000000005</code>, which is a bitmask storing various FLAG values:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CPF_Edit                         = <span class="number">0x0000000000000001</span>,  <span class="comment">///&lt; Property is user-settable in the editor.</span></span><br><span class="line">CPF_BlueprintVisible             = <span class="number">0x0000000000000004</span>,   <span class="comment">///&lt; This property can be read by blueprint code</span></span><br><span class="line">CPF_AssetRegistrySearchable      = <span class="number">0x0000010000000000</span>,  <span class="comment">///&lt; asset instances will add properties with this flag to the asset registry automatically</span></span><br><span class="line">CPF_NativeAccessSpecifierPublic  = <span class="number">0x0010000000000000</span>,  <span class="comment">///&lt; Public native access specifier</span></span><br></pre></td></tr></table></figure>
-<p>用于标记该反射属性的用途。在这个例子里即：一个编辑器中可编辑、能够在蓝图中显示、能够被AssetRegistry搜索到的属性、并且是public的。<br>在编辑器或者其他需要访问该反射属性的地方，就能够通过这些FLAG来判断当前属性是否应该进行处理。</p>
-<p>而把UPROPERTY标记加上<code>AssetRegistrySearchable</code>就会给反射属性加上<code>CPF_AssetRegistrySearchable</code>，使其能够被AssetRegistry系统识别，并且能够正确地序列化到uasset中去。</p>
-<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>前一节提到了给属性添加<code>AssetRegistrySearchable</code>标记，就能够序列化到uasset之内，那么引擎是如何实现它的存储以及进行读取的，会在本节介绍。</p>
-<h4 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h4><p>在引擎中保存资源时，会触发AssetRegistryData的序列化，调用栈如下：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/113741.png"></p>
-<p>其中会获取当前资源中所有的Object中标记了AssetRegistrySearchable的属性的值TAG，并将其序列化到资产之内：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/120759.png"></p>
-<p>其Tag的最终序列化内容为：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230918153727.png"></p>
-<p>它是一个Key-Value形式的数组，Key就是该反射属性的字符串名字，而Value就是当前资源该属性的值，并且是以<code>ExportTextureItem</code>的形式导出的字符串值（与<a href="https://imzlp.com/posts/19901/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9B%BF%E6%8D%A2%E5%AE%9E%E7%8E%B0">UE中资源自修正的设计与实现方案#通用的属性替换实现</a>文章中的实现思路异曲同工），从而实现任意属性的通用存储。</p>
-<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><p>在文章<a href="https://imzlp.com/posts/32412/">资源管理：UASSET资源加密方案</a>中，我曾介绍了UE中对资源加密的内容，其中具有Package Summary的部分。</p>
-<p>在Summary中，有一个专门的属性，用于标记<code>AssetRegistryData</code>在当前资产中的文件偏移：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/172640.png"></p>
-<p>基于这个偏移，就能够在只读取了<code>PackageSummary</code>的情况下，无需完整地加载资源，就能够直接获取到<code>AssetRegistryData</code>。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/115456.png"></p>
-<p>在<code>FPackageReader::ReadAssetRegistryData</code>中会读取<code>uasset</code>文件，并构造出<code>FAssetData</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/122419.png"></p>
-<p>然后将其添加到<code>AssetDataList</code>中：</p>
+
+<p>These are used to mark the purpose of the reflected property. In this example, it indicates: properties that are editable in the editor, displayed in blueprints, searchable by the AssetRegistry, and are public.</p>
+<p>In the editor or other places requiring access to this reflection property, FLAGs can be used to determine whether a particular property should be processed.</p>
+<p>Adding the <code>AssetRegistrySearchable</code> marker to the UPROPERTY allows the reflection property to acquire the <code>CPF_AssetRegistrySearchable</code>, enabling it to be identified by the AssetRegistry system and correctly serialized into the uasset.</p>
+<h3 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h3><p>The previous section mentioned that by adding the <code>AssetRegistrySearchable</code> marker, it allows serialization into the uasset. This section will introduce how the engine implements the storage and reading.</p>
+<h4 id="Saving"><a href="#Saving" class="headerlink" title="Saving"></a>Saving</h4><p>When the engine saves a resource, it triggers the serialization of AssetRegistryData, with the call stack as follows:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/113741.png"></p>
+<p>During this process, it retrieves the TAG values of all Object properties marked as AssetRegistrySearchable in the current resource and serializes them into the asset:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/120759.png"></p>
+<p>The final serialized content of the Tag is:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230918153727.png"></p>
+<p>It is an array in a Key-Value format, where the Key is the string name of the reflection property and the Value is the current resource value for that property, exported in the form of <code>ExportTextureItem</code> (similarly to the implementation ideas in <a target="_blank" rel="noopener" href="https://imzlp.com/posts/19901/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9B%BF%E6%8D%A2%E5%AE%9E%E7%8E%B0">Design and Implementation of Resource Self-Correction in UE#Universal Property Replacement Implementation</a>), achieving universal storage of any property.</p>
+<h4 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h4><p>In the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/32412/">Resource Management: UASSET Resource Encryption Scheme</a>, I introduced content regarding resource encryption in UE, which includes a section on Package Summary.</p>
+<p>In the Summary, there is a dedicated property used to mark the file offset of <code>AssetRegistryData</code> within the current asset:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/24/172640.png"></p>
+<p>Based on this offset, it is possible to directly access <code>AssetRegistryData</code> without fully loading a resource, simply by reading the <code>PackageSummary</code>.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/115456.png"></p>
+<p>In <code>FPackageReader::ReadAssetRegistryData</code>, it reads the <code>uasset</code> file and constructs <code>FAssetData</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/122419.png"></p>
+<p>Then it adds this to <code>AssetDataList</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a new FAssetData for this asset and update it with the gathered data</span></span><br><span class="line">AssetDataList.<span class="built_in">Add</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">FAssetData</span>(</span><br><span class="line">        <span class="built_in">FName</span>(*PackageName), </span><br><span class="line">        <span class="built_in">FName</span>(*PackagePath), </span><br><span class="line">        <span class="built_in">FName</span>(*AssetName), </span><br><span class="line">        <span class="built_in">FName</span>(*ObjectClassName), </span><br><span class="line">        <span class="built_in">MoveTemp</span>(TagsAndValues), </span><br><span class="line">        PackageFileSummary.ChunkIDs, </span><br><span class="line">        PackageFileSummary.PackageFlags</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>这样就能够直接从AssetRegistry里获取已缓存资源的AssetData了。</p>
-<h2 id="非侵入式实现"><a href="#非侵入式实现" class="headerlink" title="非侵入式实现"></a>非侵入式实现</h2><p>前面介绍了反射属性添加<code>AssetRegistrySearchable</code>的反射代码，以及在资源保存时存储、引擎启动时从uasset加载AssetData的实现逻辑。</p>
-<p>简单来说，通过给属性添加<code>AssetRegistrySearchable</code>的FLAG，就能够把属性序列化到资产之内，并且无需加载资源就能够访问。</p>
-<p>这就把我们前面列举的需求实现了一半了。除此之外还有一个很重要的问题：对于没有在代码中添加<code>AssetRegistrySearchable</code>反射标记的属性该怎么办呢？<br>如果只能手动添加<code>AssetRegistrySearchable</code>到需要的属性中，每当有一个新的属性想要获取，就要去改它的C++代码，这是不可接受的，侵入式地修改局限太大。</p>
-<p>那么，有什么可以不用修改代码，就能够动态地给属性添加<code>AssetRegistrySearchable</code>吗？</p>
-<p>有！就是利用UE的反射动态修改UClass中FProperty的反射FLAG，在之前的文章<a href="https://imzlp.com/posts/15049/#%E4%BF%AE%E6%94%B9UClass%E6%8E%A7%E5%88%B6%E5%8F%8D%E5%B0%84%E5%B1%9E%E6%80%A7">UE：Hook UObject#修改UClass控制反射属性</a>中我曾介绍过类似的实现方法。</p>
-<p>而对于本篇文章中的需求来说，就需要给<code>FProperty</code>添加<code>CPF_AssetRegistrySearchable</code>这个FLAG：</p>
+<p>This allows for direct retrieval of the cached resource’s AssetData from AssetRegistry.</p>
+<h2 id="Non-Intrusive-Implementation"><a href="#Non-Intrusive-Implementation" class="headerlink" title="Non-Intrusive Implementation"></a>Non-Intrusive Implementation</h2><p>The previous sections introduced how to add the <code>AssetRegistrySearchable</code> reflection property, as well as the logic behind storing during resource saving and loading AssetData from uasset at engine startup.</p>
+<p>In simple terms, by adding the <code>AssetRegistrySearchable</code> FLAG to properties, it allows for serialization into the asset without loading resources for access.</p>
+<p>This achieves half of the requirements we previously outlined. However, there remains a crucial question: what to do with properties that do not have the <code>AssetRegistrySearchable</code> reflection marker added in the code?<br>If we could only manually add <code>AssetRegistrySearchable</code> to the required properties, we would have to modify its C++ code each time a new property is required. This is unacceptable; making invasive modifications is too limiting.</p>
+<p>So, is there a method to dynamically add <code>AssetRegistrySearchable</code> to properties without modifying the code?</p>
+<p>Yes! By utilizing UE’s reflection to dynamically modify the FProperty reflection FLAG in UClass, as I previously described in the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/15049/#%E4%BF%AE%E6%94%B9UClass%E6%8E%A7%E5%88%B6%E5%8F%8D%E5%B0%84%E5%B1%9E%E6%80%A7">UE: Hook UObject#Modify UClass Control Reflection Property</a>.</p>
+<p>For the needs of this article, we need to add the <code>CPF_AssetRegistrySearchable</code> FLAG to <code>FProperty</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FProperty* <span class="title">GetPropertyByName</span><span class="params">(UClass* Class, FName PropertyName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FProperty* Property = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">for</span>(TFieldIterator&lt;FProperty&gt; <span class="built_in">PropertyIter</span>(Class);PropertyIter;++PropertyIter)</span><br><span class="line">	&#123;</span><br><span class="line">		FProperty* PropertyIns = *PropertyIter;</span><br><span class="line">		<span class="keyword">if</span>(PropertyIns-&gt;<span class="built_in">GetName</span>().<span class="built_in">Equals</span>(PropertyName.<span class="built_in">ToString</span>()))</span><br><span class="line">		&#123;</span><br><span class="line">			Property = PropertyIns;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> Property;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">AddAssetRegistrySearchableToProperty</span><span class="params">(UClass* Class, <span class="type">const</span> FString&amp; PropertyName,</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="type">bool</span> bSearchable)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FProperty* Property = <span class="built_in">GetPropertyByName</span>(Class,*PropertyName);</span><br><span class="line">	<span class="keyword">if</span>(!Property-&gt;<span class="built_in">HasAnyPropertyFlags</span>(EPropertyFlags::CPF_AssetRegistrySearchable))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(bSearchable)</span><br><span class="line">		&#123;</span><br><span class="line">			Property-&gt;<span class="built_in">SetPropertyFlags</span>(EPropertyFlags::CPF_AssetRegistrySearchable);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			Property-&gt;<span class="built_in">ClearPropertyFlags</span>(EPropertyFlags::CPF_AssetRegistrySearchable);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>基于前面资源保存时对AssetRegistryData序列化的分析，我们只需要在实际保存资源之前，修改资源类型的UClass即可。</p>
-<p>以<code>AnimSequence</code>里的<code>BoneCompressionSettings</code>属性为例，它并没有添加<code>AssetRegistrySearchable</code>标记：</p>
+<p>Based on the analysis of serializing AssetRegistryData during resource saving, we simply need to modify the UClass of the resource type before actually saving it.</p>
+<p>Taking <code>BoneCompressionSettings</code> from <code>AnimSequence</code> as an example, it does not have the <code>AssetRegistrySearchable</code> marker added:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** The bone compression settings used to compress bones in this sequence. */</span>  </span><br><span class="line"><span class="built_in">UPROPERTY</span>(Category = Compression, EditAnywhere, meta = (ForceShowEngineContent))  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UAnimBoneCompressionSettings</span>* BoneCompressionSettings;</span><br></pre></td></tr></table></figure>
 
-<p>在引擎运行时就可以执行代码：</p>
+<p>During engine runtime, we can execute the following code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AddAssetRegistrySearchableToProperty</span>(UAnimSequence::<span class="built_in">StaticClass</span>(),<span class="built_in">TEXT</span>(<span class="string">&quot;BoneCompressionSettings&quot;</span>),<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-<p>然后保存资源，在<code>GetAssetRegistryTagFromProperty</code>中就能够检测到它具有<code>CPF_AssetRegistrySearchable</code>FLAG了：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/132232.png"></p>
-<p>并且能够把实际的属性值导出为字符串：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/132354.png"></p>
-<p>这样就能完美地实现我们想要把一些属性序列化到资源之内的需求了。</p>
-<h2 id="复用与一致性"><a href="#复用与一致性" class="headerlink" title="复用与一致性"></a>复用与一致性</h2><p>因为AssetData是直接序列化到资源之内的，会随着每次资源的保存而更新。所以只要能够更新到最新的资源，就能够保证其属性值的准确性。</p>
-<p>而且对于协同来说，每个人都会保存自己修改的资源，如果不同提交间的资源产生冲突，可以通过版本控制解决。这同样能够保证远程仓库里的资源和其缓存属性值的一致性（都存储在uasset单个文件之内），不会出现混乱。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/142829.png"></p>
-<h2 id="缓存属性读取"><a href="#缓存属性读取" class="headerlink" title="缓存属性读取"></a>缓存属性读取</h2><p>至此，对于资产属性的缓存已经完全实现了，那么如何应用它呢？</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/143522.png"></p>
-<p>在ResScanner的应用：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> GetPropertyValueByName = [&amp;Rule,<span class="keyword">this</span>](<span class="type">const</span> FAssetData&amp; AssetData,<span class="type">const</span> FString&amp; PropertyName)  </span><br><span class="line">&#123;  </span><br><span class="line">    FString AssetDataTagValue;  </span><br><span class="line">    <span class="keyword">if</span>(!AssetData.<span class="built_in">GetTagValue</span>(*PropertyName,AssetDataTagValue))  </span><br><span class="line">    &#123;       AssetDataTagValue = UFlibAssetParseHelper::<span class="built_in">GetPropertyValueByName</span>(<span class="built_in">GetPropertyOwning</span>(AssetData,Rule),PropertyName);  </span><br><span class="line">    &#125;    <span class="keyword">return</span> AssetDataTagValue;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>只有在从TagsAndValues获取不到属性时，再进行资源加载。</p>
-<p>对于ResScannerUE来说，可能存在很多进行属性检查的规则。在扫描模块启动前会自动获取所有包含属性检查的规则，并为要检查的属性添加<code>CPF_AssetRegistrySearchable</code>，不管添加了多少规则，都能达到无感知的目的。</p>
+<p>Then save the asset, in <code>GetAssetRegistryTagFromProperty</code>, it will detect that it has the <code>CPF_AssetRegistrySearchable</code> FLAG:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/132232.png"></p>
+<p>And it can export the actual property value as a string:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/132354.png"></p>
+<p>This allows us to perfectly meet our requirement to serialize certain properties into the asset.</p>
+<h2 id="Reuse-and-Consistency"><a href="#Reuse-and-Consistency" class="headerlink" title="Reuse and Consistency"></a>Reuse and Consistency</h2><p>Since AssetData is directly serialized into the asset, it will be updated with each resource saving. Therefore, as long as the latest resource can be updated, the accuracy of its property values can be ensured.</p>
+<p>Moreover, for collaboration, each person will save their modified resources. If conflicts arise between resources from different submissions, version control can resolve this. This can ensure consistency between the resources in the remote repository and their cached property values (all stored within a single uasset file), preventing confusion.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/142829.png"></p>
+<h2 id="Caching-Property-Reading"><a href="#Caching-Property-Reading" class="headerlink" title="Caching Property Reading"></a>Caching Property Reading</h2><p>Now that the property caching for assets has been fully implemented, how can it be applied?</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/143522.png"></p>
+<p>In the application of ResScanner:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> GetPropertyValueByName = [&amp;Rule,<span class="keyword">this</span>](<span class="type">const</span> FAssetData&amp; AssetData,<span class="type">const</span> FString&amp; PropertyName)  </span><br><span class="line">&#123;  </span><br><span class="line">    FString AssetDataTagValue;  </span><br><span class="line">    <span class="keyword">if</span>(!AssetData.<span class="built_in">GetTagValue</span>(*PropertyName,AssetDataTagValue))  </span><br><span class="line">    &#123;       </span><br><span class="line">        AssetDataTagValue = UFlibAssetParseHelper::<span class="built_in">GetPropertyValueByName</span>(<span class="built_in">GetPropertyOwning</span>(AssetData,Rule),PropertyName);  </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> AssetDataTagValue;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The resources are only loaded when property values cannot be obtained from TagsAndValues.</p>
+<p>For ResScannerUE, there may be many rules for property inspection. Before the scanning module starts, all rules containing property checks will be automatically retrieved, and <code>CPF_AssetRegistrySearchable</code> will be added to the properties to be checked. Regardless of how many rules are added, it can achieve a non-intrusive effect.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/10/25/150904.png"></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文涉及到的一些知识，在博客中其他文章内有更具体的总结和分析，可以作为扩展阅读。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Some of the knowledge involved in this article is summarized and analyzed more specifically in other articles on the blog and can serve as extended reading.</p>
 <ul>
-<li><a href="https://imzlp.com/posts/19901/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9B%BF%E6%8D%A2%E5%AE%9E%E7%8E%B0">UE中资源自修正的设计与实现方案#通用的属性替换实现</a></li>
-<li><a href="https://imzlp.com/posts/9780/">UE 反射实现分析：反射代码生成（一）</a></li>
-<li><a href="https://imzlp.com/posts/12624/">UE反射实现分析：基础概念</a></li>
-<li><a href="https://imzlp.com/posts/15049/#%E4%BF%AE%E6%94%B9UClass%E6%8E%A7%E5%88%B6%E5%8F%8D%E5%B0%84%E5%B1%9E%E6%80%A7">UE：Hook UObject#修改UClass控制反射属性</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/19901/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9B%BF%E6%8D%A2%E5%AE%9E%E7%8E%B0">Design and Implementation of Resource Self-Correction in UE#Universal Property Replacement Implementation</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/9780/">UE Reflection Implementation Analysis: Reflection Code Generation (1)</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/12624/">UE Reflection Implementation Analysis: Basic Concepts</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/15049/#%E4%BF%AE%E6%94%B9UClass%E6%8E%A7%E5%88%B6%E5%8F%8D%E5%B0%84%E5%B1%9E%E6%80%A7">UE: Hook UObject#Modify UClass Control Reflection Property</a></li>
 </ul>
-<p>本篇文章分析并利用了引擎中类型反射、资产序列化、以及AssetRegistry数据生成等特性，并把它们组合起来实现了一种非侵入式的，无需修改任何现有资源类型的代码进行资源属性缓存的机制。</p>
-<p>实现在不加载资源的情况下去获取资源内的属性，对于“资源的属性检查”这种需求，就不会随着资源规模的扩张导致检查耗时的大幅增加，也不会因为本地环境没有DDC在扫描时生成，能够大幅度提升检查效率。</p>
+<p>This article analyzes and utilizes engine features such as type reflection, asset serialization, and AssetRegistry data generation, and combines them to implement a non-intrusive mechanism for caching resource properties without modifying any existing resource type code.</p>
+<p>By allowing access to properties within resources without loading the resources, the demand for “resource property checks” will not lead to significant increases in check duration due to the expansion of resource scale, nor will it generate issues during scans when the local environment lacks DDC, thus greatly enhancing the checking efficiency.</p>
 
     </div>
 
@@ -474,7 +479,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -484,7 +489,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -494,37 +499,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/71162/" target="_blank">UE中利用反射为资产建立属性缓存</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2023/10/25 15:27<br/>
+             <span>Title:</span><a href="/posts/71162/" target="_blank">Use reflection to create properties cache for assets in UE</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2023/10/25 15:27<br/>
              
-             <span>本文字数:</span><span class="page-count">3.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">8.6k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/71162/" target="_blank" title="UE中利用反射为资产建立属性缓存">https://imzlp.com/posts/71162/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/71162/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/71162/" target="_blank" title="Use reflection to create properties cache for assets in UE">https://en.imzlp.com/posts/71162/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/71162/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -546,12 +551,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/35791/" rel="prev" title="循迹旅行：澳门旅游攻略">
-      <i class="fa fa-chevron-left"></i> 循迹旅行：澳门旅游攻略
+    <a href="/posts/35791/" rel="prev" title="Macau Travel Guide">
+      <i class="fa fa-chevron-left"></i> Macau Travel Guide
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/19901/" rel="next" title="UE中资源自修正的设计与实现方案">
-      UE中资源自修正的设计与实现方案 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/19901/" rel="next" title="Implementation scheme of resource self-correction in UE">
+      Implementation scheme of resource self-correction in UE <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -622,25 +627,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E7%BC%93%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">属性缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%8F%8D%E5%B0%84FLAG"><span class="nav-number">2.1.</span> <span class="nav-text">属性反射FLAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98"><span class="nav-number">2.2.1.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96"><span class="nav-number">2.2.2.</span> <span class="nav-text">读取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E4%BE%B5%E5%85%A5%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">非侵入式实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%94%A8%E4%B8%8E%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">复用与一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E5%B1%9E%E6%80%A7%E8%AF%BB%E5%8F%96"><span class="nav-number">5.</span> <span class="nav-text">缓存属性读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Property-Cache"><span class="nav-number">2.</span> <span class="nav-text">Property Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Property-Reflection-FLAG"><span class="nav-number">2.1.</span> <span class="nav-text">Property Reflection FLAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serialization"><span class="nav-number">2.2.</span> <span class="nav-text">Serialization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Saving"><span class="nav-number">2.2.1.</span> <span class="nav-text">Saving</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reading"><span class="nav-number">2.2.2.</span> <span class="nav-text">Reading</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Intrusive-Implementation"><span class="nav-number">3.</span> <span class="nav-text">Non-Intrusive Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reuse-and-Consistency"><span class="nav-number">4.</span> <span class="nav-text">Reuse and Consistency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-Property-Reading"><span class="nav-number">5.</span> <span class="nav-text">Caching Property Reading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -648,19 +653,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -698,10 +703,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -728,9 +733,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -739,12 +741,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -897,7 +899,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/71162/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/71162/',]
       });
       });
   </script>
@@ -920,12 +922,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

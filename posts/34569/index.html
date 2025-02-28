@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,24 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
   <meta name="description" content="近期准备求职面试。将C++中面向对象部分的基础知识复习整理一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中面向对象部分知识整理">
-<meta property="og:url" content="https://imzlp.com/posts/34569/index.html">
-<meta property="og:site_name" content="循迹研究室">
+<meta property="og:title" content="Summary of some object-oriented knowledge in C++">
+<meta property="og:url" content="https://en.imzlp.com/posts/34569/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
 <meta property="og:description" content="近期准备求职面试。将C++中面向对象部分的基础知识复习整理一下。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-04-16T17:31:49.000Z">
 <meta property="article:modified_time" content="2016-04-16T17:31:49.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/34569/">
+<link rel="canonical" href="https://en.imzlp.com/posts/34569/">
 
 
 <script id="page-configurations">
@@ -45,11 +45,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>C++中面向对象部分知识整理 | 循迹研究室</title>
+  <title>Summary of some object-oriented knowledge in C++ | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -89,7 +89,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -99,7 +99,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,7 +110,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -129,24 +129,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -156,7 +156,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -166,7 +166,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -174,14 +174,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -189,26 +189,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -224,7 +224,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -243,7 +243,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -262,12 +262,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -285,27 +285,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/34569/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/34569/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C++中面向对象部分知识整理<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-04-16-34569.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/34569/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Summary of some object-oriented knowledge in C++<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-04-16-34569.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/34569/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Summary of some object-oriented knowledge in C++</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">C++中面向对象部分知识整理</sub>
           </div>
         
 
@@ -314,47 +314,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-04-16 17:31 17:31:49:31" itemprop="dateCreated datePublished" datetime="2016-04-16T17:31:49+00:00">2016-04-16 17:31</time>
+              <time title="Created: 2016-04-16 17:31 17:31:49:31" itemprop="dateCreated datePublished" datetime="2016-04-16T17:31:49+00:00">2016-04-16 17:31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/34569/" class="post-meta-item leancloud_visitors" data-flag-title="C++中面向对象部分知识整理" title="阅读次数">
+            <span id="/posts/34569/" class="post-meta-item leancloud_visitors" data-flag-title="Summary of some object-oriented knowledge in C++" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.7k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -368,131 +368,141 @@
       
         <p>近期准备求职面试。<br>将C++中面向对象部分的基础知识复习整理一下。</p>
 <span id="more"></span>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a><a href="#%E7%B1%BB">类</a></h2><blockquote>
-<p>在C++中，用<strong>类</strong>来定义自己的<strong>抽象数据类型(abstract data type)</strong></p>
-</blockquote>
-<h3 id="类的定义和声明"><a href="#类的定义和声明" class="headerlink" title="类的定义和声明"></a><a href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%A3%B0%E6%98%8E">类的定义和声明</a></h3><blockquote>
-<p>简单的来说，类就是定义了一个新的类型和新的作用域。</p>
-</blockquote>
-<h4 id="类定义-概要"><a href="#类定义-概要" class="headerlink" title="类定义:概要"></a><a href="#%E7%B1%BB%E5%AE%9A%E4%B9%89:%E6%A6%82%E8%A6%81">类定义:概要</a></h4><h5 id="类成员"><a href="#类成员" class="headerlink" title="类成员"></a><a href="#%E7%B1%BB%E6%88%90%E5%91%98">类成员</a></h5><p>每个类可以没有成员也可以定义多个成员，成员可以是<strong>数据</strong>、<strong>函数</strong>或<strong>类型别名</strong>。<br>一个类可以包含若干<strong>公有的(public)**、</strong>私有的(private)<strong>和</strong>受保护的(protected)部分**。</p>
-<h5 id="访问标号"><a href="#访问标号" class="headerlink" title="访问标号"></a><a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">访问标号</a></h5><ul>
-<li><strong>public:**使用</strong>public访问标号**定义的成员可被该类型的所有代码访问，类的用户、该类的派生类也都可以访问。</li>
-<li><strong>private:**使用</strong>private访问标号<strong>定义的成员可被</strong>类中其他的成员**访问，不能被类的用户、该类的派生类访问。</li>
-<li><strong>protected:**使用</strong>protected访问标号<strong>定义的成员，可以认为它是public和private的混合，像</strong>private<strong>一样，使用类的用户不能直接访问，像</strong>public<strong>一样，protected成员可以被</strong>以该类为基类的派生类**访问。</li>
-</ul>
-<h5 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></h5><p>创建一个类类型时，编译器会自动使用一个<strong>构造函数</strong>来初始化对象。</p>
-<blockquote>
-<p>构造函数：定义如何<strong>初始化</strong>的类成员函数。(C++ Primer 4th,2.3.3-2,P43)</p>
-</blockquote>
-<p>另：C++支持两种初始化方式：(C++ Primer 4th,2.3.3-1,P42)</p>
-<ol>
-<li>复制初始化(copy-initialization):使用语法为直接使用等号(=).</li>
-<li>直接初始化(direct-initialization):使用语法为把初始化式放在括号中().</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">1024</span>;<span class="comment">//复制初始化(copy-initialization)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ival</span><span class="params">(<span class="number">1024</span>)</span></span>;<span class="comment">//直接初始化(direct-initialization)</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">成员函数</a></h5><p>在类内部，<strong>声明成员函数</strong>是必须的，而<strong>定义成员函数</strong>则是可选的。</p>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a><a href="#%E7%B1%BB">Class</a></h2><blockquote>
+<p>In C++, a <strong>class</strong> is used to define your own <strong>abstract data type</strong>.</p>
+</blockquote>
+<h3 id="Class-Definition-and-Declaration"><a href="#Class-Definition-and-Declaration" class="headerlink" title="Class Definition and Declaration"></a><a href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%A3%B0%E6%98%8E">Class Definition and Declaration</a></h3><blockquote>
+<p>In simple terms, a class defines a new type and a new scope.</p>
+</blockquote>
+<h4 id="Class-Definition-Overview"><a href="#Class-Definition-Overview" class="headerlink" title="Class Definition: Overview"></a><a href="#%E7%B1%BB%E5%AE%9A%E4%B9%89:%E6%A6%82%E8%A6%81">Class Definition: Overview</a></h4><h5 id="Class-Members"><a href="#Class-Members" class="headerlink" title="Class Members"></a><a href="#%E7%B1%BB%E6%88%90%E5%91%98">Class Members</a></h5><p>Each class can have no members or define multiple members; members can be <strong>data</strong>, <strong>functions</strong>, or <strong>type aliases</strong>.<br>A class can contain several <strong>public</strong>, <strong>private</strong>, and <strong>protected parts</strong>.</p>
+<h5 id="Access-Specifiers"><a href="#Access-Specifiers" class="headerlink" title="Access Specifiers"></a><a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">Access Specifiers</a></h5><ul>
+<li><strong>public:</strong> Members defined with the <strong>public access specifier</strong> can be accessed by all code of that type; users of the class and derived classes can also access them.</li>
+<li><strong>private:</strong> Members defined with the <strong>private access specifier</strong> can be accessed by <strong>other members of the class</strong> but not by users of the class or its derived classes.</li>
+<li><strong>protected:</strong> Members defined with the <strong>protected access specifier</strong> can be thought of as a mix of public and private; like <strong>private</strong>, users of the class cannot access them directly, but like <strong>public</strong>, protected members can be accessed by <strong>derived classes that use the class as a base</strong>.</li>
+</ul>
+<h5 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">Constructors</a></h5><p>When creating a class type, the compiler automatically uses a <strong>constructor</strong> to initialize objects.  </p>
 <blockquote>
-<p>在类内部定义的函数默认为<strong>inline(内联函数)</strong>.(C++ Primer 4th,12.1.1-3,P369)<br><strong>内联函数</strong>：在调用节点处内联展开，避免函数调用开销。因为调用函数比直接执行表达式要慢得多。(C++ Primer 4th,7.6,P221)<br>调用函数要做很多工作：</p>
+<p>Constructor: Defines how to <strong>initialize</strong> the class member functions. (C++ Primer 4th, 2.3.3-2, P43)</p>
+</blockquote>
+<p>Additionally: C++ supports two types of initialization: (C++ Primer 4th, 2.3.3-1, P42)</p>
 <ol>
-<li>调用前先保存寄存器，并在返回时恢复；</li>
-<li>复制实参；</li>
-<li>程序还必须转向一个新位置执行。</li>
+<li>Copy initialization: uses syntax with the equal sign (=).</li>
+<li>Direct initialization: uses syntax by placing the initialization expression in parentheses ().</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival = <span class="number">1024</span>; <span class="comment">// Copy initialization</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ival</span><span class="params">(<span class="number">1024</span>)</span></span>; <span class="comment">// Direct initialization</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Member-Functions"><a href="#Member-Functions" class="headerlink" title="Member Functions"></a><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">Member Functions</a></h5><p>Inside a class, it is mandatory to <strong>declare member functions</strong>, but <strong>defining member functions</strong> is optional.  </p>
+<blockquote>
+<p>Functions defined inside a class are implicitly considered <strong>inline</strong>. (C++ Primer 4th, 12.1.1-3, P369)<br><strong>Inline functions</strong>: Expand in-line at the call site, avoiding function call overhead. Since calling a function is much slower than directly executing an expression. (C++ Primer 4th, 7.6, P221)<br>Calling a function has to do a lot of work:  </p>
+<ol>
+<li>Save registers before calling and restore them upon return;  </li>
+<li>Copy arguments;  </li>
+<li>The program must transfer to a new location to execute.  </li>
 </ol>
 </blockquote>
-<p>在类外部定义的成员函数<strong>必须指明</strong>他们是在类的作用域中的。<br>可以使用**::作用域操作符**来指定：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//成员函数printHelloWorld在类中声明但不定义。</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//testClass类的成员函数printHelloWorld在类外部定义必须使用作用域操作符指定</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testClass::printHelloWorld</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;HelloWorld&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>成员函数有一个附加的隐含实参，将函数绑定到函数的对象——<strong>this指针</strong><br>当我们定义：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testClass obj;</span><br><span class="line">obj.<span class="built_in">printHelloWorld</span>();</span><br></pre></td></tr></table></figure>
-<p>调用obj对象的printHelloWorld函数，如果在printHelloWorld函数内对testClass类成员的引用就是对obj对象的成员的引用。</p>
-<p><span id= const成员函数>const成员函数</span></p>
+<p>Member functions defined outside the class <strong>must indicate</strong> that they are within the class’s scope.<br>You can use the <strong>:: scope operator</strong> to specify:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// Member function printHelloWorld declared but not defined in the class.</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Definition of the member function printHelloWorld of testClass must use scope operator</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testClass::printHelloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;HelloWorld&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Member functions have an additional implicit argument that binds the function to the object—<strong>this pointer</strong>.<br>When we define:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testClass obj;  </span><br><span class="line">obj.<span class="built_in">printHelloWorld</span>();</span><br></pre></td></tr></table></figure>
+<p>Calling the printHelloWorld function of the obj object means that any reference to members of the testClass inside the printHelloWorld function refers to members of the obj object.</p>
+<p><span id= const member function>const Member Function</span>  </p>
 <blockquote>
-<p>将关键字<strong>const</strong>加在形参表之后，就可以将成员函数声明为<strong>常量</strong>。<br><strong>const成员不能改变其所操作的对象的数据成员。</strong><br>const关键字<strong>必须同时出现在声明和定义中</strong>，若只出现一次则会出现一个编译错误。</p>
+<p>Adding the keyword <strong>const</strong> after the parameter list allows the member function to be declared as <strong>constant</strong>.<br><strong>const members cannot change the data members of the object they operate on.</strong><br>The const keyword <strong>must appear in both the declaration and definition</strong>; if it appears only once, a compilation error will occur.</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们可以在testClass类中的public访问标号下添加如下成员函数声明</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">don_tChangeMemberData</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该函数的定义必须也要写const关键字</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">testClass::don_tChangeMemberData</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">	<span class="comment">//...	</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>const的作用如同函数名描述的那样:)</p>
-<h4 id="数据抽象和封装"><a href="#数据抽象和封装" class="headerlink" title="数据抽象和封装"></a><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85">数据抽象和封装</a></h4><p>类背后蕴含的思想是<strong>数据抽象</strong>和<strong>封装</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// We can add the following member function declaration under the public access specifier in the testClass.</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">don_tChangeMemberData</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The definition of this function must also include the const keyword.</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">testClass::don_tChangeMemberData</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">	<span class="comment">//...	</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The role of const is as described by the function name :)</p>
+<h4 id="Data-Abstraction-and-Encapsulation"><a href="#Data-Abstraction-and-Encapsulation" class="headerlink" title="Data Abstraction and Encapsulation"></a><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85">Data Abstraction and Encapsulation</a></h4><p>The concepts behind classes are <strong>data abstraction</strong> and <strong>encapsulation</strong>.  </p>
 <blockquote>
-<p><strong>数据抽象</strong>是一种依赖于接口和实现分离的编程(设计)技术。<br>通过数据抽象，使用一个类型的程序猿仅需要了解类型的接口，他们可以抽象地考虑该类型做什么，而不是具体地考虑类型如何工作。<br><strong>封装</strong>是一种将低层次的元素组合起来形成新的、高层次实体的技术。<br>函数是封装的一种形式：函数所执行的细节行为被封装在函数本身这个更大的实体中。被封装的元素隐藏了它们的实现细节——可以调用一个函数，但不能访问它所执行的语句。</p>
+<p><strong>Data abstraction</strong> is a programming (design) technique that depends on the separation of interface and implementation.<br>Through data abstraction, programmers using a type only need to understand the type’s interface; they can think abstractly about what the type does rather than concretely about how it works.<br><strong>Encapsulation</strong> is a technique that groups lower-level elements to form new, higher-level entities.<br>Functions are a form of encapsulation: the detailed behaviors executed by the function are encapsulated within this larger entity, which is the function itself. The encapsulated elements hide their implementation details—the function can be called, but its executed statements cannot be accessed.</p>
 </blockquote>
-<p>标准库类型vector同时具备数据抽象和封装的特性。数组在概念上类似于vector，但既不是抽象的也不是封装的。可以通过访问存放数组的内存来直接操纵数组。</p>
-<h5 id="访问标号实施抽象和封装"><a href="#访问标号实施抽象和封装" class="headerlink" title="访问标号实施抽象和封装"></a><a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7%E5%AE%9E%E6%96%BD%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85">访问标号实施抽象和封装</a></h5><blockquote>
-<p>在C++中，使用<strong>访问标号</strong>来定义类的抽象接口和实施封装。</p>
+<p>The standard library type vector embodies both data abstraction and encapsulation. Arrays are conceptually similar to vectors but are neither abstract nor encapsulated. You can directly manipulate arrays by accessing the memory storing them.</p>
+<h5 id="Access-Specifiers-Implementing-Abstraction-and-Encapsulation"><a href="#Access-Specifiers-Implementing-Abstraction-and-Encapsulation" class="headerlink" title="Access Specifiers Implementing Abstraction and Encapsulation"></a><a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7%E5%AE%9E%E6%96%BD%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85">Access Specifiers Implementing Abstraction and Encapsulation</a></h5><blockquote>
+<p>In C++, <strong>access specifiers</strong> are used to define the abstract interface of classes and to implement encapsulation.</p>
 </blockquote>
-<p><strong>注意：一个类可以没有访问标号也可以拥有多个访问标号。</strong><br>在<a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7"><strong>访问标号</strong></a>这里我们已经简单的介绍了三种访问标号之间的区别了。</p>
+<p><strong>Note: A class can have no access specifier or multiple access specifiers.</strong><br>In <a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7"><strong>access specifiers</strong></a>, we have briefly introduced the differences among three types of access specifiers.  </p>
 <blockquote>
-<p>一个<strong>访问标号</strong>出现的次数通常是没有限制的。每个访问标号指定了随后的<strong>成员定义</strong>的访问级别。这个指定范围持续有效，<strong>直至遇到下一个访问标号或看到类定义体的右花括号为止</strong>。</p>
+<p>A <strong>single access specifier</strong> can occur as many times as needed. Each access specifier specifies the access level for the subsequent <strong>member definitions</strong>. This specification remains valid <strong>until the next access specifier is encountered or the right brace of the class definition is reached</strong>.</p>
 </blockquote>
-<p>可以在<strong>任意的访问标号出现之前定义类成员</strong>。<br>在类的花括号之后、第一个访问标号之前定义的成员的访问级别依赖于类是如何定义的。</p>
+<p>Members can be defined <strong>before any access specifier appears</strong>.<br>The access level of members defined after the class’s opening brace but before the first access specifier depends on how the class is defined.  </p>
 <ul>
-<li>使用<strong>class</strong>定义:在第一个访问标号之前的定义的成员是<a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">私有的(private)</a>。</li>
-<li>使用<strong>struct</strong>定义:在第一个访问标号之前定义的成员是<a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">公有的(public)</a></li>
+<li>Using <strong>class</strong> definition: Members defined before the first access specifier are <a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">private</a>.</li>
+<li>Using <strong>struct</strong> definition: Members defined before the first access specifier are <a href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7">public</a>.</li>
 </ul>
-<h5 id="数据抽象和封装的好处"><a href="#数据抽象和封装的好处" class="headerlink" title="数据抽象和封装的好处"></a><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85%E7%9A%84%E5%A5%BD%E5%A4%84">数据抽象和封装的好处</a></h5><p>数据抽象和封装提供了两个重要的有点：</p>
+<h5 id="Benefits-of-Data-Abstraction-and-Encapsulation"><a href="#Benefits-of-Data-Abstraction-and-Encapsulation" class="headerlink" title="Benefits of Data Abstraction and Encapsulation"></a><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85%E7%9A%84%E5%A5%BD%E5%A4%84">Benefits of Data Abstraction and Encapsulation</a></h5><p>Data abstraction and encapsulation provide two significant advantages:  </p>
 <ul>
-<li>避免类内部出现无意的，可能破坏对象状态的用户级错误。</li>
-<li>随时间推移可以根据需求改变或缺陷(bug)报告来完善类实现，而无需改变用户级代码。</li>
+<li>Avoid unintended user-level errors occurring inside the class that could potentially disrupt the state of the object.  </li>
+<li>Over time, the class implementation can be improved based on requirements or defect reports without changing the user-level code.</li>
 </ul>
-<p>改变头文件中的类定义可有效地改变包含该头文件的妹子资源文件的额程序文本，所以，当类发生改变时，使用该类的代码必须重新编译。</p>
-<h4 id="关于类定义的更多内容"><a href="#关于类定义的更多内容" class="headerlink" title="关于类定义的更多内容"></a><a href="#%E5%85%B3%E4%BA%8E%E7%B1%BB%E5%AE%9A%E4%B9%89%E7%9A%84%E6%9B%B4%E5%A4%9A%E5%86%85%E5%AE%B9">关于类定义的更多内容</a></h4><h5 id="同一类型的多个数据成员"><a href="#同一类型的多个数据成员" class="headerlink" title="同一类型的多个数据成员"></a>同一类型的多个数据成员</h5><p>类的数据成员的声明类似于普通变量的声明。<br>如果一个类具有多个同一类型的数据成员，则这些成员可以在一个<strong>成员声明</strong>中指定，<strong>声明的顺序从左至右。</strong>(构造函数中需要用到成员的定义顺序)</p>
-<h5 id="用typedef来简化类"><a href="#用typedef来简化类" class="headerlink" title="用typedef来简化类"></a>用typedef来简化类</h5><p>如代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> string::size_type index;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// index type is string::size_type</span></span><br><span class="line">	index height,width;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="成员函数可被重载"><a href="#成员函数可被重载" class="headerlink" title="成员函数可被重载"></a><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%AF%E8%A2%AB%E9%87%8D%E8%BD%BD">成员函数可被重载</a></h5><p>成员函数可以被重载。但<a href="#%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6">重载操作符</a>有特殊规则，是个例外。</p>
-<blockquote>
-<p>成员函数只能重载奔雷的其他成员函数。<br>类的成员函数与普通的成员函数以及在其他类中声明的函数不相关，也不能重载它们。</p>
-</blockquote>
-<p>重载的成员函数和普通函数应用相同的规则：两个<strong>重载成员的形参数量和类型不能完全相同</strong>。调用非成员重载函数所用到的<strong>函数匹配过程</strong>也应用于重载成员函数的调用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span></span>&#123;cout&lt;&lt;<span class="string">&quot;Use empty parameter get version&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span></span>&#123;cout&lt;&lt;<span class="string">&quot;Use a int type parameter get version&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>假设我们定义了一个该类对象classTemp,则我们对get函数调用的方式会决定使用get的哪一个版本:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">testClass classTemp;</span><br><span class="line"><span class="comment">//调用无参数版本的get</span></span><br><span class="line">classTemp.<span class="built_in">get</span>();</span><br><span class="line"><span class="comment">//调用接收一个int型参数的get版本</span></span><br><span class="line">classTemp.<span class="built_in">get</span>(<span class="number">11</span>);</span><br></pre></td></tr></table></figure>
+<p>Changing the class definitions in the header files can effectively change the text of the program in the resource files that include those headers, so when a class changes, any code using that class must be recompiled.</p>
+<h4 id="More-on-Class-Definitions"><a href="#More-on-Class-Definitions" class="headerlink" title="More on Class Definitions"></a><a href="#%E5%85%B3%E4%BA%8E%E7%B1%BB%E5%AE%9A%E4%B9%89%E7%9A%84%EF%BF%BD%EF%BF%BD%EF%BF%BD%E5%A4%9A%E5%86%85%E5%AE%B9">More on Class Definitions</a></h4><h5 id="Multiple-Data-Members-of-the-Same-Type"><a href="#Multiple-Data-Members-of-the-Same-Type" class="headerlink" title="Multiple Data Members of the Same Type"></a>Multiple Data Members of the Same Type</h5><p>The declaration of a class’s data members is similar to that of ordinary variable declarations.<br>If a class has multiple data members of the same type, these members can be specified in a single <strong>member declaration</strong>, with <strong>the sequence of declarations from left to right.</strong> (The order of definitions of members is necessary in the constructor.)</p>
+<h5 id="Using-typedef-to-Simplify-Classes"><a href="#Using-typedef-to-Simplify-Classes" class="headerlink" title="Using typedef to Simplify Classes"></a>Using typedef to Simplify Classes</h5><p>As in the code</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> string::size_type index;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// index type is string::size_type</span></span><br><span class="line">	index height, width;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h5 id="显式指定inline成员函数"><a href="#显式指定inline成员函数" class="headerlink" title="显式指定inline成员函数"></a><a href="#%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9Ainline%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">显式指定inline成员函数</a></h5><p>在类内部定义成员函数，将自动作为inline处理。<br>也就是说当他们被调用时，编译器将试图在同一行内扩展该函数，也可以显式地将成员函数声明为inline.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;Use empty parameter get version&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">testClass::get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;Use a int type parameter get version&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以在类定义体内部之定义一个成员为inline，作为其声明的一部分。也可以在类定义体外部定义上指定inline.在声明和定义出指定inline都是合法的。在类外部定义inline的一个好处是使类比较容易阅读。</p>
-<h4 id="类声明与类定义"><a href="#类声明与类定义" class="headerlink" title="类声明与类定义"></a><a href="#%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%8E%E7%B1%BB%E5%AE%9A%E4%B9%89">类声明与类定义</a></h4><blockquote>
-<p>一旦遇到右花括号，类的定义就结束了。并且，一旦定义了类，那么我们就知道了所有的类成员，以及存储该类所需的存储空间。</p>
+<h5 id="Member-Functions-Can-Be-Overloaded"><a href="#Member-Functions-Can-Be-Overloaded" class="headerlink" title="Member Functions Can Be Overloaded"></a><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%AF%E8%A2%AB%E9%87%8D%E8%BD%BD">Member Functions Can Be Overloaded</a></h5><p>Member functions can be overloaded. However, <a href="#%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6">overloading operators</a> has special rules and is an exception.</p>
+<blockquote>
+<p>Member functions can only overload the other member functions of the same class.<br>Member functions of a class are unrelated to ordinary member functions and functions declared in other classes, nor can they overload them.</p>
 </blockquote>
-<p>在一个给定的源文件中，一个类只能被定义一次。</p>
-<p>将类定义放在头文件中，可以保证在每个实用类的文件中以同样的方式定义类。<br>使用**头文件保护符(header guard)**来避免多重包含(保证类定义只包含一次)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TESTCLASS_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TESTCLASS_H</span></span><br><span class="line">	<span class="comment">//类定义</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<p>也可以声明一个类而不定义它</p>
+<p>Overloaded member functions adhere to the same rules as ordinary functions: two <strong>overloaded members must not have parameters of the same quantity and type</strong>. The <strong>function matching process</strong> used for non-member overloaded functions also applies to calls of overloaded member functions.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Use empty parameter get version&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Use an int type parameter get version&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Assuming we define an object of that class as classTemp, how we call the get function will determine which version of get to use:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">testClass classTemp;</span><br><span class="line"><span class="comment">// Call the version of get with no parameters.</span></span><br><span class="line">classTemp.<span class="built_in">get</span>();</span><br><span class="line"><span class="comment">// Call the version of get that takes an int parameter.</span></span><br><span class="line">classTemp.<span class="built_in">get</span>(<span class="number">11</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Explicitly-Specify-Inline-Member-Functions"><a href="#Explicitly-Specify-Inline-Member-Functions" class="headerlink" title="Explicitly Specify Inline Member Functions"></a><a href="#%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9Ainline%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">Explicitly Specify Inline Member Functions</a></h5><p>Defining member functions within a class will automatically treat them as inline.<br>This means that when they are called, the compiler will attempt to expand the function inline. You can also explicitly declare a member function as inline.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Use empty parameter get version&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">testClass::get</span><span class="params">(<span class="type">int</span> x)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Use an int type parameter get version&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A member can be defined as inline within the body of the class as part of its declaration. It can also be specified as inline when defined outside the class. Both are valid. A benefit of defining inline outside the class is that it makes the class easier to read.</p>
+<h4 id="Class-Declaration-and-Class-Definition"><a href="#Class-Declaration-and-Class-Definition" class="headerlink" title="Class Declaration and Class Definition"></a><a href="#%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%8E%E7%B1%BB%E5%AE%9A%E4%B9%89">Class Declaration and Class Definition</a></h4><blockquote>
+<p>Once the right brace is encountered, the class definition ends. Once a class is defined, we know all the class members and the storage space required for that class.</p>
+</blockquote>
+<p>A class can only be defined once in a given source file.</p>
+<p>Putting class definitions in header files ensures that the class is defined in the same way in every implementation file that uses the class.<br>Use <strong>header guards</strong> to avoid multiple inclusions (ensuring that the class definition appears only once).</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TESTCLASS_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TESTCLASS_H</span></span><br><span class="line">	<span class="comment">// Class definition</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>You can also declare a class without defining it.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>;</span><br></pre></td></tr></table></figure>
-<p>这个声明成为<strong>前向声明</strong>，在声名之后，定义之前，类testClass是一个**不完全类型(incompete type)**，即已知testClass是一个类型，但不知道包含那些成员。</p>
-<p><span id="不完全类型">不完全类型只能以有限的方式使用</span></p>
+<p>This declaration becomes a <strong>forward declaration</strong>; after the declaration but before the definition, the class testClass is an <strong>incomplete type</strong>, meaning testClass is known as a type, but its members are not known.</p>
+<p><span id="incomplete type">Incomplete types can only be used in limited ways</span>  </p>
 <ul>
-<li>不能定义该类型的对象</li>
-<li>用于定义<strong>指向该类类型的引用或指针</strong></li>
-<li>用于<strong>声明该类型作为形参类型或返回类型的函数</strong></li>
+<li>Cannot define objects of that type.  </li>
+<li>Can be used to define <strong>references or pointers to the class type.</strong>  </li>
+<li>Can be used to <strong>declare that type as a parameter type or return type of a function.</strong></li>
 </ul>
 <blockquote>
-<p>在创建类的对象之前，<strong>必须完整的定义该类。</strong><br>必须定义类，而不只是声明类，这样编译器就会<strong>给类的对象预定相应的存储空间</strong>。<br>同样，<strong>在使用引用或指针访问类的成员之前，必须已经定义类</strong>。</p>
+<p>Before creating an object of a class, <strong>the class must be fully defined.</strong><br>The class must be defined, not just declared, so that the compiler can <strong>allocate the appropriate storage space for the class’s objects.</strong><br>Similarly, <strong>the class must be defined before accessing its members via references or pointers.</strong></p>
 </blockquote>
-<p><strong>类的前向声明一般用来编写相互依赖的类。</strong></p>
-<h5 id="为类的成员使用类声明"><a href="#为类的成员使用类声明" class="headerlink" title="为类的成员使用类声明"></a><a href="#%E4%B8%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E4%BD%BF%E7%94%A8%E7%B1%BB%E5%A3%B0%E6%98%8E">为类的成员使用类声明</a></h5><p>前面写道，只有当类定义已经在前面出现过数据成员才能被指定为该类类型。如果该类类型是<a href="#%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%B1%BB%E5%9E%8B"><strong>不完全类型</strong></a>，那么数据成员只能是指向该类类型的指针或引用。</p>
-<p>因为只有当类定义体完成之后才能定义类，因此类不能具有自身类型的数据成员。然而，只要类名一出现就可以认为该类已经声明。因此，类的数据成员可以是指向自身类型的指针或引用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line">	testClass *prev;</span><br><span class="line">	testClass *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="类对象"><a href="#类对象" class="headerlink" title="类对象"></a><a href="#%E7%B1%BB%E5%AF%B9%E8%B1%A1">类对象</a></h5><p>定义一个类，也就是定义了一个类型。一旦定义了类，就可以定义该类型的对象。定义对象时，将为其分配内存空间，但是(一般而言)，定义类型时不进行存储分配(在类右括号之后分号之前)。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> ival;</span><br><span class="line">	<span class="type">double</span> dval;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Forward declarations of classes are generally used to write mutually dependent classes.</strong></p>
+<h5 id="Use-Class-Declarations-for-Class-Members"><a href="#Use-Class-Declarations-for-Class-Members" class="headerlink" title="Use Class Declarations for Class Members"></a><a href="#%E4%B8%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E4%BD%BF%E7%94%A8%E7%B1%BB%E5%A3%B0%E6%98%8E">Use Class Declarations for Class Members</a></h5><p>As mentioned earlier, only data members can be specified as that class type when the class definition has appeared beforehand. If the class type is an <a href="#%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%B1%BB%E5%9E%8B"><strong>incomplete type</strong></a>, then data members can only be pointers or references to that class type.</p>
+<p>Since a class cannot have data members of its own type until the class definition body is completed, a class cannot have data members of its own type. However, as soon as the class name appears, it can be considered declared. Thus, class data members can be pointers or references to their own type.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line">	testClass *prev;</span><br><span class="line">	testClass *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>有两种方式可以定义类类型对象:</p>
+<h5 id="Class-Objects"><a href="#Class-Objects" class="headerlink" title="Class Objects"></a><a href="#%E7%B1%BB%E5%AF%B9%E8%B1%A1">Class Objects</a></h5><p>Defining a class means defining a type. Once a class is defined, you can define objects of that type. When defining an object, memory space is allocated for it, but (generally speaking) storage is not allocated when defining the type (after the right brace of the class and before the semicolon).</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> ival;</span><br><span class="line">	<span class="type">double</span> dval;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>There are two ways to define instances of a class type:  </p>
 <ol>
-<li>将类的名字直接用作类型名。(C++引入)</li>
-<li>指定关键字class或struct,后面跟着类的名字。(由c语言继承而来)</li>
+<li>Use the class name directly as the type name. (Introduced in C++)  </li>
+<li>Specify the keyword class or struct followed by the class name. (Inherited from C)</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testClass item1;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> item2;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testClass item1;  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">testClass</span> item2;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>为什么类要以分号结束？</strong><br>类的定义以分号结束。分号是必须的，因为在类定义之后可以接一个对象定义列表。定义必须以分号结束。<br>但是将对象定义成类定义的一部分是个坏主意，会使发生的操作难以理解。</p>
+<p><strong>Why does a class end with a semicolon?</strong><br>The class definition ends with a semicolon. The semicolon is required because a list of object definitions can follow the class definition. Definitions must end with a semicolon.<br>However, defining object definitions as part of the class definition is a bad idea as it makes operations harder to understand.</p>
 </blockquote>
-<h3 id="隐含的this指针"><a href="#隐含的this指针" class="headerlink" title="隐含的this指针"></a><a href="#%E9%9A%90%E5%90%AB%E7%9A%84this%E6%8C%87%E9%92%88">隐含的this指针</a></h3><p>类的成员函数有一个附加的隐含形参，即指向该类对象的一个指针。这个隐含指针命名为<strong>this</strong>,与调用成员函数的对象绑定在一起。</p>
+<h3 id="Implicit-this-Pointer"><a href="#Implicit-this-Pointer" class="headerlink" title="Implicit this Pointer"></a><a href="#%E9%9A%90%E5%90%AB%E7%9A%84this%E6%8C%87%E9%92%88">Implicit this Pointer</a></h3><p>Member functions of a class have an additional implicit parameter, which is a pointer pointing to the class object. This implicit pointer is called <strong>this</strong>, and it is bound to the object that calls the member function.</p>
 <!--
-### [类作用域](#类作用域)
-### [构造函数](#构造函数)
-### [友元](#友元)
-### [static类成员](#static类成员)
-## [复制控制](#复制控制)
-## [重载操作符和转换](重载操作符和转换)
+
+### [Class Scope](#类作用域)
+
+### [Constructors](#构造函数)
+
+### [Friends](#友元)
+
+### [Static Class Members](#static类成员)
+
+## [Copy Control](#复制控制)
+
+## [Overloading Operators and Conversions](#重载操作符和转换)
 -->
+
     </div>
 
     
@@ -502,7 +512,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -512,7 +522,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -522,37 +532,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/34569/" target="_blank">C++中面向对象部分知识整理</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/04/16 17:31<br/>
+             <span>Title:</span><a href="/posts/34569/" target="_blank">Summary of some object-oriented knowledge in C++</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/04/16 17:31<br/>
              
-             <span>本文字数:</span><span class="page-count">3.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">8.7k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/34569/" target="_blank" title="C++中面向对象部分知识整理">https://imzlp.com/posts/34569/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/34569/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/34569/" target="_blank" title="Summary of some object-oriented knowledge in C++">https://en.imzlp.com/posts/34569/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/34569/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -572,12 +582,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/27258/" rel="prev" title="详细分析C++中的类型转换">
-      <i class="fa fa-chevron-left"></i> 详细分析C++中的类型转换
+    <a href="/posts/27258/" rel="prev" title="Detailed analysis of type conversion in C++">
+      <i class="fa fa-chevron-left"></i> Detailed analysis of type conversion in C++
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/34001/" rel="next" title="选择操作符重载的成员和非成员实现">
-      选择操作符重载的成员和非成员实现 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/34001/" rel="next" title="Select member and non-member impl of operator-override">
+      Select member and non-member impl of operator-override <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -648,25 +658,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">类的定义和声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%AE%9A%E4%B9%89-%E6%A6%82%E8%A6%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">类定义:概要</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">类成员</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">访问标号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">成员函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据抽象和封装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%8F%B7%E5%AE%9E%E6%96%BD%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">访问标号实施抽象和封装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">数据抽象和封装的好处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%B1%BB%E5%AE%9A%E4%B9%89%E7%9A%84%E6%9B%B4%E5%A4%9A%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">关于类定义的更多内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E4%B8%80%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%9A%E4%B8%AA%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">同一类型的多个数据成员</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8typedef%E6%9D%A5%E7%AE%80%E5%8C%96%E7%B1%BB"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">用typedef来简化类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%AF%E8%A2%AB%E9%87%8D%E8%BD%BD"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">成员函数可被重载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9Ainline%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">显式指定inline成员函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%8E%E7%B1%BB%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.4.</span> <span class="nav-text">类声明与类定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E4%BD%BF%E7%94%A8%E7%B1%BB%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">为类的成员使用类声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">类对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E5%90%AB%E7%9A%84this%E6%8C%87%E9%92%88"><span class="nav-number">1.2.</span> <span class="nav-text">隐含的this指针</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">1.</span> <span class="nav-text">Class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Definition-and-Declaration"><span class="nav-number">1.1.</span> <span class="nav-text">Class Definition and Declaration</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-Definition-Overview"><span class="nav-number">1.1.1.</span> <span class="nav-text">Class Definition: Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Class-Members"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Class Members</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Access-Specifiers"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Access Specifiers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Constructors"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Constructors</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Member-Functions"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Member Functions</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Abstraction-and-Encapsulation"><span class="nav-number">1.1.2.</span> <span class="nav-text">Data Abstraction and Encapsulation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Access-Specifiers-Implementing-Abstraction-and-Encapsulation"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Access Specifiers Implementing Abstraction and Encapsulation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Benefits-of-Data-Abstraction-and-Encapsulation"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Benefits of Data Abstraction and Encapsulation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#More-on-Class-Definitions"><span class="nav-number">1.1.3.</span> <span class="nav-text">More on Class Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Multiple-Data-Members-of-the-Same-Type"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Multiple Data Members of the Same Type</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-typedef-to-Simplify-Classes"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Using typedef to Simplify Classes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Member-Functions-Can-Be-Overloaded"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Member Functions Can Be Overloaded</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Explicitly-Specify-Inline-Member-Functions"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">Explicitly Specify Inline Member Functions</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-Declaration-and-Class-Definition"><span class="nav-number">1.1.4.</span> <span class="nav-text">Class Declaration and Class Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Use-Class-Declarations-for-Class-Members"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Use Class Declarations for Class Members</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Class-Objects"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Class Objects</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implicit-this-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Implicit this Pointer</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -674,19 +684,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -724,10 +734,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -754,9 +764,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -765,12 +772,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -923,7 +930,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/34569/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/34569/',]
       });
       });
   </script>
@@ -946,12 +953,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

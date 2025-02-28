@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="由于Github Pages不支持custom domain的HTTPS，今天折腾了一下搞定了在VPS上用Nginx到Github Pages的反向代理，使用的是Let’s Encrypt签发的证书，实现了全站HTTPS(资源外链也都换成了HTTPS)，简单记录一下。">
+  <meta name="description" content="Due to Github Pages not supporting custom domain HTTPS, I spent some time today setting up a reverse proxy from Nginx to Github Pages on a VPS. I used a certificate issued by Let’s Encrypt to achieve">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反向代理Github Pages启用HTTPS">
-<meta property="og:url" content="https://imzlp.com/posts/18841/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="由于Github Pages不支持custom domain的HTTPS，今天折腾了一下搞定了在VPS上用Nginx到Github Pages的反向代理，使用的是Let’s Encrypt签发的证书，实现了全站HTTPS(资源外链也都换成了HTTPS)，简单记录一下。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Reverse proxy Github Pages to enable HTTPS">
+<meta property="og:url" content="https://en.imzlp.com/posts/18841/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Due to Github Pages not supporting custom domain HTTPS, I spent some time today setting up a reverse proxy from Nginx to Github Pages on a VPS. I used a certificate issued by Let’s Encrypt to achieve">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/18841/let-successfuly.webp">
 <meta property="article:published_time" content="2017-09-07T20:49:29.000Z">
 <meta property="article:modified_time" content="2018-02-05T13:26:38.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="博客管理">
 <meta property="article:tag" content="Nginx">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/18841/let-successfuly.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/18841/">
+<link rel="canonical" href="https://en.imzlp.com/posts/18841/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>反向代理Github Pages启用HTTPS | 循迹研究室</title>
+  <title>Reverse proxy Github Pages to enable HTTPS | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/18841/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/18841/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          反向代理Github Pages启用HTTPS<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-09-07-18841.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/18841/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Reverse proxy Github Pages to enable HTTPS<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-09-07-18841.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/18841/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Reverse proxy Github Pages to enable HTTPS</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">反向代理Github Pages启用HTTPS</sub>
           </div>
         
 
@@ -318,50 +318,50 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-09-07 20:49 20:49:29:49" itemprop="dateCreated datePublished" datetime="2017-09-07T20:49:29+00:00">2017-09-07 20:49</time>
+              <time title="Created: 2017-09-07 20:49 20:49:29:49" itemprop="dateCreated datePublished" datetime="2017-09-07T20:49:29+00:00">2017-09-07 20:49</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-02-05 13:26 13:26:38:26" itemprop="dateModified" datetime="2018-02-05T13:26:38+00:00">2018-02-05 13:26</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-02-05 13:26 13:26:38:26" itemprop="dateModified" datetime="2018-02-05T13:26:38+00:00">2018-02-05 13:26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">博客管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/18841/" class="post-meta-item leancloud_visitors" data-flag-title="反向代理Github Pages启用HTTPS" title="阅读次数">
+            <span id="/posts/18841/" class="post-meta-item leancloud_visitors" data-flag-title="Reverse proxy Github Pages to enable HTTPS" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>7 mins.</span>
             </span>
 
         </div>
@@ -373,54 +373,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>由于<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>不支持<code>custom domain</code>的HTTPS，今天折腾了一下搞定了在VPS上用<a target="_blank" rel="noopener" href="https://nginx.org/en/">Nginx</a>到<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>的反向代理，使用的是<a target="_blank" rel="noopener" href="https://letsencrypt.org/">Let’s Encrypt</a>签发的证书，实现了全站HTTPS(资源外链也都换成了HTTPS)，简单记录一下。</p>
+        <p>Due to <a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a> not supporting <code>custom domain</code> HTTPS, I spent some time today setting up a reverse proxy from <a target="_blank" rel="noopener" href="https://nginx.org/en/">Nginx</a> to <a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a> on a VPS. I used a certificate issued by <a target="_blank" rel="noopener" href="https://letsencrypt.org/">Let’s Encrypt</a> to achieve full HTTPS for the entire site (all external resource links were also changed to HTTPS). Here’s a simple record of the process.</p>
 <span id="more"></span>
 
-<h3 id="签发证书"><a href="#签发证书" class="headerlink" title="签发证书"></a>签发证书</h3><p>首先，先将要签发证书的域名添加一个(或几个)A记录指向你的VPS。<br>然后从Github拉取<a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a>来签发证书，以及<a target="_blank" rel="noopener" href="https://certbot.eff.org/docs/using.html">Certbot User Guide</a>：</p>
+<h3 id="Issuing-Certificates"><a href="#Issuing-Certificates" class="headerlink" title="Issuing Certificates"></a>Issuing Certificates</h3><p>First, add one (or several) A records for the domain you want to issue a certificate for, pointing to your VPS.<br>Then, pull <a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a> from Github to issue the certificate, along with the <a target="_blank" rel="noopener" href="https://certbot.eff.org/docs/using.html">Certbot User Guide</a>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:certbot/certbot.git</span><br><span class="line">$ <span class="built_in">cd</span> certbot</span><br></pre></td></tr></table></figure>
-<p>此时关掉Ngnix与使用80与443端口的程序：</p>
+<p>At this point, stop Nginx and any program using ports 80 and 443:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/nginx stop</span><br></pre></td></tr></table></figure>
 
-<p>接下来使用<a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a>来签发证书:</p>
+<p>Next, use <a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a> to issue the certificate:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./certbot-auto certonly --standalone -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
-<p>将其中的<code>example.com</code>改成你的域名，然后在拉取下来的<code>certbot</code>的目录里执行，更多的参数请看<a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a>的用法介绍。<br>执行成功会有以下提示：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/18841/let-successfuly.webp" alt="let-successfuly"><br>就是提示为你的域名已经签发了证书并存到了<code>/etc/letsencrypt/live/imzlp.com/</code>这个目录里面。</p>
-<h3 id="配置Nginx反向代理GithubPages"><a href="#配置Nginx反向代理GithubPages" class="headerlink" title="配置Nginx反向代理GithubPages"></a>配置Nginx反向代理GithubPages</h3><p>然后编辑一下Nginx配置(Nginx的配置文件在<code>/etc/nginx/conf.d</code>下)：<br>在这里创建一个与你域名同名的配置文件，如<code>imzlp.com.conf</code>：</p>
+<p>Replace <code>example.com</code> with your domain, and execute it in the directory where you pulled <code>certbot</code>. For more parameters, please refer to the <a target="_blank" rel="noopener" href="https://github.com/certbot/certbot">certbot</a> usage introduction. If successful, you will see the following prompt:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/18841/let-successfuly.webp" alt="let-successfuly"><br>It indicates that a certificate has been issued for your domain and saved in the directory <code>/etc/letsencrypt/live/imzlp.com/</code>.</p>
+<h3 id="Configuring-Nginx-Reverse-Proxy-for-Github-Pages"><a href="#Configuring-Nginx-Reverse-Proxy-for-Github-Pages" class="headerlink" title="Configuring Nginx Reverse Proxy for Github Pages"></a>Configuring Nginx Reverse Proxy for Github Pages</h3><p>Then, edit the Nginx configuration (Nginx’s configuration file is in <code>/etc/nginx/conf.d</code>):<br>Create a configuration file named after your domain, for example, <code>imzlp.com.conf</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen   80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line"></span><br><span class="line">    server_name imzlp.com;</span><br><span class="line">    rewrite ^(.*) https://$server_name$1 permanent;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass https://imzlp.com;</span><br><span class="line"></span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host                       $host;</span><br><span class="line">        proxy_set_header   X-Real-IP               $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen   443 ssl;</span><br><span class="line">    ssl on;</span><br><span class="line">    server_name imzlp.com;</span><br><span class="line"></span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/imzlp.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/imzlp.com/privkey.pem;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass https://151.101.73.147;</span><br><span class="line"></span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host                       imzlp.com;</span><br><span class="line">        proxy_set_header   X-Real-IP               $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>需要注意的是HTTPS的Server配置里<code>proxy_pass</code>不能直接填<code>https://xxx.github.io</code>，会有Github的404错误，需要先ping到<code>xxx.github.io</code>的IP，然后给Github Pages一个<code>custom domain</code>，最后在上面<code>proxy_pass</code>里填上面ping到的IP，<code>proxy_set_header</code>里改为设置的<code>custom domain</code>.</p>
-<p>也可以将另外一个域名再反向代理到Github Pages已添加A记录，且证书也已签发)，方法同上，但是<code>proxy_set_header</code>要填上你在Github Pages指定的<code>custom domain</code>不然会有Github的404错误：<br>同样的，也是在这里创建一个与你域名同名的配置文件，如<code>zhalipeng.com.conf</code>：</p>
+<p>Note that in the HTTPS server configuration, <code>proxy_pass</code> cannot be filled directly with <code>https://xxx.github.io</code>, as it will result in a Github 404 error. You must first ping the IP of <code>xxx.github.io</code>, then give Github Pages a <code>custom domain</code>, and finally fill in the IP you pinged above in <code>proxy_pass</code>, changing <code>proxy_set_header</code> to the configured <code>custom domain</code>.</p>
+<p>You can also reverse proxy another domain that has had A records added and certificates issued, using the same method, but <code>proxy_set_header</code> must be filled with the <code>custom domain</code> specified in Github Pages to avoid a Github 404 error:<br>Similarly, create another configuration file named after your domain, like <code>zhalipeng.com.conf</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen   80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line"></span><br><span class="line">    server_name zhalipeng.com;</span><br><span class="line">    rewrite ^(.*) https://$server_name$1 permanent;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass https://zhalipeng.com;</span><br><span class="line"></span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host                       $host;</span><br><span class="line">        proxy_set_header   X-Real-IP               $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen   443 ssl;</span><br><span class="line">    ssl on;</span><br><span class="line">    server_name zhalipeng.com;</span><br><span class="line"></span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/zhalipeng.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/zhalipeng.com/privkey.pem;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass https://151.101.73.147;</span><br><span class="line"></span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host                       imzlp.com;</span><br><span class="line">        proxy_set_header   X-Real-IP               $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后保存退出，Ngnix重载配置即可。</p>
+<p>Then save and exit, and reload Nginx configuration.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service nginx reload</span><br></pre></td></tr></table></figure>
 
-<p><strong>在Hexo中强制使用HTTPS</strong><br>以<a target="_blank" rel="noopener" href="https://theme-next.js.org/">Hexo-Next-Theme</a>为例，将以下代码添加至<code>next/themes/layout/_layout.swig</code>的<code>&lt;head&gt;&lt;/head&gt;</code>之内：<br>因为上面我使用了两个域名，所以在这里要判断一下是否是两个中的一个：</p>
+<p><strong>Force HTTPS in Hexo</strong><br>Taking <a target="_blank" rel="noopener" href="https://theme-next.js.org/">Hexo-Next-Theme</a> as an example, add the following code within <code>&lt;head&gt;&lt;/head&gt;</code> of <code>next/themes/layout/_layout.swig</code>:<br>Since I’m using two domains above, I need to check if it matches either one:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> hostA = <span class="string">&quot;imzlp.com&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> hostB = <span class="string">&quot;zhalipeng.com&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (((hostA == <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">host</span>)||(hostB == <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">host</span>)) &amp;&amp; (<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">protocol</span> != <span class="string">&quot;https:&quot;</span>))</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">protocol</span> = <span class="string">&quot;https&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>注意要改成你自己的域名。</p>
-<p><strong>让多个域名从Gitment获取统一的评论内容</strong><br>修改<code>gitment.swig</code>中的内容，将以下代码添加至<code>var gitment = new Gitment(&#123;&#125;)</code>中：</p>
+<p>Make sure to change it to your own domain.</p>
+<p><strong>Allow multiple domains to obtain unified comment content from Gitment</strong><br>Modify the content of <code>gitment.swig</code> and add the following code within <code>var gitment = new Gitment(&#123;&#125;)</code>:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">id</span>:<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">pathname</span>,</span><br></pre></td></tr></table></figure>
-<p>添加之后：</p>
+<p>After adding:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">comments</span> and theme.<span class="property">gitment</span>.<span class="property">enable</span> and theme.<span class="property">gitment</span>.<span class="property">username</span> and theme.<span class="property">gitment</span>.<span class="property">repoName</span> and theme.<span class="property">gitment</span>.<span class="property">client_id</span> and theme.<span class="property">gitment</span>.<span class="property">client_secret</span> %&#125;</span><br><span class="line">    &#123;% set username = theme.<span class="property">gitment</span>.<span class="property">username</span> %&#125;</span><br><span class="line">    &#123;% set repoName = theme.<span class="property">gitment</span>.<span class="property">repoName</span> %&#125;</span><br><span class="line">    &#123;% set client_id = theme.<span class="property">gitment</span>.<span class="property">client_id</span> %&#125;</span><br><span class="line">    &#123;% set client_secret = theme.<span class="property">gitment</span>.<span class="property">client_secret</span> %&#125;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://imsun.github.io/gitment/style/default.css&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        var gitment = new Gitment(&#123;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">          id:window.location.pathname,</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">          owner: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">username</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">          repo: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">repoName</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">          oauth: &#123;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">            client_id: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">client_id</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">            client_secret: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">client_secret</span>&#125;&#125;</span><span class="language-xml">&#x27;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">          &#125;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        &#125;);</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">        gitment.render(&#x27;gitment_container&#x27;);</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml">    </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="自动续签证书"><a href="#自动续签证书" class="headerlink" title="自动续签证书"></a>自动续签证书</h3><p>因为Let’s Encrypt的证书有效时间是90天，所以如果到期了还需要手动执行上面<code>certbot</code>的签发命令是很不爽的。<br>可以使用下面的方法来自动签发证书，其实也就是一个sh脚本，一行命令就可以实现，也是使用certbot来实现：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意certbot-auto的路径要填成你自己存放的位置</span></span><br><span class="line">$ /root/certbot/certbot-auto renew --pre-hook <span class="string">&quot;service nginx stop&quot;</span> --post-hook <span class="string">&quot;service nginx reload&quot;</span> --quiet</span><br></pre></td></tr></table></figure>
-<p>注：<code>--quiet</code>参数的含义是不输出内容到控制台和生成日志。<br>然后就可以使用<a target="_blank" rel="noopener" href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">crontab</a>来创建定时任务了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑当前用户的crontab配置</span></span><br><span class="line">$ crontab -e</span><br></pre></td></tr></table></figure>
-<p>将下面的代码填入其中(同样不要忘了把certbot改为你自己存放的路径)：</p>
+<h3 id="Automatically-Renew-Certificates"><a href="#Automatically-Renew-Certificates" class="headerlink" title="Automatically Renew Certificates"></a>Automatically Renew Certificates</h3><p>Since the validity of Let’s Encrypt’s certificates is 90 days, it’s quite unpleasant to have to manually execute the certbot issuing command when they expire.<br>You can use the following method to automatically issue the certificate, essentially a sh script that can be done in one line, also using certbot:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Note that the path for certbot-auto needs to be set to where you stored it</span></span><br><span class="line">$ /root/certbot/certbot-auto renew --pre-hook <span class="string">&quot;service nginx stop&quot;</span> --post-hook <span class="string">&quot;service nginx reload&quot;</span> --quiet</span><br></pre></td></tr></table></figure>
+<p>Note: The <code>--quiet</code> parameter means not outputting content to the console and generating logs.<br>Then, you can use <a target="_blank" rel="noopener" href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">crontab</a> to create a scheduled task.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Edit the current user&#x27;s crontab</span></span><br><span class="line">$ crontab -e</span><br></pre></td></tr></table></figure>
+<p>Enter the following code (also remember to change the path for certbot to where you stored it):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 1 * * /root/certbot/certbot-auto renew --pre-hook <span class="string">&quot;service nginx stop&quot;</span> --post-hook <span class="string">&quot;service nginx reload&quot;</span> --quiet</span><br></pre></td></tr></table></figure>
 
-<p>注意：只有续期命令检测到续期时间小于30天时，才会重新请求生成新证书。否则是不会重新生成的。</p>
-<p><strong>参考网站</strong></p>
+<p>Note: The renewal command will only request a new certificate if it detects that the renewal time is less than 30 days. Otherwise, it will not regenerate.</p>
+<p><strong>References</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://shijianan.com/2017/06/03/transparent-https-proxy/">使用 Nginx 搭建一个透明的 HTTPS 代理</a></li>
-<li><a target="_blank" rel="noopener" href="https://g2ex.github.io/2015/10/14/Hexo-with-SSL-Hosted-on-Github-Page/">为Github的Hexo博客启用SSL/TLS</a></li>
+<li><a target="_blank" rel="noopener" href="https://shijianan.com/2017/06/03/transparent-https-proxy/">Using Nginx to Set Up a Transparent HTTPS Proxy</a></li>
+<li><a target="_blank" rel="noopener" href="https://g2ex.github.io/2015/10/14/Hexo-with-SSL-Hosted-on-Github-Page/">Enabling SSL/TLS for GitHub’s Hexo Blog</a></li>
 <li><a target="_blank" rel="noopener" href="https://certbot.eff.org/docs/using.html">Certbot User Guide</a></li>
-<li><a target="_blank" rel="noopener" href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">crontab定时任务</a></li>
+<li><a target="_blank" rel="noopener" href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">Crontab Scheduled Tasks</a></li>
 </ul>
-<h3 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h3><p><strong>2018.02.05</strong></p>
+<h3 id="Changelog"><a href="#Changelog" class="headerlink" title="Changelog"></a>Changelog</h3><p><strong>2018.02.05</strong></p>
 <ul>
-<li>增加一些细节描述</li>
-<li>增加<strong>自动续签证书</strong></li>
+<li>Added some detailed descriptions</li>
+<li>Added <strong>Automatic Certificate Renewal</strong></li>
 </ul>
 
     </div>
@@ -432,7 +432,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -442,7 +442,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -452,39 +452,39 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/18841/" target="_blank">反向代理Github Pages启用HTTPS</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/09/07 20:49<br/>
+             <span>Title:</span><a href="/posts/18841/" target="_blank">Reverse proxy Github Pages to enable HTTPS</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/09/07 20:49<br/>
              
-              <span>更新时间:</span>2018/02/05 13:26<br/>
+              <span>Update Date:</span>2018/02/05 13:26<br/>
              
-             <span>本文字数:</span><span class="page-count">1.5k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">2.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/18841/" target="_blank" title="反向代理Github Pages启用HTTPS">https://imzlp.com/posts/18841/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/18841/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/18841/" target="_blank" title="Reverse proxy Github Pages to enable HTTPS">https://en.imzlp.com/posts/18841/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/18841/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -510,8 +510,8 @@
       <i class="fa fa-chevron-left"></i> Build protobuf with MSVC on Windows
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/11306/" rel="next" title="为什么不能重载&&与||以及,(comma)？">
-      为什么不能重载&&与||以及,(comma)？ <i class="fa fa-chevron-right"></i>
+    <a href="/posts/11306/" rel="next" title="Why can't we override && and || and , (comma)?">
+      Why can't we override && and || and , (comma)? <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -582,25 +582,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%BE%E5%8F%91%E8%AF%81%E4%B9%A6"><span class="nav-number">1.</span> <span class="nav-text">签发证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AENginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86GithubPages"><span class="nav-number">2.</span> <span class="nav-text">配置Nginx反向代理GithubPages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E7%BB%AD%E7%AD%BE%E8%AF%81%E4%B9%A6"><span class="nav-number">3.</span> <span class="nav-text">自动续签证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="nav-number">4.</span> <span class="nav-text">更新日志</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Issuing-Certificates"><span class="nav-number">1.</span> <span class="nav-text">Issuing Certificates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuring-Nginx-Reverse-Proxy-for-Github-Pages"><span class="nav-number">2.</span> <span class="nav-text">Configuring Nginx Reverse Proxy for Github Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatically-Renew-Certificates"><span class="nav-number">3.</span> <span class="nav-text">Automatically Renew Certificates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changelog"><span class="nav-number">4.</span> <span class="nav-text">Changelog</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -608,19 +608,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -658,10 +658,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -688,9 +688,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -699,12 +696,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -857,7 +854,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/18841/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/18841/',]
       });
       });
   </script>
@@ -880,12 +877,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

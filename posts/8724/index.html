@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="终于，在2021年的五月底，UE5终于要推出第一个预览版本了，虚幻引擎5——将于中国时间5月26日周三晚10点开启抢先体验计划！。对UE5期待许久，去年Nanite和lumen一石激起千层浪，时隔一年，终于能够实际体验到了。过去一年，关于UE5的技术消息不多，我做过了一些Epic披露的关于UE5相关的信息总结和分析，有兴趣的可以移步notes&#x2F;ue5中查看。本篇文章会记录上手UE5的一些体验，相较">
+  <meta name="description" content="Finally, at the end of May 2021, UE5 is set to launch its first preview version, Unreal Engine 5 — Early Access Program starts at 10 PM on May 26, Wednesday China time!.  I have been looking forward t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE5：新一代虚幻引擎初探">
-<meta property="og:url" content="https://imzlp.com/posts/8724/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="终于，在2021年的五月底，UE5终于要推出第一个预览版本了，虚幻引擎5——将于中国时间5月26日周三晚10点开启抢先体验计划！。对UE5期待许久，去年Nanite和lumen一石激起千层浪，时隔一年，终于能够实际体验到了。过去一年，关于UE5的技术消息不多，我做过了一些Epic披露的关于UE5相关的信息总结和分析，有兴趣的可以移步notes&#x2F;ue5中查看。本篇文章会记录上手UE5的一些体验，相较">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="A first look at the next generation of UE5">
+<meta property="og:url" content="https://en.imzlp.com/posts/8724/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Finally, at the end of May 2021, UE5 is set to launch its first preview version, Unreal Engine 5 — Early Access Program starts at 10 PM on May 26, Wednesday China time!.  I have been looking forward t">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527102358.webp">
 <meta property="article:published_time" content="2021-05-25T12:22:44.000Z">
 <meta property="article:modified_time" content="2021-05-25T12:22:44.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="UE5">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527102358.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/8724/">
+<link rel="canonical" href="https://en.imzlp.com/posts/8724/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE5：新一代虚幻引擎初探 | 循迹研究室</title>
+  <title>A first look at the next generation of UE5 | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/8724/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/8724/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE5：新一代虚幻引擎初探<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-05-25-8724.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/8724/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          A first look at the next generation of UE5<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-05-25-8724.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/8724/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">A first look at the next generation of UE5</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE5：新一代虚幻引擎初探</sub>
           </div>
         
 
@@ -316,43 +316,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-05-25 12:22 12:22:44:22" itemprop="dateCreated datePublished" datetime="2021-05-25T12:22:44+00:00">2021-05-25 12:22</time>
+              <time title="Created: 2021-05-25 12:22 12:22:44:22" itemprop="dateCreated datePublished" datetime="2021-05-25T12:22:44+00:00">2021-05-25 12:22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/8724/" class="post-meta-item leancloud_visitors" data-flag-title="UE5：新一代虚幻引擎初探" title="阅读次数">
+            <span id="/posts/8724/" class="post-meta-item leancloud_visitors" data-flag-title="A first look at the next generation of UE5" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>9.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>25 mins.</span>
             </span>
 
         </div>
@@ -367,68 +367,69 @@
           <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
               <img src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527102358.webp" itemprop="contentUrl" style="border-radius: 20px;">
          </div>
-        <p>终于，在2021年的五月底，UE5终于要推出第一个预览版本了，<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/W0e79uhqOyxLKXeC9MwnDg">虚幻引擎5——将于中国时间5月26日周三晚10点开启抢先体验计划！</a>。<br>对UE5期待许久，去年Nanite和lumen一石激起千层浪，时隔一年，终于能够实际体验到了。<br>过去一年，关于UE5的技术消息不多，我做过了一些Epic披露的关于UE5相关的信息总结和分析，有兴趣的可以移步<a href="https://imzlp.com/notes/ue5/">notes/ue5</a>中查看。本篇文章会记录上手UE5的一些体验，相较于UE4开发方式的变动，为UE4到UE5的过渡，以及将UE5应用到生产环境做一个技术预研，近期会持续更新。</p>
+        <p>Finally, at the end of May 2021, UE5 is set to launch its first preview version, <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/W0e79uhqOyxLKXeC9MwnDg">Unreal Engine 5 — Early Access Program starts at 10 PM on May 26, Wednesday China time!</a>. </p>
+<p>I have been looking forward to UE5 for a long time; last year, Nanite and Lumen created a huge stir, and after a year’s wait, I finally get to experience it. Over the past year, there haven’t been many technical updates about UE5. I have summarized and analyzed some information disclosed by Epic regarding UE5, which can be found in <a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/">notes/ue5</a>. This article will document some experiences using UE5, focusing on the changes in development methods compared to UE4, the transition from UE4 to UE5, and a technical pre-research on applying UE5 in production environments. I will keep updating this article in the near future.</p>
 <span id="more"></span>
 
-<p>UE5官方资料：</p>
+<p>Official UE5 resources:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.unrealengine.com/zh-CN/unreal-engine-5?lang=zh-CN">虚幻引擎5抢鲜体验</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.unrealengine.com/zh-CN/unreal-engine-5?lang=zh-CN">Unreal Engine 5 Early Access</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/">Unreal Engine 5 Early Access Documentation</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/ReleaseNotes/">Unreal Engine 5 Early Access Release Notes</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/API">Unreal Engine C++ API Reference</a></li>
 </ul>
-<p>发布的演示视频：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V64y1k73g"><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527103357.webp"></a></p>
-<p>最值得关注的点当然是Lumin/Nanite，并且引擎集成了Quixel Bridge，可以直接导入资源，场景编辑流程变化很大。<br>增加强大的动画支持，在引擎中直接编辑和复用动画资源更方便了，能够根据场景自适应动画，非常Amazing啊！<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527131045.webp"><br>GamePlay方面增加了一种叫做<code>Game Feature</code>的机制，支持使用模块化的方式创建和发布游戏内容，对于资产管理和打包的流程相较于UE4也有变动，从热更新的角度来看，估计需要增加支持<code>Game Feature</code>作为资产包的功能支持，准备近期有时间先把HotPatcher目前的版本升级到UE5。<br>准备近期有时间对UE5中的新机制做个功能预研然后写几篇文章。</p>
-<p>可以在EpicLauncher里安装二进制版本：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527000154.webp"></p>
+<p>Released demo video:<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V64y1k73g"><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527103357.webp"></a></p>
+<p>The most noteworthy aspects are, of course, Lumen/Nanite, as well as the engine’s integration of Quixel Bridge, which allows for direct resource import, significantly changing the scene editing process. Powerful animation support has been added, allowing for more convenient direct editing and reuse of animation resources within the engine, adapting animations according to the scene—extremely amazing!<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527131045.webp"><br>In terms of gameplay, a new mechanism called <code>Game Feature</code> has been introduced, which supports the modular creation and publishing of game content. The asset management and packaging processes have also changed compared to UE4. From the perspective of hot updates, it seems there is a need to add support for <code>Game Feature</code> as part of asset package functionalities. I plan to upgrade the current version of HotPatcher to UE5 soon when I have time. I’ll be looking into the new mechanisms in UE5 and writing a few articles about them.</p>
+<p>You can install the binary version in Epic Launcher:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527000154.webp"></p>
 <blockquote>
-<p>UE5预览版源码github地址：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-main">ue5-main</a>，需要下载的依赖ue4-gitdeps与UE4的版本有相同的部分，可以拷贝到UE5代码的<code>.git/ue4-gitdeps</code>目录下，在<code>Setup.bat</code>时可以减少下载的内容。<br>并且，Epic随UE5一起放出了<a href="com.epicgames.launcher://ue/ue5ea">古代山谷</a>项目，可以点击连接从Epic Launcher下载，文档：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/ContentAndSamples/ValleyOfTheAncient/">Valley of the Ancient Sample</a>。</p>
+<p>The GitHub address for the UE5 preview source code: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-main">ue5-main</a>. The dependencies that need to be downloaded from ue4-gitdeps can be copied to the <code>.git/ue4-gitdeps</code> directory in the UE5 code, which will reduce the amount of content downloaded during <code>Setup.bat</code>.<br>Additionally, Epic has released the <a href="com.epicgames.launcher://ue/ue5ea">Valley of the Ancient</a> project, which can be downloaded from Epic Launcher via the link. Documentation: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/ContentAndSamples/ValleyOfTheAncient/">Valley of the Ancient Sample</a>.</p>
 </blockquote>
-<!-- 我VPS下载压缩后的分流地址：[ue5-main.tar.gz](https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/ESdsjvLXbYlJlfSuCn3cnrIB_YV2yF8lnE3uqXFqigz89Q?e=D0HwCk)以及[ue5-early-access.tar.gz](https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/EUtG94BZfkBJm-B3j75oMhIBSCGGM5Etp9Vui5QYDtcM0g?e=kKlVea)。 -->
+<!-- My VPS download links for compressed distributions: [ue5-main.tar.gz](https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/ESdsjvLXbYlJlfSuCn3cnrIB_YV2yF8lnE3uqXFqigz89Q?e=D0HwCk) and [ue5-early-access.tar.gz](https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/EUtG94BZfkBJm-B3j75oMhIBSCGGM5Etp9Vui5QYDtcM0g?e=kKlVea). -->
 
 <hr>
-<p>我的博客中在发布之前关于UE5的分析笔记（<a href="https://imzlp.com/notes/ue5/">notes/ue5</a>）：</p>
+<p>My blog contains pre-release analysis notes on UE5 (<a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/">notes/ue5</a>):</p>
 <ul>
-<li><a href="https://imzlp.com/notes/ue5/#Oodle-Compression">Oodle Compression</a></li>
-<li><a href="https://imzlp.com/notes/ue5/#Epic-Verse-%E8%AF%AD%E6%B3%95%E4%BB%8B%E7%BB%8D">Epic Verse 语法介绍</a></li>
-<li><a href="https://imzlp.com/notes/ue5/#Epic%E6%94%B6%E8%B4%ADRAD-Game-Tools">Epic 收购 RAD Game Tools</a></li>
-<li><a href="https://imzlp.com/notes/ue5/#UE5%E5%8F%AF%E8%83%BD%E7%9A%84%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80">UE5 可能的脚本语言</a></li>
-<li><a href="https://imzlp.com/notes/ue5/#UE5%E7%9A%84PS5%E7%9C%9F%E6%9C%BA%E8%A7%86%E9%A2%91">UE5 的 PS5 真机视频</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/#Oodle-Compression">Oodle Compression</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/#Epic-Verse-%E8%AF%AD%E6%B3%95%E4%BB%8B%E7%BB%8D">Introduction to Epic Verse grammar</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/#Epic%E6%94%B6%E8%B4%ADRAD-Game-Tools">Epic’s acquisition of RAD Game Tools</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/#UE5%E5%8F%AF%E8%83%BD%E7%9A%84%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80">Possible script languages for UE5</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue5/#UE5%E7%9A%84PS5%E7%9C%9F%E6%9C%BA%E8%A7%86%E9%A2%91">The PS5 real machine video of UE5</a></li>
 </ul>
-<p>附Epic中国直播的UE开发路线图视频：</p>
+<p>Attached are Epic China’s live streamed video on the UE development roadmap:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wA411H7h3">[中文直播]第29期｜解析虚幻引擎开发路线图(上集) | Epic 王祢 马骥 孙丹璐</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iK411P7QD">[中文直播]第29期｜解析虚幻引擎开发路线图(下集) | Epic 王祢 马骥 孙丹璐</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wA411H7h3">[Chinese Live] Episode 29 | Analysis of Unreal Engine Development Roadmap (Part 1) | Epic Wang Ni, Ma Ji, Sun Danlu</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iK411P7QD">[Chinese Live] Episode 29 | Analysis of Unreal Engine Development Roadmap (Part 2) | Epic Wang Ni, Ma Ji, Sun Danlu</a></li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>注意</strong>：本次发布的预览版并不包含新的脚本语言Epic Verse，估计还需要挺长一段时间的更新才会支持。</p>
+<p><strong>Note</strong>: The preview version released this time does not include the new script language Epic Verse, and it is estimated that it will take a considerable amount of time for updates to support it.</p>
 </blockquote>
-<h2 id="Platform-Support"><a href="#Platform-Support" class="headerlink" title="Platform Support"></a>Platform Support</h2><p>UE5已经抛弃支持32位平台，并已支持Apple Silicon设备（M1），但Editor非Arm原生，仍需要Rosetta转译执行。<br>Lumen和Nanite不支持移动平台、上一代主机平台。<br>建议设备：GTX 1080+。</p>
-<p>引擎中增加了<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/PerformanceAndPlatformFeatures/Turnkey/">Unreal Trunkey</a>，相较于UE4，可以非常方便地在团队之间统一配置平台SDK。<br>UE5集成的各SDK版本： <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/ReleaseNotes/">New: Platform SDK Upgrades</a>。<br>Windows编译器版本最低支持VS2019 v16.4及以上的版本 ，不再支持VS2015和VS2017。</p>
-<h2 id="Engine-Code"><a href="#Engine-Code" class="headerlink" title="Engine Code"></a>Engine Code</h2><p>Github上提供了两个UE5的代码分支：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-main">ue5-main</a>和<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-early-access">ue5-early-access</a>。</p>
-<p>两者的区别是：</p>
+<h2 id="Platform-Support"><a href="#Platform-Support" class="headerlink" title="Platform Support"></a>Platform Support</h2><p>UE5 has dropped support for 32-bit platforms and now supports Apple Silicon devices (M1), but the Editor is not native Arm and still requires Rosetta for translation execution. Lumen and Nanite do not support mobile platforms or last-generation console platforms. Recommended devices: GTX 1080+.</p>
+<p>The engine has added <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/PerformanceAndPlatformFeatures/Turnkey/">Unreal Turnkey</a>, which allows for convenient unification of platform SDK configurations among teams compared to UE4. The various SDK versions integrated into UE5: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/ReleaseNotes/">New: Platform SDK Upgrades</a>. The minimum supported Windows compiler version is VS2019 v16.4 and above, hence no longer supporting VS2015 and VS2017.</p>
+<h2 id="Engine-Code"><a href="#Engine-Code" class="headerlink" title="Engine Code"></a>Engine Code</h2><p>Two branches of UE5 code are available on GitHub: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-main">ue5-main</a> and <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/ue5-early-access">ue5-early-access</a>.</p>
+<p>The differences between the two are:</p>
 <ul>
-<li>ue5-early-access：与Epic Lacunher相同的源码分支</li>
-<li>ue5-main：Epic的开发分支</li>
+<li>ue5-early-access: the same source branch as Epic Launcher</li>
+<li>ue5-main: Epic’s development branch</li>
 </ul>
-<p>引擎代码的组织方式相较于UE4没有变动，目前看到Module的代码基本与UE4保持一致，所以UE4代码升级到UE5应该问题不大，需要解决的应该是以下几点：</p>
+<p>The organization of the engine code has not changed compared to UE4. The module code seen currently remains consistent with UE4, so it shouldn’t be too difficult to upgrade UE4 code to UE5. However, the issues that need to be resolved are as follows:</p>
 <ol>
-<li>原先依赖的模块代码组织变动</li>
-<li><code>BuildSettingsVersion</code>被设置为<code>Latest</code>带来的警告等级的变化</li>
-<li><code>CppStandardVersion</code>默认为Cpp17（Latst为Cpp20）</li>
-<li>检测引擎版本的代码，如<code>ENGINE_MAJOR_VERSION</code>变为<code>5</code>，<code>ENGINE_MINOR_VERSION</code>变为0</li>
+<li>Changes in the organization of previously dependent module codes </li>
+<li>Changes in the warning levels due to <code>BuildSettingsVersion</code> being set to <code>Latest</code></li>
+<li>Default <code>CppStandardVersion</code> is now Cpp17 (Latest is Cpp20)</li>
+<li>Code that checks engine version, such as <code>ENGINE_MAJOR_VERSION</code> becoming <code>5</code>, <code>ENGINE_MINOR_VERSION</code> becoming <code>0</code> </li>
 </ol>
-<p>在TargetRules中增加了一些新的编译选项：</p>
+<p>Some new compilation options have been added to TargetRules:</p>
 <ul>
 <li>DefaultWarningLevel</li>
 <li>DeprecationWarningLevel</li>
 <li>bWarningsAsErrors</li>
 <li>bEnableCppModules</li>
 </ul>
-<p>Nvdia的组件则从UE4的默认开启变成了默认关闭（不确定是否为了兼容UE4项目升级保留，有可能后面会移除，这一点UE5的文档中也有写），物理系统在UE5中默认使用Chaos：</p>
+<p>Nvidia’s components have switched from being enabled by default in UE4 to being disabled by default in UE5 (it’s unclear whether this was retained for compatibility with UE4 project upgrades, and it may be removed later, as mentioned in the UE5 documentation). The physics system in UE5 defaults to using Chaos:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bCompilePhysX = <span class="literal">false</span>;</span><br><span class="line">bCompileAPEX = <span class="literal">false</span>;</span><br><span class="line">bCompileNvCloth = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-<p>引擎中ModuleRules的几乎没有变动，没有新加的参数，只是针对<code>bEnableCppModules</code>做了检测。<br>UE5的编译系统可以看作是UE4的常规升级，有时间我会先把我开源的插件升级到UE5进行测试。</p>
-<p>同时，UE5相较于UE4.25，引擎中增加了几个新的Programs：</p>
+<p>The ModuleRules in the engine have hardly changed, with no new parameters added, just checks for <code>bEnableCppModules</code>. The UE5 compilation system can be viewed as a regular upgrade of UE4; I will upgrade my open-source plugins to UE5 and conduct tests when I have time.</p>
+<p>Moreover, compared to UE4.25, UE5 has added several new Programs:</p>
 <ol>
 <li>BaseTextureBuildWorker</li>
 <li>ChaosVisualDebugger</li>
@@ -444,54 +445,56 @@
 <li>UnrealObjectPtrTool</li>
 <li>VirtualProduction</li>
 </ol>
-<p>有时间再来具体分析作用。</p>
-<h2 id="Editor"><a href="#Editor" class="headerlink" title="Editor"></a>Editor</h2><p>UE5新Editor的文档介绍：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/EditorImprovements/">Navigating the New Unreal Editor Interface</a></p>
-<p>启动界面<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527082837.webp"></p>
-<p>个人觉得相对于UE4的拟物化UI风格更耐看一些。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527013216.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527082945.webp"></p>
-<p>可以在Launcher界面选择启动UE4项目：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527013255.webp"></p>
-<p>项目设置与编辑器设置，与UE4的分类保持一致，也可以使用Rider作为开发IDE并刷新工程。</p>
-<p>具有比UE4更好的本地化语言支持：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527083915.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527083954.webp"></p>
-<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><p>UE5创建项目组织基本与UE4保持一致，代码开发流程与UE4没有区别。</p>
-<p>对开发硬件要求更高了，我的机器位10606G，在ThirdPersion项目Editor只能跑到80fps：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527084406.webp"><br>估计在我的机器上打包之后最多只能跑30fps。</p>
-<h3 id="Data-Drived-CVars"><a href="#Data-Drived-CVars" class="headerlink" title="Data Drived CVars"></a>Data Drived CVars</h3><p>UE5中还增加了<code>Data Driven CVars</code>的支持，可以在项目设置中配置<code>Console Variables</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527152722.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527152745.webp"><br>可以在<code>IConsoleManager::Get()</code>获取，相较于UE4，无需在代码中创建<code>TAutoConsoleVariable</code>对象，更为方便，它被存储在<code>DefaultEngine.ini</code>中：</p>
+<p>I will analyze their functions in detail when I have time.</p>
+<h2 id="Editor"><a href="#Editor" class="headerlink" title="Editor"></a>Editor</h2><p>Documentation introducing the new UE5 Editor: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/EditorImprovements/">Navigating the New Unreal Editor Interface</a></p>
+<p>Startup screen<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527082837.webp"></p>
+<p>I personally feel that the UI style of UE5 is more visually appealing compared to the skeuomorphic UI style of UE4.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527013216.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527082945.webp"></p>
+<p>You can choose to start UE4 projects in the Launcher interface:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527013255.webp"></p>
+<p>Project settings and editor settings remain consistent with UE4 categories, and you can use Rider as a development IDE and refresh the project.</p>
+<p>It has better localization language support than UE4:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527083915.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527083954.webp"></p>
+<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><p>The project structure in UE5 remains similar to that in UE4, and the code development process has no differences from UE4.</p>
+<p>The requirements for development hardware have increased; my machine has a 10606G CPU, and the Editor in the ThirdPerson project can only run at 80 fps:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527084406.webp"><br>I estimate that the best I can achieve on my machine after packaging is about 30 fps.</p>
+<h3 id="Data-Driven-CVars"><a href="#Data-Driven-CVars" class="headerlink" title="Data Driven CVars"></a>Data Driven CVars</h3><p>UE5 also adds support for <code>Data Driven CVars</code>, allowing for configuring <code>Console Variables</code> in project settings:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527152722.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527152745.webp"><br>You can access it through <code>IConsoleManager::Get()</code>. Compared to UE4, there is no need to create <code>TAutoConsoleVariable</code> objects in code, making it more convenient; it is stored in <code>DefaultEngine.ini</code>:</p>
 <figure class="highlight ini"><figcaption><span>DefaultEngine.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[/Script/Engine.DataDrivenConsoleVariableSettings]</span></span><br><span class="line">+<span class="attr">CVarsArray</span>=(Type=CVarInt,Name=<span class="string">&quot;t.testvar&quot;</span>,ToolTip=<span class="string">&quot;&quot;</span>,DefaultValueFloat=<span class="number">0.000000</span>,DefaultValueInt=<span class="number">123</span>,DefaultValueBool=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
-<h3 id="Cook-for-Platform"><a href="#Cook-for-Platform" class="headerlink" title="Cook for Platform"></a>Cook for Platform</h3><p>UE5终于支持在编辑器中Cook非本地平台了（其实就是为平台默认增加了Cook按钮，在UE4中HotPatcher中也已支持同时Cook多个平台）。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527153537.webp"></p>
-<h3 id="GamePlay"><a href="#GamePlay" class="headerlink" title="GamePlay"></a>GamePlay</h3><p>UE5带来的Game Play的变动较多，如Game Feature等，准备有时间再进行详细的分析和使用。</p>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>UE5创建插件和UE4的组织方式和Build.cs代码也没有变动，我把我之前开源的<a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data"><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data">ue4-export-nav-data</a></a>插件放到UE5工程里，出现的错误也只是符号找不到，是引擎内实现有变动，通过简单的修改可以直接编译通过，但UE4的代码模块是直接可以拿到UE5编译的，需要处理对应的符号查找错误。</p>
-<p>我已经把ue4-export-nav-data插件升级支持UE5了，并且在UE5上导出数据与<code>detour</code>验证通过，详情请看之前的文章：<a href="https://imzlp.com/posts/20203/">Export Recast Navigation Data from UE4</a>，仓库地址为：<a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data/tree/UE5.0">ue4-export-nav-data</a>。</p>
-<h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><p>UE5资源管理的变动，新特性支持了<code>Game Feature</code>机制，能够模块化构建游戏内容，开启之后可以在项目设置的<code>Asset Manager</code>中看到<code>GameFeatureData</code>的选项，说明GameFeature是已经兼容了打包的方式的，有时间做个详细的分析。</p>
-<p>UE5同样支持PrimaryAssetLable机制来标记资产，与UE4中没有区别，同时编辑器选项中增加了<code>允许ChunkID指定</code>功能，开启之后可以在资源右键中看到以下菜单：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527121535.webp"></p>
+<h3 id="Cook-for-Platform"><a href="#Cook-for-Platform" class="headerlink" title="Cook for Platform"></a>Cook for Platform</h3><p>UE5 finally supports cooking for non-local platforms within the editor (essentially adding a Cook button by default for platforms, which was also supported for multiple platforms in HotPatcher in UE4).<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527153537.webp"></p>
+<h3 id="GamePlay"><a href="#GamePlay" class="headerlink" title="GamePlay"></a>GamePlay</h3><p>UE5 brings significant changes in gameplay aspects, such as Game Feature, which I plan to analyze and utilize in detail when I have time.</p>
+<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>Creating plugins in UE5 and the organization that follows UE4, including the Build.cs code, have not changed. I put my previously open-source <a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data"><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data">ue4-export-nav-data</a></a> plugin into the UE5 project. The only errors that appeared were symbol-related. These can be resolved through simple modifications for direct compilation. However, UE4’s code modules can be directly used for UE5 compilation, and the corresponding symbol lookup errors need to be handled.</p>
+<p>I have upgraded the ue4-export-nav-data plugin to support UE5, and the data export and <code>detour</code> verification in UE5 have passed. For details, please refer to my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/20203/">Export Recast Navigation Data from UE4</a>, and the repository address is: <a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data/tree/UE5.0">ue4-export-nav-data</a>.</p>
+<h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><p>The resource management changes in UE5 support the new <code>Game Feature</code> mechanism, allowing for a modular construction of game content. Once enabled, you can see the option for <code>GameFeatureData</code> in the <code>Asset Manager</code> in project settings, indicating that GameFeature is compatible with the packaging methods. I will do a detailed analysis when I have time.</p>
+<p>UE5 also supports the PrimaryAssetLabel mechanism to tag assets, which is the same as in UE4. Additionally, the editor options have added the feature for <code>Allow ChunkIDSpecifying</code>. Once enabled, you can find the following menu in the resource’s right-click options:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527121535.webp"></p>
 <h2 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h2><blockquote>
-<p>蓝图项目对Apple Silicon的支持位仅限通过Rosetta2运行，C++项目支持本地Apple Silicon打包。</p>
+<p>Blueprint projects only support Apple Silicon through Rosetta2, while C++ projects support local Apple Silicon packaging.</p>
 </blockquote>
-<p>UE5中的打包选项移动到了以下位置：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527120359.webp"></p>
-<p>打包时同样使用UAT执行，命令如下：</p>
+<p>In UE5, the packaging options have moved to the following location:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527120359.webp"></p>
+<p>The packaging still uses UAT for execution, with the command as follows:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">cmd.exe /c &quot;</span><br><span class="line">&quot;C:/Program Files/Epic Games/UE_5.0ea/Engine/Build/BatchFiles/RunUAT.bat&quot; </span><br><span class="line">-ScriptsForProject=&quot;C:/Users/lipengzha/Documents/Unreal Projects/ThirdPerson_UE5/ThirdPerson_UE5.uproject&quot; </span><br><span class="line">Turnkey </span><br><span class="line">-command=VerifySdk </span><br><span class="line">-platform=Win64 </span><br><span class="line">-UpdateIfNeeded </span><br><span class="line">-EditorIO </span><br><span class="line">-project=&quot;C:/Users/lipengzha/Documents/Unreal Projects/ThirdPerson_UE5/ThirdPerson_UE5.uproject&quot; </span><br><span class="line">BuildCookRun </span><br><span class="line">-nop4 </span><br><span class="line">-utf8output </span><br><span class="line">-nocompileeditor </span><br><span class="line">-cook</span><br><span class="line">-project=&quot;C:/Users/lipengzha/Documents/Unreal Projects/ThirdPerson_UE5/ThirdPerson_UE5.uproject&quot; </span><br><span class="line">-ue4exe=&quot;C:\Program Files\Epic Games\UE_5.0ea\Engine\Binaries\Win64\UnrealEditor-Cmd.exe&quot; </span><br><span class="line">-platform=Win64 </span><br><span class="line">-ddc=InstalledDerivedDataBackendGraph </span><br><span class="line">-installed </span><br><span class="line">-stage </span><br><span class="line">-archive </span><br><span class="line">-package </span><br><span class="line">-build </span><br><span class="line">-iostore </span><br><span class="line">-pak </span><br><span class="line">-prereqs </span><br><span class="line">-archivedirectory=&quot;C:/Users/lipengzha/Documents/Unreal Projects/ThirdPerson_UE5/Package&quot; </span><br><span class="line">-nodebuginfo </span><br><span class="line">-clientconfig=Development</span><br><span class="line">-nocompil</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
 
-<p>代码的编译命令与UE4也没有区别：</p>
+<p>The code compilation command is also the same as UE4:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Epic Games\UE_5.0ea\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.exe </span><br><span class="line">ThirdPerson_UE5 Win64 Development </span><br><span class="line">-Project=<span class="string">&quot;C:\Users\lipengzha\Documents\Unreal Projects\ThirdPerson_UE5\ThirdPerson_UE5.uproject&quot;</span> <span class="string">&quot;C:\Users\lipengzha\Documents\Unreal Projects\ThirdPerson_UE5\ThirdPerson_UE5.uproject&quot;</span> </span><br><span class="line">-NoUBTMakefiles  </span><br><span class="line">-remoteini=<span class="string">&quot;C:\Users\lipengzha\Documents\Unreal Projects\ThirdPerson_UE5&quot;</span> </span><br><span class="line">-skipdeploy </span><br><span class="line">-Manifest=<span class="string">&quot;C:\Users\lipengzha\Documents\Unreal Projects\ThirdPerson_UE5\Intermediate\Build\Manifest.xml&quot;</span> </span><br><span class="line">-NoHotReload </span><br><span class="line">-<span class="built_in">log</span>=<span class="string">&quot;C:\Users\lipengzha\AppD</span></span><br><span class="line"><span class="string">ata\Roaming\Unreal Engine\AutomationTool\Logs\C+Program+Files+Epic+Games+UE_5.0ea\UBT-ThirdPerson_UE5-Win64-Development.txt&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Cook命令也相同：</p>
+<p>The cooking command is the same as well:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Epic Games\UE_5.0ea\Engine\Binaries\Win64\UnrealEditor-Cmd.exe </span><br><span class="line"><span class="string">&quot;C:\Users\lipengzha\Documents\Unreal Projects\ThirdPerson_UE5\ThirdPerson_UE5.uproject&quot;</span> </span><br><span class="line">-run=Cook  </span><br><span class="line">-TargetPlatform=Windows </span><br><span class="line">-fileopenlog </span><br><span class="line">-ddc=InstalledDerivedDataBackendGraph </span><br><span class="line">-unversioned </span><br><span class="line">-abslog=<span class="string">&quot;C:\Program Files\Epic Games\UE_5.0ea\Engine\Programs\AutomationTool\Saved\Cook-2021.05.27-12.04.09.txt&quot;</span> </span><br><span class="line">-stdout </span><br><span class="line">-CrashForUA</span><br></pre></td></tr></table></figure>
-<p>测试打包ThirdPerson非常慢。打包之后的目录结构与UE4相同：</p>
+<p>Packaging the ThirdPerson project is very slow. The directory structure after packaging is the same as in UE4:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">C:.</span><br><span class="line">|   Manifest_NonUFSFiles_Win64.txt</span><br><span class="line">|   ThirdPerson_UE5.exe</span><br><span class="line">|</span><br><span class="line">+---Engine</span><br><span class="line">|   +---Binaries</span><br><span class="line">|   |   \---ThirdParty</span><br><span class="line">\---ThirdPerson_UE5</span><br><span class="line">    +---Binaries</span><br><span class="line">    |   \---Win64</span><br><span class="line">    |           ThirdPerson_UE5.exe</span><br><span class="line">    |           turbojpeg.dll</span><br><span class="line">    |</span><br><span class="line">    \---Content</span><br><span class="line">        \---Paks</span><br><span class="line">                global.ucas</span><br><span class="line">                global.utoc</span><br><span class="line">                ThirdPerson_UE5-Windows.pak</span><br><span class="line">                ThirdPerson_UE5-Windows.ucas</span><br><span class="line">                ThirdPerson_UE5-Windows.utoc</span><br></pre></td></tr></table></figure>
-<p>但是除了pak之外多了两种类型的文件<code>ucas</code>与<code>utoc</code>两种文件，在运行时Mount pak时也会mount它们，看了下代码在UE4.25/26就中存在，有时间详细地分析下它们的作用和加载流程。</p>
-<h2 id="Open-UE4-Project"><a href="#Open-UE4-Project" class="headerlink" title="Open UE4 Project"></a>Open UE4 Project</h2><p>UE5的文档中写道：支持UE4.26及之前的引擎版本项目升级到UE5，UE5会和UE4.27并行存在，不会保证与4.26之后的版本保持兼容。并且，UE5项目无法降级到UE4。</p>
+<p>However, in addition to the pak, there are two new file types, <code>ucas</code> and <code>utoc</code>. These will also be mounted during runtime when mounting pak. I’ve seen that the code already existed in UE4.25/26, but I will analyze their functions and loading processes in detail when I get the chance.</p>
+<h2 id="Open-UE4-Project"><a href="#Open-UE4-Project" class="headerlink" title="Open UE4 Project"></a>Open UE4 Project</h2><p>The UE5 documentation states that it supports upgrading projects from UE4.26 and earlier versions to UE5. UE5 will coexist with UE4.27 and will not guarantee compatibility with versions after 4.26. Furthermore, UE5 projects cannot be downgraded to UE4.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210527083223.webp"></p>
-<p>但是就目前的情况而言，把4.26的工程升级到UE5还是有不少的错误，但这些错误基本都是上面介绍的那几点中的情况，花些心思适配即可。</p>
-<h2 id="其他兼容性问题补充"><a href="#其他兼容性问题补充" class="headerlink" title="其他兼容性问题补充"></a>其他兼容性问题补充</h2><p>UE5的其他的兼容性问题补充：</p>
+<p>However, based on current conditions, upgrading a UE4.26 project to UE5 may still encounter several errors, but these errors generally fall into the categories mentioned earlier, which can be adapted with a bit of effort.</p>
+<h2 id="Other-Compatibility-Issues"><a href="#Other-Compatibility-Issues" class="headerlink" title="Other Compatibility Issues"></a>Other Compatibility Issues</h2><p>Additional compatibility issues with UE5 include:</p>
 <ol>
-<li><code>UE4Editor*.exe</code>更名为<code>UnrealEngine*.exe</code>，原先依赖<code>UE4Editor*.exe</code>路径的需要修改；</li>
-<li><code>UnrealBuildTool</code>从UE4中<code>Binaries/DoNET</code>移动到<code>Binaries/DoNET/AutomationTool</code>目录下，会导致UE4的UnrealVersionSelector生成sln失败；<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210531112724.webp"></li>
+<li><code>UE4Editor*.exe</code> has been renamed to <code>UnrealEngine*.exe</code>, so paths that relied on <code>UE4Editor*.exe</code> will need to be modified.</li>
+<li><code>UnrealBuildTool</code> has moved from <code>Binaries/DoNET</code> in UE4 to <code>Binaries/DoNET/AutomationTool</code>, which may result in the UnrealVersionSelector for UE4 failing to generate sln files;<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210531112724.webp"></li>
 </ol>
-<p>平台名的变化：</p>
+<p>Changes in platform names:</p>
 <ol>
-<li>去掉了一些资源平台，新加了一些</li>
-<li>如<code>WindowsNoEditor</code>/<code>MacNoEditor</code>等统一去掉了<code>NoEditor</code>后缀<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210615103320.webp"></li>
+<li>Some resource platforms have been removed, and new ones added.</li>
+<li>For example, <code>WindowsNoEditor</code>/<code>MacNoEditor</code> have simplified to remove the <code>NoEditor</code> suffix.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210615103320.webp"></li>
 </ol>
 <script src="https://gist.github.com/imzlp/1181f5330713ed02cb7c880b449531f8.js"></script>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，UE5的核心更新在Lumen和Nanite带来的美术资源与场景编辑流程的革新，以及对引擎内对数据驱动动画的强大支持。UE5相较于UE4在编程方面没有非常大的变化，较新版本的UE4工程代码和插件能够比较轻松地升级到UE5，之前有消息的新脚本语言Epic Verse没有同步发布，对这个还是非常期待的。<br>编辑器的整体操作习惯还是遵循了UE4，不过主界面布局和UI风格变化比较大，熟悉之后倒也没有什么障碍，UE5提供了更方便的平台SDK支持。基本上UE4资源管理和工程实践的积累也能在UE5中直接用，打包流程与UE4也基本相同，不过目前打包速度相较于UE4变慢了很多。<br>作为下一个世代的游戏引擎，非常期待UE5在主机平台上的效果，但是目前Lumen和Nanite并不支持Mobile平台，短期内无法作为生产环境，期待正式版本在移动端上的表现。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Overall, the core updates in UE5 are driven by the innovations in art resources and scene editing processes brought about by Lumen and Nanite, as well as strong support for data-driven animation within the engine. Compared to UE4, there aren’t major changes in programming, and newer versions of UE4 project code and plugins can be relatively easily upgraded to UE5. However, the new scripting language Epic Verse that was rumored earlier has not been released, which I am eagerly awaiting.</p>
+<p>The overall operation habit of the editor still follows UE4, but the layout of the main interface and UI style has changed considerably. Once familiarized, there shouldn’t be any obstacles. UE5 provides more convenient support for platform SDKs. Essentially, the knowledge accumulated in resource management and project practices from UE4 can directly apply to UE5, and the packaging process is also fundamentally similar to UE4, but currently, packaging speed has significantly decreased compared to UE4.</p>
+<p>As the next-generation game engine, I am very much looking forward to the performance of UE5 on console platforms. However, currently, Lumen and Nanite do not support mobile platforms, making it impossible to use it as a production environment in the short term. I look forward to seeing the performance of the official version on mobile.</p>
 
     </div>
 
@@ -512,7 +515,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -522,37 +525,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/8724/" target="_blank">UE5：新一代虚幻引擎初探</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/05/25 12:22<br/>
+             <span>Title:</span><a href="/posts/8724/" target="_blank">A first look at the next generation of UE5</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/05/25 12:22<br/>
              
-             <span>本文字数:</span><span class="page-count">4.5k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">9.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/8724/" target="_blank" title="UE5：新一代虚幻引擎初探">https://imzlp.com/posts/8724/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/8724/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/8724/" target="_blank" title="A first look at the next generation of UE5">https://en.imzlp.com/posts/8724/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/8724/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -572,12 +575,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/30732/" rel="prev" title="Zlib/Oodle/ZSTD压缩算法性能对比">
-      <i class="fa fa-chevron-left"></i> Zlib/Oodle/ZSTD压缩算法性能对比
+    <a href="/posts/30732/" rel="prev" title="Comparison of Zlib/Oodle/ZSTD algorithm performance">
+      <i class="fa fa-chevron-left"></i> Comparison of Zlib/Oodle/ZSTD algorithm performance
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/24336/" rel="next" title="UE项目优化：PSO Cache">
-      UE项目优化：PSO Cache <i class="fa fa-chevron-right"></i>
+    <a href="/posts/24336/" rel="next" title="UE project optimization: PSO Cache">
+      UE project optimization: PSO Cache <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -648,25 +651,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Platform-Support"><span class="nav-number">1.</span> <span class="nav-text">Platform Support</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Engine-Code"><span class="nav-number">2.</span> <span class="nav-text">Engine Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Editor"><span class="nav-number">3.</span> <span class="nav-text">Editor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">4.</span> <span class="nav-text">Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Drived-CVars"><span class="nav-number">4.1.</span> <span class="nav-text">Data Drived CVars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cook-for-Platform"><span class="nav-number">4.2.</span> <span class="nav-text">Cook for Platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GamePlay"><span class="nav-number">4.3.</span> <span class="nav-text">GamePlay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugins"><span class="nav-number">5.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assets"><span class="nav-number">6.</span> <span class="nav-text">Assets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package"><span class="nav-number">7.</span> <span class="nav-text">Package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Open-UE4-Project"><span class="nav-number">8.</span> <span class="nav-text">Open UE4 Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%E8%A1%A5%E5%85%85"><span class="nav-number">9.</span> <span class="nav-text">其他兼容性问题补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Platform-Support"><span class="nav-number">1.</span> <span class="nav-text">Platform Support</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Engine-Code"><span class="nav-number">2.</span> <span class="nav-text">Engine Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Editor"><span class="nav-number">3.</span> <span class="nav-text">Editor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">4.</span> <span class="nav-text">Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Driven-CVars"><span class="nav-number">4.1.</span> <span class="nav-text">Data Driven CVars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cook-for-Platform"><span class="nav-number">4.2.</span> <span class="nav-text">Cook for Platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GamePlay"><span class="nav-number">4.3.</span> <span class="nav-text">GamePlay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugins"><span class="nav-number">5.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assets"><span class="nav-number">6.</span> <span class="nav-text">Assets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package"><span class="nav-number">7.</span> <span class="nav-text">Package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Open-UE4-Project"><span class="nav-number">8.</span> <span class="nav-text">Open UE4 Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Compatibility-Issues"><span class="nav-number">9.</span> <span class="nav-text">Other Compatibility Issues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">10.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -674,19 +677,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -724,10 +727,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -754,9 +757,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -765,12 +765,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -923,7 +923,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/8724/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/8724/',]
       });
       });
   </script>
@@ -946,12 +946,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

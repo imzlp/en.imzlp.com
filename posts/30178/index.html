@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="随着HotPatcher的开发以及我对于资源管理方面的技术的研究，围绕着HotPatcher实现的功能越来越多，实现也越来越复杂，加上引擎的不断更新，一个大而全的插件对引擎的兼容性越来越难以维护。 随着新一代引擎UE5的到来，HotPatcher同样会跟进UE5中支持，并针对UE5的特性开发新的功能。我希望它不仅仅只是一个资源打包工具，而是包含资源管理、审计、打包、热更新、包体优化、构建提升等等全">
+  <meta name="description" content="With the development of HotPatcher and my research on resource management technology, more and more features are being implemented around HotPatcher, and the implementation is becoming increasingly co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HotPatcher的模块化改造和开发规划">
-<meta property="og:url" content="https://imzlp.com/posts/30178/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="随着HotPatcher的开发以及我对于资源管理方面的技术的研究，围绕着HotPatcher实现的功能越来越多，实现也越来越复杂，加上引擎的不断更新，一个大而全的插件对引擎的兼容性越来越难以维护。 随着新一代引擎UE5的到来，HotPatcher同样会跟进UE5中支持，并针对UE5的特性开发新的功能。我希望它不仅仅只是一个资源打包工具，而是包含资源管理、审计、打包、热更新、包体优化、构建提升等等全">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="HotPatcher Modular Transformation and Development Planning">
+<meta property="og:url" content="https://en.imzlp.com/posts/30178/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="With the development of HotPatcher and my research on resource management technology, more and more features are being implemented around HotPatcher, and the implementation is becoming increasingly co">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230204210344.webp">
 <meta property="article:published_time" content="2023-01-07T11:25:54.000Z">
 <meta property="article:modified_time" content="2023-01-07T11:25:54.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230204210344.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/30178/">
+<link rel="canonical" href="https://en.imzlp.com/posts/30178/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>HotPatcher的模块化改造和开发规划 | 循迹研究室</title>
+  <title>HotPatcher Modular Transformation and Development Planning | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/30178/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/30178/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          HotPatcher的模块化改造和开发规划<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2023-01-07-30178.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/30178/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          HotPatcher Modular Transformation and Development Planning<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2023-01-07-30178.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/30178/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">HotPatcher Modular Transformation and Development Planning</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">HotPatcher的模块化改造和开发规划</sub>
           </div>
         
 
@@ -318,55 +318,55 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2023-01-07 11:25 11:25:54:25" itemprop="dateCreated datePublished" datetime="2023-01-07T11:25:54+00:00">2023-01-07 11:25</time>
+              <time title="Created: 2023-01-07 11:25 11:25:54:25" itemprop="dateCreated datePublished" datetime="2023-01-07T11:25:54+00:00">2023-01-07 11:25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/HotPatcher/" itemprop="url" rel="index"><span itemprop="name">HotPatcher</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/HotPatcher/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/30178/" class="post-meta-item leancloud_visitors" data-flag-title="HotPatcher的模块化改造和开发规划" title="阅读次数">
+            <span id="/posts/30178/" class="post-meta-item leancloud_visitors" data-flag-title="HotPatcher Modular Transformation and Development Planning" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.7k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -378,106 +378,106 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>随着<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的开发以及我对于资源管理方面的技术的研究，围绕着<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>实现的功能越来越多，实现也越来越复杂，加上引擎的不断更新，一个大而全的插件对引擎的兼容性越来越难以维护。</p>
-<p>随着新一代引擎UE5的到来，<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>同样会跟进UE5中支持，并针对UE5的特性开发新的功能。我希望它不仅仅只是一个资源打包工具，而是包含资源管理、审计、打包、热更新、包体优化、构建提升等等全方位的资源管理方案，并且作为一个开放式的资源处理框架。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071731545.webp"></p>
-<p>本篇文章会介绍<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的模块化进展，对现有功能的支持。以及如何利用<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>强大的打包能力根据项目需求进行自定义的模块化扩展。最后，会介绍<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>项目后续的开发计划。</p>
+        <p>With the development of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> and my research on resource management technology, more and more features are being implemented around <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, and the implementation is becoming increasingly complex. Coupled with continuous updates of the engine, maintaining compatibility for a large and comprehensive plugin has become more difficult.</p>
+<p>With the arrival of the new generation engine UE5, <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> will also follow up with support for UE5 and develop new features based on UE5’s characteristics. I hope it will not only be a resource packaging tool but also include a comprehensive resource management solution encompassing resource management, auditing, packaging, hot updates, package optimization, and build enhancements, and serve as an open resource processing framework.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071731545.webp"></p>
+<p>This article will introduce the modular progress of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, support for existing features, and how to use the powerful packaging capability of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> to customize modular extensions based on project needs. Finally, I will discuss the future development plans for the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> project.</p>
 <span id="more"></span>
 
-<p>目前<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的大部分核心功能都是同时支持UE4.21-UE5.1的。但每次引擎新版本的发布带来的插件适配工作耗费了太多精力和时间。而且之前大多数功能都集成在一个插件之内，功能扩展也有一定的局限性。</p>
-<p>所以，针对这些问题，我对<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>项目开启了模块化改造计划。<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>本身只提供核心的打包功能，其他的扩展独立实现，也可以按需下载启用。当然，功能模块化不是一蹴而就的过程，从2021年时，我就在考虑把非核心功能剥离出来，作为单独的模块按需下载和使用，但没有进行完全的模块化改造。</p>
-<p>2023年了，是时候来做这个事情了。时光荏苒，在2019年11月22日，我对该项目进行了第一次提交，到现在已有3年的时间过去了，经历了700多次提交和十几篇的博客文章介绍，很高兴见到<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>被应用于大量的项目，同时插件功能也在进行着不断的更新与迭代。</p>
-<h2 id="模块化改造"><a href="#模块化改造" class="headerlink" title="模块化改造"></a>模块化改造</h2><p>首先，<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>是一个独立的UE插件，如果想要在UE之内再额外实现类似的能够进行编译的模块化框架，有点得不偿失。</p>
-<p>所以，我的实现是同样基于UE的插件机制，基于<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>开发的模块也是一个UE的代码插件，只是它会依赖<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>并能够包含它的代码。</p>
-<p>以已经模块化改造完成的<a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker">GameFeaturePacker</a>模块为例，我将介绍<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>模块的机制和能够实现的功能。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker">GameFeaturePacker</a>是我之前实现的，可以用来打包UE5新的GamePlay机制<code>GameFeature</code>的功能，具体介绍详见之前的文章：<a href="https://imzlp.com/posts/17658/">UE5：Game Feature 预研</a>。</p>
-<p>首先，前面已经讲到了，它也是一个UE插件，其uplugin文件为：</p>
+<p>Currently, most of the core functions of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> support both UE4.21-UE5.1. However, each new engine version release brings too much effort and time for plugin adaptation. Moreover, most features used to be integrated into a single plugin, which limited functionality expansion.</p>
+<p>Therefore, in response to these issues, I have initiated a modular transformation plan for the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> project. <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> will only provide core packaging functionalities, with other extensions implemented independently and available for download as needed. Of course, the modularization of functions is not an overnight process. Since 2021, I have been considering separating non-core functionalities into standalone modules for on-demand download and use, but I did not achieve complete modular transformation.</p>
+<p>Now, in 2023, it is time to do this. Time flies; on November 22, 2019, I made the first commit to this project, and now three years have passed, with over 700 commits and numerous blog articles. I am glad to see <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> being applied in many projects, and at the same time, the plugin functions are continuously updated and iterated.</p>
+<h2 id="Modular-Transformation"><a href="#Modular-Transformation" class="headerlink" title="Modular Transformation"></a>Modular Transformation</h2><p>First of all, <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> is an independent UE plugin. If one wants to implement a similar modular framework that can be compiled within UE, it can be counterproductive.</p>
+<p>Therefore, my implementation is similarly based on UE’s plugin mechanism, and modules developed based on <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> are also UE code plugins; they will depend on <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> and can include its code.</p>
+<p>Taking the already completed modular transformation of the <a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker">GameFeaturePacker</a> module as an example, I will introduce the mechanism of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> modules and the functionalities that can be implemented.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker">GameFeaturePacker</a> is something I implemented earlier, which can be used to package the new UE5 GamePlay mechanism <code>GameFeature</code>. Detailed information can be found in my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17658/">UE5: Game Feature Research</a>.</p>
+<p>First, as mentioned previously, it is also a UE plugin, and its uplugin file is as follows:</p>
 <figure class="highlight json"><figcaption><span>GameFeaturePacker.uplugin</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;FileVersion&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Version&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;VersionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;FriendlyName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GameFeaturePacker&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Other&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CreatedBy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lipengzha&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CreatedByURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://imzlp.com/&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CanContainContent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;IsBetaVersion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;IsExperimentalVersion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Installed&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Plugins&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotPatcher&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Modules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GameFeaturePacker&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Runtime&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GameFeaturePackerEditor&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Editor&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PostDefault&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>它依赖了<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>插件，往<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>中注册模块，需要有一个<code>Editor</code>的模块，并且它的<code>LoadingPhase</code>要为<code>PostDefault</code>，在Editor模块的<code>Build.cs</code>中包含<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的Module：</p>
+<p>It depends on the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> plugin, and to register the module in <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, an <code>Editor</code> module must be available, and its <code>LoadingPhase</code> should be set to <code>PostDefault</code>. In the <code>Build.cs</code> of the Editor module, include the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> modules:</p>
 <figure class="highlight csharp"><figcaption><span>GameFeaturePackerEditor.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PublicDependencyModuleNames.AddRange(</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">string</span>[]</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">&quot;HotPatcherRuntime&quot;</span>,</span><br><span class="line">		<span class="string">&quot;HotPatcherCore&quot;</span>,</span><br><span class="line">		<span class="string">&quot;HotPatcherEditor&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>这样就能在这个独立的插件中使用HotPatcher的功能。</p>
-<p><code>GameFeaturePackerEditor</code>模块的C++定义也要遵循规范，需要继承自<code>FHotPatcherModBaseModule</code>，并重写<code>GetModDesc</code>接口：</p>
+<p>This allows the HotPatcher’s functionalities to be used within this independent plugin.</p>
+<p>The C++ definition of the <code>GameFeaturePackerEditor</code> module must also follow specific conventions, inheriting from <code>FHotPatcherModBaseModule</code> and overriding the <code>GetModDesc</code> interface:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FGameFeaturePackerEditorModule</span> : <span class="keyword">public</span> FHotPatcherModBaseModule</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** IModuleInterface implementation */</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">StartupModule</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ShutdownModule</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> FHotPatcherModDesc <span class="title">GetModDesc</span><span class="params">()</span><span class="type">const</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在<code>.cpp</code>中实现模块的注册：</p>
+<p>Implement the module registration in the <code>.cpp</code> file:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FGameFeaturePackerEditorModule::StartupModule</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FHotPatcherModBaseModule::<span class="built_in">StartupModule</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FGameFeaturePackerEditorModule::ShutdownModule</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FHotPatcherModBaseModule::<span class="built_in">ShutdownModule</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">FHotPatcherModDesc <span class="title">FGameFeaturePackerEditorModule::GetModDesc</span><span class="params">()</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FHotPatcherModDesc TmpModDesc;</span><br><span class="line">	TmpModDesc.ModName = MOD_NAME;</span><br><span class="line">	TmpModDesc.CurrentVersion = MOD_VERSION;</span><br><span class="line">	TmpModDesc.bIsBuiltInMod = IS_INTERNAL_MODE;</span><br><span class="line">	TmpModDesc.MinHotPatcherVersion = <span class="number">80.0f</span>;</span><br><span class="line">	TmpModDesc.Description = <span class="built_in">TEXT</span>(<span class="string">&quot;Plugin/GameFeature Packager&quot;</span>);</span><br><span class="line">	TmpModDesc.URL = <span class="built_in">TEXT</span>(<span class="string">&quot;https://imzlp.com/posts/17658/&quot;</span>);</span><br><span class="line">	TmpModDesc.UpdateURL = <span class="built_in">TEXT</span>(<span class="string">&quot;https://github.com/hxhb/HotPatcher/Mods/GameFeaturePacker&quot;</span>);</span><br><span class="line">	TArray&lt;FHotPatcherActionDesc&gt; ActionDescs;</span><br><span class="line">	TmpModDesc.ModActions.<span class="built_in">Emplace</span>(</span><br><span class="line">		<span class="built_in">TEXT</span>(<span class="string">&quot;Patcher&quot;</span>),MOD_NAME,<span class="built_in">TEXT</span>(<span class="string">&quot;ByGameFeature&quot;</span>), <span class="built_in">TEXT</span>(<span class="string">&quot;Create an Game Feature Package.&quot;</span>),</span><br><span class="line">		<span class="built_in">CREATE_ACTION_WIDGET_LAMBDA</span>(SGameFeaturePackageWidget,<span class="built_in">TEXT</span>(<span class="string">&quot;ByGameFeature&quot;</span>)),<span class="number">0</span></span><br><span class="line">		);</span><br><span class="line">	<span class="keyword">return</span> TmpModDesc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意：一定要在模块的<code>StartupModule</code>与<code>ShutdownModule</code>中调用基类<code>FHotPatcherModBaseModule</code>的函数。</p>
+<p>Note: Always call the base class <code>FHotPatcherModBaseModule</code> functions in the <code>StartupModule</code> and <code>ShutdownModule</code> of the module.</p>
 </blockquote>
-<p>在<code>GetModDesc</code>函数中对当前插件进行模块注册。</p>
-<p>一个HotPatcher的Mod定义能够具有以下属性：</p>
+<p>Register the current plugin in the <code>GetModDesc</code> function.</p>
+<p>A HotPatcher mod definition can have the following attributes:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">HOTPATCHEREDITOR_API</span> FHotPatcherModDesc  </span><br><span class="line">&#123;  </span><br><span class="line">   FString ModName;  </span><br><span class="line">   <span class="type">bool</span> bIsBuiltInMod = <span class="literal">false</span>;  </span><br><span class="line">   <span class="type">float</span> CurrentVersion = <span class="number">0.f</span>;  </span><br><span class="line">   FString Description;  </span><br><span class="line">   FString URL;  </span><br><span class="line">   FString UpdateURL;  </span><br><span class="line">   <span class="type">float</span> MinHotPatcherVersion = <span class="number">0.0f</span>;  </span><br><span class="line">   TArray&lt;FHotPatcherActionDesc&gt; ModActions;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>支持指定Mod名字、是否是内置Mod（HotPatcher自身包含的核心Mod），以及Mod的版本、描述信息、URL、更新链接、以及<strong>最低支持的HotPatcher版本</strong>。</p>
-<p>最后是<code>FHotPatcherActionDesc</code>，HotPatcherAction，它描述的是<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>界面中的可操作逻辑，包含Slate界面。<br>如插件中原来的<code>ByPatch</code>/<code>ByRelease</code>等等，都是HotPatcherAction。</p>
+<p>It supports specifying the Mod name, whether it is a built-in Mod (core Mod included in HotPatcher), as well as the Mod version, description, URL, update link, and <strong>minimum supported HotPatcher version</strong>.</p>
+<p>Finally, there’s <code>FHotPatcherActionDesc</code>, which describes the operational logic in the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> interface and includes Slate UI. Actions like <code>ByPatch</code>/<code>ByRelease</code> in the plugin are all part of HotPatcherAction.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230106203040.webp"></p>
-<p>Mod中包含Action就会在这个列表中创建一个选项，并包含一个专属的界面，该界面的Slate控件可以自定义。</p>
-<p>通过以下方式添加Action：</p>
+<p>Having actions in a mod will create an option in the list and include a dedicated interface, which can be customized with Slate controls.</p>
+<p>Actions can be added as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TmpModDesc.ModActions.<span class="built_in">Emplace</span>(  </span><br><span class="line">   <span class="built_in">TEXT</span>(<span class="string">&quot;Patcher&quot;</span>),MOD_NAME,<span class="built_in">TEXT</span>(<span class="string">&quot;ByGameFeature&quot;</span>), <span class="built_in">TEXT</span>(<span class="string">&quot;Create an Game Feature Package.&quot;</span>),  </span><br><span class="line">   <span class="built_in">CREATE_ACTION_WIDGET_LAMBDA</span>(SGameFeaturePackageWidget,<span class="built_in">TEXT</span>(<span class="string">&quot;ByGameFeature&quot;</span>)),<span class="number">0</span>  </span><br><span class="line">   );</span><br></pre></td></tr></table></figure>
 
-<p>这样一个HotPatcher的模块就注册完成了，可以在这个独立的插件中实现特殊的功能，并能注册到HotPatcher的面板中去。</p>
-<p>并且，打开HotPatcher的界面就能看到已安装的Mod：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071717193.webp"></p>
-<p>Mod具有以下几种分类：</p>
+<p>This completes the registration of a HotPatcher module, which can implement special functionalities within this independent plugin and be registered in the HotPatcher panel.</p>
+<p>Moreover, opening the HotPatcher interface will show the installed mods:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071717193.webp"></p>
+<p>Mods have the following classifications:</p>
 <ol>
-<li>Built-In，插件内置模块；</li>
-<li>Installed，已安装的，由HotPatcher作者开发的模块；</li>
-<li>ThirdParty，已安装的，由用户自己创建的模块；</li>
-<li>Not-Installed，HotPatcher开发者维护的模块，但本地未安装的模块列表。</li>
-<li>Unsupport，已安装的，但它们对HotPatcher版本的依赖高于工程中的HotPatcher版本，它们不会被注册到HotPatcher中。</li>
+<li>Built-In, built-in modules in the plugin;</li>
+<li>Installed, those installed and developed by the HotPatcher author;</li>
+<li>ThirdParty, modules created by users themselves that are installed;</li>
+<li>Not-Installed, modules maintained by the HotPatcher developer but not installed locally;</li>
+<li>Unsupport, installed but with dependencies on a version of HotPatcher higher than that in the project, and they will not be registered in HotPatcher.</li>
 </ol>
-<h2 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h2><p>目前，我对HotPatcher原有支持的功能，已经拆分了多个模块。目前开放的模块有：</p>
+<h2 id="Built-in-Modules"><a href="#Built-in-Modules" class="headerlink" title="Built-in Modules"></a>Built-in Modules</h2><p>Currently, I have split multiple modules from the originally supported features of HotPatcher. The available modules are:</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcherCore</a>，插件的内置模块，随着HotPatcher版本发布，包含最新的核心功能，具有<code>ByPatch</code>和<code>ByRelease</code>两个Action。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker/tree/master">GameFeaturePacker</a>，打包GameFeature的模块，支持的最低HotPatcher版本是v80，后续会主要更新UE5的主线版本。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/ShaderPatcherUE">ShaderPatcherUE</a>，进行ShaderLibrary的Patch，详见文章：<a href="https://imzlp.com/posts/5867/">UE 热更新：Create Shader Patch</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcherCore</a>, the built-in module of the plugin, containing the latest core functions with <code>ByPatch</code> and <code>ByRelease</code> actions.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/GameFeaturePacker/tree/master">GameFeaturePacker</a>, the module for packaging GameFeatures, which supports a minimum HotPatcher version of v80, with major updates focusing on the main UE5 line version.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/ShaderPatcherUE">ShaderPatcherUE</a>, to patch ShaderLibrary, see the article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/5867/">UE Hot Update: Create Shader Patch</a></li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcherCore</a>包含在主仓库中，其余的模块都是独立的仓库。</p>
-<p>在下载时可以把它们一起clone下来，它们默认都在<code>Mods</code>目录下。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcherCore</a> is included in the main repository, while the other modules are independent repositories.</p>
+<p>When downloading, they can all be cloned together, and they are by default located in the <code>Mods</code> directory.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230106204841.webp"></p>
-<h2 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h2><p>HotPatcherCore就包含在<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>插件本体中，其余的模块都是以git submodule的形式管理的。</p>
-<p>可以在Github的<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher/tree/master/Mods">hxhb/HotPatcher/Mods</a>下查看目前已有的模块。</p>
+<h2 id="Install-Modules"><a href="#Install-Modules" class="headerlink" title="Install Modules"></a>Install Modules</h2><p>HotPatcherCore is included in the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> plugin, while the other modules are managed in the form of git submodules.</p>
+<p>You can check the current available modules under <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher/tree/master/Mods">hxhb/HotPatcher/Mods</a> on Github.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071616850.webp"></p>
-<p>因为模块都是以git submodule进行管理的，所以模块的下载和更新都要使用submodule的对应命令。</p>
-<p>如，初始下载公共模块，在HotPatcher插件的根目录下执行：</p>
+<p>Since the modules are managed as git submodules, both downloading and updating modules require the respective submodule commands.</p>
+<p>For initial downloading of public modules, execute the following command in the root directory of the HotPatcher plugin:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301081352083.webp"></p>
-<p>后续更新模块：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule foreach git fetch</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">git submodule update --remote</span><br></pre></td></tr></table></figure>
-<p>我有一篇讲解git命令的文章，里面也有针对submodule的详细描述，详见：<a href="https://imzlp.com/posts/53696/#submodule">Git快速上手指南#submodule</a></p>
+<p>For subsequent module updates:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule foreach git fetch</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git submodule update --remote</span><br></pre></td></tr></table></figure>
+<p>I have an article explaining git commands, which also includes detailed descriptions of submodules, see: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/53696/#submodule">Quick Start Guide to Git#submodule</a></p>
 <blockquote>
-<p>注意：并非上面图片中的模块都能拉取下来，有些模块目前未公开，拉取时会有权限错误。但对功能无影响。</p>
+<p>Note: Not all modules shown in the images above can be pulled, as some modules are currently not public, and there will be permission errors during pulling. However, this does not affect functionality.</p>
 </blockquote>
-<p>目前开放下载的模块可以从HotPatcher Star分类中查看：<a target="_blank" rel="noopener" href="https://github.com/stars/hxhb/lists/hotpatcher">hxhb/list/HotPatcher</a>。</p>
-<h2 id="创建新模块"><a href="#创建新模块" class="headerlink" title="创建新模块"></a>创建新模块</h2><p>前面提到了，我希望<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>是一个开放的资源管理框架，任何人都能够根据项目的实际需要，基于<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的功能进行模块的开发。</p>
-<p>为此，我提供了一个Mod Template插件，可以在此模板的基础上进行修改：<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcherModTemplate">hxhb/HotPatcherModTemplate</a></p>
+<p>Currently available modules can be found in the HotPatcher Star category: <a target="_blank" rel="noopener" href="https://github.com/stars/hxhb/lists/hotpatcher">hxhb/list/HotPatcher</a>.</p>
+<h2 id="Create-New-Modules"><a href="#Create-New-Modules" class="headerlink" title="Create New Modules"></a>Create New Modules</h2><p>As mentioned earlier, I hope <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> is an open resource management framework, allowing anyone to develop modules based on <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> functionality according to their project’s needs.</p>
+<p>To facilitate this, I provide a Mod Template plugin that can be modified based on this template: <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcherModTemplate">hxhb/HotPatcherModTemplate</a></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202301071704760.webp"></p>
-<p>它分别包含了一个Editor和Runtime的Module，Module声明和定义都已按照HotPatcherMod的规范创建，只需要在<code>GetModDesc</code>接口中实现对应的注册信息即可。</p>
-<h2 id="版本发布"><a href="#版本发布" class="headerlink" title="版本发布"></a>版本发布</h2><p>因为对功能进行了模块化改造，所以后续<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的发布流程会有一些变化。</p>
+<p>It includes an Editor and Runtime Module, with the Module declaration and definition created according to the HotPatcherMod specifications, and only requires the corresponding registration information to be implemented in the <code>GetModDesc</code> interface.</p>
+<h2 id="Version-Release"><a href="#Version-Release" class="headerlink" title="Version Release"></a>Version Release</h2><p>Due to the modularization, the release process for <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> will change slightly.</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的版本发布，仅包含HotPatcherCore的模块。</li>
-<li>独立Mod的更新会单独发布</li>
+<li>The version release of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> will only include the HotPatcherCore module.</li>
+<li>The updates for independent mods will be released separately.</li>
 </ol>
-<p>对于已有的功能并无影响，基础的功能如<code>ByPatch</code>和<code>ByRelease</code>还是内置在插件本体中。</p>
-<p>其余的模块就需要手动更新了，并需要注意Mod依赖的HotPatcher版本。</p>
-<h2 id="未来计划"><a href="#未来计划" class="headerlink" title="未来计划"></a>未来计划</h2><p>目前<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>支持的功能：</p>
+<p>There will be no impact on existing functionalities, as core functionalities like <code>ByPatch</code> and <code>ByRelease</code> are still integrated into the plugin itself.</p>
+<p>Other modules will need to be updated manually, and attention should be paid to the HotPatcher version dependencies of the mods.</p>
+<h2 id="Future-Plans"><a href="#Future-Plans" class="headerlink" title="Future Plans"></a>Future Plans</h2><p>Currently, the functionalities supported by <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230106201027.webp"></p>
-<p>目前HotPatcher已经支持了大量功能的Mod，并且一些新的运行时优化机制也在酝酿与开发当中。</p>
-<p>大部分的模块目前暂未开放，以后或许会以合适的时机和方式开放出来。如果您的项目希望使用这些模块和技术，也欢迎进行商业合作的技术咨询。</p>
-<p>HotPatcherCore的开发计划目前有几项重要内容，主要是针对UE5引擎的：</p>
+<p>At present, HotPatcher has supported a large number of mod functionalities, and some new runtime optimization mechanisms are also being brewed and developed.</p>
+<p>Most modules have not yet been opened to the public but may be released at an appropriate time and in an appropriate manner in the future. If your project hopes to use these modules and technologies, commercial collaboration for technical consultation is welcome.</p>
+<p>The development plan for HotPatcherCore currently includes several important items, primarily targeting the UE5 engine:</p>
 <ol>
-<li>World Partion的支持</li>
-<li>IoStore的适配支持</li>
-<li>优化GameFeature的支持</li>
-<li>提升打包效率</li>
-<li>优化模块开发的能力，方便介入到打包流程的各个阶段</li>
+<li>Support for World Partition</li>
+<li>Adaptation support for IoStore</li>
+<li>Optimization support for GameFeature</li>
+<li>Enhancing packaging efficiency</li>
+<li>Improving modular development capabilities to facilitate intervention at various stages of the packaging process</li>
 </ol>
-<p>目前<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的开发和更新都是我个人在进行维护和支持。个人的精力有限，只有业余的时间做开源的事情，欢迎有兴趣加入到<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>开发者的朋友对项目进行开源共建。</p>
-<h2 id="捐赠"><a href="#捐赠" class="headerlink" title="捐赠"></a>捐赠</h2><p>几年来，<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>一直以免费工具开放使用，开发和更新的过程耗费了我挺多精力和时间。</p>
-<p>但我依然坚持免费和持续更新，只因为我热爱写代码，希望把我的技术带给更多人使用，提升UE社区的技术共享，兴趣的价值不是钱能够衡量的。</p>
-<p>以后HotPatcher的核心功能也会一直作为免费工具发布，并进行持续更新。</p>
-<p>如果HotPatcher项目有帮助到你，并希望HotPatcher以后能够做的更好，可以扫描下方的捐赠二维码。</p>
+<p>Currently, the development and updates of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> are maintained and supported by myself. I have limited personal energy and only spare time for open-source matters. Friends interested in joining the development of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> are welcome to contribute to the project.</p>
+<h2 id="Donations"><a href="#Donations" class="headerlink" title="Donations"></a>Donations</h2><p>For several years, <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> has been freely available as a tool. The development and update process has consumed a significant amount of my energy and time.</p>
+<p>Nevertheless, I still insist on providing this tool for free and continuously updating it simply because I love coding and hope to share my technology with more people, enhancing the technical sharing within the UE community. The value of interest cannot be measured in money.</p>
+<p>In the future, the core functionality of HotPatcher will continue to be released as free tools and will be consistently updated.</p>
+<p>If the HotPatcher project has helped you, and you hope it can do better in the future, you can scan the donation QR code below.</p>
 <table>
 <thead>
 <tr>
-<th align="center">微信支付</th>
-<th align="center">支付宝</th>
+<th align="center">WeChat Pay</th>
+<th align="center">Alipay</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -485,8 +485,8 @@
 <td align="center"><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/alipay.webp" height="160" width="160" /></td>
 </tr>
 </tbody></table>
-<p>您捐赠后可以点击<a target="_blank" rel="noopener" href="https://docs.qq.com/form/page/DZm5WYU9LZW5UcW9S?create_type=2&from_page=doc_list_new_form&templateId=25000&u=3e6c85a9d4d44756bb11b9c5b8340952#/fill">HotPatcher捐赠者信息收集表</a>，提交您的捐赠信息。</p>
-<p>如果您捐赠后提交了捐赠信息，我会不定期地进行整理，在项目页面内展示，对您的捐赠表示感谢。</p>
+<p>After you donate, you can click on the <a target="_blank" rel="noopener" href="https://docs.qq.com/form/page/DZm5WYU9LZW5UcW9S?create_type=2&from_page=doc_list_new_form&templateId=25000&u=3e6c85a9d4d44756bb11b9c5b8340952#/fill">HotPatcher Donor Information Collection Form</a> to submit your donation information.</p>
+<p>If you have submitted your donation information after donating, I will periodically整理, displaying it on the project page to express my gratitude for your donations.</p>
 
     </div>
 
@@ -497,7 +497,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -507,7 +507,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -517,37 +517,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/30178/" target="_blank">HotPatcher的模块化改造和开发规划</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2023/01/07 11:25<br/>
+             <span>Title:</span><a href="/posts/30178/" target="_blank">HotPatcher Modular Transformation and Development Planning</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2023/01/07 11:25<br/>
              
-             <span>本文字数:</span><span class="page-count">3.8k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">8.7k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/30178/" target="_blank" title="HotPatcher的模块化改造和开发规划">https://imzlp.com/posts/30178/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/30178/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/30178/" target="_blank" title="HotPatcher Modular Transformation and Development Planning">https://en.imzlp.com/posts/30178/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/30178/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -569,8 +569,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/75405/" rel="prev" title="UE插件与工具开发：基础概念">
-      <i class="fa fa-chevron-left"></i> UE插件与工具开发：基础概念
+    <a href="/posts/75405/" rel="prev" title="UE plug-in and tool development: basic concepts">
+      <i class="fa fa-chevron-left"></i> UE plug-in and tool development: basic concepts
     </a></div>
       <div class="post-nav-item">
     <a href="/posts/10975/" rel="next" title="2022 Unreal Open Day">
@@ -645,25 +645,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E6%94%B9%E9%80%A0"><span class="nav-number">1.</span> <span class="nav-text">模块化改造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">内置模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">安装模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">创建新模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83"><span class="nav-number">5.</span> <span class="nav-text">版本发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E8%AE%A1%E5%88%92"><span class="nav-number">6.</span> <span class="nav-text">未来计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%90%E8%B5%A0"><span class="nav-number">7.</span> <span class="nav-text">捐赠</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Modular-Transformation"><span class="nav-number">1.</span> <span class="nav-text">Modular Transformation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-Modules"><span class="nav-number">2.</span> <span class="nav-text">Built-in Modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Modules"><span class="nav-number">3.</span> <span class="nav-text">Install Modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-New-Modules"><span class="nav-number">4.</span> <span class="nav-text">Create New Modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version-Release"><span class="nav-number">5.</span> <span class="nav-text">Version Release</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-Plans"><span class="nav-number">6.</span> <span class="nav-text">Future Plans</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Donations"><span class="nav-number">7.</span> <span class="nav-text">Donations</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -671,19 +671,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -721,10 +721,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -751,9 +751,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -762,12 +759,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -920,7 +917,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/30178/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/30178/',]
       });
       });
   </script>
@@ -943,12 +940,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

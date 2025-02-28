@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,23 +19,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一些C++中比较能令人迷惑或者用法比较奇特的示例记录。">
+  <meta name="description" content="Some examples in C++ that can be confusing or have peculiar usages are recorded.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++中的编程技巧及其概念">
-<meta property="og:url" content="https://imzlp.com/posts/1756/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="一些C++中比较能令人迷惑或者用法比较奇特的示例记录。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Programming skills and concepts in C&#x2F;C++">
+<meta property="og:url" content="https://en.imzlp.com/posts/1756/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Some examples in C++ that can be confusing or have peculiar usages are recorded.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/1756/wsign_conversion_00.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/1756/wsign_conversion_01.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_circle.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_square.webp">
 <meta property="article:published_time" content="2017-03-05T01:21:25.000Z">
 <meta property="article:modified_time" content="2017-04-28T07:53:38.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="编程技巧">
 <meta property="article:tag" content="C语言">
@@ -43,7 +43,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/1756/wsign_conversion_00.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/1756/">
+<link rel="canonical" href="https://en.imzlp.com/posts/1756/">
 
 
 <script id="page-configurations">
@@ -52,11 +52,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>C/C++中的编程技巧及其概念 | 循迹研究室</title>
+  <title>Programming skills and concepts in C/C++ | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -96,7 +96,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -106,7 +106,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -136,24 +136,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -163,7 +163,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -173,7 +173,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -181,14 +181,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -196,26 +196,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -231,7 +231,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -250,7 +250,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -269,12 +269,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -292,27 +292,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/1756/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/1756/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C/C++中的编程技巧及其概念<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-03-05-1756.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/1756/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Programming skills and concepts in C/C++<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-03-05-1756.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/1756/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Programming skills and concepts in C/C++</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">C/C++中的编程技巧及其概念</sub>
           </div>
         
 
@@ -321,50 +321,50 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-03-05 01:21 01:21:25:21" itemprop="dateCreated datePublished" datetime="2017-03-05T01:21:25+00:00">2017-03-05 01:21</time>
+              <time title="Created: 2017-03-05 01:21 01:21:25:21" itemprop="dateCreated datePublished" datetime="2017-03-05T01:21:25+00:00">2017-03-05 01:21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2017-04-28 07:53 07:53:38:53" itemprop="dateModified" datetime="2017-04-28T07:53:38+00:00">2017-04-28 07:53</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2017-04-28 07:53 07:53:38:53" itemprop="dateModified" datetime="2017-04-28T07:53:38+00:00">2017-04-28 07:53</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">编程技巧</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/1756/" class="post-meta-item leancloud_visitors" data-flag-title="C/C++中的编程技巧及其概念" title="阅读次数">
+            <span id="/posts/1756/" class="post-meta-item leancloud_visitors" data-flag-title="Programming skills and concepts in C/C++" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>19k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>27 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>49 mins.</span>
             </span>
 
         </div>
@@ -376,253 +376,256 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一些C++中比较能令人迷惑或者用法比较奇特的示例记录。</p>
+        <p>Some examples in C++ that can be confusing or have peculiar usages are recorded.</p>
 <span id="more"></span>
-<h3 id="显式限定数组实参的元素个数"><a href="#显式限定数组实参的元素个数" class="headerlink" title="显式限定数组实参的元素个数"></a>显式限定数组实参的元素个数</h3><p>数组在作为函数参数传递时会退化为指针：</p>
+
+<h3 id="Explicitly-Qualified-Number-of-Elements-for-Array-Arguments"><a href="#Explicitly-Qualified-Number-of-Elements-for-Array-Arguments" class="headerlink" title="Explicitly Qualified Number of Elements for Array Arguments"></a>Explicitly Qualified Number of Elements for Array Arguments</h3><p>When an array is passed as a function parameter, it decays to a pointer:</p>
 <blockquote>
 <p>A declaration of a parameter as “array of type” shall be adjusted to “qualified pointer to type”.</p>
 </blockquote>
-<p>以及前面已经提到的：</p>
+<p>And as mentioned earlier:</p>
 <blockquote>
 <p><code>int x[3][5];</code>Here x is a 3 × 5 array of integers. When x appears in an expression, it is converted to a pointer to (the first of three) five-membered arrays of integers.</p>
 </blockquote>
-<p>这意味着数组作为参数传递时会丢失边界(C/C++的原生数组本来也就没有边界检查…)。</p>
+<p>This means that when passing an array as a parameter, the bounds will be lost (C/C++ native arrays don’t have boundary checks either…).</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcA</span><span class="params">(<span class="type">int</span> x[<span class="number">10</span>])</span></span>&#123;&#125;</span><br><span class="line"><span class="comment">// Equivalent to</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcB</span><span class="params">(<span class="type">int</span> *x)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>其对应的中间代码为：</p>
+<p>The corresponding intermediate code is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">; Function Attrs: nounwind uwtable</span><br><span class="line">define <span class="type">void</span> @_Z5funcAPi(i32*) #<span class="number">4</span> &#123;</span><br><span class="line">  %<span class="number">2</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">  store i32* %<span class="number">0</span>, i32** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  ret <span class="type">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">; Function Attrs: nounwind uwtable</span><br><span class="line">define <span class="type">void</span> @_Z5funcBPi(i32*) #<span class="number">4</span> &#123;</span><br><span class="line">  %<span class="number">2</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">  store i32* %<span class="number">0</span>, i32** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  ret <span class="type">void</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果数组边界的精确数值非常重要，并且希望函数只接收含有特定数量的元素的数组，可以使用引用形参：</p>
+<p>If the precise value of the array bounds is very important, and you want the function to only accept arrays containing a specific number of elements, you can use reference parameters:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcC</span><span class="params">(<span class="type">int</span> (&amp;x)[<span class="number">10</span>])</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>其中间代码为：</p>
+<p>The intermediate code is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">; Function Attrs: nounwind uwtable</span><br><span class="line">define <span class="type">void</span> @_Z5funcCRA10_i([<span class="number">10</span> x i32]* <span class="built_in">dereferenceable</span>(<span class="number">40</span>)) #<span class="number">4</span> &#123;</span><br><span class="line">  %<span class="number">2</span> = alloca [<span class="number">10</span> x i32]*, align <span class="number">8</span></span><br><span class="line">  store [<span class="number">10</span> x i32]* %<span class="number">0</span>, [<span class="number">10</span> x i32]** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  ret <span class="type">void</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果我们使用数组元素个数不等于10的数组传递给<code>funcC</code>,会导致编译错误：</p>
+<p>If we use an array with a number of elements not equal to 10 to pass to <code>funcC</code>, it will result in a compilation error:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// note: candidate function not viable: no known conversion from &#x27;int [11]&#x27; to &#x27;int (&amp;)[10]&#x27; for 1st argument.</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcC</span><span class="params">(<span class="type">int</span> (&amp;x)[<span class="number">10</span>])</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> x[<span class="number">11</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">  <span class="comment">// error: no matching function for call to &#x27;funcC&#x27;.</span></span><br><span class="line">  <span class="built_in">funcC</span>(x);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>也可以使用函数模板参数来指定函数接收参数的数组大小：</p>
+<p>You can also use function template parameters to specify the size of the array parameters the function accepts:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="type">int</span> arrSize&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcA</span><span class="params">(<span class="type">int</span> x[arrSize])</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>使用时：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x[<span class="number">12</span>]</span><br><span class="line"><span class="built_in">funcA</span>&lt;<span class="number">12</span>&gt;(x); <span class="comment">// OK</span></span><br><span class="line"><span class="built_in">funcA</span>&lt;<span class="number">13</span>&gt;(x); <span class="comment">//ERROR</span></span><br></pre></td></tr></table></figure>
+<p>Usage:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x[<span class="number">12</span>];</span><br><span class="line"><span class="built_in">funcA</span>&lt;<span class="number">12</span>&gt;(x); <span class="comment">// OK</span></span><br><span class="line"><span class="built_in">funcA</span>&lt;<span class="number">13</span>&gt;(x); <span class="comment">//ERROR</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="启用编译器的改变符号的隐式类型转换警告"><a href="#启用编译器的改变符号的隐式类型转换警告" class="headerlink" title="启用编译器的改变符号的隐式类型转换警告"></a>启用编译器的改变符号的隐式类型转换警告</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((<span class="type">unsigned</span> <span class="type">int</span>)<span class="number">4</span>&lt;(<span class="type">unsigned</span> <span class="type">int</span>)(<span class="type">int</span>)<span class="number">-1</span>)&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;no&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Enabling-Compiler-Warnings-for-Implicit-Type-Conversions-Changing-Sign"><a href="#Enabling-Compiler-Warnings-for-Implicit-Type-Conversions-Changing-Sign" class="headerlink" title="Enabling Compiler Warnings for Implicit Type Conversions Changing Sign"></a>Enabling Compiler Warnings for Implicit Type Conversions Changing Sign</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((<span class="type">unsigned</span> <span class="type">int</span>)<span class="number">4</span>&lt;(<span class="type">unsigned</span> <span class="type">int</span>)(<span class="type">int</span>)<span class="number">-1</span>)&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;no&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>if中的那段表达式是为true的(输出yes)，而且编译时也不会发出警告。</p>
+<p>The expression in the if statement is true (outputs yes), and no warning will be issued at compile time.</p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/wsign_conversion_00.webp"></p>
-<p>虽然我们指定了<code>(int)-1</code>，但是当将<code>unsigned int</code>和<code>int</code>比较时会发生隐式转换。即：</p>
+<p>Even though we specified <code>(int)-1</code>, there will be an implicit conversion when comparing <code>unsigned int</code> and <code>int</code>. That is:</p>
 <blockquote>
 <p>The usual arithmetic conversions are performed on operands of arithmetic or enumeration type.</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((<span class="type">unsigned</span> <span class="type">int</span>)<span class="number">4</span>&lt;(<span class="type">unsigned</span>)(<span class="type">int</span>)<span class="number">-1</span>)==<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>Warnings about conversions between signed and unsigned integers are disabled by default in C++ unless -Wsign-conversion is explicitly enabled. </p>
+<p>Warnings about conversions between signed and unsigned integers are disabled by default in C++ unless -Wsign-conversion is explicitly enabled.</p>
 </blockquote>
-<p>通过启用<code>-Wsign-conversion</code>就可以看到警告了(建议开启)。<br>该参数的作用为：</p>
+<p>By enabling <code>-Wsign-conversion</code>, the warning can be seen (it is recommended to enable it).<br>The effect of this option is:</p>
 <blockquote>
 <p>Warn for implicit conversions that may change the sign of an integer value, like assigning a signed integer expression to an unsigned integer variable. An explicit cast silences the warning. In C, this option is enabled also by -Wconversion.</p>
 </blockquote>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/wsign_conversion_01.webp"></p>
-<p>更多的GCC警告选项可一看这里<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">Warning-Options</a></p>
-<h3 id="断言-assert"><a href="#断言-assert" class="headerlink" title="断言(assert)"></a>断言(assert)</h3><p>assert Defined in header <cassert>(c++)/&lt;assert.h&gt;(C)</p>
+<p>For more GCC warning options, you can check here <a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">Warning-Options</a></p>
+<h3 id="Assert"><a href="#Assert" class="headerlink" title="Assert"></a>Assert</h3><p>assert Defined in header <cassert>(c++)/&lt;assert.h&gt;(C)</p>
 <blockquote>
 <p>If NDEBUG is defined as a macro name at the point in the source code where &lt;assert.h&gt; is included, then assert does nothing.<br>If NDEBUG is not defined, then assert checks if its argument (which must have scalar type) compares equal to zero.</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> NDEBUG</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> assert(condition) ((void)0)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> assert(condition) <span class="comment">/*implementation defined*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/error/assert">cppreference - assert</a><br>assert只在Debug模式中有效，使用release模assert什么都不做了。<br>因为在VC++里面，release会在全局定义NDEBUG</p>
-<p>下面的代码在VS中使用debug和release模式分别编译并输入&gt;100的数，会有不一样的结果(release不会)</p>
+<p><a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/error/assert">cppreference - assert</a><br>assert is only effective in debug mode; using it in release mode does nothing.<br>Because in VC++, release will globally define NDEBUG</p>
+<p>The following code will compile and input a number &gt;100 in VS with different results in debug and release mode (release will not).</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">func</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x &gt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  cin &gt;&gt; i;</span><br><span class="line">  <span class="built_in">assert</span>(<span class="built_in">func</span>(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="无效的引用"><a href="#无效的引用" class="headerlink" title="无效的引用"></a>无效的引用</h3><p>通常情况下我们创建的引用就是有效的，但是也可以人为因素使坏…</p>
+<h3 id="Invalid-References"><a href="#Invalid-References" class="headerlink" title="Invalid References"></a>Invalid References</h3><p>Typically, the references we create are valid, but they can also be rendered invalid due to human factors…</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">char</span>* <span class="title">ident</span><span class="params">(<span class="type">char</span> *p)</span> </span>&#123; <span class="keyword">return</span> p; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">char</span>&amp; r &#123;*<span class="built_in">ident</span>(<span class="literal">nullptr</span>)&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是UB的行为。</p>
+<p>This leads to undefined behavior.</p>
 <blockquote>
-<p>in particular, a null reference cannot exist in a well-defined program, because the only way to create such a reference would be to bind it to the “object” obtained by indirection through a null pointer,which causes undefined behavior.</p>
+<p>In particular, a null reference cannot exist in a well-defined program, because the only way to create such a reference would be to bind it to the “object” obtained by indirection through a null pointer, which causes undefined behavior.</p>
 </blockquote>
-<h3 id="数组的引用"><a href="#数组的引用" class="headerlink" title="数组的引用"></a>数组的引用</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span>(&amp;r)[<span class="number">4</span>])</span></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">sizeof</span>(r)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">  <span class="type">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">  <span class="built_in">f</span>(a); <span class="comment">// OK</span></span><br><span class="line">  <span class="type">int</span> b[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">  <span class="built_in">f</span>(b); <span class="comment">// 错误，元素个数有误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="References-to-Arrays"><a href="#References-to-Arrays" class="headerlink" title="References to Arrays"></a>References to Arrays</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span>(&amp;r)[<span class="number">4</span>])</span></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">sizeof</span>(r)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">  <span class="type">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">  <span class="built_in">f</span>(a); <span class="comment">// OK</span></span><br><span class="line">  <span class="type">int</span> b[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">  <span class="built_in">f</span>(b); <span class="comment">// Error, number of elements is incorrect</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>对于数组引用类型的从参数来说，元素个数也是其类型的一部分。通常只有在模板中才会使用数组引用，此时数组的引用可以通过推断得到。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T,<span class="type">int</span> N&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T(&amp;r)[N])</span></span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a1[<span class="number">10</span>];</span><br><span class="line"><span class="type">double</span> a2[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">f</span>(a1);  <span class="comment">// T是int，N是10</span></span><br><span class="line">  <span class="built_in">f</span>(a2);  <span class="comment">// T是double，N是100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>For reference types of array parameters, the number of elements is also part of its type. Typically, references to arrays are only used in templates, where references can be inferred from the array.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T,<span class="type">int</span> N&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T(&amp;r)[N])</span></span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a1[<span class="number">10</span>];</span><br><span class="line"><span class="type">double</span> a2[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">f</span>(a1);  <span class="comment">// T is int, N is 10</span></span><br><span class="line">  <span class="built_in">f</span>(a2);  <span class="comment">// T is double, N is 100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这么做的后果是调用f()所用的不同类型的数组有多少个，对应定义的函数有多少个。</p>
-<h3 id="忽略函数参数的顶层cv-qualifier"><a href="#忽略函数参数的顶层cv-qualifier" class="headerlink" title="忽略函数参数的顶层cv-qualifier"></a>忽略函数参数的顶层cv-qualifier</h3><p>为了与C语言兼容，在C++中会自动忽略参数类型的顶层cv-qualifier。</p>
-<p>例如下面的函数在C++会报重定义错误，而不是重载：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型是int(int)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// error: redefinition of &#x27;f&#x27;</span></span><br><span class="line"><span class="comment">// 类型是int(int)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">const</span> <span class="type">int</span> x)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>The consequence is that the more different types of arrays used to call f(), the more corresponding functions are defined.</p>
+<h3 id="Ignoring-Top-Level-cv-qualifier-of-Function-Parameters"><a href="#Ignoring-Top-Level-cv-qualifier-of-Function-Parameters" class="headerlink" title="Ignoring Top-Level cv-qualifier of Function Parameters"></a>Ignoring Top-Level cv-qualifier of Function Parameters</h3><p>For compatibility with C, C++ automatically ignores the top-level cv-qualifier of the parameter type.</p>
+<p>For example, the following function would report a redefinition error in C++, rather than an overload:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Type is int(int)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// error: redefinition of &#x27;f&#x27;</span></span><br><span class="line"><span class="comment">// Type is int(int)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">const</span> <span class="type">int</span> x)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>不论对于哪种情况，允许修改实参也好，不允许修改实参也好，它都只是函数调用者提供的实参的一个副本。因此调用过程不会破坏调用上下文的数据安全性。<br>因为函数的签名规则如下：</p>
+<p>In either case, whether allowing or not allowing modification of the actual parameter, it is merely a copy of the actual argument provided by the function caller. Therefore, the calling process will not violate the data safety of the calling context.<br>The signature rule for functions is as follows:</p>
 <blockquote>
 <p><code>&lt;function&gt;</code> name, parameter type list (8.3.5), and enclosing namespace (if any)</p>
 </blockquote>
-<p>而函数的<code>parameter-type-list</code>会移除<code>top-level cv-qualifier</code>：</p>
+<p>And the function’s <code>parameter-type-list</code> will remove the <code>top-level cv-qualifier</code>:</p>
 <blockquote>
 <p>[ISO/IEC 14882:2014 <strong>§8.3.5.5</strong>]After producing the list of parameter types, any top-level cv-qualifiers modifying a parameter type are deleted when forming the function type. The resulting list of transformed parameter types and the presence or absence of the ellipsis or a function parameter pack is the function’s <code>parameter-type-list</code>.</p>
 </blockquote>
-<h3 id="char作为数组下标时当心unsigned-signed"><a href="#char作为数组下标时当心unsigned-signed" class="headerlink" title="char作为数组下标时当心unsigned/signed"></a>char作为数组下标时当心unsigned/signed</h3><p>当char类型用作数组下标时，一定要先转<code>unsigned char</code>（因为<code>char</code>通常是有符号的(依赖实现定义)）。不能直接转<code>int</code>或<code>unsigned int</code>，会数组下标越界。</p>
+<h3 id="Be-Careful-with-signed-unsigned-when-using-char-as-an-array-index"><a href="#Be-Careful-with-signed-unsigned-when-using-char-as-an-array-index" class="headerlink" title="Be Careful with signed/unsigned when using char as an array index"></a>Be Careful with signed/unsigned when using char as an array index</h3><p>When the char type is used as an array index, it should first be converted to <code>unsigned char</code> (since <code>char</code> is usually signed (implementation-defined)). It cannot be directly converted to <code>int</code> or <code>unsigned int</code>, or it will lead to array index out of bounds.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="type">char</span> ch=<span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %u %d&quot;</span>, (<span class="type">int</span>)ch, (<span class="type">unsigned</span>)ch, (<span class="type">unsigned</span> <span class="type">char</span>)ch);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output</span></span><br><span class="line"><span class="comment">// -1 4294967295 255</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="struct-tag-5-float"><a href="#struct-tag-5-float" class="headerlink" title="struct tag (*[5])(float)"></a>struct tag (*[5])(float)</h3><p>The type designated as ‘‘struct tag (*[5])(float)’’  has type ‘‘array of pointer to function returning struct tag’’. The array has length five and the function has a single parameter of type float. Its type category is array.</p>
-<h3 id="new一个指针数组"><a href="#new一个指针数组" class="headerlink" title="new一个指针数组"></a>new一个指针数组</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> TEN=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> A=<span class="built_in">new</span> (<span class="built_in">void</span>(*[TEN])(<span class="type">void</span>));</span><br><span class="line"><span class="keyword">delete</span>[] A;</span><br></pre></td></tr></table></figure>
+<h3 id="struct-tag-5-float"><a href="#struct-tag-5-float" class="headerlink" title="struct tag (*[5])(float)"></a>struct tag (*[5])(float)</h3><p>The type designated as ‘struct tag (*[5])(float)’ has type ‘array of pointer to function returning struct tag’. The array has length five and the function has a single parameter of type float. Its type category is array.</p>
+<h3 id="new-a-pointer-array"><a href="#new-a-pointer-array" class="headerlink" title="new a pointer array"></a>new a pointer array</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> TEN=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> A=<span class="built_in">new</span> (<span class="built_in">void</span>(*[TEN])(<span class="type">void</span>));</span><br><span class="line"><span class="keyword">delete</span>[] A;</span><br></pre></td></tr></table></figure>
 
-<h3 id="底层-Low-Level-const和顶层-Top-Level-const"><a href="#底层-Low-Level-const和顶层-Top-Level-const" class="headerlink" title="底层(Low-Level)const和顶层(Top-Level)const"></a>底层(Low-Level)const和顶层(Top-Level)const</h3><p><strong>底层const(Low-Level const)</strong>:表示指针所指的对象是一个常量。<br><strong>顶层const(Top-Level const)</strong>:表示指针本身是个常量。顶层const可以表示任意的对象是常量，这对于任何数据类型都适用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> *<span class="type">const</span> ivalp_1=&amp;ival; <span class="comment">// 不能改变ivalp_1的值，这是一个顶层const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ci=<span class="number">42</span>;  <span class="comment">// 不能改变ci的值，这是一个顶层const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *ivalp_2=&amp;ci;;  <span class="comment">// 允许改变ivalp_2的值，这是一个底层const</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *<span class="type">const</span> ivalp_3=ivalp_2; <span class="comment">//靠右的是顶层const，靠左的是底层const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;ref=ci;  <span class="comment">// 用于声明引用的const都是底层const</span></span><br></pre></td></tr></table></figure>
+<h3 id="Low-Level-const-and-Top-Level-const"><a href="#Low-Level-const-and-Top-Level-const" class="headerlink" title="Low-Level const and Top-Level const"></a>Low-Level const and Top-Level const</h3><p><strong>Low-Level const</strong>: Indicates that the object pointed to by the pointer is a constant.<br><strong>Top-Level const</strong>: Indicates that the pointer itself is constant. Top-Level const can indicate that any object is constant, which applies to any data type.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> *<span class="type">const</span> ivalp_1=&amp;ival; <span class="comment">// cannot change ivalp_1&#x27;s value, this is a top-level const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ci=<span class="number">42</span>;  <span class="comment">// cannot change ci&#x27;s value, this is a top-level const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *ivalp_2=&amp;ci;  <span class="comment">// allows changing ivalp_2&#x27;s value, this is a low-level const</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *<span class="type">const</span> ivalp_3=ivalp_2; <span class="comment">// right is top-level const, left is low-level const</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;ref=ci;  <span class="comment">// the const used for declaring references are all low-level const</span></span><br></pre></td></tr></table></figure>
 
-<p>其实我有一个简单的区分的方法：看const修饰的右边是什么。</p>
+<p>Actually, I have a simple method to distinguish: look at what is modified by const on the right.</p>
 <ul>
-<li>对于<code>int const *x=std::nullput;</code>，const修饰的是<code>*x</code>，因为x是指针，我们就暂且把此处的<code>*x</code>当做解引用来看，他就代表x所指向的对象，则它就是<code>底层const</code>。</li>
-<li>反之亦然，<code>int * const x=std::nullptr;</code>，因为const修饰的是指针x，所以它就是<code>顶层const</code>。</li>
+<li>For <code>int const *x=std::nullput;</code>, const modifies <code>*x</code>, as x is a pointer, we temporarily regard <code>*x</code> as dereference, which represents the object pointed to by x, so it is <code>low-level const</code>.</li>
+<li>Conversely, <code>int * const x=std::nullptr;</code>, as const modifies the pointer x, so it is <code>top-level const</code>.</li>
 </ul>
-<h3 id="在构造函数中传递this指针的危害"><a href="#在构造函数中传递this指针的危害" class="headerlink" title="在构造函数中传递this指针的危害"></a>在构造函数中传递this指针的危害</h3><p>如果我们在构造函数中将this指针传递给其它的函数，有可能会引发这样的问题：</p>
+<h3 id="Dangers-of-Passing-this-Pointer-in-Constructor"><a href="#Dangers-of-Passing-this-Pointer-in-Constructor" class="headerlink" title="Dangers of Passing this Pointer in Constructor"></a>Dangers of Passing this Pointer in Constructor</h3><p>If we pass the this pointer to other functions within a constructor, we could run into such problems:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">no_opt</span><span class="params">(C*)</span></span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span> &#123;</span><br><span class="line">	<span class="type">int</span> c;</span><br><span class="line">	<span class="built_in">C</span>() : <span class="built_in">c</span>(<span class="number">0</span>) &#123; <span class="built_in">no_opt</span>(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>看起来上面的代码似乎没什么问题，但是我们构造一个<code>const C</code>的时候，有可能会出现这样的问题：</p>
+<p>The code above seems fine, but when we construct a <code>const C</code>, it could lead to the following issue:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> C cobj;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">no_opt</span><span class="params">(C* cptr)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = cobj.c * <span class="number">100</span>; <span class="comment">// value of cobj.c is unspecified</span></span><br><span class="line">	cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">	cout &lt;&lt; cobj.c * <span class="number">100</span> <span class="comment">// value of cobj.c is unspecified</span></span><br><span class="line">	&lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的代码会编译通过并可以在<code>no_opt</code>中修改常量对象<code>cobj</code>的成员<code>i</code>的值。<br>在一个常量对象构造的时候将其this指针传递给其他函数，这意味着我们可以修改该常量中的对象的值，这是不合乎标准的。</p>
+<p>The above code will compile successfully and can modify the constant object’s member <code>i</code> in <code>no_opt</code>.<br>Passing the this pointer of a constant object to other functions during construction means we could modify the values of the objects in that constant, which is not standard-compliant.</p>
 <blockquote>
 <p>During the construction of a const object, if the value of the object or any of its subobjects is accessed through a glvalue that is not obtained, directly or indirectly, from the constructor’s this pointer, the value of the object or subobject thus obtained is unspecified.</p>
 </blockquote>
-<p>所以还是不要在构造函数中写将this指针传递出类外的东西(最好还是只初始化数据成员吧)…</p>
-<h3 id="获取当前执行程序的绝对路径"><a href="#获取当前执行程序的绝对路径" class="headerlink" title="获取当前执行程序的绝对路径"></a>获取当前执行程序的绝对路径</h3><p>有两种方法：</p>
+<p>Therefore, it’s best not to write anything that passes the this pointer outside the class in the constructor (it’s better to just initialize data members)…</p>
+<h3 id="Get-the-Absolute-Path-of-the-Current-Executing-Program"><a href="#Get-the-Absolute-Path-of-the-Current-Executing-Program" class="headerlink" title="Get the Absolute Path of the Current Executing Program"></a>Get the Absolute Path of the Current Executing Program</h3><p>There are two methods:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;direct.h&gt;</span></span></span><br><span class="line"><span class="type">char</span> buffer[MAXPATH];</span><br><span class="line"><span class="built_in">getcwd</span>(buffer, MAXPATH);</span><br><span class="line">cout&lt;&lt;buffer&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
-<p>这种方法有一个弊端：如果将可执行程序添加至系统的PATH路径，则获取到的是在某个目录执行时该目录的路径。</p>
-<p>另一种方法是通过Windows API来获取：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> string <span class="title">getTheProgramAbsPath</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">    TCHAR exeFullPath[MAX_PATH]; <span class="comment">// MAX_PATH在WINDEF.h中定义了，等于260</span></span><br><span class="line">    <span class="built_in">memset</span>(exeFullPath,<span class="number">0</span>,MAX_PATH);</span><br><span class="line">    <span class="built_in">GetModuleFileName</span>(<span class="literal">NULL</span>,exeFullPath,MAX_PATH);</span><br><span class="line">    <span class="keyword">return</span> &#123;exeFullPath&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在此种方式下不论是否将该程序添加至系统的PATH路径以及在何处执行，都会获取该可执行程序在系统中存放的绝对路径。</p>
-<h3 id="一个奇葩的using用法"><a href="#一个奇葩的using用法" class="headerlink" title="一个奇葩的using用法"></a>一个奇葩的using用法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> foofunc=<span class="built_in">void</span>(<span class="type">int</span>);</span><br><span class="line">foofunc foo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">foo</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的代码里：</p>
+<p>This method has a drawback: if the executable program is added to the system PATH, it will obtain the path of the directory where it is executed.</p>
+<p>Another method is through the Windows API:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> string <span class="title">getTheProgramAbsPath</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">    TCHAR exeFullPath[MAX_PATH]; <span class="comment">// MAX_PATH is defined in WINDEF.h, equal to 260</span></span><br><span class="line">    <span class="built_in">memset</span>(exeFullPath,<span class="number">0</span>,MAX_PATH);</span><br><span class="line">    <span class="built_in">GetModuleFileName</span>(<span class="literal">NULL</span>,exeFullPath,MAX_PATH);</span><br><span class="line">    <span class="keyword">return</span> &#123;exeFullPath&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In this way, irrespective of whether the program has been added to the system’s PATH or where it is executed, it will get the absolute path where this executable program is stored in the system.</p>
+<h3 id="A-Quirky-Usage-of-using"><a href="#A-Quirky-Usage-of-using" class="headerlink" title="A Quirky Usage of using"></a>A Quirky Usage of using</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> foofunc=<span class="built_in">void</span>(<span class="type">int</span>);</span><br><span class="line">foofunc foo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">foo</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In the code above:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foofunc foo;</span><br></pre></td></tr></table></figure>
-<p>是声明一个函数foo，可以看一下目标文件中的符号信息(省去无关细节)：</p>
+<p>is declaring a function foo; looking at the symbol information in the target file (omitting unrelated details):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ clang++ -c testusing.cc -o testusing.o -std=c++11</span><br><span class="line">$ llvm-nm testusing.o</span><br><span class="line">-------- U _Z3fooi</span><br><span class="line">-------- U __main</span><br><span class="line">-------- U atexit</span><br><span class="line">00000050 T main</span><br></pre></td></tr></table></figure>
-<p>通过<strong>gcc</strong>工具链中的<code>c++filt</code>可以还原目标文件中的符号：</p>
+<p>Through the <code>c++filt</code> toolchain in <strong>gcc</strong>, the symbols in the object file can be restored:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ c++filt _Z3fooi</span><br><span class="line">foo(int)</span><br></pre></td></tr></table></figure>
-<p>但是并没有定义，直接链接会产生未定义错误。</p>
-<h3 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">123</span>;</span><br><span class="line"><span class="type">int</span> &amp;&amp;y=x+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>其IR代码为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 使用值<span class="number">123</span>初始化x</span><br><span class="line">%<span class="number">2</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">store i32 <span class="number">123</span>, i32* %<span class="number">2</span>, align <span class="number">4</span></span><br><span class="line"><span class="meta"># y</span></span><br><span class="line">%<span class="number">3</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line"># 存放x+<span class="number">1</span>产生的临时对象</span><br><span class="line">%<span class="number">4</span> = alloca i32, align <span class="number">4</span></span><br><span class="line"></span><br><span class="line"># 计算x+<span class="number">1</span></span><br><span class="line">%<span class="number">5</span> = load i32, i32* %<span class="number">2</span>, align <span class="number">4</span></span><br><span class="line">%<span class="number">6</span> = add nsw i32 %<span class="number">5</span>, <span class="number">1</span></span><br><span class="line"><span class="meta"># x+1 产生一个临时值，该临时值为%4</span></span><br><span class="line">store i32 %<span class="number">6</span>, i32* %<span class="number">4</span>, align <span class="number">4</span></span><br><span class="line"></span><br><span class="line"># 将该临时值的地址绑定到%<span class="number">3</span>(y)</span><br><span class="line">store i32* %<span class="number">4</span>, i32** %<span class="number">3</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>从而实现非拷贝行为，其行为类似于将一个对象的地址赋值给一个指针。<br>其实右值引用的作用就是给临时对象续命——将引用绑定到一个临时对象，不会带来额外的拷贝操作。<br>实现同样续命行为的还有<code>const T&amp;</code>：</p>
+<p>However, it is not defined, and directly linking will produce an undefined error.</p>
+<h3 id="Rvalue-References"><a href="#Rvalue-References" class="headerlink" title="Rvalue References"></a>Rvalue References</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">123</span>;</span><br><span class="line"><span class="type">int</span> &amp;&amp;y=x+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>The IR code is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Using value <span class="number">123</span> to initialize x</span><br><span class="line">%<span class="number">2</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">store i32 <span class="number">123</span>, i32* %<span class="number">2</span>, align <span class="number">4</span></span><br><span class="line"><span class="meta"># y</span></span><br><span class="line">%<span class="number">3</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line"># Storing the temporary object created by x+<span class="number">1</span></span><br><span class="line">%<span class="number">4</span> = alloca i32, align <span class="number">4</span></span><br><span class="line"></span><br><span class="line"># Calculate x+<span class="number">1</span></span><br><span class="line">%<span class="number">5</span> = load i32, i32* %<span class="number">2</span>, align <span class="number">4</span></span><br><span class="line">%<span class="number">6</span> = add nsw i32 %<span class="number">5</span>, <span class="number">1</span></span><br><span class="line"><span class="meta"># x+1 creates a temporary value that is %4</span></span><br><span class="line">store i32 %<span class="number">6</span>, i32* %<span class="number">4</span>, align <span class="number">4</span></span><br><span class="line"></span><br><span class="line"># Bind the address of the temporary value to %<span class="number">3</span> (y)</span><br><span class="line">store i32* %<span class="number">4</span>, i32** %<span class="number">3</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>This realizes a non-copy behavior, which behaves similarly to assigning an object’s address to a pointer.<br>In fact, the purpose of rvalue references is to give temporary objects a longer lifespan—binding a reference to a temporary object without incurring any additional copy operations.<br>The same effect can be achieved with <code>const T&amp;</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">123</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;y=x+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>和上面的示例在LLVM下会产生一模一样的IR代码。</p>
-<h3 id="一个数组名字例子"><a href="#一个数组名字例子" class="headerlink" title="一个数组名字例子"></a>一个数组名字例子</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p=(<span class="type">int</span>*)(&amp;a+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d,%d\n&quot;</span>,*(a+<span class="number">1</span>),*(p<span class="number">-1</span>));</span><br><span class="line"><span class="comment">// output: 2,5</span></span><br></pre></td></tr></table></figure>
+<p>And the above example will generate identical IR code under LLVM.</p>
+<h3 id="An-Array-Name-Example"><a href="#An-Array-Name-Example" class="headerlink" title="An Array Name Example"></a>An Array Name Example</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p=(<span class="type">int</span>*)(&amp;a+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d,%d\n&quot;</span>,*(a+<span class="number">1</span>),*(p<span class="number">-1</span>));</span><br><span class="line"><span class="comment">// output: 2,5</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="到底有几种传参方式"><a href="#到底有几种传参方式" class="headerlink" title="到底有几种传参方式"></a>到底有几种传参方式</h3><p>大多数人都觉得在C++函数中有以下三种传参方式：</p>
+<h3 id="How-Many-Passing-Methods-Are-There"><a href="#How-Many-Passing-Methods-Are-There" class="headerlink" title="How Many Passing Methods Are There?"></a>How Many Passing Methods Are There?</h3><p>Most people think there are the following three passing methods in C++ functions:</p>
 <ul>
-<li>**传值(by value)**：形参的值是实参的拷；</li>
-<li>**传引用(by reference)**：形参是实参的别名；</li>
-<li>**传指针(by pointer)**：传递指向对象的指针给形参；</li>
+<li><strong>Pass by value</strong>: the value of the parameter is a copy of the actual parameter;</li>
+<li><strong>Pass by reference</strong>: the parameter is an alias for the actual parameter;</li>
+<li><strong>Pass by pointer</strong>: passing a pointer to the object to the parameter;</li>
 </ul>
-<p>实际上，C++中只有两种传参方式：<strong>传值</strong>、<strong>传引用</strong>。<br>因为**传指针(by pointer)**也是传值的一种，形参的值也只是实参的一份拷贝，只是形参和实参都是指针而已。<br>在C++之父的著作：《The C++ Programming Language 4th》中写道：</p>
+<p>In fact, in C++, there are only two passing methods: <strong>pass by value</strong>, <strong>pass by reference</strong>.<br>Because <strong>passing by pointer</strong> is also a type of <strong>pass by value</strong>, the parameter value is merely a copy of the actual argument; they are just both pointers.<br>In the father of C++’s book: <em>The C++ Programming Language 4th Edition</em>, it states:</p>
 <blockquote>
-<p>Unless a formal argument(parameter) is a reference, a copy of the actual argument is passed to the function.</p>
+<p>Unless a formal argument (parameter) is a reference, a copy of the actual argument is passed to the function.</p>
 </blockquote>
-<p><strong>传指针(by value)**只是一种利用</strong>指针<strong>的性质来实现防止拷贝带来开销的一种技巧，而不是一种</strong>传参方式**。</p>
-<h3 id="定义拷贝-赋值与析构函数的三大法则"><a href="#定义拷贝-赋值与析构函数的三大法则" class="headerlink" title="定义拷贝/赋值与析构函数的三大法则"></a>定义拷贝/赋值与析构函数的三大法则</h3><blockquote>
-<p>如果一个类需要自定义的拷贝构造函数、拷贝赋值操作符、析构函数中的任何一个，那么他往往同时需要三者。</p>
+<p><strong>Passing by pointer</strong> is merely a technique that utilizes the properties of <strong>pointers</strong> to avoid the overhead of copying, rather than a <strong>passing method</strong>.</p>
+<h3 id="The-Three-Laws-of-Defining-Copy-Assign-and-Destructor-Functions"><a href="#The-Three-Laws-of-Defining-Copy-Assign-and-Destructor-Functions" class="headerlink" title="The Three Laws of Defining Copy/Assign and Destructor Functions"></a>The Three Laws of Defining Copy/Assign and Destructor Functions</h3><blockquote>
+<p>If a class requires a user-defined copy constructor, copy assignment operator, or destructor, it typically needs all three.</p>
 </blockquote>
-<p>因为编译器生成的隐式定义的<code>copy constructor</code>和<code>operator=</code>语义是逐成员拷贝(memberwise)的，所以如果编译器生成的操作不能够满足类的拷贝需求(比如类成员是具有管理某种资源的句柄)，使用编译器的隐式定义会具有<strong>浅拷贝</strong>，导致两个对象进入某种共享状态。</p>
+<p>The compiler-generated implicit definitions of <code>copy constructor</code> and <code>operator=</code> have a memberwise copy semantic, so if the operations generated by the compiler cannot meet the class’s copying needs (for instance, if class members are handles managing some resources), using the compiler’s implicit definitions will lead to <strong>shallow copies</strong>, causing two objects to enter some shared state.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="built_in">A</span>():<span class="built_in">memory</span>(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">getMemory</span><span class="params">(std::<span class="type">size_t</span> memSize)</span></span>&#123;</span><br><span class="line">    memory=(<span class="type">char</span>*)<span class="built_in">malloc</span>(memSize);</span><br><span class="line">  &#125;</span><br><span class="line">  ~<span class="built_in">A</span>()&#123; <span class="built_in">free</span>(memory); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="type">char</span>* memory;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A x;</span><br><span class="line">  x.<span class="built_in">getMemory</span>(<span class="number">12</span>);</span><br><span class="line">  A y;</span><br><span class="line">  y=x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果使用编译器生成的语义会使对象x和y内部共享一块内存，所以需要用户自己定义拷贝构造和拷贝赋值操作符，同样的原因，因为类成员持有某种资源，也需要用户自定义一个析构函数。</p>
-<h3 id="引用的实现"><a href="#引用的实现" class="headerlink" title="引用的实现"></a>引用的实现</h3><p>C++标准中是这么解释引用的:</p>
+<p>If the compiler-generated semantics are used, it would make objects x and y internally share a block of memory, so the user needs to define the copy constructor and copy assignment operator. For the same reason, when class members hold some resources, a user-defined destructor is also necessary.</p>
+<h3 id="Implementation-of-References"><a href="#Implementation-of-References" class="headerlink" title="Implementation of References"></a>Implementation of References</h3><p>The C++ standard explains references like this:</p>
 <blockquote>
-<p>**[ISO/IEC 14882:2014 §8.3.2]**A reference can be thought of as a name of an object.</p>
+<p><strong>[ISO/IEC 14882:2014 §8.3.2]</strong> A reference can be thought of as a name of an object.</p>
 </blockquote>
-<p>但是标准中并没有要求应该如何实现引用这一行为(这一点标准中比比皆是)，不过多数编译器底层都是使用指针来实现的。<br>看下列代码：</p>
+<p>However, the standard doesn’t require how this reference behavior should be implemented (which is often seen in the standard), but most compilers implement it using pointers in practice.<br>Consider the following code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">123</span>;</span><br><span class="line"><span class="type">int</span> &amp;ra=a;</span><br><span class="line"><span class="type">int</span> *pc=&amp;a;</span><br></pre></td></tr></table></figure>
-<p>然后将其编译为LLVM-IR来看编译器的实际行为：</p>
+<p>Then compiling it to LLVM-IR to see the actual behavior of the compiler:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">2</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">%<span class="number">3</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">%<span class="number">4</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line"></span><br><span class="line">store i32 <span class="number">123</span>, i32* %<span class="number">2</span>, align <span class="number">4</span></span><br><span class="line">store i32* %<span class="number">2</span>, i32** %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line">store i32* %<span class="number">2</span>, i32** %<span class="number">4</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，指针和引用在经过编译器之后具有了完全相同的行为。</p>
-<h3 id="适当使用编译器生成操作"><a href="#适当使用编译器生成操作" class="headerlink" title="适当使用编译器生成操作"></a>适当使用编译器生成操作</h3><p>在<a href="https://imzlp.com/posts/21790">特殊成员函数的隐式声明及其标准行为</a>中提到了编译器会隐式生成和定义六种特殊的成员函数的行为。<br>因为编译器生成的<code>copy constructor</code>和<code>copy assigment operator</code>均是具有<code>memberwise</code>行为的。所以当我们撰写的类使用浅拷贝可以满足的时候(值语义)，没必要自己费劲再写相关的操作了，因为编译器生成的和你手写的一样好，而且不容易出错。</p>
+<p>It’s evident that pointers and references have the exact same behavior post-compilation.</p>
+<h3 id="Appropriately-Using-Compiler-Generated-Operations"><a href="#Appropriately-Using-Compiler-Generated-Operations" class="headerlink" title="Appropriately Using Compiler-Generated Operations"></a>Appropriately Using Compiler-Generated Operations</h3><p>In <a target="_blank" rel="noopener" href="https://imzlp.com/posts/21790">Implicit Declarations and Functions of Special Member Functions</a>, it was mentioned that the compiler implicitly generates and defines the behavior of six kinds of special member functions.<br>Since the generated <code>copy constructor</code> and <code>copy assignment operator</code> both have a <code>memberwise</code> behavior, when the class we write can satisfy shallow copying (value semantics), there’s no need to write relevant operations at the expense, because the compiler-generated ones are just as good as your hand-written versions, and they are less error-prone.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">int</span> a=<span class="number">0</span>,<span class="type">double</span> b=<span class="number">0.0</span>):<span class="built_in">x</span>(a),<span class="built_in">y</span>(b)&#123;&#125;</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">const</span> A&amp;)=<span class="keyword">default</span>;</span><br><span class="line">  A&amp; <span class="keyword">operator</span>=(<span class="type">const</span> A&amp;)=<span class="keyword">default</span>;</span><br><span class="line">  <span class="type">int</span> x;</span><br><span class="line">  <span class="type">double</span> y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>虽然当你没有显式定义一个<code>copy constructor</code>和<code>copy assignment operator</code>的时候编译器就会隐式定义，但是最好还是自己手动使用<code>=delete</code>指定。<br>编译器生成的和下面这样手写的一样：</p>
+<p>Although when you haven’t explicitly defined a <code>copy constructor</code> and <code>copy assignment operator</code>, the compiler will implicitly define them, it’s still better to manually use <code>=delete</code> to specify.<br>The compiler-generated version is exactly the same as the hand-written:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">int</span> a=<span class="number">0</span>,<span class="type">double</span> b=<span class="number">0.0</span>):<span class="built_in">x</span>(a),<span class="built_in">y</span>(b)&#123;&#125;</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">const</span> A&amp; r)&#123;</span><br><span class="line">    x=r.x;</span><br><span class="line">    y=r.y;</span><br><span class="line">  &#125;</span><br><span class="line">  A&amp; <span class="keyword">operator</span>=(<span class="type">const</span> A&amp; r)&#123;</span><br><span class="line">    x=r.x;</span><br><span class="line">    y=r.y;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="type">int</span> x;</span><br><span class="line">  <span class="type">double</span> y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>显然自己手写容易出错，这样的行为可以放心地交给编译器来做。</p>
-<h3 id="STL容器中压缩容量和真正地删除元素"><a href="#STL容器中压缩容量和真正地删除元素" class="headerlink" title="STL容器中压缩容量和真正地删除元素"></a>STL容器中压缩容量和真正地删除元素</h3><p>摘取自《C++编程规范：101条规则/准则与最佳实践》第82条。</p>
-<p><strong>压缩容器容量：</strong>swap魔术</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; x&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(x).<span class="built_in">swap</span>(x); <span class="comment">// 压缩到合适容量</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;().<span class="built_in">swap</span>(x); <span class="comment">// 删除所有元素</span></span><br></pre></td></tr></table></figure>
+<p>It’s obvious that hand-writing is prone to error; this behavior can be safely handed over to the compiler.</p>
+<h3 id="Compressing-Capacity-and-Truly-Erasing-Elements-in-STL-Containers"><a href="#Compressing-Capacity-and-Truly-Erasing-Elements-in-STL-Containers" class="headerlink" title="Compressing Capacity and Truly Erasing Elements in STL Containers"></a>Compressing Capacity and Truly Erasing Elements in STL Containers</h3><p>Taken from <em>C++ Programming Standards: 101 Rules/Guidelines and Best Practices</em> Rule 82.</p>
+<p><strong>Compressing Container Capacity:</strong> The swap trick</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; x&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(x).<span class="built_in">swap</span>(x); <span class="comment">// Compress to appropriate capacity</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;().<span class="built_in">swap</span>(x); <span class="comment">// Erase all elements</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>真正地删除元素：</strong><code>std::remove</code>并不执行删除操作<br>STL中的<code>std::remove</code>算法并不真正地从容器中删除元素。因为<code>std::remove</code>属于<code>algorithm</code>，只操作迭代器范围，不掉用容器的成员函数，所以是不可能从容器中真正删除元素的。<br>来看一下SGISTL中的实现(SGISTL的实现太老，没有用到<code>std::move</code>)：</p>
+<p><strong>Truly Deleting Elements:</strong> <code>std::remove</code> does not perform the delete operation<br>The <code>std::remove</code> algorithm in STL does not truly remove elements from containers. As <code>std::remove</code> belongs to <code>algorithm</code>, it only operates over iterator ranges, not invoking container’s member functions, hence it cannot actually delete elements from containers.<br>Let’s take a look at the implementation in SGISTL (the implementation is a bit old and does not utilize <code>std::move</code>):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_InputIter</span>, <span class="keyword">class</span> <span class="title class_">_Tp</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> _InputIter <span class="title">find</span><span class="params">(_InputIter __first, _InputIter __last, <span class="type">const</span> _Tp&amp; __val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (__first != __last &amp;&amp; !(*__first == __val))</span><br><span class="line">    ++__first;</span><br><span class="line">  <span class="keyword">return</span> __first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_InputIter</span>, <span class="keyword">class</span> <span class="title class_">_OutputIter</span>, <span class="keyword">class</span> <span class="title class_">_Tp</span>&gt;</span><br><span class="line"><span class="function">_OutputIter <span class="title">remove_copy</span><span class="params">(_InputIter __first, _InputIter __last, _OutputIter __result, <span class="type">const</span> _Tp&amp; __value)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> ( ; __first != __last; ++__first)</span><br><span class="line">    <span class="keyword">if</span> (!(*__first == __value)) &#123;</span><br><span class="line">      *__result = *__first;</span><br><span class="line">      ++__result;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span> __result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_ForwardIter</span>, <span class="keyword">class</span> <span class="title class_">_Tp</span>&gt;</span><br><span class="line"><span class="function">_ForwardIter <span class="title">remove</span><span class="params">(_ForwardIter __first, _ForwardIter __last, <span class="type">const</span> _Tp&amp; __value)</span> </span>&#123;</span><br><span class="line">  __first = <span class="built_in">find</span>(__first, __last, __value);</span><br><span class="line">  _ForwardIter __i = __first;</span><br><span class="line">  <span class="keyword">return</span> __first == __last ? __first : <span class="built_in">remove_copy</span>(++__i, __last, __first, __value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到它们只是移动元素的位置，并非真正地把元素删除，只是将不该删除的元素移动到容器的首部，然后返回新的结束位置迭代器。<br>等于是把删除的部分移动到了元素的尾部，所以要<strong>真正地删除</strong>容器中所有匹配的元素，需要用<a target="_blank" rel="noopener" href="http://en.wikipedia.com/wiki/Erase-remove_idiom">erase-remove</a>惯用法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.<span class="built_in">erase</span>(std::<span class="built_in">remove</span>(c.<span class="built_in">begin</span>(),c.<span class="built_in">end</span>(),value),c.<span class="built_in">end</span>()); <span class="comment">// 删除std::remove之后容器尾部的元素</span></span><br></pre></td></tr></table></figure>
+<p>You can see they are merely moving elements’ positions, not actually deleting the elements; they simply move the elements that should not be deleted to the front of the container, then return the new ending position iterator.<br>Effectively, the deleted portion is moved to the back of the element, so to <strong>truly delete</strong> all matching elements from the container, the <em>erase-remove</em> idiom needs to be used:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.<span class="built_in">erase</span>(std::<span class="built_in">remove</span>(c.<span class="built_in">begin</span>(),c.<span class="built_in">end</span>(),value),c.<span class="built_in">end</span>()); <span class="comment">// Deletes elements at the tail of the container after std::remove</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="谨防隐藏基类中的重载函数"><a href="#谨防隐藏基类中的重载函数" class="headerlink" title="谨防隐藏基类中的重载函数"></a>谨防隐藏基类中的重载函数</h3><p>如果基类中具有一个虚函数<code>func</code>但是其又重载了几个非虚函数：</p>
+<h3 id="Beware-of-Hiding-Overloaded-Functions-in-Base-Classes"><a href="#Beware-of-Hiding-Overloaded-Functions-in-Base-Classes" class="headerlink" title="Beware of Hiding Overloaded Functions in Base Classes"></a>Beware of Hiding Overloaded Functions in Base Classes</h3><p>If there is a virtual function <code>func</code> in the base class but it also overloads several non-virtual functions:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;A::func()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;A::func(int)&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">double</span>)</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;A::func(double)&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span>:<span class="keyword">public</span> A&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;B::func()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>如果我们想要在B对象中使用非虚版本的func函数：</p>
+<p>If we want to use the non-virtual version of the func function inside a B object:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B x;</span><br><span class="line"><span class="comment">// error: too many arguments to function call, expected 0, have 1</span></span><br><span class="line">x.<span class="built_in">func</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
-<p>这是由于派生类在覆盖基类虚函数的时候会隐藏其他的重载函数，需要在B中显式引入：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span>:<span class="keyword">public</span> A&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;B::func()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将A::func的重载函数引入作用域</span></span><br><span class="line">  <span class="keyword">using</span> A::func;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>This is because when the derived class overrides the base class virtual function, it hides the other overloaded functions, which needs to be explicitly brought into scope in B:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span>:<span class="keyword">public</span> A&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;B::func()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Bring in the overloaded functions from A::func</span></span><br><span class="line">  <span class="keyword">using</span> A::func;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="宏的替代"><a href="#宏的替代" class="headerlink" title="宏的替代"></a>宏的替代</h3><p>宏在预处理阶段被替换，此时C++的语法和语义规则还没有生效，宏能做的只是简单的文本替换，是极其生硬的工具。<br>C++中几乎从不需要宏。可以用const和enum定义易于理解的常量。用inline来避免函数调用的开销，用template指定函数系列和类型系列，用namespace避免名字冲突。<br>除非在条件编译时使用，其他任何时候都没有在C++中使用宏的正当理由。</p>
-<h3 id="类内内存分配函数"><a href="#类内内存分配函数" class="headerlink" title="类内内存分配函数"></a>类内内存分配函数</h3><p>C++中类内的内存分配函数都是static成员函数:</p>
+<h3 id="Macro-Alternatives"><a href="#Macro-Alternatives" class="headerlink" title="Macro Alternatives"></a>Macro Alternatives</h3><p>Macros are replaced in the preprocessing stage, at which point C++’s syntax and semantic rules are not yet effective; thus, macros can only perform simple text replacement, making them extremely blunt tools.<br>Macros are almost never required in C++. You can define understandable constants using const and enum. Use inline to avoid the overhead of function calls, templates to specify series of functions and types, and namespaces to avoid name conflicts.<br>Unless used for conditional compilation, there is no legitimate reason to use macros in C++.</p>
+<h3 id="Class-Memory-Allocation-Functions"><a href="#Class-Memory-Allocation-Functions" class="headerlink" title="Class Memory Allocation Functions"></a>Class Memory Allocation Functions</h3><p>In C++, memory allocation functions for classes are all static member functions:</p>
 <blockquote>
 <p>Any allocation function for a class T is a static member (even if not explicitly declared static).</p>
 </blockquote>
-<p>这意味着<code>operator new</code>/<code>operator delete</code>以及<code>operator new[]</code>/<code>operator delete[]</code>都被隐式声明为static成员函数。</p>
-<h3 id="异常安全"><a href="#异常安全" class="headerlink" title="异常安全"></a>异常安全</h3><ol>
-<li>析构函数、operator new、operator delete不能抛出异常</li>
-<li>swap操作不要抛出异常</li>
-<li>首先做任何可能抛出异常的事情(但不会改变对象重要的状态)，然后以不会抛出异常的操作结束。</li>
-<li>当一个被抛出的异常从throw表达式奔向catch子句时，所经之路任何一个部分执行的函数比从执行堆栈上移除其激活记录之前，都必须清理他所控制的任何资源。</li>
-<li>不要在代码中插入可能会提前返回的代码、调用可能会抛出异常的函数、或者插入其他一些东西从而使得函数末尾的资源释放得不到执行。</li>
+<p>This means <code>operator new</code>/<code>operator delete</code> and <code>operator new[]</code>/<code>operator delete[]</code> are implicitly declared as static member functions.</p>
+<h3 id="Exception-Safety"><a href="#Exception-Safety" class="headerlink" title="Exception Safety"></a>Exception Safety</h3><ol>
+<li>Destructors, operator new, operator delete must not throw exceptions.</li>
+<li>Swap operations should not throw exceptions.</li>
+<li>First do anything that may throw exceptions (but will not change important states of the object), and then end with operations that will not throw exceptions.</li>
+<li>When an exception is thrown from a throw expression towards a catch clause, any function executing in the path must manage to clean up any resources they control before removing their activation record from the execution stack.</li>
+<li>Do not insert code that might cause an early return, calls to functions that might throw exceptions, or other actions that will prevent the resource release at the end of the function.</li>
 </ol>
-<h3 id="指向类成员函数指针的cv版本"><a href="#指向类成员函数指针的cv版本" class="headerlink" title="指向类成员函数指针的cv版本"></a>指向类成员函数指针的cv版本</h3><p>如果我们具有一个类A，其中具有重载的成员函数func，而他们的区别只是该成员函数是否为const，那么在定义一个指向成员函数的指针时如何分别？</p>
+<h3 id="cv-Versions-of-Pointers-to-Class-Member-Functions"><a href="#cv-Versions-of-Pointers-to-Class-Member-Functions" class="headerlink" title="cv Versions of Pointers to Class Member Functions"></a>cv Versions of Pointers to Class Member Functions</h3><p>If we have a class A with overloaded member functions func that differ only by whether the member function is const, how do we define a pointer to the member function separately?</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span><span class="type">const</span></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;void func()const&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;void func()&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>如果我们只是创建一个A::func的指针，指向的只是non-const版本。</p>
+<p>If we just create a pointer to A::func, it points to the non-const version.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span>(A::*funcP)()=&amp;A::func;</span><br></pre></td></tr></table></figure>
-<p>想要指定const的版本，就需要在声明时指定const:</p>
+<p>To specify the const version, you must indicate const in the declaration:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span>(A::*funcConstP)()<span class="type">const</span>=&amp;A::func;</span><br></pre></td></tr></table></figure>
-<p>对于const的A对象要使用const的版本，对于non-const的A对象要使用non-const的版本，不能混用。</p>
+<p>For const A objects, use the const version, and for non-const A objects, use the non-const version; they cannot be mixed.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> A x;</span><br><span class="line">(x.*funcP)(); <span class="comment">// ERROR!</span></span><br><span class="line">(x.*funcConstP)(); <span class="comment">// OK</span></span><br><span class="line"></span><br><span class="line">A y;</span><br><span class="line">(y.*funcConstP)(); <span class="comment">// ERROR!</span></span><br><span class="line">(y.*funcP)(); <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="STL中的compare操作实现"><a href="#STL中的compare操作实现" class="headerlink" title="STL中的compare操作实现"></a>STL中的compare操作实现</h3><p>不同于C语言中的宏，使用C++中的模板(template)和谓词(Predicates)可以很轻易的写出泛型的比较操作。<br>在宏定义中还要注意参数的副作用，因为宏只是简单的替换，比如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a,b) a&gt;=b?a:b;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">MAX</span>(--a,++b);</span><br><span class="line"><span class="comment">// 被替换为</span></span><br><span class="line">--a&gt;=++b?--a:++b;</span><br></pre></td></tr></table></figure>
-<p>但是这个宏的实际操作这并不是我们所期待的行为。<br>幸运的是，在C++中我们可以使用模板来避免这种丑陋的宏定义，而且也可以传递一个自定义的谓词来实现我们的判断行为：</p>
+<h3 id="Compare-Operation-Implementation-in-STL"><a href="#Compare-Operation-Implementation-in-STL" class="headerlink" title="Compare Operation Implementation in STL"></a>Compare Operation Implementation in STL</h3><p>Unlike C language macros, utilizing templates and predicates in C++ allows writing generic compare operations easily.<br>In a macro definition, care must be taken regarding parameter side effects, as macros are merely replacements, such as:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a,b) a&gt;=b?a:b;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">MAX</span>(--a,++b);</span><br><span class="line"><span class="comment">// Replaced with</span></span><br><span class="line">--a&gt;=++b?--a:++b;</span><br></pre></td></tr></table></figure>
+<p>But this macro’s actual operation does not yield the behavior we expect.<br>Fortunately, in C++, we can avoid such ugly macro definitions using templates and also provide a custom predicate to realize our judgment behavior:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Compare</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function">  <span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T&amp; a,<span class="type">const</span> T&amp; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&lt;b?<span class="literal">false</span>:<span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T, <span class="keyword">class</span> Compare&gt;</span></span><br><span class="line"><span class="function"><span class="type">const</span> T&amp; <span class="title">max</span><span class="params">(<span class="type">const</span> T&amp; a, <span class="type">const</span> T&amp; b, Compare comp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">comp</span>(a, b)) ? b : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="计算性构造函数"><a href="#计算性构造函数" class="headerlink" title="计算性构造函数"></a>计算性构造函数</h3><p>在某些情况下，可以通过创建构造函数的方式来提高成员函数的执行效率。</p>
+<h3 id="Computational-Constructor"><a href="#Computational-Constructor" class="headerlink" title="Computational Constructor"></a>Computational Constructor</h3><p>In certain cases, creating a constructor can improve the execution efficiency of member functions.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">String</span>&#123;</span><br><span class="line">  <span class="built_in">String</span>(<span class="type">const</span> <span class="type">char</span>* init);</span><br><span class="line">  <span class="type">const</span> String <span class="keyword">operator</span>+(<span class="type">const</span> String&amp; l,<span class="type">const</span> String&amp; r)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(l.s_,r.s_);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="built_in">String</span>(<span class="type">const</span> <span class="type">char</span>* a,<span class="type">const</span> <span class="type">char</span>* b)&#123;</span><br><span class="line">    s_=<span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(a)+<span class="built_in">strlen</span>(b)+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">strcat</span>(<span class="built_in">strcpy</span>(s_,a),b);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="type">char</span> *s_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="自身类型的using成员"><a href="#自身类型的using成员" class="headerlink" title="自身类型的using成员"></a>自身类型的using成员</h3><p>怎么定义一个类的成员中能够获取到当前类类型的成员呢？<br>可以用下面这种写法：</p>
+<h3 id="Using-Members-of-Its-Own-Type"><a href="#Using-Members-of-Its-Own-Type" class="headerlink" title="Using Members of Its Own Type"></a>Using Members of Its Own Type</h3><p>How can a member of a class access the current class type?<br>This can be written as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">base</span>&#123;</span><br><span class="line">  <span class="keyword">using</span> selfType=T;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">foo</span>:<span class="keyword">public</span> base&lt;foo&lt;T&gt;&gt;&#123;&#125;;</span><br></pre></td></tr></table></figure>
-<p>虽然有种强行搞事的意思…</p>
-<h3 id="std-vector的随机访问"><a href="#std-vector的随机访问" class="headerlink" title="std::vector的随机访问"></a>std::vector的随机访问</h3><p><code>std::vector</code>可以随机访问，因为其重载了<code>[]</code>操作符，以及有<code>at</code>成员函数，则通常有下面两种方式：</p>
+<p>Though it has a somewhat forced feel…</p>
+<h3 id="Random-Access-in-std-vector"><a href="#Random-Access-in-std-vector" class="headerlink" title="Random Access in std::vector"></a>Random Access in std::vector</h3><p><code>std::vector</code> allows random access because it overloads the <code>[]</code> operator and has <code>at</code> member function, thus typically we would have the following two ways:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(std::vector&lt;T&gt;&amp; x)</span></span>&#123;</span><br><span class="line">  x[<span class="number">0</span>];</span><br><span class="line">  x.<span class="built_in">at</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上两种随机访问方式有什么区别？</p>
+<p>What are the differences between these two random access methods?</p>
 <blockquote>
-<p>顺序容器的<code>at(size_type)</code>要求有范围检查。<br>**[ISO/IEC 14882:2014]**The member function at() provides bounds-checked access to container elements. at() throws <code>out_of_range</code> if n &gt;= a.size().<br>而<code>operator[]</code>标准中则没有任何要求。</p>
+<p>Sequential container’s <code>at(size_type)</code> requires range checks.<br><strong>[ISO/IEC 14882:2014]</strong> The member function at() provides bounds-checked access to container elements. at() throws <code>out_of_range</code> if n &gt;= a.size().<br>However, the standard doesn’t impose any requirements on <code>operator[]</code>.</p>
 </blockquote>
-<p>可以来看一下一些STL实现(<a target="_blank" rel="noopener" href="https://www.sgi.com/tech/stl/download.html">SGISTL</a>)的源码对<code>std::vector</code>的<code>operator[size_type]</code>和<code>at(size_type)</code>的实现：<br>首先是<code>at(size_type)</code>的实现</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// at(size_type)的实现</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __STL_THROW_RANGE_ERRORS</span></span><br><span class="line"><span class="type">void</span> _M_range_check(size_type __n) <span class="type">const</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (__n &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">size</span>())</span><br><span class="line">    __stl_throw_range_error(<span class="string">&quot;vector&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">reference <span class="title">at</span><span class="params">(size_type __n)</span></span></span><br><span class="line"><span class="function">  </span>&#123; _M_range_check(__n); <span class="keyword">return</span> (*<span class="keyword">this</span>)[__n]; &#125;</span><br><span class="line"><span class="function">const_reference <span class="title">at</span><span class="params">(size_type __n)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function">  </span>&#123; _M_range_check(__n); <span class="keyword">return</span> (*<span class="keyword">this</span>)[__n]; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* __STL_THROW_RANGE_ERRORS */</span></span></span><br><span class="line">​````</span><br><span class="line">再看一下`<span class="keyword">operator</span>[](size_type)`的实现：</span><br><span class="line"></span><br><span class="line">​```cpp</span><br><span class="line"><span class="comment">// operator[](size_type)的实现</span></span><br><span class="line">reference <span class="keyword">operator</span>[](size_type __n) &#123; <span class="keyword">return</span> *(<span class="built_in">begin</span>() + __n); &#125;</span><br><span class="line">const_reference <span class="keyword">operator</span>[](size_type __n) <span class="type">const</span> &#123; <span class="keyword">return</span> *(<span class="built_in">begin</span>() + __n); &#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到，<code>operator[]</code>的随机访问并没有范围检查。<br>即上面的问题：</p>
+<p>Let’s take a look at some STL implementations (<a target="_blank" rel="noopener" href="https://www.sgi.com/tech/stl/download.html">SGISTL</a>) to see how <code>std::vector</code> implements <code>operator[size_type]</code> and <code>at(size_type)</code>:<br>First, the implementation of <code>at(size_type)</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Implementation of at(size_type)</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __STL_THROW_RANGE_ERRORS</span></span><br><span class="line"><span class="type">void</span> _M_range_check(size_type __n) <span class="type">const</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (__n &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">size</span>())</span><br><span class="line">    __stl_throw_range_error(<span class="string">&quot;vector&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">reference <span class="title">at</span><span class="params">(size_type __n)</span></span></span><br><span class="line"><span class="function">  </span>&#123; _M_range_check(__n); <span class="keyword">return</span> (*<span class="keyword">this</span>)[__n]; &#125;</span><br><span class="line"><span class="function">const_reference <span class="title">at</span><span class="params">(size_type __n)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function">  </span>&#123; _M_range_check(__n); <span class="keyword">return</span> (*<span class="keyword">this</span>)[__n]; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* __STL_THROW_RANGE_ERRORS */</span></span></span><br></pre></td></tr></table></figure>
+<p>Now look at the implementation of <code>operator[](size_type)</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Implementation of operator[](size_type)</span></span><br><span class="line">reference <span class="keyword">operator</span>[](size_type __n) &#123; <span class="keyword">return</span> *(<span class="built_in">begin</span>() + __n); &#125;</span><br><span class="line">const_reference <span class="keyword">operator</span>[](size_type __n) <span class="type">const</span> &#123; <span class="keyword">return</span> *(<span class="built_in">begin</span>() + __n); &#125;</span><br></pre></td></tr></table></figure>
+<p>As you can see, there is no range check in the random access of <code>operator[]</code>.<br>Thus the questions:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x[<span class="number">0</span>];</span><br><span class="line">x.<span class="built_in">at</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>这两个的区别在于，若x不为空，则行为相同，若x为空，<code>x.at(0)</code>则抛出一个<code>std::out_of_range</code>异常(C++标准规定)，而<code>x[0]</code>是未定义行为。</p>
-<h3 id="注意typedef和-define的区别"><a href="#注意typedef和-define的区别" class="headerlink" title="注意typedef和#define的区别"></a>注意typedef和#define的区别</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span>* INTPTR;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INTPTR2 int*</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  INTPTR i1,i2;</span><br><span class="line">  INTPTR2 i3,i4;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还是直接从IR代码来看吧：</p>
+<p>These two differ in that if x is non-empty, the behavior is the same; if x is empty, <code>x.at(0)</code> would throw an <code>std::out_of_range</code> exception (as required by C++ standards), while <code>x[0]</code> would lead to undefined behavior.</p>
+<h3 id="Note-the-Difference-Between-typedef-and-define"><a href="#Note-the-Difference-Between-typedef-and-define" class="headerlink" title="Note the Difference Between typedef and #define"></a>Note the Difference Between typedef and #define</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span>* INTPTR;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INTPTR2 int*</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  INTPTR i1,i2;</span><br><span class="line">  INTPTR2 i3,i4;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Let’s directly see the IR code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">6</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">%<span class="number">7</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">%<span class="number">8</span> = alloca i32*, align <span class="number">8</span></span><br><span class="line">%<span class="number">9</span> = alloca i32, align <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p>注意%9不是i32*,它是一个i32的对象。<br>因为<code>#define</code>只是编译期的简单替换，所以在编译期展开的时候会变成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> INTPTR2 int*</span></span><br><span class="line">INTPTR2 i3,i4;</span><br><span class="line"><span class="comment">// 编译期展开</span></span><br><span class="line"><span class="type">int</span>* i3,i4;</span><br></pre></td></tr></table></figure>
-<p>即只有i3为int*，而i4则为int</p>
-<h3 id="为什么const-object不是编译时常量？"><a href="#为什么const-object不是编译时常量？" class="headerlink" title="为什么const object不是编译时常量？"></a>为什么const object不是编译时常量？</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> y[x]=&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里是可以的，在编译器优化下x会直接被替换为10<br>其中间代码如下:</p>
+<p>Note that %9 is not i32*, it’s an i32 object.<br>Because <code>#define</code> is merely a simple replacement at compile time, it expands during compilation as follows:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> INTPTR2 int*</span></span><br><span class="line">INTPTR2 i3,i4;</span><br><span class="line"><span class="comment">// Compile-time expansion</span></span><br><span class="line"><span class="type">int</span>* i3,i4;</span><br></pre></td></tr></table></figure>
+<p>Thus, only i3 is of type <code>int*</code>, while i4 is of type <code>int</code>.</p>
+<h3 id="Why-const-Object-Is-Not-a-Compile-Time-Constant"><a href="#Why-const-Object-Is-Not-a-Compile-Time-Constant" class="headerlink" title="Why const Object Is Not a Compile-Time Constant?"></a>Why const Object Is Not a Compile-Time Constant?</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> y[x]=&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>This is permissible; during compiler optimization, x will be replaced directly with 10.<br>The intermediate code is as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">6</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">%<span class="number">7</span> = alloca [<span class="number">10</span> x i32], align <span class="number">16</span></span><br><span class="line">store i32 <span class="number">10</span>, i32* %<span class="number">6</span>, align <span class="number">4</span></span><br><span class="line">%<span class="number">8</span> = bitcast [<span class="number">10</span> x i32]* %<span class="number">7</span> to i8*</span><br><span class="line">call <span class="type">void</span> @llvm.memset.p0i8.<span class="built_in">i64</span>(i8* %<span class="number">8</span>, i8 <span class="number">0</span>, i64 <span class="number">40</span>, i32 <span class="number">16</span>, i1 <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<p>可以看到%7的分配时并没有使用%6，所以也并不依赖x这个对象，这个对象是编译期已知的。<br>但是，当我们这么写时，又如何编译期可知：</p>
+<p>It can be seen that %7’s allocation does not use %6, hence it does not depend on x, and this object is known at compile-time.<br>However, consider when we write:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">cin&gt;&gt;x;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> y=x;</span><br><span class="line"><span class="comment">// error: variable-sized object may not be initialized</span></span><br><span class="line"><span class="type">int</span> z[y]=&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里是由于编译器扩展，所以C++也支持VLA。但是可以看到const是没办法为编译期常量的。</p>
-<h3 id="继承层次中的类查询"><a href="#继承层次中的类查询" class="headerlink" title="继承层次中的类查询"></a>继承层次中的类查询</h3><p>在类的继承层次中，可能具有同一基类的几个不同的派生类，他们之间可能又互相继承派生出了几个继承层次，在这样的情况下如何判断某一个派生类的层次中是否继承自某一个类呢？</p>
-<p>可以使用<code>dynamic_cast</code>来实现我们的要求，关于C++类型转换的部分可以看我之前的一篇文章：<a href="https://imzlp.com/posts/27258/">详细分析下C++中的类型转换</a>。下面先来看一下<code>dynamic_cast</code>在C++标准中的描述(<code>ISO/IEC 14882:2014</code>)：</p>
+<p>Here it’s because of compiler extensions, so C++ also supports VLA. But we can see that const cannot serve as a compile-time constant.</p>
+<h3 id="Class-Query-in-Inheritance-Hierarchies"><a href="#Class-Query-in-Inheritance-Hierarchies" class="headerlink" title="Class Query in Inheritance Hierarchies"></a>Class Query in Inheritance Hierarchies</h3><p>In class inheritance hierarchies, several different derived classes may have the same base class; they might mutually inherit, resulting in several inherited levels. How do we check whether a certain derived class in a hierarchy inherits from a certain class?</p>
+<p>We can use <code>dynamic_cast</code> to achieve our requirement. For an overview of C++ type conversions, you can check out my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/27258/">A Detailed Analysis of Type Conversions in C++</a>. Here’s a description of <code>dynamic_cast</code> in the C++ standard (ISO/IEC 14882:2014):</p>
 <blockquote>
 <p>The result of the expression <code>dynamic_cast&lt;T&gt;(v)</code> is the result of converting the expression v to type T. T shall be a pointer or reference to a complete class type, or “pointer to cv void.” The dynamic_cast operator shall not cast away constness (5.2.11).</p>
 </blockquote>
-<p>If C is the class type to which T points or refers, the run-time check logically executes as follows:</p>
+<p>If C is the class type to which T points or refers, the runtime check logically executes as follows:</p>
 <ul>
-<li>If, in the most derived object pointed (referred) to by v, v points (refers) to a public base class subobject of a C object, and if only one object of type C is derived from the subobject pointed (referred) to by v the result points (refers) to that C object.</li>
-<li>Otherwise, if v points (refers) to a public base class subobject of the most derived object, and the type of the most derived object has a base class, of type C, that is unambiguous and public, the result points (refers) to the C subobject of the most derived object.</li>
-<li>Otherwise, the run-time check fails.</li>
+<li>If, in the most derived object pointed (referred) to by v, v points (refers) to a public base class subobject of a C object, and if only one object of type C is derived from the subobject pointed (referred) to by v, the result points (refers) to that C object.</li>
+<li>Otherwise, if v points (refers) to a public base class subobject of the most derived object, and the type of the most derived object has a base class of type C that is unambiguous and public, the result points (refers) to the C subobject of the most derived object.</li>
+<li>Otherwise, the runtime check fails.</li>
 </ul>
 <blockquote>
 <p>The value of a failed cast to pointer type is the null pointer value of the required result type. A failed cast to reference type throws an exception (15.1) of a type that would match a handler (15.3) of type <code>std::bad_cast</code> (18.7.2).</p>
 </blockquote>
-<p>所以我们可以对继承层次中的类指针执行<code>dynamic_cast</code>转换，检查是否转换成功，从而判断继承层次中是否具有某个类。<br>一个代码的例子如下：</p>
+<p>Thus, we can execute <code>dynamic_cast</code> conversion on class pointers in inheritance hierarchies to check the conversion success, hence determining whether a certain class exists in a derived class hierarchy.<br>Here’s a code example:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">draw</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">virtual</span> ~<span class="built_in">Shape</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Roll</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">roll</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;Roll:roll()&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">  <span class="keyword">virtual</span> ~<span class="built_in">Roll</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Circle</span>:<span class="keyword">public</span> Shape,<span class="keyword">public</span> Roll&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Circle::draw&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">roll</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Circle::roll()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  ~<span class="built_in">Circle</span>()=<span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Square</span>:<span class="keyword">public</span> Shape&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Square::draw()&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">  ~<span class="built_in">Square</span>()=<span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Shape *a=<span class="keyword">new</span> Square;</span><br><span class="line">  Roll *b=<span class="built_in">dynamic_cast</span>&lt;Roll*&gt;(a);</span><br><span class="line">  <span class="keyword">if</span>(b!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;no&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> a;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: no</span></span><br></pre></td></tr></table></figure>
-<p>可以从上面的代码中看到类<code>Circle</code>的继承层次：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_circle.webp"><br>以及<code>Square</code>的继承层次：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_square.webp"></p>
-<p>上面的继承层次比较简单，但是当假设我们不知道<code>Cricle</code>和<code>Square</code>的具体继承层次时，那么如何判断<code>Square</code>中是否存在某一基类(如<code>Roll</code>)？<br>解决的办法就是上面提到的<code>dynamic_cast</code>！通过<code>dynamic_cast</code>转换到转换到要检测的类类型的指针，如果转换成功，<code>dynamic_cast</code>会返回从源类型转换到目标类型的指针，如果失败会返回一个空指针(之所以不使用引用是因为要处理可能会抛出异常的潜在威胁)，这种转换并非是向上或者向下转型，而是横向转型。所以我们需要对<code>dynamic_cast</code>返回的对象(指针)作一个判断就可以得出检测目标的继承层次中是否存在要检测的类型。</p>
-<p>但是，我觉得这种行为的适用场景十分狭窄，在良好的类设计下几乎不必要，如果你对自己所实现的类层次感到失控，那一定是糟糕的设计。</p>
-<h3 id="在使用列表初始化时initializer-List构造函数优先级比普通构造函数高"><a href="#在使用列表初始化时initializer-List构造函数优先级比普通构造函数高" class="headerlink" title="在使用列表初始化时initializer_List构造函数优先级比普通构造函数高"></a>在使用列表初始化时initializer_List构造函数优先级比普通构造函数高</h3><p>先来介绍两个基本概念：</p>
+<p>From the code above, you can see the inheritance hierarchy of the <code>Circle</code> class:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_circle.webp"><br>And the inheritance hierarchy of the <code>Square</code> class:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/1756/struct_square.webp"></p>
+<p>The above inheritance hierarchies are quite simple, but if we assume we are unaware of the specific inheritance hierarchies of <code>Circle</code> and <code>Square</code>, how do we determine whether <code>Square</code> contains a certain base class (like <code>Roll</code>)?<br>The solution, as mentioned above, is to utilize <code>dynamic_cast</code>! By converting to the class type that we want to check for in the hierarchy, if the conversion is successful, <code>dynamic_cast</code> returns a pointer converted from the source type to the target type; if it fails, it will return a null pointer (the reason for not using references is that we want to handle the potential threat of exceptions). This conversion is neither an upward nor downward conversion, but rather a lateral conversion. Hence, we need to check the object (pointer) returned by <code>dynamic_cast</code> to ascertain whether the detected type exists in the inheritance hierarchy.</p>
+<p>However, I feel that this behavior applies only to very narrow scenarios and is rarely necessary in well-designed classes; if you feel overwhelmed by your class hierarchy, it is surely a poor design.</p>
+<h3 id="In-list-initialization-the-initializer-list-constructor-takes-precedence-over-the-ordinary-constructor"><a href="#In-list-initialization-the-initializer-list-constructor-takes-precedence-over-the-ordinary-constructor" class="headerlink" title="In list initialization, the initializer_list constructor takes precedence over the ordinary constructor"></a>In list initialization, the initializer_list constructor takes precedence over the ordinary constructor</h3><p>First, let’s introduce two basic concepts:</p>
 <blockquote>
 <p><strong>List-initialization</strong> is initialization of an object or reference from a braced-init-list. Such an initializer is called an <strong>initializer list</strong>.<br><strong>initializer-list constructor</strong>: A constructor is an <em>initializer-list constructor</em> if its first parameter is of type <code>std::initializer_list&lt;E&gt;</code> or reference to possibly cv-qualified <code>std::initializer_list&lt;E&gt;</code> for some type E, and either there are no other parameters or else all other parameters have default arguments (8.3.6).</p>
 </blockquote>
@@ -637,15 +640,15 @@
 <li>If no viable initializer-list constructor is found, overload resolution is performed again, where the<br>candidate functions are all the constructors of the class T and the argument list consists of the elements of the initializer list.</li>
 </ul>
 <p>If the initializer list has no elements and T has a default constructor, the first phase is omitted. In copy-list-initialization, if an explicit constructor is chosen, the initialization is ill-formed. [ Note: This differs from other situations (13.3.1.3, 13.3.1.4), where only converting constructors are considered for copy-initialization. This restriction only applies if this initialization is part of the final result of overload resolution. - end note ]</p>
-<p>简单翻译一下就是，当一个类的构造函数参数是列表初始化(list-initialized)，构造函数的重载解析分为了两步</p>
+<p>In simpler terms, when the constructor parameters of a class are list-initialized, the overload resolution of the constructor is divided into two steps:</p>
 <ol>
-<li>优先匹配构造函数参数为<em>initializer-list</em>的构造函数，如果<em>initializer-list</em>中没有元素并且该类有一个默认构造函数，则该步被忽略。</li>
-<li>如果找不到可行的<em>initializer-list</em>构造函数，重新执行重载解析，候选函数为Class的所有构造函数，参数列表由<em>initializer-list</em>的元素组成。</li>
+<li>First, it tries to match with the constructor whose parameter is an <em>initializer-list</em>. If the <em>initializer-list</em> has no elements and the class has a default constructor, this step is omitted.</li>
+<li>If no viable <em>initializer-list</em> constructor is found, overload resolution is performed again, with all constructors of the class as candidates, and the argument list consists of the elements of the <em>initializer-list</em>.</li>
 </ol>
-<p>注意：在拷贝列表初始化(copy-initializer_list)语义下，如果重载决议选中的是explicit构造函数，则程序使ill-formed.</p>
+<p>Note: In the context of copy list initialization (copy-initializer_list), if an explicit constructor is selected, the program becomes ill-formed.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="built_in">A</span>(<span class="type">int</span>,<span class="type">int</span>)</span><br><span class="line"> &#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;A(int,int)&quot;</span>&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">explicit</span> <span class="title">A</span><span class="params">(std::initializer_list&lt;<span class="type">int</span>&gt;)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;explicit A(std::initializer_list&lt;int&gt;)&quot;</span>&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> A a=&#123;<span class="number">1</span>,<span class="number">2</span>&#125;; <span class="comment">// error: chosen constructor is explicit in copy-initialization</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而且，explicit构造函数会禁用<code>initializer list</code>的隐式转换。</p>
+<p>Moreover, explicit constructors will disable the implicit conversion of the <code>initializer list</code>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">const</span> A&amp;)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="built_in">A</span>()</span><br><span class="line"> &#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;A()&quot;</span>&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">explicit</span> <span class="title">A</span><span class="params">(std::initializer_list&lt;<span class="type">int</span>&gt;)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;explicit A(std::initializer_list&lt;int&gt;)&quot;</span>&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="built_in">f</span>(&#123;<span class="number">1</span>,<span class="number">2</span>&#125;); <span class="comment">// ERROR due to explicit (no implicit type conversion allowed)</span></span><br><span class="line"> <span class="built_in">f</span>(A&#123;<span class="number">1</span>,<span class="number">2</span>&#125;); <span class="comment">// OK</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -657,7 +660,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -667,7 +670,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -677,39 +680,39 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/1756/" target="_blank">C/C++中的编程技巧及其概念</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/03/05 01:21<br/>
+             <span>Title:</span><a href="/posts/1756/" target="_blank">Programming skills and concepts in C/C++</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/03/05 01:21<br/>
              
-              <span>更新时间:</span>2017/04/28 07:53<br/>
+              <span>Update Date:</span>2017/04/28 07:53<br/>
              
-             <span>本文字数:</span><span class="page-count">11k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">19k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/1756/" target="_blank" title="C/C++中的编程技巧及其概念">https://imzlp.com/posts/1756/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/1756/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/1756/" target="_blank" title="Programming skills and concepts in C/C++">https://en.imzlp.com/posts/1756/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/1756/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -731,12 +734,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/2658/" rel="prev" title="fork/vfork浅谈">
-      <i class="fa fa-chevron-left"></i> fork/vfork浅谈
+    <a href="/posts/2658/" rel="prev" title="A brief discussion on fork/vfork">
+      <i class="fa fa-chevron-left"></i> A brief discussion on fork/vfork
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/15272/" rel="next" title="main原型考证及程序终止行为">
-      main原型考证及程序终止行为 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/15272/" rel="next" title="Main-function prototype verification and program termination behavior">
+      Main-function prototype verification and program termination behavior <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -807,25 +810,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E9%99%90%E5%AE%9A%E6%95%B0%E7%BB%84%E5%AE%9E%E5%8F%82%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">显式限定数组实参的元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E6%94%B9%E5%8F%98%E7%AC%A6%E5%8F%B7%E7%9A%84%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%AD%A6%E5%91%8A"><span class="nav-number">2.</span> <span class="nav-text">启用编译器的改变符号的隐式类型转换警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%AD%E8%A8%80-assert"><span class="nav-number">3.</span> <span class="nav-text">断言(assert)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%95%88%E7%9A%84%E5%BC%95%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">无效的引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%BC%95%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">数组的引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E9%A1%B6%E5%B1%82cv-qualifier"><span class="nav-number">6.</span> <span class="nav-text">忽略函数参数的顶层cv-qualifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#char%E4%BD%9C%E4%B8%BA%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E6%97%B6%E5%BD%93%E5%BF%83unsigned-signed"><span class="nav-number">7.</span> <span class="nav-text">char作为数组下标时当心unsigned&#x2F;signed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-tag-5-float"><span class="nav-number">8.</span> <span class="nav-text">struct tag (*[5])(float)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new%E4%B8%80%E4%B8%AA%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84"><span class="nav-number">9.</span> <span class="nav-text">new一个指针数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82-Low-Level-const%E5%92%8C%E9%A1%B6%E5%B1%82-Top-Level-const"><span class="nav-number">10.</span> <span class="nav-text">底层(Low-Level)const和顶层(Top-Level)const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BC%A0%E9%80%92this%E6%8C%87%E9%92%88%E7%9A%84%E5%8D%B1%E5%AE%B3"><span class="nav-number">11.</span> <span class="nav-text">在构造函数中传递this指针的危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">12.</span> <span class="nav-text">获取当前执行程序的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%A5%87%E8%91%A9%E7%9A%84using%E7%94%A8%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">一个奇葩的using用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number">14.</span> <span class="nav-text">右值引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%90%8D%E5%AD%97%E4%BE%8B%E5%AD%90"><span class="nav-number">15.</span> <span class="nav-text">一个数组名字例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B0%E5%BA%95%E6%9C%89%E5%87%A0%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F"><span class="nav-number">16.</span> <span class="nav-text">到底有几种传参方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8B%B7%E8%B4%9D-%E8%B5%8B%E5%80%BC%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%89%E5%A4%A7%E6%B3%95%E5%88%99"><span class="nav-number">17.</span> <span class="nav-text">定义拷贝&#x2F;赋值与析构函数的三大法则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">18.</span> <span class="nav-text">引用的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E5%BD%93%E4%BD%BF%E7%94%A8%E7%BC%96%E8%AF%91%E5%99%A8%E7%94%9F%E6%88%90%E6%93%8D%E4%BD%9C"><span class="nav-number">19.</span> <span class="nav-text">适当使用编译器生成操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STL%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%8E%8B%E7%BC%A9%E5%AE%B9%E9%87%8F%E5%92%8C%E7%9C%9F%E6%AD%A3%E5%9C%B0%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">20.</span> <span class="nav-text">STL容器中压缩容量和真正地删除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%A8%E9%98%B2%E9%9A%90%E8%97%8F%E5%9F%BA%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0"><span class="nav-number">21.</span> <span class="nav-text">谨防隐藏基类中的重载函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8F%E7%9A%84%E6%9B%BF%E4%BB%A3"><span class="nav-number">22.</span> <span class="nav-text">宏的替代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%86%85%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%87%BD%E6%95%B0"><span class="nav-number">23.</span> <span class="nav-text">类内内存分配函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%AE%89%E5%85%A8"><span class="nav-number">24.</span> <span class="nav-text">异常安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E7%9A%84cv%E7%89%88%E6%9C%AC"><span class="nav-number">25.</span> <span class="nav-text">指向类成员函数指针的cv版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STL%E4%B8%AD%E7%9A%84compare%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0"><span class="nav-number">26.</span> <span class="nav-text">STL中的compare操作实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%80%A7%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">27.</span> <span class="nav-text">计算性构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%BA%AB%E7%B1%BB%E5%9E%8B%E7%9A%84using%E6%88%90%E5%91%98"><span class="nav-number">28.</span> <span class="nav-text">自身类型的using成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-vector%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="nav-number">29.</span> <span class="nav-text">std::vector的随机访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8Ftypedef%E5%92%8C-define%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">30.</span> <span class="nav-text">注意typedef和#define的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88const-object%E4%B8%8D%E6%98%AF%E7%BC%96%E8%AF%91%E6%97%B6%E5%B8%B8%E9%87%8F%EF%BC%9F"><span class="nav-number">31.</span> <span class="nav-text">为什么const object不是编译时常量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1%E4%B8%AD%E7%9A%84%E7%B1%BB%E6%9F%A5%E8%AF%A2"><span class="nav-number">32.</span> <span class="nav-text">继承层次中的类查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E4%BD%BF%E7%94%A8%E5%88%97%E8%A1%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6initializer-List%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BC%98%E5%85%88%E7%BA%A7%E6%AF%94%E6%99%AE%E9%80%9A%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E9%AB%98"><span class="nav-number">33.</span> <span class="nav-text">在使用列表初始化时initializer_List构造函数优先级比普通构造函数高</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Explicitly-Qualified-Number-of-Elements-for-Array-Arguments"><span class="nav-number">1.</span> <span class="nav-text">Explicitly Qualified Number of Elements for Array Arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enabling-Compiler-Warnings-for-Implicit-Type-Conversions-Changing-Sign"><span class="nav-number">2.</span> <span class="nav-text">Enabling Compiler Warnings for Implicit Type Conversions Changing Sign</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assert"><span class="nav-number">3.</span> <span class="nav-text">Assert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Invalid-References"><span class="nav-number">4.</span> <span class="nav-text">Invalid References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References-to-Arrays"><span class="nav-number">5.</span> <span class="nav-text">References to Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ignoring-Top-Level-cv-qualifier-of-Function-Parameters"><span class="nav-number">6.</span> <span class="nav-text">Ignoring Top-Level cv-qualifier of Function Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Be-Careful-with-signed-unsigned-when-using-char-as-an-array-index"><span class="nav-number">7.</span> <span class="nav-text">Be Careful with signed&#x2F;unsigned when using char as an array index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-tag-5-float"><span class="nav-number">8.</span> <span class="nav-text">struct tag (*[5])(float)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new-a-pointer-array"><span class="nav-number">9.</span> <span class="nav-text">new a pointer array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Low-Level-const-and-Top-Level-const"><span class="nav-number">10.</span> <span class="nav-text">Low-Level const and Top-Level const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dangers-of-Passing-this-Pointer-in-Constructor"><span class="nav-number">11.</span> <span class="nav-text">Dangers of Passing this Pointer in Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-the-Absolute-Path-of-the-Current-Executing-Program"><span class="nav-number">12.</span> <span class="nav-text">Get the Absolute Path of the Current Executing Program</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Quirky-Usage-of-using"><span class="nav-number">13.</span> <span class="nav-text">A Quirky Usage of using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rvalue-References"><span class="nav-number">14.</span> <span class="nav-text">Rvalue References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#An-Array-Name-Example"><span class="nav-number">15.</span> <span class="nav-text">An Array Name Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Many-Passing-Methods-Are-There"><span class="nav-number">16.</span> <span class="nav-text">How Many Passing Methods Are There?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Three-Laws-of-Defining-Copy-Assign-and-Destructor-Functions"><span class="nav-number">17.</span> <span class="nav-text">The Three Laws of Defining Copy&#x2F;Assign and Destructor Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-of-References"><span class="nav-number">18.</span> <span class="nav-text">Implementation of References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appropriately-Using-Compiler-Generated-Operations"><span class="nav-number">19.</span> <span class="nav-text">Appropriately Using Compiler-Generated Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compressing-Capacity-and-Truly-Erasing-Elements-in-STL-Containers"><span class="nav-number">20.</span> <span class="nav-text">Compressing Capacity and Truly Erasing Elements in STL Containers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Beware-of-Hiding-Overloaded-Functions-in-Base-Classes"><span class="nav-number">21.</span> <span class="nav-text">Beware of Hiding Overloaded Functions in Base Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Macro-Alternatives"><span class="nav-number">22.</span> <span class="nav-text">Macro Alternatives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Memory-Allocation-Functions"><span class="nav-number">23.</span> <span class="nav-text">Class Memory Allocation Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exception-Safety"><span class="nav-number">24.</span> <span class="nav-text">Exception Safety</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cv-Versions-of-Pointers-to-Class-Member-Functions"><span class="nav-number">25.</span> <span class="nav-text">cv Versions of Pointers to Class Member Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compare-Operation-Implementation-in-STL"><span class="nav-number">26.</span> <span class="nav-text">Compare Operation Implementation in STL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computational-Constructor"><span class="nav-number">27.</span> <span class="nav-text">Computational Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Members-of-Its-Own-Type"><span class="nav-number">28.</span> <span class="nav-text">Using Members of Its Own Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Access-in-std-vector"><span class="nav-number">29.</span> <span class="nav-text">Random Access in std::vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note-the-Difference-Between-typedef-and-define"><span class="nav-number">30.</span> <span class="nav-text">Note the Difference Between typedef and #define</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-const-Object-Is-Not-a-Compile-Time-Constant"><span class="nav-number">31.</span> <span class="nav-text">Why const Object Is Not a Compile-Time Constant?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Query-in-Inheritance-Hierarchies"><span class="nav-number">32.</span> <span class="nav-text">Class Query in Inheritance Hierarchies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-list-initialization-the-initializer-list-constructor-takes-precedence-over-the-ordinary-constructor"><span class="nav-number">33.</span> <span class="nav-text">In list initialization, the initializer_list constructor takes precedence over the ordinary constructor</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -833,19 +836,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -883,10 +886,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -913,9 +916,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -924,12 +924,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -1082,7 +1082,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/1756/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/1756/',]
       });
       });
   </script>
@@ -1105,12 +1105,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

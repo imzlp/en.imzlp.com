@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,24 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在部分SDK的对接中，有些平台除了DLL外并没有提供导入库来供我们使用，那就只能使用代码中加载DLL的办法来调用DLL内的函数，本文来记录一下两种用法，再分析一下优劣。">
+  <meta name="description" content="In some SDK integrations, some platforms provide only the DLL without an import library for us to use. In this case, we can only use code to load the DLL to call functions within it. This article docu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态链接库的使用：加载和链接">
-<meta property="og:url" content="https://imzlp.com/posts/18949/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在部分SDK的对接中，有些平台除了DLL外并没有提供导入库来供我们使用，那就只能使用代码中加载DLL的办法来调用DLL内的函数，本文来记录一下两种用法，再分析一下优劣。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Use of dynamic link libraries: loading and linking">
+<meta property="og:url" content="https://en.imzlp.com/posts/18949/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In some SDK integrations, some platforms provide only the DLL without an import library for us to use. In this case, we can only use code to load the DLL to call functions within it. This article docu">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-10-15T20:50:34.000Z">
 <meta property="article:modified_time" content="2018-10-15T20:50:34.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="动态链接库">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/18949/">
+<link rel="canonical" href="https://en.imzlp.com/posts/18949/">
 
 
 <script id="page-configurations">
@@ -45,11 +45,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>动态链接库的使用：加载和链接 | 循迹研究室</title>
+  <title>Use of dynamic link libraries: loading and linking | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -89,7 +89,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -99,7 +99,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,7 +110,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -129,24 +129,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -156,7 +156,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -166,7 +166,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -174,14 +174,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -189,26 +189,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -224,7 +224,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -243,7 +243,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -262,12 +262,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -285,27 +285,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/18949/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/18949/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          动态链接库的使用：加载和链接<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2018-10-15-18949.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/18949/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Use of dynamic link libraries: loading and linking<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2018-10-15-18949.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/18949/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Use of dynamic link libraries: loading and linking</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">动态链接库的使用：加载和链接</sub>
           </div>
         
 
@@ -314,47 +314,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2018-10-15 20:50 20:50:34:50" itemprop="dateCreated datePublished" datetime="2018-10-15T20:50:34+00:00">2018-10-15 20:50</time>
+              <time title="Created: 2018-10-15 20:50 20:50:34:50" itemprop="dateCreated datePublished" datetime="2018-10-15T20:50:34+00:00">2018-10-15 20:50</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/18949/" class="post-meta-item leancloud_visitors" data-flag-title="动态链接库的使用：加载和链接" title="阅读次数">
+            <span id="/posts/18949/" class="post-meta-item leancloud_visitors" data-flag-title="Use of dynamic link libraries: loading and linking" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>7 mins.</span>
             </span>
 
         </div>
@@ -366,53 +366,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在部分SDK的对接中，有些平台除了DLL外并没有提供导入库来供我们使用，那就只能使用代码中加载DLL的办法来调用DLL内的函数，本文来记录一下两种用法，再分析一下优劣。</p>
+        <p>In some SDK integrations, some platforms provide only the DLL without an import library for us to use. In this case, we can only use code to load the DLL to call functions within it. This article documents two usage methods and analyzes their pros and cons.</p>
 <span id="more"></span>
-<p>我们可以先生成一个测试的DLL：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// max_dll.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MAX_DLL_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_DLL_H_</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*dll_max)</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// max_dll.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> lhs, <span class="type">int</span> rhs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> lhs&gt;rhs?lhs:rhs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>之所以使用<code>extern &quot;C&quot;</code>的原因是在于C++的<code>name mangling</code>是<code>implementation-define</code>的，简单来说C++的ABI不稳定，使用C的链接可以避免不同实现<code>name mangling</code>规则不一导致符号不一致的问题。<br>生成DLL(更具体的可以在我之前的文章——<a href="https://imzlp.com/posts/27118/">C/C++编译和链接模型分析</a>中查看:</p>
+<p>First, let’s generate a test DLL:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// max_dll.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MAX_DLL_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_DLL_H_</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*dll_max)</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// max_dll.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> lhs, <span class="type">int</span> rhs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> lhs &gt; rhs ? lhs : rhs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The reason for using <code>extern &quot;C&quot;</code> is that C++’s <code>name mangling</code> is <code>implementation-defined</code>. Simply put, the C++ ABI is unstable, and using C linkage can avoid issues with inconsistent symbol names due to different implementations of <code>name mangling</code>.<br>To generate the DLL (for more details, check my previous article—<a target="_blank" rel="noopener" href="https://imzlp.com/posts/27118/">Analysis of C/C++ Compilation and Linking Models</a>):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ g++ max_dll.cpp -shared -o max_dll.dll</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">max_dll.cpp  max_dll.dll*  max_dll.h</span><br></pre></td></tr></table></figure>
 
-<h2 id="运行时加载DLL"><a href="#运行时加载DLL" class="headerlink" title="运行时加载DLL"></a>运行时加载DLL</h2><p>然后我们考虑在外面的代码中怎么才能调用这个DLL中的<code>max</code>函数呢？<br>因为编译和链接的缘故，因为该DLL没有导入库，所以不能在连接时指定导入库从而直接使用DLL中的函数，但是我们可以动态地加载DLL文件，在Windows上可以使用<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibrarya">LoadLibrary</a>和<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-getprocaddress">GetProcAddress</a>组合实现。<br>其中<code>LoadLibrary</code>的作用是加载DLL文件，<code>GetProcAddress</code>的作用是从DLL内获取符号的函数指针，<code>FreeLibrary</code>则是释放DLL文件的句柄(handler)：<br>其原型如下：</p>
+<h2 id="Loading-DLL-at-Runtime"><a href="#Loading-DLL-at-Runtime" class="headerlink" title="Loading DLL at Runtime"></a>Loading DLL at Runtime</h2><p>Next, how can we call the <code>max</code> function in this DLL from the external code?<br>Due to the compilation and linking, since there is no import library for this DLL, we cannot specify the import library at link time and directly use the functions in the DLL. However, we can dynamically load the DLL file. On Windows, we can achieve this using the combination of <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibrarya">LoadLibrary</a> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-getprocaddress">GetProcAddress</a>.<br>Here, <code>LoadLibrary</code> is responsible for loading the DLL file, <code>GetProcAddress</code> retrieves the function pointer of the symbol from the DLL, and <code>FreeLibrary</code> releases the handle of the DLL file:<br>Its prototype is as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="comment">// Loads the specified module into the address space of the calling process. The specified module may cause other modules to be loaded.</span></span><br><span class="line"><span class="comment">// Return Value</span></span><br><span class="line"><span class="comment">// If the function succeeds, the return value is a handle to the module.</span></span><br><span class="line"><span class="comment">// If the function fails, the return value is NULL. To get extended error information, call GetLastError.</span></span><br><span class="line"><span class="function">HMODULE <span class="title">LoadLibraryA</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  LPCSTR lpLibFileName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"><span class="comment">// Retrieves the address of an exported function or variable from the specified dynamic-link library (DLL).</span></span><br><span class="line"><span class="comment">// Return Value</span></span><br><span class="line"><span class="comment">// If the function succeeds, the return value is the address of the exported function or variable.</span></span><br><span class="line"><span class="comment">// If the function fails, the return value is NULL. To get extended error information, call GetLastError.</span></span><br><span class="line"><span class="function">FARPROC <span class="title">GetProcAddress</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HMODULE hModule,</span></span></span><br><span class="line"><span class="params"><span class="function">  LPCSTR  lpProcName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"><span class="comment">// Frees the loaded dynamic-link library (DLL) module and, if necessary, decrements its reference count. When the reference count reaches zero, the module is unloaded from the address space of the calling process and the handle is no longer valid.</span></span><br><span class="line"><span class="function">BOOL <span class="title">FreeLibrary</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HMODULE hLibModule</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>加载DLL实例如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;tchar.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DLL_FILE _T(<span class="string">&quot;max_dll.dll&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  HINSTANCE hdll = <span class="built_in">LoadLibrary</span>(DLL_FILE);</span><br><span class="line">  <span class="keyword">if</span> (hdll!=<span class="literal">NULL</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    dll_max max_func=(dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;max&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(max_func != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      std::<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">max_func</span>(<span class="number">123</span>,<span class="number">456</span>));</span><br><span class="line">      <span class="built_in">FreeLibrary</span>(hdll);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      std::<span class="built_in">printf</span>(<span class="string">&quot;From DLL Get function Address is falid.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    std::<span class="built_in">printf</span>(<span class="string">&quot;LoadLibrary is faild.\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：如果上面的<code>max_dll.cpp</code>不是使用<code>extern &quot;C&quot;</code>来链接的，那么上面的代码在这一行：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dll_max max_func=(dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;max&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>会获取函数指针失败，因为按照C++的<code>name mangling</code>规则，函数<code>max</code>在dll内的符号名字不是<code>max</code>而是类似下面这样的(之所以说”类似”是因为没有标准规定，依赖实现)：<br>我们可以通过<code>nm</code>来查看目标文件中的符号信息（不使用<code>extern &quot;C&quot;</code>的dll版本），已隐藏其他的符号：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 非extern &quot;C&quot;版本</span></span><br><span class="line">$ nm max_dll.dll</span><br><span class="line">00000000660814b0 T _Z3maxii</span><br></pre></td></tr></table></figure>
-<p>把上面出错的代码改为下面，则可以获取函数指针成功(但是这样做也太麻烦了)：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dll_max max_func=(dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;_Z3maxii&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>An example of loading a DLL is as follows:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;tchar.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DLL_FILE _T(<span class="string">&quot;max_dll.dll&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  HINSTANCE hdll = <span class="built_in">LoadLibrary</span>(DLL_FILE);</span><br><span class="line">  <span class="keyword">if</span> (hdll != <span class="literal">NULL</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    dll_max max_func = (dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;max&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (max_func != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      std::<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">max_func</span>(<span class="number">123</span>, <span class="number">456</span>));</span><br><span class="line">      <span class="built_in">FreeLibrary</span>(hdll);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      std::<span class="built_in">printf</span>(<span class="string">&quot;From DLL Get function Address is failed.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    std::<span class="built_in">printf</span>(<span class="string">&quot;LoadLibrary is failed.\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note: If the <code>max_dll.cpp</code> from above was not linked using <code>extern &quot;C&quot;</code>, then the code above will fail to obtain the function pointer at this line:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dll_max max_func = (dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;max&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>This is because according to C++’s <code>name mangling</code> rules, the function <code>max</code> within the DLL has a symbol name that is not <code>max</code>, but something like the following (the reason for saying “something like” is due to the lack of standardization and reliance on implementation):<br>We can view the symbol information in the target file through <code>nm</code> (for the non-extern “C” version of the DLL), while hiding other symbols:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Non-extern &quot;C&quot; version</span></span><br><span class="line">$ nm max_dll.dll</span><br><span class="line">00000000660814b0 T _Z3maxii</span><br></pre></td></tr></table></figure>
+<p>Modifying the erroneous code above to the following will allow successful retrieval of the function pointer (but this method is indeed cumbersome):</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dll_max max_func = (dll_max)<span class="built_in">GetProcAddress</span>(hdll, <span class="string">&quot;_Z3maxii&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>而使用<code>extern &quot;C&quot;</code>的dll版本内的符号信息为(因为使用C的链接方式则没有任何符号改编)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># extern &quot;C&quot;版本</span></span><br><span class="line">$ nm max_dll.dll</span><br><span class="line">00000000660814b0 T max</span><br></pre></td></tr></table></figure>
+<p>With the <code>extern &quot;C&quot;</code> version of the DLL, the symbol information is as follows (since C linkage does not alter any symbols):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># extern &quot;C&quot; version</span></span><br><span class="line">$ nm max_dll.dll</span><br><span class="line">00000000660814b0 T max</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注：Linux上与<code>LoadLibrary</code>/<code>GetProcAddress</code>/<code>FreeLibrary</code>分别对应(Linux动态链接库为<code>.so</code>)的是<code>dlopen</code>/<code>dlsym</code>/<code>dlclose</code>，其原型分别如下：</p>
+<p>Note: On Linux, the counterparts to <code>LoadLibrary</code>/<code>GetProcAddress</code>/<code>FreeLibrary</code> (where Linux dynamic libraries are <code>.so</code>) are <code>dlopen</code>/<code>dlsym</code>/<code>dlclose</code>, with their prototypes as follows:</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// dlopen,returns library handle on success, or NULL on error</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">dlopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *libfilename.,<span class="type">int</span> flags)</span></span>;</span><br><span class="line"><span class="comment">// dlsym,returns Address of symbol,or NULL if symbol is not found.</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">dlsym</span><span class="params">(<span class="type">void</span> *handler,<span class="type">char</span> *symbol)</span></span>;</span><br><span class="line"><span class="comment">// dlclose, returns 0 on success,or -1 on error</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dlclose</span><span class="params">(<span class="type">void</span> *handler)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// dlopen, returns library handle on success, or NULL on error</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">dlopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *libfilename, <span class="type">int</span> flags)</span></span>;</span><br><span class="line"><span class="comment">// dlsym, returns Address of symbol, or NULL if symbol is not found.</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">dlsym</span><span class="params">(<span class="type">void</span> *handler, <span class="type">char</span> *symbol)</span></span>;</span><br><span class="line"><span class="comment">// dlclose, returns 0 on success, or -1 on error</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dlclose</span><span class="params">(<span class="type">void</span> *handler)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="使用DLL的导入库"><a href="#使用DLL的导入库" class="headerlink" title="使用DLL的导入库"></a>使用DLL的导入库</h2><p>而如果具有导入库，我们就可以用类似于静态链接的办法，而不用在运行时加载DLL文件再获取函数指针：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建DLL并创建一个导入库lib</span></span><br><span class="line">g++ max_dll.cpp -shared -o max_dll.dll -Wl,--out-implib,imp_max_dll.lib</span><br></pre></td></tr></table></figure>
+<h2 id="Using-DLL’s-Import-Library"><a href="#Using-DLL’s-Import-Library" class="headerlink" title="Using DLL’s Import Library"></a>Using DLL’s Import Library</h2><p>If we have an import library, we can link it as if it were a static link, without needing to load the DLL at runtime and retrieve function pointers:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create DLL and generate an import library lib</span></span><br><span class="line">g++ max_dll.cpp -shared -o max_dll.dll -Wl,--out-implib,imp_max_dll.lib</span><br></pre></td></tr></table></figure>
 
-<p><code>-Wl</code>为传递给链接器的参数，<code>--out-implib</code>为生成导入库。<br>然后我们就可以像使用静态链接一样来链接DLL中的符号：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// call_max.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">max</span>(<span class="number">123</span>, <span class="number">456</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后执行编译，但不链接<code>-c</code>，只生成目标文件<code>call_max.o</code>:</p>
+<p><code>-Wl</code> is an argument passed to the linker, and <code>--out-implib</code> generates the import library.<br>Then we can link the symbols from the DLL as if we were using static linking:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// call_max.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;max_dll.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  std::<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">max</span>(<span class="number">123</span>, <span class="number">456</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then we compile, but without linking <code>-c</code>, only generating the object file <code>call_max.o</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -c call_max.cpp -o call_max.o</span><br></pre></td></tr></table></figure>
-<p>然后把<code>imp_max_dll.lib</code>链接进来：</p>
+<p>Then include <code>imp_max_dll.lib</code> in the link:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ call_max.o imp_max_dll.lib -o call_max.exe</span><br></pre></td></tr></table></figure>
-<p>没有符号未定义错误。</p>
-<p>然后运行：</p>
+<p>No undefined symbol errors.</p>
+<p>Now to run it:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./call_max.exe</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
-<p>我们查看一下call_max.exe依赖的动态链接库，使用<code>ldd</code>命令：</p>
+<p>We check the dynamic libraries that <code>call_max.exe</code> depends on using the <code>ldd</code> command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ldd call_max.exe</span><br><span class="line">    ntdll.dll =&gt; /c/WINDOWS/SYSTEM32/ntdll.dll (0x7ffa14b80000)</span><br><span class="line">    KERNEL32.DLL =&gt; /c/WINDOWS/System32/KERNEL32.DLL (0x7ffa12b00000)</span><br><span class="line">    KERNELBASE.dll =&gt; /c/WINDOWS/System32/KERNELBASE.dll (0x7ffa11d90000)</span><br><span class="line">    msvcrt.dll =&gt; /c/WINDOWS/System32/msvcrt.dll (0x7ffa128a0000)</span><br><span class="line">    max_dll.dll =&gt; /c/Users/visionsmile/Desktop/code/max_dll.dll (0x66080000)</span><br></pre></td></tr></table></figure>
-<p>可以看到，这里call_max.exe依赖的是当前目录下的<code>max_dll.dll</code>。<br>如果把<code>max_dll.dll</code>删除呢？我们删除之后再试一下:</p>
+<p>We can see that <code>call_max.exe</code> depends on the <code>max_dll.dll</code> in the current directory.<br>What if we delete <code>max_dll.dll</code>? Let’s try after deletion:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./call_max.exe</span><br><span class="line">call_max.exe: error <span class="keyword">while</span> loading shared libraries: max_dll.dll: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
-<p>会提示找不到文件的错误。</p>
-<p>运行时动态加载DLL和使用DLL的导入库各有优缺点，未完待续，有时间再继续分析。</p>
-<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><ul>
-<li><a href="https://imzlp.com/posts/27118/">C/C++编译和链接模型分析</a></li>
-<li><a href="https://imzlp.com/posts/5392/">为什么需要extern “C”?</a></li>
+<p>An error indicating that the file cannot be found will be shown.</p>
+<p>Dynamically loading DLL at runtime and using DLL’s import library both have their pros and cons. To be continued, I will analyze further when I have time.</p>
+<h2 id="Further-Reading"><a href="#Further-Reading" class="headerlink" title="Further Reading"></a>Further Reading</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/27118/">Analysis of C/C++ Compilation and Linking Models</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/5392/">Why do we need extern “C”?</a></li>
 </ul>
 
     </div>
@@ -424,7 +424,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -434,7 +434,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -444,37 +444,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/18949/" target="_blank">动态链接库的使用：加载和链接</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2018/10/15 20:50<br/>
+             <span>Title:</span><a href="/posts/18949/" target="_blank">Use of dynamic link libraries: loading and linking</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2018/10/15 20:50<br/>
              
-             <span>本文字数:</span><span class="page-count">1.3k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">2.8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/18949/" target="_blank" title="动态链接库的使用：加载和链接">https://imzlp.com/posts/18949/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/18949/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/18949/" target="_blank" title="Use of dynamic link libraries: loading and linking">https://en.imzlp.com/posts/18949/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/18949/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -494,12 +494,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/11177/" rel="prev" title="提取Tor并搭建Tor Bridge">
-      <i class="fa fa-chevron-left"></i> 提取Tor并搭建Tor Bridge
+    <a href="/posts/11177/" rel="prev" title="Extract Tor and build Tor Bridge">
+      <i class="fa fa-chevron-left"></i> Extract Tor and build Tor Bridge
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/11515/" rel="next" title="抓取UE API并生成带索引的Dash文档">
-      抓取UE API并生成带索引的Dash文档 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/11515/" rel="next" title="Crawl UE API and generate Dash documents with indexes">
+      Crawl UE API and generate Dash documents with indexes <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -570,25 +570,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8A%A0%E8%BD%BDDLL"><span class="nav-number">1.</span> <span class="nav-text">运行时加载DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8DLL%E7%9A%84%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">使用DLL的导入库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-number">3.</span> <span class="nav-text">扩展阅读</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Loading-DLL-at-Runtime"><span class="nav-number">1.</span> <span class="nav-text">Loading DLL at Runtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-DLL%E2%80%99s-Import-Library"><span class="nav-number">2.</span> <span class="nav-text">Using DLL’s Import Library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Further-Reading"><span class="nav-number">3.</span> <span class="nav-text">Further Reading</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -596,19 +596,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -646,10 +646,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -676,9 +676,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -687,12 +684,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -845,7 +842,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/18949/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/18949/',]
       });
       });
   </script>
@@ -868,12 +865,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

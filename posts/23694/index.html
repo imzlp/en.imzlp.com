@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在前一篇文章中，介绍了UE的反射的基础概念，这篇文章开始研究UE的反射机制的具体实现。 在介绍UE的代码之前，需要先要介绍一些C++特性，虽然UE的反射实现是大量依赖UHT的代码生成的，但是也需要C++的语法特性支持，只有把这些特性还有它们背后的含义了解清楚，才能够更好地理解UE的反射机制。 本篇文章中介绍的C++的特性和标准描述均基于ISO&#x2F;IEC 14882:2014，也就是C++14标准。">
+  <meta name="description" content="In the previous article, the basic concepts of UE’s reflection were introduced. This article begins to explore the specific implementation of UE’s reflection mechanism. Before introducing UE’s code, s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE反射实现分析：C++特性">
-<meta property="og:url" content="https://imzlp.com/posts/23694/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在前一篇文章中，介绍了UE的反射的基础概念，这篇文章开始研究UE的反射机制的具体实现。 在介绍UE的代码之前，需要先要介绍一些C++特性，虽然UE的反射实现是大量依赖UHT的代码生成的，但是也需要C++的语法特性支持，只有把这些特性还有它们背后的含义了解清楚，才能够更好地理解UE的反射机制。 本篇文章中介绍的C++的特性和标准描述均基于ISO&#x2F;IEC 14882:2014，也就是C++14标准。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE reflection impl analysis: C++ features">
+<meta property="og:url" content="https://en.imzlp.com/posts/23694/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the previous article, the basic concepts of UE’s reflection were introduced. This article begins to explore the specific implementation of UE’s reflection mechanism. Before introducing UE’s code, s">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206152928.webp">
 <meta property="article:published_time" content="2020-12-13T19:39:37.000Z">
 <meta property="article:modified_time" content="2020-12-13T19:39:37.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="反射">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206152928.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/23694/">
+<link rel="canonical" href="https://en.imzlp.com/posts/23694/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE反射实现分析：C++特性 | 循迹研究室</title>
+  <title>UE reflection impl analysis: C++ features | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/23694/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/23694/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE反射实现分析：C++特性<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2020-12-13-23694.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/23694/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE reflection impl analysis: C++ features<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2020-12-13-23694.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/23694/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE reflection impl analysis: C++ features</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE反射实现分析：C++特性</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2020-12-13 19:39 19:39:37:39" itemprop="dateCreated datePublished" datetime="2020-12-13T19:39:37+00:00">2020-12-13 19:39</time>
+              <time title="Created: 2020-12-13 19:39 19:39:37:39" itemprop="dateCreated datePublished" datetime="2020-12-13T19:39:37+00:00">2020-12-13 19:39</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E5%8F%8D%E5%B0%84/" itemprop="url" rel="index"><span itemprop="name">反射</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/23694/" class="post-meta-item leancloud_visitors" data-flag-title="UE反射实现分析：C++特性" title="阅读次数">
+            <span id="/posts/23694/" class="post-meta-item leancloud_visitors" data-flag-title="UE reflection impl analysis: C++ features" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.1k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>20 mins.</span>
             </span>
 
         </div>
@@ -369,138 +369,139 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在前一篇文章中，介绍了UE的反射的基础概念，这篇文章开始研究UE的反射机制的具体实现。</p>
-<p>在介绍UE的代码之前，需要先要介绍一些C++特性，虽然UE的反射实现是大量依赖UHT的代码生成的，但是也需要C++的语法特性支持，只有把这些特性还有它们背后的含义了解清楚，才能够更好地理解UE的反射机制。</p>
-<p>本篇文章中介绍的C++的特性和标准描述均基于<code>ISO/IEC 14882:2014</code>，也就是C++14标准。</p>
+        <p>In the previous article, the basic concepts of UE’s reflection were introduced. This article begins to explore the specific implementation of UE’s reflection mechanism.</p>
+<p>Before introducing UE’s code, some C++ features need to be highlighted. Although UE’s reflection implementation relies heavily on UHT’s code generation, it also requires support from C++ syntax features. Only by understanding these features and their underlying meanings can we better grasp UE’s reflection mechanism.</p>
+<p>The C++ features and standards described in this article are based on <code>ISO/IEC 14882:2014</code>, which is the C++14 standard.</p>
 <span id="more"></span>
 
-<p>要介绍的实现反射依赖的C++特性，就是把C++中类型的信息通过什么样的方式存储下来供运行时访问。</p>
-<h2 id="class-struct"><a href="#class-struct" class="headerlink" title="class/struct"></a>class/struct</h2><p>对于C++ 的类而言，需要着重关注的是内存布局，因为类实例本质就是一块内存，而如何解释这块内存，需要通过类的类型信息来确定。<br>在C++中<code>struct</code>和<code>class</code>来定义类，只有默认的访问控制权限有差别，在UE中则不同，USTRUCT和UCLASS则进行了严格的区分，USTRUCT不能具有反射函数。</p>
-<h3 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h3><p>因为兼容C的以及语言特性的实现，C++还有POD的概念。而介绍POD则又先要介绍C++标准中的<code>standard-layout class</code>（[ISO/IEC 14882:2014 9.1.7]）：<br>A standard-layout class is a class that:</p>
+<p>The C++ feature that the reflection implementation depends on is how type information is stored in C++ for runtime access.</p>
+<h2 id="class-struct"><a href="#class-struct" class="headerlink" title="class/struct"></a>class/struct</h2><p>For C++ classes, special attention needs to be paid to memory layout because an instance of a class is essentially a block of memory, and how to interpret this block of memory needs to be determined through the class’s type information. In C++, <code>struct</code> and <code>class</code> are used to define classes, with only the default access control permissions differing. In UE, however, USTRUCT and UCLASS are strictly distinguished; USTRUCT cannot have reflection functions.</p>
+<h3 id="Data-Members"><a href="#Data-Members" class="headerlink" title="Data Members"></a>Data Members</h3><p>Due to compatibility with C and the features of the language, C++ also has the concept of POD. Introducing POD requires understanding the <code>standard-layout class</code> from the C++ standard ([ISO/IEC 14882:2014 9.1.7]):<br>A standard-layout class is a class that:</p>
 <ul>
 <li>has no non-static data members of type non-standard-layout class (or array of such types) or reference,</li>
 <li>has no virtual functions (10.3) and no virtual base classes (10.1),</li>
 <li>has the same access control (Clause 11) for all non-static data members,</li>
 <li>has no non-standard-layout base classes,</li>
-<li>either has no non-static data members in the most derived class and at most one base class with<br>non-static data members, or has no base classes with non-static data members, and</li>
-<li> has no base classes of the same type as the ﬁrst non-static data member.</li>
+<li>either has no non-static data members in the most derived class and at most one base class with non-static data members, or has no base classes with non-static data members, and</li>
+<li>has no base classes of the same type as the first non-static data member.</li>
 </ul>
-<p>因为C++在实现特性的时候会往原始的内存布局中插入或调整成员顺序，所以C++标准中对<code>standard-layout class</code>做了上述限定。</p>
-<p>可以把POD理解为只有数据的类，并且数据成员的排列顺序是固定的（不能包含多个不同的访问控制权限，因为编译器<strong>有可能</strong>会混排，标准中没有做保证），除了内存对齐外，不会被插入额外的内存。</p>
-<p>在我之前的一篇文章：<a href="https://imzlp.com/posts/61962/">结构体成员内存对齐问题</a>里介绍了内存对齐。因为内存对其的存在，类内数据成员并不是严格的一个挨着一个存放的，内存布局中会有一些空隙，这样会有两个问题：</p>
+<p>As C++ can insert or adjust member order when implementing features, the C++ standard has placed the aforementioned restrictions on <code>standard-layout class</code>.</p>
+<p>POD can be understood as a class that only contains data, and the order of data members is fixed (cannot include multiple differing access control permissions because the compiler <strong>may</strong> mix them up, and the standard does not guarantee this). In addition to memory alignment, no extra memory will be inserted.</p>
+<p>In a previous article of mine: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/61962/">Memory Alignment Issues with Struct Members</a>, I introduced memory alignment. Due to the existence of memory alignment, data members within a class are not necessarily stored one after the other; there can be some gaps in the memory layout, leading to two issues:</p>
 <ol>
-<li>数据成员在类内的偏移地址是依赖于内存对齐的</li>
-<li>不同的声明顺序会导致类布局的变化（编译器也有可能对不同的访问控制权限进行重排）</li>
+<li>The offset address of data members within a class depends on memory alignment.</li>
+<li>Different declaration orders can lead to changes in class layout (the compiler may also rearrange based on different access control permissions).</li>
 </ol>
-<p>为了获取数据成员在类内的偏移值，而不用考虑上面一堆的东西，C++引入了一个特性：<strong>Pointers to members</strong>，翻译过来就叫做<strong>指向成员的指针</strong>，这部分内容的详细描述在<code>ISO/IEC 14882:2014 §8.3.3</code>中。</p>
-<p>在我之前的一篇文章中，也对指向成员的指针做过比较详细的介绍：<a href="https://imzlp.com/posts/27615/">C++ 中指向类成员的指针并非指针</a>。</p>
-<p>指向类成员的指针，重点就是来获取数据成员、函数相对于类型的描述信息，比如数据成员在类布局中的偏移，成员函数的this偏移值、成员函数的原始函数指针，得到了这些信息才能通过类实例访问到具体的成员。</p>
-<p>如以下类：</p>
+<p>To obtain the offset values of data members within a class without considering the aforementioned details, C++ introduced a feature called <strong>Pointers to Members</strong>, which is detailed in <code>ISO/IEC 14882:2014 §8.3.3</code>.</p>
+<p>I have also provided a more detailed introduction to pointers to members in a previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/27615/">Pointers to Class Members in C++ Are Not Pointers</a>.</p>
+<p>Pointers to class members are crucial for obtaining data member and function descriptions relative to their type information, such as the offset of data members in the class layout, the offset value of <code>this</code> for member functions, and the raw function pointer of member functions. With this information, specific members can be accessed through class instances.</p>
+<p>Consider the following class:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassExample</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  	<span class="type">bool</span> bBoolean;</span><br><span class="line">  	<span class="type">int</span> ival;</span><br><span class="line">  	<span class="type">double</span> dval;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>来获取它三个成员的内部偏移值：</p>
+<p>To retrieve the internal offset values of its three members:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> ClassExample::*bBoolean = &amp;ClassExample::bBoolean;</span><br><span class="line"><span class="type">int</span> ClassExample::*ival = &amp;ClassExample::ival;</span><br><span class="line"><span class="type">double</span> ClassExample::*dval = &amp;ClassExample::dval;</span><br></pre></td></tr></table></figure>
 
-<p>通过LLVM-IR翻译之后可以更直观地看到：</p>
+<p>After translation through LLVM-IR, this can be seen more visually:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store i64 <span class="number">0</span>, i64* %<span class="number">1</span>, align <span class="number">8</span></span><br><span class="line">store i64 <span class="number">4</span>, i64* %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">store i64 <span class="number">8</span>, i64* %<span class="number">3</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
 
-<p>如果把类定义中的<code>func</code>改成<code>virtual</code>呢？</p>
+<p>What if we change <code>func</code> to be <code>virtual</code> in the class definition?</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store i64 <span class="number">8</span>, i64* %<span class="number">1</span>, align <span class="number">8</span></span><br><span class="line">store i64 <span class="number">12</span>, i64* %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">store i64 <span class="number">16</span>, i64* %<span class="number">3</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
 
-<p>可以看到内存布局的变化，这是因为类中有了虚函数，往类布局中插入了虚表指针，占用了8个字节。</p>
-<p>小结一下：通过成员函数指针等特性，可以在编译时就确定数据成员在类布局中的偏移，通过<strong>该偏移</strong>+<strong>数据成员的类型大小</strong>（<code>sizeof</code>），就可以正确地访问到指定的成员所在的内存了。</p>
-<p>但是，C++中也有一个限制，就是不能对位域取地址：</p>
+<p>We can see changes in memory layout because a virtual function has been introduced into the class, leading to a virtual table pointer being inserted into the class layout, occupying 8 bytes.</p>
+<p>To summarize: through member function pointers and related features, we can determine the offsets of data members in the class layout at compile time. By using <strong>this offset</strong> + <strong>size of the data member</strong> (<code>sizeof</code>), we can correctly access the memory where the specified member is located.</p>
+<p>However, there is a restriction in C++: it is not possible to take the address of a bit-field:</p>
 <blockquote>
-<p>The address-of operator &amp; shall not be applied to a bit-ﬁeld, so there are no pointers to bit-ﬁelds. </p>
+<p>The address-of operator &amp; shall not be applied to a bit-field, so there are no pointers to bit-fields.</p>
 </blockquote>
-<p>位域在UE中被广泛地应用于bool值，C++中对该用法有保证：</p>
+<p>Bit-fields are widely used in UE for boolean values, and C++ guarantees this usage:</p>
 <blockquote>
-<p>A bool value can successfully be stored in a bit-ﬁeld of any nonzero size.</p>
+<p>A bool value can successfully be stored in a bit-field of any nonzero size.</p>
 </blockquote>
-<p>并且，位域的分配和对齐是实现定义的：</p>
+<p>Moreover, the allocation and alignment of bit-fields are implementation-defined:</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014 9.6 Bit-ﬁelds]Allocation of bit-ﬁelds within a class object is implementation-deﬁned. Alignment of bit-ﬁelds is implementation-deﬁned.</p>
+<p>[ISO/IEC 14882:2014 9.6 Bit-fields] Allocation of bit-fields within a class object is implementation-defined. Alignment of bit-fields is implementation-defined.</p>
 </blockquote>
-<p>因为不能对位域进行取地址，所以在反射实现中需要对<code>uint8 bEnable:1;</code>做一些特殊处理，要能得到位域中的位。</p>
-<p>以<code>FBoolProperty</code>中获取bool值的实现为例：</p>
+<p>Since it is not possible to take the address of a bit-field, special handling is needed in the reflection implementation for <code>uint8 bEnable:1;</code> to retrieve bits within the bit-field.</p>
+<p>For example, in <code>FBoolProperty</code>, the implementation for retrieving the bool value is as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FORCEINLINE <span class="type">bool</span> <span class="title">GetPropertyValue</span><span class="params">(<span class="type">void</span> <span class="type">const</span>* A)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">check</span>(FieldSize != <span class="number">0</span>);</span><br><span class="line">	uint8* ByteValue = (uint8*)A + ByteOffset;</span><br><span class="line">	<span class="keyword">return</span> !!(*ByteValue &amp; FieldMask);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>同时兼容了<code>NativeBool</code>和<code>bit-field</code>。</p>
-<p>对于<code>uint8 bit_field:1;</code>和<code>bool native_bool;</code>两种反射信息的生成，以反射信息中的<code>UE4CodeGen_Private::EPropertyGenFlags::NativeBool</code>来区别，具有该flag的是<code>bool native_bool;</code>。</p>
-<h3 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h3><p>UE的反射函数都是成员函数，并且需要继承自UObject。</p>
-<p>UE中成员函数实现反射，并没有依赖C++的指向成员函数的指针，它完全依赖UHT生成了一个统一原型的Thunk函数，在Thunk函数中调用真正执行的函数（包括从栈上取数据等操作）。</p>
-<p>并且会为反射的函数生成用于传递给<code>ProcessEvent</code>函数的参数结构，以及每个参数、返回值生成属性的反射信息（它们的内存偏移都是相对于UHT生成的参数结构的）。</p>
-<p>如以下函数：</p>
+<p>It also accommodates <code>NativeBool</code> and <code>bit-field</code>.</p>
+<p>To distinguish between the reflection information generated for <code>uint8 bit_field:1;</code> and <code>bool native_bool;</code>, the reflection information uses <code>UE4CodeGen_Private::EPropertyGenFlags::NativeBool</code>. Those with this flag represent <code>bool native_bool;</code>.</p>
+<h3 id="Member-Functions"><a href="#Member-Functions" class="headerlink" title="Member Functions"></a>Member Functions</h3><p>UE’s reflection functions are all member functions and need to inherit from UObject.</p>
+<p>The implementation of reflection for member functions in UE does not rely on C++ pointers to member functions; it completely relies on UHT to generate a unified prototype Thunk function, which calls the actual executing function (including operations like retrieving data from the stack).</p>
+<p>Additionally, it generates reflection information for the parameters used to pass to the <code>ProcessEvent</code> function, along with the memory offsets of each parameter and return value relative to the parameter structure generated by UHT.</p>
+<p>For the following function:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UFUNCTION</span>()</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">func</span><span class="params">(int32 InIval)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>UHT生成的Thunk函数为：</p>
+<p>The Thunk function generated by UHT is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">DEFINE_FUNCTION</span>(URefObject::execfunc)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">P_GET_PROPERTY</span>(FIntProperty,Z_Param_InIval);</span><br><span class="line">    P_FINISH;</span><br><span class="line">    P_NATIVE_BEGIN;</span><br><span class="line">    *(<span class="type">bool</span>*)Z_Param__Result=P_THIS-&gt;<span class="built_in">func</span>(Z_Param_InIval);</span><br><span class="line">    P_NATIVE_END;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>用这种方式，统一了所有的反射函数的调用原型为：</p>
+<p>In this way, all reflection functions unify their call prototypes to:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">execfunc</span><span class="params">( UObject* Context, FFrame&amp; Stack, RESULT_DECL )</span></span></span><br></pre></td></tr></table></figure>
 
-<p>每个反射的函数都可以从这个原型中获取自己的参数，从而执行真正的函数调用行为（或者执行蓝图字节码）。</p>
-<h2 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h2><p>枚举值不是整数，但是它可以被提升为整数类型。</p>
+<p>Each reflected function can retrieve its parameters from this prototype, allowing for the execution of the actual function call (or executing Blueprint bytecode).</p>
+<h2 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h2><p>Enumeration values are not integers but can be promoted to integer types.</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014]Therefore, enumerations (7.2) are not integral; however, enumerations can be promoted to integral types as speciﬁed in 4.5.</p>
+<p>[ISO/IEC 14882:2014] Therefore, enumerations (7.2) are not integral; however, enumerations can be promoted to integral types as specified in 4.5.</p>
 </blockquote>
-<p>在UE的UEnum中枚举值使用int64来存储，所以，只要我们知道了枚举的名字，还有它名字所对应的整数值，就可以在名字和整数值以及枚举之间进行相互转换了。</p>
-<p>UHT会给添加了UENUM的枚举生成这些信息，并在运行时构造出UEnum实例存储这些信息。</p>
-<p>UE中的Enum写法：</p>
+<p>In UE’s UEnum, enumeration values are stored using int64, so as long as we know the name of the enumeration and the corresponding integer value, we can perform conversions between the names, integer values, and enums.</p>
+<p>UHT generates this information for enumerations with UENUM, constructing UEnum instances to store it at runtime.</p>
+<p>The syntax for Enum in UE is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UENUM</span>()</span><br><span class="line"><span class="keyword">enum class</span> <span class="title class_">EClassEnum</span>: uint8</span><br><span class="line">&#123;</span><br><span class="line">	A =<span class="number">0</span>,</span><br><span class="line">	B,</span><br><span class="line">	C = <span class="number">11</span>,</span><br><span class="line">	D</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>UHT生成的部分反射代码：</p>
+<p>Partial reflection code generated by UHT:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">const</span> UE4CodeGen_Private::FEnumeratorParam Enumerators[] = &#123;</span><br><span class="line">    &#123; <span class="string">&quot;EClassEnum::A&quot;</span>, (int64)EClassEnum::A &#125;,</span><br><span class="line">    &#123; <span class="string">&quot;EClassEnum::B&quot;</span>, (int64)EClassEnum::B &#125;,</span><br><span class="line">    &#123; <span class="string">&quot;EClassEnum::C&quot;</span>, (int64)EClassEnum::C &#125;,</span><br><span class="line">    &#123; <span class="string">&quot;EClassEnum::D&quot;</span>, (int64)EClassEnum::D &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>基于反射UEnum进行字符串、枚举值的转换：</p>
+<p>Based on the reflection UEnum, we can convert between strings and enumeration values:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ENUM_TYPE&gt;</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">GetEnumValueByName</span><span class="params">(<span class="type">const</span> FString&amp; InEnumValueName, ENUM_TYPE&amp; OutEnumValue)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">bool</span> bStatus = <span class="literal">false</span>;</span><br><span class="line">    UEnum* FoundEnum = <span class="built_in">StaticEnum</span>&lt;ENUM_TYPE&gt;();</span><br><span class="line">    FString EnumTypeName = FoundEnum-&gt;CppType;</span><br><span class="line">    <span class="keyword">if</span> (FoundEnum)</span><br><span class="line">    &#123;</span><br><span class="line">        FString EnumValueFullName = EnumTypeName + <span class="built_in">TEXT</span>(<span class="string">&quot;::&quot;</span>) + InEnumValueName;</span><br><span class="line">        int32 EnumIndex = FoundEnum-&gt;<span class="built_in">GetIndexByName</span>(<span class="built_in">FName</span>(*EnumValueFullName));</span><br><span class="line">        <span class="keyword">if</span> (EnumIndex != INDEX_NONE)</span><br><span class="line">        &#123;</span><br><span class="line">            int32 EnumValue = FoundEnum-&gt;<span class="built_in">GetValueByIndex</span>(EnumIndex);</span><br><span class="line">            ENUM_TYPE ResultEnumValue = (ENUM_TYPE)EnumValue;</span><br><span class="line">            OutEnumValue = ResultEnumValue;</span><br><span class="line">            bStatus = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bStatus;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而且也可以访问蓝图中的Enum：</p>
+<p>We can also access enums in Blueprints:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FString <span class="title">UFlibAppHelper::GetEnumNameByValue</span><span class="params">(TSoftObjectPtr&lt;UUserDefinedEnum&gt; EnumPath, int32 value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FString result;</span><br><span class="line">    UUserDefinedEnum* Enumer = <span class="built_in">LoadObject</span>&lt;UUserDefinedEnum&gt;(<span class="literal">nullptr</span>, *EnumPath.<span class="built_in">ToString</span>());</span><br><span class="line">    <span class="keyword">if</span> (Enumer)</span><br><span class="line">    &#123;</span><br><span class="line">        result = Enumer-&gt;<span class="built_in">GetDisplayNameTextByValue</span>(value).<span class="built_in">ToString</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/23694/20201203212055.webp"></p>
-<h3 id="scoped-enum"><a href="#scoped-enum" class="headerlink" title="scoped enum"></a>scoped enum</h3><p>随便写一点点番外，C++的scoped enum。</p>
-<p>C++11 引入了 <code>scoped enum</code>：</p>
+<h3 id="Scoped-Enum"><a href="#Scoped-Enum" class="headerlink" title="Scoped Enum"></a>Scoped Enum</h3><p>A little side note about C++ scoped enums.</p>
+<p>C++11 introduced <code>scoped enum</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum class EClassEnum&#123;</span><br><span class="line">	A = 0,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>为什么要引入这么语法呢？因为 C++11 之前的 enum，其枚举值得定义是位于整个所属名字空间的。C++ 标准中的描述：</p>
+<p>Why was such syntax introduced? Because prior to C++11, the definitions of enum values resided in the entire containing namespace. The C++ standard describes:</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014 §7.2]The enumeration type declared with an enum-key of only enum is an unscoped enumeration, and its enumerators are unscoped enumerators.</p>
+<p>[ISO/IEC 14882:2014 §7.2] The enumeration type declared with an enum-key of only enum is an unscoped enumeration, and its enumerators are unscoped enumerators.</p>
 </blockquote>
-<p>下面代码就会出现重定义错误：</p>
+<p>The following code will lead to a redefinition error:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum ENormalEnum&#123;</span><br><span class="line">	A = 0</span><br><span class="line">&#125;;</span><br><span class="line">enum EOtherEnum&#123;</span><br><span class="line">	A = 0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>所以在一般写代码时会加上 namespace 来人为地区分枚举的名字空间：</p>
+<p>Thus, when writing code, developers often add namespaces to distinguish enumeration namespaces manually:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">namespace ENamespaceEnum</span><br><span class="line">&#123;</span><br><span class="line">  enum Type</span><br><span class="line">  &#123;</span><br><span class="line">    A = 0,</span><br><span class="line">    B,</span><br><span class="line">    C</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>因为上面 <code>Type</code> 的枚举值是位于当前 namespace 的，所以就可以以下面这种形式来使用：</p>
+<p>Since the enumeration values of the above <code>Type</code> reside within the current namespace, they can be used in the following way:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ENamespaceEnum::A;</span><br><span class="line">ENamespaceEnum::B;</span><br><span class="line">ENamespaceEnum::C;</span><br></pre></td></tr></table></figure>
 
-<p>这其实是一种弱类型枚举，枚举本身并不是一个类型。所以 C++11 引入了 <code>Scoped Enum</code>，可以理解为强类型枚举：</p>
+<p>This is actually a form of weakly typed enumeration, where the enumeration itself is not a type. Therefore, C++11 introduced <code>Scoped Enum</code>, which can be understood as a strongly typed enumeration:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum class EScopedEnum&#123;</span><br><span class="line">	A = 0,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>使用它可以具有与上面 <code>namespace</code> 形式一样的效果。</p>
-<p>Scoped Enumeration 的值也是可以显式转换为数值类型的：</p>
+<p>Using it has a similar effect to the aforementioned <code>namespace</code> approach.</p>
+<p>The values of Scoped Enumeration can also be explicitly converted to numeric types:</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014 §5.2.9]A value of a scoped enumeration type (7.2) can be explicitly converted to an integral type.</p>
+<p>[ISO/IEC 14882:2014 §5.2.9] A value of a scoped enumeration type (7.2) can be explicitly converted to an integral type.</p>
 </blockquote>
-<p>而且，如果 scoped enum 的基础类型没有被显式指定的话，它的默认基础类型是 int:</p>
+<p>Moreover, if the underlying type of a scoped enum is not explicitly specified, its default underlying type is int:</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014 §7.2]Each enumeration also has an underlying type. The underlying type can be explicitly speciﬁed using enum-base; if not explicitly speciﬁed, the underlying type of a scoped enumeration type is int.</p>
+<p>[ISO/IEC 14882:2014 §7.2] Each enumeration also has an underlying type. The underlying type can be explicitly specified using enum-base; if not explicitly specified, the underlying type of a scoped enumeration type is int.</p>
 </blockquote>
-<p>在 LLVM 中，对 Scoped enum 的处理是在编译器前端做的，下列代码生成的 IR 代码：</p>
+<p>In LLVM, the handling of Scoped enums is done at the front end of the compiler, and the IR code generated from the following:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">enum ENormalEnum&#123;</span><br><span class="line">	A = 0,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;;</span><br><span class="line">enum class EScopedEnum&#123;</span><br><span class="line">	A = 0,</span><br><span class="line">	B,</span><br><span class="line">	C</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;A:%d,B:%d,C:%d\n&quot;,A,B,C);</span><br><span class="line">	printf(&quot;A:%d,B:%d,C:%d\n&quot;,EScopedEnum::A,EScopedEnum::B,EScopedEnum::C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>main 函数的 LLVM-IR：</p>
+<p>The main function’s LLVM-IR:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">; Function Attrs: uwtable</span><br><span class="line">define i32 @main() #3 &#123;</span><br><span class="line">entry:</span><br><span class="line">  %call = call i32 (i8*, ...) @_Z6printfPKcz(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str, i32 0, i32 0), i32 0, i32 1, i32 2)</span><br><span class="line">  %call1 = call i32 (i8*, ...) @_Z6printfPKcz(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str, i32 0, i32 0), i32 0, i32 1, i32 2)</span><br><span class="line">  ret i32 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在生成 IR 时就没有符号信息，只剩常量了。</p>
-<h2 id="static的构造时机"><a href="#static的构造时机" class="headerlink" title="static的构造时机"></a>static的构造时机</h2><p>UE里的反射技术也依赖了C++的static构造时机，如<code>gen.cpp</code>中的：</p>
+<p>In generating IR, there will be no symbol information, just constants remaining.</p>
+<h2 id="Static-Initialization-Timing"><a href="#Static-Initialization-Timing" class="headerlink" title="Static Initialization Timing"></a>Static Initialization Timing</h2><p>The reflection technology in UE also relies on the static initialization timing of C++, as seen in <code>gen.cpp</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> FCompiledInDefer <span class="title">Z_CompiledInDefer_UClass_URefObject</span><span class="params">(Z_Construct_UClass_URefObject, &amp;URefObject::StaticClass, TEXT(<span class="string">&quot;/Script/RefExample&quot;</span>), TEXT(<span class="string">&quot;URefObject&quot;</span>), <span class="literal">false</span>, <span class="literal">nullptr</span>, <span class="literal">nullptr</span>, <span class="literal">nullptr</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>C++标准中对static的构造时机介绍：</p>
+
+<p>The C++ standard discusses the timing of static initialization:</p>
 <blockquote>
 <p>It is implementation-defined whether the dynamic initialization of a non-local variable with static storage duration is done before the first statement of main.</p>
 </blockquote>
-<p>虽然标准里写的<code>implementation-defined</code>行为，但是几乎用到的编译器都是这么干的。</p>
+<p>Even though the standard mentions <code>implementation-defined</code> behavior, nearly all compilers used operate according to this convention.</p>
 
     </div>
 
@@ -511,7 +512,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -521,7 +522,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -531,37 +532,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/23694/" target="_blank">UE反射实现分析：C++特性</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2020/12/13 19:39<br/>
+             <span>Title:</span><a href="/posts/23694/" target="_blank">UE reflection impl analysis: C++ features</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2020/12/13 19:39<br/>
              
-             <span>本文字数:</span><span class="page-count">4.1k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/23694/" target="_blank" title="UE反射实现分析：C++特性">https://imzlp.com/posts/23694/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/23694/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/23694/" target="_blank" title="UE reflection impl analysis: C++ features">https://en.imzlp.com/posts/23694/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/23694/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -582,12 +583,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/8890/" rel="prev" title="对开源的一些思考与想法">
-      <i class="fa fa-chevron-left"></i> 对开源的一些思考与想法
+    <a href="/posts/8890/" rel="prev" title="Some thoughts and ideas on open source">
+      <i class="fa fa-chevron-left"></i> Some thoughts and ideas on open source
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/12624/" rel="next" title="UE反射实现分析：基础概念">
-      UE反射实现分析：基础概念 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/12624/" rel="next" title="UE reflection impl analysis: basic concepts">
+      UE reflection impl analysis: basic concepts <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -658,10 +659,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -672,10 +673,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -683,19 +684,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -733,10 +734,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -763,9 +764,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -774,12 +772,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -932,7 +930,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/23694/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/23694/',]
       });
       });
   </script>
@@ -955,12 +953,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

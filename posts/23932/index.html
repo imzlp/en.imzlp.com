@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="技术文章是能够有效锻炼表达能力和进行技术积累的方法。与单纯的技术笔记不同，我认为的技术文章应该是对实际的问题或新技术思路的解决方案，而不是技术点的简单堆砌。 对于如何写一篇我认为合格的技术文章， 最近做了一些思考，本篇文章会探讨我写文章时的一些思路和步骤，以及工具推荐和CI&#x2F;CD自动化发布的实现。">
+  <meta name="description" content="Technical articles are an effective way to enhance expression skills and carry out technical accumulation. Unlike simple technical notes, I believe a technical article should be a solution to real pro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="循迹研究：如何写好一篇技术文章">
-<meta property="og:url" content="https://imzlp.com/posts/23932/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="技术文章是能够有效锻炼表达能力和进行技术积累的方法。与单纯的技术笔记不同，我认为的技术文章应该是对实际的问题或新技术思路的解决方案，而不是技术点的简单堆砌。 对于如何写一篇我认为合格的技术文章， 最近做了一些思考，本篇文章会探讨我写文章时的一些思路和步骤，以及工具推荐和CI&#x2F;CD自动化发布的实现。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="How to write a good technical article">
+<meta property="og:url" content="https://en.imzlp.com/posts/23932/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Technical articles are an effective way to enhance expression skills and carry out technical accumulation. Unlike simple technical notes, I believe a technical article should be a solution to real pro">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202209131321562.webp">
 <meta property="article:published_time" content="2022-09-12T20:18:36.000Z">
 <meta property="article:modified_time" content="2022-09-12T20:18:36.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="循迹研究">
 <meta property="article:tag" content="方法论">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202209131321562.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/23932/">
+<link rel="canonical" href="https://en.imzlp.com/posts/23932/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>循迹研究：如何写好一篇技术文章 | 循迹研究室</title>
+  <title>How to write a good technical article | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/23932/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/23932/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          循迹研究：如何写好一篇技术文章<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2022-09-12-23932.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/23932/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          How to write a good technical article<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2022-09-12-23932.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/23932/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">How to write a good technical article</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">循迹研究：如何写好一篇技术文章</sub>
           </div>
         
 
@@ -317,51 +317,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2022-09-12 20:18 20:18:36:18" itemprop="dateCreated datePublished" datetime="2022-09-12T20:18:36+00:00">2022-09-12 20:18</time>
+              <time title="Created: 2022-09-12 20:18 20:18:36:18" itemprop="dateCreated datePublished" datetime="2022-09-12T20:18:36+00:00">2022-09-12 20:18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">循迹研究</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/%E6%96%B9%E6%B3%95%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">方法论</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/23932/" class="post-meta-item leancloud_visitors" data-flag-title="循迹研究：如何写好一篇技术文章" title="阅读次数">
+            <span id="/posts/23932/" class="post-meta-item leancloud_visitors" data-flag-title="How to write a good technical article" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.6k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -373,100 +373,96 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>技术文章是能够有效锻炼<strong>表达能力</strong>和进行<strong>技术积累</strong>的方法。与单纯的技术笔记不同，我认为的技术文章应该是对<strong>实际的问题</strong>或<strong>新技术思路</strong>的解决方案，而不是技术点的简单堆砌。</p>
-<p>对于如何写一篇我认为合格的技术文章， 最近做了一些思考，本篇文章会探讨我写文章时的一些思路和步骤，以及工具推荐和CI/CD自动化发布的实现。</p>
+        <p>Technical articles are an effective way to enhance <strong>expression skills</strong> and carry out <strong>technical accumulation</strong>. Unlike simple technical notes, I believe a technical article should be a solution to <strong>real problems</strong> or <strong>new technical ideas</strong>, rather than a mere assemblage of technical points.</p>
+<p>Regarding how to write a qualified technical article, I have been contemplating this recently. This article will explore some of my thoughts and steps when writing articles, as well as tool recommendations and the implementation of CI/CD automation publishing.</p>
 <span id="more"></span>
 
-<h2 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h2><p>我对于技术文章的选题，其实没有一个明确地目标来决定下一篇写什么内容。主要是利用平时积累的技术笔记中发现一些新的技术或优化思路，深入研究拓展为一篇文章。主要idea来源为以下三方面：</p>
+<h2 id="Topic-Selection"><a href="#Topic-Selection" class="headerlink" title="Topic Selection"></a>Topic Selection</h2><p>I don’t have a clear objective for selecting topics for technical articles; I mainly discover new technologies or optimization ideas from my accumulated technical notes and further research and expand them into an article. The main ideas come from the following three aspects:</p>
 <ul>
-<li>技术笔记积累</li>
-<li>想到的一些技术思路</li>
-<li>开源项目介绍与实现思路</li>
+<li>Accumulation of technical notes</li>
+<li>Some technical ideas that come to mind</li>
+<li>Introduction and implementation of open-source projects</li>
 </ul>
-<h3 id="技术笔记积累"><a href="#技术笔记积累" class="headerlink" title="技术笔记积累"></a>技术笔记积累</h3><p>技术笔记虽然通常都是单个的技术点，但在积累的过程中，会发现多种技术点的组合，就能实现一些很有用的点子。也能够根据新积累的技术点与现有的实现进行组合，让已有的技术方案更加方便和易用。</p>
+<h3 id="Accumulation-of-Technical-Notes"><a href="#Accumulation-of-Technical-Notes" class="headerlink" title="Accumulation of Technical Notes"></a>Accumulation of Technical Notes</h3><p>Although technical notes usually comprise individual technical points, during the accumulation process, one can discover combinations of various technical points, leading to useful ideas. Moreover, new accumulated technical points can be combined with existing implementations, making existing technical solutions more convenient and user-friendly.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220913090330564.webp"></p>
-<p>日常的技术积累非常重要，不单单是为了写文章，而是要对接触到的内容做一个整理和复盘。整理的过程中会加深理解，而且记录下来也方便需要时查找。技术是用进废退的，某个内容长时间不再接触，很容易忘记，但如果及时地记录下来，可以在需要时快速地上手，避免重复研究的成本。</p>
-<h3 id="技术思路积累"><a href="#技术思路积累" class="headerlink" title="技术思路积累"></a>技术思路积累</h3><p>除了从技术笔记中积累外，还会记录脑海中偶尔蹦出来的一些其他的技术或者优化思路，作为备用选题。只包含一两句话的简单描述，如：</p>
+<p>Daily technical accumulation is very important, not just for writing articles but also for organizing and reviewing the content encountered. The process of organizing will deepen understanding, and recording makes it easier to refer back when needed. Technology tends to decline if not used; if not engaged with specific content for a long time, it’s easy to forget it. However, if it’s recorded in a timely manner, one can quickly get back up to speed when needed, avoiding the cost of repetitive research.</p>
+<h3 id="Accumulation-of-Technical-Ideas"><a href="#Accumulation-of-Technical-Ideas" class="headerlink" title="Accumulation of Technical Ideas"></a>Accumulation of Technical Ideas</h3><p>In addition to accumulating from technical notes, I also record various other technologies or optimization ideas that occasionally come to mind as backup topics. These are usually simple descriptions consisting of one or two sentences, for example:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220913084124204.webp"></p>
-<p>我会不定期地从这些选题中，进行深入地研究和工程上地实现，将其总结为一篇技术文章。</p>
-<h3 id="开源项目介绍与实现"><a href="#开源项目介绍与实现" class="headerlink" title="开源项目介绍与实现"></a>开源项目介绍与实现</h3><p>博客中的有一部分文章，是介绍我的开源项目和实现的。开源项目也是一个技术产品，技术文章就是产品文档。</p>
+<p>From time to time, I delve into these topics further and implement them in engineering, summarizing them into a technical article.</p>
+<h3 id="Introduction-and-Implementation-of-Open-source-Projects"><a href="#Introduction-and-Implementation-of-Open-source-Projects" class="headerlink" title="Introduction and Implementation of Open-source Projects"></a>Introduction and Implementation of Open-source Projects</h3><p>Some articles in the blog introduce my open-source projects and their implementations. Open-source projects are also a type of technical product, and technical articles serve as the product documentation.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/image-20220913104219066.webp"></p>
-<p>这种把项目和文章作为产品的方式，可以培养从产品使用者角度考虑的思维。内容应该涵盖以下几点：</p>
+<p>This approach of treating projects and articles as products fosters a mindset of considering things from the user’s perspective. The content should cover the following points:</p>
 <ol>
-<li>适用场景</li>
-<li>使用流程</li>
-<li>参数介绍</li>
-<li>更新日志</li>
+<li>Applicable scenarios</li>
+<li>Usage process</li>
+<li>Parameter introduction</li>
+<li>Update logs</li>
 </ol>
-<p>对开源项目文档的维护是个不小的工作量，技术上的实现会发生变化，但经常无法及时地更新文档的内容，这也是个人精力的局限性，应该发挥社区的力量来共建。</p>
-<h2 id="预研与实现"><a href="#预研与实现" class="headerlink" title="预研与实现"></a>预研与实现</h2><p>在确定技术文章选题之后，会确立一个实现上的具体目标，验证可行性，对整个技术思路的进行验证。通常这个步骤不会有什么问题，因为日常积累的技术点是现成的，只需要以一种合适地形式使用。</p>
-<p>以UE的技术文章为例，对于文章的选题，预研时首先要确定以下几个问题：</p>
+<p>Maintaining documentation for open-source projects is a considerable workload. While technical implementations will change, it is often challenging to update documentation content in a timely manner, which reflects personal limitations of energy and should leverage community power for co-construction.</p>
+<h2 id="Pre-research-and-Implementation"><a href="#Pre-research-and-Implementation" class="headerlink" title="Pre-research and Implementation"></a>Pre-research and Implementation</h2><p>After determining the topic for the technical article, I establish a concrete implementation goal, verify feasibility, and validate the entire technical approach. Usually, this step encounters no issues because the accumulated technical points are ready to use in an appropriate form.</p>
+<p>Taking UE technical articles as an example, when selecting topics, the first step in pre-research is to determine the following questions:</p>
 <ul>
-<li>技术上是否可行？</li>
-<li>是否能解决一些项目的实际痛点？</li>
-<li>是否已有类似的文章或方案？如果有，新方案的优势是什么？</li>
-<li>接入成本？完全Plugin还是需要变动引擎？</li>
+<li>Is it technically feasible?</li>
+<li>Can it solve some actual pain points in projects?</li>
+<li>Are there similar articles or solutions available? If so, what are the advantages of the new solution?</li>
+<li>What is the integration cost? Is it a complete Plugin or does it require changes to the engine?</li>
 </ul>
-<p>技术应该具有通用性，尽量降低接入成本的方式实现方案。有些实现需要修改引擎，应该尽量避免，可以采用一些Hack技巧的替代实现。因为对引擎的变动是一个较为重度的行为，无法支持Epic Launcher中的预编译引擎，接入成本较高，并且针对不同的引擎可能要分开适配，无法做到技术的通用性。在实现的过程中，尽量避免对引擎的变动，以及考虑跨引擎版本的实现。</p>
-<p>对于文章描述的技术细节，内容上有以下几点要求：</p>
+<p>Technology should possess universality, striving to implement solutions in a way that minimizes integration costs. Some implementations may require modifications to the engine, which should be avoided whenever possible, using some Hack techniques for alternative implementations. Because making changes to the engine is a heavy activity that cannot support precompiled engines in the Epic Launcher, the integration cost is high, and different engines may require separate adaptations, making it impossible to achieve universality in technology. During implementation, one should avoid making changes to the engine and consider cross-engine version implementations.</p>
+<p>Regarding the technical details described in articles, the content has the following requirements:</p>
 <ol>
-<li><p>要对关键代码的调用栈截图</p>
-</li>
-<li><p>对工程向的内容，要提供测试案例</p>
-</li>
-<li><p>所有代码要经过自己的调试验证</p>
-</li>
-<li><p>对引用的技术描述要记录出处</p>
-</li>
+<li>Screenshots of the call stack for key code</li>
+<li>For engineering-related content, testing cases must be provided</li>
+<li>All code must undergo personal debugging and validation</li>
+<li>Citations of technical descriptions should be accurately documented</li>
 </ol>
-<p>技术文章毕竟是公开的内容，对于相同需求的开发者可能会起到指引作用，如果作者都模棱两可，很有可能会误人子弟。所以写技术文章要力求表达的准确性。</p>
-<h2 id="文章结构"><a href="#文章结构" class="headerlink" title="文章结构"></a>文章结构</h2><p>技术文章的结构，我一般遵循五段式：</p>
+<p>Technical articles are, after all, public content, which may serve as guidance for developers with similar needs. If the author is vague, it may mislead others. Therefore, striving for accuracy in expression is vital when writing technical articles.</p>
+<h2 id="Article-Structure"><a href="#Article-Structure" class="headerlink" title="Article Structure"></a>Article Structure</h2><p>I generally follow a five-paragraph structure for technical articles:</p>
 <ul>
-<li>当前的需求和痛点、现有方案的不足</li>
-<li>新的技术方案的思路</li>
-<li>实现上的问题、对应技术分析</li>
-<li>成果展示</li>
-<li>总结、参考资料汇总</li>
+<li>Current needs and pain points, inadequacies of existing solutions</li>
+<li>New technical approach</li>
+<li>Implementation issues and corresponding technical analyses</li>
+<li>Presentation of results</li>
+<li>Conclusion and summary of references</li>
 </ul>
-<p>把写这篇文章的前因后果，实现方式，依赖的技术点，以及最终成果的数据、性能对比、后续的优化思路、参考资料等等表达清楚。</p>
-<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>技术文章的内容，局限于当时的技术水平和当时技术环境。如果后续有更好的实现方式、或者后续引擎版本的更新，之前的内容不再适用，就需要对过往的文章进行修订。</p>
-<p>这也是对过往技术内容重新整理的过程，文字内容可以很方便地实现迭代，视频内容就无法做到这一点。之前我也录制过几个技术视频，但是内容都随着技术和引擎版本的更新而过时，无法修改。这也是我不喜欢录视频的原因之一。</p>
-<p>对技术文章的内容迭代，可以概括为以下几个方面：</p>
+<p>Clearly convey the background, implementation methods, dependent technical points, and ultimate results, including data, performance comparisons, subsequent optimization ideas, and reference materials, in this article.</p>
+<h2 id="Iteration"><a href="#Iteration" class="headerlink" title="Iteration"></a>Iteration</h2><p>The content of technical articles is limited by the level of technology and the technological environment at the time. If better implementation methods or updates to engine versions arise in the future, previous content may become obsolete and require revisions of past articles.</p>
+<p>This is also a process of reorganizing past technical content; textual content can easily iterate, while video content cannot do the same. I have previously recorded technical videos, but the content has become outdated with updates to technology and engine versions, and cannot be modified. This is one of the reasons I don’t enjoy recording videos.</p>
+<p>The iteration of content in technical articles can be summarized in the following aspects:</p>
 <ol>
-<li>实现、思路上的优化</li>
-<li>新技术的适配</li>
-<li>原内容的扩展</li>
-<li>同类技术知识的补充</li>
+<li>Optimizations in implementation and ideas</li>
+<li>Adaptation of new technologies</li>
+<li>Expansion of original content</li>
+<li>Supplementing related technical knowledge</li>
 </ol>
-<p>以博客内关于资源检查的方案系列文章为例：</p>
+<p>For example, in my blog series of articles about resource checking solutions:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/11750/">UE 资源合规检查工具 ResScannerUE</a></li>
-<li><a href="https://imzlp.com/posts/26919">虚幻引擎中的属性面板定制化</a></li>
-<li><a href="https://imzlp.com/posts/20376/">基于 ResScannerUE 的资源检查自动化实践</a></li>
-<li><a href="https://imzlp.com/posts/22655/">UE 中多阶段的自动化资源检查方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">UE Resource Compliance Checking Tool ResScannerUE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/26919">Customization of Property Panels in Unreal Engine</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/20376/">Automation Practices for Resource Checking Based on ResScannerUE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/22655/">Multi-Stage Automation Resource Checking Solutions in UE</a></li>
 </ul>
-<p>按照发表时间顺序排列，文章的发表趋势是“先有一个实现方案”，根据日常的技术积累不断地优化和提升已有的实现。在此过程中，又会发现一些新的技术内容，形成正向的技术输出和输入循环，进一步地积累技术笔记，循环往复。</p>
-<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>我基于Hexo的博客系统构建的一整套完整的CI/CD发布系统。从创建、编辑、发布、更新，可以一键式地实现。</p>
-<p>CI/CD是持续集成和持续部署的工作流，应用在博客内容的发布流程上非常合适，基于Github Action的push hook实现的。把技术性思维应用在生活中，可以极大地提升效率。</p>
+<p>Arranged in order of publication, the trend shows “first an implementation solution” followed by continuous optimization and enhancement of the implementation based on daily technical accumulation. In this process, new technical content is discovered, forming a positive loop of technical output and input, further building up technical notes, and repeating the cycle.</p>
+<h2 id="Publishing"><a href="#Publishing" class="headerlink" title="Publishing"></a>Publishing</h2><p>I have built a complete CI/CD publishing system based on the Hexo blog system. From creating, editing, publishing, to updating, it can be implemented in a one-click manner.</p>
+<p>CI/CD is a workflow of Continuous Integration and Continuous Deployment, perfectly suitable for the publishing process of blog content, implemented via push hooks based on Github Actions. Applying technical thinking to daily life can significantly enhance efficiency.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/image-20220913115159880.webp"></p>
-<p>本地只需管理所有的原始markdown文件，完整的发布流程都是自动化的。甚至我基于iOS的快捷指令还写了一个快速发布的选项，可以在内容编辑之后，点一下自动发布新的博客内容。</p>
+<p>Locally, you only need to manage all the original markdown files, and the entire publishing process is automated. Additionally, I have written a quick publishing option based on iOS shortcuts, allowing for one-click automatic publishing of new blog content after editing.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/image-20220913115531963.webp"></p>
-<p>甚至喊<code>hey siri，更新博客</code>，也能实现更新，中二气息拉满。</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>工欲善其事，必先利其器。虽然写文章最重要的是内容，但是趁手的工具，可以让创作的过程如虎添翼。这里推荐一些我日常使用的工具。</p>
+<p>You can even say <code>hey siri, update my blog</code>, and it will accomplish the update, filled with a sense of whimsy.</p>
+<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><p>To do a good job, one must first sharpen their tools. While the content is the most important aspect of writing articles, having the right tools can greatly enhance the creative process. Here are some tools I use daily:</p>
 <ul>
-<li>博客生成：Hexo</li>
-<li>部署：Github Actions</li>
-<li>MD编辑器：Typora</li>
-<li>知识管理：Obsidian</li>
-<li>图床：PicGo/腾讯云OSS</li>
-<li>笔记记录：Lepton</li>
-<li>画图：draw.io</li>
-<li>截图：Snipaste</li>
-<li>同步：Dropbox</li>
+<li>Blog generation: Hexo</li>
+<li>Deployment: Github Actions</li>
+<li>MD editor: Typora</li>
+<li>Knowledge management: Obsidian</li>
+<li>Image hosting: PicGo/Tencent Cloud OSS</li>
+<li>Note-taking: Lepton</li>
+<li>Diagramming: draw.io</li>
+<li>Screenshots: Snipaste</li>
+<li>Synchronization: Dropbox</li>
 </ul>
-<p>工具只是辅助，还是坚持输出内容，不要做工具的奴隶，把时间都浪费在折腾环境上。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇文章记录了我日常写技术文章的思考和创作流程，把CI/CD技术应用在文章发布中的实现，以及日常使用的工具推荐。</p>
-<p>写文章是一个让我觉得快乐的事情，能进行技术积累、输出价值。就像本站的描述那样，每一篇文章都是一个成长的过程。</p>
+<p>Tools are merely aids; it’s crucial to persist in producing content and not become a slave to the tools, wasting time on environment setups.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article documents my thoughts and creative processes in writing technical articles, the implementation of applying CI/CD technology in article publishing, and recommendations for tools I use daily.</p>
+<p>Writing articles is an activity that brings me joy, allowing for technical accumulation and value output. As described on this site, each article is a growth process.</p>
 
     </div>
 
@@ -477,7 +473,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -487,7 +483,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -497,37 +493,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/23932/" target="_blank">循迹研究：如何写好一篇技术文章</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2022/09/12 20:18<br/>
+             <span>Title:</span><a href="/posts/23932/" target="_blank">How to write a good technical article</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2022/09/12 20:18<br/>
              
-             <span>本文字数:</span><span class="page-count">2.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">7.6k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/23932/" target="_blank" title="循迹研究：如何写好一篇技术文章">https://imzlp.com/posts/23932/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/23932/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/23932/" target="_blank" title="How to write a good technical article">https://en.imzlp.com/posts/23932/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/23932/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -548,12 +544,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/24350/" rel="prev" title="一种灵活与非侵入式的基础包拆分方案">
-      <i class="fa fa-chevron-left"></i> 一种灵活与非侵入式的基础包拆分方案
+    <a href="/posts/24350/" rel="prev" title="A Flexible and Non-Intrusive Basic Package Splitting Scheme">
+      <i class="fa fa-chevron-left"></i> A Flexible and Non-Intrusive Basic Package Splitting Scheme
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/7181/" rel="next" title="UE中ASTC贴图压缩分析及效率优化">
-      UE中ASTC贴图压缩分析及效率优化 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/7181/" rel="next" title="ASTC texture compression analysis and efficiency optimization in UE">
+      ASTC texture compression analysis and efficiency optimization in UE <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -624,25 +620,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">选题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%E7%A7%AF%E7%B4%AF"><span class="nav-number">1.1.</span> <span class="nav-text">技术笔记积累</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%80%9D%E8%B7%AF%E7%A7%AF%E7%B4%AF"><span class="nav-number">1.2.</span> <span class="nav-text">技术思路积累</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">开源项目介绍与实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E7%A0%94%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">预研与实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">文章结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3"><span class="nav-number">4.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83"><span class="nav-number">5.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Topic-Selection"><span class="nav-number">1.</span> <span class="nav-text">Topic Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accumulation-of-Technical-Notes"><span class="nav-number">1.1.</span> <span class="nav-text">Accumulation of Technical Notes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Accumulation-of-Technical-Ideas"><span class="nav-number">1.2.</span> <span class="nav-text">Accumulation of Technical Ideas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-and-Implementation-of-Open-source-Projects"><span class="nav-number">1.3.</span> <span class="nav-text">Introduction and Implementation of Open-source Projects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-research-and-Implementation"><span class="nav-number">2.</span> <span class="nav-text">Pre-research and Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Article-Structure"><span class="nav-number">3.</span> <span class="nav-text">Article Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iteration"><span class="nav-number">4.</span> <span class="nav-text">Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Publishing"><span class="nav-number">5.</span> <span class="nav-text">Publishing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tools"><span class="nav-number">6.</span> <span class="nav-text">Tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -650,19 +646,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -700,10 +696,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -730,9 +726,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -741,12 +734,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -899,7 +892,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/23932/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/23932/',]
       });
       });
   </script>
@@ -922,12 +915,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

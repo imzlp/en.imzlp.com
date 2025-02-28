@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在之前的一些文章中，介绍了UE热更新丢失Shader使用默认材质的处理问题，以及Shader Patch的方案。详情可见文章：  UE 热更新：Create Shader Patch UE热更新：Questions &amp; Answers#热更的资源没有效果&#x2F;材质丢失。   其实运行时丢失材质的根本原因是新添加或修改的资源所依赖的Shader没有被打包，运行时读取失败导致的错误。本篇文章来介绍">
+  <meta name="description" content="In some previous articles, the issue of UE hot updates missing shaders and using default materials has been introduced, along with a Shader Patch solution. For details, please refer to the articles:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE热更新：Shader更新策略">
-<meta property="og:url" content="https://imzlp.com/posts/15810/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在之前的一些文章中，介绍了UE热更新丢失Shader使用默认材质的处理问题，以及Shader Patch的方案。详情可见文章：  UE 热更新：Create Shader Patch UE热更新：Questions &amp; Answers#热更的资源没有效果&#x2F;材质丢失。   其实运行时丢失材质的根本原因是新添加或修改的资源所依赖的Shader没有被打包，运行时读取失败导致的错误。本篇文章来介绍">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Hot Update: Shader update strategy">
+<meta property="og:url" content="https://en.imzlp.com/posts/15810/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In some previous articles, the issue of UE hot updates missing shaders and using default materials has been introduced, along with a Shader Patch solution. For details, please refer to the articles:">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/notes/ue/index/UE4/pak-shadercode-error-in-ue425.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210910103926.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/5867/20210312110129.webp">
@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211030173340.jpg">
 <meta property="article:published_time" content="2021-09-13T10:24:16.000Z">
 <meta property="article:modified_time" content="2021-09-13T10:24:16.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="Shader">
@@ -60,7 +60,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/notes/ue/index/UE4/pak-shadercode-error-in-ue425.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/15810/">
+<link rel="canonical" href="https://en.imzlp.com/posts/15810/">
 
 
 <script id="page-configurations">
@@ -69,11 +69,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE热更新：Shader更新策略 | 循迹研究室</title>
+  <title>UE Hot Update: Shader update strategy | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -113,7 +113,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -123,7 +123,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -134,7 +134,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -153,24 +153,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -180,7 +180,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -190,7 +190,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -198,14 +198,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -213,26 +213,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -248,7 +248,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -267,7 +267,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -286,12 +286,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -309,27 +309,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/15810/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/15810/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE热更新：Shader更新策略<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-09-13-15810.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/15810/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Hot Update: Shader update strategy<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-09-13-15810.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/15810/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Hot Update: Shader update strategy</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE热更新：Shader更新策略</sub>
           </div>
         
 
@@ -338,47 +338,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-09-13 10:24 10:24:16:24" itemprop="dateCreated datePublished" datetime="2021-09-13T10:24:16+00:00">2021-09-13 10:24</time>
+              <time title="Created: 2021-09-13 10:24 10:24:16:24" itemprop="dateCreated datePublished" datetime="2021-09-13T10:24:16+00:00">2021-09-13 10:24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/15810/" class="post-meta-item leancloud_visitors" data-flag-title="UE热更新：Shader更新策略" title="阅读次数">
+            <span id="/posts/15810/" class="post-meta-item leancloud_visitors" data-flag-title="UE Hot Update: Shader update strategy" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.6k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>14 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -390,155 +390,155 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在之前的一些文章中，介绍了UE热更新丢失Shader使用默认材质的处理问题，以及Shader Patch的方案。<br>详情可见文章：</p>
+        <p>In some previous articles, the issue of UE hot updates missing shaders and using default materials has been introduced, along with a Shader Patch solution. For details, please refer to the articles:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/5867/">UE 热更新：Create Shader Patch</a></li>
-<li><a href="https://imzlp.com/posts/16895/#%E7%83%AD%E6%9B%B4%E7%9A%84%E8%B5%84%E6%BA%90%E6%B2%A1%E6%9C%89%E6%95%88%E6%9E%9C-%E6%9D%90%E8%B4%A8%E4%B8%A2%E5%A4%B1">UE热更新：Questions &amp; Answers#热更的资源没有效果/材质丢失</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/5867/">UE Hot Update: Create Shader Patch</a></li>
+<li>[UE Hot Update: Questions &amp; Answers#Hot Update Resources Not Working / Material Missing](<a target="_blank" rel="noopener" href="https://imzlp.com/posts/16895/#Hot">https://imzlp.com/posts/16895/#Hot</a> Update Resources Not Working-Material Missing).</li>
 </ul>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/notes/ue/index/UE4/pak-shadercode-error-in-ue425.webp"></p>
-<p>其实运行时丢失材质的根本原因是新添加或修改的资源所依赖的Shader没有被打包，运行时读取失败导致的错误。本篇文章来介绍一下Shader更新的策略和优缺点，以及对引擎内机制的分析，并提供一个结合Shader Patch与Inline Shader Code优点的优化方案，已经在<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPacther</a>中实现。</p>
+<p>The fundamental reason for the runtime loss of materials is that the shaders dependent on newly added or modified resources were not packaged, leading to reading failures at runtime. This article will introduce the strategy and pros and cons of shader updates, analyze the mechanisms within the engine, and provide an optimized solution that combines the advantages of Shader Patch and Inline Shader Code, which has been implemented in <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>.</p>
 <span id="more"></span>
 
-<p>UE在Cook时有两种Shader的序列化策略：</p>
+<p>UE has two serialization strategies for shaders during cooking:</p>
 <ol>
-<li>Share Material Shader Code：会把项目所需的Shader单独的序列化为Shader Code Library文件(<code>ushaderbytecode</code>或<code>metailib</code>)，能够降低包体大小，避免Shader的冗余，读取shader时会从shaderbytecode中查找。</li>
-<li>Inline Shader Code：将Shader序列化至材质uasset，避免管理Shader Code Library，每个材质在Cook之后它本身就包含了所需的shader，整个包内具有冗余，会增加包体的大小。</li>
+<li>Share Material Shader Code: This will serialize the required shaders for the project into a separate Shader Code Library file (<code>ushaderbytecode</code> or <code>metailib</code>), which can reduce package size and avoid shader redundancy, allowing shaders to be searched from shaderbytecode during read.</li>
+<li>Inline Shader Code: This serialization method includes shaders in the material uasset, avoiding the management of Shader Code Library. Each material, after cooking, itself contains the required shaders, leading to redundancy within the entire package and increasing package size.</li>
 </ol>
-<p>在新建工程的默认项目配置中，<code>Project Settings</code>-<code>Project</code>-<code>Packaging</code>-<code>Shadre Material Shader Code</code>为关闭状态。</p>
+<p>In the default project configuration of a new project, <code>Project Settings</code>-<code>Project</code>-<code>Packaging</code>-<code>Shader Material Shader Code</code> is set to off.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210910103926.webp"></p>
-<p>但是为了降低包体的大小，通常在打包时会开启，打出来的包就包含了ushaderbytecode：</p>
+<p>However, in order to reduce the package size, it is generally enabled during packaging, and the resulting package contains ushaderbytecode:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/5867/20210312110129.webp"></p>
-<p>但是，如果我们后续更新了材质，没有更新包内变动之后的shader，就会导致前文中介绍的材质丢失的问题。<br>所以材质丢失是有两个前提决定的：</p>
+<p>If we subsequently update the material without updating the shaders that have changed within the package, it will lead to the material loss issue mentioned earlier. Thus, material loss is determined by two prerequisites:</p>
 <ol>
-<li>开启了Share Material Shader Code</li>
-<li>更新材质后没有更新ushaderbytecode库</li>
+<li>Share Material Shader Code is enabled.</li>
+<li>The shader library <code>ushaderbytecode</code> is not updated after the material update.</li>
 </ol>
-<p>根据这两个前提，可以制定Shader更新的策略：</p>
+<p>Based on these two prerequisites, a shader update strategy can be formulated:</p>
 <ol>
-<li>每次更新之后就更新最新的Shade Code Library</li>
-<li>对更新的材质实现inline Shader Code的cook</li>
+<li>Update the latest Shader Code Library every time an update is made.</li>
+<li>Implement inline Shader Code cooking for the updated materials.</li>
 </ol>
-<p>但是，这两个策略又引出了各自的问题：</p>
-<p>Shader Code Library：</p>
+<p>However, these two strategies also lead to their respective issues:</p>
+<p>Shader Code Library:</p>
 <ol>
-<li>完整的Shader Code Library太过巨大</li>
-<li>Shader Patch需要管理额外的Metadata文件</li>
-<li>每次Patch必须基于完整的shadebytecode </li>
+<li>The complete Shader Code Library is excessively large.</li>
+<li>Shader Patch requires the management of additional metadata files.</li>
+<li>Each patch must be based on the complete shaderbytecode.</li>
 </ol>
-<p>Inline Shader Code：</p>
+<p>Inline Shader Code:</p>
 <ol>
-<li>UE默认Cook Commandlet没有提供Cook单个资源的方法</li>
-<li>Inline Shader Code会增大包体</li>
+<li>UE’s default Cook Commandlet does not provide a method to cook a single resource.</li>
+<li>Inline Shader Code increases package size.</li>
 </ol>
-<h2 id="Shader-Patch"><a href="#Shader-Patch" class="headerlink" title="Shader Patch"></a>Shader Patch</h2><p>在UE里进行Shader Patch的流程，我之前已经写了一篇文章：<a href="https://imzlp.com/posts/5867/">UE热更新：Create Shader Patch</a>。</p>
+<h2 id="Shader-Patch"><a href="#Shader-Patch" class="headerlink" title="Shader Patch"></a>Shader Patch</h2><p>The process of performing Shader Patch in UE has been previously described in my article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/5867/">UE Hot Update: Create Shader Patch</a> .</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210912214012.webp" alt="Shader Patch"></p>
-<p>这里讲一些上篇文章中没提到的创建Shader code library机制的内容。在材质资源中有一个属性<code>bShareCode</code>标记当前的Shader是存在于Shader Library中还是Inline：</p>
+<p>Here, I will discuss the mechanisms for creating the Shader Code Library not mentioned in the previous article. In the material resource, there is an attribute <code>bShareCode</code> marking whether the current shader exists in the Shader Library or is inline:</p>
 <figure class="highlight cpp"><figcaption><span>Source\Runtime\RenderCore\Private\ShaderMap.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">FShaderMapBase::Serialize</span><span class="params">(FArchive&amp; Ar, <span class="type">bool</span> bInlineShaderResources, <span class="type">bool</span> bLoadedByCookedMaterial, <span class="type">bool</span> bInlineShaderCode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="type">bool</span> bShareCode = <span class="literal">false</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> WITH_EDITOR</span></span><br><span class="line">    bShareCode = !bInlineShaderCode &amp;&amp; FShaderLibraryCooker::<span class="built_in">IsShaderLibraryEnabled</span>() &amp;&amp; Ar.<span class="built_in">IsCooking</span>();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// WITH_EDITOR</span></span></span><br><span class="line">    Ar &lt;&lt; bShareCode;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>FShaderLibraryCooker::IsShaderLibraryEnabled</code>的实现（在UE4.26之前是<code>FShaderCodeLibrary::IsEnabled</code>）：</p>
+<p>The implementation of <code>FShaderLibraryCooker::IsShaderLibraryEnabled</code> (prior to UE4.26, it was <code>FShaderCodeLibrary::IsEnabled</code>):</p>
 <figure class="highlight cpp"><figcaption><span>ShaderCodeLibrary.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">FShaderCodeLibrary::IsEnabled</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> FShaderCodeLibraryImpl::Impl != <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而<code>FShaderCodeLibraryImpl::Impl</code>的创建在以下两个函数中：</p>
+<p>The creation of <code>FShaderCodeLibraryImpl::Impl</code> takes place in the following two functions:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for Cooking</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FShaderCodeLibrary::InitForCooking</span><span class="params">(<span class="type">bool</span> bNativeFormat)</span></span>;</span><br><span class="line"><span class="comment">// for Runtime </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FShaderCodeLibrary::InitForRuntime</span><span class="params">(EShaderPlatform ShaderPlatform)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>其实是分了两个阶段：Cook存储时和读取时，都需要获取到当前资源依赖的shader是存储在shader libraray中还是inline了。</p>
-<p>默认情况下，这两个函数在启动编辑器时都不会被执行，因为毕竟理论上他们一个是在打包时一个是在非Editor运行时才被需要，他们分别被用在Cook时：</p>
+<p>This essentially divides into two phases: when cooking for storage, and when reading, it is essential to determine whether the currently dependent shader is stored in the shader library or inlined.</p>
+<p>By default, these two functions will not be executed during the editor’s startup because, theoretically, one is required during packaging and the other during non-Editor runtime. They are respectively used during cooking as follows:</p>
 <figure class="highlight cpp"><figcaption><span>Editor/UnrealEd/Private/CookOnTheFlyServer.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">UCookOnTheFlyServer::InitShaderCodeLibrary</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">const</span> UProjectPackagingSettings* <span class="type">const</span> PackagingSettings = <span class="built_in">GetDefault</span>&lt;UProjectPackagingSettings&gt;();</span><br><span class="line">	<span class="type">bool</span> <span class="type">const</span> bCacheShaderLibraries = <span class="built_in">IsUsingShaderCodeLibrary</span>();</span><br><span class="line">    <span class="keyword">if</span> (bCacheShaderLibraries &amp;&amp; PackagingSettings-&gt;bShareMaterialShaderCode)</span><br><span class="line">    &#123;</span><br><span class="line">		FShaderLibraryCooker::<span class="built_in">InitForCooking</span>(PackagingSettings-&gt;bSharedMaterialNativeLibraries);</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>以及<code>FEngineLoop::PreInitPreStartupScreen</code>中（Non-Editor运行时）：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210913104500.webp" alt="FShaderCodeLibrary::InitForRuntime"></p>
-<p>并且，对于开启了Share Shader Library的情况，UE也提供了一个机制（4.26+），可以强制制定某些资源的Shader是Inline的，使用一下方式配置：</p>
+<p>And in <code>FEngineLoop::PreInitPreStartupScreen</code> (Non-Editor runtime):<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210913104500.webp" alt="FShaderCodeLibrary::InitForRuntime"></p>
+<p>Moreover, for situations where Share Shader Library is enabled, UE has also provided a mechanism (4.26+) to forcibly specify that certain resources’ shaders should be inline, configured using the following method:</p>
 <figure class="highlight ini"><figcaption><span>DefaultEngine.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ShaderCodeLibrary]</span></span><br><span class="line"><span class="attr">bEnableInliningWorkaround_Windows</span>=<span class="literal">True</span></span><br><span class="line">+<span class="attr">MaterialToInline</span>=/Game/StarterContent/Materials/M_Brick_Clay_Beveled</span><br></pre></td></tr></table></figure>
-<p>在执行Cook时有<code>ShouldInlineShaderCode</code>的检测：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210830001957.webp"></p>
-<p>实现强制inline。</p>
+<p>During the execution of cooking, there is a check for <code>ShouldInlineShaderCode</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210830001957.webp"></p>
+<p>To realize forced inlining.</p>
 <h2 id="Inline-Shader-Code"><a href="#Inline-Shader-Code" class="headerlink" title="Inline Shader Code"></a>Inline Shader Code</h2><p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210912214134.webp" alt="Inline Shader Code"></p>
-<p>在上一节的介绍中，已经提到了在Cook时是否将Shader序列化到Shader Library的前提条件：<code>FShaderCodeLibrary::IsEnabled</code>(4.25-)或<code>FShaderLibraryCooker::IsShaderLibraryEnabled</code>(4.26+)，想要实现Inline Shader Code的方法：</p>
+<p>In the introduction of the previous section, it has been mentioned whether shaders are serialized to the Shader Library during cooking based on the prerequisite: <code>FShaderCodeLibrary::IsEnabled</code> (4.25-) or <code>FShaderLibraryCooker::IsShaderLibraryEnabled</code> (4.26+). To achieve Inline Shader Code:</p>
 <ol>
-<li>UE的CookCommandlet，在项目设置中关闭<code>bShareMaterialShaderCode</code></li>
-<li>自己实现Cook流程，不执行<code>FShaderLibraryCooker::InitForCooking</code></li>
+<li>Turn off <code>bShareMaterialShaderCode</code> in project settings for UE’s CookCommandlet.</li>
+<li>Implement a custom cooking process that does not execute <code>FShaderLibraryCooker::InitForCooking</code>.</li>
 </ol>
-<p>对于第一种方式，每次想要Cook Inline的时候，都需要手动去修改项目设置，较为不便，所以推荐第二个方式。但是UE没有提供Cook单个资源的接口，我在<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPacther</a>中实现了Cook单个资源的方式，支持编辑器中选中资源、目录，以及在Patch中对资源进行Cook：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210913121230612.webp"></p>
+<p>For the first method, every time you want to cook inline, you need to manually modify the project settings, which is inconvenient, so the second method is recommended. However, UE does not provide an interface for cooking a single resource. I have implemented a method to cook a single resource in <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, supporting selection of resources and directories within the editor, as well as cooking resources within patches:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210913121230612.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/17590/cook-patch-assets.webp"></p>
-<p>在代码中也做了封装：</p>
+<p>It is also encapsulated in code:</p>
 <figure class="highlight cpp"><figcaption><span>FlibHotPactherEditorHelper.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">CookPackage</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">		<span class="type">const</span> FAssetData&amp; AssetData,</span></span></span><br><span class="line"><span class="params"><span class="function">		UPackage* Package,</span></span></span><br><span class="line"><span class="params"><span class="function">		<span class="type">const</span> TArray&lt;FString&gt;&amp; Platforms,</span></span></span><br><span class="line"><span class="params"><span class="function">		TFunction&lt;<span class="type">void</span>(<span class="type">const</span> FString&amp;)&gt; PackageSavedCallback = [](<span class="type">const</span> FString&amp;)&#123;&#125;,</span></span></span><br><span class="line"><span class="params"><span class="function">		<span class="keyword">class</span> TMap&lt;FString,FSavePackageContext*&gt; PlatformSavePackageContext = TMap&lt;FString,FSavePackageContext*&gt;&#123;&#125;</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>使用这个接口就能实现在编辑器中的Cook，当Cook资源是材质时，会使用Inline Shader Code的方式序列化。</p>
-<h2 id="Better-Way"><a href="#Better-Way" class="headerlink" title="Better Way"></a>Better Way</h2><p>前面已经提到了，使用Shader Patch和Inline Shader Code的方式各有各的优缺点：</p>
+<p>By using this interface, you can perform cooking in the editor, and when the resource being cooked is a material, it will be serialized using Inline Shader Code.</p>
+<h2 id="Better-Way"><a href="#Better-Way" class="headerlink" title="Better Way"></a>Better Way</h2><p>As mentioned earlier, using Shader Patch and Inline Shader Code each has its own strengths and weaknesses:</p>
 <ol>
-<li>Shader Patch需要完整Cook，对两份完整的Shader code做Patch，项目巨大时执行效率不高，并且有额外的管理成本。</li>
-<li>Inline Shader Code：无需管理任何额外文件，缺点是无法共用shader，具有冗余。</li>
+<li>Shader Patch requires complete cooking, doing patches on two complete pieces of shader code can be inefficient for large projects and incurs additional management costs.</li>
+<li>Inline Shader Code: where no additional files need to be managed, the downside is that shaders cannot be shared, resulting in redundancy.</li>
 </ol>
-<p>所以，我为<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPacther</a>提供一个结合两者优点的方案：</p>
+<p>Thus, I provide a plan that combines the strengths of both in <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>:</p>
 <ol>
-<li>Cook时依然开启Share Shader Code Library</li>
-<li>仅把当前Patch中Cook资源时所有编译的Shader收集起来，生成单独的Shader Library</li>
+<li>Keep the Share Shader Code Library enabled during cooking.</li>
+<li>Only gather all compiled shaders from the resources cooked in the current patch and generate a separate Shader Library.</li>
 </ol>
-<p>这样不用再手动执行Shader Patch，也不用担心Inline Shader Code的方式导致包体增大的问题，是一种结合了两者优点的方案。<br>得益于HotPatcher的流程机制，能够在插件的Cook阶段中把当前平台所有Cook资源的shader收集起来（每个打包的平台可能会具有多种shader格式，如Android的<code>GLSL_ES</code>或<code>Vulkan</code>）。</p>
+<p>This eliminates the need to manually execute Shader Patch and removes concerns about package size increases from using Inline Shader Code. It is a solution that leverages the advantages of both. Thanks to the process mechanisms of HotPatcher, it can collect all the shaders for the current platform’s cooked resources during the cooking phase (as each packaging platform may have multiple shader formats, like Android’s <code>GLSL_ES</code> or <code>Vulkan</code>).</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211029105320.webp"></p>
-<p>在所有的资源都Cook完毕之后，采集到了本次Cook所有Shader，将其生成Shader Code Library并直接打包至pak中。是一种无需进行新旧版本patch的增量shader方案，所以，也无需完整的Cook，更无需管理Shader code的版本。</p>
-<p>所有的功能在HotPatcher中只需简单地开关即可实现：</p>
+<p>Once all resources are done cooking, all shaders from this cook will be collected, generating a Shader Code Library to be directly packaged into pak. This implementation does not require new and old version patches for incremental shaders, thus, there is no need for complete cooking, and no need to manage shader code versions.</p>
+<p>All functions in HotPatcher can be simply toggled on or off:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211029105602.webp"></p>
-<p>若不开启<code>bSharedShaderLibrary</code>，则当前Patch中的Cook的shader全部是inline shader code。反之Shader则是Shared的，降低Shader的冗余。</p>
-<p>还有一些其他的选项：</p>
+<p>If <code>bSharedShaderLibrary</code> is not enabled, then all cooked shaders in the current patch are inline shader codes. Conversely, the shaders will be shared, reducing shader redundancy.</p>
+<p>There are also several other options:</p>
 <ul>
-<li><code>bNativeShader</code>：与项目设置中<code>SharedMaterialNativeLibraries</code>相同，开启之后IOS平台会编译成metallib</li>
-<li><code>ShaderNameRule</code>：为当前Patch生产的Shader Library的命名，提供了三种模式：当前Patch的版本号、项目名、自定义</li>
-<li><code>ShaderLibMountPoint</code>则是将shader library打包至Pak中所存储的路径，在运行时加载Shader Library需要指定。</li>
+<li><code>bNativeShader</code>: Same as the project setting <code>SharedMaterialNativeLibraries</code>. Once enabled, the iOS platform will compile to metallib.</li>
+<li><code>ShaderNameRule</code>: Naming for the Shader Library generated for the current patch, providing three modes: the current patch version, project name, or custom.</li>
+<li><code>ShaderLibMountPoint</code> specifies the path where the shader library is stored in the pak for loading during runtime.</li>
 </ul>
 <blockquote>
-<p>注意：打包时默认具有<code>Global</code>和项目名的Shader Library，注意不要有重名。</p>
+<p>Note: By default, the pak includes the <code>Global</code> and project name’s Shader Library, and care should be taken to avoid naming collisions.</p>
 </blockquote>
-<p>在插件中开启<code>bSharedShaderLibrary</code>后，Windows和Android会生成ushaderbytecode，并打包至Pak中：</p>
+<p>After enabling <code>bSharedShaderLibrary</code> in the plugin, both Windows and Android will generate ushaderbytecode and package it into pak:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211029002009.webp" alt="Windows"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211029002120.webp" alt="Android"></p>
-<p>IOS如果开启bNativeShader，则会编译出metallib和metalmap：</p>
+<p>If <code>bNativeShader</code> is enabled for iOS, it will compile metallib and metalmap:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211029000741.webp"></p>
-<p>由于IOS的Native Shader的加载机制，不能把metallib和metalmap打包到pak中，不能通过UFS，需要直接从磁盘加载。</p>
-<p>为Patch打包出的Shader Library，需要在Mount之后调用加载才能使用，我在插件中同样有封装函数：</p>
+<p>Due to iOS’s loading mechanism for Native Shader, metallib and metalmap cannot be packaged into pak. They must be loaded directly from disk, not through UFS.</p>
+<p>For the Shader Library packaged for the patch, it must be called after mounting for use. I have similarly encapsulated a loading function in the plugin:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">UFlibPatchParserHelper::LoadShaderbytecode</span><span class="params">(<span class="type">const</span> FString&amp; LibraryName, <span class="type">const</span> FString&amp; LibraryDir)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>这里需要传递的参数，就是<code>ShaderNameRule</code>中的规则，如果是版本号，就传递版本号的字符串，第二个参数就是Shader Library在Pak中的路径，传递<code>ShaderLibMountPoint</code>值即可。</p>
-<p>如果开启了Shared Shader Libraty，但是只进行了Mount，没有LoadShaderbytecode，同样会出现材质丢失的效果。</p>
-<h2 id="Cook-Shader-Format"><a href="#Cook-Shader-Format" class="headerlink" title="Cook Shader Format"></a>Cook Shader Format</h2><p>HotPatcher在Cook阶段，会使用项目设置中配置的各个平台的Shader格式进行Cook，每个平台可以具有多种Shader Format，这里以最常用的Windows/Android/IOS三个平台为例。</p>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>Window打包时是获取<code>GEngineIni</code>下的<code>TargetRHIs</code>，默认是<code>PCD3D_SM5</code>，也可以添加<code>ES3.1</code>：</p>
+<p>The parameters to be passed here are derived from the <code>ShaderNameRule</code>. If it is the version number, pass the version number as a string. The second parameter is the Shader Library path in the pak, passing the value of <code>ShaderLibMountPoint</code>.</p>
+<p>If Shared Shader Library is enabled but only mounted without calling LoadShaderbytecode, it will still result in material loss effects.</p>
+<h2 id="Cook-Shader-Format"><a href="#Cook-Shader-Format" class="headerlink" title="Cook Shader Format"></a>Cook Shader Format</h2><p>During the cooking phase, HotPatcher will use the Shader formats configured in project settings for each platform. Each platform can have multiple Shader Formats; we take the most commonly used Windows/Android/iOS platforms as examples.</p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>When packing for Windows, it retrieves <code>GEngineIni</code>‘s <code>TargetRHIs</code>, which defaults to <code>PCD3D_SM5</code>, and can also include <code>ES3.1</code>:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[/Script/WindowsTargetPlatform.WindowsTargetSettings]</span></span><br><span class="line"><span class="attr">Compiler</span>=Default</span><br><span class="line">+<span class="attr">TargetedRHIs</span>=PCD3D_ES31</span><br><span class="line">+<span class="attr">TargetedRHIs</span>=PCD3D_SM5</span><br><span class="line"><span class="attr">DefaultGraphicsRHI</span>=DefaultGraphicsRHI_Default</span><br></pre></td></tr></table></figure>
 
-<p>引擎中Windows获取Shader Formats的相关代码：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/Windows/WindowsTargetPlatform/Private/GenericWindowsTargetPlatform.h#L229">GenericWindowsTargetPlatform.h#L229</a></p>
-<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>Android是也是在引擎中配置的（UE在4.25及之后的版本上舍弃了ES2的支持）：</p>
+<p>The engine’s code relevant to acquiring Windows Shader Formats can be found in: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/Windows/WindowsTargetPlatform/Private/GenericWindowsTargetPlatform.h#L229">GenericWindowsTargetPlatform.h#L229</a></p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>Android is also configured in the engine (UE dropped support for ES2 in version 4.25 and later):</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211031192608.webp"></p>
-<p>引擎中Android获取Shader Formats的相关代码：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/Android/AndroidTargetPlatform/Private/AndroidTargetPlatform.cpp#L390">AndroidTargetPlatform.cpp#L390</a></p>
-<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>IOS则是Metal，但是否编译为Native，项目设置和HotPatcher中都有<code>bNativeShader</code>的选项，并且也要根据是否在Mac上编译或者Win上具有Metal Compiler（4.26+）。</p>
+<p>The engine’s code relevant to acquiring Android Shader Formats can be found at: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/Android/AndroidTargetPlatform/Private/AndroidTargetPlatform.cpp#L390">AndroidTargetPlatform.cpp#L390</a></p>
+<h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><p>iOS uses Metal, and whether to compile as Native can be toggled within project settings and HotPatcher with the <code>bNativeShader</code> option. Additionally, it should also depend on whether compiled on Mac or if the Windows environment has a Metal Compiler (4.26+).</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211031192608.webp" alt="Project Settings-Package"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211031193821.webp" alt="Override location of Metal Toolchain"></p>
 <blockquote>
-<p>注意：引擎中访问Windows Metal Toolchin的路径为<code>C:\Program Files\Metal Developer Tools</code>，默认安装会在这个位置，若不在这个路径下，就需要在<code>Project Settings-IOS-Build</code>下修改<code>Override location of Metal Toolchain</code>。</p>
+<p>Note: Accessing the path of Metal Toolchain in the engine for Windows is <code>C:\Program Files\Metal Developer Tools</code>. By default, it will be installed there; if it is located elsewhere, it needs to be modified under <code>Project Settings-IOS-Build</code> in <code>Override location of Metal Toolchain</code>.</p>
 </blockquote>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211031193656.webp" alt="HotPatcher"></p>
-<p>在<code>HotPatcher</code>中勾上<code>bNativeShader</code>就会在支持的环境上编译出metallic/metalmap。</p>
-<p>引擎中IOS平台获取Shader Formats的相关代码：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/IOS/IOSTargetPlatform/Private/IOSTargetPlatform.cpp#L581">IOSTargetPlatform.cpp#L581</a></p>
-<h2 id="Native-Metal-Shader"><a href="#Native-Metal-Shader" class="headerlink" title="Native Metal Shader"></a>Native Metal Shader</h2><p>之前笔记中提到，苹果推出了Windows上的 Metal Shader Compiler，可以在Windows上编译出Metal Native Shader：<a href="https://imzlp.com/notes/ue/#Windows-Metal-Shader-Compiler-for-IOS">Windows Metal Shader Compiler for IOS</a>，但是UE在4.26之后才提供了引擎层面的支持，在4.25及之前的引擎版本中，metal只能通过Mac来打包，使用Windows远程构建就只能使用Text Shader，也就是ushaderbytecode，性能低于Native，在运行时有以下log：</p>
+<p>By enabling <code>bNativeShader</code> in HotPatcher, it will compile metallic/metalmap in supported environments.</p>
+<p>The relevant engine code for acquiring Shader Formats on the iOS platform can be found at: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Developer/IOS/IOSTargetPlatform/Private/IOSTargetPlatform.cpp#L581">IOSTargetPlatform.cpp#L581</a></p>
+<h2 id="Native-Metal-Shader"><a href="#Native-Metal-Shader" class="headerlink" title="Native Metal Shader"></a>Native Metal Shader</h2><p>As mentioned in previous notes, Apple has introduced a Metal Shader Compiler for Windows, which can compile Metal Native Shader on Windows: <a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue/#Windows-Metal-Shader-Compiler-for-IOS">Windows Metal Shader Compiler for iOS</a>. However, UE only provided engine-level support after version 4.26; before version 4.25, metal could only be packaged using a Mac, and using remote build on Windows would only allow for Text Shader, which is ushaderbytecode, performing lower than Native. During runtime, it generates the following log:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogMetal: Display: Loaded a text shader (will be slower to load)</span><br></pre></td></tr></table></figure>
-<p>引擎中的代码：<a target="_blank" rel="noopener" href="https://cs.github.com/EpicGames/UnrealEngine/blob/d11782b9046e9d0b130309591e4efc57f4b8b037/Engine/Source/Runtime/Apple/MetalRHI/Private/Shaders/Types/Templates/MetalBaseShader.h?q=NewLibrary+path:/%5EEngine%5C/Source%5C/Runtime%5C/Apple%5C/MetalRHI%5C/Private%5C//#L163">Engine/Source/Runtime/Apple/MetalRHI/Private/Shaders/Types/Templates/MetalBaseShader.h</a></p>
+<p>The engine’s code can be found at: <a target="_blank" rel="noopener" href="https://cs.github.com/EpicGames/UnrealEngine/blob/d11782b9046e9d0b130309591e4efc57f4b8b037/Engine/Source/Runtime/Apple/MetalRHI/Private/Shaders/Types/Templates/MetalBaseShader.h?q=NewLibrary+path:/%5EEngine%5C/Source%5C/Runtime%5C/Apple%5C/MetalRHI%5C/Private%5C//#L163">Engine/Source/Runtime/Apple/MetalRHI/Private/Shaders/Types/Templates/MetalBaseShader.h</a></p>
 <blockquote>
-<p>在支持Compile Native Metal的环境上（Mac/Win），HotPatcher也支持了对Patch中资源的Shader编译Native格式。</p>
+<p>In an environment that supports compiling Native Metal (Mac/Win), HotPatcher also supports compiling Patch resource shaders in Native format.</p>
 </blockquote>
-<p>虽然项目设置中有打包时启用Native Shader的选项，但是这个开关并不会对打包后运行时的代码有任何影响。不管基础包是否开启了Native，在运行时三种shader的更新方式都可以：</p>
+<p>Although there is an option to enable Native Shader during packaging in project settings, this switch does not affect the code at runtime after packaging. Regardless of whether the base package has Native enabled, all three shader update methods can be utilized:</p>
 <ol>
 <li>ushaderbytecode</li>
 <li>inline shader code</li>
-<li>Native(metallib/metalmap)</li>
+<li>Native (metallib/metalmap)</li>
 </ol>
-<p>对于调用<code>OpenLibrary</code>的加载，在Metal平台会优先加载Native的，若加载失败才会加载ushaderbytecode。</p>
+<p>For the loading of <code>OpenLibrary</code>, on the Metal platform, it will prioritize loading Native first, and only if that fails will it load ushaderbytecode.</p>
 <ol>
-<li>尝试加载metalmap，若加载失败，则<code>FMetalDynamicRHI::RHICreateShaderLibrary</code>返回nullptr (<code>Apple\MetalRHI\Private\MetalShaders.cpp</code>)</li>
-<li>加载metalmap失败，则加载ushaderbytecode</li>
+<li>Attempt to load metalmap; if it fails, <code>FMetalDynamicRHI::RHICreateShaderLibrary</code> returns nullptr (<code>Apple\MetalRHI\Private\MetalShaders.cpp</code>)</li>
+<li>If loading the metalmap fails, then load ushaderbytecode.</li>
 </ol>
 <figure class="highlight cpp"><figcaption><span>Runtime\RenderCore\Private\ShaderCodeLibrary.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FShaderLibraryInstance</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">static</span> FShaderLibraryInstance* <span class="title">Create</span><span class="params">(EShaderPlatform InShaderPlatform, <span class="type">const</span> FString&amp; ShaderCodeDir, FString <span class="type">const</span>&amp; InLibraryName)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		FRHIShaderLibraryRef Library;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">RHISupportsNativeShaderLibraries</span>(InShaderPlatform))</span><br><span class="line">		&#123;</span><br><span class="line">			Library = <span class="built_in">RHICreateShaderLibrary</span>(InShaderPlatform, ShaderCodeDir, InLibraryName);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!Library)</span><br><span class="line">		&#123;</span><br><span class="line">          	<span class="type">const</span> FName PlatformName = <span class="built_in">LegacyShaderPlatformToShaderFormat</span>(InShaderPlatform);</span><br><span class="line">			<span class="type">const</span> FString DestFilePath = <span class="built_in">GetCodeArchiveFilename</span>(ShaderCodeDir, InLibraryName, PlatformName);</span><br><span class="line">			<span class="function">TUniquePtr&lt;FArchive&gt; <span class="title">Ar</span><span class="params">(IFileManager::Get().CreateFileReader(*DestFilePath))</span></span>;</span><br><span class="line">          	<span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>所以，不管基础包内的shader library是何种类型，这Shader的更新方式都可以用。</p>
+<p>Thus, regardless of the type of shader library within the base package, the shader update method can be employed.</p>
 <blockquote>
-<p>加载Native Metal Shader有一个需要注意的问题，<code>metallib</code>/<code>metalmap</code>文件名必须全小写，不然会加载失败。通过HotPatcher打包的Native Shader Library已做处理。</p>
+<p>There is a necessary point to note when loading Native Metal Shader: the names of <code>metallib</code>/<code>metalmap</code> files must be all lowercase, or else loading will fail. Native Shader Libraries packaged by HotPatcher have this processed.</p>
 </blockquote>
-<p>我创建了一个测试环境，不管是Native/ushaderbytecode，都能够正常加载：</p>
+<p>I created a test environment where both Native and ushaderbytecode can be loaded properly:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211030172750.jpg"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211030173043.jpg" alt="Loaded Shader"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211030173340.jpg" alt="Unload Shader"></p>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>本文研究了UE中热更Shader几种不同方式的优缺点，并基于<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPacther</a>实现了无需Patch的Shader增量更新，可以完美地替代Shader Patch和Inline Shader Code的方案。</p>
-<p>根据该功能，可以实现某个地图或者某种模块依赖的shader全在独立的包中，这样能够让shader也解耦，完全可以按需下载而不用完整的存在基础包中。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>This article has explored the advantages and disadvantages of various methods for hot-updating shaders in UE, and based on <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> has implemented incremental shader updates without the need for patching, providing a perfect alternative to Shader Patch and Inline Shader Code solutions.</p>
+<p>With this functionality, shaders that depend on a specific map or module can be contained within an independent package, allowing the shaders to be decoupled and downloaded as needed without existing fully within the base package.</p>
 
     </div>
 
@@ -549,7 +549,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -559,7 +559,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -569,37 +569,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/15810/" target="_blank">UE热更新：Shader更新策略</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/09/13 10:24<br/>
+             <span>Title:</span><a href="/posts/15810/" target="_blank">UE Hot Update: Shader update strategy</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/09/13 10:24<br/>
              
-             <span>本文字数:</span><span class="page-count">5.6k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">11k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/15810/" target="_blank" title="UE热更新：Shader更新策略">https://imzlp.com/posts/15810/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/15810/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/15810/" target="_blank" title="UE Hot Update: Shader update strategy">https://en.imzlp.com/posts/15810/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/15810/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -621,12 +621,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/11750/" rel="prev" title="UE资源合规检查工具ResScannerUE">
-      <i class="fa fa-chevron-left"></i> UE资源合规检查工具ResScannerUE
+    <a href="/posts/11750/" rel="prev" title="UE Resource Scanning and inspection tool ResScannerUE">
+      <i class="fa fa-chevron-left"></i> UE Resource Scanning and inspection tool ResScannerUE
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/25136/" rel="next" title="UE热更新：资源的二进制补丁方案">
-      UE热更新：资源的二进制补丁方案 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/25136/" rel="next" title="UE Hot Update: binary patch solution for resources">
+      UE Hot Update: binary patch solution for resources <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -697,25 +697,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shader-Patch"><span class="nav-number">1.</span> <span class="nav-text">Shader Patch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline-Shader-Code"><span class="nav-number">2.</span> <span class="nav-text">Inline Shader Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Better-Way"><span class="nav-number">3.</span> <span class="nav-text">Better Way</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-Shader-Format"><span class="nav-number">4.</span> <span class="nav-text">Cook Shader Format</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">4.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">4.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS"><span class="nav-number">4.3.</span> <span class="nav-text">IOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native-Metal-Shader"><span class="nav-number">5.</span> <span class="nav-text">Native Metal Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">6.</span> <span class="nav-text">End</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shader-Patch"><span class="nav-number">1.</span> <span class="nav-text">Shader Patch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline-Shader-Code"><span class="nav-number">2.</span> <span class="nav-text">Inline Shader Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Better-Way"><span class="nav-number">3.</span> <span class="nav-text">Better Way</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-Shader-Format"><span class="nav-number">4.</span> <span class="nav-text">Cook Shader Format</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">4.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">4.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS"><span class="nav-number">4.3.</span> <span class="nav-text">iOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native-Metal-Shader"><span class="nav-number">5.</span> <span class="nav-text">Native Metal Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">6.</span> <span class="nav-text">End</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -723,19 +723,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -773,10 +773,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -803,9 +803,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -814,12 +811,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -972,7 +969,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/15810/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/15810/',]
       });
       });
   </script>
@@ -995,12 +992,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

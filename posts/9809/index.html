@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="WWise是Audiokinetic的跨平台音频引擎，可以与游戏引擎很好地进行交互，负责音频的同事可以只在WWise中处理音频，把游戏业务和音频的制作与管理分离，提供事件和参数给游戏引擎使用，实现与业务的解耦和对音频更精确的控制。本篇文章主要介绍WWise与UE4的集成、远程构建、资源分析、文档收录，WWise与UE的控制交互以及Bank生成的代码分析。">
+  <meta name="description" content="WWise is Audiokinetic’s cross-platform audio engine that interacts well with game engines, allowing audio designers to handle audio solely within WWise. This separates game logic from audio production">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE集成WWise：概念与代码分析">
-<meta property="og:url" content="https://imzlp.com/posts/9809/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="WWise是Audiokinetic的跨平台音频引擎，可以与游戏引擎很好地进行交互，负责音频的同事可以只在WWise中处理音频，把游戏业务和音频的制作与管理分离，提供事件和参数给游戏引擎使用，实现与业务的解耦和对音频更精确的控制。本篇文章主要介绍WWise与UE4的集成、远程构建、资源分析、文档收录，WWise与UE的控制交互以及Bank生成的代码分析。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE integrated WWise: concept and code analysis">
+<meta property="og:url" content="https://en.imzlp.com/posts/9809/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="WWise is Audiokinetic’s cross-platform audio engine that interacts well with game engines, allowing audio designers to handle audio solely within WWise. This separates game logic from audio production">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323183954.webp">
 <meta property="article:published_time" content="2020-09-12T15:31:46.000Z">
 <meta property="article:modified_time" content="2020-09-12T15:31:46.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="Wwise">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323183954.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/9809/">
+<link rel="canonical" href="https://en.imzlp.com/posts/9809/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE集成WWise：概念与代码分析 | 循迹研究室</title>
+  <title>UE integrated WWise: concept and code analysis | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/9809/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/9809/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE集成WWise：概念与代码分析<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2020-09-12-9809.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/9809/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE integrated WWise: concept and code analysis<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2020-09-12-9809.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/9809/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE integrated WWise: concept and code analysis</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE集成WWise：概念与代码分析</sub>
           </div>
         
 
@@ -316,47 +316,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2020-09-12 15:31 15:31:46:31" itemprop="dateCreated datePublished" datetime="2020-09-12T15:31:46+00:00">2020-09-12 15:31</time>
+              <time title="Created: 2020-09-12 15:31 15:31:46:31" itemprop="dateCreated datePublished" datetime="2020-09-12T15:31:46+00:00">2020-09-12 15:31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/Wwise/" itemprop="url" rel="index"><span itemprop="name">Wwise</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/9809/" class="post-meta-item leancloud_visitors" data-flag-title="UE集成WWise：概念与代码分析" title="阅读次数">
+            <span id="/posts/9809/" class="post-meta-item leancloud_visitors" data-flag-title="UE integrated WWise: concept and code analysis" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.3k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>12k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>16 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>29 mins.</span>
             </span>
 
         </div>
@@ -368,10 +368,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/products/wwise/">WWise</a>是Audiokinetic的跨平台音频引擎，可以与游戏引擎很好地进行交互，负责音频的同事可以只在WWise中处理音频，把游戏业务和音频的制作与管理分离，提供事件和参数给游戏引擎使用，实现与业务的解耦和对音频更精确的控制。<br>本篇文章主要介绍WWise与UE4的集成、远程构建、资源分析、文档收录，WWise与UE的控制交互以及Bank生成的代码分析。</p>
+        <p><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/products/wwise/">WWise</a> is Audiokinetic’s cross-platform audio engine that interacts well with game engines, allowing audio designers to handle audio solely within WWise. This separates game logic from audio production and management, providing events and parameters for use in game engines, achieving decoupling with business logic and precision control over audio.</p>
+<p>This article mainly introduces the integration of WWise with UE4, remote building, resource analysis, documentation collection, the control interaction between WWise and UE, and code analysis of generated Banks.</p>
 <span id="more"></span>
 
-<h2 id="集成至UE4"><a href="#集成至UE4" class="headerlink" title="集成至UE4"></a>集成至UE4</h2><p>WWise是全平台支持的，对Linux/Lumin/PS4/Switch/XboxOne/Windows/Android/iOS/Mac都支持。<br>但是多数游戏不需要支持这么多平台，WWise链接库很大，所以我在官方版本支持的多平台基础上做了裁剪，去掉了以下平台的支持：</p>
+<h2 id="Integration-into-UE4"><a href="#Integration-into-UE4" class="headerlink" title="Integration into UE4"></a>Integration into UE4</h2><p>WWise supports all platforms, including Linux/Lumin/PS4/Switch/XboxOne/Windows/Android/iOS/Mac. However, most games do not require support for so many platforms, and the WWise link library is large. Therefore, I’ve trimmed down the official multi-platform version by removing support for the following platforms:</p>
 <ul>
 <li>Linux</li>
 <li>Lumin</li>
@@ -379,204 +380,203 @@
 <li>Switch</li>
 <li>XboxOne</li>
 </ul>
-<p>对Android和Windows平台做了以下裁剪：</p>
+<p>For the Android and Windows platforms, the following adjustments were made:</p>
 <ul>
-<li>移除arm64-v8a和android_x86/x86_64的链接库支持</li>
-<li>移除Win32的所有链接库/移除vc140/vc150的支持</li>
+<li>Removed support for arm64-v8a and android_x86/x86_64 link libraries</li>
+<li>Removed all link libraries for Win32/removed support for vc140/vc150</li>
 </ul>
-<p>对iOS做了以下裁剪：</p>
+<p>For iOS, the following adjustments were made:</p>
 <ul>
-<li>移除所有的iphonesimulator，节省空间2.31G</li>
+<li>Removed all iphonesimulator, saving 2.31G of space</li>
 </ul>
-<p>对Mac的支持：</p>
-<p>目前的项目是不需要支持Mac的（使用iOS远程出包），但是为了避免想要在Mac上跑工程编译不过的问题，保留了Mac链接库和模块支持，保留它不会对Android/iOS的打包有任何影响。</p>
-<h3 id="链接库"><a href="#链接库" class="headerlink" title="链接库"></a>链接库</h3><p>我在裁剪版本中支持以下平台：</p>
+<p>For Mac support:</p>
+<p>The current project does not require support for Mac (using iOS for remote builds), but to avoid issues with compiling the project on Mac, the Mac link library and module support have been retained, and keeping it will not affect the packaging for Android/iOS.</p>
+<h3 id="Link-Libraries"><a href="#Link-Libraries" class="headerlink" title="Link Libraries"></a>Link Libraries</h3><p>In the trimmed version, I support the following platforms:</p>
 <ul>
 <li>Android_armabi_v7a</li>
 <li>iOS</li>
 <li>Mac</li>
 <li>Win vc160</li>
 </ul>
-<p>每个平台均支持<code>Debug</code>/<code>Profile</code>/<code>Release</code>的支持，分别对应UE的<code>Debug</code>/<code>Development</code>/<code>Shipping</code>的Configuration配置。</p>
-<p>在打包Android Development的配置下，包含WWise的链接库，APK增大约30M.</p>
-<h3 id="WWise版本的问题"><a href="#WWise版本的问题" class="headerlink" title="WWise版本的问题"></a>WWise版本的问题</h3><blockquote>
-<p>Wwise版本为Wwise 2019.1.9.7221</p>
+<p>Each platform supports <code>Debug</code>/<code>Profile</code>/<code>Release</code>, corresponding to UE’s <code>Debug</code>/<code>Development</code>/<code>Shipping</code> configuration.</p>
+<p>In the Android Development configuration, including the WWise link library, the APK size increases by approximately 30M.</p>
+<h3 id="WWise-Version-Issues"><a href="#WWise-Version-Issues" class="headerlink" title="WWise Version Issues"></a>WWise Version Issues</h3><blockquote>
+<p>The WWise version is Wwise 2019.1.9.7221</p>
 </blockquote>
-<p>在<code>AkAudio_Android.build.cs</code>中对Android的的链接库支持在<code>UE_4_25_OR_LATER</code>下路径错误。</p>
-<p>原始路径:</p>
+<p>In <code>AkAudio_Android.build.cs</code>, the link library support for Android has a path error under <code>UE_4_25_OR_LATER</code>.</p>
+<p>Original path:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Path.Combine(ThirdPartyFolder, <span class="string">&quot;Android&quot;</span>, <span class="string">&quot;armeabi-v7a&quot;</span>, akConfigurationDir, <span class="string">&quot;lib&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>实际的路径：</p>
+<p>Actual path:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Path.Combine(ThirdPartyFolder, <span class="string">&quot;Android_armeabi-v7a&quot;</span>, akConfigurationDir, <span class="string">&quot;lib&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>但是这样的修改会造成同时支持armv7和arm64时具有链接错误，解决方案看下节。</p>
-<h3 id="Android支持armv7和arm64"><a href="#Android支持armv7和arm64" class="headerlink" title="Android支持armv7和arm64"></a>Android支持armv7和arm64</h3><p>当在UE的项目设置中为Android同时支持<code>arm64</code>和<code>armb7</code>时，上面的修改会具有链接错误，需要变动WWise中链接库的路径，具体的方法可以看我这篇笔记：<a href="https://imzlp.com/notes/ue/#%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81armv7%E5%92%8Carm64%E7%9A%84%E9%93%BE%E6%8E%A5%E5%BA%93">同时支持armv7和arm64 的链接库</a>。</p>
-<h3 id="Android链接库的拷贝"><a href="#Android链接库的拷贝" class="headerlink" title="Android链接库的拷贝"></a>Android链接库的拷贝</h3><p>WWise的SDK中同时使用UPL和RuntimeDependencies添加了链接库，造成了重复，所以可以把RuntimeDependencies中针对移动平台去掉：</p>
+<p>However, this modification will result in link errors when simultaneously supporting armv7 and arm64. The solution is discussed in the next section.</p>
+<h3 id="Android-Support-for-armv7-and-arm64"><a href="#Android-Support-for-armv7-and-arm64" class="headerlink" title="Android Support for armv7 and arm64"></a>Android Support for armv7 and arm64</h3><p>When supporting both <code>arm64</code> and <code>armv7</code> in the UE project settings for Android, the above modifications result in link errors. It is necessary to change the link library paths in WWise. For specific methods, refer to my note: <a target="_blank" rel="noopener" href="https://imzlp.com/notes/ue/#%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81armv7%E5%92%8Carm64%E7%9A%84%E9%93%BE%E6%8E%A5%E5%BA%93">Simultaneously Supporting armv7 and arm64 Link Libraries</a>.</p>
+<h3 id="Copying-Android-Link-Libraries"><a href="#Copying-Android-Link-Libraries" class="headerlink" title="Copying Android Link Libraries"></a>Copying Android Link Libraries</h3><p>The WWise SDK simultaneously uses UPL and RuntimeDependencies to add link libraries, causing duplication. Therefore, you can remove the moving platform entries from RuntimeDependencies:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AkAudio</span>(<span class="params">ReadOnlyTargetRules Target</span>) : <span class="title">base</span>(<span class="params">Target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> (Target.Platform == UnrealTargetPlatform.Win64)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">foreach</span>(<span class="keyword">var</span> RuntimeDependency <span class="keyword">in</span> AkUEPlatformInstance.GetRuntimeDependencies())</span><br><span class="line">		&#123;</span><br><span class="line">			RuntimeDependencies.Add(RuntimeDependency);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="远程构建iOS"><a href="#远程构建iOS" class="headerlink" title="远程构建iOS"></a>远程构建iOS</h3><p>在我之前的笔记中写到过，远程构建iOS实际就是要把文件上传的Mac上执行编译，但是这就有一个问题，如果需要参与编译的文件没有被上传到Mac上，就会出现错误，很不巧在WWise中就会出现这个问题，解决的办法自然是要把编译WWise依赖的文件给上传到Mac上。</p>
-<p>因为UE使用<code>RSync</code>来同步构建机和本地的文件传输，在我之前的文章<a href="https://imzlp.com/posts/1948/#%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E6%9E%84%E5%BB%BA">UE4开发笔记：Mac/iOS篇#配置远程构建</a>有讲到，可以创建<code>&lt;ProjectDir&gt;/Build/Rsync/RsyncProject.txt</code>文件，来写入RSync的文件同步规则，把需要的文件上传到Mac中。</p>
-<p>WWise需要的规则如下：</p>
+<h3 id="Remote-Building-for-iOS"><a href="#Remote-Building-for-iOS" class="headerlink" title="Remote Building for iOS"></a>Remote Building for iOS</h3><p>In my previous notes, I mentioned that remote building for iOS involves uploading files to Mac for compilation. However, a problem arises if the files involved in the build are not uploaded to Mac, which unfortunately occurs with WWise. The solution is to upload the files that WWise depends on to Mac.</p>
+<p>Since UE uses <code>RSync</code> for file synchronization between the build machine and local files, I previously discussed this in the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/1948/#%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E6%9E%84%E5%BB%BA">UE4 Development Notes: Mac/iOS Section # Configuring Remote Builds</a>, you can create a file <code>&lt;ProjectDir&gt;/Build/Rsync/RsyncProject.txt</code> to write RSync’s file synchronization rules, uploading the required files to Mac.</p>
+<p>The rules for WWise are as follows:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ /Plugins/Wwise/ThirdParty/include/**</span><br><span class="line">+ /Plugins/Wwise/ThirdParty/iOS/**</span><br></pre></td></tr></table></figure>
-<p>其实就是指定WWise的链接库和Include目录全上传到Mac上。</p>
-<h2 id="WWise资源"><a href="#WWise资源" class="headerlink" title="WWise资源"></a>WWise资源</h2><p>WWise在UE中有两种资源格式，一种是<code>UAkAudioEvent</code>用来执行WWise中指定的Event，还有一种是<code>UAkAudioBank</code>，用来记录Bank中包含哪些Event，用在生成时标记把属于相同Bank的Event打包到一起。</p>
+<p>This just specifies that the WWise link library and Include directories are fully uploaded to Mac.</p>
+<h2 id="WWise-Resources"><a href="#WWise-Resources" class="headerlink" title="WWise Resources"></a>WWise Resources</h2><p>WWise has two resource formats in UE: one is <code>UAkAudioEvent</code>, used to execute specified Events in WWise, and the other is <code>UAkAudioBank</code>, which records which Events are included in the Bank, marking them to be packed together during generation.</p>
 <h3 id="UAkAudioEvent"><a href="#UAkAudioEvent" class="headerlink" title="UAkAudioEvent"></a>UAkAudioEvent</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=concept_events.html">AudioEvent</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/library/edge/?source=SDK&id=concept_events.html">AudioEvent</a></li>
 </ul>
-<p><code>UAkAudioEvent</code>：主要作用是指定当前Event的Bank，它唯一的函数就是<code>LoadBank</code>来加载当前Event所指定的Bank（看到有用到的地方就是获取它的名字），WWise集成到UE的插件也是通过拿到<code>UAkAudioEvent</code>对象的名字来与<code>UAkAudioBank</code>做绑定之后去<code>WWise</code>端生成bnk等文件的，这也是要求UE中资源的命名要和WWise中Event的命名完全一致的原因。</p>
+<p><code>UAkAudioEvent</code>: Its main function is to designate the Bank for the current Event. Its only function is <code>LoadBank</code>, which loads the Bank specified for the current Event (if you see its usage, it’s just to retrieve its name). The WWise integration into UE’s plugin also binds the <code>UAkAudioEvent</code> object’s name to the <code>UAkAudioBank</code> for generating bnk files, which is why the naming of resources in UE must exactly match the naming of Events in WWise.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UCLASS</span>(meta=(BlueprintSpawnableComponent))</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AKAUDIO_API</span> UAkAudioEvent : <span class="keyword">public</span> UObject</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_UCLASS_BODY</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">/** Bank to which this event should be added. */</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=<span class="string">&quot;Bank&quot;</span>)</span><br><span class="line">	<span class="keyword">class</span> <span class="title class_">UAkAudioBank</span> * RequiredBank;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Maximum attenuation radius for this event */</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(BlueprintReadOnly, Category=<span class="string">&quot;AkAudioEvent&quot;</span>)</span><br><span class="line">	<span class="type">float</span> MaxAttenuationRadius;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Whether this event is infinite (looping) or finite (duration parameters are valid) */</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(BlueprintReadOnly, Category = <span class="string">&quot;AkAudioEvent&quot;</span>)</span><br><span class="line">	<span class="type">bool</span> IsInfinite;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Minimum duration */</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(BlueprintReadOnly, Category = <span class="string">&quot;AkAudioEvent&quot;</span>)</span><br><span class="line">	<span class="type">float</span> MinimumDuration;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Maximum duration */</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(BlueprintReadOnly, Category = <span class="string">&quot;AkAudioEvent&quot;</span>)</span><br><span class="line">	<span class="type">float</span> MaximumDuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> CPP</span></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Load the required bank.</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * @return true if the bank was loaded, otherwise false</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">LoadBank</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>通过获取Event的名字再传递给更深层次的PostEvent：</p>
+<p>By obtaining the name of the Event and passing it to the deeper PostEvent:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">int32 <span class="title">UAkGameplayStatics::PostEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	  <span class="keyword">class</span> UAkAudioEvent* AkEvent</span></span></span><br><span class="line"><span class="params"><span class="function">	, <span class="keyword">class</span> AActor* Actor</span></span></span><br><span class="line"><span class="params"><span class="function">	, int32 CallbackMask</span></span></span><br><span class="line"><span class="params"><span class="function">	, <span class="type">const</span> FOnAkPostEventCallback&amp; PostEventCallback</span></span></span><br><span class="line"><span class="params"><span class="function">	, <span class="type">const</span> TArray&lt;FAkExternalSourceInfo&gt;&amp; ExternalSources</span></span></span><br><span class="line"><span class="params"><span class="function">	, <span class="type">bool</span> bStopWhenAttachedToDestroyed</span></span></span><br><span class="line"><span class="params"><span class="function">	, FString EventName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (AkEvent == <span class="literal">NULL</span> &amp;&amp; EventName.<span class="built_in">IsEmpty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">UE_LOG</span>(LogScript, Warning, <span class="built_in">TEXT</span>(<span class="string">&quot;UAkGameplayStatics::PostEvent: No Event specified!&quot;</span>));</span><br><span class="line">		<span class="keyword">return</span> AK_INVALID_PLAYING_ID;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (Actor == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">UE_LOG</span>(LogScript, Warning, <span class="built_in">TEXT</span>(<span class="string">&quot;UAkGameplayStatics::PostEvent: NULL Actor specified!&quot;</span>));</span><br><span class="line">		<span class="keyword">return</span> AK_INVALID_PLAYING_ID;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">AkDeviceAndWorld <span class="title">DeviceAndWorld</span><span class="params">(Actor)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (DeviceAndWorld.<span class="built_in">IsValid</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		AkCallbackType AkCallbackMask = AkCallbackTypeHelpers::<span class="built_in">GetCallbackMaskFromBlueprintMask</span>(CallbackMask);</span><br><span class="line">		<span class="keyword">if</span> (ExternalSources.<span class="built_in">Num</span>() &gt; <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="function">FAkSDKExtrernalSourceArray <span class="title">SDKExternalSrcInfo</span><span class="params">(ExternalSources)</span></span>;</span><br><span class="line">			<span class="keyword">return</span> DeviceAndWorld.AkAudioDevice-&gt;<span class="built_in">PostEvent</span>(<span class="built_in">GET_AK_EVENT_NAME</span>(AkEvent, EventName), Actor, PostEventCallback, AkCallbackMask, <span class="literal">false</span>, SDKExternalSrcInfo.ExternalSourceArray);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> DeviceAndWorld.AkAudioDevice-&gt;<span class="built_in">PostEvent</span>(<span class="built_in">GET_AK_EVENT_NAME</span>(AkEvent, EventName), Actor, PostEventCallback, AkCallbackMask);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> AK_INVALID_PLAYING_ID;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="UAkAudioBank"><a href="#UAkAudioBank" class="headerlink" title="UAkAudioBank"></a>UAkAudioBank</h3><p><code>UAkAudioBank</code>的作用是用来调用<code>AkAudioDevice</code>来加载Bank，如果在UE中开启了AutoLoad，则在UObejct的<code>PostLoad</code>中就会去执行加载。</p>
-<p>官方的对于SoundBank的介绍：<a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=concept_banks.html">SoundBank</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Called after load process is complete.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">UAkAudioBank::PostLoad</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Super::<span class="built_in">PostLoad</span>();</span><br><span class="line">	<span class="keyword">if</span> ( AutoLoad &amp;&amp; !<span class="built_in">HasAnyFlags</span>(RF_ClassDefaultObject))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">Load</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Loads an AkBank.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return Returns true if the laod was successful, otherwise false</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">UAkAudioBank::Load</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">IsRunningCommandlet</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		FAkAudioDevice * AudioDevice = FAkAudioDevice::<span class="built_in">Get</span>();</span><br><span class="line">		<span class="keyword">if</span> (AudioDevice)</span><br><span class="line">		&#123;</span><br><span class="line">			AkBankID BankID;</span><br><span class="line">			AKRESULT eResult = AudioDevice-&gt;<span class="built_in">LoadBank</span>(<span class="keyword">this</span>, AK_DEFAULT_POOL_ID, BankID);</span><br><span class="line">			<span class="keyword">return</span> (eResult == AK_Success) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="UAkAudioBank"><a href="#UAkAudioBank" class="headerlink" title="UAkAudioBank"></a>UAkAudioBank</h3><p><code>UAkAudioBank</code> is used to call <code>AkAudioDevice</code> to load the Bank. If AutoLoad is enabled in UE, it will execute the loading in the UObject’s <code>PostLoad</code>.</p>
+<p>The official introduction to SoundBanks can be found here: <a target="_blank" rel="noopener" href="https://www.audiokinetic.com/library/edge/?source=SDK&id=concept_banks.html">SoundBank</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Called after load process is complete.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">UAkAudioBank::PostLoad</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Super::<span class="built_in">PostLoad</span>();</span><br><span class="line">	<span class="keyword">if</span> ( AutoLoad &amp;&amp; !<span class="built_in">HasAnyFlags</span>(RF_ClassDefaultObject))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">Load</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Loads an AkBank.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return Returns true if the load was successful, otherwise false</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">UAkAudioBank::Load</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">IsRunningCommandlet</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		FAkAudioDevice * AudioDevice = FAkAudioDevice::<span class="built_in">Get</span>();</span><br><span class="line">		<span class="keyword">if</span> (AudioDevice)</span><br><span class="line">		&#123;</span><br><span class="line">			AkBankID BankID;</span><br><span class="line">			AKRESULT eResult = AudioDevice-&gt;<span class="built_in">LoadBank</span>(<span class="keyword">this</span>, AK_DEFAULT_POOL_ID, BankID);</span><br><span class="line">			<span class="keyword">return</span> (eResult == AK_Success) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而且LoadBank我看到使用的也是和<code>AkAudioEvent</code>类似，也是通过获取它的名字传递给<code>FAkAudioDevices</code>。</p>
-<h3 id="Bank的生成分析"><a href="#Bank的生成分析" class="headerlink" title="Bank的生成分析"></a>Bank的生成分析</h3><p>那么<code>AkAudioEvent</code>是如何与<code>SoundBank</code>进行关联起来的呢？因为我在代码里只看到使用之前需要<code>LoadBank</code>，但是没有看到在UE资源里SounkBnak和Event进行关联起来的地方，而且，SoundBank的命名与在WWise中也没有关系。</p>
-<p>答案就在通过<code>AkSoundBank</code>生成的文件上，在对<code>AkSoundBank</code>资源进行<code>Generate Selected SoundBank</code>时：</p>
+<p>Moreover, LoadBank similarly uses the Event name for passing to <code>FAkAudioDevices</code>.</p>
+<h3 id="Analysis-of-Bank-Generation"><a href="#Analysis-of-Bank-Generation" class="headerlink" title="Analysis of Bank Generation"></a>Analysis of Bank Generation</h3><p>So how does <code>AkAudioEvent</code> associate with <code>SoundBank</code>? In the code, I see the need for <code>LoadBank</code>, but I don’t see where <code>SoundBank</code> and Event are associated in UE resources, and the naming of SoundBank has no relation in WWise.</p>
+<p>The answer lies in the files generated by <code>AkSoundBank</code>. When generating <code>AkSoundBank</code> resources with <code>Generate Selected SoundBank</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-generate-wwise-bank.webp"></p>
-<p>会在项目设置中的<code>WwiseSoundBankFolder</code>目录下创建出以下文件：</p>
+<p>It creates the following files under the <code>WwiseSoundBankFolder</code> directory in project settings:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">D:\WWise\WwiseDemoGame\Content\WwiseAudio\Windows&gt;tree /a /f</span><br><span class="line">D:.</span><br><span class="line">|   Init.bnk</span><br><span class="line">|   Init.json</span><br><span class="line">|   Init.txt</span><br><span class="line">|   Init.xml</span><br><span class="line">|   PluginInfo.json</span><br><span class="line">|   PluginInfo.xml</span><br><span class="line">|   SoundbanksInfo.json</span><br><span class="line">|   SoundbanksInfo.xml</span><br><span class="line">|   SwitchBank.bnk</span><br><span class="line">|   SwitchBank.json</span><br><span class="line">|   SwitchBank.txt</span><br><span class="line">|   SwitchBank.xml</span><br><span class="line">|   VelocityBank.bnk</span><br><span class="line">|   VelocityBank.json</span><br><span class="line">|   VelocityBank.txt</span><br><span class="line">|   VelocityBank.xml</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>Init.*</code>相关的四个文件是必备的Init的Bank的内容。每个Bank都会生成<code>.bnk</code>/<code>.json</code>/<code>.txt</code>/<code>.xml</code>四个文件，UE加载bank需要用到的就是<code>.bnk</code>文件，经过测试，删掉其他的几个文件也没什么问题。</p>
+<p>Among them, the four Init.* files are essential for Init’s Bank content. Each Bank generates four files: <code>.bnk</code>/<code>.json</code>/<code>.txt</code>/<code>.xml</code>, where the <code>.bnk</code> file is what UE needs to load the bank, and tests show that deleting the other files does not cause any issues.</p>
 <ul>
-<li>bnk：数据文件，*.<strong>Bnk</strong>可以存储事件的详细信息、音频、其他插件所需要的数据结构。可以简单理解为是一个 数据存放的容器。该文件可以在运行中自由的控制加、卸载。</li>
-<li>json：描述文件，用于记录当前的bank中有哪些数据、哪些Event等等，以及对应的Event在WWise工程中的路径。</li>
+<li>bnk: Data file, *.<strong>Bnk</strong> stores detailed event information, audio, and data structures required by other plugins. It can be simply understood as a container for storing data, allowing dynamic control over adding and unloading during runtime.</li>
+<li>json: Descriptor file for recording what data and Events are in the current bank and the corresponding Event’s path in the WWise project.</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;SoundBanksInfo&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;BasePlatform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;SchemaVersion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;11&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;SoundbankVersion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;134&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;RootPaths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;ProjectRoot&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\lipengzha\\Desktop\\WWise\\WwiseDemoGame\\UnrealWwiseDemo\\&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;SourceFilesRoot&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\lipengzha\\Desktop\\WWise\\WwiseDemoGame\\UnrealWwiseDemo\\.cache\\Windows\\&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;SoundBanksRoot&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\lipengzha\\Desktop\\WWise\\WwiseDemoGame\\Content\\WwiseAudio\\Windows\\&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;ExternalSourcesInputFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;ExternalSourcesOutputRoot&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\lipengzha\\Desktop\\WWise\\WwiseDemoGame\\UnrealWwiseDemo\\GeneratedSoundBanks\\Windows&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;SoundBanks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2001541346&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;SFX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ObjectPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\\SoundBanks\\Default Work Unit\\VelocityBank&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ShortName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;VelocityBank&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;VelocityBank.bnk&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;IncludedEvents&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">     <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2099597577&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PlayRederenceSoundTest&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ObjectPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\\Events\\Default Work Unit\\PlayRederenceSoundTest&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;DurationType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OneShot&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;DurationMin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.338833&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;DurationMax&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.338833&quot;</span></span><br><span class="line">     <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">     <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3368745218&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;VelocityLoop&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ObjectPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\\Events\\Default Work Unit\\VelocityLoop&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;DurationType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Infinite&quot;</span></span><br><span class="line">     <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;IncludedMemoryFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">     <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;386490851&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;SFX&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ShortName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Shotgun_Fire_01.wav&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;SFX\\Shotgun_Fire_01_A07A4AEB.wem&quot;</span></span><br><span class="line">     <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">   <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>xml：描述文件，与json表示的内容相同</li>
+<li>xml: Descriptor file containing the same information as json.</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SoundBanksInfo</span> <span class="attr">Platform</span>=<span class="string">&quot;Windows&quot;</span> <span class="attr">BasePlatform</span>=<span class="string">&quot;Windows&quot;</span> <span class="attr">SchemaVersion</span>=<span class="string">&quot;11&quot;</span> <span class="attr">SoundbankVersion</span>=<span class="string">&quot;134&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RootPaths</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ProjectRoot</span>&gt;</span>C:\Users\lipengzha\Desktop\WWise\WwiseDemoGame\UnrealWwiseDemo\<span class="tag">&lt;/<span class="name">ProjectRoot</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">SourceFilesRoot</span>&gt;</span>C:\Users\lipengzha\Desktop\WWise\WwiseDemoGame\UnrealWwiseDemo\.cache\Windows\<span class="tag">&lt;/<span class="name">SourceFilesRoot</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">SoundBanksRoot</span>&gt;</span>C:\Users\lipengzha\Desktop\WWise\WwiseDemoGame\Content\WwiseAudio\Windows\<span class="tag">&lt;/<span class="name">SoundBanksRoot</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ExternalSourcesInputFile</span>&gt;</span><span class="tag">&lt;/<span class="name">ExternalSourcesInputFile</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ExternalSourcesOutputRoot</span>&gt;</span>C:\Users\lipengzha\Desktop\WWise\WwiseDemoGame\UnrealWwiseDemo\GeneratedSoundBanks\Windows<span class="tag">&lt;/<span class="name">ExternalSourcesOutputRoot</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RootPaths</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">SoundBanks</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">SoundBank</span> <span class="attr">Id</span>=<span class="string">&quot;2001541346&quot;</span> <span class="attr">Language</span>=<span class="string">&quot;SFX&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ObjectPath</span>&gt;</span>\SoundBanks\Default Work Unit\VelocityBank<span class="tag">&lt;/<span class="name">ObjectPath</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ShortName</span>&gt;</span>VelocityBank<span class="tag">&lt;/<span class="name">ShortName</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">Path</span>&gt;</span>VelocityBank.bnk<span class="tag">&lt;/<span class="name">Path</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">IncludedEvents</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">Event</span> <span class="attr">Id</span>=<span class="string">&quot;2099597577&quot;</span> <span class="attr">Name</span>=<span class="string">&quot;PlayRederenceSoundTest&quot;</span> <span class="attr">ObjectPath</span>=<span class="string">&quot;\Events\Default Work Unit\PlayRederenceSoundTest&quot;</span> <span class="attr">DurationType</span>=<span class="string">&quot;OneShot&quot;</span> <span class="attr">DurationMin</span>=<span class="string">&quot;1.338833&quot;</span> <span class="attr">DurationMax</span>=<span class="string">&quot;1.338833&quot;</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">Event</span> <span class="attr">Id</span>=<span class="string">&quot;3368745218&quot;</span> <span class="attr">Name</span>=<span class="string">&quot;VelocityLoop&quot;</span> <span class="attr">ObjectPath</span>=<span class="string">&quot;\Events\Default Work Unit\VelocityLoop&quot;</span> <span class="attr">DurationType</span>=<span class="string">&quot;Infinite&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">IncludedEvents</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">IncludedMemoryFiles</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">File</span> <span class="attr">Id</span>=<span class="string">&quot;386490851&quot;</span> <span class="attr">Language</span>=<span class="string">&quot;SFX&quot;</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">ShortName</span>&gt;</span>Shotgun_Fire_01.wav<span class="tag">&lt;/<span class="name">ShortName</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">Path</span>&gt;</span>SFX\Shotgun_Fire_01_A07A4AEB.wem<span class="tag">&lt;/<span class="name">Path</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">File</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">IncludedMemoryFiles</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">SoundBank</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">SoundBanks</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SoundBanksInfo</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>txt：也是描述文件，但和json和xml中的内容相比少了一些（不过基础的Event ID、EventName、）。</li>
+<li>txt: Also a descriptor file, but with fewer details compared to json and xml.</li>
 </ul>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Event	ID	Name			Wwise Object Path	Notes</span><br><span class="line">	2099597577	PlayRederenceSoundTest			\Default Work Unit\PlayRederenceSoundTest	</span><br><span class="line">	3368745218	VelocityLoop			\Default Work Unit\VelocityLoop	</span><br><span class="line"></span><br><span class="line">Game Parameter	ID	Name			Wwise Object Path	Notes</span><br><span class="line">	3519441192	Velocity			\Default Work Unit\Velocity	</span><br><span class="line"></span><br><span class="line">Source plug-ins	ID	Name	Type		Wwise Object Path	Notes</span><br><span class="line">	778067245	Wwise Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\RTPCDemo\VelocityLoop\Wwise Tone Generator	</span><br><span class="line"></span><br><span class="line">In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size</span><br><span class="line">	386490851	RederenceSound	C:\Users\lipengzha\Desktop\WWise\WwiseDemoGame\UnrealWwiseDemo\.cache\Windows\SFX\Shotgun_Fire_01_A07A4AEB.wem		\Actor-Mixer Hierarchy\Default Work Unit\RederenceSound		257120</span><br></pre></td></tr></table></figure>
 
-<p><code>UAkGameplayStatics</code>中的类似<code>Post*</code>传递Actor的作用是获取World，并且在从该Actor上获取<code>AkComponent</code>（若没有就创建，并Attach到该Actor的RootComponent上）：</p>
+<p>The similar <code>Post*</code> actions in <code>UAkGameplayStatics</code> where the Actor is passed function to get the World, and then retrieve <code>AkComponent</code> from that Actor (if it doesn’t exist, create it and attach it to the Actor’s RootComponent):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">AkDeviceAndWorld</span></span><br><span class="line">&#123;</span><br><span class="line">	FAkAudioDevice* AkAudioDevice;</span><br><span class="line">	UWorld* CurrentWorld;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">AkDeviceAndWorld</span>(AActor* in_pActor) :</span><br><span class="line">		<span class="built_in">AkAudioDevice</span>(FAkAudioDevice::<span class="built_in">Get</span>()),</span><br><span class="line">		<span class="built_in">CurrentWorld</span>(in_pActor ? in_pActor-&gt;<span class="built_in">GetWorld</span>() : <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">AkDeviceAndWorld</span>(UObject* in_pWorldContextObject) :</span><br><span class="line">		<span class="built_in">AkAudioDevice</span>(FAkAudioDevice::<span class="built_in">Get</span>()),</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UE_4_17_OR_LATER</span></span><br><span class="line">		<span class="built_in">CurrentWorld</span>(GEngine-&gt;<span class="built_in">GetWorldFromContextObject</span>(in_pWorldContextObject, EGetWorldErrorMode::ReturnNull))</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">		<span class="built_in">CurrentWorld</span>(GEngine-&gt;<span class="built_in">GetWorldFromContextObject</span>(in_pWorldContextObject))</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// UE_4_17_OR_LATER</span></span></span><br><span class="line">	&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">IsValid</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> (CurrentWorld &amp;&amp; CurrentWorld-&gt;<span class="built_in">AllowAudioPlayback</span>() &amp;&amp; AkAudioDevice); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>通过Event来指定SoundBank，然后对SoundBank执行<code>Generated  Selected Bank</code>，流程如下:</p>
+<p>Using the Event to specify the SoundBank, executing <code>Generate Selected Bank</code> workflow is as follows:</p>
 <ol>
-<li>根据所选择的SoundBank得到SoundBank的名字列表</li>
-<li>获取引擎中所有的UAkAudioEvent对象，通过分析AkSoundEvent中<code>RequireBank</code>的名字与第一步中获取的SoundBank中的名字是否匹配，从而得到SoundBank中所有的<code>AkAudioEvent</code>；</li>
-<li>根据以上两步分析的结果生成<code>SoundBankDefinitionFile</code>，存储在UE的项目目录下，名字为<code>TempDifinitionFile.txt</code></li>
+<li>Get the list of names of the selected SoundBank</li>
+<li>Retrieve all <code>UAkAudioEvent</code> objects in the engine and analyze if the names of <code>RequireBank</code> from <code>AkSoundEvent</code> match the names obtained from the first step, thereby getting all <code>AkAudioEvents</code> in the SoundBank;</li>
+<li>Based on the results of the above two analyses, generate <code>SoundBankDefinitionFile</code>, which is stored in the UE project directory, named <code>TempDefinitionFile.txt</code></li>
 </ol>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">VelocityBank	&quot;PlayRederenceSoundTest&quot;</span><br><span class="line">VelocityBank	&quot;VelocityLoop&quot;</span><br><span class="line">ExtSrcBnk	&quot;Play_MyExtSrc&quot;</span><br><span class="line">AmbientBank	&quot;AmbientNoise_NotSpatialized&quot;</span><br><span class="line">AmbientBank	&quot;AmbientNoise_Spatialized&quot;</span><br><span class="line">ReverbBank	&quot;Fire_Weapon&quot;</span><br><span class="line">MatineeBank	&quot;Closed_Hi_Hat&quot;</span><br><span class="line">MatineeBank	&quot;Kick&quot;</span><br><span class="line">MatineeBank	&quot;Snare&quot;</span><br><span class="line">SubtitleBank	&quot;Play_Subtitles&quot;</span><br><span class="line">SwitchBank	&quot;Play_Tone&quot;</span><br></pre></td></tr></table></figure>
 
-<p>里面记录了UE里的SoundBank对象与其关联的<code>Event</code>以及<code>Bus</code>的名字，通过<code>-ImportDefinitionFile</code>参数传递给<code>WwiseCLI.exe</code>，从而让WWise端知道UE侧SoundBank和<code>Event</code>之间的对应关系。</p>
+<p>This records the association between UE’s SoundBank objects and their associated <code>Event</code> as well as <code>Bus</code> names, passed to <code>WwiseCLI.exe</code> using the <code>-ImportDefinitionFile</code> parameter, allowing WWise to understand the correspondence between UE’s SoundBank and Event.</p>
 <ol start="4">
-<li>WWise端根据传入进来的<code>ImportDefinitionFile</code>文件，根据WWise工程里的Event以及Bus等匹配，产生出来包含指定Event的SoundBank，并生成<code>json</code>/<code>xml</code>/<code>txt</code>等描述文件。</li>
+<li>On the WWise side, based on the <code>ImportDefinitionFile</code>, it matches with Events and Bus in the WWise project, creating a SoundBank that contains the specified Events and generates json/xml/txt descriptor files.</li>
 </ol>
-<p>UE通过<code>LoadBank</code>的加载流程应该是：</p>
+<p>The loading process for UE using <code>LoadBank</code> should be:</p>
 <ol>
-<li>通过Bank对象拿到Bank的名字</li>
-<li>根据Bank名字去<code>WwiseSoundBankFolder</code>目录下查找同名的bnk文件</li>
-<li>拿到bnk文件，进行加载</li>
+<li>Retrieve the Bank’s name via the Bank object.</li>
+<li>Look for the corresponding <code>bnk</code> file in the <code>WwiseSoundBankFolder</code> directory based on the Bank name.</li>
+<li>Obtain the <code>bnk</code> file and proceed with loading.</li>
 </ol>
-<h2 id="UE与WWise的交互"><a href="#UE与WWise的交互" class="headerlink" title="UE与WWise的交互"></a>UE与WWise的交互</h2><p>在UE中可以使用WWise的API来播放和控制声音的一些介绍。</p>
-<h3 id="PlaySoundAtLocation"><a href="#PlaySoundAtLocation" class="headerlink" title="PlaySoundAtLocation"></a>PlaySoundAtLocation</h3><p>API均在<code>UAkGameplayStatics</code>：</p>
+<h2 id="Interaction-Between-UE-and-WWise"><a href="#Interaction-Between-UE-and-WWise" class="headerlink" title="Interaction Between UE and WWise"></a>Interaction Between UE and WWise</h2><p>In UE, the use of WWise API to play and control sound is introduced.</p>
+<h3 id="PlaySoundAtLocation"><a href="#PlaySoundAtLocation" class="headerlink" title="PlaySoundAtLocation"></a>PlaySoundAtLocation</h3><p>The APIs are available in <code>UAkGameplayStatics</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Posts a Wwise Event at the specified location. This is a fire and forget sound, created on a temporary Wwise Game Object. Replication is also not handled at this point.</span></span><br><span class="line"><span class="comment"> * @param AkEvent - Wwise Event to post.</span></span><br><span class="line"><span class="comment"> * @param Location - Location from which to post the Wwise Event.</span></span><br><span class="line"><span class="comment"> * @param Orientation - Orientation of the event.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">UFUNCTION</span>(BlueprintCallable, BlueprintCosmetic, Category=<span class="string">&quot;Audiokinetic&quot;</span>, meta=(WorldContext=<span class="string">&quot;WorldContextObject&quot;</span>, AdvancedDisplay = <span class="string">&quot;3&quot;</span>))</span><br><span class="line"><span class="function"><span class="type">static</span> int32 <span class="title">PostEventAtLocation</span><span class="params">(<span class="keyword">class</span> UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, <span class="type">const</span> FString&amp; EventName, UObject* WorldContextObject )</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Posts a Wwise Event by name at the specified location. This is a fire and forget sound, created on a temporary Wwise Game Object. Replication is also not handled at this point.</span></span><br><span class="line"><span class="comment"> * @param AkEvent - Wwise Event to post.</span></span><br><span class="line"><span class="comment"> * @param Location - Location from which to post the Wwise Event.</span></span><br><span class="line"><span class="comment"> * @param Orientation - Orientation of the event.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">UFUNCTION</span>(BlueprintCallable, BlueprintCosmetic, Category=<span class="string">&quot;Audiokinetic&quot;</span>, meta=(WorldContext=<span class="string">&quot;WorldContextObject&quot;</span>, DeprecatedFunction, DeprecationMessage = <span class="string">&quot;Please use the \&quot;Event Name\&quot; field of PostEventAtLocation&quot;</span>))</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">PostEventAtLocationByName</span><span class="params">(<span class="type">const</span> FString&amp; EventName, FVector Location, FRotator Orientation, UObject* WorldContextObject )</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>这两个API可以通过传递<code>AkAudioEvent</code>的资源或者Event的名字来在指定的位置播放声音。<code>PostEventAtLocationByName</code>是<code>UAkGameplatStatics::PostEventAtLocation</code>的封装版本，AkAudioEvent为NULL。</p>
-<h3 id="PostEvent"><a href="#PostEvent" class="headerlink" title="PostEvent"></a>PostEvent</h3><p>发送给定 Actor 的根组件绑定和控制的 Wwise Event。如果传递进来的Actor上没有挂载AkComponent，会在PostEvent上创建出来一个组件，并默认Attach到该Actor的RootComponent。</p>
-<p>在PostEvent之后，如果后续需要控制Event的值，如RTPC或者Switch等，要传入对应的Actor（因为PostEvent本质上是要通过<code>AkComponent</code>）：</p>
+<p>These two APIs can be used to play sounds at a specified location by passing resources of <code>AkAudioEvent</code> or the Event name. <code>PostEventAtLocationByName</code> is a wrapped version of <code>UAkGameplatStatics::PostEventAtLocation</code>, with AkAudioEvent being NULL.</p>
+<h3 id="PostEvent"><a href="#PostEvent" class="headerlink" title="PostEvent"></a>PostEvent</h3><p>Sends a specified Wwise Event bound to the root component of the given Actor. If the incoming Actor does not have an <code>AkComponent</code> attached, one will be created on PostEvent and will be attached by default to that Actor’s RootComponent.</p>
+<p>After <code>PostEvent</code>, if subsequent control of Event values is needed, like RTPC or Switch, the corresponding Actor must be passed in (since PostEvent essentially works through <code>AkComponent</code>):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">AkPlayingID <span class="title">FAkAudioDevice::PostEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="type">const</span> FString&amp; in_EventName,</span></span></span><br><span class="line"><span class="params"><span class="function">	UAkComponent* in_pComponent,</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="type">const</span> FOnAkPostEventCallback&amp; PostEventCallback,</span></span></span><br><span class="line"><span class="params"><span class="function">	AkUInt32 in_uFlags, <span class="comment">/*= 0*/</span></span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="type">const</span> TArray&lt;AkExternalSourceInfo&gt;&amp; in_ExternalSources <span class="comment">/*= TArray&lt;AkExternalSourceInfo&gt;()*/</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">PostEvent</span>(in_EventName, in_pComponent, in_ExternalSources, [PostEventCallback, in_uFlags, <span class="keyword">this</span>](AkGameObjectID gameObjID) &#123;</span><br><span class="line">		<span class="keyword">return</span> CallbackManager-&gt;<span class="built_in">CreateCallbackPackage</span>(PostEventCallback, in_uFlags, gameObjID);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>目前我的理解为：传入进去的Actor(上的AkComponent)是WWise播放声音的上下文，通过这个上下文可以在另外的操作中去控制指定的Event.</p>
-<p>而PostEvent还具有多种类型的回调函数，控制其的方式是传递进去的Mask值，它由EAkCallbackType枚举值控制(bitmask)：</p>
+<p>Currently, my understanding is that the Actor (with AkComponent) passed in serves as context for playing sounds in WWise, allowing further operations to control specific events through this context.</p>
+<p>Furthermore, PostEvent has various types of callback functions, controlled through the mask values passed in, defined by the <code>EAkCallbackType</code> enum (bitmask):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> int32 <span class="title">PostEvent</span><span class="params">(	<span class="keyword">class</span> UAkAudioEvent* AkEvent, </span></span></span><br><span class="line"><span class="params"><span class="function">						<span class="keyword">class</span> AActor* Actor, </span></span></span><br><span class="line"><span class="params"><span class="function">						UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,</span></span></span><br><span class="line"><span class="params"><span class="function">						<span class="type">const</span> FOnAkPostEventCallback&amp; PostEventCallback,</span></span></span><br><span class="line"><span class="params"><span class="function">						<span class="type">const</span> TArray&lt;FAkExternalSourceInfo&gt;&amp; ExternalSources,</span></span></span><br><span class="line"><span class="params"><span class="function">						<span class="type">bool</span> bStopWhenAttachedToDestroyed = <span class="literal">false</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">						FString EventName = FString(<span class="string">&quot;&quot;</span>))</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>EAkCallbackType的可选值：</p>
+<p>Available values for <code>EAkCallbackType</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Type of callback. Used as a bitfield in methods AK::SoundEngine::PostEvent() and AK::SoundEngine::DynamicSequence::Open().</span></span><br><span class="line"><span class="built_in">UENUM</span>(BlueprintType, meta = (Bitmask))</span><br><span class="line"><span class="keyword">enum class</span> <span class="title class_">EAkCallbackType</span> : uint8</span><br><span class="line">&#123;</span><br><span class="line">	EndOfEvent = <span class="number">0</span>			<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Callback triggered when reaching the end of an event. AkCallbackInfo can be cast to AkEventCallbackInfo.&quot;</span>),</span><br><span class="line">	Marker = <span class="number">2</span>				<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Callback triggered when encountering a marker during playback. AkCallbackInfo can be cast to AkMarkerCallbackInfo.&quot;</span>),</span><br><span class="line">	Duration = <span class="number">3</span>			<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Callback triggered when the duration of the sound is known by the sound engine. AkCallbackInfo can be cast to AkDurationCallbackInfo.&quot;</span>),</span><br><span class="line"></span><br><span class="line">	Starvation = <span class="number">5</span>			<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Callback triggered when playback skips a frame due to stream starvation. AkCallbackInfo can be cast to AkEventCallbackInfo.&quot;</span>),</span><br><span class="line">	</span><br><span class="line">	MusicPlayStarted = <span class="number">7</span>	<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Callback triggered when a Play or Seek command has been executed (Seek commands are issued from AK::SoundEngine::SeekOnEvent()). Applies to objects of the Interactive-Music Hierarchy only. AkCallbackInfo can be cast to AkEventCallbackInfo.&quot;</span>),</span><br><span class="line"></span><br><span class="line">	MusicSyncBeat = <span class="number">8</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Beat. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncBar = <span class="number">9</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Bar. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncEntry = <span class="number">10</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Entry Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncExit = <span class="number">11</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Exit Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncGrid = <span class="number">12</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Grid. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncUserCue = <span class="number">13</span>	<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music Custom Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line">	MusicSyncPoint = <span class="number">14</span>		<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications on Music switch transition synchronization point. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo.&quot;</span>),</span><br><span class="line"></span><br><span class="line">	MIDIEvent = <span class="number">16</span>			<span class="built_in">UMETA</span>(ToolTip = <span class="string">&quot;Enable notifications for MIDI events. AkCallbackInfo can be cast to AkMIDIEventCallbackInfo.&quot;</span>),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>EndOfEvent：事件结束时触发回调；能够转换到AkEventCallbackInfo</li>
-<li>Marker：遇到标记时触发回调；能够转换到AkMarkerCallbackInfo</li>
-<li>Duration：当Sound Engine知道当前声音的持续时间时触发回调；能够转换到AkDurationCallbackInfo</li>
-<li>Starvation：当播放由于流不足而跳过下一帧时触发回调；能够转换到AkEventCallbackInfo</li>
-<li>MusicPlayStarted：当执行Play或者Seek时触发（从AK::SoundEngine::SeekOnEvent发出搜索命令），只适用于交互音乐层次结构的对象。能够转换到AkEventCallbackInfo</li>
-<li>MusicSyncBeat：在Music beat上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MusicSyncBar：在Music Bar上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MusicSyncEntry：在Music Entry上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MusicSyncExit：在Music Exit上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MusicSyncGrid：在Music Grid上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MusicSyncPoint：在Music switch transition synchronization point上启用通知；能够转换到AkMusicSyncCallbackInfo</li>
-<li>MIDIEvent：为MIDI事件启用通知；能够转换到AkMIDIEventCallbackInfo</li>
+<li>EndOfEvent: Triggered when the event ends; can be cast to AkEventCallbackInfo</li>
+<li>Marker: Triggered when encountering a marker; can be cast to AkMarkerCallbackInfo</li>
+<li>Duration: Triggered when the Sound Engine knows the current sound duration; can be cast to AkDurationCallbackInfo</li>
+<li>Starvation: Triggered when playback skips a frame due to stream starvation; can be cast to AkEventCallbackInfo</li>
+<li>MusicPlayStarted: Triggered when a Play or Seek command is executed (Seek commands are issued from AK::SoundEngine::SeekOnEvent); applicable to objects in the Interactive-Music Hierarchy only; can be cast to AkEventCallbackInfo</li>
+<li>MusicSyncBeat: Enable notifications on Music beat; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MusicSyncBar: Enable notifications on Music Bar; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MusicSyncEntry: Enable notifications on Music Entry; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MusicSyncExit: Enable notifications on Music Exit; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MusicSyncGrid: Enable notifications on Music Grid; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MusicSyncPoint: Enable notifications on Music switch transition synchronization point; can be cast to AkMusicSyncCallbackInfo</li>
+<li>MIDIEvent: Enable notifications for MIDI events; can be cast to AkMIDIEventCallbackInfo</li>
 </ul>
-<h3 id="Marker"><a href="#Marker" class="headerlink" title="Marker"></a>Marker</h3><p>在WWise编辑器中添加的<code>Sound VFX</code>里添加的Audio可以通过编辑来添加Marker，Marker可以在UE调用<code>UAkGameplayStatics::PostEvent</code>时将<code>CallbakMask</code>参数设置为<code>EAkCallbackType::Marker</code>，这样可以在回调函数中接收每次播放到WWise中添加Marker的位置，用于在游戏逻辑中做一些事情，比如显示音频对应的字幕。</p>
-<p>UE中监听：</p>
+<h3 id="Marker"><a href="#Marker" class="headerlink" title="Marker"></a>Marker</h3><p>Audio added in the <code>Sound VFX</code> in the WWise editor can be edited to add Markers, which can be received in UE by setting the <code>CallbackMask</code> parameter to <code>EAkCallbackType::Marker</code> when calling <code>UAkGameplayStatics::PostEvent</code>. This allows receiving the location of each Marker hit during playback for performing game logic actions, such as displaying audio subtitles.</p>
+<p>Listening in UE:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-wwise-callbak-marker.webp"></p>
-<p>而且<code>Identifier</code>也是从0开始的：</p>
+<p>Moreover, the <code>Identifier</code> also starts from 0:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-wwise-callbak-marker-print.webp"></p>
-<p>WWise中添加Marker：</p>
+<p>Adding Markers in WWise:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/Wwise-edit-marker.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/Wwise-edit-marker2.webp"></p>
-<p>在UE里<code>PostEvent</code>时可以把<code>CallbackMask</code>的值添加上<code>Marker</code>，就可以在绑定的事件中接收播放过程中每次遇到的Marker了。可以用在播放的过程中监听显示字幕。</p>
+<p>In UE, when <code>PostEvent</code>, the value of the <code>CallbackMask</code> can be added along with <code>Marker</code>, allowing for receiving each encountered marker during playback in the associated event, useful for displaying subtitles while playing.</p>
 <h3 id="RTPC"><a href="#RTPC" class="headerlink" title="RTPC"></a>RTPC</h3><blockquote>
-<p>Real-time Parameter Controls（实时参数控制，RTPC）用于根据游戏中发生的实时参数变化，实时控制各种 Wwise 对象（包括音效对象、容器、总线、效果器等）的特定属性。</p>
+<p>Real-time Parameter Controls (RTPC) allow real-time control of specific properties of various Wwise objects (including sound objects, containers, buses, effects, etc.) based on real-time parameter changes occurring in the game.</p>
 </blockquote>
-<p>RTPC可以由程序端传递值给WWiese端，WWise端可以根据 传入的值控制声音。</p>
+<p>RTPC can transfer values from the program to the WWise side, allowing WWise to control the sound based on the incoming values.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-wwise-SetRTPCValue.webp"></p>
-<p>在WWise中RTPC：</p>
+<p>In WWise, RTPC:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/WWise-RTPC-view.webp"></p>
-<h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><p>使用Switch可以在引擎中切换不同的模式，比如玩家走在不同地面上的声音。</p>
+<h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><p>Switches can be used in the engine to switch different modes, such as the sounds of players walking on different surfaces.</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=concept_switch.html">概念：Switch</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/library/edge/?source=SDK&id=concept_switch.html">Concept: Switch</a></li>
 </ul>
-<p>在<code>PostEvent</code>一个<code>AkEvent</code>之后，可以通过<code>SetSwitch</code>传入<code>SwitchGroup</code>和<code>SwitchState</code>以及PostEvent时传递的Actor.</p>
+<p>In <code>PostEvent</code> one <code>AkEvent</code>, the <code>SwitchGroup</code> and <code>SwitchState</code> can be passed along with the Actor passed at the time of PostEvent.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-wwise-post-event.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/Wwise-Switch-view.webp"></p>
 <h3 id="Sequencer"><a href="#Sequencer" class="headerlink" title="Sequencer"></a>Sequencer</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/2017.2.10_6745/?source=UE4&id=using__features__sequencer.html">Level Sequencer</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/library/2017.2.10_6745/?source=UE4&id=using__features__sequencer.html">Level Sequencer</a></li>
 </ul>
-<p>WWise提供了在Sequence中使用的支持，可以在Sequence中使用<code>AkAudioEvenes</code>和<code>AkAudioRTPC</code>，从而实现在Sequence中来播放和控制Event.</p>
+<p>WWise provides support for use in Sequencer, enabling the use of <code>AkAudioEvents</code> and <code>AkAudioRTPC</code> to play and control Events within a Sequence.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-wwise-in-sequencer.webp"></p>
 <h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/2017.2.10_6745/?source=UE4&id=using__features__anim.html">Animation</a></li>
 </ul>
-<p>并且可以使用在动画通知中：</p>
+<p>And can be used in animation notifications:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-add-wwise-ak-notifity-in-animation.webp"></p>
-<p>给该通知指定Event：</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-add-wwise-ak-notifity-in-animation-event.webp"></p>
-<h2 id="CommandLet"><a href="#CommandLet" class="headerlink" title="CommandLet"></a>CommandLet</h2><p>WWise提供了UE中的Commandlet，用于处理批量生成Bank的功能。</p>
-<p>使用介绍：</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Commandlet allowing to generate Wwise SoundBanks.</span><br><span class="line">Usage: &lt;Editor.exe&gt; &lt;path_to_uproject&gt; -run=GenerateSoundBanks [-platforms=listOfPlatforms] [-banks=listOfBanks] [-wwiseCliPath=pathToWwiseCli]</span><br><span class="line">Parameters:</span><br><span class="line">   - platforms: (Optional) Comma separated list of platforms for which SoundBanks will be generated, as specified in the Wwise project. If not specified, SoundBanks will be generated for all platforms.</span><br><span class="line">   - banks: (Optional) Comma separated list of SoundBanks to generate. Bank names must correspond to a UAkAudioBank asset in the project. If now specified, all SoundBanks found in project will be generated.</span><br><span class="line">   - wwiseCliPath: (Optional) Full path to the Wwise command-line application to use to generate the SoundBanks. If not specified, the path found in the Wwise settings will be used.</span><br><span class="line">   - help: (Optional) Print this help message. This will quit the commandlet immediately.</span><br><span class="line">For more information, see https://www.audiokinetic.com/library/edge/?source=UE4&amp;id=using_features_generatecommandlet.html</span><br></pre></td></tr></table></figure>
+<p>Specify the Event for the notification:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9809/ue-add-wwise-ak-notifity-in-animation-event.webp">## CommandLet<br>WWise provides Commandlet in UE for handling the batch generation of Banks.</p>
+<p>Introduction to usage:</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Commandlet allowing to generate Wwise SoundBanks.</span><br><span class="line">Usage: &lt;Editor.exe&gt; &lt;path_to_uproject&gt; -run=GenerateSoundBanks [-platforms=listOfPlatforms] [-banks=listOfBanks] [-wwiseCliPath=pathToWwiseCli]</span><br><span class="line">Parameters:</span><br><span class="line">   - platforms: (Optional) Comma separated list of platforms for which SoundBanks will be generated, as specified in the Wwise project. If not specified, SoundBanks will be generated for all platforms.</span><br><span class="line">   - banks: (Optional) Comma separated list of SoundBanks to generate. Bank names must correspond to a UAkAudioBank asset in the project. If not specified, all SoundBanks found in project will be generated.</span><br><span class="line">   - wwiseCliPath: (Optional) Full path to the Wwise command-line application to use to generate the SoundBanks. If not specified, the path found in the Wwise settings will be used.</span><br><span class="line">   - help: (Optional) Print this help message. This will quit the commandlet immediately.</span><br><span class="line">For more information, see https://www.audiokinetic.com/library/edge/?source=UE4&amp;id=using_features_generatecommandlet.html</span><br></pre></td></tr></table></figure>
 
-<p>生成SoundBank的Commandle为：</p>
+<p>The Commandlet for generating SoundBank is:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine/Binaries/Win64/UE4Editor.exe <span class="string">&quot;D:/WwiseDemoGame.uproject&quot;</span> -run=GenerateSoundBanks -platforms=Windows,Android,iOS -<span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
 
-<p><code>-wait</code>参数是我加在CommandLet中的，可以用来控制执行完毕后等待用户输入，避免执行窗口一闪而过的情况。<br>当没有指定生成哪些SoundBank时，会把项目中所有定义的SoundBank生成，如果想要自己指定，则可以使用<code>-banks=aaa,bbb,ccc</code>等形式来指定。</p>
-<p>最终的执行命令为（可以看到<code>-ImportDefinitionFile</code>参数）：</p>
+<p>The <code>-wait</code> parameter is included in the CommandLet to control waiting for user input after execution is complete, preventing the execution window from flashing and disappearing. When no specific SoundBank is designated for generation, all defined SoundBanks in the project will be generated. If you want to specify, you can use the format <code>-banks=aaa,bbb,ccc</code> and so on.</p>
+<p>The final execution command is (you can see the <code>-ImportDefinitionFile</code> parameter):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files (x86)\Audiokinetic\Wwise 2019.1.9.7221\Authoring\x64\Release\bin\WwiseCLI.exe&quot;  &quot;D:/WwiseDemoGame/UnrealWwiseDemo/UnrealDemo.wproj&quot; -GenerateSoundBanks -Bank ExtSrcBnk -Bank AmbientBank -Bank ReverbBank -Bank VelocityBank -Bank MatineeBank -Bank SubtitleBank -Bank SwitchBank -ImportDefinitionFile &quot;D:/WwiseDemoGame/TempDefinitionFile.txt&quot; -Platform Windows -SoundBankPath Windows &quot;D:\WwiseDemoGame\Content\WwiseAudio\Windows&quot; -Platform Android -SoundBankPath Android &quot;D:\WwiseDemoGame\Content\WwiseAudio\Android&quot; -Platform iOS -SoundBankPath iOS &quot;D:\WwiseDemoGame\Content\WwiseAudio\iOS&quot;</span><br></pre></td></tr></table></figure>
-<p>拆分命令来看：</p>
+<p>Breaking down the command:</p>
 <ol>
-<li>WWiseCLI.exe的路径</li>
-<li><code>-GenerateSoundBanks</code>：传递给WWiseCLI.exe标识用于生成SoundBank</li>
-<li><code>-Bank</code>：指定Bank的名字</li>
-<li><code>-ImportDefinitionFile</code>：指定<code>TempDefinitionFile.txt</code>文件</li>
-<li><code>-Platform</code>：指定平台</li>
-<li><code>-SoundBankPath</code>：指定生成平台保存到的目录</li>
+<li>Path to WWiseCLI.exe</li>
+<li><code>-GenerateSoundBanks</code>: Passed to WWiseCLI.exe indicating the function to generate SoundBank</li>
+<li><code>-Bank</code>: Specify the name of the Bank</li>
+<li><code>-ImportDefinitionFile</code>: Specify the <code>TempDefinitionFile.txt</code></li>
+<li><code>-Platform</code>: Specify the platform</li>
+<li><code>-SoundBankPath</code>: Specify the directory where the platform’s generated content will be saved</li>
 </ol>
-<h2 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h2><ul>
-<li><code>-nosound</code>：关闭WWise的声音。</li>
+<h2 id="Command-Line-Parameters"><a href="#Command-Line-Parameters" class="headerlink" title="Command Line Parameters"></a>Command Line Parameters</h2><ul>
+<li><code>-nosound</code>: Disable sound in WWise.</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">FAkAudioDevice::EnsureInitialized</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// We don&#x27;t want sound in those cases.</span></span><br><span class="line">	<span class="keyword">if</span> (FParse::<span class="built_in">Param</span>(FCommandLine::<span class="built_in">Get</span>(), <span class="built_in">TEXT</span>(<span class="string">&quot;nosound&quot;</span>)) || FApp::<span class="built_in">IsBenchmarking</span>() || <span class="built_in">IsRunningDedicatedServer</span>() || <span class="built_in">IsRunningCommandlet</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="全局暂停音乐"><a href="#全局暂停音乐" class="headerlink" title="全局暂停音乐"></a>全局暂停音乐</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=workingwithsdks_system_calls.html">处理系统专用事件</a></li>
+<h2 id="Global-Pause-Music"><a href="#Global-Pause-Music" class="headerlink" title="Global Pause Music"></a>Global Pause Music</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=workingwithsdks_system_calls.html">Handling System-Specific Events</a></li>
 </ul>
-<p>可以通过以下代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// on enter backgraound</span></span><br><span class="line">AK::SoundEngine::<span class="built_in">Suspend</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// on enter foreground</span></span><br><span class="line">AK::SoundEngine::<span class="built_in">WakeupFromSuspend</span>();</span><br><span class="line">AK::SoundEngine::<span class="built_in">RenderAudio</span>();</span><br></pre></td></tr></table></figure>
+<p>This can be achieved with the following code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// on enter background</span></span><br><span class="line">AK::SoundEngine::<span class="built_in">Suspend</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// on enter foreground</span></span><br><span class="line">AK::SoundEngine::<span class="built_in">WakeupFromSuspend</span>();</span><br><span class="line">AK::SoundEngine::<span class="built_in">RenderAudio</span>();</span><br></pre></td></tr></table></figure>
 
-<h2 id="热更WWise的Bank"><a href="#热更WWise的Bank" class="headerlink" title="热更WWise的Bank"></a>热更WWise的Bank</h2><p>根据上面的分析可以看到， WWise在生成Bank时以平台为单位生成，每个平台都会生成对应的文件夹。<br>这要求我们在热更时需要根据不同的平台包含不同的外部文件，<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>已经支持了这个特性，可以实现特定平台包含特殊的文件。</p>
-<h2 id="WWise集成至UE的缺点"><a href="#WWise集成至UE的缺点" class="headerlink" title="WWise集成至UE的缺点"></a>WWise集成至UE的缺点</h2><p>官方提供的Event导入和指定Bank的流程太繁琐了，每个Event都需要拖到Content Browser里才可以创建出UE的Event资源，然后还需要打开手动指定RequireBank，十分的麻烦。其实WWise编辑器中本身包含了Bank的编辑功能，但是在UE中官方没有提供方法可以批量地生成UE里的Event和Bank资源，这个可以作为业余扩展开发的点，自己搞一个批量导入的功能，不过是后话了，有时间再来搞。</p>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><ul>
-<li>WWise中的概念概述：<a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=conceptsandterminology.html">Wwise 概念概述</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=Help&id=dlc_considerations_and_limitations">DLC 注意事项及限制</a></li>
+<h2 id="Hot-Updating-WWise’s-Banks"><a href="#Hot-Updating-WWise’s-Banks" class="headerlink" title="Hot Updating WWise’s Banks"></a>Hot Updating WWise’s Banks</h2><p>From the above analysis, it can be seen that WWise generates Banks on a per-platform basis, creating corresponding folders for each platform. This requires us to include different external files based on different platforms during hot updates. <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> already supports this feature, enabling specific platforms to contain special files.</p>
+<h2 id="Disadvantages-of-WWise-Integration-into-UE"><a href="#Disadvantages-of-WWise-Integration-into-UE" class="headerlink" title="Disadvantages of WWise Integration into UE"></a>Disadvantages of WWise Integration into UE</h2><p>The official importation of Events and the process of specifying Banks is too cumbersome; each Event must be dragged into the Content Browser to create UE Event resources, followed by manually specifying RequireBank, which is quite troublesome. In fact, the WWise editor itself contains the functionality for Bank editing, but there is no official method provided in UE for batch generation of Event and Bank resources. This can be a point for amateur extension development, creating a batch import feature; this is a later topic, to be tackled when time permits.</p>
+<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><ul>
+<li>Overview of concepts in WWise: <a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=conceptsandterminology.html">Overview of Wwise Concepts</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.audiokinetic.com/zh/library/edge/?source=Help&id=dlc_considerations_and_limitations">DLC Considerations and Limitations</a></li>
 </ul>
 
     </div>
@@ -588,7 +588,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -598,7 +598,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -608,37 +608,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/9809/" target="_blank">UE集成WWise：概念与代码分析</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2020/09/12 15:31<br/>
+             <span>Title:</span><a href="/posts/9809/" target="_blank">UE integrated WWise: concept and code analysis</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2020/09/12 15:31<br/>
              
-             <span>本文字数:</span><span class="page-count">6.3k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">12k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/9809/" target="_blank" title="UE集成WWise：概念与代码分析">https://imzlp.com/posts/9809/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/9809/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/9809/" target="_blank" title="UE integrated WWise: concept and code analysis">https://en.imzlp.com/posts/9809/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/9809/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -658,12 +658,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/29551/" rel="prev" title="如何构建自己的知识体系？">
-      <i class="fa fa-chevron-left"></i> 如何构建自己的知识体系？
+    <a href="/posts/29551/" rel="prev" title="How to build your own knowledge system?">
+      <i class="fa fa-chevron-left"></i> How to build your own knowledge system?
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/28513/" rel="next" title="UE导入图集：TexturePacker">
-      UE导入图集：TexturePacker <i class="fa fa-chevron-right"></i>
+    <a href="/posts/28513/" rel="next" title="UE import atlas: TexturePacker">
+      UE import atlas: TexturePacker <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -734,25 +734,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E8%87%B3UE4"><span class="nav-number">1.</span> <span class="nav-text">集成至UE4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">链接库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WWise%E7%89%88%E6%9C%AC%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">WWise版本的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E6%94%AF%E6%8C%81armv7%E5%92%8Carm64"><span class="nav-number">1.3.</span> <span class="nav-text">Android支持armv7和arm64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E9%93%BE%E6%8E%A5%E5%BA%93%E7%9A%84%E6%8B%B7%E8%B4%9D"><span class="nav-number">1.4.</span> <span class="nav-text">Android链接库的拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%9E%84%E5%BB%BAiOS"><span class="nav-number">1.5.</span> <span class="nav-text">远程构建iOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WWise%E8%B5%84%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">WWise资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UAkAudioEvent"><span class="nav-number">2.1.</span> <span class="nav-text">UAkAudioEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UAkAudioBank"><span class="nav-number">2.2.</span> <span class="nav-text">UAkAudioBank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bank%E7%9A%84%E7%94%9F%E6%88%90%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">Bank的生成分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UE%E4%B8%8EWWise%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="nav-number">3.</span> <span class="nav-text">UE与WWise的交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PlaySoundAtLocation"><span class="nav-number">3.1.</span> <span class="nav-text">PlaySoundAtLocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PostEvent"><span class="nav-number">3.2.</span> <span class="nav-text">PostEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Marker"><span class="nav-number">3.3.</span> <span class="nav-text">Marker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RTPC"><span class="nav-number">3.4.</span> <span class="nav-text">RTPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch"><span class="nav-number">3.5.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sequencer"><span class="nav-number">3.6.</span> <span class="nav-text">Sequencer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation"><span class="nav-number">3.7.</span> <span class="nav-text">Animation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommandLet"><span class="nav-number">4.</span> <span class="nav-text">CommandLet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%9A%82%E5%81%9C%E9%9F%B3%E4%B9%90"><span class="nav-number">6.</span> <span class="nav-text">全局暂停音乐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4WWise%E7%9A%84Bank"><span class="nav-number">7.</span> <span class="nav-text">热更WWise的Bank</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WWise%E9%9B%86%E6%88%90%E8%87%B3UE%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">8.</span> <span class="nav-text">WWise集成至UE的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">9.</span> <span class="nav-text">文档</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-into-UE4"><span class="nav-number">1.</span> <span class="nav-text">Integration into UE4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Link-Libraries"><span class="nav-number">1.1.</span> <span class="nav-text">Link Libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WWise-Version-Issues"><span class="nav-number">1.2.</span> <span class="nav-text">WWise Version Issues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Support-for-armv7-and-arm64"><span class="nav-number">1.3.</span> <span class="nav-text">Android Support for armv7 and arm64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copying-Android-Link-Libraries"><span class="nav-number">1.4.</span> <span class="nav-text">Copying Android Link Libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remote-Building-for-iOS"><span class="nav-number">1.5.</span> <span class="nav-text">Remote Building for iOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WWise-Resources"><span class="nav-number">2.</span> <span class="nav-text">WWise Resources</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UAkAudioEvent"><span class="nav-number">2.1.</span> <span class="nav-text">UAkAudioEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UAkAudioBank"><span class="nav-number">2.2.</span> <span class="nav-text">UAkAudioBank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis-of-Bank-Generation"><span class="nav-number">2.3.</span> <span class="nav-text">Analysis of Bank Generation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interaction-Between-UE-and-WWise"><span class="nav-number">3.</span> <span class="nav-text">Interaction Between UE and WWise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PlaySoundAtLocation"><span class="nav-number">3.1.</span> <span class="nav-text">PlaySoundAtLocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PostEvent"><span class="nav-number">3.2.</span> <span class="nav-text">PostEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Marker"><span class="nav-number">3.3.</span> <span class="nav-text">Marker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RTPC"><span class="nav-number">3.4.</span> <span class="nav-text">RTPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch"><span class="nav-number">3.5.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sequencer"><span class="nav-number">3.6.</span> <span class="nav-text">Sequencer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation"><span class="nav-number">3.7.</span> <span class="nav-text">Animation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Line-Parameters"><span class="nav-number">4.</span> <span class="nav-text">Command Line Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Pause-Music"><span class="nav-number">5.</span> <span class="nav-text">Global Pause Music</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hot-Updating-WWise%E2%80%99s-Banks"><span class="nav-number">6.</span> <span class="nav-text">Hot Updating WWise’s Banks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disadvantages-of-WWise-Integration-into-UE"><span class="nav-number">7.</span> <span class="nav-text">Disadvantages of WWise Integration into UE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Documentation"><span class="nav-number">8.</span> <span class="nav-text">Documentation</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -760,19 +760,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -810,10 +810,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -840,9 +840,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -851,12 +848,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -1009,7 +1006,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/9809/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/9809/',]
       });
       });
   </script>
@@ -1032,12 +1029,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

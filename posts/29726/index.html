@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="C++中重载(overload)和重写(override)并无关系，但是由于这个词比较相似还是容易搞混的。">
+  <meta name="description" content="In C++, overload and override are not related, but they are easily confused due to the similarity of the terms.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重载(overload)和重写(override)">
-<meta property="og:url" content="https://imzlp.com/posts/29726/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="C++中重载(overload)和重写(override)并无关系，但是由于这个词比较相似还是容易搞混的。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="C++ overload and override">
+<meta property="og:url" content="https://en.imzlp.com/posts/29726/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In C++, overload and override are not related, but they are easily confused due to the similarity of the terms.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/29726/overloadAndOverride.gif">
 <meta property="article:published_time" content="2017-02-06T05:08:43.000Z">
 <meta property="article:modified_time" content="2017-02-06T05:08:43.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="标准解读">
 <meta property="article:tag" content="C++标准">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/29726/overloadAndOverride.gif">
 
-<link rel="canonical" href="https://imzlp.com/posts/29726/">
+<link rel="canonical" href="https://en.imzlp.com/posts/29726/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>重载(overload)和重写(override) | 循迹研究室</title>
+  <title>C++ overload and override | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/29726/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/29726/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          重载(overload)和重写(override)<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-02-06-29726.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/29726/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          C++ overload and override<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-02-06-29726.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/29726/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">C++ overload and override</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">重载(overload)和重写(override)</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-02-06 05:08 05:08:43:08" itemprop="dateCreated datePublished" datetime="2017-02-06T05:08:43+00:00">2017-02-06 05:08</time>
+              <time title="Created: 2017-02-06 05:08 05:08:43:08" itemprop="dateCreated datePublished" datetime="2017-02-06T05:08:43+00:00">2017-02-06 05:08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">标准解读</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/C-%E6%A0%87%E5%87%86/" itemprop="url" rel="index"><span itemprop="name">C++标准</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/29726/" class="post-meta-item leancloud_visitors" data-flag-title="重载(overload)和重写(override)" title="阅读次数">
+            <span id="/posts/29726/" class="post-meta-item leancloud_visitors" data-flag-title="C++ overload and override" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.4k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -369,34 +369,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>C++中<code>重载(overload)</code>和<code>重写(override)</code>并无关系，但是由于这个词比较相似还是容易搞混的。</p>
+        <p>In C++, <code>overload</code> and <code>override</code> are not related, but they are easily confused due to the similarity of the terms.</p>
 <span id="more"></span>
-<p>Stack overflow上<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/429125/override-and-overload-in-c/24148814#24148814">相关问题</a>下有人配的一个趣图：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/29726/overloadAndOverride.gif"></p>
-<p>下面言归正传——<code>重载(overload)</code>：</p>
+<p>On Stack Overflow, there is a <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/429125/override-and-overload-in-c/24148814#24148814">related question</a> accompanied by an interesting image:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/29726/overloadAndOverride.gif"></p>
+<p>Now, back to the point — <code>overload</code>:</p>
 <blockquote>
 <p>When two or more different declarations are specified for a single name in the same scope, that name is said to be <code>overloaded</code>.</p>
 </blockquote>
-<p>既：当同一个作用域内的两个或者更多个函数名字相同但签名(signature)不同时，就会发生重载。</p>
+<p>That is: when two or more function names are the same but have different signatures in the same scope, overloading occurs.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">float</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p><code>function signature</code>包含了<code>name</code>, <code>parameter type list</code>, and <code>enclosing namespace</code> (if any),没有<code>return type</code>,所以，如果两个函数只有返回类型不同时，不能够重载。</p>
+<p>A <code>function signature</code> includes the <code>name</code>, <code>parameter type list</code>, and <code>enclosing namespace</code> (if any), and does not include <code>return type</code>, so if two functions differ only in their return types, they cannot be overloaded.</p>
 <blockquote>
 <p>Function declarations that differ only in the return type cannot be overloaded.</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="comment">// error: functions that differ only in their return type cannot be overloaded</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>而<code>重写(override)</code>：</p>
+<p>On the other hand, <code>override</code>:</p>
 <blockquote>
-<p>If a virtual member function vf is declared in a class Base and in a class Derived, derived directly or indirectly from Base, a member function vf with the same <code>name</code>, <code>parameter-type-list</code> (8.3.5),<code> cv-qualification</code>, and <code>ref-qualifier</code> (or absence of same) as Base::vf is declared, then Derived::vf is also virtual (whether or not it is so declared) and it <code>overrides</code> Base::vf. For convenience we say that any virtual function overrides itself.</p>
+<p>If a virtual member function vf is declared in a class Base and in a class Derived, derived directly or indirectly from Base, a member function vf with the same <code>name</code>, <code>parameter-type-list</code> (8.3.5), <code>cv-qualification</code>, and <code>ref-qualifier</code> (or absence of same) as Base::vf is declared, then Derived::vf is also virtual (whether or not it is so declared) and it <code>overrides</code> Base::vf. For convenience we say that any virtual function overrides itself.</p>
 </blockquote>
-<p>即：当派生类函数和基类虚函数具有相同的签名(<code>class member function signature</code>(同样没有<code>return type</code>,所以可以实现<code>协变返回covariant return</code>))时，就会发生<code>重写(override)</code>。</p>
+<p>That is: when a derived class function and a base class virtual function have the same signature (<code>class member function signature</code> (also without <code>return type</code>, thus allowing for <code>covariant return</code>)) <code>override</code> occurs.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span>:<span class="keyword">public</span> A&#123;</span><br><span class="line">	<span class="comment">// override A::func(int) to B::func(float)</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">float</span>)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>但是当参数列表不相同时，就应用到了另一种规则：</p>
+<p>However, when the parameter list differs, a different rule applies:</p>
 <blockquote>
 <p>A function with the same name but a different parameter list (Clause 13) as a virtual function is not necessarily virtual and does not override. The use of the virtual specifier in the declaration of an overriding function is legal but redundant (has empty semantics). Access control (Clause 11) is not considered in determining overriding.</p>
 </blockquote>
-<p>即：</p>
+<p>That is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">  	cout&lt;&lt;<span class="string">&quot;A::func(int)&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span>:<span class="keyword">public</span> A&#123;</span><br><span class="line">	<span class="comment">// Overrides A::func</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;B::func(int)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Does not override A::func (due to different parameter-type-list)</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">double</span>)</span></span>&#123;</span><br><span class="line">  		cout&lt;&lt;<span class="string">&quot;B::func(double)&quot;</span>&lt;&lt;endl;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面代码中的<code>B::func(int)</code>重写(override)了<code>A::func(int)</code>，而<code>B::func(double)</code>没有重写任何东西，它重载(overload)了<code>B::func</code>，注意它并不重载基类成员<code>A::func</code>，因为他们位于不同的作用域。</p>
-<h3 id="C-中的签名-signature"><a href="#C-中的签名-signature" class="headerlink" title="C++中的签名(signature)"></a>C++中的签名(signature)</h3><p><strong>function</strong></p>
+<p>In the code above, <code>B::func(int)</code> overrides <code>A::func(int)</code>, while <code>B::func(double)</code> does not override anything; it overloads <code>B::func</code>, noting that it does not overload the base class member <code>A::func</code> because they are in different scopes.</p>
+<h3 id="Signatures-in-C"><a href="#Signatures-in-C" class="headerlink" title="Signatures in C++"></a>Signatures in C++</h3><p><strong>function</strong></p>
 <blockquote>
 <p>&lt;function&gt; <code>name</code>, <code>parameter type list</code> (8.3.5), and <code>enclosing namespace</code> (if any)<br>[ Note: Signatures are used as a basis for name mangling and linking. — end note ]</p>
 </blockquote>
@@ -414,17 +414,17 @@
 </blockquote>
 <p><strong>class member function template</strong></p>
 <blockquote>
-<p>&lt;class member function template&gt; <code>name</code>, <code>parameter type list</code> (8.3.5), class of which the function is a member,<code>cv-qualifiers</code> (if any), <code>ref-qualifier</code> (if any), <code>return type</code>, and <code>template parameter list</code></p>
+<p>&lt;class member function template&gt; <code>name</code>, <code>parameter type list</code> (8.3.5), class of which the function is a member, <code>cv-qualifiers</code> (if any), <code>ref-qualifier</code> (if any), <code>return type</code>, and <code>template parameter list</code></p>
 </blockquote>
 <p><strong>class member function template specialization</strong></p>
 <blockquote>
 <p>&lt;class member function template specialization&gt; signature of the member function template of which it is a specialization and its template arguments (whether explicitly specified or deduced)</p>
 </blockquote>
-<h3 id="override-final"><a href="#override-final" class="headerlink" title="override/final"></a>override/final</h3><p>C++中的关键字<code>ovrride</code>/<code>final</code>是自C++11之后新增的(C++98/03都没有)，均是<code>virt-specifier</code>（<code>final</code>也是<code>class-virt-sprcifier</code>），语法描述如下：</p>
+<h3 id="override-final"><a href="#override-final" class="headerlink" title="override/final"></a>override/final</h3><p>The keywords <code>override</code>/<code>final</code> in C++ were introduced after C++11 (not present in C++98/03), both are <code>virt-specifier</code> (with <code>final</code> also being a <code>class-virt-specifier</code>), described syntactically as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">virt-speciﬁer-seq:</span><br><span class="line">    virt-speciﬁer</span><br><span class="line">    virt-speciﬁer-seq virt-speciﬁer</span><br><span class="line">virt-speciﬁer:</span><br><span class="line">    <span class="keyword">override</span></span><br><span class="line">    <span class="keyword">final</span></span><br><span class="line">pure-speciﬁer:</span><br><span class="line">    = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>这个特性诞生的意义在于解决<strong>我要明确地表示</strong>要覆写(override)基类的虚函数(<code>override</code>)，或者该虚函数不允许后续的派生类再覆写(<code>final</code>)，防止因为签名的不同造成理解上的歧义：</p>
+<p>The significance of this feature is to allow developers to explicitly indicate when they wish to <code>override</code> a base class virtual function (<code>override</code>), or when that virtual function should not allow subsequent derived classes to override it (<code>final</code>), preventing ambiguity due to differing signatures:</p>
 <blockquote>
-<p>[ISO/IEC 14882:2011]A function with the same name but a diﬀerent parameter list (Clause 13) as a virtual function is not necessarily virtual and does not override.</p>
+<p>[ISO/IEC 14882:2011] A function with the same name but a different parameter list (Clause 13) as a virtual function is not necessarily virtual and does not override.</p>
 </blockquote>
 
     </div>
@@ -436,7 +436,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -446,7 +446,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -456,37 +456,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/29726/" target="_blank">重载(overload)和重写(override)</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/02/06 05:08<br/>
+             <span>Title:</span><a href="/posts/29726/" target="_blank">C++ overload and override</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/02/06 05:08<br/>
              
-             <span>本文字数:</span><span class="page-count">2.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.4k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/29726/" target="_blank" title="重载(overload)和重写(override)">https://imzlp.com/posts/29726/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/29726/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/29726/" target="_blank" title="C++ overload and override">https://en.imzlp.com/posts/29726/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/29726/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -507,12 +507,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/16550/" rel="prev" title="对象的构造和析构顺序">
-      <i class="fa fa-chevron-left"></i> 对象的构造和析构顺序
+    <a href="/posts/16550/" rel="prev" title="C++ object construction and destruction order">
+      <i class="fa fa-chevron-left"></i> C++ object construction and destruction order
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/17347/" rel="next" title="Linux上的Samba配置">
-      Linux上的Samba配置 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/17347/" rel="next" title="Samba Configuration on Linux">
+      Samba Configuration on Linux <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -583,25 +583,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E7%AD%BE%E5%90%8D-signature"><span class="nav-number">1.</span> <span class="nav-text">C++中的签名(signature)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#override-final"><span class="nav-number">2.</span> <span class="nav-text">override&#x2F;final</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Signatures-in-C"><span class="nav-number">1.</span> <span class="nav-text">Signatures in C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#override-final"><span class="nav-number">2.</span> <span class="nav-text">override&#x2F;final</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -609,19 +609,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -659,10 +659,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -689,9 +689,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -700,12 +697,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -858,7 +855,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/29726/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/29726/',]
       });
       });
   </script>
@@ -881,12 +878,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

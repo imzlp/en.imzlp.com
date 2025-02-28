@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在游戏项目开发中，因为资源量大，涉及人员广，比较难自觉地统一资源规范，如果资源出现问题，手动排查要花费大量的人力，这也是资源管理的风险和痛点。基于这种需求，我开发了一款编辑器下的资源扫描规范工具ResScannerUE，可以非常方便地配置规则并实现自动化，由美术人员在资源提交前、定期执行等方式，提前检查项目中的资源是否合规，避免在打包后才发现问题。本篇文章介绍ResScannerUE插件的使用方法">
+  <meta name="description" content="In game project development, due to the large amount of resources involved and the broad range of personnel, it’s relatively difficult to consciously unify resource standards. If issues arise with the">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE资源合规检查工具ResScannerUE">
-<meta property="og:url" content="https://imzlp.com/posts/11750/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在游戏项目开发中，因为资源量大，涉及人员广，比较难自觉地统一资源规范，如果资源出现问题，手动排查要花费大量的人力，这也是资源管理的风险和痛点。基于这种需求，我开发了一款编辑器下的资源扫描规范工具ResScannerUE，可以非常方便地配置规则并实现自动化，由美术人员在资源提交前、定期执行等方式，提前检查项目中的资源是否合规，避免在打包后才发现问题。本篇文章介绍ResScannerUE插件的使用方法">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Resource Scanning and inspection tool ResScannerUE">
+<meta property="og:url" content="https://en.imzlp.com/posts/11750/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In game project development, due to the large amount of resources involved and the broad range of personnel, it’s relatively difficult to consciously unify resource standards. If issues arise with the">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051825251.webp">
 <meta property="article:published_time" content="2021-09-15T15:29:18.000Z">
 <meta property="article:modified_time" content="2021-09-15T15:29:18.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="资源管理">
 <meta property="article:tag" content="ResScanner">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051825251.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/11750/">
+<link rel="canonical" href="https://en.imzlp.com/posts/11750/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE资源合规检查工具ResScannerUE | 循迹研究室</title>
+  <title>UE Resource Scanning and inspection tool ResScannerUE | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/11750/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/11750/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE资源合规检查工具ResScannerUE<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-09-15-11750.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/11750/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Resource Scanning and inspection tool ResScannerUE<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-09-15-11750.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/11750/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Resource Scanning and inspection tool ResScannerUE</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE资源合规检查工具ResScannerUE</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-09-15 15:29 15:29:18:29" itemprop="dateCreated datePublished" datetime="2021-09-15T15:29:18+00:00">2021-09-15 15:29</time>
+              <time title="Created: 2021-09-15 15:29 15:29:18:29" itemprop="dateCreated datePublished" datetime="2021-09-15T15:29:18+00:00">2021-09-15 15:29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/11750/" class="post-meta-item leancloud_visitors" data-flag-title="UE资源合规检查工具ResScannerUE" title="阅读次数">
+            <span id="/posts/11750/" class="post-meta-item leancloud_visitors" data-flag-title="UE Resource Scanning and inspection tool ResScannerUE" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.1k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>12k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>29 mins.</span>
             </span>
 
         </div>
@@ -369,192 +369,197 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在游戏项目开发中，因为资源量大，涉及人员广，比较难自觉地统一资源规范，如果资源出现问题，手动排查要花费大量的人力，这也是资源管理的风险和痛点。<br>基于这种需求，我开发了一款编辑器下的资源扫描规范工具<a href="https://imzlp.com/posts/11750/">ResScannerUE</a>，可以非常方便地配置规则并实现自动化，由美术人员在资源提交前、定期执行等方式，提前检查项目中的资源是否合规，避免在打包后才发现问题。<br>本篇文章介绍<a href="https://imzlp.com/posts/11750/">ResScannerUE</a>插件的使用方法、运行机制、自定义规则的扩展方式，以及后续的优化安排。</p>
+        <p>In game project development, due to the large amount of resources involved and the broad range of personnel, it’s relatively difficult to consciously unify resource standards. If issues arise with the resources, manually checking them requires a significant amount of manpower. This highlights the risks and pain points in resource management. </p>
+<p>Based on this demand, I developed a resource scanning standard tool under the editor, <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a>, which allows for easy configuration of rules and automation. This can be executed by artists before submitting resources or on a regular basis to check whether the resources in the project comply, thus avoiding issues that may only be discovered after packaging. </p>
+<p>This article introduces the usage methods, operational mechanisms, ways to extend custom rules, and future optimization arrangements for the <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a> plugin.</p>
 <span id="more"></span>
 
-<h3 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h3><p><a href="https://imzlp.com/posts/11750/">ResScannerUE</a>是一个基于AssetRegistry和反射机制实现的资源扫描工具，具有以下优点：</p>
+<h3 id="Plugin-Introduction"><a href="#Plugin-Introduction" class="headerlink" title="Plugin Introduction"></a>Plugin Introduction</h3><p><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a> is a resource scanning tool implemented based on the AssetRegistry and reflection mechanism, with the following advantages:</p>
 <ol>
-<li>名字、路径规则检查无需加载资源</li>
-<li>名字、路径规则提供通配符支持</li>
-<li>可以通过提供<strong>属性名</strong>和<strong>值</strong>的方式检查资源中的选项</li>
-<li>支持属性名、值的直接选择，避免输入</li>
-<li>非常方便自定义拓展检查规则（创建蓝图或C++类实现）</li>
-<li>支持任意资源类型，绝大部分需求都能Zero-Code实现</li>
-<li>支持配置的导入/导出</li>
-<li>支持Commandlet实现自动化</li>
-<li>支持Git提交的版本比对、待提交文件比对</li>
-<li>支持的资源提交权限检查</li>
+<li>Name and path rule checks do not require loading of resources.</li>
+<li>Name and path rules provide support for wildcards.</li>
+<li>Options in resources can be checked by providing <strong>property names</strong> and <strong>values</strong>.</li>
+<li>Direct selection support for property names and values eliminates the need for input.</li>
+<li>Very convenient to customize and extend check rules (implementing with Blueprints or C++).</li>
+<li>Supports any resource type, most requirements can be implemented with Zero-Code.</li>
+<li>Supports import/export of configurations.</li>
+<li>Supports automation via Commandlet.</li>
+<li>Supports version comparison of Git commits and comparison of pending files.</li>
+<li>Supports resource submission permission checks.</li>
 </ol>
 <blockquote>
-<p>命名、路径、属性可以严格匹配多个，也可以从多个规则中匹配一个，可以实现类似(<code>(expression) &amp;&amp; (expression || expression)</code>，如以<code>T_</code>开头，以<code>_x</code>或<code>_d</code>等结尾这种模式的匹配)。</p>
+<p>Naming, path, and properties can strictly match multiple, or match one from multiple rules, enabling expressions like (<code>(expression) &amp;&amp; (expression || expression)</code>, such as matching patterns that start with <code>T_</code> and end with <code>_x</code> or <code>_d</code>).</p>
 </blockquote>
-<p>界面预览（与<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>风格保持一致）：</p>
+<p>Interface preview (maintaining consistency with the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> style):</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917170647793.webp"></p>
-<h3 id="插件参数"><a href="#插件参数" class="headerlink" title="插件参数"></a>插件参数</h3><h4 id="FScannerConfig"><a href="#FScannerConfig" class="headerlink" title="FScannerConfig"></a>FScannerConfig</h4><ul>
-<li>ConfigName：当前配置的名字</li>
-<li>bByGlobalScanFilters：开启所有Rule使用的全局扫描配置，开启后每个规则中的资源配置不生效</li>
-<li>bBlockRuleFilter：屏蔽每个规则中配置的资源，仅使用全局资源</li>
-<li>GlobalScanFilters：依赖<code>bByGlobalScanFilters</code>，所有Rule使用的全局扫描配置（会忽略每个Rule中指定的扫描配置）</li>
-<li>GlobalIgnoreFilters：在所有规则中都忽略的资源（路径、某个资源）</li>
-<li>GitChecker：启用GIT版本检测</li>
-<li>bRuleWhiteList：开启规则白名单，只检测某些规则</li>
-<li>RuleWhileListIDs：白名单规则ID列表，<strong>注意</strong>：从0开始，RuleTable里的ID要-1</li>
-<li>bUseRulesTable：是否启用规则数据表（<strong>建议</strong>）</li>
-<li>ImportRulesTable：指定一个FScannerMatchRule的Datatable</li>
-<li>ScannerRules：<code>FScannerMatchRule</code>规则数组，用于指定资源检查规则</li>
-<li>bSaveConfig：是否保存配置文件</li>
-<li>bSaveResult：是否保存本次执行的结果</li>
-<li>SavePath：Config和Result的存储路径</li>
+<h3 id="Plugin-Parameters"><a href="#Plugin-Parameters" class="headerlink" title="Plugin Parameters"></a>Plugin Parameters</h3><h4 id="FScannerConfig"><a href="#FScannerConfig" class="headerlink" title="FScannerConfig"></a>FScannerConfig</h4><ul>
+<li>ConfigName: The name of the current configuration.</li>
+<li>bByGlobalScanFilters: Enables the global scanning configuration used by all rules; when enabled, resource configurations in each rule do not take effect.</li>
+<li>bBlockRuleFilter: Shields resources configured in each rule, using only global resources.</li>
+<li>GlobalScanFilters: Depends on <code>bByGlobalScanFilters</code>, the global scanning configuration used by all rules (ignores scanning configurations specified in each rule).</li>
+<li>GlobalIgnoreFilters: Resources ignored in all rules (paths, specific resources).</li>
+<li>GitChecker: Enables GIT version checking.</li>
+<li>bRuleWhiteList: Enables rule whitelist, checking only specific rules.</li>
+<li>RuleWhileListIDs: Whitelist rule ID list, <strong>Note</strong>: starts from 0, and IDs in RuleTable should be -1.</li>
+<li>bUseRulesTable: Whether to use a rules data table (<strong>recommended</strong>).</li>
+<li>ImportRulesTable: Specifies a Datatable of FScannerMatchRule.</li>
+<li>ScannerRules: Array of <code>FScannerMatchRule</code> rules for specifying resource check rules.</li>
+<li>bSaveConfig: Whether to save the configuration file.</li>
+<li>bSaveResult: Whether to save the results of this execution.</li>
+<li>SavePath: Storage path for Config and Result.</li>
 </ul>
-<h4 id="FGitChecker"><a href="#FGitChecker" class="headerlink" title="FGitChecker"></a>FGitChecker</h4><p>能够提取Git检查提交版本中的文件进行检测：</p>
+<h4 id="FGitChecker"><a href="#FGitChecker" class="headerlink" title="FGitChecker"></a>FGitChecker</h4><p>Able to extract files in Git commits for checking:</p>
 <ul>
-<li>bGitCheck：启用Git仓库扫描</li>
-<li>bRecordCommiter：记录提交人</li>
-<li>RepoDir：GIT仓库地址</li>
-<li>bDiffCommit：Git提交记录比对（Begin/End Commit HASH）</li>
-<li>BeginCommitHash：检查开始的Git Commit HASH</li>
-<li>EndCommitHash：检查结束的Git Commit HASH</li>
-<li>bUncommitFiles：检查待提交文件</li>
+<li>bGitCheck: Enables Git repository scanning.</li>
+<li>bRecordCommiter: Records the committer.</li>
+<li>RepoDir: GIT repository address.</li>
+<li>bDiffCommit: Git commit record comparison (Begin/End Commit HASH).</li>
+<li>BeginCommitHash: The starting Git Commit HASH for checking.</li>
+<li>EndCommitHash: The ending Git Commit HASH for checking.</li>
+<li>bUncommitFiles: Checks pending files.</li>
 </ul>
-<h4 id="FScannerMatchRule"><a href="#FScannerMatchRule" class="headerlink" title="FScannerMatchRule"></a>FScannerMatchRule</h4><p>每个规则都支持以下参数：</p>
+<h4 id="FScannerMatchRule"><a href="#FScannerMatchRule" class="headerlink" title="FScannerMatchRule"></a>FScannerMatchRule</h4><p>Each rule supports the following parameters:</p>
 <ul>
-<li>RuleName：规则名</li>
-<li>RuleDescribe：规则描述信息</li>
-<li>bEnableRule：是否启用当前规则</li>
-<li>Priority：该规则的优先级</li>
-<li>bGlobalAssetMustMatchFilter：必须匹配规则中的Filter目录(全局资源)，比如设置不同目录下的贴图规格不同，就要求只在某些目录下的资源才使用本规则扫描。</li>
-<li>ScanFilters：<code>FDirectoryPath</code>数组，指定扫描资源路径</li>
-<li>ScanAssetTypes：UClass数组，指定要扫描的资源类型，建议每个规则只指定一个类型</li>
-<li>NameMatchRules：<code>FNameMatchRule</code>数组，用于指定命名匹配规则</li>
-<li>PathMatchRules：<code>FPathMatchRule</code>数组，用于指定资源的路径匹配规则</li>
-<li>PropertyMatchRules：<code>FPropertyMatchRule</code>数组，用于匹配资源中的属性</li>
-<li>CustomRules：<code>TSubclassOf&lt;UOperatorBase&gt;</code>数组，用于自定义匹配规则，可以指定C++/蓝图类</li>
-<li>IgnoreFilters：本规则的忽略列表，（路径、某个资源）</li>
-<li>bEnablePostProcessor：是否开启对扫描结果的后处理</li>
-<li>PostProcessor：<code>TArray&lt;TSubclassOf&lt;UScannnerPostProcessorBase&gt;&gt;</code>数组，依赖bEnablePostProcessor，可以指定对当前规则扫描的结果的后处理，如自动修改属性、自动重命名等等</li>
+<li>RuleName: Rule name.</li>
+<li>RuleDescribe: Rule description information.</li>
+<li>bEnableRule: Whether to enable the current rule.</li>
+<li>Priority: The priority of this rule.</li>
+<li>bGlobalAssetMustMatchFilter: Must match the Filter directory in the rule (global resource); for example, if different specifications for textures are set in different directories, only resources in certain directories should use this rule for scanning.</li>
+<li>ScanFilters: Array of <code>FDirectoryPath</code>, specifies scanning resource paths.</li>
+<li>ScanAssetTypes: Array of UClass, specifies resource types to be scanned; it is recommended to specify only one type for each rule.</li>
+<li>NameMatchRules: Array of <code>FNameMatchRule</code> for specifying naming matching rules.</li>
+<li>PathMatchRules: Array of <code>FPathMatchRule</code> for specifying resource path matching rules.</li>
+<li>PropertyMatchRules: Array of <code>FPropertyMatchRule</code> for matching properties in resources.</li>
+<li>CustomRules: Array of <code>TSubclassOf&lt;UOperatorBase&gt;</code> for custom matching rules; can specify C++/Blueprint classes.</li>
+<li>IgnoreFilters: The ignore list for this rule (paths, specific resources).</li>
+<li>bEnablePostProcessor: Whether to enable post-processing of scan results.</li>
+<li>PostProcessor: Array of <code>TArray&lt;TSubclassOf&lt;UScannnerPostProcessorBase&gt;&gt;</code>, relies on bEnablePostProcessor; can specify post-processing of the current rule’s scan results, such as automatically modifying properties, auto-renaming, etc.</li>
 </ul>
-<h4 id="FNameMatchRule"><a href="#FNameMatchRule" class="headerlink" title="FNameMatchRule"></a>FNameMatchRule</h4><p>每一个NameMatchRule其中包含了多个NameRule：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FNameRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  ENameMatchMode MatchMode;</span><br><span class="line">  <span class="comment">// 匹配规则，是必须的还是可选的，Necessary是必须匹配所有的规则，Optional则只需要匹配规则中的一个</span></span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EMatchLogic MatchLogic;</span><br><span class="line">  <span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">  int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FString&gt; Rules;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FNameMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FNameRule&gt; Rules;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  <span class="type">bool</span> bReverseCheck;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="FNameMatchRule"><a href="#FNameMatchRule" class="headerlink" title="FNameMatchRule"></a>FNameMatchRule</h4><p>Each NameMatchRule contains multiple NameRule:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FNameRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  ENameMatchMode MatchMode;</span><br><span class="line">  <span class="comment">// Matching rule; whether required or optional; Necessary means all rules must be matched, Optional means only one in the rules must be matched.</span></span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EMatchLogic MatchLogic;</span><br><span class="line">  <span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">  int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FString&gt; Rules;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FNameMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FNameRule&gt; Rules;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  <span class="type">bool</span> bReverseCheck;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="FPathMatchRule"><a href="#FPathMatchRule" class="headerlink" title="FPathMatchRule"></a>FPathMatchRule</h4><p>每一个PathMatchRule其中包含了多个PathRule：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPathRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EPathMatchMode MatchMode;</span><br><span class="line">  <span class="comment">// 匹配规则，是必须的还是可选的，Necessary是必须匹配所有的规则，Optional则只需要匹配规则中的一个</span></span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EMatchLogic MatchLogic;</span><br><span class="line">  <span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">  int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite,meta = (RelativeToGameContentDir, LongPackageName))</span><br><span class="line">  TArray&lt;FString&gt; Rules;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPathMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FPathRule&gt; Rules;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  <span class="type">bool</span> bReverseCheck;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="FPropertyMatchRule"><a href="#FPropertyMatchRule" class="headerlink" title="FPropertyMatchRule"></a>FPropertyMatchRule</h4><p>每个属性匹配规则，包含多个属性规则：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPropertyRule</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// 匹配规则，是必须的还是可选的，Necessary是必须匹配所有的规则，Optional则只需要匹配规则中的一个</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	EMatchLogic MatchLogic;</span><br><span class="line">	<span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">	int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FPropertyMatchMapping&gt; Rules;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPropertyMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FPropertyRule&gt; Rules;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">    <span class="type">bool</span> bReverseCheck;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="FPathMatchRule"><a href="#FPathMatchRule" class="headerlink" title="FPathMatchRule"></a>FPathMatchRule</h4><p>Each PathMatchRule contains multiple PathRule:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPathRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EPathMatchMode MatchMode;</span><br><span class="line">  <span class="comment">// Matching rule; whether required or optional; Necessary means all rules must be matched, Optional means only one in the rules must be matched.</span></span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  EMatchLogic MatchLogic;</span><br><span class="line">  <span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">  int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite,meta = (RelativeToGameContentDir, LongPackageName))</span><br><span class="line">  TArray&lt;FString&gt; Rules;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPathMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  TArray&lt;FPathRule&gt; Rules;</span><br><span class="line">  <span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">  <span class="type">bool</span> bReverseCheck;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h3><p>我给<a href="https://imzlp.com/posts/11750/">ResScannerUE</a>默认提供了四种种匹配方式：命名匹配、路径匹配、属性匹配、提交权限匹配、自定义匹配，可以实现大多数的资源扫描需求。</p>
+<h4 id="FPropertyMatchRule"><a href="#FPropertyMatchRule" class="headerlink" title="FPropertyMatchRule"></a>FPropertyMatchRule</h4><p>Each property matching rule contains multiple property rules:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPropertyRule</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// Matching rule; whether required or optional; Necessary means all rules must be matched, Optional means only one in the rules must be matched.</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	EMatchLogic MatchLogic;</span><br><span class="line">	<span class="comment">// UPROPERTY(EditAnywhere,BlueprintReadWrite,meta=(EditCondition=&quot;MatchLogic == EMatchLogic::Optional&quot;))</span></span><br><span class="line">	int32 OptionalRuleMatchNum = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FPropertyMatchMapping&gt; Rules;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FPropertyMatchRule</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FPropertyRule&gt; Rules;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">    <span class="type">bool</span> bReverseCheck;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Matching-Rules"><a href="#Matching-Rules" class="headerlink" title="Matching Rules"></a>Matching Rules</h3><p>I provide four default matching methods for <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a>: naming matching, path matching, property matching, submission permission matching, and custom matching, which can meet most resource scanning requirements.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211214152255.webp"></p>
-<p>对于每种匹配方式，也可以添加了多个约束条件，以贴图命名规则为例：</p>
+<p>For each matching method, multiple constraints can also be added. Taking the texture naming rule as an example:</p>
 <ol>
-<li>贴图必须以<code>T_*</code>开头</li>
-<li>根据贴图应用类型决定以<code>_c</code>或<code>_d</code>结尾</li>
+<li>Textures must start with <code>T_*</code>.</li>
+<li>Based on the application type of the texture, it should end with <code>_c</code> or <code>_d</code>.</li>
 </ol>
-<p>其实就是需要由<strong>与或</strong>运算符组成两个限定条件：<code>(T_) &amp;&amp; ( _x || _d )</code>，在<a href="https://imzlp.com/posts/11750/">ResScannerUE</a>的实现中，每个NameRule，就是一个表达式，通过<code>MatchLogic</code>来决定内部是<code>and</code>/<code>or</code>：</p>
+<p>Essentially, two constraints composed of <strong>and/or</strong> operator need to be fulfilled: <code>(T_) &amp;&amp; (_x || _d)</code>. In the implementation of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a>, each NameRule is an expression that determines if the internal logic is <code>and</code>/<code>or</code> by <code>MatchLogic</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210917162359.webp"></p>
-<p>每个NameRule都具有一个<code>EMatchLogic</code>的属性，<code>Necessary</code>是必须严格匹配所有的Rule（<code>T_</code>开头），<code>Optional</code>是只需要对Rule中所有列出的匹配一个即可（<code>_x</code>/<code>_d</code>），路径和属性匹配也支持设置<code>MatchLogic</code>模式，同理。</p>
+<p>Each NameRule has an attribute of <code>EMatchLogic</code>. <code>Necessary</code> must strictly match all Rules (starting with <code>T_</code>), whereas <code>Optional</code> means only one of the patterns listed in the Rule needs to match (<code>_x</code>/<code>_d</code>). Path and property matching also supports setting the <code>MatchLogic</code> mode similarly.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210917164802.webp"></p>
-<h4 id="命名匹配"><a href="#命名匹配" class="headerlink" title="命名匹配"></a>命名匹配</h4><p>对不同类型的资源制定命名规则是最常见的规范之一，如对Texture，通常以<code>T_</code>开头。<br>在一个资源检测规则中，也可以添加多个路径匹配规则，每个匹配规则有三种模式：</p>
+<h4 id="Naming-Matching"><a href="#Naming-Matching" class="headerlink" title="Naming Matching"></a>Naming Matching</h4><p>Setting naming rules for different types of resources is one of the most common standards, such as textures usually starting with <code>T_</code>. </p>
+<p>In a resource detection rule, multiple path matching rules can also be added, with each matching rule having three modes:</p>
 <ol>
 <li>StartWith</li>
 <li>EndWith</li>
 <li>Wildcard</li>
 </ol>
-<p>并且提供了<code>bReverseCheck</code>，可以在所有匹配规则检测的结果上进行取反，可以实现反向匹配的作用。</p>
-<p>以Texture的命名规范为例：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917165511508.webp"></p>
-<p>提供了<code>T_*</code>的通配符检查， 并且勾上了<code>bReverseCheck</code>，会记录不匹配这个规则的资源：</p>
+<p>Additionally, <code>bReverseCheck</code> is provided to negate the results of all matching rules for reverse matching.</p>
+<p>Taking the naming standard for textures as an example:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917165511508.webp"></p>
+<p>It includes a wildcard check of <code>T_*</code>, and enabling <code>bReverseCheck</code> will record resources that do not match this rule:</p>
 <figure class="highlight json"><figcaption><span>result.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;matchedAssets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;ruleName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Texture2D_Name_Rule&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleDescribe&quot;</span><span class="punctuation">:</span> <span class="string">&quot;texture name need startwith \&quot;T_\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleId&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;assetPackageNames&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Textures/UE4_LOGO_CARD&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Textures/UE4_Mannequin__normals&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Textures/UE4_Mannequin_MAT_MASKA&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Textures/UE4Man_Logo_N&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Texture/20210914162516&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="路径匹配"><a href="#路径匹配" class="headerlink" title="路径匹配"></a>路径匹配</h4><p>检查某种类型的资源是否按照指定的路径存储，也是最常用的规则之一。同样支持多种路径规范，每种规范默认支持两种模式：</p>
+<h4 id="Path-Matching"><a href="#Path-Matching" class="headerlink" title="Path Matching"></a>Path Matching</h4><p>Checking whether a certain type of resource is stored according to a specified path is also one of the most common rules. It similarly supports multiple path specifications, and each specification default supports two modes:</p>
 <ol>
 <li>WithIn</li>
 <li>Wildcard</li>
 </ol>
-<p>可以检查是否位于某一目录下，或者路径是否满足通配符规则。同样以Texture为例，检查Texture是否都被存储于命名为<code>*/Textures/*</code>的目录中：</p>
+<p>It can check whether the resource is located within a certain directory or whether the path meets the wildcard criteria. Taking textures again as an example, one could check whether all textures are stored in directories named <code>*/Textures/*</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917165750281.webp"></p>
-<p>提供了<code>*/Textures/*</code>的通配符检查， 并且勾上了<code>bReverseCheck</code>，会记录不匹配这个规则的资源：</p>
-<figure class="highlight json"><figcaption><span>result.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;matchedAssets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;ruleName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Texture2D_Path_Rule&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleDescribe&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Texture nedd within */Textures/* folder.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleId&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;assetPackageNames&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_D&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_N&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01_N&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Texture/20210914162516&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Texture/T_20210914162516&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>It includes a wildcard check for <code>*/Textures/*</code> and enabling <code>bReverseCheck</code> will record resources that do not match this rule:</p>
+<figure class="highlight json"><figcaption><span>result.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;matchedAssets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;ruleName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Texture2D_Path_Rule&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleDescribe&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Texture need within */Textures/* folder.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ruleId&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;assetPackageNames&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_D&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_N&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01_N&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Texture/20210914162516&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;/Game/Texture/T_20210914162516&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="属性匹配"><a href="#属性匹配" class="headerlink" title="属性匹配"></a>属性匹配</h4><p>检查某个资源中，是否启用了某个选项，或者检查某个属性的值，是资源合规检查中的重头。同样，对于资源属性检测也可以添加多个规则。</p>
-<p>我基于反射实现了资源的属性匹配机制，对于任意资源类型，只要有反射标记的属性，都可以通过<strong>属性名</strong>和<strong>检测值</strong>来进行匹配，对于值的检测提供了两种模式：</p>
+<h4 id="Property-Matching"><a href="#Property-Matching" class="headerlink" title="Property Matching"></a>Property Matching</h4><p>Checking whether a certain option is enabled within a resource or checking the value of a specific property is a key aspect of resource compliance checking. Similarly, multiple rules can be added for property attribute detection.</p>
+<p>I have implemented a mechanism for property matching based on reflection, wherein any resource type can be checked as long as it has reflection-marked properties. Property matching can be done through <strong>property names</strong> and <strong>detection values</strong>, with two modes for value checking:</p>
 <ol>
 <li>Equal</li>
 <li>NotEqual</li>
 </ol>
-<p>如：<code>CompressionSettings</code>被设置为<code>TC_Default</code><strong>并且</strong><code>CompressionQuality</code>被设置为<code>TCQ_Highnest</code>或<code>TCQ_High</code>的贴图。<br>前面已经介绍了通过<code>MatchLogic</code>通过数组来实现逻辑处理的过程，在属性检测这里也格为重要。</p>
+<p>For example, checking if <code>CompressionSettings</code> is set to <code>TC_Default</code> <strong>and</strong> <code>CompressionQuality</code> is set to either <code>TCQ_Highnest</code> or <code>TCQ_High</code> for textures. I have previously described how the <code>MatchLogic</code> array can be used to handle the logical processing. This is also important for property detection.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210917170355.webp"></p>
-<p>能够检查出匹配的资源：</p>
+<p>Successfully matching resources can be retrieved:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;matchedAssets&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;ruleName&quot;</span>: <span class="string">&quot;Texture_CompressSetting_Rule&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ruleDescribe&quot;</span>: <span class="string">&quot;Texture2D need Set Compress&quot;</span>,</span><br><span class="line">      <span class="string">&quot;ruleId&quot;</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="string">&quot;assetPackageNames&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;/Game/Texture/20210914162516&quot;</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210915165234000.webp"></p>
 <blockquote>
-<p><del>注意：属性匹配，是基于属性的反射名字进行检测，UE里有<code>DisplayName</code>，在编辑器中显示的名字可能与真正的反射名字不一致，需要注意。</del>（插件已支持选择属性）</p>
+<p><del>Note: Property matching is based on the reflection name of the property; in UE there is <code>DisplayName</code>, which may not match the actual reflection name shown in the editor, so care should be taken.</del> (The plugin now supports property selection)</p>
 </blockquote>
-<p>属性匹配，实现了基于反射的属性面板自定义，能够在选择UClass之后，自动列出所有的反射属性，并且根据所选择的属性名，自动在编辑器中创建出属性名的编辑器类型，非常的Amazing：</p>
+<p>Property matching allows for custom reflection-based property panels, capable of automatically listing all reflected properties after selecting UClass, and automatically creating property name editor types in the editor based on the selected property name, which is very amazing:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211026152026.webp"></p>
-<h4 id="提交权限匹配"><a href="#提交权限匹配" class="headerlink" title="提交权限匹配"></a>提交权限匹配</h4><p>支持对仓库中资源文件的修改权限检查，可以限定某种类型的资源只允许特定人员修改。比如，项目中的母材质只允许TA团队进行修改。</p>
-<p>检测的两种模式：</p>
+<h4 id="Submission-Permission-Matching"><a href="#Submission-Permission-Matching" class="headerlink" title="Submission Permission Matching"></a>Submission Permission Matching</h4><p>Supports checking modification permissions of resource files in the repository, allowing only specific personnel to modify certain types of resources. For example, certain master materials in the project may only be modified by the TA team.</p>
+<p>There are two modes of checks:</p>
 <ol>
-<li>基于Git内的提交信息</li>
-<li>基于机器用户名</li>
+<li>Based on the commit information in Git.</li>
+<li>Based on machine username.</li>
 </ol>
-<p>基于Git时，可以获取待提交文件、以及该文件最近一次提交记录的提交人。</p>
+<p>When based on Git, pending files can be retrieved, along with the most recent submitter of the file:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20220831142617.webp"></p>
-<p>基于机器用户名时，会获取当前机器的用户名，进行<code>StartsWith</code>检测，因为有些机器名会包含<code>lipengzha-PC*</code>这种后缀。</p>
-<p>Editor中的检查提醒：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20220831142814.webp"></p>
-<h4 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h4><p>前面介绍了我提供的几种默认匹配规则，但是，如果有一些特殊的检测需求，我提供了一种方便的扩展方式，可以继承<code>UOperatorBase</code>类重载<code>Match</code>函数来实现自定义检测的需求。</p>
+<p>When based on machine usernames, the current machine’s username is retrieved, and a <code>StartsWith</code> check is performed since some machine names may include suffixes like <code>lipengzha-PC*</code>.</p>
+<p>Editor displays alerts on checks:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20220831142814.webp"></p>
+<h4 id="Custom-Rules"><a href="#Custom-Rules" class="headerlink" title="Custom Rules"></a>Custom Rules</h4><p>While I have introduced several default matching rules, for some special detection needs, I offer a convenient extension method where subclasses can inherit from <code>UOperatorBase</code> and override the <code>Match</code> function to implement custom detection needs.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UCLASS</span>(Blueprintable,BlueprintType)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UOperatorBase</span> : <span class="keyword">public</span> UObject</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">UFUNCTION</span>(BlueprintImplementableEvent,BlueprintCallable)</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">Match</span><span class="params">(UObject* Object,<span class="type">const</span> FString&amp; AssetType)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>会传递当前资源的UObject以及字符串的<code>AssetType</code>，可以通过这两个数据进行自定义的检测。</p>
-<p>在Rule的<code>CustomRules</code>中指定使用的类（<code>TSubclassOf&lt;UOperatorBase&gt;</code>）：</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210915171134049.webp" alt="自定义规则"></p>
-<p>当然，也可以通过继承<code>UOperatorBase</code>创建蓝图类，一样实现重载，更方便：</p>
+<p>This will pass the current resource’s UObject and the <code>AssetType</code> string, allowing for customized detection based on this data.</p>
+<p>In the Rule’s <code>CustomRules</code>, specify the class to be used (<code>TSubclassOf&lt;UOperatorBase&gt;</code>):</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210915171134049.webp" alt="Custom Rules"></p>
+<p>Alternatively, one can also create Blueprint classes by inheriting <code>UOperatorBase</code>, making it even easier to implement overrides:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210915170147239.webp"></p>
-<p>当执行扫描的时候，会获取指定类的CDO，调用Match函数，获取匹配结果。</p>
-<p>如检测地图上GameMode的设置，这种需求就能通过自定义规则来实现：</p>
+<p>When executing a scan, the specified class’s CDO will be obtained, and the Match function will be called to get the matching results.</p>
+<p>For example, detecting settings of GameMode on a map can be achieved through a custom rule:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211027161739.webp"></p>
-<p>如，提醒引用了NerverCook目录的资源，避免依赖的资源没进包造成的表现异常：</p>
+<p>Another example, alerting when resources reference the NeverCook directory to avoid issues caused by missing dependencies during packaging:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230413203802.webp"></p>
-<h3 id="匹配后处理"><a href="#匹配后处理" class="headerlink" title="匹配后处理"></a>匹配后处理</h3><p>插件提供了对匹配规则执行后处理的支持，如对不规范的资源属性进行自动化设置、自动重命名等需求。需要能够获取到匹配的结果。</p>
-<p>我给每个<code>FScannerMatchRule</code>提供了一个指定<code>UScannnerPostProcessorBase</code>类的接口，如果想要对匹配规则的资源进行处理，可以继承<code>UScannnerPostProcessorBase</code>类实现<code>Processor</code>函数，会在当前规则扫描完毕之后将扫描结果传递过来。</p>
+<h3 id="Post-Processing-After-Matching"><a href="#Post-Processing-After-Matching" class="headerlink" title="Post-Processing After Matching"></a>Post-Processing After Matching</h3><p>The plugin provides support for performing post-processing on matching rules, such as automated setting of non-compliant resource properties or auto-renaming needs. It is essential to be able to access matching results.</p>
+<p>I provide an interface in each <code>FScannerMatchRule</code> for specifying a <code>UScannnerPostProcessorBase</code> class. If one intends to process resources that match the rules, they can inherit the <code>UScannnerPostProcessorBase</code> class and implement the <code>Processor</code> function. This will pass the scan results to it after the current rule’s scan is complete.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; PostProcessorClass:Rule.PostProcessors)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">IsValid</span>(PostProcessorClass))</span><br><span class="line">  &#123;</span><br><span class="line">    UScannnerPostProcessorBase* PostProcessorIns = <span class="built_in">Cast</span>&lt;UScannnerPostProcessorBase&gt;(PostProcessorClass-&gt;<span class="built_in">GetDefaultObject</span>());</span><br><span class="line">    <span class="keyword">if</span>(PostProcessorIns)</span><br><span class="line">    &#123;</span><br><span class="line">      PostProcessorIns-&gt;<span class="built_in">Processor</span>(RuleMatchedInfo,Rule.ScanAssetType-&gt;<span class="built_in">GetName</span>());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="最终扫描结果"><a href="#最终扫描结果" class="headerlink" title="最终扫描结果"></a>最终扫描结果</h3><p>所有规则扫描完毕之后，结果是一个<code>FMatchedResult</code>结构，它包含了一个<code>FRuleMatchedInfo</code>数据，用于记录每个规则匹配的资源列表：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Rule Matched info</span></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FRuleMatchedInfo</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">FRuleMatchedInfo</span>():<span class="built_in">RuleName</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>)),<span class="built_in">RuleDescribe</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>)),<span class="built_in">RuleID</span>(<span class="number">-1</span>)&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	FString RuleName;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	FString RuleDescribe;</span><br><span class="line">	<span class="comment">// 该规则在配置数组中的下标</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	int32 RuleID;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite, transient)</span><br><span class="line">	TArray&lt;FAssetData&gt; Assets;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FString&gt; AssetPackageNames;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// final result</span></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FMatchedResult</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FRuleMatchedInfo&gt; MatchedAssets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Final-Scan-Results"><a href="#Final-Scan-Results" class="headerlink" title="Final Scan Results"></a>Final Scan Results</h3><p>Once all rule scans are completed, the results are structured in an <code>FMatchedResult</code>, containing a <code>FRuleMatchedInfo</code> for recording the list of resources matched by each rule:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Rule Matched info</span></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FRuleMatchedInfo</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">FRuleMatchedInfo</span>():<span class="built_in">RuleName</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>)),<span class="built_in">RuleDescribe</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>)),<span class="built_in">RuleID</span>(<span class="number">-1</span>)&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	FString RuleName;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	FString RuleDescribe;</span><br><span class="line">	<span class="comment">// The index of this rule in the configuration array</span></span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	int32 RuleID;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite, transient)</span><br><span class="line">	TArray&lt;FAssetData&gt; Assets;</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FString&gt; AssetPackageNames;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// final result</span></span><br><span class="line"><span class="built_in">USTRUCT</span>(BlueprintType)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FMatchedResult</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENERATED_USTRUCT_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">UPROPERTY</span>(EditAnywhere,BlueprintReadWrite)</span><br><span class="line">	TArray&lt;FRuleMatchedInfo&gt; MatchedAssets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><code>RuleName</code>、<code>RuleDescribe</code>、<code>RuleID</code>可以比较方便地看出资源命中了哪条规则。</p>
-<p>最终这个结构会被序列化为Json输出，如果想要获取原始的结果或者做一些特殊的处理，可以在<code>UResScannerProxy</code>调用<code>GetScanResult()</code>获取。</p>
-<h3 id="自动化检查"><a href="#自动化检查" class="headerlink" title="自动化检查"></a>自动化检查</h3><p><a href="https://imzlp.com/posts/11750/">ResScannerUE</a>提供了Commandlet执行的方法，可以通过指定配置文件的方式启动：</p>
+<p><code>RuleName</code>, <code>RuleDescribe</code>, and <code>RuleID</code> provide a convenient way to determine which rules the resources matched against.</p>
+<p>Ultimately, this structure will be serialized into JSON output. If you want to obtain the original results or perform some special processing, you can call <code>GetScanResult()</code> in <code>UResScannerProxy</code>.</p>
+<h3 id="Automated-Checks"><a href="#Automated-Checks" class="headerlink" title="Automated Checks"></a>Automated Checks</h3><p><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a> offers methods for executing via Commandlet, initiated by specifying the configuration file:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UE4Editor-cmd.exe PROJECT_NAME.uproject -run=ResScanner -config=<span class="string">&quot;res_scanner.json&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>可以添加<code>-wait</code>参数，在执行完毕之后等待输入，可以预览结果。</p>
-<p>使用我之前开源的另一个工具<a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UELauncher</a>可以比较方便地实现配置：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211116094321.webp"></p>
-<p>基于<a href="https://imzlp.com/posts/11750/">ResScannerUE</a>的自动化扫描实践，可以看我的另一篇文章：<a href="https://imzlp.com/posts/20376/">基于ResScannerUE的资源检查自动化实践</a></p>
+<p>One can add the <code>-wait</code> parameter to wait for input after execution completes, allowing for previewing results.</p>
+<p>Utilizing another previously open-sourced tool, <a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UELauncher</a>, can facilitate configuration:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211116094321.webp"></p>
+<p>For practical automated scanning implementations based on <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a>, refer to my other article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/20376/">Automated Practices for Resource Checks Based on ResScannerUE</a></p>
 <h3 id="Update-Log"><a href="#Update-Log" class="headerlink" title="Update Log"></a>Update Log</h3><script src="https://gist.github.com/imzlp/9d9c523258324b9df07ad30d13682c10.js"></script>
 
 <h4 id="2022-08-02-v25"><a href="#2022-08-02-v25" class="headerlink" title="2022.08.02 v25"></a>2022.08.02 v25</h4><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ResScannerUE/releases/tag/v25">ResScannerUE v25 Released!</a></p>
 <ul>
-<li>支持检测Git待提交文件</li>
-<li>支持扫描TextureCube规格</li>
-<li>支持扫描地图GameMode设置</li>
-<li>更深度的Git适配，支持检测某些资源只能某些用户修改</li>
-<li>支持在规则中获取当前变动资源的修改人</li>
-<li>支持插件中获取用户本地的git信息（username/email）</li>
-<li>支持commandlet传递gitusername</li>
-<li>支持pre-commit hook的检查</li>
+<li>Support for checking Git pending files.</li>
+<li>Support for scanning TextureCube specifications.</li>
+<li>Support for scanning GameMode settings in maps.</li>
+<li>Deepened Git adaptation, supporting checks that certain resources can only be modified by specific users.</li>
+<li>Support for retrieving the modifier of currently changing resources in rules.</li>
+<li>Support for getting user local git information (username/email) in the plugin.</li>
+<li>Support for passing git username via commandlet.</li>
+<li>Support for checking pre-commit hooks.</li>
 </ul>
-<p>以下案例需求：只允许某些用户才能够提交Material资源，其余用户拒绝提交。<br>新建一个过虑Material资源的规则，并指定一个自定义规则：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105212.webp"></p>
-<p>在扫描配置中启用全局资源、Git仓库扫描配置：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105340.webp"></p>
-<p>在自定义规则蓝图中可以获取本地修改文件状态以及提交人：</p>
+<p>For the following case requirement: only specific users can submit Material resources, while others are denied submission.<br>A rule filtering Material resources was created and a custom rule specified:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105212.webp"></p>
+<p>In the scanning configuration, enable global resources and Git repository scanning configurations:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105340.webp"></p>
+<p>In the custom rule blueprint, obtain the status of locally modified files and the committer:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105441.webp"></p>
-<p>执行扫描：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802111054.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802111011.webp"></p>
-<p>并且可以集成至Git GUI工具或者pre-commit hook中，实现完全自动化的检查：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105720.webp"></p>
+<p>Execute the scan:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802111054.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802111011.webp"></p>
+<p>Additionally, it can be integrated into Git GUI tools or pre-commit hooks to achieve fully automated checks:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220802105720.webp"></p>
 <h4 id="2021-13-15-v24"><a href="#2021-13-15-v24" class="headerlink" title="2021.13.15 v24"></a>2021.13.15 v24</h4><ul>
-<li>修复从Git中获取map的提交信息失败</li>
-<li>修复Mac上的Crash问题</li>
-<li>Commandlet扫描时关闭Shader的编译</li>
+<li>Fixed failure to retrieve commit information for maps from Git.</li>
+<li>Fixed crash issues on Mac.</li>
+<li>Disabled shader compilation during commandlet scanning.</li>
 </ul>
-<h3 id="优化安排"><a href="#优化安排" class="headerlink" title="优化安排"></a>优化安排</h3><p>一些待优化思路，有时间会逐步实现。</p>
+<h3 id="Optimization-Plans"><a href="#Optimization-Plans" class="headerlink" title="Optimization Plans"></a>Optimization Plans</h3><p>Some thoughts for future optimizations; I will gradually implement these when time permits.</p>
 <ul>
-<li><del>实现属性名字的选择而不是输入</del></li>
-<li><del>Detail面板根据具体类型创建属性</del></li>
-<li>多线程规则检测，并行化处理</li>
+<li><del>Implement property name selection instead of input.</del></li>
+<li><del>Create property based on specific types in the Detail panel.</del></li>
+<li>Multi-threaded rule detection for parallel processing.</li>
 </ul>
 
     </div>
@@ -566,7 +571,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -576,7 +581,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -586,37 +591,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/11750/" target="_blank">UE资源合规检查工具ResScannerUE</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/09/15 15:29<br/>
+             <span>Title:</span><a href="/posts/11750/" target="_blank">UE Resource Scanning and inspection tool ResScannerUE</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/09/15 15:29<br/>
              
-             <span>本文字数:</span><span class="page-count">5.1k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">12k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/11750/" target="_blank" title="UE资源合规检查工具ResScannerUE">https://imzlp.com/posts/11750/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/11750/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/11750/" target="_blank" title="UE Resource Scanning and inspection tool ResScannerUE">https://en.imzlp.com/posts/11750/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/11750/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -637,12 +642,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/9028/" rel="prev" title="UE热更新：Config的重载与应用">
-      <i class="fa fa-chevron-left"></i> UE热更新：Config的重载与应用
+    <a href="/posts/9028/" rel="prev" title="UE Hot Update: Config Overloading and Apply">
+      <i class="fa fa-chevron-left"></i> UE Hot Update: Config Overloading and Apply
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/15810/" rel="next" title="UE热更新：Shader更新策略">
-      UE热更新：Shader更新策略 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/15810/" rel="next" title="UE Hot Update: Shader update strategy">
+      UE Hot Update: Shader update strategy <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -713,25 +718,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">插件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%8F%82%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">插件参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FScannerConfig"><span class="nav-number">2.1.</span> <span class="nav-text">FScannerConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FGitChecker"><span class="nav-number">2.2.</span> <span class="nav-text">FGitChecker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FScannerMatchRule"><span class="nav-number">2.3.</span> <span class="nav-text">FScannerMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FNameMatchRule"><span class="nav-number">2.4.</span> <span class="nav-text">FNameMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FPathMatchRule"><span class="nav-number">2.5.</span> <span class="nav-text">FPathMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FPropertyMatchRule"><span class="nav-number">2.6.</span> <span class="nav-text">FPropertyMatchRule</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E5%8C%B9%E9%85%8D"><span class="nav-number">3.1.</span> <span class="nav-text">命名匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D"><span class="nav-number">3.2.</span> <span class="nav-text">路径匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%8C%B9%E9%85%8D"><span class="nav-number">3.3.</span> <span class="nav-text">属性匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%9D%83%E9%99%90%E5%8C%B9%E9%85%8D"><span class="nav-number">3.4.</span> <span class="nav-text">提交权限匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99"><span class="nav-number">3.5.</span> <span class="nav-text">自定义规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%90%8E%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">匹配后处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C"><span class="nav-number">5.</span> <span class="nav-text">最终扫描结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%9F%A5"><span class="nav-number">6.</span> <span class="nav-text">自动化检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-Log"><span class="nav-number">7.</span> <span class="nav-text">Update Log</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2022-08-02-v25"><span class="nav-number">7.1.</span> <span class="nav-text">2022.08.02 v25</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2021-13-15-v24"><span class="nav-number">7.2.</span> <span class="nav-text">2021.13.15 v24</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%AE%89%E6%8E%92"><span class="nav-number">8.</span> <span class="nav-text">优化安排</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Plugin Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin-Parameters"><span class="nav-number">2.</span> <span class="nav-text">Plugin Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FScannerConfig"><span class="nav-number">2.1.</span> <span class="nav-text">FScannerConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FGitChecker"><span class="nav-number">2.2.</span> <span class="nav-text">FGitChecker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FScannerMatchRule"><span class="nav-number">2.3.</span> <span class="nav-text">FScannerMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FNameMatchRule"><span class="nav-number">2.4.</span> <span class="nav-text">FNameMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FPathMatchRule"><span class="nav-number">2.5.</span> <span class="nav-text">FPathMatchRule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FPropertyMatchRule"><span class="nav-number">2.6.</span> <span class="nav-text">FPropertyMatchRule</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matching-Rules"><span class="nav-number">3.</span> <span class="nav-text">Matching Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Naming-Matching"><span class="nav-number">3.1.</span> <span class="nav-text">Naming Matching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-Matching"><span class="nav-number">3.2.</span> <span class="nav-text">Path Matching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Property-Matching"><span class="nav-number">3.3.</span> <span class="nav-text">Property Matching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Submission-Permission-Matching"><span class="nav-number">3.4.</span> <span class="nav-text">Submission Permission Matching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Custom-Rules"><span class="nav-number">3.5.</span> <span class="nav-text">Custom Rules</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post-Processing-After-Matching"><span class="nav-number">4.</span> <span class="nav-text">Post-Processing After Matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Final-Scan-Results"><span class="nav-number">5.</span> <span class="nav-text">Final Scan Results</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automated-Checks"><span class="nav-number">6.</span> <span class="nav-text">Automated Checks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-Log"><span class="nav-number">7.</span> <span class="nav-text">Update Log</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2022-08-02-v25"><span class="nav-number">7.1.</span> <span class="nav-text">2022.08.02 v25</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2021-13-15-v24"><span class="nav-number">7.2.</span> <span class="nav-text">2021.13.15 v24</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimization-Plans"><span class="nav-number">8.</span> <span class="nav-text">Optimization Plans</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -739,19 +744,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -789,10 +794,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -819,9 +824,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -830,12 +832,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -988,7 +990,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/11750/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/11750/',]
       });
       });
   </script>
@@ -1011,12 +1013,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

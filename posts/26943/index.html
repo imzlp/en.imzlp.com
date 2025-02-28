@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在文章基于 ZSTD 字典的 Shader 压缩方案中，我介绍了一种利用ZSTD字典压缩UE的ShaderCode的方法，可以极大地提升ShaderLibrary的压缩比。但训练字典和使用字典进行压缩的流程仍然比较复杂，并不是一个高效的工程实现：  需关闭引擎默认的Shader压缩 Cook一遍项目才能Dump每个Unique Shader的ShaderCode 基于Dump出的ShaderCod">
+  <meta name="description" content="In the article ZSTD Dictionary-based Shader Compression Scheme, I introduced a method for compressing UE’s ShaderCode using ZSTD dictionaries, which can significantly improve the compression ratio of">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一种高效的ZSTD Shader字典训练方案">
-<meta property="og:url" content="https://imzlp.com/posts/26943/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在文章基于 ZSTD 字典的 Shader 压缩方案中，我介绍了一种利用ZSTD字典压缩UE的ShaderCode的方法，可以极大地提升ShaderLibrary的压缩比。但训练字典和使用字典进行压缩的流程仍然比较复杂，并不是一个高效的工程实现：  需关闭引擎默认的Shader压缩 Cook一遍项目才能Dump每个Unique Shader的ShaderCode 基于Dump出的ShaderCod">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="An Efficient ZSTD Shader Dictionary Training Scheme">
+<meta property="og:url" content="https://en.imzlp.com/posts/26943/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the article ZSTD Dictionary-based Shader Compression Scheme, I introduced a method for compressing UE’s ShaderCode using ZSTD dictionaries, which can significantly improve the compression ratio of">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20220812165429.webp">
 <meta property="article:published_time" content="2022-07-14T13:01:54.000Z">
 <meta property="article:modified_time" content="2022-07-14T13:01:54.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="HotPatcher">
 <meta property="article:tag" content="ZSTD">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20220812165429.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/26943/">
+<link rel="canonical" href="https://en.imzlp.com/posts/26943/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>一种高效的ZSTD Shader字典训练方案 | 循迹研究室</title>
+  <title>An Efficient ZSTD Shader Dictionary Training Scheme | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/26943/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/26943/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一种高效的ZSTD Shader字典训练方案<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2022-07-14-26943.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/26943/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          An Efficient ZSTD Shader Dictionary Training Scheme<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2022-07-14-26943.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/26943/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">An Efficient ZSTD Shader Dictionary Training Scheme</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">一种高效的ZSTD Shader字典训练方案</sub>
           </div>
         
 
@@ -318,43 +318,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2022-07-14 13:01 13:01:54:01" itemprop="dateCreated datePublished" datetime="2022-07-14T13:01:54+00:00">2022-07-14 13:01</time>
+              <time title="Created: 2022-07-14 13:01 13:01:54:01" itemprop="dateCreated datePublished" datetime="2022-07-14T13:01:54+00:00">2022-07-14 13:01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/26943/" class="post-meta-item leancloud_visitors" data-flag-title="一种高效的ZSTD Shader字典训练方案" title="阅读次数">
+            <span id="/posts/26943/" class="post-meta-item leancloud_visitors" data-flag-title="An Efficient ZSTD Shader Dictionary Training Scheme" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -366,151 +366,151 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在文章<a href="https://imzlp.com/posts/24725/">基于 ZSTD 字典的 Shader 压缩方案</a>中，我介绍了一种利用ZSTD字典压缩UE的ShaderCode的方法，可以极大地提升ShaderLibrary的压缩比。但训练字典和使用字典进行压缩的流程仍然比较复杂，并不是一个高效的工程实现：</p>
+        <p>In the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/24725/">ZSTD Dictionary-based Shader Compression Scheme</a>, I introduced a method for compressing UE’s ShaderCode using ZSTD dictionaries, which can significantly improve the compression ratio of ShaderLibrary. However, the process of training the dictionary and using it for compression remains complex and is not an efficient engineering implementation:</p>
 <ol>
-<li>需关闭引擎默认的Shader压缩</li>
-<li>Cook一遍项目才能Dump每个Unique Shader的ShaderCode</li>
-<li>基于Dump出的ShaderCode文件，使用ZSTD程序训练字典</li>
-<li>再次执行完整的Cook过程，使用字典进行压缩，生成最终的shaderbytecode</li>
+<li>The engine’s default Shader compression must be turned off.</li>
+<li>You need to cook the project once to dump the ShaderCode of each unique Shader.</li>
+<li>Based on the dumped ShaderCode files, use the ZSTD program to train the dictionary.</li>
+<li>Execute a full cook process again to compress using the dictionary and generate the final shaderbytecode.</li>
 </ol>
-<p>根据上述的流程，需要变动引擎才能实现Dump ShaderCode；其次是流程的割裂，Dump ShaderCode之后需要拉起<code>zstd</code>程序执行训练才能得到字典；最后，仍需要再Cook一遍工程，使用训练出的字典压缩Shader。并且在关掉Shader的压缩后会导致使用LZ4压缩的DDC Cache Miss，重复Cook执行的时间开销巨大，在海量Shader的项目中耗时无法接受。</p>
-<p>基于这种痛点，我研究并实现了一种高效的字典训练方法，无需修改引擎，并且十分快速地训练字典和基于字典压缩。能够直接从ushaderbytecode中训练字典，并生成使用ZSTD+字典压缩的ushaderbytecode，极大地提升了处理效率，完全Plugin-Only的实现，接入成本几乎为零，后续将作为<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的扩展模块发布。</p>
+<p>According to the above process, changing the engine is necessary to dump ShaderCode; moreover, the disjointed workflow means that after dumping ShaderCode, you must invoke the <code>zstd</code> program to train the dictionary; finally, you still need to cook the project again to compress the Shader using the trained dictionary. Additionally, turning off Shader compression will cause DDC Cache Miss with LZ4 compression, leading to significant time overhead from repeated cooking, which is unacceptable in projects with a large number of Shaders.</p>
+<p>Based on this pain point, I researched and implemented an efficient dictionary training method that requires no changes to the engine, allowing for rapid training of the dictionary and compression based on that dictionary. It can directly train the dictionary from ushaderbytecode and generate ushaderbytecode using ZSTD + dictionary compression, greatly improving processing efficiency. This is a completely Plugin-Only implementation, with almost zero integration cost, and will later be released as an extension module of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>.</p>
 <span id="more"></span>
 
-<p>基于前文的字典训练流程，问题的核心在于三点：</p>
+<p>Based on the aforementioned dictionary training process, the core issues are threefold:</p>
 <ol>
-<li>如何高效地获取未被压缩的ShaderCode</li>
-<li>如何脱离对ZSTD程序的依赖，完全在UE内实现字典的训练，避免额外的IO过程</li>
-<li>如何避免重新Cook的而仅用字典压缩ShaderCode</li>
+<li>How to efficiently obtain uncompressed ShaderCode.</li>
+<li>How to eliminate dependence on the ZSTD program and implement dictionary training entirely within UE, avoiding additional IO processes.</li>
+<li>How to avoid re-cooking and only use the dictionary to compress ShaderCode.</li>
 </ol>
-<p>本篇文章的内容会依次通过分析并解决这三个问题展开。</p>
-<h3 id="DumpShaderCode"><a href="#DumpShaderCode" class="headerlink" title="DumpShaderCode"></a>DumpShaderCode</h3><h4 id="哪种Dump方式更合理？"><a href="#哪种Dump方式更合理？" class="headerlink" title="哪种Dump方式更合理？"></a>哪种Dump方式更合理？</h4><p>如果高效地Dump ShaderCode，需要搞明白一个问题：在何处Dump最为合理？</p>
+<p>The content of this article will systematically analyze and address these three issues.</p>
+<h3 id="DumpShaderCode"><a href="#DumpShaderCode" class="headerlink" title="DumpShaderCode"></a>DumpShaderCode</h3><h4 id="What-is-the-most-reasonable-Dump-method"><a href="#What-is-the-most-reasonable-Dump-method" class="headerlink" title="What is the most reasonable Dump method?"></a>What is the most reasonable Dump method?</h4><p>To efficiently dump ShaderCode, we need to clarify one question: where is the most reasonable place to dump?</p>
 <ol>
-<li>Shader编译完成时<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714142353358.webp"></li>
-<li><code>FShaderCodeLibrary::AddShaderCode</code>时（序列化<code>ushaderbytecode</code>）<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714142619926.webp"></li>
+<li>When the Shader compilation is complete.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714142353358.webp"></li>
+<li>At <code>FShaderCodeLibrary::AddShaderCode</code> (serializing <code>ushaderbytecode</code>).<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714142619926.webp"></li>
 </ol>
-<p>在<a href="https://imzlp.com/posts/24725/">基于 ZSTD 字典的 Shader 压缩方案</a>中的思路是在<code>FShaderCodeLibrary::AddShaderCode</code>中，因为从DDC缓存的Shader不会再走编译流程，如果在<code>Shader</code>编译完成时，会漏掉DDC缓存的。</p>
-<p>但这两种都不是最好的方案，其实认真思考一下就能发现，其实在最终打出来的包中，已经包含了当前平台的最终的所有ShaderCode：</p>
+<p>The approach in <a target="_blank" rel="noopener" href="https://imzlp.com/posts/24725/">ZSTD Dictionary-based Shader Compression Scheme</a> suggests using <code>FShaderCodeLibrary::AddShaderCode</code>, because Shader cached from DDC will not go through the compilation process again. If done when the Shader compilation is complete, it will miss DDC cached shaders.</p>
+<p>However, neither of these methods is the best solution. A careful consideration reveals that the final package already contains all the final ShaderCode for the current platform:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714143112728.webp"></p>
-<p>默认情况下，项目中的<code>Global</code>和<code>ProjectName</code>的这两个ushaderbytecode文件，就是项目中完整的ShaderLibrary，它们默认是经过了LZ4的压缩。</p>
-<p>如果能够直接从默认打包生成的ushaderbytecode中提取出原始未压缩的ShaderCode，再进行训练，可以避免重复Cook的过程。</p>
-<p>要实现这种方式，需要分析ushaderbytecode的文件格式。</p>
-<h4 id="ushaderbytecode格式分析"><a href="#ushaderbytecode格式分析" class="headerlink" title="ushaderbytecode格式分析"></a>ushaderbytecode格式分析</h4><p>ushaderbytecode文件是UE的管理ShaderCode容器，用于存储shader hash和shadercode的对应关系，供运行时查询和加载。</p>
-<p>ushaderbytecode文件的序列化是在<code>ShaderCodeLibrary</code>中的<code>FEditorShaderCodeArchive::Finalize</code>中实现的。</p>
-<p>最终的ushaderbytecode的文件格式：</p>
+<p>By default, the two ushaderbytecode files, <code>Global</code> and <code>ProjectName</code> in the project, constitute the complete ShaderLibrary of the project, which is by default compressed using LZ4.</p>
+<p>If we can directly extract the original uncompressed ShaderCode from the default packaged ushaderbytecode for training, we can avoid the repeated cooking process.</p>
+<p>To achieve this, we need to analyze the ushaderbytecode file format.</p>
+<h4 id="Analysis-of-ushaderbytecode-format"><a href="#Analysis-of-ushaderbytecode-format" class="headerlink" title="Analysis of ushaderbytecode format"></a>Analysis of ushaderbytecode format</h4><p>The ushaderbytecode file is a container for managing ShaderCode in UE, used for storing the correspondence between shader hash and shader code for runtime querying and loading.</p>
+<p>The serialization of the ushaderbytecode file is implemented in <code>ShaderCodeLibrary</code> within <code>FEditorShaderCodeArchive::Finalize</code>.</p>
+<p>The final file format of ushaderbytecode:</p>
 <ul>
-<li><code>unsigned int GShaderArchiveVersion=2;</code>四字节，记录ShaderArchive的版本号</li>
-<li><code>FSerializedShaderArchive SerializedShaders;</code>记录shader的Hash，偏移等信息，是ushaderbytecode的索引，用于记录当前shaderbytecode中包含的所有shader信息以及某个ShaderCode在文件中的偏移。</li>
+<li><code>unsigned int GShaderArchiveVersion=2;</code> Four bytes, records the version number of ShaderArchive.</li>
+<li><code>FSerializedShaderArchive SerializedShaders;</code> Records the hash, offset, and other information of shaders, serving as an index for ushaderbytecode, to document all shader information included in the current shaderbytecode and the offset of a particular ShaderCode in the file.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RENDERCORE_API</span> FSerializedShaderArchive</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	TArray&lt;FSHAHash&gt; ShaderMapHashes; <span class="comment">// 本次Archive里ShaderMap的HASH数组，如某个材质，就是一个单独的ShaderMap</span></span><br><span class="line">	TArray&lt;FSHAHash&gt; ShaderHashes; <span class="comment">// Archive里所有Shader的HASH数组</span></span><br><span class="line">	TArray&lt;FShaderMapEntry&gt; ShaderMapEntries; <span class="comment">// ShaderMap的在Archive中信息，Shader的数量，以及在ShaderIndicesOffset的偏移值</span></span><br><span class="line">	TArray&lt;FShaderCodeEntry&gt; ShaderEntries; <span class="comment">// Archive中存储所有ShaderCode偏移的数组（Unique Shader数量），用于真正读取ShaderCode时，访问offset、Size以及解压之后的大小</span></span><br><span class="line">	TArray&lt;FFileCachePreloadEntry&gt; PreloadEntries; <span class="comment">// 预加载的Shader数组，记录了每个需要预加载的Shader的Offset与大小</span></span><br><span class="line">	TArray&lt;uint32&gt; ShaderIndices; <span class="comment">// 记录每个Shader的Index值，每个ShaderMap的ShaderIndicesOffset会存储当前ShaderMap在ShaderIndices中的下标偏移，通过ShaderIndicesOffset和NumShader就可以在ShaderIndices中访问到某个ShaderMap的所有Index。不同的shadermap可能引用到相同的Shader，通过该项标记，实现Shader的复用。</span></span><br><span class="line">	FHashTable ShaderMapHashTable;</span><br><span class="line">	FHashTable ShaderHashTable;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RENDERCORE_API</span> FSerializedShaderArchive</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	TArray&lt;FSHAHash&gt; ShaderMapHashes; <span class="comment">// Array of HASHes for ShaderMaps in this Archive.</span></span><br><span class="line">	TArray&lt;FSHAHash&gt; ShaderHashes; <span class="comment">// Array of HASHes for all Shaders in the Archive.</span></span><br><span class="line">	TArray&lt;FShaderMapEntry&gt; ShaderMapEntries; <span class="comment">// Information about ShaderMaps in the Archive.</span></span><br><span class="line">	TArray&lt;FShaderCodeEntry&gt; ShaderEntries; <span class="comment">// Array storing the offsets of all ShaderCodes in the Archive.</span></span><br><span class="line">	TArray&lt;FFileCachePreloadEntry&gt; PreloadEntries; <span class="comment">// Preloaded Shader array, records offsets and sizes.</span></span><br><span class="line">	TArray&lt;uint32&gt; ShaderIndices; <span class="comment">// Records the index values for each Shader.</span></span><br><span class="line">	FHashTable ShaderMapHashTable;</span><br><span class="line">	FHashTable ShaderHashTable;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220711112131954.webp" alt="FSerializedShaderArchive"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714145433976.webp" alt="ShaderMapEntries"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714145526496.webp" alt="ShaderEntries"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714145600602.webp" alt="ShaderIndices"></p>
 <ul>
-<li>ShaderCode数组，真正编译好的ShaderCode，按照顺序逐个序列化。</li>
+<li>ShaderCode array, containing all compiled ShaderCode serialized in order.</li>
 </ul>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220711112514341.webp" alt="FEditorShaderCodeArchive::Finalize"></p>
-<p>在运行时<code>FShaderCodeLibrary</code>中通过<code>OpenLibrary</code>加载一个ushaderbytecode时，并不会完整地把文件加载到内存里，而是只序列化了<code>GShaderArchiveVersion</code>和<code>FSerializedShaderArchive</code>结构：</p>
+<p>During runtime, when <code>FShaderCodeLibrary</code> loads a ushaderbytecode via <code>OpenLibrary</code>, it doesn’t fully load the file into memory. It only serializes <code>GShaderArchiveVersion</code> and the <code>FSerializedShaderArchive</code> structure:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711141753.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711141348.webp"></p>
-<p>获取了ushaderbytecode的索引结构、版本号、以及文件句柄（FileCacheHandle），用于真实的ShaderCode加载。</p>
-<p>一些概念的必要解释：</p>
+<p>It retrieves the index structure, version number, and file handle (FileCacheHandle) for loading the true ShaderCode.</p>
+<p>Necessary explanations of certain concepts:</p>
 <ul>
-<li>ShaderMap包含多个ShaderCode，如一个Material会产生多个Shader变体，它们都位于同一个ShaderMap中。</li>
-<li>多个ShaderMap中的ShaderCode会复用，可以具有交叉引用关系，但并不会真的拷贝两份。ShaderMap的Shaders通过<code>ShaderIndices</code>记录，它只是下标，真正的ShaderCode的偏移存储在<code>ShaderEntries</code>中，被称作Unique Shader。</li>
-<li>Material在序列化时（开启bShareCode），会将ShaderMap的HASH序列化到uasset之中，便于在运行时去查询对应的ShaderMap。</li>
+<li>ShaderMap contains multiple ShaderCodes; for instance, a Material can generate multiple Shader variants, which are all located within the same ShaderMap.</li>
+<li>ShaderCodes across multiple ShaderMaps can be reused and may have cross-referencing relationships; however, the ShaderCodes are not genuinely copied. The Shaders in ShaderMap are indexed by <code>ShaderIndices</code>, which only represent indices while the actual offsets of ShaderCode are stored in <code>ShaderEntries</code>, known as Unique Shaders.</li>
+<li>Upon serialization, a Material (with bShareCode enabled) will serialize the ShaderMap’s HASH into the uasset, facilitating runtime queries for the corresponding ShaderMap.</li>
 </ul>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711150612.webp"></p>
-<p>在读取时通过这个FSHAHash值，通过<code>FShaderCodeLibrary::LoadResource</code>加载：</p>
+<p>During reading, the FSHAHash value is utilized via <code>FShaderCodeLibrary::LoadResource</code> to load:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711150843.webp"></p>
-<h4 id="读取ShaderCode"><a href="#读取ShaderCode" class="headerlink" title="读取ShaderCode"></a>读取ShaderCode</h4><p>通过前面的分析，可以知道ShaderCode在ushaderbytecode中的存储结构。</p>
-<p><code>FShaderCodeArchive</code>中有函数<code>ReadShaderCode</code>，可以指定加载某一个ShaderCode：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711141932.webp"></p>
-<p>ShaderIndex可以通过ShaderHash通过以下接口获取：</p>
+<h4 id="Reading-ShaderCode"><a href="#Reading-ShaderCode" class="headerlink" title="Reading ShaderCode"></a>Reading ShaderCode</h4><p>From the previous analysis, we recognize the storage structure of ShaderCode in ushaderbytecode.</p>
+<p><code>FShaderCodeArchive</code> possesses a function <code>ReadShaderCode</code> that can specify loading a particular ShaderCode:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220711141932.webp"></p>
+<p>ShaderIndex can be obtained through ShaderHash using the following interface:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int32 FSerializedShaderArchive::FindShader(const FSHAHash&amp; Hash) const;</span><br></pre></td></tr></table></figure>
-<p>ShaderIndex其实就是对应的ShaderCode在<code>ShaderEntries</code>中的下标。</p>
-<p>遍历某个ushaderbytecode中所有的Shader：</p>
+<p>The ShaderIndex corresponds to the index of the ShaderCode within <code>ShaderEntries</code>.</p>
+<p>To traverse all Shaders within a ushaderbytecode:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714150319878.webp"></p>
-<p>拿到了ShaderHash或者ShaderIndex都可以直接使用<code>ReadShaderCode</code>读取到所关联的ShaderCode数据：</p>
+<p>Once you have either the ShaderHash or ShaderIndex, you can directly use <code>ReadShaderCode</code> to retrieve the corresponding ShaderCode data:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMemoryReadStreamRef Code = Library-&gt;ReadShaderCode(ReadShaderIndex);</span><br></pre></td></tr></table></figure>
 
-<p>但它默认还是经过LZ4压缩之后的数据，此时需要通过LZ4将其解压：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FMemStackBase&amp; MemStack = FMemStack::<span class="built_in">Get</span>();</span><br><span class="line"><span class="built_in">check</span>(ShaderEntry.Size == Code-&gt;<span class="built_in">GetSize</span>());</span><br><span class="line"><span class="type">const</span> uint8* ShaderCode = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">FMemMark <span class="title">Mark</span><span class="params">(MemStack)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (ShaderEntry.UncompressedSize != ShaderEntry.Size)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">void</span>* UncompressedCode = MemStack.<span class="built_in">Alloc</span>(ShaderEntry.UncompressedSize, <span class="number">16</span>);</span><br><span class="line">	<span class="type">const</span> <span class="type">bool</span> bDecompressResult = FCompression::<span class="built_in">UncompressMemoryStream</span>(NAME_LZ4, UncompressedCode, ShaderEntry.UncompressedSize, Code, <span class="number">0</span>, ShaderEntry.Size);</span><br><span class="line">	<span class="built_in">check</span>(bDecompressResult);</span><br><span class="line">	ShaderCode = (uint8*)UncompressedCode;</span><br><span class="line">&#125;</span><br><span class="line">TArrayView&lt;uint8&gt; OrinalShaderCodeView = <span class="built_in">MakeArrayView</span>((uint8*)ShaderCode, ShaderEntry.UncompressedSize);</span><br></pre></td></tr></table></figure>
+<p>However, this data is still compressed with LZ4 by default, and we need to decompress it via LZ4:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FMemStackBase&amp; MemStack = FMemStack::<span class="built_in">Get</span>();</span><br><span class="line"><span class="built_in">check</span>(ShaderEntry.Size == Code-&gt;<span class="built_in">GetSize</span>());</span><br><span class="line"><span class="type">const</span> uint8* ShaderCode = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">FMemMark <span class="title">Mark</span><span class="params">(MemStack)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (ShaderEntry.UncompressedSize != ShaderEntry.Size)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">void</span>* UncompressedCode = MemStack.<span class="built_in">Alloc</span>(ShaderEntry.UncompressedSize, <span class="number">16</span>);</span><br><span class="line">	<span class="type">const</span> <span class="type">bool</span> bDecompressResult = FCompression::<span class="built_in">UncompressMemoryStream</span>(NAME_LZ4, UncompressedCode, ShaderEntry.UncompressedSize, Code, <span class="number">0</span>, ShaderEntry.Size);</span><br><span class="line">	<span class="built_in">check</span>(bDecompressResult);</span><br><span class="line">	ShaderCode = (uint8*)UncompressedCode;</span><br><span class="line">&#125;</span><br><span class="line">TArrayView&lt;uint8&gt; OriginalShaderCodeView = <span class="built_in">MakeArrayView</span>((uint8*)ShaderCode, ShaderEntry.UncompressedSize);</span><br></pre></td></tr></table></figure>
 
-<p>这样就直接从ushaderbytecoe中读取到了原始未被压缩的ShaderCode。</p>
-<p>不管是将它们单独存盘也好、或者基于MemeryBuffer去训练字典也好，都可以。当然，建议的做法是把解压后的ShaderCode单独拷贝到一个MemeryBuffer中，供后面训练数据集之用，这样就无需IO，直接从内存中训练字典。</p>
-<h4 id="非变动引擎的实现"><a href="#非变动引擎的实现" class="headerlink" title="非变动引擎的实现"></a>非变动引擎的实现</h4><p>上一小结中介绍了从ushaderbytecode中读取ShaderCode的方法，但其实有一个问题：<code>FShaderCodeArchive</code>这个类未被导出。</p>
+<p>This way, we have directly read the original uncompressed ShaderCode from ushaderbytecode.</p>
+<p>Whether storing them separately or training the dictionary using a MemoryBuffer is possible. Of course, the recommended practice is to copy the decompressed ShaderCode into a MemoryBuffer for later training dataset use, so that there is no need for IO, and the dictionary can be trained directly from memory.</p>
+<h4 id="Non-Engine-Modification-Implementation"><a href="#Non-Engine-Modification-Implementation" class="headerlink" title="Non-Engine Modification Implementation"></a>Non-Engine Modification Implementation</h4><p>The previous section introduced how to read ShaderCode from ushaderbytecode, but there is an issue: the <code>FShaderCodeArchive</code> class is not exported.</p>
 <figure class="highlight cpp"><figcaption><span>RenderCore\Public\ShaderCodeArchive.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FShaderCodeArchive</span> : <span class="keyword">public</span> FRHIShaderLibrary&#123;<span class="comment">// ...&#125;</span></span><br></pre></td></tr></table></figure>
-<p>在外部的模块中，无法访问它的成员函数，否则会产生链接错误。</p>
-<p>而且<code>ReadShaderCode</code>这个函数，也是它的<code>protected</code>成员，无法被外部符号访问。</p>
-<p>如果要变动引擎，最简单的修改，就是给他加上<code>RENDERCODE_API</code>，导出符号。否则，就要使用一些奇技淫巧来实现，这部分内容可以参考我之前的文章：</p>
+<p>In external modules, access to its member functions is not possible, leading to linker errors.</p>
+<p>Moreover, the <code>ReadShaderCode</code> function is a <code>protected</code> member, making it inaccessible from external symbols.</p>
+<p>If the engine must be modified, the simplest change is to add <code>RENDERCODE_API</code> to export the symbol. Otherwise, you will need to use some clever techniques to achieve this, which can be referenced in my previous articles:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/12080/">突破 C++ 类的访问控制机制</a>。</li>
-<li><a href="https://imzlp.com/posts/17586/">访问控制机制的可见性与可访问性</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/12080/">Breaking C++ Class Access Control Mechanisms</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/17586/">Visibility and Accessibility of Access Control Mechanisms</a></li>
 </ul>
-<p>根据文章中的内容就可实现在不变动引擎的基础上，读取到ShaderCode，从而在公版引擎中也可以使用。具体方法本文不再赘述。</p>
-<h3 id="UE中训练字典"><a href="#UE中训练字典" class="headerlink" title="UE中训练字典"></a>UE中训练字典</h3><p>在上篇文章中，使用的是<code>zstd</code>的命令行程序进行训练的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建字典</span></span><br><span class="line">$ zstd --train ./DumpShaders/PCD3D_SM5/* -r -o PCD3D_SM5.dict</span><br></pre></td></tr></table></figure>
+<p>The methods discussed in the articles can enable reading ShaderCode without modifying the engine, allowing it to be utilized even in the public engine. The specific methods will not be elaborated on in this article.</p>
+<h3 id="Training-Dictionary-in-UE"><a href="#Training-Dictionary-in-UE" class="headerlink" title="Training Dictionary in UE"></a>Training Dictionary in UE</h3><p>In the previous article, the <code>zstd</code> command-line program was used for training:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create Dictionary</span></span><br><span class="line">$ zstd --train ./DumpShaders/PCD3D_SM5/* -r -o PCD3D_SM5.dict</span><br></pre></td></tr></table></figure>
 
-<p>基于上一节中的所能获取到的ShaderCode的<code>MemeryBuffer</code>，可以直接从内存中训练字典。</p>
-<p>直接在UE中使用ZSTD中的代码：</p>
+<p>Based on the ShaderCode MemeryBuffer obtained in the last section, we can directly train the dictionary from memory.</p>
+<p>Utilizing the ZSTD code in UE directly:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZDICTLIB_API <span class="type">size_t</span> <span class="title function_">ZDICT_trainFromBuffer</span><span class="params">(<span class="type">void</span>* dictBuffer, <span class="type">size_t</span> dictBufferCapacity,</span></span><br><span class="line"><span class="params">                                    <span class="type">const</span> <span class="type">void</span>* samplesBuffer,</span></span><br><span class="line"><span class="params">                                    <span class="type">const</span> <span class="type">size_t</span>* samplesSizes, <span class="type">unsigned</span> nbSamples)</span>;</span><br></pre></td></tr></table></figure>
 
-<p>可以封装一个辅助函数来创建字典：</p>
+<p>We can encapsulate a helper function to create the dictionary:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">buffer_t</span> <span class="title function_">FUZ_createDictionary</span><span class="params">(<span class="type">const</span> <span class="type">void</span>* src, <span class="type">size_t</span> srcSize, <span class="type">size_t</span> blockSize, <span class="type">size_t</span> requestedDictSize)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">buffer_t</span> dict = kBuffNull;</span><br><span class="line">	<span class="type">size_t</span> <span class="type">const</span> nbBlocks = (srcSize + (blockSize<span class="number">-1</span>)) / blockSize;</span><br><span class="line">	<span class="type">size_t</span>* <span class="type">const</span> blockSizes = (<span class="type">size_t</span>*)<span class="built_in">malloc</span>(nbBlocks * <span class="keyword">sizeof</span>(<span class="type">size_t</span>));</span><br><span class="line">	<span class="keyword">if</span> (!blockSizes) <span class="keyword">return</span> kBuffNull;</span><br><span class="line">	dict.start = <span class="built_in">malloc</span>(requestedDictSize);</span><br><span class="line">	<span class="keyword">if</span> (!dict.start) &#123; <span class="built_in">free</span>(blockSizes); <span class="keyword">return</span> kBuffNull; &#125;</span><br><span class="line">	&#123;   <span class="type">size_t</span> nb;</span><br><span class="line">		<span class="keyword">for</span> (nb=<span class="number">0</span>; nb&lt;nbBlocks<span class="number">-1</span>; nb++) blockSizes[nb] = blockSize;</span><br><span class="line">		blockSizes[nbBlocks<span class="number">-1</span>] = srcSize - (blockSize * (nbBlocks<span class="number">-1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	&#123;   <span class="type">size_t</span> <span class="type">const</span> dictSize = ZDICT_trainFromBuffer(dict.start, requestedDictSize, src, blockSizes, (<span class="type">unsigned</span>)nbBlocks);</span><br><span class="line">		<span class="built_in">free</span>(blockSizes);</span><br><span class="line">		<span class="keyword">if</span> (ZDICT_isError(dictSize)) &#123; FUZ_freeDictionary(dict); <span class="keyword">return</span> kBuffNull; &#125;</span><br><span class="line">		dict.size = requestedDictSize;</span><br><span class="line">		dict.filled = dictSize;</span><br><span class="line">		<span class="keyword">return</span> dict;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样能够避免把ShaderCode存盘，再调用<code>ZSTD</code>命令行训练的过程。基于内存中的数据，把训练逻辑都在代码中执行完。</p>
-<h3 id="字典压缩shaderbytecode"><a href="#字典压缩shaderbytecode" class="headerlink" title="字典压缩shaderbytecode"></a>字典压缩shaderbytecode</h3><p>基于前面的两节的内容，已经能够直接从ushaderbytecode中训练出Shader的ZSTD字典。</p>
-<p>那么基于ZSTD字典压缩生成最终的<code>ushaderbytecode</code>的最佳实践是什么呢？</p>
-<p>通过<a href="#ushaderbytecode%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90">ushaderbytecode格式分析</a>一节的内容，可以知道ushaderbytecode的存储格式是这样的：</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714181210276.webp" alt="ushaderbytecode的存储格式"></p>
-<p>当要真的加载一个Shader时，会通过<code>ShaderHash</code>确定<code>ShaderIndices</code>中的下标，访问到ShaderHash对应的<code>ShaderEntries[index]</code>，而<code>ShaderEntries[index]</code>里的内容，则是ShaderCode在上图<code>ShaderCodeData</code>中的offset、Size、UncompressedSize，实现ShaderCode的<strong>确定性</strong>读取。</p>
-<p>如果想要直接基于原始的ushaderbytecode，通过字典压缩生成另一个最终的ushaderbytecode，主要修改以下两个部分：</p>
+<p>This allows you to avoid saving ShaderCode to disk and then invoking <code>ZSTD</code> command-line training. The training logic is executed entirely in code based on in-memory data.</p>
+<h3 id="Dictionary-Compression-of-shaderbytecode"><a href="#Dictionary-Compression-of-shaderbytecode" class="headerlink" title="Dictionary Compression of shaderbytecode"></a>Dictionary Compression of shaderbytecode</h3><p>Based on the contents of the previous two sections, we can directly train the ZSTD dictionary from ushaderbytecode.</p>
+<p>So, what is the best practice for compressing the final ushaderbytecode using the ZSTD dictionary?</p>
+<p>From the <a href="#ushaderbytecode%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90">ushaderbytecode format analysis</a> section, we know that the storage format of ushaderbytecode is as follows:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20220714181210276.webp" alt="ushaderbytecode storage format"></p>
+<p>When loading a Shader, the ShaderHash is used to determine the index in <code>ShaderIndices</code>, which accesses <code>ShaderEntries[index]</code>, and the content of <code>ShaderEntries[index]</code> provides the offset, size, and uncompressed size of the ShaderCode in the <code>ShaderCodeData</code> shown above, achieving <strong>deterministic</strong> reading of the ShaderCode.</p>
+<p>If we want to generate another final ushaderbytecode based on the original ushaderbytecode through dictionary compression, we need to modify the following two parts:</p>
 <ol>
-<li>字典压缩后的ShaderCodeData数据</li>
-<li>修正字典压缩后的<code>ShaderEntries</code>中每一个Shader的offset、Size（压缩后大小）</li>
+<li>The ShaderCodeData after dictionary compression.</li>
+<li>Correct the offset and size (compressed size) of each Shader in <code>ShaderEntries</code> after dictionary compression.</li>
 </ol>
-<p>具体的实现步骤为：</p>
+<p>The specific implementation steps are:</p>
 <ol>
-<li>读取原始的ushaderbytecode，保存<code>SerializedShaders</code></li>
-<li>按照顺序读取出每一个ShaderCode，并使用LZ4解压</li>
-<li>使用ZSTD+字典压缩每个ShaderCode，追加到一个全局MemeryBuffer中，能够获得压缩后的ShaderCode的在这个MemeryBuffer中的Offset、Size</li>
-<li>将每个ShaderCode的在MemeryBuffer中新的Offset、Size更新到前面保存的<code>SerializedShaders</code>中</li>
-<li>最后，依次将<code>GShaderCodeArchiveVersion</code>、<code>SerializedShaders</code>、<code>MemeryBuffer</code>序列化到文件中</li>
+<li>Read the original ushaderbytecode and save <code>SerializedShaders</code>.</li>
+<li>Sequentially read each ShaderCode and decompress using LZ4.</li>
+<li>Use ZSTD + dictionary to compress each ShaderCode, appending it to a global MemoryBuffer, allowing for obtaining the offset and size of the compressed ShaderCode in this MemoryBuffer.</li>
+<li>Update the new offset and size of each ShaderCode in the MemoryBuffer into the previously saved <code>SerializedShaders</code>.</li>
+<li>Finally, serialize <code>GShaderCodeArchiveVersion</code>, <code>SerializedShaders</code>, and <code>MemoryBuffer</code> to a file.</li>
 </ol>
-<p>这样就直接从默认打包的ushaderbytecode中，生成使用字典压缩的ushaderbytecode，避免了额外的Cook流程。</p>
-<h3 id="ZSTD优化策略"><a href="#ZSTD优化策略" class="headerlink" title="ZSTD优化策略"></a>ZSTD优化策略</h3><p>升级至ZSTD的最新版本（<a target="_blank" rel="noopener" href="https://github.com/facebook/zstd/releases/tag/v1.5.2">1.5.2</a>），相较于之前的集成（1.4.4），压缩率进一步提升。</p>
-<p>接口层面的优化，使用<code>*usingCDict</code>替代<code>*usingDict</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">ZSTD_compress_usingCDict</span><span class="params">(ZSTD_CCtx* cctx,</span></span><br><span class="line"><span class="params">                                <span class="type">void</span>* dst, <span class="type">size_t</span> dstCapacity,</span></span><br><span class="line"><span class="params">                                <span class="type">const</span> <span class="type">void</span>* src, <span class="type">size_t</span> srcSize,</span></span><br><span class="line"><span class="params">                                <span class="type">const</span> ZSTD_CDict* cdict)</span>;</span><br><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">ZSTD_compress_usingDict</span><span class="params">(ZSTD_CCtx* cctx,</span></span><br><span class="line"><span class="params">                               <span class="type">void</span>* dst, <span class="type">size_t</span> dstCapacity,</span></span><br><span class="line"><span class="params">                         <span class="type">const</span> <span class="type">void</span>* src, <span class="type">size_t</span> srcSize,</span></span><br><span class="line"><span class="params">                         <span class="type">const</span> <span class="type">void</span>* dict, <span class="type">size_t</span> dictSize,</span></span><br><span class="line"><span class="params">                               <span class="type">int</span> compressionLevel)</span>;</span><br></pre></td></tr></table></figure>
+<p>This way, you can directly create ushaderbytecode with dictionary compression from the default packaged ushaderbytecode, avoiding additional cooking processes.</p>
+<h3 id="ZSTD-Optimization-Strategies"><a href="#ZSTD-Optimization-Strategies" class="headerlink" title="ZSTD Optimization Strategies"></a>ZSTD Optimization Strategies</h3><p>Upgrade to the latest version of ZSTD (<a target="_blank" rel="noopener" href="https://github.com/facebook/zstd/releases/tag/v1.5.2">1.5.2</a>), which has further improved compression rates compared to the previous integration (1.4.4).</p>
+<p>On the interface level, it is optimized by using <code>*usingCDict</code> instead of <code>*usingDict</code>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Recommended</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">ZSTD_compress_usingCDict</span><span class="params">(ZSTD_CCtx* cctx,</span></span><br><span class="line"><span class="params">                                <span class="type">void</span>* dst, <span class="type">size_t</span> dstCapacity,</span></span><br><span class="line"><span class="params">                                <span class="type">const</span> <span class="type">void</span>* src, <span class="type">size_t</span> srcSize,</span></span><br><span class="line"><span class="params">                                <span class="type">const</span> ZSTD_CDict* cdict)</span>;</span><br><span class="line"><span class="comment">// Not recommended</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">ZSTD_compress_usingDict</span><span class="params">(ZSTD_CCtx* cctx,</span></span><br><span class="line"><span class="params">                               <span class="type">void</span>* dst, <span class="type">size_t</span> dstCapacity,</span></span><br><span class="line"><span class="params">                         <span class="type">const</span> <span class="type">void</span>* src, <span class="type">size_t</span> srcSize,</span></span><br><span class="line"><span class="params">                         <span class="type">const</span> <span class="type">void</span>* dict, <span class="type">size_t</span> dictSize,</span></span><br><span class="line"><span class="params">                               <span class="type">int</span> compressionLevel)</span>;</span><br></pre></td></tr></table></figure>
 
-<p>因为<code>*usingDict</code>系列的函数会加载字典，只推荐在单次压缩中，对于使用同一份字典进行频繁压缩的场景会非常慢（慢一个数量级），所以要使用<code>*usingCDict</code>替代。解压也同理。</p>
-<h3 id="字典训练和压缩效率"><a href="#字典训练和压缩效率" class="headerlink" title="字典训练和压缩效率"></a>字典训练和压缩效率</h3><p>测试数据：</p>
+<p>The <code>*usingDict</code> series of functions load the dictionary and are only recommended for single compressions. They can be very slow (by an order of magnitude) in scenarios requiring frequent compression using the same dictionary; therefore, <code>*usingCDict</code> should be used instead. The same also applies to decompression.</p>
+<h3 id="Dictionary-Training-and-Compression-Efficiency"><a href="#Dictionary-Training-and-Compression-Efficiency" class="headerlink" title="Dictionary Training and Compression Efficiency"></a>Dictionary Training and Compression Efficiency</h3><p>Test Data:</p>
 <ul>
 <li>Shaderbytecode 256M</li>
-<li>原始ShaderCode总大小（LZ4解压后）：682M</li>
+<li>Total original ShaderCode size (after LZ4 decompression): 682M</li>
 <li>66579 Unique Shaders</li>
 </ul>
-<p>字典的训练：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220714124800.webp"></p>
-<p>Shader的压缩：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220714124613.webp"></p>
-<p>绝大部分ShaderCode的<strong>压缩耗时</strong>在1ms左右，根据ShdaerCode的大小浮动。</p>
-<p>字典的训练+最终ushaderbytecode的生成，总时间不足4分钟，耗时完全不是瓶颈了。</p>
-<p>LZ4压缩的ushaderbytecode和ZSTD+字典压缩再实际项目中的大小对比：</p>
+<p>Dictionary training:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220714124800.webp"></p>
+<p>Shader compression:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220714124613.webp"></p>
+<p>The majority of the ShaderCode’s <strong>compression time</strong> is around 1ms, fluctuating based on ShaderCode size.</p>
+<p>The total time for dictionary training + generating final ushaderbytecode is less than 4 minutes, making the time consumption no longer a bottleneck.</p>
+<p>Comparison of sizes between LZ4 compressed ushaderbytecode and ZSTD + dictionary compressed in actual projects:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220804113246.webp"></p>
-<h3 id="运行时案例"><a href="#运行时案例" class="headerlink" title="运行时案例"></a>运行时案例</h3><p>我提供了一个打包之后的运行时Demo，默认包是通过LZ4压缩的Shader，我提供了一个包含了字典、字典压缩之后的shaderbytecode（包含StarterContent与Global），可以用来验证功能和测试运行时效率。</p>
-<p>下载地址：<a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:f:/g/personal/2017020625_stu_sdnu_edu_cn/EkIjc0JV6hNEi17VJrbpMfUBeMvTmlE2cDaNgIYFyi-ozQ?e=p8AK8d">ZstdExample_WindowsNoEditor</a></p>
-<p>将<code>ZstdShader_WindowsNoEditor_001_P.pak</code>放到<code>Content/Paks</code>下就会默认使用<code>ZSTD</code>与字典的模式读取使用字典压缩的ShaderLibrary：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220715163512.webp"></p>
-<p>不放这个Pak则使用引擎默认使用LZ4压缩的ushaderbytecode。</p>
-<p>使用ZSTD模式的运行效果，可以看到没有Shader错误：</p>
+<h3 id="Runtime-Example"><a href="#Runtime-Example" class="headerlink" title="Runtime Example"></a>Runtime Example</h3><p>I provide a runtime demo after packaging; the default package is through LZ4 compressed Shader, and I have provided one that contains the dictionary and the shaderbytecode compressed with the dictionary (including StarterContent and Global), which can be used to verify functionality and test runtime efficiency.</p>
+<p>Download link: <a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:f:/g/personal/2017020625_stu_sdnu_edu_cn/EkIjc0JV6hNEi17VJrbpMfUBeMvTmlE2cDaNgIYFyi-ozQ?e=p8AK8d">ZstdExample_WindowsNoEditor</a></p>
+<p>Place <code>ZstdShader_WindowsNoEditor_001_P.pak</code> under <code>Content/Paks</code> to use the ZSTD and dictionary mode for reading the shader compressed with the dictionary from ShaderLibrary by default:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220715163512.webp"></p>
+<p>If you don’t put this Pak, the engine will use the default LZ4 compressed ushaderbytecode.</p>
+<p>The runtime effect of using the ZSTD mode shows no Shader errors:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220715163914.webp"></p>
-<p>并且可以通过Unreal Insight分析运行时性能：</p>
+<p>You can also analyze runtime performance using Unreal Insight:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZstdExample -windowed -resx=1280 -resy=720 -<span class="built_in">log</span> -trace=cpu -tracehost=127.0.0.1</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220715164500.webp"></p>
-<h3 id="HotPatcher集成"><a href="#HotPatcher集成" class="headerlink" title="HotPatcher集成"></a>HotPatcher集成</h3><p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202207281100036.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202207281102463.webp"></p>
-<p>可以直接基于ushaderbytecode训练出字典，并用字典压缩已有的ushaderbytecode，最大限度地降低操作成本。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>本篇文章分享了一种高效的ZSTD Shader字典训练方法，通过分析ushaderbytecode的文件格式以及Dump ShaderCode的方式对比，直接在UE中训练字典。并分享了无需修改引擎的方法，可以无缝的使用在公版引擎中，降低对引擎变动的管理成本。</p>
-<p>在一次调用过程中就可以实现训练字典以及利用字典进行压缩，极大地提升了压缩效率。从而可以将训练字典和利用字典压缩变成完全Plugin-Only的实现，无需额外的修改和流程，为集成至<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>扫清理障碍，后续会作为<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的扩展模块发布。</p>
+<h3 id="HotPatcher-Integration"><a href="#HotPatcher-Integration" class="headerlink" title="HotPatcher Integration"></a>HotPatcher Integration</h3><p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202207281100036.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202207281102463.webp"></p>
+<p>You can directly train the dictionary based on ushaderbytecode and use it to compress existing ushaderbytecode, minimizing operational costs.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This article shares an efficient ZSTD Shader dictionary training method, analyzing the file format of ushaderbytecode, and contrasting the methods for dumping ShaderCode, training the dictionary directly within UE. It also shares a method that does not require engine modifications, allowing seamless use in the public engine and reducing the management costs of engine changes.</p>
+<p>The dictionary training and compression operations can be realized in a single call, significantly enhancing efficiency. This transforms dictionary training and compression into a completely Plugin-Only implementation, requiring no additional modifications and processes, clearing the obstacles for integration into <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, and it will later be released as an extension module of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>.</p>
 
     </div>
 
@@ -521,7 +521,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -531,7 +531,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -541,37 +541,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/26943/" target="_blank">一种高效的ZSTD Shader字典训练方案</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2022/07/14 13:01<br/>
+             <span>Title:</span><a href="/posts/26943/" target="_blank">An Efficient ZSTD Shader Dictionary Training Scheme</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2022/07/14 13:01<br/>
              
-             <span>本文字数:</span><span class="page-count">5.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">11k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/26943/" target="_blank" title="一种高效的ZSTD Shader字典训练方案">https://imzlp.com/posts/26943/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/26943/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/26943/" target="_blank" title="An Efficient ZSTD Shader Dictionary Training Scheme">https://en.imzlp.com/posts/26943/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/26943/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -593,12 +593,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/22655/" rel="prev" title="UE中多阶段的自动化资源检查方案">
-      <i class="fa fa-chevron-left"></i> UE中多阶段的自动化资源检查方案
+    <a href="/posts/22655/" rel="prev" title="Multi-stage automated resource inspection scheme in UE">
+      <i class="fa fa-chevron-left"></i> Multi-stage automated resource inspection scheme in UE
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/12188/" rel="next" title="虚幻引擎中Pak的运行时重组方案">
-      虚幻引擎中Pak的运行时重组方案 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/12188/" rel="next" title="A runtime reorganization scheme for Pak in Unreal Engine">
+      A runtime reorganization scheme for Pak in Unreal Engine <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -669,25 +669,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DumpShaderCode"><span class="nav-number">1.</span> <span class="nav-text">DumpShaderCode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%AA%E7%A7%8DDump%E6%96%B9%E5%BC%8F%E6%9B%B4%E5%90%88%E7%90%86%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">哪种Dump方式更合理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ushaderbytecode%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">ushaderbytecode格式分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96ShaderCode"><span class="nav-number">1.3.</span> <span class="nav-text">读取ShaderCode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E5%8F%98%E5%8A%A8%E5%BC%95%E6%93%8E%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">非变动引擎的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UE%E4%B8%AD%E8%AE%AD%E7%BB%83%E5%AD%97%E5%85%B8"><span class="nav-number">2.</span> <span class="nav-text">UE中训练字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E5%8E%8B%E7%BC%A9shaderbytecode"><span class="nav-number">3.</span> <span class="nav-text">字典压缩shaderbytecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSTD%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="nav-number">4.</span> <span class="nav-text">ZSTD优化策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E8%AE%AD%E7%BB%83%E5%92%8C%E5%8E%8B%E7%BC%A9%E6%95%88%E7%8E%87"><span class="nav-number">5.</span> <span class="nav-text">字典训练和压缩效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A1%88%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">运行时案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HotPatcher%E9%9B%86%E6%88%90"><span class="nav-number">7.</span> <span class="nav-text">HotPatcher集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">8.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DumpShaderCode"><span class="nav-number">1.</span> <span class="nav-text">DumpShaderCode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-the-most-reasonable-Dump-method"><span class="nav-number">1.1.</span> <span class="nav-text">What is the most reasonable Dump method?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-of-ushaderbytecode-format"><span class="nav-number">1.2.</span> <span class="nav-text">Analysis of ushaderbytecode format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reading-ShaderCode"><span class="nav-number">1.3.</span> <span class="nav-text">Reading ShaderCode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-Engine-Modification-Implementation"><span class="nav-number">1.4.</span> <span class="nav-text">Non-Engine Modification Implementation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Dictionary-in-UE"><span class="nav-number">2.</span> <span class="nav-text">Training Dictionary in UE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary-Compression-of-shaderbytecode"><span class="nav-number">3.</span> <span class="nav-text">Dictionary Compression of shaderbytecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSTD-Optimization-Strategies"><span class="nav-number">4.</span> <span class="nav-text">ZSTD Optimization Strategies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary-Training-and-Compression-Efficiency"><span class="nav-number">5.</span> <span class="nav-text">Dictionary Training and Compression Efficiency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-Example"><span class="nav-number">6.</span> <span class="nav-text">Runtime Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HotPatcher-Integration"><span class="nav-number">7.</span> <span class="nav-text">HotPatcher Integration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">8.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -695,19 +695,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -745,10 +745,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -775,9 +775,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -786,12 +783,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -944,7 +941,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/26943/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/26943/',]
       });
       });
   </script>
@@ -967,12 +964,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

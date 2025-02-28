@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,29 +19,29 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="考虑这样一个问题：能否通过管道(fifo)从一个进程A向另一个进程B(A和B之间并无亲属关系)中传递A进程中对象的地址，从而在进程B中访问到A进程的对象呢？">
+  <meta name="description" content="Consider this question: Is it possible to pass the address of an object from process A to process B (where there is no relationship between A and B) through a pipe (fifo), and thus access the object o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="虚拟存储器的缺页异常分析">
-<meta property="og:url" content="https://imzlp.com/posts/30933/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="考虑这样一个问题：能否通过管道(fifo)从一个进程A向另一个进程B(A和B之间并无亲属关系)中传递A进程中对象的地址，从而在进程B中访问到A进程的对象呢？">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Analysis of Virtual Memory Page Fault Exception">
+<meta property="og:url" content="https://en.imzlp.com/posts/30933/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Consider this question: Is it possible to pass the address of an object from process A to process B (where there is no relationship between A and B) through a pipe (fifo), and thus access the object o">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30933/passAddressByFifo.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualAddressScope.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualMemoryPageTableHit.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30933/LinuxPageFaultHanding.webp">
 <meta property="article:published_time" content="2017-03-22T01:22:02.000Z">
 <meta property="article:modified_time" content="2017-03-22T01:22:02.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="操作系统">
 <meta property="article:tag" content="虚拟存储器">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30933/passAddressByFifo.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/30933/">
+<link rel="canonical" href="https://en.imzlp.com/posts/30933/">
 
 
 <script id="page-configurations">
@@ -50,11 +50,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>虚拟存储器的缺页异常分析 | 循迹研究室</title>
+  <title>Analysis of Virtual Memory Page Fault Exception | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -94,7 +94,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -104,7 +104,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -115,7 +115,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -134,24 +134,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -161,7 +161,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -171,7 +171,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -179,14 +179,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -194,26 +194,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -229,7 +229,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -248,7 +248,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -267,12 +267,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -290,27 +290,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/30933/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/30933/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          虚拟存储器的缺页异常分析<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-03-22-30933.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/30933/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Analysis of Virtual Memory Page Fault Exception<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-03-22-30933.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/30933/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Analysis of Virtual Memory Page Fault Exception</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">虚拟存储器的缺页异常分析</sub>
           </div>
         
 
@@ -319,47 +319,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-03-22 01:22 01:22:02:22" itemprop="dateCreated datePublished" datetime="2017-03-22T01:22:02+00:00">2017-03-22 01:22</time>
+              <time title="Created: 2017-03-22 01:22 01:22:02:22" itemprop="dateCreated datePublished" datetime="2017-03-22T01:22:02+00:00">2017-03-22 01:22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">虚拟存储器</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/30933/" class="post-meta-item leancloud_visitors" data-flag-title="虚拟存储器的缺页异常分析" title="阅读次数">
+            <span id="/posts/30933/" class="post-meta-item leancloud_visitors" data-flag-title="Analysis of Virtual Memory Page Fault Exception" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.5k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -371,41 +371,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>考虑这样一个问题：能否通过管道(fifo)从一个进程A向另一个进程B(A和B之间并无亲属关系)中传递A进程中对象的地址，从而在进程B中访问到A进程的对象呢？</p>
+        <p>Consider this question: Is it possible to pass the address of an object from process A to process B (where there is no relationship between A and B) through a pipe (fifo), and thus access the object of process A from process B?</p>
 <span id="more"></span>
-<p>先放结论：传一个进程局部的对象的地址肯定是不行的。因为现代操作系统都具有进程隔离，每个进程具有其独立的虚拟存储器，合法的虚拟地址需要通过MMU来访问物理地址(考虑一下fork后COW的情况)，但不合法的虚拟地址会触发缺页异常。</p>
-<p>windows下有个例外是如果A进程的ntdll里的API地址 发送给B进程，B进程就可以直接调用，这是个特殊情况(已经不算是进程A独有对象的地址了)。</p>
+<p>To put it simply: it is definitely not possible to pass the address of a local object from one process. Modern operating systems have process isolation, with each process having its own independent virtual memory. A valid virtual address needs to be accessed via the MMU to reach the physical address (consider the COW case after fork), but an invalid virtual address will trigger a page fault.</p>
+<p>An exception exists in Windows: if the API address from ntdll of process A is sent to process B, process B can call it directly. This is a special case (and it no longer counts as an address unique to process A’s object).</p>
 <blockquote>
 <p>**[Windows Internals,6th]**Because Ntdll.dll is mapped at the same address, randomly generated at boot, into every process’s address space, the current process can simply pass the address of the function it obtains from its own Ntdll.dll mapping.</p>
 </blockquote>
-<p>然后我们实际来实验一下进程间传递对象地址访问的情况：<br>0. 创建一个命名管道</p>
+<p>Now let’s actually experiment with the scenario of passing object addresses between processes:<br>0. Create a named pipe.</p>
 <ol>
-<li>在进程A中创建一个对象</li>
-<li>通过管道将A进程中的该对象地址传递给进程B</li>
-<li>在进程B中通过从管道中接收到的地址来访问该对象</li>
-<li>在进程A中看B进程执行之后的该对象的值</li>
+<li>Create an object in process A.</li>
+<li>Pass the address of that object from process A to process B through the pipe.</li>
+<li>Access the object in process B using the address received from the pipe.</li>
+<li>Check the value of that object after process B executes in process A.</li>
 </ol>
-<p>首先我们先创建一个命名管道：</p>
+<p>First, let’s create a named pipe:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfifo fifofile</span><br></pre></td></tr></table></figure>
-<p>然后我们可以写两个程序，一个通过该管道写，一个通过该管道读：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// writefifo，process A</span></span><br><span class="line"><span class="type">int</span> *test=<span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">1111</span>);</span><br><span class="line">cout&lt;&lt;*test&lt;&lt;<span class="string">&quot; address is &quot;</span>&lt;&lt;test&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传递对象地址</span></span><br><span class="line"><span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifofile&quot;</span>,O_WRONLY);</span><br><span class="line"><span class="built_in">write</span>(fd,&amp;test,<span class="built_in">sizeof</span>(&amp;test));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等待B进程接收结束</span></span><br><span class="line"><span class="built_in">sleep</span>(<span class="number">3</span>);</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;B process after &quot;</span>&lt;&lt;*test&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> test;</span><br><span class="line"><span class="built_in">close</span>(fd);</span><br></pre></td></tr></table></figure>
+<p>Then we can write two programs, one that writes to the pipe and one that reads from the pipe:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// writefifo, process A</span></span><br><span class="line"><span class="type">int</span> *test=<span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">1111</span>);</span><br><span class="line">cout&lt;&lt;*test&lt;&lt;<span class="string">&quot; address is &quot;</span>&lt;&lt;test&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pass object address</span></span><br><span class="line"><span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifofile&quot;</span>,O_WRONLY);</span><br><span class="line"><span class="built_in">write</span>(fd,&amp;test,<span class="built_in">sizeof</span>(&amp;test));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wait for process B to finish receiving</span></span><br><span class="line"><span class="built_in">sleep</span>(<span class="number">3</span>);</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;B process after &quot;</span>&lt;&lt;*test&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> test;</span><br><span class="line"><span class="built_in">close</span>(fd);</span><br></pre></td></tr></table></figure>
 
-<p>然后是读：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// readfifo, process B</span></span><br><span class="line"> <span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifofile&quot;</span>,O_RDONLY);</span><br><span class="line"> <span class="type">int</span> **x=<span class="keyword">new</span> <span class="type">int</span>*;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 从A进程中读取一个地址</span></span><br><span class="line"> <span class="built_in">read</span>(fd,x,<span class="built_in">sizeof</span>(<span class="type">int</span>*));</span><br><span class="line"> cout&lt;&lt;*x&lt;&lt;endl&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;**x&lt;&lt;endl;</span><br><span class="line"> **x=<span class="number">666</span>;</span><br><span class="line"> cout&lt;&lt;*x&lt;&lt;endl&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;**x&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">delete</span> x;</span><br><span class="line"> <span class="built_in">close</span>(fd);</span><br></pre></td></tr></table></figure>
-<p>直接来看一下运行结果吧：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/passAddressByFifo.webp" alt="pass address by fifo"></p>
-<p>可以看到直接是段错误了。</p>
-<p>这是因为Linux为每个进程维持了一个单独的虚拟地址空间。<br>每个进程的虚拟存储器大概如下图：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualAddressScope.webp" alt="virtual address scope"><br>当MMU在试图翻译某个虚拟地址时，会将虚拟地址作为一个索引来定位实际的物理地址并从存储器中读取它，通过检查有效位来判断DRAM是否命中。<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualMemoryPageTableHit.webp" alt="VM page hit"><br>在虚拟存储器中，DRAM缓存不命中被称为缺页(page fault)。缺页异常将导致控制转移到内核的缺页处理程序。</p>
-<p>缺页异常的处理程序具有下面三种情况：</p>
+<p>Now for reading:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// readfifo, process B</span></span><br><span class="line"> <span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifofile&quot;</span>,O_RDONLY);</span><br><span class="line"> <span class="type">int</span> **x=<span class="keyword">new</span> <span class="type">int</span>*;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// Read an address from process A</span></span><br><span class="line"> <span class="built_in">read</span>(fd,x,<span class="built_in">sizeof</span>(<span class="type">int</span>*));</span><br><span class="line"> cout&lt;&lt;*x&lt;&lt;endl&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;**x&lt;&lt;endl;</span><br><span class="line"> **x=<span class="number">666</span>;</span><br><span class="line"> cout&lt;&lt;*x&lt;&lt;endl&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;**x&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">delete</span> x;</span><br><span class="line"> <span class="built_in">close</span>(fd);</span><br></pre></td></tr></table></figure>
+<p>Let’s take a look at the running results:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/passAddressByFifo.webp" alt="pass address by fifo"></p>
+<p>We can see that a segmentation fault occurred.</p>
+<p>This is because Linux maintains a separate virtual address space for each process.<br>The virtual memory of each process roughly looks like this:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualAddressScope.webp" alt="virtual address scope"><br>When the MMU attempts to translate a certain virtual address, it uses the virtual address as an index to locate the actual physical address and read it from memory, checking valid bits to determine if the DRAM was hit.<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/virtualMemoryPageTableHit.webp" alt="VM page hit"><br>In virtual memory, a DRAM cache miss is referred to as a page fault. A page fault exception will transfer control to the kernel’s page fault handler.</p>
+<p>The page fault exception handler has the following three scenarios:</p>
 <ol>
-<li>虚拟地址是否合法？</li>
-<li>试图进行的存储器访问是否合法？</li>
-<li>内核知道该缺页是由于对合法的虚拟地址进行合法的操作造成的。</li>
+<li>Is the virtual address valid?</li>
+<li>Is the attempted memory access valid?</li>
+<li>Does the kernel know that the page fault was caused by a valid operation on a valid virtual address?</li>
 </ol>
-<p>先从第一步开始说：虚拟地址是否合法？(情况一)<br>就是该虚拟地址是在某个区域结构定义的范围内吗？缺页处理程序会搜索区域结构的链表，把该虚拟地址和每个区域结构中的vm_start和vm_end作比较。如果这个指令不合法，那么缺页处理程序就触发一个段错误，从而终止这个进程。<br>我们上面的代码就是虚拟地址不合法，该虚拟地址在进程B中并不是一个合法的虚拟地址(在该进程的DRAM中未缓存)，所以会触发段错误导致进程终止。</p>
-<p>第二步：试图进行的存储器访问是否合法？(情况二)<br>也就是进程是否有读写或者执行这个区域内页面的权限？如果试图进行的访问时不合法的，那么缺页处理程序会触发一个保护异常，从而终止这个进程。</p>
-<p>第三步：内核知道该缺页是由于对合法的虚拟地址进行合法的操作造成的。(情况三)<br>当内核知道该缺页是由于对合法的虚拟地址进行合法的操作造成的，它会这样来处理这个缺页：选择牺牲一个页面，如果这个牺牲页面被修改过，那么久将他交换出去。换入新的页面并更新新页表。<br>当缺页处理程序返回时，CPU重新启动引起缺页的指令，这条指令将再次发送该虚拟地址到MMU。此时，MMU就能正常地翻译该虚拟地址就不会再产生缺页中断异常了。</p>
-<p>三种情况的描述图如下：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/LinuxPageFaultHanding.webp"></p>
-<p>更多的内容请详细参照《CASPP》第九章<strong>虚拟存储器</strong>。</p>
+<p>Starting with the first step: Is the virtual address valid? (Scenario one)<br>Does the virtual address fall within the defined range of a specific area structure? The page fault handler will search through the linked list of area structures, comparing the virtual address with vm_start and vm_end in each area structure. If the instruction is not valid, the page fault handler will trigger a segmentation fault, thereby terminating the process.<br>In our code, the virtual address is invalid as this address is not a valid virtual address within process B (not cached in that process’s DRAM), which triggers a segmentation fault that results in the termination of the process.</p>
+<p>Second step: Is the attempted memory access valid? (Scenario two)<br>Does the process have permission to read, write, or execute pages within this area? If the attempted access is not valid, the page fault handler will trigger a protection fault, thus terminating the process.</p>
+<p>Third step: Does the kernel know that the page fault was caused by a valid operation on a valid virtual address? (Scenario three)<br>When the kernel recognizes that the page fault was caused by a valid operation on a valid virtual address, it will handle the page fault by choosing to sacrifice a page. If this sacrificed page has been modified, it will be swapped out. A new page will be brought in, and the page table will be updated.<br>When the page fault handler returns, the CPU will restart the instruction that caused the page fault, sending that virtual address to the MMU once again. At this point, the MMU will be able to translate that virtual address normally, and no further page fault interrupt will occur.</p>
+<p>The description of the three scenarios is as follows:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30933/LinuxPageFaultHanding.webp"></p>
+<p>For more details, please refer to Chapter 9, <strong>Virtual Memory</strong> in <strong>CASPP</strong>.</p>
 
     </div>
 
@@ -416,7 +416,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -426,7 +426,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -436,37 +436,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/30933/" target="_blank">虚拟存储器的缺页异常分析</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/03/22 01:22<br/>
+             <span>Title:</span><a href="/posts/30933/" target="_blank">Analysis of Virtual Memory Page Fault Exception</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/03/22 01:22<br/>
              
-             <span>本文字数:</span><span class="page-count">1.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.5k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/30933/" target="_blank" title="虚拟存储器的缺页异常分析">https://imzlp.com/posts/30933/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/30933/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/30933/" target="_blank" title="Analysis of Virtual Memory Page Fault Exception">https://en.imzlp.com/posts/30933/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/30933/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -490,8 +490,8 @@
       <i class="fa fa-chevron-left"></i> Array of length zero
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/3276/" rel="next" title="STL容器的迭代器失效">
-      STL容器的迭代器失效 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/3276/" rel="next" title="Iterator Invalidation of STL Containers">
+      Iterator Invalidation of STL Containers <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -562,10 +562,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -576,10 +576,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -587,19 +587,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -637,10 +637,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -667,9 +667,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -678,12 +675,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -836,7 +833,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/30933/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/30933/',]
       });
       });
   </script>
@@ -859,12 +856,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

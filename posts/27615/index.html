@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="“指向类成员的指针(Pointers to members)”，是一种在C++不常用的特性，但是这里使用术语“指针”略有不妥，因为它们并不包含地址，行为也不像指针。本篇文章会通过LLVM-IR来分析clang中对于“指向类成员的指针”的实现方式，以及穿插C++14标准内定义的相关内容和涉及到的LLVM-IR的语法。">
+  <meta name="description" content="“Pointers to members” is a feature in C++ that is not commonly used. However, the use of the term “pointer” is somewhat inaccurate here, as they do not contain an address, and their behavior is not li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中指向类成员的指针并非指针">
-<meta property="og:url" content="https://imzlp.com/posts/27615/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="“指向类成员的指针(Pointers to members)”，是一种在C++不常用的特性，但是这里使用术语“指针”略有不妥，因为它们并不包含地址，行为也不像指针。本篇文章会通过LLVM-IR来分析clang中对于“指向类成员的指针”的实现方式，以及穿插C++14标准内定义的相关内容和涉及到的LLVM-IR的语法。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Pointers to class members in C++ are not pointers">
+<meta property="og:url" content="https://en.imzlp.com/posts/27615/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="“Pointers to members” is a feature in C++ that is not commonly used. However, the use of the term “pointer” is somewhat inaccurate here, as they do not contain an address, and their behavior is not li">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27615/pointer-to-member-diff-non-init-have-init.webp">
 <meta property="article:published_time" content="2017-04-29T21:28:17.000Z">
 <meta property="article:modified_time" content="2019-04-22T00:38:56.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="编程笔记">
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27615/pointer-to-member-diff-non-init-have-init.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/27615/">
+<link rel="canonical" href="https://en.imzlp.com/posts/27615/">
 
 
 <script id="page-configurations">
@@ -51,11 +51,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>C++中指向类成员的指针并非指针 | 循迹研究室</title>
+  <title>Pointers to class members in C++ are not pointers | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -95,7 +95,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -105,7 +105,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -116,7 +116,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -135,24 +135,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -162,7 +162,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -172,7 +172,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -180,14 +180,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -195,26 +195,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -230,7 +230,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -249,7 +249,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -268,12 +268,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -291,27 +291,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/27615/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/27615/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C++中指向类成员的指针并非指针<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-04-29-27615.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/27615/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Pointers to class members in C++ are not pointers<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-04-29-27615.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/27615/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Pointers to class members in C++ are not pointers</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">C++中指向类成员的指针并非指针</sub>
           </div>
         
 
@@ -320,54 +320,54 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-04-29 21:28 21:28:17:28" itemprop="dateCreated datePublished" datetime="2017-04-29T21:28:17+00:00">2017-04-29 21:28</time>
+              <time title="Created: 2017-04-29 21:28 21:28:17:28" itemprop="dateCreated datePublished" datetime="2017-04-29T21:28:17+00:00">2017-04-29 21:28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-22 00:38 00:38:56:38" itemprop="dateModified" datetime="2019-04-22T00:38:56+00:00">2019-04-22 00:38</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-04-22 00:38 00:38:56:38" itemprop="dateModified" datetime="2019-04-22T00:38:56+00:00">2019-04-22 00:38</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/27615/" class="post-meta-item leancloud_visitors" data-flag-title="C++中指向类成员的指针并非指针" title="阅读次数">
+            <span id="/posts/27615/" class="post-meta-item leancloud_visitors" data-flag-title="Pointers to class members in C++ are not pointers" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>9.3k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>23 mins.</span>
             </span>
 
         </div>
@@ -379,26 +379,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>“指向类成员的指针(Pointers to members)”，是一种在C++不常用的特性，但是这里使用术语“指针”略有不妥，因为它们并不包含地址，行为也不像指针。<br>本篇文章会通过LLVM-IR来分析clang中对于“指向类成员的指针”的实现方式，以及穿插C++14标准内定义的相关内容和涉及到的LLVM-IR的语法。</p>
+        <p>“Pointers to members” is a feature in C++ that is not commonly used. However, the use of the term “pointer” is somewhat inaccurate here, as they do not contain an address, and their behavior is not like pointers. This article will analyze how “pointers to class members” are implemented in clang through LLVM-IR, alongside some definitions from the C++14 standard and related LLVM-IR syntax.</p>
 <span id="more"></span>
-<p>首先，C++标准中对于“指向类成员的指针”应该如何实现并没有要求，同样是依赖于编译器的实现。但是标准指明了“指向成员的指针”是明显区别于普通指针的。</p>
+<p>Firstly, the C++ standard does not specify how “pointers to class members” should be implemented, as it relies on the implementation by the compiler. However, the standard indicates that “pointers to members” are distinctly different from ordinary pointers.</p>
 <blockquote>
 <p>The type “pointer to member” is distinct from the type “pointer”, that is, a pointer to member is declared only by the pointer to member declarator syntax, and never by the pointer declarator syntax. There is no “reference-to-member” type in C++.</p>
 </blockquote>
-<p>对于普通的指针而言，其包含一个地址，可以对其进行解引用来间接访问所指向的对象。</p>
+<p>For ordinary pointers, they contain an address and can be dereferenced to access the pointed-to object indirectly.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">123</span>;</span><br><span class="line"><span class="type">int</span> *xp=&amp;x;</span><br><span class="line">*xp=<span class="number">456</span>;</span><br></pre></td></tr></table></figure>
-<p>但是一个指向成员的指针并不指向某一个具体对象的内存地址。它指向的是一个类的特定成员，而不是指定某一个特定对象的成员。<br>下面我们从编译器Clang的实现来分析一下“指向成员的指针”究竟是什么东西。假定我们具有以下类类型：</p>
-<h2 id="指向类数据成员的指针"><a href="#指向类数据成员的指针" class="headerlink" title="指向类数据成员的指针"></a>指向类数据成员的指针</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> x=<span class="number">0</span>,<span class="type">double</span> y=<span class="number">0.0</span>,<span class="type">char</span> z=<span class="string">&#x27;\0&#x27;</span>):a&#123;x&#125;,b&#123;y&#125;,c&#123;z&#125;&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;void A::func()&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> a;</span><br><span class="line">	<span class="type">double</span> b;</span><br><span class="line">	<span class="type">char</span> c;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>然后我们通过以下代码来创建一个“指向类成员的指针”：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// non-initielizer</span></span><br><span class="line"><span class="type">int</span> A::*ap;</span><br><span class="line"><span class="type">double</span> A::*bp;</span><br><span class="line"><span class="type">char</span> A::*cp;</span><br></pre></td></tr></table></figure>
-<p>以上是并没有初始化的版本，再写一份具有初始化的版本，稍后通过LLVM-IR的对比来看“指向类数据成员的指针”究竟被初始化为了什么。</p>
+<p>However, a pointer to a member does not point to the memory address of a specific object. It points to a specific member of a class rather than to the member of a specified object. Let’s analyze what “pointers to members” actually are through the implementation of the Clang compiler. Assume we have the following class type:</p>
+<h2 id="Pointers-to-Class-Data-Members"><a href="#Pointers-to-Class-Data-Members" class="headerlink" title="Pointers to Class Data Members"></a>Pointers to Class Data Members</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> x=<span class="number">0</span>,<span class="type">double</span> y=<span class="number">0.0</span>,<span class="type">char</span> z=<span class="string">&#x27;\0&#x27;</span>):a&#123;x&#125;,b&#123;y&#125;,c&#123;z&#125;&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;void A::func()&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> a;</span><br><span class="line">	<span class="type">double</span> b;</span><br><span class="line">	<span class="type">char</span> c;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Then we create a “pointer to class member” with the following code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// non-initializer</span></span><br><span class="line"><span class="type">int</span> A::*ap;</span><br><span class="line"><span class="type">double</span> A::*bp;</span><br><span class="line"><span class="type">char</span> A::*cp;</span><br></pre></td></tr></table></figure>
+<p>The above is the uninitialized version. Let’s provide an initialized version, and later we’ll compare the LLVM-IR to see what “pointers to class data members” have been initialized to.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// initializer</span></span><br><span class="line"><span class="type">int</span> A::*ap=&amp;A::a;</span><br><span class="line"><span class="type">double</span> A::*bp=&amp;A::b;</span><br><span class="line"><span class="type">char</span> A::*cp=&amp;A::c;</span><br></pre></td></tr></table></figure>
-<p>通过diff可以看到两者LLVM-IR代码的区别：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27615/pointer-to-member-diff-non-init-have-init.webp"><br>可以看到，具有初始化的并非是将某种地址存储到“指向类数据成员的指针”中，而其实际上是一种整数类型。<br>而clang这里实现的，恰好他们均等于该数据成员各自在类中的偏移值，关于类内偏移值的内容详情可看我的另一篇文章：<a href="https://imzlp.com/posts/61962/">结构体成员内存对齐问题</a>。<br>这意味着“指向类成员的指针”的实现方式是获取该类成员在类中的偏移值，这也同样印证了“指向类成员的指针”不可以单独访问(依赖于某一特定对象)的原因——它只是偏移值，需要通过特定的对象来访问该对象此偏移值处的子对象。<br>我们来尝试通过一个类对象和“指向数据成员的指针”来访问特定的对象：</p>
+<p>By comparing with diff, we can observe the difference in the LLVM-IR code for both:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27615/pointer-to-member-diff-non-init-have-init.webp"></p>
+<p>It can be seen that those with initialization do not store some kind of address in the “pointer to class data members,” but are actually an integer type. The implementation in Clang reflects that they are equal to the offset values of the data members within the class. For detailed content on class internal offset values, please refer to my other article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/61962/">Memory Alignment Issues with Structure Members</a>.</p>
+<p>This means that the implementation of “pointers to class members” retrieves the offset value of that class member within the class, which also confirms the reason why “pointers to class members” cannot be accessed independently (they depend on a specific object)—they are simply offset values, requiring a specific object to access the sub-object at that offset.</p>
+<p>Let’s try to access a specific object through a class object and a “pointer to data member”:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A x&#123;<span class="number">123</span>&#125;;</span><br><span class="line"><span class="type">int</span> A::*ap=&amp;A::a;</span><br><span class="line">x.*ap=<span class="number">888</span>;</span><br></pre></td></tr></table></figure>
-<p>依然查看其的LLVM-IR代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 创建A类对象x并调用A的构造函数</span><br><span class="line">%2 = alloca %struct.A, align 8</span><br><span class="line">call void @_ZN1AC2Eidc(%struct.A* %2, i32 123, double 0.000000e+00, i8 0)</span><br><span class="line"># 初始化“指向类的数据成员的指针”ap(获取其偏移值)</span><br><span class="line">%3 = alloca i64, align 8</span><br><span class="line">store i64 0, i64* %3, align 8</span><br><span class="line"></span><br><span class="line">%4 = load i64, i64* %3, align 8</span><br><span class="line">%5 = bitcast %struct.A* %2 to i8*</span><br><span class="line"># 通过特定对象的指针和偏移量来访问类的子对象(数据成员)</span><br><span class="line">%6 = getelementptr inbounds i8, i8* %5, i64 %4</span><br><span class="line">%7 = bitcast i8* %6 to i32*</span><br><span class="line">store i32 888, i32* %7, align 4</span><br></pre></td></tr></table></figure>
-<p>可以在<a target="_blank" rel="noopener" href="http://llvm.org/docs/LangRef.html">LLVM Language Reference Manual</a>查看LLVM-IR的语法。<br>这里比较繁琐的部分为<code>getelementptr inbounds</code>的用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Syntax</span><br><span class="line">&lt;result&gt; = getelementptr &lt;ty&gt;, &lt;ty&gt;* &lt;ptrval&gt;&#123;, [inrange] &lt;ty&gt; &lt;idx&gt;&#125;* </span><br><span class="line">&lt;result&gt; = getelementptr inbounds &lt;ty&gt;, &lt;ty&gt;* &lt;ptrval&gt;&#123;, [inrange] &lt;ty&gt; &lt;idx&gt;&#125;* </span><br><span class="line">&lt;result&gt; = getelementptr &lt;ty&gt;, &lt;ptr vector&gt; &lt;ptrval&gt;, [inrange] &lt;vector index type&gt; &lt;idx&gt; </span><br></pre></td></tr></table></figure>
+<p>We can still check its LLVM-IR code:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Create class object x and call A&#x27;s constructor</span><br><span class="line">%2 = alloca %struct.A, align 8</span><br><span class="line">call void @_ZN1AC2Eidc(%struct.A* %2, i32 123, double 0.000000e+00, i8 0)</span><br><span class="line"># Initialize &quot;pointer to class data member&quot; ap (retrieve its offset value)</span><br><span class="line">%3 = alloca i64, align 8</span><br><span class="line">store i64 0, i64* %3, align 8</span><br><span class="line"></span><br><span class="line">%4 = load i64, i64* %3, align 8</span><br><span class="line">%5 = bitcast %struct.A* %2 to i8*</span><br><span class="line"># Access the sub-object (data member) through the specific object&#x27;s pointer and offset</span><br><span class="line">%6 = getelementptr inbounds i8, i8* %5, i64 %4</span><br><span class="line">%7 = bitcast i8* %6 to i32*</span><br><span class="line">store i32 888, i32* %7, align 4</span><br></pre></td></tr></table></figure>
+<p>You can view the LLVM-IR syntax in the <a target="_blank" rel="noopener" href="http://llvm.org/docs/LangRef.html">LLVM Language Reference Manual</a>. </p>
+<p>A relatively complex part here is the syntax of <code>getelementptr inbounds</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Syntax</span><br><span class="line">&lt;result&gt; = getelementptr &lt;ty&gt;, &lt;ty&gt;* &lt;ptrval&gt;&#123;, [inrange] &lt;ty&gt; &lt;idx&gt;&#125;*</span><br><span class="line">&lt;result&gt; = getelementptr inbounds &lt;ty&gt;, &lt;ty&gt;* &lt;ptrval&gt;&#123;, [inrange] &lt;ty&gt; &lt;idx&gt;&#125;*</span><br><span class="line">&lt;result&gt; = getelementptr &lt;ty&gt;, &lt;ptr vector&gt; &lt;ptrval&gt;, [inrange] &lt;vector index type&gt; &lt;idx&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>The <code>getelementptr</code> instruction is used to get the address of a subelement of an aggregate data structure. It performs address calculation only and does not access memory. The instruction can also be used to calculate a vector of such addresses.</p>
 </blockquote>
@@ -410,77 +415,84 @@
 <blockquote>
 <p>The interpretation of each index is dependent on the type being indexed into. The first index always indexes the pointer value given as the first argument, the second index indexes a value of the type pointed to (not necessarily the value directly pointed to, since the first index can be non-zero), etc. The first type indexed into must be a pointer value, subsequent types can be arrays, vectors, and structs. Note that subsequent types being indexed into can never be pointers, since that would require loading the pointer before continuing calculation.</p>
 </blockquote>
-<p>更多LLVM-IR的东西不再赘述，言归正传继续来分析“指向数据成员的指针”。</p>
-<p>在我们对一个“指向类内数据成员的指针”赋予初始值，实际上是获得了该数据成员在类内的偏移量。除非是对一个类内的static数据成员进行<code>&amp;</code>操作，否则不会带来一个实际的地址，而是一个偏移量。<br>这也应该是C++标准规定“指向类成员的指针”不能指向static成员：</p>
+<p>There won’t be more elaboration on LLVM-IR; let’s return to analyzing “pointers to data members.”</p>
+<p>When we assign an initial value to a “pointer to class data members,” we are effectively obtaining the offset of that data member within the class. Unless the <code>&amp;</code> operator is applied to a static data member within a class, it does not yield an actual address, but rather an offset.</p>
+<p>This should also be why the C++ standard stipulates that “pointers to class members” cannot point to static members:</p>
 <blockquote>
-<p>**[ISO/IEC 14882:2014]**A pointer to member shall not point to a static member of a class (9.4), a member with reference type, or “cv void.”</p>
+<p><strong>[ISO/IEC 14882:2014]</strong> A pointer to member shall not point to a static member of a class (9.4), a member with reference type, or “cv void.”</p>
 </blockquote>
-<p>上面已经简单提到了“指向成员的指针”不能单独访问——需要依赖于某一特定的类A对象。<br>这是由于“指向成员的指针”只是该成员在类内的偏移量，为了访问位于那个偏移量的子对象(数据成员)，则我们需要该类(A)的一个对象的地址。<br>当我们使用<code>.*</code>或者<code>-&gt;*</code>通过一个类对象或者类指针来访问一个偏移量时，执行的即是上面列出的LLVM-IR代码里<code>getelementptr inbounds</code>部分，通过调用的对象的地址和偏移量计算出位于该偏移量的数据成员的地址。</p>
-<h2 id="指向类成员函数的指针"><a href="#指向类成员函数的指针" class="headerlink" title="指向类成员函数的指针"></a>指向类成员函数的指针</h2><p>上面的部分写到了“指向类数据成员的指针”，以及其在clang中的实现方式，而“指向类成员函数的指针”与“指向类数据成员的指针”略有不同。<br>一个指向成员函数指针的实现自身必须存储一些信息，比如它所指向的函数是虚函数还是非虚函数，如何找到适当的虚函数表指针，所以通常指向类成员函数的指针的实现为一个小型的结构来存储这些关键的信息。</p>
+<p>Previously, it was briefly mentioned that “pointers to members” cannot be accessed independently—they require a specific class A object. This is because “pointers to members” are merely the offset of that member within the class; to access the sub-object (data member) at that offset, we need the address of an object of class (A).</p>
+<p>When we use <code>.*</code> or <code>-&gt;*</code> to access an offset through a class object or pointer, what gets executed is the <code>getelementptr inbounds</code> part of the LLVM-IR code provided above.</p>
+<h2 id="Pointers-to-Class-Member-Functions"><a href="#Pointers-to-Class-Member-Functions" class="headerlink" title="Pointers to Class Member Functions"></a>Pointers to Class Member Functions</h2><p>The previous section covered “pointers to class data members” and their implementation in clang. Now, “pointers to class member functions” differ slightly from “pointers to class data members.” </p>
+<p>An implementation of a pointer to a member function must store certain information, such as whether the function it’s pointing to is a virtual function or a non-virtual function, and how to find the appropriate virtual table pointer. Therefore, the implementation of pointers to class member functions often consists of a small structure to store this critical information.</p>
 <blockquote>
-<p>注意：并没有什么指向虚函数的指针，虚函数是函数本身的属性，而不是指向类成员函数的属性。</p>
+<p>Note: There is no pointer to a virtual function. A virtual function is a property of the function itself, not an attribute of the pointer to a class member function.</p>
 </blockquote>
-<p>同样按照上一部分相同的逻辑：首先先创建一个“指向类成员函数的指针”，不同于普通的函数指针，对于“指向类成员函数的指针”初始化必须对类内的成员函数使用取地址符：</p>
+<p>Following the same logic as the previous section, we first create a “pointer to a class member function.” Unlike ordinary function pointers, initializing a “pointer to a member function” must use the address operator on a member function within the class:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> (A::*funcp)();</span><br></pre></td></tr></table></figure>
-<p>其LLVM-IR代码为：</p>
+<p>Its LLVM-IR code would be:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">3</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，clang中对于<strong>指向类成员函数的指针</strong>不同于<strong>指向类数据成员的指针</strong>，“指向类成员函数的指针”是具有两个<code>i64</code>对象的结构。<br>尝试对其进行初始化操作：</p>
+<p>It can be seen that, in clang, a <strong>pointer to class member functions</strong> is different from a <strong>pointer to class data members</strong>. “Pointers to class member functions” have a structure containing two <code>i64</code> objects. Let’s attempt an initialization operation:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> (A::*funcp)()=&amp;A::func;</span><br></pre></td></tr></table></figure>
-<p>然后再查看其LLVM-IR代码：</p>
+<p>We can check its LLVM-IR code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">3</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br><span class="line">store &#123; i64, i64 &#125; &#123; i64 <span class="built_in">ptrtoint</span> (<span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)* @_ZN1A4funcEv to i64), i64 <span class="number">0</span> &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>可以看到这里是把A::func的函数地址(接收一个类A的指针并没有返回)转换为了i64之后存入到了该成员指针的结构中，第二个参数是对this指针的偏移修饰，因为在类的继承层次里，数据成员的位置并不是绝对的，而是相对于基类的相对位置，该偏移可以使用<code>ptrdiff_t</code>类型来表示，可以看如下例子：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;A::func&quot;</span>&lt;&lt;<span class="string">&quot;,this ptr address is &quot;</span>&lt;&lt;<span class="keyword">this</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">char</span> pad16[<span class="number">16</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">bar</span><span class="params">()</span></span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;B::Bar&quot;</span>&lt;&lt;<span class="string">&quot;,this ptr address is &quot;</span>&lt;&lt;<span class="keyword">this</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">char</span> pad8[<span class="number">8</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>:<span class="keyword">public</span> A,<span class="keyword">public</span> B&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	C cobj;</span><br><span class="line">	<span class="built_in">void</span>(C::*Afunc)()=&amp;C::func;</span><br><span class="line">	<span class="built_in">void</span>(C::*Bbar)()=&amp;C::bar;</span><br><span class="line"></span><br><span class="line">	(cobj.*Afunc)();</span><br><span class="line">	(cobj.*Bbar)();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output</span></span><br><span class="line">A::func,<span class="keyword">this</span> ptr address is <span class="number">0x61fe30</span></span><br><span class="line">B::Bar,<span class="keyword">this</span> ptr address is <span class="number">0x61fe40</span></span><br></pre></td></tr></table></figure>
+<p>It can be seen that here the function address of A::func (which takes a pointer to class A and does not return) is converted to i64, and is stored in the member pointer structure. The second parameter is an offset modifier for the this pointer, as the position of data members is not absolute but relative to the base class in class inheritance scenarios. This offset can be represented using the <code>ptrdiff_t</code> type, as seen in the following example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;A::func&quot;</span>&lt;&lt;<span class="string">&quot;, this ptr address is &quot;</span>&lt;&lt;<span class="keyword">this</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">char</span> pad16[<span class="number">16</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">bar</span><span class="params">()</span></span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;B::Bar&quot;</span>&lt;&lt;<span class="string">&quot;, this ptr address is &quot;</span>&lt;&lt;<span class="keyword">this</span>&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">char</span> pad8[<span class="number">8</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>:<span class="keyword">public</span> A,<span class="keyword">public</span> B&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	C cobj;</span><br><span class="line">	<span class="built_in">void</span>(C::*Afunc)()=&amp;C::func;</span><br><span class="line">	<span class="built_in">void</span>(C::*Bbar)()=&amp;C::bar;</span><br><span class="line"></span><br><span class="line">	(cobj.*Afunc)();</span><br><span class="line">	(cobj.*Bbar)();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output</span></span><br><span class="line">A::func, <span class="keyword">this</span> ptr address is <span class="number">0x61fe30</span></span><br><span class="line">B::Bar, <span class="keyword">this</span> ptr address is <span class="number">0x61fe40</span></span><br></pre></td></tr></table></figure>
 
-<p>可以看到两个this地址的差值就是A类对象的内存布局大小，再来看一下其对成员函数指针赋值部分的IR代码：</p>
+<p>As can be observed, the difference between the two this addresses is the size of the memory layout of the A class object. Now let’s look at the IR code for the member function pointer assignment:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">define i32 @<span class="built_in">main</span>() #<span class="number">4</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  %<span class="number">2</span> = alloca %<span class="keyword">class</span>.C, align <span class="number">1</span></span><br><span class="line">  %<span class="number">3</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br><span class="line">  %<span class="number">4</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br><span class="line">  store &#123; i64, i64 &#125; &#123; i64 <span class="built_in">ptrtoint</span> (<span class="built_in">void</span> (%<span class="keyword">class</span>.A*)* @_ZN1A4funcEv to i64), i64 <span class="number">0</span> &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line">  store &#123; i64, i64 &#125; &#123; i64 <span class="built_in">ptrtoint</span> (<span class="built_in">void</span> (%<span class="keyword">class</span>.B*)* @_ZN1B3barEv to i64), i64 <span class="number">16</span> &#125;, &#123; i64, i64 &#125;* %<span class="number">4</span>, align <span class="number">8</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面的代码就是分配了两个成员函数的结构——两个int64，该结构的第一个成员用来存储成员函数函数指针，第二个用来存储this指针的偏移。<br>得到这个规律，就可以直接萃取出成员函数指针的真实函数指针地址了(取出其结构的第一个元素)：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span> ival)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;HellowWorld,&quot;</span>&lt;&lt;<span class="string">&quot;ival = &quot;</span>&lt;&lt;ival&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">union</span>&#123;</span><br><span class="line">		<span class="built_in">void</span>(A::*Afunc)(<span class="type">int</span>);</span><br><span class="line">		<span class="built_in">void</span>(*realAfunc[<span class="number">2</span>])(A*,<span class="type">int</span>);</span><br><span class="line">	&#125;AfuncAddr;</span><br><span class="line">	AfuncAddr.Afunc=&amp;A::func;</span><br><span class="line"></span><br><span class="line">	AfuncAddr.realAfunc[<span class="number">0</span>](<span class="literal">NULL</span>,<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">HellowWorld,ival = <span class="number">123</span></span><br></pre></td></tr></table></figure>
-<p>不过，使用这种方式是<strong>未定义行为</strong>，因为我传入的this是<code>NULL</code>而且该成员函数中,如果有依赖this的操作(比如多态、访问成员变量)，会崩掉。</p>
-<p>综上，当我们在使用成员函数指针的时候需要用一个类A对象对其进行调用(因为<code>.*</code>以及<code>-&gt;*</code>的优先级低于<code>()</code>，所以对<code>x.*funcp</code>要加上括号)：</p>
+<p>The above code allocates two structures for member functions—two int64. The first member is used to store the member function pointer, while the second is used to store the offset of the this pointer. </p>
+<p>Understanding this pattern allows us to directly extract the real function pointer address of the member function pointer (by retrieving the first element of its structure):</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span> ival)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::cout&lt;&lt;<span class="string">&quot;HelloWorld,&quot;</span>&lt;&lt;<span class="string">&quot;ival = &quot;</span>&lt;&lt;ival&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">union</span>&#123;</span><br><span class="line">		<span class="built_in">void</span>(A::*Afunc)(<span class="type">int</span>);</span><br><span class="line">		<span class="built_in">void</span>(*realAfunc[<span class="number">2</span>])(A*,<span class="type">int</span>);</span><br><span class="line">	&#125;AfuncAddr;</span><br><span class="line">	AfuncAddr.Afunc=&amp;A::func;</span><br><span class="line"></span><br><span class="line">	AfuncAddr.realAfunc[<span class="number">0</span>](<span class="literal">NULL</span>,<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line">HelloWorld, ival = <span class="number">123</span></span><br></pre></td></tr></table></figure>
+<p>However, using this method is <strong>undefined behavior</strong> because the this pointer passed is <code>NULL</code>, and if the member function depends on this operation (like polymorphism or accessing member variables), it will crash.</p>
+<p>In summary, when using member function pointers, we need to call them with an object of class A (since <code>.*</code> and <code>-&gt;*</code> have lower precedence than <code>()</code>, parentheses are required for <code>x.*funcp</code>):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">A <span class="title">x</span><span class="params">(<span class="number">123</span>)</span></span>;</span><br><span class="line"><span class="built_in">void</span> (A::*funcp)()=&amp;A::func;</span><br><span class="line">(x.*funcp)();</span><br></pre></td></tr></table></figure>
-<p>其LLVM-IR代码为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">2</span> = alloca %<span class="keyword">struct</span>.A, align <span class="number">8</span></span><br><span class="line">call <span class="type">void</span> @_ZN1AC2Eidc(%<span class="keyword">struct</span>.A* %<span class="number">2</span>, i3 <span class="number">123</span>, <span class="type">double</span> <span class="number">0.000000e+00</span>, i8 <span class="number">0</span>)</span><br><span class="line">%<span class="number">3</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br><span class="line"># 将成员函数地址存放到分配的空间中(%<span class="number">3</span>)</span><br><span class="line">store &#123; i64, i64 &#125; &#123; i64 <span class="built_in">ptrtoint</span> (<span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)* @_ZN1A4funcEv to i64), i64 <span class="number">0</span> &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line"></span><br><span class="line">%<span class="number">4</span> = load &#123; i64, i64 &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line"># 取出结构中的第二个i64数据，并放到%<span class="number">5</span>中</span><br><span class="line">%<span class="number">5</span> = extractvalue &#123; i64, i64 &#125; %<span class="number">4</span>, <span class="number">1</span></span><br><span class="line">%<span class="number">6</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">2</span> to i8*</span><br><span class="line"># 访问该对象偏移的第%<span class="number">5</span>个对象</span><br><span class="line">%<span class="number">7</span> = getelementptr inbounds i8, i8* %<span class="number">6</span>, i64 %<span class="number">5</span></span><br><span class="line">%<span class="number">8</span> = bitcast i8* %<span class="number">7</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line"># 取出结构中的第一个i64数据，并放到%<span class="number">9</span>中</span><br><span class="line">%<span class="number">9</span> = extractvalue &#123; i64, i64 &#125; %<span class="number">4</span>, <span class="number">0</span></span><br><span class="line"># 对%<span class="number">9</span>与<span class="number">1</span>执行位与(&amp;)运算</span><br><span class="line">%<span class="number">10</span> = <span class="keyword">and</span> i64 %<span class="number">9</span>, <span class="number">1</span></span><br><span class="line"># 判断%<span class="number">10</span>是否不等于<span class="number">0</span>(ne为<span class="keyword">not</span> equal)</span><br><span class="line">%<span class="number">11</span> = icmp ne i64 %<span class="number">10</span>, <span class="number">0</span></span><br><span class="line"># 根据上面判断的结果执行不同的分支</span><br><span class="line">br i1 %<span class="number">11</span>, label %<span class="number">12</span>, label %<span class="number">19</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">12</span>:                                     ; preds = %<span class="number">0</span></span><br><span class="line">%<span class="number">13</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">8</span> to i8**</span><br><span class="line">%<span class="number">14</span> = load i8*, i8** %<span class="number">13</span>, align <span class="number">8</span></span><br><span class="line">%<span class="number">15</span> = sub i64 %<span class="number">9</span>, <span class="number">1</span></span><br><span class="line">%<span class="number">16</span> = getelementptr i8, i8* %<span class="number">14</span>, i64 %<span class="number">15</span></span><br><span class="line">%<span class="number">17</span> = bitcast i8* %<span class="number">16</span> to <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)**</span><br><span class="line">%<span class="number">18</span> = load <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)*, <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)** %<span class="number">17</span>, align <span class="number">8</span></span><br><span class="line">br label %<span class="number">21</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">19</span>:                                     ; preds = %<span class="number">0</span></span><br><span class="line">%<span class="number">20</span> = inttoptr i64 %<span class="number">9</span> to <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)*</span><br><span class="line">br label %<span class="number">21</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">21</span>:                                     ; preds = %<span class="number">19</span>, %<span class="number">12</span></span><br><span class="line">%<span class="number">22</span> = phi <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)* [ %<span class="number">18</span>, %<span class="number">12</span> ], [ %<span class="number">20</span>, %<span class="number">19</span> ]</span><br><span class="line"></span><br><span class="line"># 通过类指针来调用成员函数(类似于类内成员函数具有<span class="keyword">this</span>指针)</span><br><span class="line"># 成员函数指针必须需要对象或指针调用的原因就在于需要在这里补上单独的成员函数指针所需要的<span class="keyword">this</span>指针</span><br><span class="line">call <span class="type">void</span> %<span class="number">22</span>(%<span class="keyword">struct</span>.A* %<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-<p>而且，指向成员函数的指针表现出一种逆变性：存在指向基类成员函数指针到指向派生类成员函数指针的转换，反之则不行。<br>如我们具有以下类：</p>
+<p>Its LLVM-IR code would be:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">2</span> = alloca %<span class="keyword">struct</span>.A, align <span class="number">8</span></span><br><span class="line">call <span class="type">void</span> @_ZN1AC2Eidc(%<span class="keyword">struct</span>.A* %<span class="number">2</span>, i3 <span class="number">123</span>, <span class="type">double</span> <span class="number">0.000000e+00</span>, i8 <span class="number">0</span>)</span><br><span class="line">%<span class="number">3</span> = alloca &#123; i64, i64 &#125;, align <span class="number">8</span></span><br><span class="line"># Store the member function address into allocated <span class="built_in">space</span> (%<span class="number">3</span>)</span><br><span class="line">store &#123; i64, i64 &#125; &#123; i64 <span class="built_in">ptrtoint</span> (<span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)* @_ZN1A4funcEv to i64), i64 <span class="number">0</span> &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line"></span><br><span class="line">%<span class="number">4</span> = load &#123; i64, i64 &#125;, &#123; i64, i64 &#125;* %<span class="number">3</span>, align <span class="number">8</span></span><br><span class="line"># Retrieve the second i64 data from the structure <span class="keyword">and</span> place into %<span class="number">5</span></span><br><span class="line">%<span class="number">5</span> = extractvalue &#123; i64, i64 &#125; %<span class="number">4</span>, <span class="number">1</span></span><br><span class="line">%<span class="number">6</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">2</span> to i8*</span><br><span class="line"># Access the sub-object at the offset of <span class="keyword">this</span> object</span><br><span class="line">%<span class="number">7</span> = getelementptr inbounds i8, i8* %<span class="number">6</span>, i64 %<span class="number">5</span></span><br><span class="line">%<span class="number">8</span> = bitcast i8* %<span class="number">7</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line"># Retrieve the first i64 data from the structure <span class="keyword">and</span> place into %<span class="number">9</span></span><br><span class="line">%<span class="number">9</span> = extractvalue &#123; i64, i64 &#125; %<span class="number">4</span>, <span class="number">0</span></span><br><span class="line"># Perform bitwise AND operation on %<span class="number">9</span> with <span class="number">1</span></span><br><span class="line">%<span class="number">10</span> = <span class="keyword">and</span> i64 %<span class="number">9</span>, <span class="number">1</span></span><br><span class="line"># Check <span class="keyword">if</span> %<span class="number">10</span> is <span class="keyword">not</span> equal to <span class="number">0</span> (ne <span class="keyword">for</span> <span class="keyword">not</span> equal)</span><br><span class="line">%<span class="number">11</span> = icmp ne i64 %<span class="number">10</span>, <span class="number">0</span></span><br><span class="line"># Based on the above check result, execute different branches</span><br><span class="line">br i1 %<span class="number">11</span>, label %<span class="number">12</span>, label %<span class="number">19</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">12</span>:                                     ; preds = %<span class="number">0</span></span><br><span class="line">%<span class="number">13</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">8</span> to i8**</span><br><span class="line">%<span class="number">14</span> = load i8*, i8** %<span class="number">13</span>, align <span class="number">8</span></span><br><span class="line">%<span class="number">15</span> = sub i64 %<span class="number">9</span>, <span class="number">1</span></span><br><span class="line">%<span class="number">16</span> = getelementptr i8, i8* %<span class="number">14</span>, i64 %<span class="number">15</span></span><br><span class="line">%<span class="number">17</span> = bitcast i8* %<span class="number">16</span> to <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)**</span><br><span class="line">%<span class="number">18</span> = load <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)*, <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)** %<span class="number">17</span>, align <span class="number">8</span></span><br><span class="line">br label %<span class="number">21</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">19</span>:                                     ; preds = %<span class="number">0</span></span><br><span class="line">%<span class="number">20</span> = inttoptr i64 %<span class="number">9</span> to <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)*</span><br><span class="line">br label %<span class="number">21</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">21</span>:                                     ; preds = %<span class="number">19</span>, %<span class="number">12</span></span><br><span class="line">%<span class="number">22</span> = phi <span class="built_in">void</span> (%<span class="keyword">struct</span>.A*)* [ %<span class="number">18</span>, %<span class="number">12</span> ], [ %<span class="number">20</span>, %<span class="number">19</span> ]</span><br><span class="line"></span><br><span class="line"># Call member function via <span class="keyword">class</span> <span class="built_in">pointer</span> (similarly to <span class="keyword">class</span> internal member functions having <span class="keyword">this</span> pointer)</span><br><span class="line"># The reason member function pointers need to be called with an object <span class="keyword">or</span> pointer is that it is required here to supplement the <span class="keyword">this</span> pointer needed <span class="keyword">for</span> the standalone member function pointer</span><br><span class="line">call <span class="type">void</span> %<span class="number">22</span>(%<span class="keyword">struct</span>.A* %<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p>Moreover, pointers to member functions exhibit a form of covariance: there exists a conversion from a pointer to a base class member function to a pointer to a derived class member function, whereas the reverse is not permissible.</p>
+<p>For example, we have the following class:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">base</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;base::func()&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>可以从指向基类成员函数指针到指向派生类成员函数指针的转换(具有多态性)：</p>
+<p>It is possible to convert from pointers to base class member functions to pointers to derived class member functions (exhibiting polymorphism):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> (A::*AfuncP)()=&amp;base::func;</span><br><span class="line">A aobj;</span><br><span class="line">(aobj.*AfuncP)(); <span class="comment">// output:A::func()</span></span><br></pre></td></tr></table></figure>
-<p>而反之则是编译错误：</p>
+<p>However, the reverse results in a compilation error:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error: cannot initialize a variable of type &#x27;void (base::*)()&#x27; with an rvalue of type &#x27;void (A::*)()&#x27;:different classes (&#x27;base&#x27; vs &#x27;A&#x27;)</span></span><br><span class="line"><span class="built_in">void</span> (base::*baseFuncp)()=&amp;A::func;</span><br></pre></td></tr></table></figure>
 
-<h3 id="与STL的组合"><a href="#与STL的组合" class="headerlink" title="与STL的组合"></a>与STL的组合</h3><p>指向成员函数的指针可以通过标准库的<code>mem_func</code>适配器实现类似于函数对象(仿函数)，使其可以应用在相关算法中(若容器中是指针用<code>std::mem_fun</code>，若是引用则用<code>std::mem_fun_ref</code>)。<br>比如：对容器中存储的所有对象执行其成员函数的操作：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span>&#123;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;C::func&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;C&gt; x;</span><br><span class="line">	x.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line">	std::for_each(x.<span class="built_in">begin</span>(), x.<span class="built_in">end</span>(),std::<span class="built_in">mem_fun_ref</span>(&amp;C::func));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="Combining-with-STL"><a href="#Combining-with-STL" class="headerlink" title="Combining with STL"></a>Combining with STL</h3><p>Pointers to member functions can be implemented through the standard library’s <code>mem_fun</code> adapter to make them behave like function objects (functors), allowing them to be applied in related algorithms (use <code>std::mem_fun</code> when containers hold pointers and <code>std::mem_fun_ref</code> when they hold references). </p>
+<p>For instance, performing the member function operation on all objects stored in a container:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span>&#123;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;C::func&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;C&gt; x;</span><br><span class="line">	x.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line">	std::for_each(x.<span class="built_in">begin</span>(), x.<span class="built_in">end</span>(),std::<span class="built_in">mem_fun_ref</span>(&amp;C::func));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">C::func</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<p>来看一下<code>std::mem_fun</code>的一个实现(SGISTL，有些老了)：</p>
+<p>Let’s look at a simple implementation of <code>std::mem_fun</code> (SGISTL, a bit outdated):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_Ret</span>, <span class="keyword">class</span> <span class="title class_">_Tp</span>&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">mem_fun_ref_t</span> : <span class="keyword">public</span> unary_function&lt;_Tp,_Ret&gt; &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">explicit</span> <span class="title">mem_fun_ref_t</span><span class="params">(_Ret (_Tp::*__pf)())</span> : _M_f(__pf) &#123;</span>&#125;</span><br><span class="line">  <span class="function">_Ret <span class="title">operator</span><span class="params">()</span><span class="params">(_Tp&amp; __r)</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> (__r.*_M_f)(); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  _Ret (_Tp::*_M_f)();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_Ret</span>, <span class="keyword">class</span> <span class="title class_">_Tp</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">mem_fun_ref_t</span>&lt;_Ret,_Tp&gt; <span class="title">mem_fun_ref</span><span class="params">(_Ret (_Tp::*__f)())</span></span></span><br><span class="line"><span class="function">  </span>&#123; <span class="keyword">return</span> <span class="built_in">mem_fun_ref_t</span>&lt;_Ret,_Tp&gt;(__f); &#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到，SGISTL中实现的是，通过<code>std::mem_fun</code>创建一个包裹该成员函数的函数对象，该函数对象接收一个传入成员函数类的实参(指针或引用，这里只列出了<code>std::mem_fun_ref</code>的实现，而<code>std::mem_fun</code>则大同小异)，通过该参数来调用成员函数指针。</p>
-<p>通过上面的SGISTL实现可以看到，它有很大的局限性——只能调用无参的成员函数(这个要依赖于不同的STL实现)。<br>如果想要调用有参的成员函数呢？可以使用<code>std::bind</code>！不同于C++11之前的<code>std::bind1st</code>和<code>std::bind2st</code>那么蹩脚，C++11中的<code>std::bind</code>不限定参数个数才是真神器！<br>来将上面的类C稍微改动一下，使其接收一个参数：</p>
+<p>It can be observed that the SGISTL implementation creates a function object that wraps the member function, which receives a passed instance of the member function’s class as an argument (pointer or reference, here only the implementation of <code>std::mem_fun_ref</code> is shown, while <code>std::mem_fun</code> is similar).</p>
+<p>In light of the SGISTL implementation limitations—it can only call non-parameterized member functions (this can depend on different STL implementations). What if we want to call parameterized member functions? We can use <code>std::bind</code>! Unlike C++11’s <code>std::bind1st</code> and <code>std::bind2nd</code>, which were clumsy, C++11’s <code>std::bind</code> is a real gem as it does not restrict the number of parameters!</p>
+<p>Let’s slightly modify the class C to take a parameter:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span>&#123;</span><br><span class="line">	<span class="built_in">C</span>(<span class="type">const</span> <span class="type">int</span>&amp; x):ival&#123;x&#125;&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addNum</span><span class="params">(<span class="type">const</span> <span class="type">int</span>&amp; iArg)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;ival+=iArg;</span><br><span class="line">		std::cout&lt;&lt;<span class="keyword">this</span>-&gt;ival&lt;&lt;std::endl;</span><br><span class="line">	&#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> ival;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>如果此时再使用<code>std::mem_fun</code>来适配会提示<strong>没有匹配的函数</strong>，我们可以使用<code>std::bind</code>:</p>
+<p>If we then use <code>std::mem_fun</code> for adaptation, an error message <strong>no matching function</strong> will appear. We can use <code>std::bind</code> instead:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;C&gt; c&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::for_each(x.<span class="built_in">begin</span>(), x.<span class="built_in">end</span>(),std::<span class="built_in">bind</span>(&amp;C::func,_1,<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
-<p>因为成员函数指针需要通过类指针或者类对象访问，所以要将其第一个参数传递给bind绑定的成员函数指针。<br>前面提到<code>for_each</code></p>
-<h3 id="从成员函数指针到普通函数指针的转换"><a href="#从成员函数指针到普通函数指针的转换" class="headerlink" title="从成员函数指针到普通函数指针的转换"></a>从成员函数指针到普通函数指针的转换</h3><p>通过上面可以了解到，成员函数指针是一个结构，其第一个元素存储着成员函数的函数指针，第二个元素存储着对this指针的偏移。<br>它们两个构成了成员函数指针，其实你肯定也想到了，类的成员函数就是带有this指针的函数：</p>
+<p>Since member function pointers need to be accessed through class pointers or class objects, the first argument must be passed to the member function pointer bound in bind.</p>
+<h3 id="Conversion-from-Member-Function-Pointer-to-Ordinary-Function-Pointer"><a href="#Conversion-from-Member-Function-Pointer-to-Ordinary-Function-Pointer" class="headerlink" title="Conversion from Member Function Pointer to Ordinary Function Pointer"></a>Conversion from Member Function Pointer to Ordinary Function Pointer</h3><p>From the above discussion, we learn that member function pointers form a structure with the first element storing the member function pointer and the second storing the offset of the this pointer. Together, they constitute the member function pointer, and indeed you might have realized: class member functions are functions with this pointers:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其成员函数func的函数指针则是：</p>
+<p>Thus, the function pointer of the member function func is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span>(*)(A*,<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*);</span><br></pre></td></tr></table></figure>
-<p>那么，如果我们想要把一个成员函数指针转换为函数指针的形式，只需要取成员函数指针结构的第一个元素即可：</p>
+<p>Therefore, if we want to convert a member function pointer to a function pointer format, we simply need to retrieve the first element of the member function pointer structure:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*)</span></span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;A::func\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">gfunc</span><span class="params">(<span class="type">void</span>(*pfunc)(A*,<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A obj;</span><br><span class="line">	<span class="comment">// (obj.*pfunc)();</span></span><br><span class="line">	<span class="built_in">pfunc</span>(&amp;obj,<span class="number">0</span>,<span class="number">1.1</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span> <span class="title class_">U</span>&#123;</span><br><span class="line">	<span class="built_in">void</span>(A::*func)(<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*);</span><br><span class="line">	<span class="built_in">void</span>(*pure_func)(A*,<span class="type">int</span>,<span class="type">double</span>,<span class="type">void</span>*);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	U unionObj;</span><br><span class="line">	unionObj.func=&amp;A::func;</span><br><span class="line">	<span class="built_in">gfunc</span>(unionObj.pure_func);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样就可以从成员函数指针到普通的函数指针赋值了。直接转换是不允许的(看编译器)。用union可以骗过编译器，这个方法比较通用。</p>
-<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><p><strong>2017.05.11</strong></p>
+<p>This allows us to assign from a member function pointer to an ordinary function pointer. Direct conversion is not permitted (as observed by compilers); using a union can bypass the compiler restrictions, making this approach more versatile.</p>
+<h2 id="Update-Log"><a href="#Update-Log" class="headerlink" title="Update Log"></a>Update Log</h2><p><strong>2017.05.11</strong></p>
 <ul>
-<li>增加标准库组合使用指向成员函数指针的内容</li>
+<li>Added content on the use of standard library with pointers to member functions.</li>
 </ul>
 <p><strong>2018.09.25</strong></p>
 <ul>
-<li>补充成员函数指针的结构初始化部分内容</li>
+<li>Supplemented content on the struct initialization of member function pointers.</li>
 </ul>
 <p><strong>2018.11.06</strong></p>
 <ul>
-<li>增加从成员函数指针到普通函数指针的转换</li>
+<li>Added content on converting from member function pointers to ordinary function pointers.</li>
 </ul>
-<p>*<em>2019.04.22</em></p>
+<p><strong>2019.04.22</strong></p>
 <ul>
-<li>增加从成员函数指针结构中萃取出原始函数指针</li>
+<li>Enhanced information on extracting raw function pointers from the member function pointer structure.</li>
 </ul>
 
     </div>
@@ -492,7 +504,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -502,7 +514,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -512,39 +524,39 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/27615/" target="_blank">C++中指向类成员的指针并非指针</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/04/29 21:28<br/>
+             <span>Title:</span><a href="/posts/27615/" target="_blank">Pointers to class members in C++ are not pointers</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/04/29 21:28<br/>
              
-              <span>更新时间:</span>2019/04/22 00:38<br/>
+              <span>Update Date:</span>2019/04/22 00:38<br/>
              
-             <span>本文字数:</span><span class="page-count">4.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">9.3k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/27615/" target="_blank" title="C++中指向类成员的指针并非指针">https://imzlp.com/posts/27615/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/27615/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/27615/" target="_blank" title="Pointers to class members in C++ are not pointers">https://en.imzlp.com/posts/27615/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/27615/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -568,12 +580,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/10380/" rel="prev" title="C++函数模板的特化和重载">
-      <i class="fa fa-chevron-left"></i> C++函数模板的特化和重载
+    <a href="/posts/10380/" rel="prev" title="Specialization and overloading of C++ function templates">
+      <i class="fa fa-chevron-left"></i> Specialization and overloading of C++ function templates
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/5392/" rel="next" title="为什么需要extern "C"?">
-      为什么需要extern "C"? <i class="fa fa-chevron-right"></i>
+    <a href="/posts/5392/" rel="next" title="Why is extern "C" needed?">
+      Why is extern "C" needed? <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -644,25 +656,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E7%9A%84%E6%8C%87%E9%92%88"><span class="nav-number">1.</span> <span class="nav-text">指向类数据成员的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E6%8C%87%E9%92%88"><span class="nav-number">2.</span> <span class="nav-text">指向类成员函数的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8ESTL%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">2.1.</span> <span class="nav-text">与STL的组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E5%88%B0%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">从成员函数指针到普通函数指针的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="nav-number">3.</span> <span class="nav-text">更新日志</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pointers-to-Class-Data-Members"><span class="nav-number">1.</span> <span class="nav-text">Pointers to Class Data Members</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pointers-to-Class-Member-Functions"><span class="nav-number">2.</span> <span class="nav-text">Pointers to Class Member Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Combining-with-STL"><span class="nav-number">2.1.</span> <span class="nav-text">Combining with STL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-from-Member-Function-Pointer-to-Ordinary-Function-Pointer"><span class="nav-number">2.2.</span> <span class="nav-text">Conversion from Member Function Pointer to Ordinary Function Pointer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update-Log"><span class="nav-number">3.</span> <span class="nav-text">Update Log</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -670,19 +682,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -720,10 +732,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -750,9 +762,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -761,12 +770,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -919,7 +928,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/27615/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/27615/',]
       });
       });
   </script>
@@ -942,12 +951,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

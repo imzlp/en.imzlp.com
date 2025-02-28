@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="最近新开了项目，大概总结了之前项目的一些问题，列举了一些UE开发项目的设计规范和代码标准（代码标准这个词看起来太严肃了，写代码的习惯是一个比较主观的概念，其实叫代码约定更好，但是在组内推广还是要有严格执行的要求）。本篇文章会持续更新和整理，欢迎指出问题和交流意见。">
+  <meta name="description" content="Recently, a new project has been initiated, summarizing some issues from previous projects and listing design specifications and code standards for UE development projects (the term “code standards” s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE项目的设计规范和代码标准">
-<meta property="og:url" content="https://imzlp.com/posts/25915/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="最近新开了项目，大概总结了之前项目的一些问题，列举了一些UE开发项目的设计规范和代码标准（代码标准这个词看起来太严肃了，写代码的习惯是一个比较主观的概念，其实叫代码约定更好，但是在组内推广还是要有严格执行的要求）。本篇文章会持续更新和整理，欢迎指出问题和交流意见。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Design specifications and code standards for UE projects">
+<meta property="og:url" content="https://en.imzlp.com/posts/25915/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Recently, a new project has been initiated, summarizing some issues from previous projects and listing design specifications and code standards for UE development projects (the term “code standards” s">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323191234.webp">
 <meta property="article:published_time" content="2020-01-01T11:55:16.000Z">
 <meta property="article:modified_time" content="2020-01-01T11:55:16.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="代码规范">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323191234.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/25915/">
+<link rel="canonical" href="https://en.imzlp.com/posts/25915/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE项目的设计规范和代码标准 | 循迹研究室</title>
+  <title>Design specifications and code standards for UE projects | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/25915/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/25915/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE项目的设计规范和代码标准<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2020-01-01-25915.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/25915/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Design specifications and code standards for UE projects<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2020-01-01-25915.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/25915/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Design specifications and code standards for UE projects</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE项目的设计规范和代码标准</sub>
           </div>
         
 
@@ -316,43 +316,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2020-01-01 11:55 11:55:16:55" itemprop="dateCreated datePublished" datetime="2020-01-01T11:55:16+00:00">2020-01-01 11:55</time>
+              <time title="Created: 2020-01-01 11:55 11:55:16:55" itemprop="dateCreated datePublished" datetime="2020-01-01T11:55:16+00:00">2020-01-01 11:55</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/25915/" class="post-meta-item leancloud_visitors" data-flag-title="UE项目的设计规范和代码标准" title="阅读次数">
+            <span id="/posts/25915/" class="post-meta-item leancloud_visitors" data-flag-title="Design specifications and code standards for UE projects" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>10k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>26 mins.</span>
             </span>
 
         </div>
@@ -364,123 +364,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近新开了项目，大概总结了之前项目的一些问题，列举了一些UE开发项目的设计规范和代码标准（代码标准这个词看起来太严肃了，写代码的习惯是一个比较主观的概念，其实叫代码约定更好，但是在组内推广还是要有严格执行的要求）。本篇文章会持续更新和整理，欢迎指出问题和交流意见。</p>
+        <p>Recently, a new project has been initiated, summarizing some issues from previous projects and listing design specifications and code standards for UE development projects (the term “code standards” seems too strict; coding habits are quite subjective, and “coding conventions” would be a better term, but strict execution is necessary for promotion within the team). This article will be continuously updated and organized, and feedback and discussions are welcome.</p>
 <span id="more"></span>
 
-<h3 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h3><ol>
-<li>所有设计的逻辑和类要成为可配置的，在不让玩家重新安装的基础上根据需求可以替换掉指定逻辑(尤其是替换掉C++实现的的逻辑)。</li>
-<li>写真正的业务代码之前<strong>第一步</strong>要设计接口作为中间层，设计接口之后不要实现，<strong>必须先提交接口</strong>(可以没有任何逻辑，只是打印log都可以)，可以供其他人使用，避免依赖工作间的等待。</li>
-<li>保持接口的稳定和可扩展，接口不能随意变动，命名应该简洁直观，接收参数应该齐全（所有依赖外部的参数都要传递），保持接口的无状态。</li>
-<li>所有写的业务依赖的工具函数要抽出作为通用的工具，比如之前写的下载Pak列表的功能，其中包含下载任意文件的功能，要抽出作为通用的代码，类似的一个大功能包含一堆小功能的，都可以抽象出来的都要单独写成可以随意调用的函数或者对象，不能够依赖调用顺序，最大限度地降低依赖。</li>
-<li>所有涉及配置读取/初始化之类的操作必须使用统一的通用方法，不可以每个对象自己写一个流程，会变的很混乱。</li>
-<li>待补充。</li>
+<h3 id="Design-Specifications"><a href="#Design-Specifications" class="headerlink" title="Design Specifications"></a>Design Specifications</h3><ol>
+<li>All design logic and classes must be configurable so that specified logic can be replaced based on needs without requiring players to reinstall (especially logic implemented in C++).</li>
+<li>Before writing actual business code, <strong>the first step</strong> is to design interfaces as an intermediate layer. After designing the interface, it must <strong>be submitted first</strong> (it can contain no logic, just logging is fine) for others to use, avoiding dependency waiting.</li>
+<li>Maintain the stability and extensibility of interfaces; they should not change arbitrarily. Naming should be concise and intuitive, and parameters should be complete (all external dependencies must be passed), keeping the interface stateless.</li>
+<li>All business-dependent utility functions must be abstracted into general utilities. For example, the functionality for downloading the Pak list, which includes the ability to download any file, should be extracted as generic code. Any large functions containing multiple small functionalities need to be abstracted into independently callable functions or objects, minimizing dependencies and avoiding reliance on call order.</li>
+<li>All operations involving configuration reading/initialization must use a unified generic method; each object should not write its own process, as this can become chaotic.</li>
+<li>To be supplemented.</li>
 </ol>
-<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><p>基础要求是需要执行UE的代码标准：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html">Coding Standard</a></p>
-<p>额外的扩展要求：</p>
+<h3 id="Code-Specifications"><a href="#Code-Specifications" class="headerlink" title="Code Specifications"></a>Code Specifications</h3><p>The basic requirement is to adhere to UE’s coding standards: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html">Coding Standard</a></p>
+<p>Additional extended requirements:</p>
 <ol>
-<li>每一个USTRUCT、UObject（可除去U）、函数库也必须单独位于一个同名的源文件，且函数库的命名为以<code>Flib</code>开头；</li>
-<li>所有的头文件中所包含的其他头文件必须区分引擎和项目，在包含头文件里使用<code>// Project Header</code>和<code>// Engine Header</code>注释；</li>
-<li><code>.h</code>中应该只包含头文件中用到的符号声明的头文件，不要把所有的头文件都写到<code>.h</code>里；</li>
-<li>项目里所有的类，不管具体是在蓝图里实现还是C++实现，必须要有C++的基类和C++的接口，注意基类和接口只写通用的东西，不要写具体的业务流程。</li>
-<li>所有的非内部成员（不暴露给外部使用的成员）都写成UFUNCTION，并且加上BluepringNativeEvent标签，属性也同理，加了UFUNCTION和UPROPERTY可以被反射使用以及可以被蓝图继承；</li>
-<li>UCLASS必须加上Blueprintable/BlueprintType，USTRUCT必须加上USTRUCT，使其可以被蓝图继承和访问；</li>
-<li>C++写的类的数据成员的初始化顺序必须要与声明顺序一致；</li>
-<li>函数内接收的任何参数都必须在自己的函数内做检测，如判空和clamp操作，不能够相信外部输入是合理的；</li>
-<li>在有可能会执行失败的函数中必须要提供返回值，在Get函数中同样需要（错误码或者bool都可以），并且不可以直接在执行结尾<code>return true;</code>最终执行的结果要根据前面可能会执行失败的逻辑是否成功；</li>
-<li>禁止所有的static成员的在全局作用域初始化操作（尤其是获取引擎数据的初始化），只允许字面值类型的static初始化，如<code>static FString Name = TEXT(&quot;helloworld&quot;)</code>等；</li>
-<li>对于在局部作用域创建的<strong>资源</strong>（裸内存或者文件访问）要使用<code>ON_SCOPE_EXIT</code>来确保释放逻辑；</li>
-<li>Lambda引用捕获的对象不可做为异步逻辑操作的对象，如在一个函数内创建了lambda对象引用捕获了局部变量，将其传递给异步逻辑，这种操作是禁止的。</li>
-<li>UE中默认中禁止<code>dynamic_cast</code>，在UEC++的范畴内不要使用标准C++的转换，可以使用<code>Cast&lt;&gt;</code>；</li>
-<li>继承自UObject的对象统一使用<code>GENERATED_UCLASS_BODY</code>，并需要创建出<code>XXXXX:XXXXX(const FObjectInitializer&amp; InObjectInitializer)</code>的构造函数；</li>
-<li>函数内如果有可能具有某种竞争逻辑，则需要使用<code>FScopeLock ScopeLock(&amp;CriticalSection);</code>为当前作用域加锁，防止资源竞争；</li>
-<li>尽量使用防御式编程的Impl机制</li>
-<li>项目中完全禁止使用异常，<code>bForceEnableExceptions</code>不可以被设置为true;</li>
-<li>用C++创建的结构成员必须要提供<code>==</code>的操作符</li>
-<li>用C++创建的结构成员如果要自定义构造函数，则需要提供默认构造函数、拷贝构造函数、移动构造函数、赋值操作符的实现，偷懒可以使用<code>A()=default;</code>，如果使用default就需要确保类内没有引用某种资源；</li>
-<li>用C++创建的供外部使用的结构成员必须使用<code>UPROPERTY</code>并且需要提供<code>BlueprintReadWrite</code>属性；</li>
-<li>所有暴露给其他模块使用的类必须有导出符号<code>MODULE_NAME_API</code></li>
-<li>所有的插件和单独的模块在<code>build.cs</code>中必须写<code>OptimizeCode=CodeOptimization.InShippingBuildsOnly</code>，方便调试。</li>
-<li>所有Editor模块的插件加载顺序必须先于<code>Default</code>，可以使用<code>PreDefault</code>或者<code>PostEngineInit</code>；</li>
-<li>在代码中使用的宏统一需要由<code>build.cs</code>中来创建，使用<code>PublicDefinitions</code>来添加。</li>
-<li>所有依赖的第三方代码必须要支持最少<code>Windows/MacOS/Android/IOS</code>四个平台。</li>
-<li>代码文件的编码格式统一为UTF-8</li>
-<li>注意不同平台之间对C++特性支持的差异，写代码时不能以单一平台的编译结果为准；</li>
-<li>两个模块之间不可以互相包含比如，A包含了B，B又包含了A，这种循环包含在Mac上会编译失败；</li>
-<li>如果整个项目中都要用到一个宏，必须在<code>target.cs</code>中使用<code>ProjectDefinitions</code>来添加，不要把同一个宏在每个模块都定义一遍；</li>
-<li>所有与路径相关的操作都需要使用<code>FPaths</code>，不要自己写，注意路径使用<code>FPath::Combine</code>拼接之后要对其使用<code>FPath::MakeStandardFilename</code>。</li>
-<li>包含外部模块的头文件路径必须是相对于该模块的<code>Public</code>全路径。</li>
-<li>对于不同平台不同处理的跨平台代码要参考<code>FPlatformMisc</code>的实现方式（参考<a href="https://imzlp.com/notes/#UE4-PlatformMisc%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0">UE4:PlatformMisc的跨平台实现</a>）</li>
-<li>当需要将数组(<code>TArray</code>)的原生数据通过指针访问时，要注意元素动态增长导致的<code>Reserve</code>问题。</li>
-<li>不要在<code>*_Implementation</code>的函数里调用<code>Super</code>本函数的无<code>Implementation</code>版本，会无限递归。要使用<code>INTERFACE_NAME::Execute_*</code>这种方式调用，不然在Unlua里调不到lua里重写的函数。</li>
-<li>类成员模板函数的特化版本不要写在类声明内，在Android上会有错误。</li>
-<li>Runtime模块的依赖模块不可以包含Developer和Editor的模块，如果需要使用Editor或者Developer的功能，则在项目或者插件下新加一个Editor或者Developer的模块。</li>
-<li>提供给IOS使用的静态链接库必须要启用bitcode。</li>
-<li>不要通过<code>TSubclassOf&lt;&gt;</code>的对象调用<code>GetClass()</code>，它获取到的是所管理的<code>UClass</code>的<code>Class</code>，要获取<code>TSubclassOf</code>所管理的<code>UClass</code>，直接调<code>Get()</code>，因为<code>TSubclassOf</code>重载了<code>operator-&gt;</code>操作符，所以才会有这样的歧义。</li>
-<li>因为需要使用UnLua，而UnLua不支持导出非动态代理，所以项目中可以使用的Delegate类型为<code>Dynamic Delegate</code>和<code>Dynamic Mulitcast Delegate</code>。</li>
-<li>不要使用<code>std::stream</code>等C++原生读取文件的操作来读取打包到Pak里的文件，要使用<code>FFileHelper::LoadFileToArray</code>等API。</li>
-<li>如果有些反射属性只想在Editor下存在，不要使用<code>WITH_EDITOR</code>，要使用<code>WITH_EDITORONLY_DATA</code>。</li>
+<li>Each USTRUCT, UObject (excluding U), and function library must be located in a source file with the same name, with function libraries prefixed with <code>Flib</code>;</li>
+<li>All header files must distinguish between engine and project dependencies, using <code>// Project Header</code> and <code>// Engine Header</code> comments for included header files;</li>
+<li><code>.h</code> should only include headers for symbols declared within, not all headers;</li>
+<li>All classes in the project, whether implemented in blueprints or C++, must have a C++ base class and interface. Note that the base class and interface should only contain generic elements and not specific business logic.</li>
+<li>All non-internal members (not exposed for external use) should be written as UFUNCTIONs and tagged with BlueprintNativeEvent; the same applies to properties—tagging with UFUNCTION and UPROPERTY allows reflection and blueprint inheritance;</li>
+<li>UCLASS must be tagged with Blueprintable/BlueprintType, and USTRUCT must be tagged with USTRUCT to allow blueprint inheritance and access;</li>
+<li>The initialization order of data members in C++-written classes must match the declaration order;</li>
+<li>Any parameters received within functions must be checked within their own scope, such as null checks and clamp operations; external input cannot be presumed valid;</li>
+<li>Functions that might fail must provide return values, including Get functions (either error codes or bool); do not simply use <code>return true;</code> at the end of execution—results must depend on previous logic’s success;</li>
+<li>All static members’ global scope initialization (especially for obtaining engine data) is prohibited; only literal type static initializations like <code>static FString Name = TEXT(&quot;helloworld&quot;)</code> are allowed;</li>
+<li>For <strong>resources</strong> created in local scope (raw memory or file access), use <code>ON_SCOPE_EXIT</code> to ensure release logic;</li>
+<li>Lambda-captured objects must not be used as asynchronous operation objects; for example, capturing local variables in a lambda created within a function and passing it to asynchronous logic is prohibited.</li>
+<li><code>dynamic_cast</code> is generally prohibited in UE; within UE C++, do not use standard C++ conversions, use <code>Cast&lt;&gt;</code> instead;</li>
+<li>Objects inheriting from UObject must uniformly use <code>GENERATED_UCLASS_BODY</code> and create a constructor <code>XXXXX:XXXXX(const FObjectInitializer&amp; InObjectInitializer)</code>;</li>
+<li>If there is potential for competitive logic within the function, use <code>FScopeLock ScopeLock(&amp;CriticalSection);</code> to lock the current scope and prevent resource contention;</li>
+<li>Prefer defensive programming with the Impl mechanism.</li>
+<li>The use of exceptions is completely prohibited in the project; <code>bForceEnableExceptions</code> must not be set to true;</li>
+<li>Structures created in C++ must provide a <code>==</code> operator;</li>
+<li>If a structure created in C++ requires custom constructors, default constructor, copy constructor, move constructor, and assignment operator implementations must be provided. The lazily can use <code>A()=default;</code>. If using default, ensure that the class does not reference any resource;</li>
+<li>Structures created in C++ for external use must use <code>UPROPERTY</code> and need to provide <code>BlueprintReadWrite</code> properties;</li>
+<li>All classes exposed for use by other modules must have an export symbol <code>MODULE_NAME_API</code>;</li>
+<li>All plugins and independent modules in <code>build.cs</code> must include <code>OptimizeCode=CodeOptimization.InShippingBuildsOnly</code> for easier debugging.</li>
+<li>The load order of all Editor module plugins must precede <code>Default</code>, using <code>PreDefault</code> or <code>PostEngineInit</code> as needed;</li>
+<li>All macros used in the code must be created in <code>build.cs</code>, added via <code>PublicDefinitions</code>;</li>
+<li>All dependent third-party code must support at least <code>Windows/MacOS/Android/IOS</code> four platforms.</li>
+<li>Code files must use UTF-8 encoding.</li>
+<li>Be aware of differences in C++ feature support between platforms; code should not assume results based solely on a single platform’s compilation;</li>
+<li>Modules must not mutually include each other, e.g., if A includes B, B must not include A; such circular inclusion will fail during compilation on Mac;</li>
+<li>For macros needed across the entire project, add them using <code>ProjectDefinitions</code> in <code>target.cs</code> instead of defining the same macro in every module;</li>
+<li>All path-related operations must use <code>FPaths</code>; do not write your own. Note that paths made with <code>FPath::Combine</code> must then use <code>FPath::MakeStandardFilename</code>.</li>
+<li>Paths for external module headers must be relative to the module’s <code>Public</code> full path.</li>
+<li>For cross-platform code handling different platforms, refer to <code>FPlatformMisc</code> implementation (see <a target="_blank" rel="noopener" href="https://imzlp.com/notes/#UE4-PlatformMisc%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0">UE4: Cross-platform Implementation of PlatformMisc</a>);</li>
+<li>When accessing raw data from an array (<code>TArray</code>) using pointers, be cautious of the <code>Reserve</code> issue arising from dynamic growth of elements.</li>
+<li>Do not call the <code>Super</code> version of the function without <code>Implementation</code> in <code>*_Implementation</code> functions as it will result in infinite recursion. Use <code>INTERFACE_NAME::Execute_*</code> to call; otherwise, it won’t trigger overridden functions in Unlua.</li>
+<li>Specializations of class member template functions should not be written within the class declaration; this will cause errors on Android.</li>
+<li>Runtime module dependency modules must not include Developer and Editor modules; if Editor or Developer functionalities are needed, add a new Editor or Developer module under the project or plugin.</li>
+<li>Static libraries for iOS must enable bitcode.</li>
+<li>Do not call <code>GetClass()</code> on <code>TSubclassOf&lt;&gt;</code> objects; it retrieves the <code>Class</code> of the managed <code>UClass</code>. To obtain the <code>UClass</code> managed by <code>TSubclassOf</code>, directly call <code>Get()</code>. The <code>TSubclassOf</code> redefines <code>operator-&gt;</code>, leading to such ambiguities.</li>
+<li>Since UnLua is in use, and it does not support exporting non-dynamic proxies, the usable Delegate types for the project are <code>Dynamic Delegate</code> and <code>Dynamic Multicast Delegate</code>.</li>
+<li>Avoid using operations such as <code>std::stream</code> to read files packed in Pak; use APIs like <code>FFileHelper::LoadFileToArray</code> instead.</li>
+<li>If certain reflection properties should only exist in the Editor, use <code>WITH_EDITORONLY_DATA</code> instead of <code>WITH_EDITOR</code>.</li>
 </ol>
-<h3 id="跨平台编译代码规范"><a href="#跨平台编译代码规范" class="headerlink" title="跨平台编译代码规范"></a>跨平台编译代码规范</h3><p>因为UE在不同平台编译时使用的编译器、支持的C++标准版本、以及UE本身编译规则都有区别，相同的代码在不同平台编译时会有不同的规则，在编写代码时需要注意一些问题。</p>
+<h3 id="Cross-Platform-Compilation-Code-Guidelines"><a href="#Cross-Platform-Compilation-Code-Guidelines" class="headerlink" title="Cross-Platform Compilation Code Guidelines"></a>Cross-Platform Compilation Code Guidelines</h3><p>Due to differences in compilers used in different platforms, supported C++ standard versions, and UE’s own compilation rules, the same code may have different compilation rules across platforms. Attention to the following issues is required when writing code.</p>
 <ul>
-<li><p>namespace要打全（如引用protobuf生成的代码）</p>
-</li>
-<li><p>避免隐式类型转换（如enum-&gt;int）</p>
-</li>
-<li><p>UE中已有名字的宏不要重新定义，如<code>PI</code>等基础数学宏</p>
-</li>
-<li><p>头文件的引用使用模块相对路径的方式，不要指定全路径（XXXX/Public/xxxx.h）</p>
-</li>
-<li><p>Runtime模块不要包含Editor和Developer的模块（如果某些Runtime的模块需要在Editor和打包时有一些区别的操作，需要在build.cs中检测<code>bBuildEditor</code>来包含模块，在CPP代码中需要加<code>WITH_EDITOR</code>检测）</p>
-</li>
-<li><p>使用UE中的跨平台功能，不要直接引用到某个具体的平台头文件，如<code>PlatformMisc</code>，不能直接引用<code>WindowsPlatformMisc</code></p>
-</li>
-<li><p>不要在Module的build.cs中使用<code>PublicAdditionalLibraries</code>添加另一个Module中的链接库文件</p>
-</li>
-<li><p>代码中使用的头文件要自己手动包含</p>
-</li>
-<li><p>代码中使用其他模块，要显式添加到build.cs里，不依靠其他模块自动依赖</p>
-</li>
-<li><p>代码文件的编码使用UTF8，不要使用GBK，GBK编码在注释中包含中文时，经过UHT生成的反射信息会产生三字符序列的编译问题</p>
-</li>
-<li><p>避免在代码中使用三字符序列，不同编译器的支持不同，而且在C++17之后就废弃了</p>
-</li>
-<li><p>引用头文件指定路径时要使用<code>/</code>而不是<code>\</code>，反斜杠路径包含在Android/Mac/IOS上会报错</p>
-</li>
-<li><p>构造函数初始化列表的成员初始化顺序一定要按照声明的顺序</p>
-</li>
-<li><p>使用RTTI时要在build.cs中开启<code>bUseRTTI</code>，需要注意的是，不要对其他模块的符号使用RTTI，在不同的平台会有不同的未定义错误，尽量不要在UE中使用C++的RTTI。</p>
-</li>
-<li><p>类声明后如果没有直接定义对象，不要使用static修饰</p>
-</li>
-<li><p>模块不能循环引用</p>
-</li>
-<li><p>插件依赖了外部的插件，需要在插件中添加插件依赖</p>
-</li>
-<li><p>插件需要添加平台的whitelist</p>
-</li>
-<li><p>值类型数据成员必须有默认初始值（数值类型、枚举等等）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="keyword">class</span> <span class="title class_">A</span>&#123;&#125;AIns; <span class="comment">// OK</span></span><br><span class="line"><span class="type">static</span> <span class="keyword">class</span> <span class="title class_">A</span>&#123;&#125;; <span class="comment">// ERROR:&#x27;static&#x27; is not permitted on a declaration of a type [-Werror,-Wmissing-declarations]</span></span><br></pre></td></tr></table></figure>
-<p>上面的代码在Win上是可以编译过的，在Mac上就是编译错误，因为在Mac编译时默认的编译参数具有<code>-Werror,-Wmissing-declarations</code>。</p>
-</li>
+<li>Full namespace should be used (e.g., when referring to code generated by protobuf)</li>
+<li>Avoid implicit type conversions (e.g., enum-&gt;int)</li>
+<li>Do not redefine macros that already exist in UE, such as basic math macros like <code>PI</code>, etc.</li>
+<li>Use relative paths to include headers, and do not specify the full path (XXXX/Public/xxxx.h)</li>
+<li>Runtime modules must not include Editor and Developer modules (if some Runtime modules require different operations in Editor and packaging phases, they should check <code>bBuildEditor</code> in build.cs and include modules. In C++ code, <code>WITH_EDITOR</code> checks are necessary).</li>
+<li>Utilize UE’s cross-platform capabilities; do not directly reference specific platform header files such as <code>PlatformMisc</code>, and do not directly include <code>WindowsPlatformMisc</code></li>
+<li>Do not use <code>PublicAdditionalLibraries</code> in the Module’s build.cs to add link libraries from another Module.</li>
+<li>Headers used in the code must be included manually.</li>
+<li>If using other modules in code, explicitly add them in build.cs rather than relying on automatic dependencies from other modules.</li>
+<li>Code file encoding must be UTF-8; avoid using GBK, as using GBK encoding will cause three-character sequence compilation issues in reflection information generated by UHT when comments contain Chinese characters.</li>
+<li>Avoid using three-character sequences in code, as support differs among compilers and they were deprecated after C++17.</li>
+<li>When specifying paths for included headers, use <code>/</code> instead of <code>\</code>. Backslash paths will cause errors on Android/Mac/iOS.</li>
+<li>The element initialization order in constructor initialization lists must follow the declaration order.</li>
+<li>Enable <code>bUseRTTI</code> in build.cs when using RTTI. Note that do not use RTTI on symbols from other modules, as this can lead to different undefined errors across platforms; RTTI usage is generally discouraged in UE C++.</li>
+<li>Do not use <code>static</code> if there are no immediately defined objects after the class declaration.</li>
+<li>Modules must not cyclically reference one another.</li>
+<li>Plugins dependent on external plugins must declare such dependencies in the plugin definition.</li>
+<li>Plugins must include platform whitelists.</li>
+<li>Value-type data members must have default initial values (for numeric types, enums, etc.).</li>
 </ul>
-<h3 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h3><p>UE架构内的命名同样需要遵循UE的代码标准：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html">Coding Standard</a>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="keyword">class</span> <span class="title class_">A</span>&#123;&#125;AIns; <span class="comment">// OK</span></span><br><span class="line"><span class="type">static</span> <span class="keyword">class</span> <span class="title class_">A</span>&#123;&#125;; <span class="comment">// ERROR: &#x27;static&#x27; is not permitted on a declaration of a type [-Werror,-Wmissing-declarations]</span></span><br></pre></td></tr></table></figure>
+<p>The code above compiles on Win but results in a compilation error on Mac because the default compilation parameters during Mac builds include <code>-Werror,-Wmissing-declarations</code>.</p>
+<h3 id="Naming-Rules"><a href="#Naming-Rules" class="headerlink" title="Naming Rules"></a>Naming Rules</h3><p>Naming within the UE architecture must also follow UE coding standards: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html">Coding Standard</a>.</p>
 <ol>
-<li>变量名要能够标识出类型，比如b开头是bool，i默认是int32，特殊位长的需要特殊命名，无符号类型要加u；</li>
-<li>函数库统一使用Flib开头；</li>
-<li>Delegate命名时要能够标识出其类型，可以使用缩写，Dy代表动态代理，Multi代表多播代理，Dlg代表是代理；</li>
-<li>游戏框架内的Subsystem类必须要以<code>Subsys</code>开头，并且能够知道这个类是做什么的，比如<code>SubsysGameUpdater</code>和其子类<code>SubsysHTTPGameUpdater</code>；</li>
-<li>函数的命名要能够根据名字知道它要做什么事情、所有获取的方法统一使用Get，进行检测的可以使用TryGet命名；</li>
-<li>函数传入的参数必须以In开头，返回的参数必须以Out开头（引用）；</li>
-<li>函数有可能会执行失败的要返回bool或者错误码（返回值必须要有意义，不能逻辑中什么都不判断直接在函数末尾写<code>return true</code>）</li>
-<li>蓝图的类统一使用<code>BP_</code>开头</li>
-<li>UI的类统一使用<code>UMG_</code>开头；</li>
-<li>代码中的namespace要以<code>NS</code>开头;</li>
-<li>在C++里继承自UserWidget的类命名以<code>UW</code>开头，以继承关系为头缩写，后缀以<code>UI</code>结尾；</li>
-<li>插件和工程中的蓝图不可以有名字重复；</li>
-<li>暴露给蓝图的函数，如果形参具有默认参数，则声明与定义里的形参名必须一致，不可以出现下列情况(在原生C++可以，但是暴露给蓝图的不行)</li>
+<li>Variable names should identify types, e.g., names starting with b for bool, i for int32, customized names for special bit lengths, and use u for unsigned types;</li>
+<li>Function libraries should uniformly be prefixed with Flib;</li>
+<li>Delegate naming must identify the type, allowing abbreviations such as Dy for dynamic proxy, Multi for multicast proxy, and Dlg for delegates;</li>
+<li>Subsystem classes within the game framework must begin with <code>Subsys</code> and clearly convey their purpose, e.g., <code>SubsysGameUpdater</code> and its subclass <code>SubsysHTTPGameUpdater</code>;</li>
+<li>Function names should indicate their actions, with all getter methods prefixed with Get, and methods performing checks can be prefixed with TryGet;</li>
+<li>Function parameters must start with In for input and Out for output (reference);</li>
+<li>Functions that may fail must return bool or error codes (return values must be meaningful; logical assumptions should not allow directly ending with <code>return true</code> without checks);</li>
+<li>Blueprint classes must uniformly begin with <code>BP_</code>;</li>
+<li>UI classes must uniformly begin with <code>UMG_</code>;</li>
+<li>Namespace in the code must start with <code>NS</code>;</li>
+<li>Classes inheriting from UserWidget in C++ should be prefixed with <code>UW</code>, using initials for inheritance relationships and ending with <code>UI</code>;</li>
+<li>Plugins and blueprints in the project must not have duplicate names;</li>
+<li>For functions exposed to blueprints with parameters having default values, parameter names must be consistent in both declaration and definition; the following situation must be avoided (allowed in raw C++, but not when exposed to blueprints):</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h</span></span><br><span class="line"><span class="built_in">UCLASS</span>(BlueprintType)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UTestObject</span>:<span class="keyword">public</span> UObject</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">GENETATED_BODY</span>()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">UFUNCTION</span>(BlueprintCallable)</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Func</span><span class="params">(int32 InIval=<span class="number">123</span>)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">UTestObject::Func</span><span class="params">(int32 Ival)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>这种情况会导致在蓝图中调用的函数的实参传递不到定义里的<code>Ival</code>，相当于这个参数没有被传递。</p>
+<p>This situation will prevent the actual parameter from being passed to the defined <code>Ival</code> in the function call from blueprints, rendering that parameter effectively unpassed.</p>
 
     </div>
 
@@ -501,7 +482,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -511,37 +492,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/25915/" target="_blank">UE项目的设计规范和代码标准</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2020/01/01 11:55<br/>
+             <span>Title:</span><a href="/posts/25915/" target="_blank">Design specifications and code standards for UE projects</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2020/01/01 11:55<br/>
              
-             <span>本文字数:</span><span class="page-count">4.8k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">10k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/25915/" target="_blank" title="UE项目的设计规范和代码标准">https://imzlp.com/posts/25915/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/25915/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/25915/" target="_blank" title="Design specifications and code standards for UE projects">https://en.imzlp.com/posts/25915/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/25915/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -561,12 +542,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/17590/" rel="prev" title="UE资源热更打包工具HotPatcher">
-      <i class="fa fa-chevron-left"></i> UE资源热更打包工具HotPatcher
+    <a href="/posts/17590/" rel="prev" title="HotPatcher: A open source UE resource hot patching tool">
+      <i class="fa fa-chevron-left"></i> HotPatcher: A open source UE resource hot patching tool
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/1927/" rel="next" title="成为虚幻商城的内容创作者">
-      成为虚幻商城的内容创作者 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/1927/" rel="next" title="Become a content creator for the Unreal Engine Marketplace">
+      Become a content creator for the Unreal Engine Marketplace <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -637,25 +618,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">代码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">3.</span> <span class="nav-text">跨平台编译代码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">命名规则</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Specifications"><span class="nav-number">1.</span> <span class="nav-text">Design Specifications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Specifications"><span class="nav-number">2.</span> <span class="nav-text">Code Specifications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Platform-Compilation-Code-Guidelines"><span class="nav-number">3.</span> <span class="nav-text">Cross-Platform Compilation Code Guidelines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming-Rules"><span class="nav-number">4.</span> <span class="nav-text">Naming Rules</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -663,19 +644,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -713,10 +694,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -743,9 +724,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -754,12 +732,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -912,7 +890,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/25915/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/25915/',]
       });
       });
   </script>
@@ -935,12 +913,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

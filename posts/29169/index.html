@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在使用UE开发的过程中，指定命令行参数（Command Line）是一个经常会用到的功能，可以方便地控制部分流程、开关等。UE也是大量地使用了Comandline来控制引擎的行为，官方文档：Command-Line Arguments，不同的模块都可以从Commandline中读取或检查参数，实现自定义的命令行参数功能。 但是，对于移动端Android平台，并不能很方便地指定启动参数，需要编辑ue">
+  <meta name="description" content="In the process of using UE development, specifying command line parameters is a frequently used feature that facilitates control over certain processes and toggles. UE also extensively uses Commandlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高效调试：命令行参数启动UE Android App">
-<meta property="og:url" content="https://imzlp.com/posts/29169/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在使用UE开发的过程中，指定命令行参数（Command Line）是一个经常会用到的功能，可以方便地控制部分流程、开关等。UE也是大量地使用了Comandline来控制引擎的行为，官方文档：Command-Line Arguments，不同的模块都可以从Commandline中读取或检查参数，实现自定义的命令行参数功能。 但是，对于移动端Android平台，并不能很方便地指定启动参数，需要编辑ue">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Efficient Debugging: Start UE Android App with command line parameters">
+<meta property="og:url" content="https://en.imzlp.com/posts/29169/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the process of using UE development, specifying command line parameters is a frequently used feature that facilitates control over certain processes and toggles. UE also extensively uses Commandlin">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230118171536.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20220102125237.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206102021.webp">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20220103153901.webp">
 <meta property="article:published_time" content="2022-01-01T19:58:02.000Z">
 <meta property="article:modified_time" content="2022-01-01T19:58:02.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="插件开发">
 <meta property="article:tag" content="Android">
@@ -45,7 +45,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230118171536.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/29169/">
+<link rel="canonical" href="https://en.imzlp.com/posts/29169/">
 
 
 <script id="page-configurations">
@@ -54,11 +54,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>高效调试：命令行参数启动UE Android App | 循迹研究室</title>
+  <title>Efficient Debugging: Start UE Android App with command line parameters | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -98,7 +98,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -108,7 +108,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -119,7 +119,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -138,24 +138,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -165,7 +165,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -175,7 +175,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -183,14 +183,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -198,26 +198,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -233,7 +233,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -252,7 +252,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -271,12 +271,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -294,27 +294,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/29169/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/29169/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          高效调试：命令行参数启动UE Android App<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2022-01-01-29169.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/29169/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Efficient Debugging: Start UE Android App with command line parameters<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2022-01-01-29169.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/29169/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Efficient Debugging: Start UE Android App with command line parameters</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">高效调试：命令行参数启动UE Android App</sub>
           </div>
         
 
@@ -323,55 +323,55 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2022-01-01 19:58 19:58:02:58" itemprop="dateCreated datePublished" datetime="2022-01-01T19:58:02+00:00">2022-01-01 19:58</time>
+              <time title="Created: 2022-01-01 19:58 19:58:02:58" itemprop="dateCreated datePublished" datetime="2022-01-01T19:58:02+00:00">2022-01-01 19:58</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">插件开发</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/Debugging/" itemprop="url" rel="index"><span itemprop="name">Debugging</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/Debugging/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/29169/" class="post-meta-item leancloud_visitors" data-flag-title="高效调试：命令行参数启动UE Android App" title="阅读次数">
+            <span id="/posts/29169/" class="post-meta-item leancloud_visitors" data-flag-title="Efficient Debugging: Start UE Android App with command line parameters" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -383,111 +383,113 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在使用UE开发的过程中，指定命令行参数（Command Line）是一个经常会用到的功能，可以方便地控制部分流程、开关等。UE也是大量地使用了Comandline来控制引擎的行为，官方文档：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/">Command-Line Arguments</a>，不同的模块都可以从Commandline中读取或检查参数，实现自定义的命令行参数功能。</p>
-<p>但是，对于移动端Android平台，并不能很方便地指定启动参数，需要编辑<code>ue4commandline.txt</code>文件，非常繁琐。</p>
-<p>基于这种痛点需求，我利用元旦的假期开发一个UE的Android的插件，可以让Android的程序像PC一样方便启动和指定命令行参数，并且不需要修改引擎，启用插件后打包Apk即可使用，开源在Github上：<a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a>。</p>
+        <p>In the process of using UE development, specifying command line parameters is a frequently used feature that facilitates control over certain processes and toggles. UE also extensively uses Commandline to control the behavior of the engine. The official documentation: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/">Command-Line Arguments</a>, allows different modules to read or check parameters from the Commandline, implementing custom command line parameter functionalities.</p>
+<p>However, for the mobile Android platform, it is not very convenient to specify startup parameters; editing the <code>ue4commandline.txt</code> file is quite cumbersome.</p>
+<p>Based on this pain point, I developed a UE Android plugin during the New Year holiday that allows Android applications to start and specify command line parameters as conveniently as on PC, without needing to modify the engine. Once the plugin is activated, you can package the APK for use. The project is open-sourced on GitHub: <a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230118171536.webp"></p>
-<p>本篇文章分析了UE在Androdid端Commandline的读取规则，并介绍了<a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">AppCmderUE</a>插件的实现原理与使用方法。</p>
+<p>This article analyzes how UE reads Commandline on the Android side and introduces the implementation principles and usage methods of the <a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">AppCmderUE</a> plugin.</p>
 <span id="more"></span>
 
-<p>在Windows和Mac这种桌面平台上，只需要用CMD或者bash之类的脚本环境中指定程序路径、以及参数即可：</p>
+<p>On desktop platforms like Windows and Mac, you only need to specify the application path and parameters in a script environment like CMD or bash:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UE4Editor.exe D:\UnrealProject\BlankGame.uproject -game</span><br><span class="line">BlankGame.exe -<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 
-<p>它们都会传递到默认程序入口<code>main</code>函数中：</p>
+<p>They will all be passed to the default program entry <code>main</code> function:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>然后再通过<code>FCommandLine::Set</code>设置到引擎，供运行时使用。</p>
-<p>之前介绍也过，使用<a href="https://imzlp.com/posts/14154/">Unreal Insights</a>也是需要通过给游戏指定<code>-tracehost</code>和<code>-trace=cpu</code>来控制游戏Profiling的数据种类和传递到的机器IP。</p>
-<p><strong>但是</strong>，对于使用UE开发的游戏，并没有很方便的方法来为移动端程序指定启动参数。UE默认提供了一个机制，可以编辑一个ue4commandline.txt文件，将命令行参数填入其中，当引擎启动时会去加载这个文件，并将其追加到引擎的FCommandline之中。</p>
-<p>此种方式我在之前的wiki中有具体的介绍：<a target="_blank" rel="noopener" href="https://ue5wiki.com/wiki/26262/">移动端指定启动参数</a>。</p>
-<p>这种方式不够优雅，也存在一些问题：</p>
+<p>Then, it sets the command line for the engine using <code>FCommandLine::Set</code> for runtime use.</p>
+<p>As previously mentioned, using <a target="_blank" rel="noopener" href="https://imzlp.com/posts/14154/">Unreal Insights</a> also requires specifying <code>-tracehost</code> and <code>-trace=cpu</code> for controlling the types of profiling data collected and the machine IP to which it is transmitted.</p>
+<p><strong>However</strong>, there is no convenient method to specify startup parameters for mobile applications developed with UE. UE provides a default mechanism to edit a <code>ue4commandline.txt</code> file, filling in the command line parameters. When the engine starts, it will load this file and append it to the FCommandline of the engine.</p>
+<p>I have introduced this method in my previous wiki: <a target="_blank" rel="noopener" href="https://ue5wiki.com/wiki/26262/">Mobile Startup Parameters</a>.</p>
+<p>This method is not elegant and has several issues:</p>
 <ol>
-<li>ue4commandline.txt默认不存在，需要手动创建；</li>
-<li>每次修改参数都需要访问设备上的文件，修改、保存；</li>
-<li>不想使用启动参数时还需要手动删除；</li>
-<li>在Android11上，收紧了权限控制，无法在PC上访问数据目录；</li>
+<li>The <code>ue4commandline.txt</code> file does not exist by default and must be created manually;</li>
+<li>Each modification of the parameters requires accessing the file on the device, modifying it, and saving it;</li>
+<li>If you do not want to use startup parameters, you must delete it manually;</li>
+<li>On Android 11, tighter permission controls prevent access to the data directory on PC;</li>
 </ol>
-<p>既然发现了这些痛点，就尝试开了个新的项目来解决。为了避免重复造轮子以及看引擎中有哪些可以利用到的流程，查阅代码后发现UE中除了ue4commandline.txt，还有两种方式可以添加命令行参数。</p>
+<p>Since these pain points were discovered, I attempted to create a new project to address them. To avoid reinventing the wheel and to see what workflows could be leveraged in the engine, I found through code review that besides <code>ue4commandline.txt</code>, there are two other ways to add command line parameters in UE.</p>
 <h3 id="AndroidConfigRuleSystem"><a href="#AndroidConfigRuleSystem" class="headerlink" title="AndroidConfigRuleSystem"></a>AndroidConfigRuleSystem</h3><ol>
-<li>通过AndroidConfigRuleSystem，<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.27/zh-CN/SharingAndReleasing/Mobile/Android/AndroidConfigRulesSystem/">安卓配置规则系统</a>，它在<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/9e0f5f2a419a75b83392c44bf75462366ca8c1e2/Engine/Build/Android/Java/src/com/epicgames/ue4/GameActivity.java.template#L1579">GameActivity.java.template#L1579</a>中被读取，并通过JNI调用(<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Runtime/Core/Private/Android/AndroidPlatformMisc.cpp#L2490">Java_com_epicgames_ue4_GameActivity_nativeSetConfigRulesVariables</a>)传递给引擎C++侧，最终在<code>InitCommandLine</code>中获取，并追加到引擎的命令行参数。</li>
+<li>Through AndroidConfigRuleSystem, <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.27/zh-CN/SharingAndReleasing/Mobile/Android/AndroidConfigRulesSystem/">Android Configuration Rules System</a>, it is read in <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/9e0f5f2a419a75b83392c44bf75462366ca8c1e2/Engine/Build/Android/Java/src/com/epicgames/ue4/GameActivity.java.template#L1579">GameActivity.java.template#L1579</a> and passed to the engine’s C++ side via JNI (<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/99b6e203a15d04fc7bbbf554c421a985c1ccb8f1/Engine/Source/Runtime/Core/Private/Android/AndroidPlatformMisc.cpp#L2490">Java_com_epicgames_ue4_GameActivity_nativeSetConfigRulesVariables</a>), ultimately being retrieved in <code>InitCommandLine</code> and appended to the engine’s command line parameters.</li>
 </ol>
-<figure class="highlight cpp"><figcaption><span>Launch/Private/Android/LaunchAndroid.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (FString* ConfigRulesCmdLineAppend = FAndroidMisc::<span class="built_in">GetConfigRulesVariable</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;cmdline&quot;</span>)))</span><br><span class="line">&#123;</span><br><span class="line">	FCommandLine::<span class="built_in">Append</span>(**ConfigRulesCmdLineAppend);</span><br><span class="line">	FPlatformMisc::<span class="built_in">LowLevelOutputDebugStringf</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;ConfigRules appended: %s&quot;</span>), **ConfigRulesCmdLineAppend);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但引擎中也不能够对他进行动态设置，只能在打包时设置，然后在运行时读取。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Launch/Private/Android/LaunchAndroid.<span class="function">cpp</span></span><br><span class="line"><span class="function"><span class="title">if</span> <span class="params">(FString* ConfigRulesCmdLineAppend = FAndroidMisc::GetConfigRulesVariable(TEXT(<span class="string">&quot;cmdline&quot;</span>)))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FCommandLine::<span class="built_in">Append</span>(**ConfigRulesCmdLineAppend);</span><br><span class="line">	FPlatformMisc::<span class="built_in">LowLevelOutputDebugStringf</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;ConfigRules appended: %s&quot;</span>), **ConfigRulesCmdLineAppend);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However, it is not possible to dynamically set it within the engine; it can only be set at the packaging stage and read at runtime.</p>
 <h3 id="adb-shell-setprop"><a href="#adb-shell-setprop" class="headerlink" title="adb shell setprop"></a>adb shell setprop</h3><ol start="2">
-<li>setprop，通过adb设置一个名为<code>debug.ue4.commandline</code>的prop，将参数填入其中，会被追加到启动参数里。在UE4.26引擎中才添加了支持，所以在UE4.25及之前的引擎中无法使用。</li>
+<li>The <code>setprop</code> command can be used to set a property named <code>debug.ue4.commandline</code> via adb, filling the parameter in, which will be appended to the startup parameters. Support for this was only added in the UE4.26 engine, so it cannot be used in UE4.25 and earlier.</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Name of the UE4 commandline append setprop</span></span><br><span class="line"><span class="type">static</span> <span class="keyword">constexpr</span> <span class="type">char</span> UE4CommandLineSetprop[] = <span class="string">&quot;debug.ue4.commandline&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> CommandLineSetpropAppend[CMD_LINE_MAX];</span><br><span class="line"><span class="keyword">if</span> (__system_property_get(UE4CommandLineSetprop, CommandLineSetpropAppend) &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	FCommandLine::<span class="built_in">Append</span>(<span class="built_in">UTF8_TO_TCHAR</span>(<span class="string">&quot; &quot;</span>));</span><br><span class="line">	FCommandLine::<span class="built_in">Append</span>(<span class="built_in">UTF8_TO_TCHAR</span>(CommandLineSetpropAppend));</span><br><span class="line">	FPlatformMisc::<span class="built_in">LowLevelOutputDebugStringf</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;UE4 setprop appended: %s&quot;</span>), <span class="built_in">UTF8_TO_TCHAR</span>(CommandLineSetpropAppend));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用方法：</p>
+<p>Usage example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell setprop debug.ue4.commandline <span class="string">&#x27;-test123&#x27;</span></span><br><span class="line">adb shell am start com.tencent.tmgp.fmgame/com.epicgames.ue4.GameActivity</span><br></pre></td></tr></table></figure>
-<p>如果开启了启动时的LaunchImage：</p>
+<p>If the LaunchImage at startup is enabled:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> bShowLaunchImage = <span class="literal">false</span>;</span><br><span class="line">Ini.GetBool(<span class="string">&quot;/Script/AndroidRuntimeSettings.AndroidRuntimeSettings&quot;</span>, <span class="string">&quot;bShowLaunchImage&quot;</span>, <span class="keyword">out</span> bShowLaunchImage);</span><br></pre></td></tr></table></figure>
-<p>则启动的Activity则就从<code>com.epicgames.ue4.GameActivity</code>变成了<code>com.epicgames.ue4.SplashActivity</code>。</p>
-<p>但是这种方式也有缺点：</p>
+<p>the launched Activity will change from <code>com.epicgames.ue4.GameActivity</code> to <code>com.epicgames.ue4.SplashActivity</code>.</p>
+<p>However, this approach also has drawbacks:</p>
 <ol>
-<li>需要执行两条命令</li>
-<li>当<code>setprop</code>之后，在下次重启之前，该属性一直存在</li>
-<li>4.25及之前的引擎无法使用</li>
+<li>Requires executing two commands.</li>
+<li>After <code>setprop</code>, this property persists until the next reboot.</li>
+<li>Engines prior to 4.25 cannot use it.</li>
 </ol>
-<h3 id="AppCmderUE"><a href="#AppCmderUE" class="headerlink" title="AppCmderUE"></a>AppCmderUE</h3><p>我基于UPL和JNI调用，实现了一个结合优点的方案。只需要将插件放入工程启用打包即可，无需任何配置。</p>
-<p>先看最终的效果，启动命令：</p>
+<h3 id="AppCmderUE"><a href="#AppCmderUE" class="headerlink" title="AppCmderUE"></a>AppCmderUE</h3><p>I have implemented a solution based on UPL and JNI that combines the advantages of both methods. Just place the plugin in the project, enable it, and package it without any further configuration.</p>
+<p>Let’s look at the final effect; the startup command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.gworld <span class="string">&quot;-test123&quot;</span> <span class="string">&quot;-test456&quot;</span> <span class="string">&quot;-test789&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>UE Log：</p>
+<p>UE Log:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Final commandline: ../../../Blank426/Blank426.uproject -test123 -test456 -test789</span><br></pre></td></tr></table></figure>
 
-<p>实现原理：</p>
+<p>Implementation principles:</p>
 <ol>
-<li>Java端通过Intent接受<code>-e</code>的参数</li>
-<li>在OnCreate中通过JNI调用与引擎层交互，将Intent的参数添加到AndroidConfigRuleSystem中</li>
-<li>利用UE自身的AndroidConfigRuleSystem模式支持，让引擎自动添加至FCommandLine中</li>
+<li>The Java side receives parameters via Intent with <code>-e</code>.</li>
+<li>In <code>OnCreate</code>, it uses JNI to interact with the engine layer and adds Intent parameters to the AndroidConfigRuleSystem.</li>
+<li>Utilizing UE’s own support for the AndroidConfigRuleSystem, the engine can automatically append them to FCommandLine.</li>
 </ol>
-<p>代码并不多，但是利用了Java侧GameActivity和引擎的UPL、JNI等执行流程组合起来，才实现了无需修改引擎即可实现所有的功能。</p>
-<p><code>append_cmd.bat</code>是我封装了adb命令的一个脚本，用于方便使用：</p>
+<p>The code is not extensive, but by leveraging the Java-side GameActivity and the engine’s UPL, JNI, and other execution workflows, all functionalities can be realized without modifying the engine.</p>
+<p><code>append_cmd.bat</code> is a script I wrapped around the adb command for ease of use:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="built_in">set</span> PROGRAM_NAME = %<span class="number">0</span></span><br><span class="line"><span class="built_in">set</span> PACKAGE_NAME=%<span class="number">1</span></span><br><span class="line"><span class="built_in">set</span> CMD_LINE_ARGS=&quot; &quot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">FOR</span> <span class="variable">%%I</span> <span class="keyword">IN</span> (%*) <span class="keyword">do</span> (</span><br><span class="line"><span class="comment">    @REM echo %%I</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">NOT</span> &quot;<span class="variable">%PROGRAM_NAME%</span>&quot; == &quot;<span class="variable">%%I</span>&quot; (</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">NOT</span> &quot;<span class="variable">%PACKAGE_NAME%</span>&quot; == &quot;<span class="variable">%%I</span>&quot; (</span><br><span class="line">            <span class="keyword">if</span> <span class="variable">!CMD_LINE_ARGS!</span> == &quot; &quot; (</span><br><span class="line">                <span class="built_in">set</span> CMD_LINE_ARGS=<span class="variable">%%I</span></span><br><span class="line"><span class="comment">                @REM echo %CMD_LINE_ARGS%</span></span><br><span class="line">            ) <span class="keyword">else</span> (</span><br><span class="line">                <span class="built_in">set</span> CMD_LINE_ARGS=<span class="variable">!CMD_LINE_ARGS!</span>/.,;/<span class="variable">%%I</span></span><br><span class="line"><span class="comment">                @REM echo %CMD_LINE_ARGS%</span></span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="comment">@REM echo adb shell am start -a android.intent.action.MAIN -n %PACKAGE_NAME%/com.epicgames.ue4.GameActivity --es cmdline %CMD_LINE_ARGS%</span></span><br><span class="line">adb shell am <span class="built_in">start</span> -a android.intent.action.MAIN -n <span class="variable">%PACKAGE_NAME%</span>/com.epicgames.ue4.GameActivity --es cmdline <span class="variable">%CMD_LINE_ARGS%</span></span><br></pre></td></tr></table></figure>
 
-<p>该命令需要传递两个参数：</p>
+<p>This command requires passing two parameters:</p>
 <ol>
-<li>UE打包APK的包名，如<code>com.imzlp.gworld</code>；</li>
-<li>参数列表，若有多个参数，则使用空格分割。每个参数都需要使用双引号(<code>&quot;&quot;</code>)包裹，当脚本转发给adb的时候<code>append_cmd.bat</code>会将参数修改为以<code>/.,;/</code>分割，为了避免干扰传递参数中包含这些符号；</li>
+<li>The package name of the UE packaged APK, such as <code>com.imzlp.gworld</code>;</li>
+<li>A list of parameters, separated by spaces. Each parameter needs to be wrapped in double quotes (<code>&quot;&quot;</code>). When the script forwards to adb, <code>append_cmd.bat</code> will modify the parameters to be separated by <code>/.,;/</code> to avoid interference with the included symbols.</li>
 </ol>
-<p>如：</p>
+<p>For example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.gworld <span class="string">&quot;-tracehost=127.0.0.1&quot;</span> <span class="string">&quot;-trace=cpu&quot;</span></span><br></pre></td></tr></table></figure>
-<p>则真实的adb命令为：</p>
+
+<p>The actual adb command will be:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start -a android.intent.action.MAIN -n com.imzlp.gworld/com.epicgames.ue4.GameActivity --es cmdline <span class="string">&quot;-tracehost=127.0.0.1&quot;</span>/.,;/<span class="string">&quot;-trace=cpu&quot;</span></span><br></pre></td></tr></table></figure>
-<p>在引擎端会自动解析，把他们再按照原来的格式追加到FCommandLine中。上面的命令执行后，可以直接在PC上看到Profiling数据：</p>
+
+<p>On the engine side, it will automatically parse and append them to FCommandLine in the original format. After executing the above command, profiling data can be directly seen on the PC:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220102125237.webp"></p>
-<p>再例如，在Android11系统上时，因为系统权限收紧，没有root的系统无法再直接访问UE的沙盒路径（<code>Android/data/com.xxx.xxxx</code>）下的文件。<br>如果游戏的数据路径在沙盒目录下，就无法方便地取出设备中的log文件，利用AppCmderUE插件可以方便地指定UE的log到其他路径，而无需对工程做任何修改。</p>
+<p>Additionally, on the Android 11 system, because system permissions have tightened, a non-rooted system cannot directly access files in UE’s sandbox path (<code>Android/data/com.xxx.xxxx</code>). If game data paths are in the sandbox directory, it is not convenient to retrieve log files from the device. With the AppCmderUE plugin, you can easily specify UE’s log to another path without modifications to the project.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.GWorld &quot;-abslog=/storage/emulated/0/GWorld.log&quot;</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206102021.webp"></p>
-<p>所以，当使用<code>append_cmd.bat</code>脚本执行，就会自动拉起手机上的App启动，并追加了参数，实现了与在PC上类似的功能。</p>
-<p>本方案只适用于Android，对于IOS的类似方案，有时间再具体研究。</p>
-<h3 id="ADB-over-Wi-Fi"><a href="#ADB-over-Wi-Fi" class="headerlink" title="ADB over Wi-Fi"></a>ADB over Wi-Fi</h3><p>除了使用USB连接Android设备外，adb还支持wifi模式，基于本文的<a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a>项目和ADB over WiFi结合，可以非常方便地远程Profiling。</p>
+<p>Thus, executing the <code>append_cmd.bat</code> script will automatically launch the app on the phone and append the parameters, achieving similar functionality to PC.</p>
+<p>This approach applies only to Android; a similar solution for iOS can be explored further given time.</p>
+<h3 id="ADB-over-Wi-Fi"><a href="#ADB-over-Wi-Fi" class="headerlink" title="ADB over Wi-Fi"></a>ADB over Wi-Fi</h3><p>In addition to using a USB connection to Android devices, adb also supports Wi-Fi mode. Based on this article’s <a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a> project and ADB over Wi-Fi, remote profiling becomes very convenient.</p>
 <ol start="0">
-<li>USB连接设备</li>
-<li>让设备的<code>adbd</code>守护进程监听5555端口，等待PC连接</li>
+<li>Connect the device via USB.</li>
+<li>Let the device’s <code>adbd</code> daemon listen on port 5555, waiting for PC connections.</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb tcpip 5555</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>查看设备IP，获取<code>wlan0</code>的IP地址</li>
+<li>Check the device IP to get the <code>wlan0</code> IP address.</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell ifconfig</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220103151208.webp"></p>
 <ol start="3">
-<li><p>断开设备的USB连接</p>
+<li><p>Disconnect the USB connection to the device.</p>
 </li>
-<li><p>通过Adb远程连接设备</p>
+<li><p>Connect to the device remotely via adb.</p>
 </li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb connect DEVICE_IP:5555</span><br><span class="line"><span class="comment"># adb connect 192.168.31.172:5555</span></span><br></pre></td></tr></table></figure>
 <ol start="5">
-<li>通过adb devices即可看到远程连接的设备</li>
+<li>By using <code>adb devices</code>, you can see the connected remote device.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220103151447.webp"></p>
-<p>当远程adb环境OK之后，就可以使用<code>append_cmd.bat</code>远程启动并Profiling UE项目：</p>
+<p>Once the remote adb environment is set up, you can use <code>append_cmd.bat</code> to remotely start and profile the UE project:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.gworld <span class="string">&quot;-tracehost=192.168.31.175&quot;</span> <span class="string">&quot;-trace=cpu&quot;</span></span><br></pre></td></tr></table></figure>
-<p>在PC上的Unreal Insights同样可以捕获Profiling数据：</p>
+<p>The profiling data can also be captured on the PC using Unreal Insights:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220103153901.webp"></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>基于<a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a>项目可以非常方便地给UE开发的APP传递启动参数，对于开发调试和性能分析来说都是极大提升效率的。</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Based on the <a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">hxhb/AppCmderUE</a> project, it becomes extremely convenient to pass startup parameters to apps developed with UE, greatly enhancing efficiency in development debugging and performance analysis.</p>
 
     </div>
 
@@ -498,7 +500,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -508,7 +510,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -518,37 +520,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/29169/" target="_blank">高效调试：命令行参数启动UE Android App</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2022/01/01 19:58<br/>
+             <span>Title:</span><a href="/posts/29169/" target="_blank">Efficient Debugging: Start UE Android App with command line parameters</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2022/01/01 19:58<br/>
              
-             <span>本文字数:</span><span class="page-count">2.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">5.8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/29169/" target="_blank" title="高效调试：命令行参数启动UE Android App">https://imzlp.com/posts/29169/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/29169/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/29169/" target="_blank" title="Efficient Debugging: Start UE Android App with command line parameters">https://en.imzlp.com/posts/29169/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/29169/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -570,12 +572,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/24725/" rel="prev" title="基于ZSTD字典的Shader压缩方案">
-      <i class="fa fa-chevron-left"></i> 基于ZSTD字典的Shader压缩方案
+    <a href="/posts/24725/" rel="prev" title="Shader compression scheme based on ZSTD dictionary">
+      <i class="fa fa-chevron-left"></i> Shader compression scheme based on ZSTD dictionary
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/22570/" rel="next" title="UE资源管理：引擎打包资源分析">
-      UE资源管理：引擎打包资源分析 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/22570/" rel="next" title="UE Resource Management: Engine Packaging Resource Analysis">
+      UE Resource Management: Engine Packaging Resource Analysis <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -646,25 +648,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AndroidConfigRuleSystem"><span class="nav-number">1.</span> <span class="nav-text">AndroidConfigRuleSystem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adb-shell-setprop"><span class="nav-number">2.</span> <span class="nav-text">adb shell setprop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppCmderUE"><span class="nav-number">3.</span> <span class="nav-text">AppCmderUE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADB-over-Wi-Fi"><span class="nav-number">4.</span> <span class="nav-text">ADB over Wi-Fi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AndroidConfigRuleSystem"><span class="nav-number">1.</span> <span class="nav-text">AndroidConfigRuleSystem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adb-shell-setprop"><span class="nav-number">2.</span> <span class="nav-text">adb shell setprop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppCmderUE"><span class="nav-number">3.</span> <span class="nav-text">AppCmderUE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADB-over-Wi-Fi"><span class="nav-number">4.</span> <span class="nav-text">ADB over Wi-Fi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -672,19 +674,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -722,10 +724,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -752,9 +754,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -763,12 +762,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -921,7 +920,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/29169/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/29169/',]
       });
       });
   </script>
@@ -944,12 +943,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

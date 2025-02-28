@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在游戏项目中，当我们在打包各个平台时，总希望每个平台的包能够最小化便于分发，而且上架某些平台还有明确的大小要求。 对于UE而言，它包含了巨量代码以及大量的插件，Build阶段还将生成反射的胶水代码，在编译时产生了大量的代码段。以Android平台为例，将导致libUE4.so的大小极具增长，对于包体和运行时内存都造成了压力。 再加上一些引擎必要和额外带入的资源也能占据上百M，空APK的大小很容易达">
+  <meta name="description" content="In game projects, when we package for various platforms, we always hope that each platform’s package can be minimized for easier distribution, and there are clear size requirements for launching on ce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="极致优化UE Android APK的大小">
-<meta property="og:url" content="https://imzlp.com/posts/53079/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在游戏项目中，当我们在打包各个平台时，总希望每个平台的包能够最小化便于分发，而且上架某些平台还有明确的大小要求。 对于UE而言，它包含了巨量代码以及大量的插件，Build阶段还将生成反射的胶水代码，在编译时产生了大量的代码段。以Android平台为例，将导致libUE4.so的大小极具增长，对于包体和运行时内存都造成了压力。 再加上一些引擎必要和额外带入的资源也能占据上百M，空APK的大小很容易达">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Ultimate Optimization: Reducing the size of UE Android APKs">
+<meta property="og:url" content="https://en.imzlp.com/posts/53079/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In game projects, when we package for various platforms, we always hope that each platform’s package can be minimized for easier distribution, and there are clear size requirements for launching on ce">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2025/02/190219.png">
 <meta property="article:published_time" content="2025-02-25T09:44:43.000Z">
 <meta property="article:modified_time" content="2025-02-28T16:19:29.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2025/02/190219.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/53079/">
+<link rel="canonical" href="https://en.imzlp.com/posts/53079/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>极致优化UE Android APK的大小 | 循迹研究室</title>
+  <title>Ultimate Optimization: Reducing the size of UE Android APKs | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/53079/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/53079/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          极致优化UE Android APK的大小<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2025-02-24-53079.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/53079/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Ultimate Optimization: Reducing the size of UE Android APKs<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2025-02-24-53079.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/53079/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Ultimate Optimization: Reducing the size of UE Android APKs</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">极致优化UE Android APK的大小</sub>
           </div>
         
 
@@ -316,50 +316,50 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2025-02-25 09:44 09:44:43:44" itemprop="dateCreated datePublished" datetime="2025-02-25T09:44:43+00:00">2025-02-25 09:44</time>
+              <time title="Created: 2025-02-25 09:44 09:44:43:44" itemprop="dateCreated datePublished" datetime="2025-02-25T09:44:43+00:00">2025-02-25 09:44</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-28 16:19 16:19:29:19" itemprop="dateModified" datetime="2025-02-28T16:19:29+00:00">2025-02-28 16:19</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-28 16:19 16:19:29:19" itemprop="dateModified" datetime="2025-02-28T16:19:29+00:00">2025-02-28 16:19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/53079/" class="post-meta-item leancloud_visitors" data-flag-title="极致优化UE Android APK的大小" title="阅读次数">
+            <span id="/posts/53079/" class="post-meta-item leancloud_visitors" data-flag-title="Ultimate Optimization: Reducing the size of UE Android APKs" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>15k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>37 mins.</span>
             </span>
 
         </div>
@@ -371,30 +371,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在游戏项目中，当我们在打包各个平台时，总希望每个平台的包能够最小化便于分发，而且上架某些平台还有明确的大小要求。</p>
-<p>对于UE而言，它包含了巨量代码以及大量的插件，Build阶段还将生成反射的胶水代码，在编译时产生了大量的代码段。以Android平台为例，将导致libUE4.so的大小极具增长，对于包体和运行时内存都造成了压力。</p>
-<p>再加上一些引擎必要和额外带入的资源也能占据上百M，空APK的大小很容易达到数百M的规模！不仅仅为了符合上架平台的要求，从包体和内存优化的角度，也有必要对UE包的大小进行裁剪。</p>
-<p>本篇文章会以Android为例，从各个方面介绍UE包中的可裁剪部分的优化思路与实践，同时优化APK大小和Native库的运行时内存占用，其中的策略也可以复用在其他平台。</p>
+        <p>In game projects, when we package for various platforms, we always hope that each platform’s package can be minimized for easier distribution, and there are clear size requirements for launching on certain platforms.</p>
+<p>For UE (Unreal Engine), it contains a large amount of code and numerous plugins. The Build phase will also generate reflective glue code, resulting in a significant amount of code segments during compilation. Taking the Android platform as an example, this leads to a substantial increase in the size of <code>libUE4.so</code>, creating pressure on both the package size and runtime memory.</p>
+<p>Moreover, some essential and additional resources brought by the engine can occupy hundreds of MB, making the empty APK size easily reach several hundred MB! It is necessary to trim the size of the UE package not only to meet the requirements of launching platforms but also from the perspective of package size and memory optimization.</p>
+<p>This article will take Android as an example, introducing optimization ideas and practices for the trimmable parts of the UE package from various aspects, while optimizing APK size and the runtime memory usage of native libraries. The strategies described can also be reused on other platforms.</p>
 <span id="more"></span>
 
-<h2 id="包大小分布"><a href="#包大小分布" class="headerlink" title="包大小分布"></a>包大小分布</h2><p>在APK内，游戏相关的空间占比较大的部分，为下面几项：</p>
+<h2 id="Package-Size-Distribution"><a href="#Package-Size-Distribution" class="headerlink" title="Package Size Distribution"></a>Package Size Distribution</h2><p>In the APK, the part related to the game occupies a significant proportion of the space, specifically the following items:</p>
 <ol>
-<li>可执行代码（so - <code>lib/arm64-v8a</code>）</li>
-<li><code>main.obb.png</code>（游戏内资源Pak、<code>DirectoriesToAlwaysStageAsNonUFS</code>的部分）</li>
-<li>第三方组件拷贝进APK内的文件</li>
+<li>Executable code (so - <code>lib/arm64-v8a</code>)</li>
+<li><code>main.obb.png</code> (game resources Pak, part of <code>DirectoriesToAlwaysStageAsNonUFS</code>)</li>
+<li>Files copied into the APK from third-party components</li>
 </ol>
-<p>需要分别针对上面列出的三种情况，分别制定具体的优化策略。</p>
-<h2 id="压缩NativeLibs"><a href="#压缩NativeLibs" class="headerlink" title="压缩NativeLibs"></a>压缩NativeLibs</h2><p>当APK安装时，对于NativeLibs有两种处理方式：</p>
+<p>Specific optimization strategies need to be formulated for each of the above three situations.</p>
+<h2 id="Compress-NativeLibs"><a href="#Compress-NativeLibs" class="headerlink" title="Compress NativeLibs"></a>Compress NativeLibs</h2><p>When an APK is installed, there are two ways to handle NativeLibs:</p>
 <ol>
-<li>安装时解压so到应用的内部存储目录（ <code>/data/app/&lt;package_name&gt;/lib/</code>）</li>
-<li>直接从APK文件中加载so，可以加快安装过程</li>
+<li>Decompress so files to the application’s internal storage directory during installation (<code>/data/app/&lt;package_name&gt;/lib/</code>)</li>
+<li>Load so files directly from the APK file, which can speed up the installation process</li>
 </ol>
-<p>而它就引出了一个问题：如果允许安装时解压，则NativeLibs打包进APK内是可以被执行压缩的。<br>对比一下实际的压缩与否的大小情况，对APK大小的影响非常大：</p>
+<p>This leads to a question: If decompression during installation is allowed, then NativeLibs packaged into the APK can be compressible. Comparing the actual size situation with or without compression significantly impacts the APK size:</p>
 <table>
 <thead>
 <tr>
-<th align="center">压缩</th>
-<th align="center">不压缩</th>
+<th align="center">Compressed</th>
+<th align="center">Uncompressed</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -402,92 +402,91 @@
 <td align="center"><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/193331.png"></td>
 </tr>
 </tbody></table>
-<p>对于原生Android而言，是否在安装时解压NativeLibs是由<code>AndroidManifest.xml</code>中的<code>extractNativeLibs</code>控制的：</p>
+<p>For native Android, whether to decompress NativeLibs during installation is controlled by <code>extractNativeLibs</code> in <code>AndroidManifest.xml</code>:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:allowBackup</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:appComponentFactory</span>=<span class="string">&quot;android.support.v4.app.CoreComponentFactory&quot;</span> <span class="attr">android:debuggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:extractNativeLibs</span>=<span class="string">&quot;false&quot;</span> <span class="attr">android:hardwareAccelerated</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:hasCode</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:icon</span>=<span class="string">&quot;@drawable/icon&quot;</span> <span class="attr">android:label</span>=<span class="string">&quot;@string/app_name&quot;</span> <span class="attr">android:name</span>=<span class="string">&quot;com.epicgames.ue4.GameApplication&quot;</span> <span class="attr">android:networkSecurityConfig</span>=<span class="string">&quot;@xml/network_security_config&quot;</span> <span class="attr">android:supportsRtl</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>在新版引擎中，在<code>AndroidRuntimeSettings</code>配置中直接提供了<code>bExtractNativeLibs</code>的选项：</p>
+<p>In the new version of the engine, a <code>bExtractNativeLibs</code> option is provided directly in the <code>AndroidRuntimeSettings</code> configuration:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> bExtractNativeLibs = <span class="literal">true</span>;</span><br><span class="line">Ini.GetBool(<span class="string">&quot;/Script/AndroidRuntimeSettings.AndroidRuntimeSettings&quot;</span>, <span class="string">&quot;bExtractNativeLibs&quot;</span>, <span class="keyword">out</span> bExtractNativeLibs);</span><br></pre></td></tr></table></figure>
 
-<p>需要注意的是，如果是旧版本引擎（4.27及之前），升级了grable升级后(&gt;4.2)后，gradle用<code>useLegacyPackaging</code>取代<code>extractNativeLibs</code>，Manifest里的extractNativeLibs默认是false的，所以会导致APK增大。</p>
-<p>解决办法是可以在UPL中强制把值改了：</p>
+<p>It should be noted that for older versions of the engine (4.27 and earlier), after upgrading gradle (&gt;4.2), gradle uses <code>useLegacyPackaging</code> to replace <code>extractNativeLibs</code>, and the default value of <code>extractNativeLibs</code> in the Manifest is false, which will lead to an increase in APK size.</p>
+<p>A solution is to forcefully change the value in UPL:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">addAttribute</span> <span class="attr">tag</span>=<span class="string">&quot;application&quot;</span> <span class="attr">name</span>=<span class="string">&quot;android:extractNativeLibs&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
-
 <blockquote>
-<p>注意：它只是控制让so打进APK时是否执行压缩，并不会实际减少so的大小！对于可执行程序的优化，需要继续下面的代码优化的部分。</p>
+<p>Note: This only controls whether to perform compression when packing so into the APK and does not actually reduce the size of the so! To optimize the executable program, further code optimization is needed.</p>
 </blockquote>
-<h2 id="代码体积优化"><a href="#代码体积优化" class="headerlink" title="代码体积优化"></a>代码体积优化</h2><p>关于代码体积优化的部分，在Android平台，核心目标是要减少单个so的大小！并且尽可能地避免对运行时性能的影响。</p>
+<h2 id="Code-Size-Optimization"><a href="#Code-Size-Optimization" class="headerlink" title="Code Size Optimization"></a>Code Size Optimization</h2><p>On the Android platform, the core goal of code size optimization is to reduce the size of a single so file! Additionally, aim to avoid impacting runtime performance as much as possible.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/113505.png"></p>
-<p>对NativeLibs大小优化思路：</p>
+<p>Thoughts on optimizing the size of NativeLibs:</p>
 <ol>
-<li>减少动态链接库的数量，剔除不必要的</li>
-<li>减少库内部的符号、减少代码段大小</li>
-<li>剔除调试信息</li>
+<li>Reduce the number of dynamic link libraries and remove unnecessary ones</li>
+<li>Reduce the symbols inside the libraries and the size of code segments</li>
+<li>Remove debug information</li>
 </ol>
 <blockquote>
-<p>对于所有的so，都可以在编译/链接时应用这些优化策略。<br>但对于UE项目而言，我们能控制的通常也只有引擎和项目的代码，库的代码需要库的提供者优化。所以接下来的优化策略，只针对于<code>libUE4.so</code>/<code>libUnreal.so</code>。</p>
+<p>Optimization strategies can be applied to all so files during compilation/linking.<br>However, in UE projects, we usually can only control the engine and project code; the library code needs to be optimized by the library provider. Therefore, the following optimization strategies will only target <code>libUE4.so</code>/<code>libUnreal.so</code>.</p>
 </blockquote>
-<h3 id="减小libUE4-so"><a href="#减小libUE4-so" class="headerlink" title="减小libUE4.so"></a>减小libUE4.so</h3><p>在打包时，因为需要执行完整的编译，并且UE在运行时默认是<code>Monolithic</code>的模式，所有的代码都被编译到了同一个可执行文件中。（之前的文章有详细介绍：<a href="https://imzlp.com/posts/75405/#Monolithic%E6%A8%A1%E5%BC%8F">UE插件与工具开发：基础概念</a>）</p>
-<p>UE基于UBT的编译过程封装，以及提供<code>target.cs</code>/<code>build.cs</code>中的配置参数，使我们能够在一定程度上对引擎和项目代码进行编译控制，达到我们优化so大小的目的。</p>
-<p>对于UE项目而言，优化so的大小有以下几种思路：</p>
+<h3 id="Reduce-libUE4-so"><a href="#Reduce-libUE4-so" class="headerlink" title="Reduce libUE4.so"></a>Reduce <code>libUE4.so</code></h3><p>During packaging, since a complete compilation needs to be performed, and UE defaults to a <code>Monolithic</code> mode at runtime, all code is compiled into a single executable file. (Previous articles have provided detailed introductions: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/75405/#Monolithic%E6%A8%A1%E5%BC%8F">UE Plugin and Tool Development: Basic Concepts</a>)</p>
+<p>The UBT compilation process encapsulation based on UE, along with the configuration parameters provided in <code>target.cs</code>/<code>build.cs</code>, allows us to exercise certain control over the engine and project code compilation to achieve the goal of optimizing so size.</p>
+<p>For UE projects, there are several ideas for optimizing so size:</p>
 <ol>
-<li>禁用不必要模块</li>
-<li>控制代码优化（控制inline/O3/0z）</li>
-<li>禁用Module不必要异常处理</li>
-<li>启用LTO</li>
-<li>剔除不需要的导出符号</li>
+<li>Disable unnecessary modules</li>
+<li>Control code optimization (control inline/O3/Oz)</li>
+<li>Disable unnecessary exception handling in Modules</li>
+<li>Enable LTO</li>
+<li>Remove unnecessary exported symbols</li>
 </ol>
-<h4 id="禁用模块"><a href="#禁用模块" class="headerlink" title="禁用模块"></a>禁用模块</h4><p>可以把引擎中内置的明确不需要使用的模块在target.cs中关闭：</p>
+<h4 id="Disable-Modules"><a href="#Disable-Modules" class="headerlink" title="Disable Modules"></a>Disable Modules</h4><p>Modules that are clearly unnecessary can be disabled in the target.cs:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// disable modules  </span></span><br><span class="line">bUseChaos = <span class="literal">false</span>;  </span><br><span class="line">bCompileChaos = <span class="literal">false</span>;  </span><br><span class="line">bCompileAPEX = <span class="literal">false</span>;  </span><br></pre></td></tr></table></figure>
 
-<p>同时，需要梳理项目中引入的不必要的运行时插件，减少参与编译的Module的数量，从而减少实际参与编译的代码。</p>
-<h4 id="关闭inline"><a href="#关闭inline" class="headerlink" title="关闭inline"></a>关闭inline</h4><p>inline是编译阶段对运行时的执行效率优化，将函数调用直接替换为函数代码，而不是常规的函数调用。可以减少函数调用的开销，<strong>理论上</strong>来说可以提高程序的执行效率。</p>
-<p>但inline会增大<code>.text</code>段的大小，可以酌情关闭。</p>
+<p>At the same time, it is necessary to streamline the unnecessary runtime plugins introduced in the project, thereby reducing the number of Modules involved in compilation and thus the actual code involved in the compilation.</p>
+<h4 id="Disable-Inline"><a href="#Disable-Inline" class="headerlink" title="Disable Inline"></a>Disable Inline</h4><p>Inline is an optimization for runtime execution efficiency during the compilation stage, replacing function calls directly with function code instead of the usual function calls. It can reduce the overhead of function calls, <strong>theoretically</strong> improving program execution efficiency.</p>
+<p>However, inline may increase the size of the <code>.text</code> section, so it can be disabled as appropriate.</p>
 <ol>
-<li>修改<code>target.cs</code>：<code>bUseInlining = false;</code>（仅在IOS/Linux/Mac/Win有效）</li>
-<li>修改UBT，在Android编译时受<code>bUseInlining</code>控制，添加<code>-fno-inline-functions</code>编译参数</li>
+<li>Modify <code>target.cs</code>: <code>bUseInlining = false;</code> (only effective for iOS/Linux/Mac/Win)</li>
+<li>Modify UBT, which is controlled by <code>bUseInlining</code> during Android compilation, adding the <code>-fno-inline-functions</code> compile argument</li>
 </ol>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (TargetInfo.Platform == UnrealTargetPlatform.Android)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (bUseInlining)</span><br><span class="line">	&#123;</span><br><span class="line">		AdditionalCompilerArguments += <span class="string">&quot; -finline-functions&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		AdditionalCompilerArguments += <span class="string">&quot; -fno-inline-functions&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意：关闭inline后，如果某些函数具有高频调用，会带来一些性能损失；在非高频情况下，inline与否的性能，这个需要结合项目的实际性能情况进行控制。在我的测试结果中，是否inline对帧率影响微乎其微。</p>
+<p>Note: Disabling inline may lead to some performance loss if certain functions are called frequently; in non-frequent cases, the performance impact of inline or not needs to be controlled based on actual performance conditions of the project. In my test results, the impact of inline on frame rate is negligible.</p>
 </blockquote>
-<h4 id="关闭异常处理"><a href="#关闭异常处理" class="headerlink" title="关闭异常处理"></a>关闭异常处理</h4><p>有些模块中打开了C++异常处理，但是没有<code>try/catch</code>的使用：  </p>
+<h4 id="Disable-Exception-Handling"><a href="#Disable-Exception-Handling" class="headerlink" title="Disable Exception Handling"></a>Disable Exception Handling</h4><p>Some modules have enabled C++ exception handling without using <code>try/catch</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bEnableExceptions = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
 
-<p>可以关掉，能够减少so内的<code>.eh_frame</code>的大小。</p>
-<h4 id="使用O3-Oz编译"><a href="#使用O3-Oz编译" class="headerlink" title="使用O3/Oz编译"></a>使用O3/Oz编译</h4><p>在<code>target.cs</code>中控制<code>bCompileForSize</code>的值，可以选择使用O3或Oz编译代码：</p>
+<p>This can be turned off to reduce the size of <code>.eh_frame</code> within the so.</p>
+<h4 id="Use-O3-Oz-Compilation"><a href="#Use-O3-Oz-Compilation" class="headerlink" title="Use O3/Oz Compilation"></a>Use O3/Oz Compilation</h4><p>Control the value of <code>bCompileForSize</code> in <code>target.cs</code> to choose either O3 or Oz compilation for the code:</p>
 <figure class="highlight cpp"><figcaption><span>UnrealBuildTool\Platform\Android\AndroidToolChain.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// optimization level</span></span><br><span class="line"><span class="keyword">if</span> (!CompileEnvironment.bOptimizeCode)&#123;</span><br><span class="line">	Result += <span class="string">&quot; -O0&quot;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (CompileEnvironment.bOptimizeForSize)&#123;</span><br><span class="line">		Result += <span class="string">&quot; -Oz&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		Result += <span class="string">&quot; -O3&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>O3和Oz的区别：</p>
+<p>Difference between O3 and Oz:</p>
 <ul>
-<li><code>-O3</code>：<strong>性能优先</strong>，积极内联、循环展开</li>
-<li><code>-Oz</code>：<strong>体积优先</strong>，避免内联、保持循环</li>
+<li><code>-O3</code>: <strong>Performance first</strong>, aggressively inlines and expands loops</li>
+<li><code>-Oz</code>: <strong>Size first</strong>, avoids inline, maintains loops</li>
 </ul>
-<p>可以根据项目实际的性能情况，选择使用哪种方式。</p>
-<h4 id="启用LTO"><a href="#启用LTO" class="headerlink" title="启用LTO"></a>启用LTO</h4><p>LTO是Link Time Optimization的简称，可以在链接时剔除死代码、优化跨模块的函数调用、内联等。<br>在引擎的<code>build.cs</code>中可以<code>bAllowLTCG</code>打开，LTCG是LTO的一种实现，但是它也只仅在IOS/Linux/Mac/Win有效（UE4.25）。</p>
-<p>支持Android的话，同样也要修改UBT（AndroidToolChain.cs），给Android添加受<code>bAllowLTCG</code>参数控制，选择是否添加<code>-flto=thin</code>的编译参数，<code>thin</code>是缩减大小与优化耗时的综合版本。</p>
-<p>在打开LTO后，最好同时开启并行链接，因为LTO会大幅减慢链接耗时，并行化可以提速。传递给Linker的参数：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bAllowLTCG = <span class="literal">true</span>; <span class="comment">// LTO</span></span><br><span class="line"><span class="keyword">if</span> (bAllowLTCG)</span><br><span class="line">&#123;</span><br><span class="line">	AdditionalCompilerArguments += <span class="string">&quot;  -flto=thin&quot;</span>;</span><br><span class="line">	<span class="comment">// 并行链接</span></span><br><span class="line">	AdditionalLinkerArguments += <span class="string">&quot; -Wl,-plugin-opt=jobs=10&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Choose the appropriate method based on the actual performance of the project.</p>
+<h4 id="Enable-LTO"><a href="#Enable-LTO" class="headerlink" title="Enable LTO"></a>Enable LTO</h4><p>LTO stands for Link Time Optimization, which can eliminate dead code, optimize cross-module function calls, inline, etc., during linking.<br>In the engine’s <code>build.cs</code>, <code>bAllowLTCG</code> can be opened, where LTCG is a type of LTO implementation, but it is only effective for iOS/Linux/Mac/Win (UE4.25).</p>
+<p>For Android to be supported, UBT (AndroidToolChain.cs) must also be modified to allow control of whether to add the <code>-flto=thin</code> compile argument based on the <code>bAllowLTCG</code> parameter, where <code>thin</code> is a comprehensive version for size reduction and optimization time.</p>
+<p>After enabling LTO, it is best to enable parallel linking at the same time because LTO significantly slows down linking time, and parallelization can speed it up. The parameters passed to the linker:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bAllowLTCG = <span class="literal">true</span>; <span class="comment">// LTO</span></span><br><span class="line"><span class="keyword">if</span> (bAllowLTCG)</span><br><span class="line">&#123;</span><br><span class="line">	AdditionalCompilerArguments += <span class="string">&quot;  -flto=thin&quot;</span>;</span><br><span class="line">	<span class="comment">// parallel linking</span></span><br><span class="line">	AdditionalLinkerArguments += <span class="string">&quot; -Wl,-plugin-opt=jobs=10&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="剔除导出符号"><a href="#剔除导出符号" class="headerlink" title="剔除导出符号"></a>剔除导出符号</h4><p>在编译so时，除非特殊设置，所有的函数和变量都会被导出，用于被其他的so访问。<br>但在UE引擎内，只有极少数的接口，是明确被外部访问的（JNI相关的接口），所以<code>libUE4.so</code>的符号导出绝大部分是浪费的，剔除掉符号导出可以<strong>大幅降低so的大小和内存占用</strong>！</p>
-<p>现代编译器提供了<code>version-script</code>的链接时控制机制，可以通过传入一个<code>ldscript</code>文件来控制链接时的符号行为。</p>
-<p>需要在编译过程中先构造出一个<code>ldscript</code>文件，填入符号导出控制代码，然后在<code>target.cs</code>中，传递给Linker：</p>
+<h4 id="Remove-Exported-Symbols"><a href="#Remove-Exported-Symbols" class="headerlink" title="Remove Exported Symbols"></a>Remove Exported Symbols</h4><p>When compiling the so, unless specially configured, all functions and variables will be exported for access by other so files.<br>However, within the UE engine, only a very few interfaces are explicitly accessed externally (JNI-related interfaces), so the symbol exports of <code>libUE4.so</code> are largely wasteful; removing exported symbols can <strong>significantly reduce so size and memory usage</strong>!</p>
+<p>Modern compilers provide a <code>version-script</code> control mechanism at link time, allowing the passing of an <code>ldscript</code> file to control symbol behavior during linking.</p>
+<p>One must first construct an <code>ldscript</code> file during compilation, fill it with symbol export control code, and then pass it to the linker in <code>target.cs</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> VersionScriptFile = GetVersionScriptFilename();</span><br><span class="line"><span class="keyword">using</span> (StreamWriter Writer = File.CreateText(VersionScriptFile))</span><br><span class="line">&#123;</span><br><span class="line">	Writer.WriteLine(<span class="string">&quot;&#123; global: Java_*; ANativeActivity_onCreate; JNI_OnLoad; local: *; &#125;;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">AdditionalLinkerArguments += <span class="string">&quot; -Wl,--version-script=\&quot;&quot;</span> + VersionScriptFile + <span class="string">&quot;\&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>对于UE而言，需要允许导出的只有<code>Java_*/ANativeActivity_onCreate/JNI_OnLoad</code>这三类匹配符号，，其余的均可剔除。</p>
-<h3 id="优化数据"><a href="#优化数据" class="headerlink" title="优化数据"></a>优化数据</h3><p>经过上面介绍的一系列对代码体积的优化，收益明显。</p>
-<h4 id="so压缩后大小"><a href="#so压缩后大小" class="headerlink" title="so压缩后大小"></a>so压缩后大小</h4><p>前面提到了，NativeLibs进APK是可以被压缩的，所以当我们减少了so的原始大小，也能够减少压缩后的大小。</p>
+<p>For UE, only the following three types of symbols should be allowed to be exported: <code>Java_*/ANativeActivity_onCreate/JNI_OnLoad</code>, all others can be removed.</p>
+<h3 id="Optimize-Data"><a href="#Optimize-Data" class="headerlink" title="Optimize Data"></a>Optimize Data</h3><p>After introducing a series of code size optimization techniques, the benefits are significant.</p>
+<h4 id="Size-after-so-Compression"><a href="#Size-after-so-Compression" class="headerlink" title="Size after so Compression"></a>Size after so Compression</h4><p>As mentioned earlier, NativeLibs in APK can be compressed, so when we reduce the original size of so, we can also reduce the size after compression.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/185454.png"></p>
-<p>经过上面的优化之后，在Shipping的模式下，so的原始大小从原来的<code>258M</code>减少到了<code>146M</code>!<br>so的压缩后大小，从<code>74.3M</code>减少到了<code>44.67M</code>，减少了<code>29.63M</code>！可执行程序文件显著减小。</p>
-<p>readelf优化前后对比(部分数据)：</p>
+<p>After the above optimizations, the original size of the so in Shipping mode is reduced from <code>258M</code> to <code>146M</code>!<br>The size after compression of the so is reduced from <code>74.3M</code> to <code>44.67M</code>, a reduction of <code>29.63M</code>! The executable program file has significantly decreased.</p>
+<p>The comparison of readelf before and after optimization (partial data):</p>
 <table>
 <thead>
 <tr>
 <th><strong>arm64-v8a Shipping</strong></th>
-<th>优化前</th>
-<th>优化后</th>
-<th>减少</th>
+<th>Before Optimization</th>
+<th>After Optimization</th>
+<th>Reduction</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -545,122 +544,121 @@
 <td>0.68</td>
 </tr>
 </tbody></table>
-<h4 id="内存收益"><a href="#内存收益" class="headerlink" title="内存收益"></a>内存收益</h4><blockquote>
-<p>对so大小的优化，同时减少了加载so的内存，也能够获得额外的内存收益。</p>
+<h4 id="Memory-Gains"><a href="#Memory-Gains" class="headerlink" title="Memory Gains"></a>Memory Gains</h4><blockquote>
+<p>Optimizations for so size also reduce the memory needed to load the so, hence providing additional memory benefits.</p>
 </blockquote>
-<p>安卓可以通过<code>dumpsys meminfo</code>来查看整个包的so占用内存情况，包含了所有已加载的so，但可以通过优化前后的差值得到实际的内存收益。</p>
-<p>优化前：</p>
+<p>Android can use <code>dumpsys meminfo</code> to view the total memory usage of the so files in the package, which includes all loaded so files, but the actual memory benefits can be derived from the difference before and after optimization.</p>
+<p>Before optimization:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127|PD2324:/ $ dumpsys meminfo com.xxx.yyy</span><br><span class="line">dumpsys meminfo com.xxx.yyy</span><br><span class="line">Applications Memory Usage (<span class="keyword">in</span> Kilobytes):</span><br><span class="line">Uptime: 501711593 Realtime: 544369467</span><br><span class="line"></span><br><span class="line">** MEMINFO <span class="keyword">in</span> pid 23677 [com.xxx.yyy] **</span><br><span class="line">                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap</span><br><span class="line">                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free</span><br><span class="line">                ------   ------   ------   ------   ------   ------   ------   ------</span><br><span class="line">     .so mmap   178165    14024   159220        5   245292</span><br></pre></td></tr></table></figure>
 
-<p>优化后：</p>
+<p>After optimization:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">** MEMINFO <span class="keyword">in</span> pid 31482 [com.xxx.yyy] **</span><br><span class="line">                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap</span><br><span class="line">                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free</span><br><span class="line">                ------   ------   ------   ------   ------   ------   ------   ------</span><br><span class="line">     .so mmap   144041    13208   125644        5   209284</span><br></pre></td></tr></table></figure>
-
 
 <table>
 <thead>
 <tr>
 <th><strong>arm64-v8a Shipping</strong></th>
-<th>优化前</th>
-<th>优化后</th>
-<th>减少</th>
+<th>Before Optimization</th>
+<th>After Optimization</th>
+<th>Reduction</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>libUE4.so大小</td>
+<td>libUE4.so Size</td>
 <td>246</td>
 <td>145</td>
 <td>101</td>
 </tr>
 <tr>
-<td>meminfo(so总内存)</td>
+<td>meminfo (total so memory)</td>
 <td>178.165</td>
 <td>140.04</td>
 <td>38.125</td>
 </tr>
 </tbody></table>
-<h3 id="优化策略补充"><a href="#优化策略补充" class="headerlink" title="优化策略补充"></a>优化策略补充</h3><h4 id="RELR重定位表压缩"><a href="#RELR重定位表压缩" class="headerlink" title="RELR重定位表压缩"></a>RELR重定位表压缩</h4><p>在Android的<code>MinSDKVersion</code>大于等于28时（Android9），可以在编译和链接时开启<code>RELR</code>重定位表压缩。利用相对地址重定位的特点，对重定位信息进行高效编码，从而减少存储空间占用。</p>
-<p>开启方法，需要在编译阶段给Compiler和Linker传递参数：</p>
+<h3 id="Supplement-to-Optimization-Strategies"><a href="#Supplement-to-Optimization-Strategies" class="headerlink" title="Supplement to Optimization Strategies"></a>Supplement to Optimization Strategies</h3><h4 id="Compressing-the-RELR-Relocation-Table"><a href="#Compressing-the-RELR-Relocation-Table" class="headerlink" title="Compressing the RELR Relocation Table"></a>Compressing the RELR Relocation Table</h4><p>When Android’s <code>MinSDKVersion</code> is greater than or equal to 28 (Android 9), <code>RELR</code> relocation table compression can be enabled during compilation and linking. Utilizing the characteristics of relative address relocation, efficiently encode the relocation information to reduce storage space consumption.</p>
+<p>To enable this method, pass parameters to the Compiler and Linker during the compilation phase:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AdditionalCompilerArguments += <span class="string">&quot; -fPIC -fPIE&quot;</span>;  </span><br><span class="line">AdditionalLinkerArguments += <span class="string">&quot; -Wl,--pack-dyn-relocs=android+relr,--use-android-relr-tags&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p> <code>-Wl,--pack-dyn-relocs=android+relr,--use-android-relr-tags</code> 是 Android 特有的链接器选项，它们是对标准 <code>-Wl,-z,relro</code> 和 <code>-Wl,-z,now</code> 的补充和优化，特别是针对 Android 系统中动态链接和重定位的处理。 它们主要用于进一步减小二进制文件大小和改善加载时间。</p>
+<p> <code>-Wl,--pack-dyn-relocs=android+relr,--use-android-relr-tags</code> is an Android-specific linker option, complementing and optimizing the standard <code>-Wl,-z,relro</code> and <code>-Wl,-z,now</code>, especially for dynamic linking and relocation handling in Android systems. They are primarily used to further reduce binary file size and improve loading times.</p>
 </blockquote>
-<p>验证是否生效，可以使用<code>readelf -d libUE4.so</code>，查看是否存在<code>RELR</code>字段：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/111046.png"></p>
-<p><strong>优化前</strong>重定位表的大小（25.82M）：</p>
+<p>To verify if it takes effect, one can use <code>readelf -d libUE4.so</code> to check for the presence of the <code>RELR</code> field:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/111046.png"></p>
+<p><strong>Size of Relocation Table Before Optimization</strong> (25.82MB):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">8 .rela.dyn     0189c708  000000000000c720  000000000000c720  0000c720  2**3</span><br><span class="line">                CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br><span class="line">9 .rela.plt     00004338  00000000018a8e28  00000000018a8e28  018a8e28  2**3</span><br><span class="line">                CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br></pre></td></tr></table></figure>
 
-<p><strong>优化后</strong>重定位表的大小（280K）：</p>
+<p><strong>Size of Relocation Table After Optimization</strong> (280KB):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> 8 .rela.dyn     00013852  000000000000c6d8  000000000000c6d8  0000c6d8  2**3</span><br><span class="line">                 CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br><span class="line"> 9 .relr.dyn     0002cca8  000000000001ff30  000000000001ff30  0001ff30  2**3</span><br><span class="line">                 CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br><span class="line">10 .rela.plt     00004320  000000000004cbd8  000000000004cbd8  0004cbd8  2**3</span><br><span class="line">                 CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br></pre></td></tr></table></figure>
 
-<p>优化后的重定位表大小从25.82M降低到280K，结果直接体现在so的大小减少了25M，使APK的大小也减少了4M左右，优化效果极为明显。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/131558.png"></p>
-<p>并且，它对内存的优化效果也非常显著：在Development下从190.49M - &gt; 161.06M，<strong>减少了29.43M</strong>，预计Shipping收益也在20+M。</p>
-<p>优化前（Development：190.49MB）：</p>
+<p>The relocation table size is reduced from 25.82MB to 280KB, resulting in a direct reduction of around 25MB in so size and an approximate reduction of 4MB in APK size, showing very significant optimization effects.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/02/131558.png"></p>
+<p>Additionally, it also shows significant improvement in memory: from Development 190.49MB to 161.06MB, <strong>a reduction of 29.43MB</strong>; the estimated Shipping benefit is also about 20+MB.</p>
+<p>Before optimization (Development: 190.49MB):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">** MEMINFO in pid 16293 [com.xxx.yyy] **</span><br><span class="line">                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap</span><br><span class="line">                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free</span><br><span class="line">                ------   ------   ------   ------   ------   ------   ------   ------</span><br><span class="line">     .so mmap   190490    49692   136896        9   255392</span><br></pre></td></tr></table></figure>
 
-<p>优化后（Development：161.06MB）：</p>
+<p>After optimization (Development: 161.06MB):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">** MEMINFO in pid 16294 [com.xxx.yyy] **</span><br><span class="line">                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap</span><br><span class="line">                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free</span><br><span class="line">                ------   ------   ------   ------   ------   ------   ------   ------</span><br><span class="line">     .so mmap   161066    13740   142832        9   227500</span><br></pre></td></tr></table></figure>
 
-<p>它对运行时性能是正面优化而不是降低，因为它通过减少运行时重定位的数量来提高代码加载速度和降低内存占用。</p>
-<h2 id="资源裁剪"><a href="#资源裁剪" class="headerlink" title="资源裁剪"></a>资源裁剪</h2><h3 id="APK内文件"><a href="#APK内文件" class="headerlink" title="APK内文件"></a>APK内文件</h3><p>有一些第三方的插件，会往APK内拷贝文件，这也是可以优化的部分。</p>
-<p>需要分析项目的实际使用情况处理：</p>
+<p>This optimization positively affects runtime performance instead of degrading it, as it improves the code loading speed and reduces memory usage by decreasing the number of relocations at runtime.</p>
+<h2 id="Resource-Trimming"><a href="#Resource-Trimming" class="headerlink" title="Resource Trimming"></a>Resource Trimming</h2><h3 id="Files-in-APK"><a href="#Files-in-APK" class="headerlink" title="Files in APK"></a>Files in APK</h3><p>Some third-party plugins may copy files into the APK, and this is also a part that can be optimized.</p>
+<p>It is necessary to analyze the actual usage situation of the project:</p>
 <ol>
-<li>剔除不必要的第三方组件</li>
-<li>对于必须的组件，剔除不需要的文件</li>
+<li>Remove unnecessary third-party components</li>
+<li>For essential components, remove unnecessary files</li>
 </ol>
-<h4 id="组件裁剪：以GVoice为例"><a href="#组件裁剪：以GVoice为例" class="headerlink" title="组件裁剪：以GVoice为例"></a>组件裁剪：以GVoice为例</h4><p>如果项目集成了GCloud的组件，其中会拷贝至APK文件的组件中，<code>GCloudVoice</code>的模型文件占大头。</p>
-<p>在APK内<code>assets/GCloudVoice</code>目录压缩后占了约13.5M：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/11/153617.png"></p>
+<h4 id="Component-Trimming-Taking-GVoice-as-an-Example"><a href="#Component-Trimming-Taking-GVoice-as-an-Example" class="headerlink" title="Component Trimming: Taking GVoice as an Example"></a>Component Trimming: Taking GVoice as an Example</h4><p>If the project integrates GCloud’s component, the model files of <code>GCloudVoice</code> will occupy a large portion of the copied files in the APK.</p>
+<p>After compression, the size in the APK under <code>assets/GCloudVoice</code> is approximately 13.5MB:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/11/153617.png"></p>
 <ul>
-<li>wave_dafx_data.bin 是3d语音 不用3d功能可以移除  </li>
-<li>wave_3d_data.bin 是3d语音 不用3d功能可以移除  </li>
-<li>cldnn_spkvector.mnn 提取声纹的，默认不使用这个功能，可以移除  </li>
-<li>libwxvoiceembed.bin 是文明语音的 不用文明语音可以移除  </li>
-<li><strong>libgvoicensmodel.bin 是噪声抑制算法模型，不能删</strong>  </li>
-<li>decoder_v4_small.nn、encoder_v4_small.nn aicodec用的 不用aicodec的话可以删除  </li>
-<li>dse_v1.nn、dse_v1_align.nn、dse_v1_mono.nn 这个是用于wwise下的新算法资源文件，如果有打包的大小限制，也可以去掉</li>
+<li><code>wave_dafx_data.bin</code> is for 3D voice, can be removed if 3D functionality is not used  </li>
+<li><code>wave_3d_data.bin</code> is also for 3D voice, can be removed if 3D functionality is not used  </li>
+<li><code>cldnn_spkvector.mnn</code> is for speaker vector extraction, this functionality is not used by default and can be removed  </li>
+<li><code>libwxvoiceembed.bin</code> is for civilization voices, can be removed if civilization voice is not used  </li>
+<li><strong><code>libgvoicensmodel.bin</code> is for noise suppression algorithm model and cannot be deleted</strong>  </li>
+<li><code>decoder_v4_small.nn</code>, <code>encoder_v4_small.nn</code> are for aicodec, can be removed if aicodec is not used  </li>
+<li><code>dse_v1.nn</code>, <code>dse_v1_align.nn</code>, <code>dse_v1_mono.nn</code> are for new algorithm resource files under wwise, and if there is a packaging size limit, they can also be removed</li>
 </ul>
-<p>可以把项目中未用到功能的模型文件剔除。另外从实现上，最好不要直接删除文件，而是修改<code>GVoice_APL.xml</code>的拷贝逻辑实现：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resourceCopies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">log</span> <span class="attr">text</span>=<span class="string">&quot;Start copy res...&quot;</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        author: lipengzha</span></span><br><span class="line"><span class="comment">        desc: 只拷贝GVoice的libgvoicensmodel.bin/config.json，其余文件游戏内无作用</span></span><br><span class="line"><span class="comment">        原始拷贝代码：</span></span><br><span class="line"><span class="comment">          &lt;copyDir src=&quot;$S(PluginDir)/../GVoiceLib/Android/assets/&quot; dst=&quot;$S(BuildDir)/assets&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copyFile</span> <span class="attr">src</span>=<span class="string">&quot;$S(PluginDir)/../GVoiceLib/Android/assets/libgvoicensmodel.bin&quot;</span> <span class="attr">dst</span>=<span class="string">&quot;$S(BuildDir)/assets/libgvoicensmodel.bin&quot;</span> <span class="attr">force</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copyFile</span> <span class="attr">src</span>=<span class="string">&quot;$S(PluginDir)/../GVoiceLib/Android/assets/config.json&quot;</span> <span class="attr">dst</span>=<span class="string">&quot;$S(BuildDir)/assets/config.json&quot;</span> <span class="attr">force</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resourceCopies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Files of model functionality that are not used in the project should be eliminated. Moreover, instead of directly deleting files, it is better to modify the copy logic implementation in <code>GVoice_APL.xml</code>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resourceCopies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">log</span> <span class="attr">text</span>=<span class="string">&quot;Start copy res...&quot;</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        author: lipengzha</span></span><br><span class="line"><span class="comment">        desc: Only copy `GVoice`&#x27;s `libgvoicensmodel.bin/config.json`, other files have no effect in the game</span></span><br><span class="line"><span class="comment">        Original copy code:</span></span><br><span class="line"><span class="comment">          &lt;copyDir src=&quot;$S(PluginDir)/../GVoiceLib/Android/assets/&quot; dst=&quot;$S(BuildDir)/assets&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copyFile</span> <span class="attr">src</span>=<span class="string">&quot;$S(PluginDir)/../GVoiceLib/Android/assets/libgvoicensmodel.bin&quot;</span> <span class="attr">dst</span>=<span class="string">&quot;$S(BuildDir)/assets/libgvoicensmodel.bin&quot;</span> <span class="attr">force</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copyFile</span> <span class="attr">src</span>=<span class="string">&quot;$S(PluginDir)/../GVoiceLib/Android/assets/config.json&quot;</span> <span class="attr">dst</span>=<span class="string">&quot;$S(BuildDir)/assets/config.json&quot;</span> <span class="attr">force</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resourceCopies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="游戏内资源"><a href="#游戏内资源" class="headerlink" title="游戏内资源"></a>游戏内资源</h3><p>游戏内的资源就是UE引擎或组件依赖的资源/文件，会打包至PAK或拷贝至<code>main.obb</code>内的文件。</p>
+<h3 id="In-Game-Resources"><a href="#In-Game-Resources" class="headerlink" title="In-Game Resources"></a>In-Game Resources</h3><p>The in-game resources refer to the resources/files that depend on the UE engine or components, which will be packed into PAK or copied into the <code>main.obb</code> file.</p>
 <ul>
-<li>PAK内：游戏内的资产，需要梳理哪些是非必要的，哪些是可以剔除或进行延迟加载的。</li>
-<li>DirectoriesToAlwaysStageAsNonUFS：不进PAK，但是会打包进main.obb里的</li>
+<li>In PAK: analyze which assets are unnecessary and can be removed or loaded lazily.</li>
+<li><code>DirectoriesToAlwaysStageAsNonUFS</code>: directories that do not go into PAK but will be packed into main.obb; currently, only the <code>Content/Movies</code> directory is copied to <code>main.obb</code> in the engine.</li>
 </ul>
-<h4 id="PAK内资源"><a href="#PAK内资源" class="headerlink" title="PAK内资源"></a>PAK内资源</h4><p>更准确地描述是：安装包内PAK的资源。</p>
-<p>引擎必要的资源都在<code>pakchunk0</code>中，除了<code>pakchunk0</code>外，UE可以把利用<code>PrimaryAssetLabel</code>拆分的Chunk打包至安装包外。</p>
-<p>但对于<code>pakchunk0</code>中的资源或文件，依然要进行优化：</p>
+<h4 id="In-Game-Resources-in-PAK"><a href="#In-Game-Resources-in-PAK" class="headerlink" title="In-Game Resources in PAK"></a>In-Game Resources in PAK</h4><p>More accurately, this refers to the assets within the installation package’s PAK.</p>
+<p>The necessary resources for the engine are all in <code>pakchunk0</code>. Apart from <code>pakchunk0</code>, UE can split chunks packaged externally using <code>PrimaryAssetLabel</code>.</p>
+<p>However, the resources or files within <code>pakchunk0</code> still need optimization:</p>
 <ol>
-<li>仅保留引擎必要的资源（<code>/Engine</code>中的关键资产、ini、GlobalShader、项目ShaderLibrary、启动地图、GameFramework资产，等等），在我之前的文章(<a href="https://imzlp.com/posts/22570/">UE资源管理：引擎打包资源分析</a>)有更详细的介绍。</li>
-<li>剔除非启动阶段必须的资源</li>
-<li>改造引擎延迟加载部分文件（如L10N本地化语言的加载）</li>
-<li>拆分启动阶段与游戏内资源（如字体），游戏内字体单独打包且走动态下载</li>
+<li>Keep only the necessary resources for the engine (key assets in <code>/Engine</code>, ini files, GlobalShader, project ShaderLibrary, startup maps, GameFramework assets, etc.), as detailed in my previous article (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/22570/">UE Resource Management: Analysis of Engine Packaged Resources</a>).</li>
+<li>Remove resources that are not necessary at the startup stage</li>
+<li>Revamp the engine to lazily load certain files (like L10N localization language loading)</li>
+<li>Split startup phase resources from in-game resources (e.g., fonts), where in-game fonts are packaged separately and use dynamic downloading.</li>
 </ol>
-<p>引擎本身的拆包逻辑也有较大的局限性，比如ShdaerLibrary之类的，默认整个项目生成一个，当规模庞大后，它也将成为优化包大小的瓶颈。这部分内容的详情可以查看我之前的另一篇文章(<a href="https://imzlp.com/posts/37036/">资源管理：重塑UE的包拆分方案</a>)。</p>
-<p>除此之外，还需要在资源管理和打包阶段，能够将Android的所有资源从安装包内剔除，转为动态下载/挂载的机制，并且不能够影响IOS。<br>当使用诸如PrimaryAssetLabel拆分pak时，引擎为Android提供了内置的把Pak从安装包内剔除的方法：</p>
+<p>The engine’s unpacking logic also has significant limitations, for example, ShaderLibrary which defaults to generating a single unit for the entire project, and when the size grows large, it becomes a bottleneck for optimizing package size. More on this can be found in my earlier article (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/37036/">Resource Management: Restructuring UE’s Package Split Scheme</a>).</p>
+<p>Additionally, it is necessary during resource management and the packaging phase to ensure that all Android resources are removed from the installation package and transitioned to a dynamic downloading/mounting mechanism without affecting iOS.<br>When using something like PrimaryAssetLabel to split pak, the engine provides a built-in method for Android to remove Pak from the installation package:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; Config/DefaultEngine.ini</span></span><br><span class="line"><span class="section">[/Script/AndroidRuntimeSettings.AndroidRuntimeSettings]</span></span><br><span class="line">+<span class="attr">ObbFilters</span>=-*.pak</span><br><span class="line">+<span class="attr">ObbFilters</span>=pakchunk0-*</span><br></pre></td></tr></table></figure>
 
-<p>但官方仅在Android平台有支持，对于其他平台就没那么方便了。在之前的文章中曾介绍过，我开发的HotChunker扩展可以很容易地实现<a href="https://imzlp.com/posts/37036/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%8C%85%E8%BF%87%E6%BB%A4%E6%96%B9%E6%A1%88">通用的包过滤方案</a>，为全平台支持自定义的进包控制策略。</p>
-<h4 id="StageAsNonUFS"><a href="#StageAsNonUFS" class="headerlink" title="StageAsNonUFS"></a>StageAsNonUFS</h4><p>在引擎的打包配置中，有一项<code>DirectoriesToAlwaysStageAsNonUFS</code>，它是指定目录不打包进PAK，但是会打包进main.obb里的，目前引擎内只有<code>Content/Movies</code>目录会被拷贝至<code>main.obb</code>中。</p>
-<p>而在打包时的读取的Ini，也是具有层级逻辑的，所以对于打包时的配置，依然能够对不同平台进行区分！如果想要在Android/IOS进行区分，也可以利用这个机制做到。</p>
-<p>可以把打包策略做如下调整：除非必要的视频（如启动时立即播放的），可以把其余的游戏内MP4单独打包时PAK中，转为动态下载。</p>
-<p>这样可以大幅减少APK内MP4的大小，也能够使MP4进行热更。</p>
-<h2 id="优化效果"><a href="#优化效果" class="headerlink" title="优化效果"></a>优化效果</h2><p>综合上面多种对包大小优化手段后，顺利将游戏的APK大小从数百M降低到百M，运行时内存也降低了数十M！并且包含了完整的第三方组件、游戏功能，资源可走动态下载，使安装包本体变成一个极小化的下载器，便于传播和分发。</p>
-<p>实际采用哪些优化策略要结合实际项目的具体需要，以及对包体大小和性能的平衡来选择，如inline控制和编译优化级别、资源的极致化裁剪（L10N等）还需要对引擎进行改造等。</p>
-<h2 id="额外资料"><a href="#额外资料" class="headerlink" title="额外资料"></a>额外资料</h2><p>本文中提到的博客内历史文章：</p>
+<p>However, this is only officially supported on the Android platform; other platforms do not have it so conveniently. In a previous article, I introduced my developed HotChunker extension which can easily implement <a target="_blank" rel="noopener" href="https://imzlp.com/posts/37036/#%E9%80%9A%E7%94%A8%E7%9A%84%E5%8C%85%E8%BF%87%E6%BB%A4%E6%96%B9%E6%A1%88">a common package filtering scheme</a> providing full platform support for custom package control strategies.</p>
+<h4 id="StageAsNonUFS"><a href="#StageAsNonUFS" class="headerlink" title="StageAsNonUFS"></a>StageAsNonUFS</h4><p>In the engine’s packaging configuration, there is an option <code>DirectoriesToAlwaysStageAsNonUFS</code>, which specifies directories that do not pack into PAK but will go into <code>main.obb</code>; currently, only the <code>Content/Movies</code> directory is copied to <code>main.obb</code>.</p>
+<p>The reading of Ini during packaging also has level logic, so different platform configurations can still be achieved! If differentiation is needed for Android/iOS, this mechanism can be utilized.</p>
+<p>The packaging strategy can be adjusted as follows: unless essential videos (like those that need to play immediately at startup), other in-game MP4s can be packaged separately in PAK for dynamic downloading.</p>
+<p>This approach can significantly reduce the MP4 size within the APK and allow for hot updates.</p>
+<h2 id="Optimization-Effects"><a href="#Optimization-Effects" class="headerlink" title="Optimization Effects"></a>Optimization Effects</h2><p>After successfully employing various strategies to optimize package size, the APK size of the game has been reduced from hundreds of MB to just over 100MB, and runtime memory has been decreased by several dozen MB! Moreover, it retains the full third-party components and game functionalities, with resources modifiable for dynamic downloads, transforming the installation package into a highly minimized downloader, facilitating distribution.</p>
+<p>The actual optimization strategies adopted should consider the specific needs of the project as well as the balance between package size and performance, such as controlling inline functions and compilation optimization levels, as well as extreme resource pruning (like L10N) that may necessitate modifying the engine.</p>
+<h2 id="Additional-Resources"><a href="#Additional-Resources" class="headerlink" title="Additional Resources"></a>Additional Resources</h2><p>Historical articles mentioned in this blog:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/75405/#Monolithic%E6%A8%A1%E5%BC%8F">UE插件与工具开发：基础概念</a></li>
-<li><a href="https://imzlp.com/posts/37036/">资源管理：重塑UE的包拆分方案</a></li>
-<li><a href="https://imzlp.com/posts/22570/">UE资源管理：引擎打包资源分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/75405/#Monolithic%E6%A8%A1%E5%BC%8F">UE Plugin and Tool Development: Basic Concepts</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/37036/">Resource Management: Restructuring UE’s Package Split Scheme</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/22570/">UE Resource Management: Analysis of Engine Packaged Resources</a></li>
 </ul>
-<p>UE构建系统相关的扩展阅读：</p>
+<p>Further reading on UE build systems:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a></li>
-<li><a href="https://imzlp.com/posts/6362/">Build flow of the Unreal Engine4 project</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/6362/">Build flow of the Unreal Engine4 project</a></li>
 </ul>
-<p>其他外部资料：</p>
+<p>Other external resources:</p>
 <ul>
-<li>Epic官方有一篇优化包大小的文档：<a target="_blank" rel="noopener" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/reducing-packaged-game-size?application_version=4.27">Reducing Packaged Game Size</a>，可以与本文结合使用。</li>
-<li>上架GooglePlay平台，有明确的大小要求：<a target="_blank" rel="noopener" href="https://support.google.com/googleplay/android-developer/answer/9859372?hl=zh-Hans">GooglePlay的应用大小限制</a>。</li>
+<li>Epic has an official document on optimizing package size: <a target="_blank" rel="noopener" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/reducing-packaged-game-size?application_version=4.27">Reducing Packaged Game Size</a>, which can be used in conjunction with this article.</li>
+<li>Google Play has clear size requirements for launching applications: <a target="_blank" rel="noopener" href="https://support.google.com/googleplay/android-developer/answer/9859372?hl=zh-Hans">Google Play’s App Size Limits</a>.</li>
 </ul>
 
     </div>
@@ -672,7 +670,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -682,7 +680,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -692,39 +690,39 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/53079/" target="_blank">极致优化UE Android APK的大小</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2025/02/25 09:44<br/>
+             <span>Title:</span><a href="/posts/53079/" target="_blank">Ultimate Optimization: Reducing the size of UE Android APKs</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2025/02/25 09:44<br/>
              
-              <span>更新时间:</span>2025/02/28 16:19<br/>
+              <span>Update Date:</span>2025/02/28 16:19<br/>
              
-             <span>本文字数:</span><span class="page-count">6.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">15k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/53079/" target="_blank" title="极致优化UE Android APK的大小">https://imzlp.com/posts/53079/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/53079/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/53079/" target="_blank" title="Ultimate Optimization: Reducing the size of UE Android APKs">https://en.imzlp.com/posts/53079/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/53079/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -745,8 +743,8 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/posts/22890/" rel="next" title="UE热更新：一次资源异常的故障分析">
-      UE热更新：一次资源异常的故障分析 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/22890/" rel="next" title="UE hot update: Fault analysis of a resource anomaly">
+      UE hot update: Fault analysis of a resource anomaly <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -817,25 +815,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E5%A4%A7%E5%B0%8F%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">包大小分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9NativeLibs"><span class="nav-number">2.</span> <span class="nav-text">压缩NativeLibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BD%93%E7%A7%AF%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">代码体积优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%8FlibUE4-so"><span class="nav-number">3.1.</span> <span class="nav-text">减小libUE4.so</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%81%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-number">3.1.1.</span> <span class="nav-text">禁用模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%ADinline"><span class="nav-number">3.1.2.</span> <span class="nav-text">关闭inline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">3.1.3.</span> <span class="nav-text">关闭异常处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8O3-Oz%E7%BC%96%E8%AF%91"><span class="nav-number">3.1.4.</span> <span class="nav-text">使用O3&#x2F;Oz编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E7%94%A8LTO"><span class="nav-number">3.1.5.</span> <span class="nav-text">启用LTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%94%E9%99%A4%E5%AF%BC%E5%87%BA%E7%AC%A6%E5%8F%B7"><span class="nav-number">3.1.6.</span> <span class="nav-text">剔除导出符号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">优化数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#so%E5%8E%8B%E7%BC%A9%E5%90%8E%E5%A4%A7%E5%B0%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">so压缩后大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%94%B6%E7%9B%8A"><span class="nav-number">3.2.2.</span> <span class="nav-text">内存收益</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%E8%A1%A5%E5%85%85"><span class="nav-number">3.3.</span> <span class="nav-text">优化策略补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RELR%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8%E5%8E%8B%E7%BC%A9"><span class="nav-number">3.3.1.</span> <span class="nav-text">RELR重定位表压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E8%A3%81%E5%89%AA"><span class="nav-number">4.</span> <span class="nav-text">资源裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#APK%E5%86%85%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">APK内文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E8%A3%81%E5%89%AA%EF%BC%9A%E4%BB%A5GVoice%E4%B8%BA%E4%BE%8B"><span class="nav-number">4.1.1.</span> <span class="nav-text">组件裁剪：以GVoice为例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E5%86%85%E8%B5%84%E6%BA%90"><span class="nav-number">4.2.</span> <span class="nav-text">游戏内资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PAK%E5%86%85%E8%B5%84%E6%BA%90"><span class="nav-number">4.2.1.</span> <span class="nav-text">PAK内资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StageAsNonUFS"><span class="nav-number">4.2.2.</span> <span class="nav-text">StageAsNonUFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="nav-number">5.</span> <span class="nav-text">优化效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">额外资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-Size-Distribution"><span class="nav-number">1.</span> <span class="nav-text">Package Size Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compress-NativeLibs"><span class="nav-number">2.</span> <span class="nav-text">Compress NativeLibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-Size-Optimization"><span class="nav-number">3.</span> <span class="nav-text">Code Size Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reduce-libUE4-so"><span class="nav-number">3.1.</span> <span class="nav-text">Reduce libUE4.so</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Disable-Modules"><span class="nav-number">3.1.1.</span> <span class="nav-text">Disable Modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disable-Inline"><span class="nav-number">3.1.2.</span> <span class="nav-text">Disable Inline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disable-Exception-Handling"><span class="nav-number">3.1.3.</span> <span class="nav-text">Disable Exception Handling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-O3-Oz-Compilation"><span class="nav-number">3.1.4.</span> <span class="nav-text">Use O3&#x2F;Oz Compilation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-LTO"><span class="nav-number">3.1.5.</span> <span class="nav-text">Enable LTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-Exported-Symbols"><span class="nav-number">3.1.6.</span> <span class="nav-text">Remove Exported Symbols</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimize-Data"><span class="nav-number">3.2.</span> <span class="nav-text">Optimize Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Size-after-so-Compression"><span class="nav-number">3.2.1.</span> <span class="nav-text">Size after so Compression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Memory-Gains"><span class="nav-number">3.2.2.</span> <span class="nav-text">Memory Gains</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Supplement-to-Optimization-Strategies"><span class="nav-number">3.3.</span> <span class="nav-text">Supplement to Optimization Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Compressing-the-RELR-Relocation-Table"><span class="nav-number">3.3.1.</span> <span class="nav-text">Compressing the RELR Relocation Table</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource-Trimming"><span class="nav-number">4.</span> <span class="nav-text">Resource Trimming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Files-in-APK"><span class="nav-number">4.1.</span> <span class="nav-text">Files in APK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Component-Trimming-Taking-GVoice-as-an-Example"><span class="nav-number">4.1.1.</span> <span class="nav-text">Component Trimming: Taking GVoice as an Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-Game-Resources"><span class="nav-number">4.2.</span> <span class="nav-text">In-Game Resources</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#In-Game-Resources-in-PAK"><span class="nav-number">4.2.1.</span> <span class="nav-text">In-Game Resources in PAK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StageAsNonUFS"><span class="nav-number">4.2.2.</span> <span class="nav-text">StageAsNonUFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization-Effects"><span class="nav-number">5.</span> <span class="nav-text">Optimization Effects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-Resources"><span class="nav-number">6.</span> <span class="nav-text">Additional Resources</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -843,19 +841,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -893,10 +891,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -923,9 +921,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -934,12 +929,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -1092,7 +1087,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/53079/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/53079/',]
       });
       });
   </script>
@@ -1115,12 +1110,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

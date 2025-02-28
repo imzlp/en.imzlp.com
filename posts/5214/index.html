@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="UE4引擎里面定义了很多引擎中的宏和一些处理逻辑，如WITH_ENGINE&#x2F;WITH_EDITOR等，它们部分是UBT通过读取*.target.cs文件中的配置来定义的，有些逻辑是通过读取*.Build.cs的配置处理的。我读了一下UBT的代码，抽出来部分UBT中配置文件(Target.cs&#x2F;Build.cs)参数与MACRO的相互定义，作为速查手册。*.Target.cs的参数可以看：Unrea">
+  <meta name="description" content="UE4 Engine defines many macros and some processing logic within the engine, such as WITH_ENGINE&#x2F;WITH_EDITOR, etc. Some of these are defined by UBT through reading the configurations in *.target.cs fil">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Macro defined by UBT in UE4">
-<meta property="og:url" content="https://imzlp.com/posts/5214/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="UE4引擎里面定义了很多引擎中的宏和一些处理逻辑，如WITH_ENGINE&#x2F;WITH_EDITOR等，它们部分是UBT通过读取*.target.cs文件中的配置来定义的，有些逻辑是通过读取*.Build.cs的配置处理的。我读了一下UBT的代码，抽出来部分UBT中配置文件(Target.cs&#x2F;Build.cs)参数与MACRO的相互定义，作为速查手册。*.Target.cs的参数可以看：Unrea">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:url" content="https://en.imzlp.com/posts/5214/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="UE4 Engine defines many macros and some processing logic within the engine, such as WITH_ENGINE&#x2F;WITH_EDITOR, etc. Some of these are defined by UBT through reading the configurations in *.target.cs fil">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230417215540.webp">
 <meta property="article:published_time" content="2019-01-09T18:17:35.000Z">
 <meta property="article:modified_time" content="2019-01-09T18:17:35.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="UBT">
 <meta property="article:tag" content="构建系统">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230417215540.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/5214/">
+<link rel="canonical" href="https://en.imzlp.com/posts/5214/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>Macro defined by UBT in UE4 | 循迹研究室</title>
+  <title>Macro defined by UBT in UE4 | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,22 +288,22 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/5214/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/5214/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Macro defined by UBT in UE4<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2019-01-09-5214.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/5214/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Macro defined by UBT in UE4<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2019-01-09-5214.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/5214/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
@@ -313,47 +313,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2019-01-09 18:17 18:17:35:17" itemprop="dateCreated datePublished" datetime="2019-01-09T18:17:35+00:00">2019-01-09 18:17</time>
+              <time title="Created: 2019-01-09 18:17 18:17:35:17" itemprop="dateCreated datePublished" datetime="2019-01-09T18:17:35+00:00">2019-01-09 18:17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/UBT/" itemprop="url" rel="index"><span itemprop="name">UBT</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/5214/" class="post-meta-item leancloud_visitors" data-flag-title="Macro defined by UBT in UE4" title="阅读次数">
+            <span id="/posts/5214/" class="post-meta-item leancloud_visitors" data-flag-title="Macro defined by UBT in UE4" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.1k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -365,7 +365,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>UE4引擎里面定义了很多引擎中的宏和一些处理逻辑，如<code>WITH_ENGINE</code>/<code>WITH_EDITOR</code>等，它们部分是UBT通过读取<code>*.target.cs</code>文件中的配置来定义的，有些逻辑是通过读取<code>*.Build.cs</code>的配置处理的。<br>我读了一下UBT的代码，抽出来部分UBT中配置文件(<code>Target.cs</code>/<code>Build.cs</code>)参数与MACRO的相互定义，作为速查手册。<br><code>*.Target.cs</code>的参数可以看：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/TargetFiles/index.html">UnrealBuildSystem/Targets</a><br><code>*.Build.cs</code>的参数可以看：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/ModuleFiles/index.html">UnrealBuildSystem/ModuleFiles</a><br>UE的构建系统文档：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/index.html">Build Tools</a></p>
+        <p>UE4 Engine defines many macros and some processing logic within the engine, such as <code>WITH_ENGINE</code>/<code>WITH_EDITOR</code>, etc. Some of these are defined by UBT through reading the configurations in <code>*.target.cs</code> files, and some logic is processed by reading configurations in <code>*.Build.cs</code>.</p>
+<p>I have read some of the UBT code and extracted part of the configuration files (<code>Target.cs</code>/<code>Build.cs</code>) parameters and their mutual definitions with MACROs as a quick reference manual.<br>You can view the parameters in <code>*.Target.cs</code> here: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/TargetFiles/index.html">UnrealBuildSystem/Targets</a><br>You can view the parameters in <code>*.Build.cs</code> here: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/ModuleFiles/index.html">UnrealBuildSystem/ModuleFiles</a><br>UE’s build system documentation: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/BuildTools/index.html">Build Tools</a></p>
 <span id="more"></span>
 
 <h3 id="IS-PROGRAM"><a href="#IS-PROGRAM" class="headerlink" title="IS_PROGRAM"></a>IS_PROGRAM</h3><ul>
@@ -375,6 +376,7 @@
 <p>Type (TargetType): The type of target.</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line">GlobalCompileEnvironment.Definitions.Add(String.Format(<span class="string">&quot;IS_PROGRAM=&#123;0&#125;&quot;</span>, TargetType == TargetType.Program ? <span class="string">&quot;1&quot;</span> : <span class="string">&quot;0&quot;</span>));</span><br></pre></td></tr></table></figure>
+
 <h3 id="ENABLE-PGO-PROFILE"><a href="#ENABLE-PGO-PROFILE" class="headerlink" title="ENABLE_PGO_PROFILE"></a>ENABLE_PGO_PROFILE</h3><ul>
 <li>(bool) bPGOProfile</li>
 </ul>
@@ -414,7 +416,6 @@
 <p><strong>Monolithic Mode</strong>, which puts all code together in a single executable file.<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Programming/Modules/API">Module API Specifiers</a></p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">bCompileMonolithic = (Rules.LinkType == TargetLinkType.Monolithic);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... </span></span><br><span class="line">GlobalCompileEnvironment.Definitions.Add(String.Format(<span class="string">&quot;IS_MONOLITHIC=&#123;0&#125;&quot;</span>, ShouldCompileMonolithic() ? <span class="string">&quot;1&quot;</span> : <span class="string">&quot;0&quot;</span>));</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
 
 <h3 id="WITH-ENGINE"><a href="#WITH-ENGINE" class="headerlink" title="WITH_ENGINE"></a>WITH_ENGINE</h3><ul>
 <li>(bool) bCompileAgainstEngine</li>
@@ -467,7 +468,6 @@
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (Rules.bUseLoggingInShipping)</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;USE_LOGGING_IN_SHIPPING=1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;USE_LOGGING_IN_SHIPPING=0&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
 <h3 id="WITH-LOGGING-TO-MEMORY"><a href="#WITH-LOGGING-TO-MEMORY" class="headerlink" title="WITH_LOGGING_TO_MEMORY"></a>WITH_LOGGING_TO_MEMORY</h3><ul>
 <li>(bool) bLoggingToMemoryEnabled</li>
 </ul>
@@ -491,6 +491,7 @@
 <p>Whether to turn on checks (asserts) for test/shipping builds.</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (Rules.bUseChecksInShipping)</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;USE_CHECKS_IN_SHIPPING=1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;USE_CHECKS_IN_SHIPPING=0&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="UE-BUILD-MINIMAL"><a href="#UE-BUILD-MINIMAL" class="headerlink" title="UE_BUILD_MINIMAL"></a>UE_BUILD_MINIMAL</h3><ul>
 <li>(bool) bCompileLeanAndMeanUE</li>
 </ul>
@@ -507,7 +508,6 @@
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bBuildEditor has now been set appropriately for all platforms, so this is here to make sure the #define </span></span><br><span class="line"><span class="keyword">if</span> (Rules.bBuildEditor)</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_EDITOR=1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (!GlobalCompileEnvironment.Definitions.Contains(<span class="string">&quot;WITH_EDITOR=0&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_EDITOR=0&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
 <h3 id="WITH-EDITORONLY-DATA"><a href="#WITH-EDITORONLY-DATA" class="headerlink" title="WITH_EDITORONLY_DATA"></a>WITH_EDITORONLY_DATA</h3><ul>
 <li>(bool) bBuildWithEditorOnlyData</li>
 </ul>
@@ -523,7 +523,6 @@
 <p>Compile server-only code.</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Check if server-only code should be compiled out.</span></span><br><span class="line"><span class="keyword">if</span> (Rules.bWithServerCode == <span class="literal">true</span>)</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_SERVER_CODE=1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_SERVER_CODE=0&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
 <h3 id="WITH-CEF3"><a href="#WITH-CEF3" class="headerlink" title="WITH_CEF3"></a>WITH_CEF3</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Set the define for whether we&#x27;re compiling with CEF3</span></span><br><span class="line"><span class="keyword">if</span> (Rules.bCompileCEF3 &amp;&amp; (Platform == UnrealTargetPlatform.Win32 || Platform == UnrealTargetPlatform.Win64 || Platform == UnrealTargetPlatform.Mac || Platform == UnrealTargetPlatform.Linux))</span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_CEF3=1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	GlobalCompileEnvironment.Definitions.Add(<span class="string">&quot;WITH_CEF3=0&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -561,11 +560,11 @@
 
 <h3 id="bUsesSlate"><a href="#bUsesSlate" class="headerlink" title="bUsesSlate"></a>bUsesSlate</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Configuration/UEBuildTargets.cs</span></span><br><span class="line"><span class="comment">// void PrepareReceipts(UEToolChain ToolChain, List&lt;KeyValuePair&lt;FileReference, BuildProductType&gt;&gt; BuildProducts, List&lt;KeyValuePair&lt;FileReference, BuildProductType&gt;&gt; PrecompileOnlyBuildProducts, EHotReload HotReload)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (Rules.bUsesSlate)</span><br><span class="line">&#123;</span><br><span class="line">	AddRuntimeDependenciesFromDir(DirectoryReference.Combine(UnrealBuildTool.EngineDirectory, <span class="string">&quot;Content&quot;</span>, <span class="string">&quot;Slate&quot;</span>), StagedFileType.UFS);</span><br><span class="line">	AddRuntimeDependenciesFromDir(DirectoryReference.Combine(UnrealBuildTool.EngineDirectory, <span class="string">&quot;Content&quot;</span>, <span class="string">&quot;SlateDebug&quot;</span>), StagedFileType.UFS);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (ProjectFile != <span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		AddRuntimeDependenciesFromDir(DirectoryReference.Combine(ProjectDirectory, <span class="string">&quot;Content&quot;</span>, <span class="string">&quot;Slate&quot;</span>), StagedFileType.UFS);</span><br><span class="line">		AddRuntimeDependenciesFromDir(DirectoryReference.Combine(ProjectDirectory, <span class="string">&quot;Content&quot;</span>, <span class="string">&quot;SlateDebug&quot;</span>), StagedFileType.UFS);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
 <h3 id="bIsBuildingConsoleApplication"><a href="#bIsBuildingConsoleApplication" class="headerlink" title="bIsBuildingConsoleApplication"></a>bIsBuildingConsoleApplication</h3><blockquote>
 <p>True if this is a console application that’s being built.</p>
 </blockquote>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Platform/Windows/VCToolChains.cs</span></span><br><span class="line"><span class="comment">// void AppendLibArguments(LinkEnvironment LinkEnvironment, List&lt;string&gt; Arguments)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AppendLibArguments</span>(<span class="params">LinkEnvironment LinkEnvironment, List&lt;<span class="built_in">string</span>&gt; Arguments</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// Prevents the linker from displaying its logo for each invocation.</span></span><br><span class="line">	Arguments.Add(<span class="string">&quot;/NOLOGO&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Prompt the user before reporting internal errors to Microsoft.</span></span><br><span class="line">	Arguments.Add(<span class="string">&quot;/errorReport:prompt&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//	PC</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">if</span> (LinkEnvironment.Platform == CppPlatform.Win32 || LinkEnvironment.Platform == CppPlatform.Win64)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Set machine type/ architecture to be 64 bit.</span></span><br><span class="line">		<span class="keyword">if</span> (LinkEnvironment.Platform == CppPlatform.Win64)</span><br><span class="line">		&#123;</span><br><span class="line">			Arguments.Add(<span class="string">&quot;/MACHINE:x64&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 32 bit executable/ target.</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			Arguments.Add(<span class="string">&quot;/MACHINE:x86&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (LinkEnvironment.bIsBuildingConsoleApplication)</span><br><span class="line">			&#123;</span><br><span class="line">				Arguments.Add(<span class="string">&quot;/SUBSYSTEM:CONSOLE&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				Arguments.Add(<span class="string">&quot;/SUBSYSTEM:WINDOWS&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//	Shipping &amp; LTCG</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">if</span> (LinkEnvironment.Configuration == CppConfiguration.Shipping)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Use link-time code generation.</span></span><br><span class="line">		Arguments.Add(<span class="string">&quot;/LTCG&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Programs/UnrealBuildTool/Platform/Windows/VCToolChains.cs</span></span><br><span class="line"><span class="comment">// void AppendLibArguments(LinkEnvironment LinkEnvironment, List&lt;string&gt; Arguments)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AppendLibArguments</span>(<span class="params">LinkEnvironment LinkEnvironment, List&lt;<span class="built_in">string</span>&gt; Arguments</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// Prevents the linker from displaying its logo for each invocation.</span></span><br><span class="line">	Arguments.Add(<span class="string">&quot;/NOLOGO&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Prompt the user before reporting internal errors to Microsoft.</span></span><br><span class="line">	Arguments.Add(<span class="string">&quot;/errorReport:prompt&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//	PC</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">if</span> (LinkEnvironment.Platform == CppPlatform.Win32 || LinkEnvironment.Platform == CppPlatform.Win64)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Set machine type/ architecture to be 64 bit.</span></span><br><span class="line">		<span class="keyword">if</span> (LinkEnvironment.Platform == CppPlatform.Win64)</span><br><span class="line">		&#123;</span><br><span class="line">			Arguments.Add(<span class="string">&quot;/MACHINE:x64&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 32 bit executable/ target.</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			Arguments.Add(<span class="string">&quot;/MACHINE:x86&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (LinkEnvironment.bIsBuildingConsoleApplication)</span><br><span class="line">			&#123;</span><br><span class="line">				Arguments.Add(<span class="string">&quot;/SUBSYSTEM:CONSOLE&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				Arguments.Add(<span class="string">&quot;/SUBSYSTEM:WINDOWS&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//	Shipping &amp; LTCG</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">if</span> (LinkEnvironment.Configuration == CppConfiguration.Shipping)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Use link-time code generation.</span></span><br><span class="line">		Arguments.Add(<span class="string">&quot;/LTCG&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -575,7 +574,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -585,7 +584,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -595,37 +594,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/5214/" target="_blank">Macro defined by UBT in UE4</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2019/01/09 18:17<br/>
+             <span>Title:</span><a href="/posts/5214/" target="_blank">Macro defined by UBT in UE4</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2019/01/09 18:17<br/>
              
-             <span>本文字数:</span><span class="page-count">2.8k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.1k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/5214/" target="_blank" title="Macro defined by UBT in UE4">https://imzlp.com/posts/5214/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/5214/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/5214/" target="_blank" title="Macro defined by UBT in UE4">https://en.imzlp.com/posts/5214/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/5214/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -650,8 +649,8 @@
       <i class="fa fa-chevron-left"></i> UE Package Error:ObservedKeyNames.Num()>0
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/11177/" rel="next" title="提取Tor并搭建Tor Bridge">
-      提取Tor并搭建Tor Bridge <i class="fa fa-chevron-right"></i>
+    <a href="/posts/11177/" rel="next" title="Extract Tor and build Tor Bridge">
+      Extract Tor and build Tor Bridge <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -722,10 +721,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -737,10 +736,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -748,19 +747,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -798,10 +797,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -828,9 +827,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -839,12 +835,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -997,7 +993,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/5214/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/5214/',]
       });
       });
   </script>
@@ -1020,12 +1016,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

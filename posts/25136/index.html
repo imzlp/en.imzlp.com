@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="先前介绍了一系列UE中热更新工程实践的文章，能够实现基于原始工程的资源的版本比对与差异更新。但默认情况下资源的更新是基于文件的更新，某个资源产生了变动，就要将该资源的文件完整地打包进去，而UE的资源变动在Cook之后并不会造成整个文件的全部更新，序列化时只变动了某些bytes。在这种情况下，基于文件的Patch机制能够大幅度减少补丁的大小，本篇文章对二进制补丁的生成和加载方案做一个概述，以HotP">
+  <meta name="description" content="A series of articles has been introduced regarding the engineering practices of hot updates in UE, capable of achieving version comparison and differential updates based on resources from the original">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE热更新：资源的二进制补丁方案">
-<meta property="og:url" content="https://imzlp.com/posts/25136/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="先前介绍了一系列UE中热更新工程实践的文章，能够实现基于原始工程的资源的版本比对与差异更新。但默认情况下资源的更新是基于文件的更新，某个资源产生了变动，就要将该资源的文件完整地打包进去，而UE的资源变动在Cook之后并不会造成整个文件的全部更新，序列化时只变动了某些bytes。在这种情况下，基于文件的Patch机制能够大幅度减少补丁的大小，本篇文章对二进制补丁的生成和加载方案做一个概述，以HotP">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Hot Update: binary patch solution for resources">
+<meta property="og:url" content="https://en.imzlp.com/posts/25136/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="A series of articles has been introduced regarding the engineering practices of hot updates in UE, capable of achieving version comparison and differential updates based on resources from the original">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051826294.webp">
 <meta property="article:published_time" content="2021-09-06T16:27:10.000Z">
 <meta property="article:modified_time" content="2021-09-06T16:27:10.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051826294.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/25136/">
+<link rel="canonical" href="https://en.imzlp.com/posts/25136/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE热更新：资源的二进制补丁方案 | 循迹研究室</title>
+  <title>UE Hot Update: binary patch solution for resources | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/25136/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/25136/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE热更新：资源的二进制补丁方案<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-09-06-25136.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/25136/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Hot Update: binary patch solution for resources<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-09-06-25136.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/25136/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Hot Update: binary patch solution for resources</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE热更新：资源的二进制补丁方案</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-09-06 16:27 16:27:10:27" itemprop="dateCreated datePublished" datetime="2021-09-06T16:27:10+00:00">2021-09-06 16:27</time>
+              <time title="Created: 2021-09-06 16:27 16:27:10:27" itemprop="dateCreated datePublished" datetime="2021-09-06T16:27:10+00:00">2021-09-06 16:27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/25136/" class="post-meta-item leancloud_visitors" data-flag-title="UE热更新：资源的二进制补丁方案" title="阅读次数">
+            <span id="/posts/25136/" class="post-meta-item leancloud_visitors" data-flag-title="UE Hot Update: binary patch solution for resources" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>17 mins.</span>
             </span>
 
         </div>
@@ -369,85 +369,89 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>先前介绍了一系列UE中热更新工程实践的文章，能够实现基于原始工程的资源的版本比对与差异更新。但默认情况下资源的更新是基于文件的更新，某个资源产生了变动，就要将该资源的文件完整地打包进去，而UE的资源变动在Cook之后并不会造成整个文件的全部更新，序列化时只变动了某些bytes。在这种情况下，基于文件的Patch机制能够大幅度减少补丁的大小，本篇文章对二进制补丁的生成和加载方案做一个概述，以<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>为基础，可以方便地实现二进制补丁的生成。<br>为了实现这个需求，我将HDiffPatch移植到了UE内，将其作为<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>默认的二进制差异补丁的DIFF/PATCH算法，基于Modular Feature方式也可以方便地扩展其他的算法。</p>
+        <p>A series of articles has been introduced regarding the engineering practices of hot updates in UE, capable of achieving version comparison and differential updates based on resources from the original project. However, by default, resource updates depend on file updates; if a resource changes, the entire file must be repackaged. In UE, resource changes after Cook do not cause the entire file to be updated; only certain bytes are modified during serialization. In this case, a file-based patch mechanism can significantly reduce the size of the patch. This article outlines the generation and loading scheme of binary patches based on <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, allowing for easy generation of binary patches.</p>
+<p>To fulfill this requirement, I have ported HDiffPatch to UE and used it as the default DIFF/PATCH algorithm for binary differential patches in <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>; it can also easily extend other algorithms based on the Modular Feature approach.</p>
 <span id="more"></span>
 
-<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>基于资源的二进制差异的补丁实现，在有些游戏中已经经过了大规模地应用，如英雄联盟就在自己的更新机制中实现了二进制补丁的方案。<br>有些实现方案是基于完整包的差异，这种机制在UE中不合适，因为UE打包出来的资源是Pak，打包Pak时资源的排列顺序并不固定，并不能保证相同的排列方式，所以直接对于Pak的比对不合理，表现也很差，所以我的方案是对资源Cook后的文件，未打包进Pak时进行DIFF，将差异结果再打包至Pak中。</p>
-<p>在UE中，我们修改的文件最终更新到玩家设备上的uasset，都是Cook之后的文件。如下图为例：</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The implementation of binary differential patches based on resources has already been widely applied in some games, such as League of Legends, which has implemented a binary patching scheme in its update mechanism. Some implementation schemes are based on the differences of complete packages, which is unsuitable for UE since the resources packaged by UE are in Pak format. The arrangement order of resources during Pak packaging is not fixed, and cannot guarantee the same arrangement, making direct comparisons of Pak unreasonable, yielding poor performance. Therefore, my scheme is to perform DIFF on the Cooked files of the resources before they are packaged into Pak, then pack the differential results into Pak.</p>
+<p>In UE, the modified files that ultimately update to the player’s device as uasset are all files after they are Cooked. The following image serves as an example:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906111908.webp"></p>
-<p>同一个资源在修改前后，对其进行Cook之后的对比。可以看到Cook之后的文件只是变动了一些数据，但是大部分的数据是一致的，在这种情况下，对整个文件的更新就显得比较浪费，二进制补丁收益巨大。</p>
-<p>所以目标是：</p>
+<p>The comparison of the same resource before and after modification after cooking shows that the Cooked file only changed some data, while most of the data remained consistent. In this situation, updating the entire file seems wasteful, and the benefits of binary patches are significant.</p>
+<p>Thus, the objectives are:</p>
 <ol>
-<li>打包时基于对UAsset的Cook结果进行二进制的patch生成</li>
-<li>将patch的文件替换原始的Cooked的资源文件</li>
-<li>加载资源时进行patch</li>
+<li>Generate binary patches based on the Cooked results of UAsset during packaging.</li>
+<li>Replace the original Cooked resource file with the patch file.</li>
+<li>Apply the patch when loading resources.</li>
 </ol>
-<p>针对这三个需求，需要介入打包的流程以及修改引擎的代码。</p>
-<h3 id="资源的二进制补丁"><a href="#资源的二进制补丁" class="headerlink" title="资源的二进制补丁"></a>资源的二进制补丁</h3><p>UE打包的uasset，都是Cooked之后的文件，也是游戏打包之后能读取的文件，实现uasset的二进制DIFF/PATCH，就是要获取基础包内的Cooked文件与最新资源Cooked的文件进行差异。</p>
-<p>得益于<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的机制，可以很方便地得到当前Patch的uasset信息，将Patch列表中的文件从基础包的Pak中解包出来，与最新Cooked的文件进行DIFF。</p>
+<p>To meet these three needs, it is necessary to intervene in the packaging process and modify the engine code.</p>
+<h3 id="Binary-Patches-of-Resources"><a href="#Binary-Patches-of-Resources" class="headerlink" title="Binary Patches of Resources"></a>Binary Patches of Resources</h3><p>The uasset packaged by UE is a Cooked file, which can be read after the game is packaged. To implement binary DIFF/PATCH for uasset, it is necessary to obtain the Cooked files in the base package and the latest Cooked files for comparison.</p>
+<p>Thanks to the mechanism of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, it is very convenient to acquire the current patch’s uasset information, unpack the files in the Patch list from the base package’s Pak, and perform DIFF with the latest Cooked files.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210906143200850.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210906145329200.webp"></p>
-<p>所以整个资源进行DIFF的步骤和流程为：</p>
+<p>Therefore, the steps and processes of performing DIFF on the entire resource are:</p>
 <ol>
-<li>获取到当前Patch中的资源列表</li>
-<li>Cook Patch中的资源</li>
-<li>从基础包Pak中解包当前Patch列表中的资源</li>
-<li>使用HDiffPatch创建新资源与旧资源的二进制补丁</li>
-<li>将原始的Cooked的文件从Patch信息中剔除，使用<code>patch</code>替代</li>
+<li>Retrieve the list of resources in the current patch.</li>
+<li>Cook the resources in the patch.</li>
+<li>Unpack the resources from the base package’s Pak currently listed in the patch.</li>
+<li>Use HDiffPatch to create a new binary patch between the new and old resources.</li>
+<li>Remove the original Cooked file from the Patch information and use <code>patch</code> as a substitute.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906142450.webp"></p>
-<p>在<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>插件中已经提供了这个机制，可以在<code>Patch</code>配置页面的<code>Binaries Patch</code>中启用。</p>
+<p>This mechanism has been provided in the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> plugin, and can be enabled in the <code>Binaries Patch</code> section of the <code>Patch</code> configuration page.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906143450.webp"></p>
-<p>可以指定某个平台基础包的Pak，以及解密的Key，也可以做一些过滤操作，支持文件规则匹配（大小、类型）等。<br>补丁大小还是非常可观的：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906144159.webp"></p>
-<h3 id="二进制DIFF-PATCH算法"><a href="#二进制DIFF-PATCH算法" class="headerlink" title="二进制DIFF/PATCH算法"></a>二进制DIFF/PATCH算法</h3><blockquote>
-<p>我移植了HDiffPatch到UE中，以插件的形式实现，可以从github上下载：<a target="_blank" rel="noopener" href="https://github.com/hxhb/HDiffPatchUE">hxhb/HDiffPatchUE</a>，与HotPacther放入同一个工程中即可在Patch使用。</p>
+<p>You can specify the Pak of the base package for a certain platform and the decryption key, as well as perform some filter operations, supporting file rule matching (size, type), etc. The size of the patches is still quite considerable:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906144159.webp"></p>
+<h3 id="Binary-DIFF-PATCH-Algorithm"><a href="#Binary-DIFF-PATCH-Algorithm" class="headerlink" title="Binary DIFF/PATCH Algorithm"></a>Binary DIFF/PATCH Algorithm</h3><blockquote>
+<p>I have ported HDiffPatch to UE in the form of a plugin that can be downloaded from GitHub: <a target="_blank" rel="noopener" href="https://github.com/hxhb/HDiffPatchUE">hxhb/HDiffPatchUE</a>. Together with HotPatcher, it can be used in the same project for patching.</p>
 </blockquote>
-<p>二进制的DIFF/PATCH算法，我目前选择的是<a target="_blank" rel="noopener" href="https://github.com/sisong/HDiffPatch">HDiffPatch</a>，相较于BsDiff有性能优势：</p>
+<p>For binary DIFF/PATCH algorithms, I have currently chosen <a target="_blank" rel="noopener" href="https://github.com/sisong/HDiffPatch">HDiffPatch</a>, which has performance advantages over BsDiff:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210906142257789.webp"></p>
-<p>我将HDiffPatch的代码移植为了UE的一个Module，并针对跨平台的问题做了一些修正，将其放到游戏工程中，启动HotPatcher就可以在<code>Binaries Patch</code>-<code>Binaries Patch Type</code>中选择。</p>
+<p>I have ported the HDiffPatch code into a UE module and made some corrections for cross-platform issues. Once HotPatcher is launched, you can choose it in <code>Binaries Patch</code> - <code>Binaries Patch Type</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906144900.webp"></p>
-<p>我将其的代码封装了两个函数，可以方便地调用进行DIFF/PATCH的行为。</p>
+<p>I have encapsulated its code into two functions for convenient DIFF/PATCH operations.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UFUNCTION</span>(BlueprintCallable)</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">CreateCompressedDiff</span><span class="params">(<span class="type">const</span> TArray&lt;uint8&gt;&amp; NewData, <span class="type">const</span> TArray&lt;uint8&gt;&amp; OldData, TArray&lt;uint8&gt;&amp; OutPatch)</span></span>;</span><br><span class="line"><span class="built_in">UFUNCTION</span>(BlueprintCallable)</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">PatchCompressedDiff</span><span class="params">(<span class="type">const</span> TArray&lt;uint8&gt;&amp; OldData, <span class="type">const</span> TArray&lt;uint8&gt;&amp; PatchData, TArray&lt;uint8&gt;&amp; OutNewData)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>当然，前面也提到了，如果不想使用HDiffPatch作为创建二进制的算法，也可以自己实现其他算法的集成，因为是基于Modular Feature的实现，可以非侵入式地实现扩展，只需要添加一个实现以下接口的模块，在<code>StartupModule</code>中注册至<code>BINARIES_DIFF_PATCH_FEATURE_NAME</code>的Modular Features中即可。</p>
+<p>Of course, as mentioned before, if you do not want to use HDiffPatch as the algorithm for creating binaries, you can implement other algorithms by injecting them. Since it is based on a Modular Feature implementation, it can be integrated non-intrusively, just by adding a module that implements the following interface and registering it into the <code>BINARIES_DIFF_PATCH_FEATURE_NAME</code> Modular Features in <code>StartupModule</code>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">IBinariesDiffPatchFeature</span>: <span class="keyword">public</span> IModularFeature</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">virtual</span> ~<span class="built_in">IBinariesDiffPatchFeature</span>()&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">CreateDiff</span><span class="params">(<span class="type">const</span> TArray&lt;uint8&gt;&amp; NewData, <span class="type">const</span> TArray&lt;uint8&gt;&amp; OldData, TArray&lt;uint8&gt;&amp; OutPatch)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">PatchDiff</span><span class="params">(<span class="type">const</span> TArray&lt;uint8&gt;&amp; OldData, <span class="type">const</span> TArray&lt;uint8&gt;&amp; PatchData, TArray&lt;uint8&gt;&amp; OutNewData)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> FString <span class="title">GetFeatureName</span><span class="params">()</span><span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="运行时PATCH"><a href="#运行时PATCH" class="headerlink" title="运行时PATCH"></a>运行时PATCH</h3><blockquote>
-<p>注意：改造PakFile模块的实现，并没有支持PakCache，所以需要将其关闭。</p>
+<h3 id="Runtime-PATCH"><a href="#Runtime-PATCH" class="headerlink" title="Runtime PATCH"></a>Runtime PATCH</h3><blockquote>
+<p>Note: The implementation of the PakFile module has not supported PakCache, so it needs to be disabled.</p>
 </blockquote>
-<p>经过前面的步骤，已经实现了二进制的补丁，并且将其打包成了Pak。</p>
+<p>After completing the previous steps, the binary patches have been generated and packaged into Pak files.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906161543.webp"></p>
-<p>对于创建了二进制补丁的资源，在运行时的加载和使用也需要通过Patch之后才能正常访问。本节提供一个实现思路，但不是完整的方案，这部分内容涉及过多并且需要修改引擎，我提供一个粗暴的实践方案，目的是验证二进制补丁的可行性，在实际的生产中还需要根据项目需求进行大量的优化。</p>
-<p>UE在加载Pak中的文件时，根据PakOrder进行优先级排序，这也是UE热更新实现的基础，从Pak中读取文件的实现是在<code>IPlatformPakFile.cpp</code>中，它位于UE的<code>PakFile</code>模块。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210906153945329.webp"></p>
-<p>原始的Pak加载流程：</p>
+<p>For resources created with binary patches, they also need to be accessed via patches during runtime. This section provides an implementation idea, but it is not a complete solution. This part involves too much content and requires engine modifications. I provide a rough practical solution aimed at verifying the feasibility of binary patches. A lot of optimization is still needed according to project requirements.</p>
+<p>When UE loads files from Pak, it sorts them according to PakOrder, which is also the foundation for UE’s hot update implementation. The reading of files from Pak is implemented in <code>IPlatformPakFile.cpp</code>, which is located in the UE’s <code>PakFile</code> module.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210906153945329.webp"></p>
+<p>The original Pak loading process:</p>
 <ol>
-<li>读取A文件</li>
-<li>从Pak中读取A的原始Cooked的文件</li>
-<li>返回文件Handle</li>
+<li>Read File A.</li>
+<li>Read the original Cooked file of A from Pak.</li>
+<li>Return the file handle.</li>
 </ol>
-<p>但是我们经过创建了Patch之后，Pak内并不包含原始的Cooked之后的文件，所以就需要先在旧资源的基础上执行Patch操作，将最新的文件恢复出来：</p>
+<p>However, after creating a patch, the Pak does not contain the original Cooked file, so it is necessary to execute the patch operation on the basis of the old resource to restore the latest file:</p>
 <ol>
-<li>读取A文件</li>
-<li><strong>从Pak中读取旧的A文件+A的Patch文件</strong></li>
-<li><strong>运行时Patch，恢复出源文件</strong></li>
-<li>返回源文件Handle</li>
+<li>Read File A.</li>
+<li><strong>Read the old A file + A’s patch file from Pak.</strong></li>
+<li><strong>Perform runtime patching to restore the source file.</strong></li>
+<li>Return the source file handle.</li>
 </ol>
-<p>Patch的操作通常是<code>Pre Patch</code>的流程，因为在运行时在内存中实时Patch的话也能实现，但是会有很大的性能损失。所以，可以在进入游戏之前，在热更流程中，对所有下载的资源执行Patch操作，这样在运行时只是读取，只是从Pak读还是从磁盘读的区别。</p>
+<p>The patching operation is usually part of the <code>Pre Patch</code> process; while it can be done in memory during runtime, it incurs significant performance costs. Therefore, prior to entering the game, during the hot update process, all downloaded resources can be patched so that, during runtime, the only difference is whether the data is read from Pak or from disk.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906161224.webp"></p>
-<p>想要实现这个流程，需要改造UE的<code>PakFile</code>模块。不过，建议不要直接在PakFile模块上改，可以实现一个继承自<code>FPakPlatformFile</code>的类：</p>
+<p>To implement this process, the UE’s <code>PakFile</code> module needs to be modified. However, it is recommended not to directly modify the PakFile module but to create a class that inherits from <code>FPakPlatformFile</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PATCHPAKFILE_API</span> FPatchPakPlatformFile: <span class="keyword">public</span> FPakPlatformFile</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> IFileHandle* <span class="title">OpenRead</span><span class="params">(<span class="type">const</span> TCHAR* Filename, <span class="type">bool</span> bAllowWrite = <span class="literal">false</span>)</span> <span class="keyword">override</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> IAsyncReadFileHandle* <span class="title">OpenAsyncRead</span><span class="params">(<span class="type">const</span> TCHAR* Filename)</span><span class="keyword">override</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">const</span> TCHAR* <span class="title">GetName</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">TEXT</span>(<span class="string">&quot;PatchPakFile&quot;</span>); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>从Pak中读取文件，就是通过调用<code>OpenRead</code>和<code>OpenAsyncRead</code>两个接口实现的，在这两个接口中可以实现上面的流程。</p>
-<p>核心流程伪代码如下：</p>
+
+<p>Reading files from Pak is achieved by calling the <code>OpenRead</code> and <code>OpenAsyncRead</code> interfaces, where the above process can be implemented.</p>
+<p>The core pseudocode for the main flow is as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IFileHandle* <span class="title">FPatchPakPlatformFile::OpenRead</span><span class="params">(<span class="type">const</span> TCHAR* Filename, <span class="type">bool</span> bAllowWrite)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	IFileHandle* Handle = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">HasPatch</span>(Filename))</span><br><span class="line">	&#123;</span><br><span class="line">		Handle = <span class="built_in">GetLowerLevel</span>()-&gt;<span class="built_in">OpenRead</span>(<span class="built_in">GetPatchedAssetPath</span>(Filename),bAllowWrite);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> !Handle ? FPakPlatformFile::<span class="built_in">OpenRead</span>(Filename, bAllowWrite) : Handle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>异步也是相同的思路。</p>
-<p>在实现完毕<code>FPatchPakPlatformFile</code>之后，可以将其放入引擎的Runtime中，需要修改引擎的代码，将引擎中的<code>PakFile</code>模块替换成<code>PatchPakFile</code>，这样才能使我们的代码生效。</p>
-<p>需要修改<code>Launch</code>模块<code>LaunchEngineLoop.cpp</code>文件中的<code>LaunchCheckForFileOverride</code>函数：</p>
+
+<p>The asynchronous process follows the same idea.</p>
+<p>Once <code>FPatchPakPlatformFile</code> is implemented, it can be placed into the engine’s runtime. The engine’s code needs to be modified to replace the <code>PakFile</code> module with <code>PatchPakFile</code> so that our code can take effect.</p>
+<p>Modify the <code>Launch</code> module’s <code>LaunchEngineLoop.cpp</code> file in the <code>LaunchCheckForFileOverride</code> function:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From</span></span><br><span class="line">IPlatformFile* PlatformFile = <span class="built_in">ConditionallyCreateFileWrapper</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;PakFile&quot;</span>), CurrentPlatformFile, CmdLine);</span><br><span class="line"><span class="comment">// To</span></span><br><span class="line">IPlatformFile* PlatformFile = <span class="built_in">ConditionallyCreateFileWrapper</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;PatchPakFile&quot;</span>), CurrentPlatformFile, CmdLine);</span><br></pre></td></tr></table></figure>
-<p>这样就能在从Pak中读取文件时能走到自己实现的读取流程，实现Patch的行为。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>本篇文章介绍了在UE中创建二进制资源补丁的一个方案，在<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的基础上实现基于HDiffPatch的二进制资源补丁，并且能够在运行时实时、或PrePatch的方法，验证了可行性，应用于实际的项目中还需要优化，因为恢复出来的文件是Cooked之后的原始文件，并没有经过加密，会有资源安全问题，也需要改造处理。有时间的话我会再详细补充关于Patch的性能提升、Patched的资源加密等实现。</p>
-<p>为了方便测试，我提供了一个ThirdPerson的Demo，可以点击链接下载：<a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/EUAydgBo401Jv750Q1wsQ44BjwSKSnT08xQPd0Ec0u89jQ?e=cQY160">CompressionLab_WindowsNoEditor.7z</a>。</p>
+
+<p>This will allow the implemented reading process to be utilized when reading files from Pak, achieving patching behavior.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This article introduces a scheme for creating binary resource patches in UE, implementing binary resource patches based on HDiffPatch on the foundation of <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>, and validating their feasibility through real-time or pre-patch methods. Further optimizations are needed for practical projects since the restored files are the original Cooked files and have not undergone encryption, raising resource security issues that also need to be addressed. If time permits, I will add more details on enhancing patch performance, encrypted resources, and other implementations.</p>
+<p>To facilitate testing, I provide a ThirdPerson demo, which can be downloaded via the link: <a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:u:/g/personal/2017020625_stu_sdnu_edu_cn/EUAydgBo401Jv750Q1wsQ44BjwSKSnT08xQPd0Ec0u89jQ?e=cQY160">CompressionLab_WindowsNoEditor.7z</a>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210906162626.webp"></p>
-<p>红框中的两个文件，一个是经过了BinariesPatch的，一个是原始Cooked文件，他们可以实现相同的作用，放入<code>CompressionLab/Content/Paks</code>即可启动测试。</p>
+<p>The two files in the red box, one has gone through BinariesPatch and the other is the original Cooked file, can perform the same function and can be placed in <code>CompressionLab/Content/Paks</code> for testing.</p>
 
     </div>
 
@@ -458,7 +462,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -468,7 +472,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -478,37 +482,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/25136/" target="_blank">UE热更新：资源的二进制补丁方案</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/09/06 16:27<br/>
+             <span>Title:</span><a href="/posts/25136/" target="_blank">UE Hot Update: binary patch solution for resources</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/09/06 16:27<br/>
              
-             <span>本文字数:</span><span class="page-count">3k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">6.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/25136/" target="_blank" title="UE热更新：资源的二进制补丁方案">https://imzlp.com/posts/25136/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/25136/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/25136/" target="_blank" title="UE Hot Update: binary patch solution for resources">https://en.imzlp.com/posts/25136/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/25136/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -529,12 +533,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/15810/" rel="prev" title="UE热更新：Shader更新策略">
-      <i class="fa fa-chevron-left"></i> UE热更新：Shader更新策略
+    <a href="/posts/15810/" rel="prev" title="UE Hot Update: Shader update strategy">
+      <i class="fa fa-chevron-left"></i> UE Hot Update: Shader update strategy
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/26475/" rel="next" title="UE As Lib机制初探">
-      UE As Lib机制初探 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/26475/" rel="next" title="UE as Lib">
+      UE as Lib <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -605,25 +609,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A5%E4%B8%81"><span class="nav-number">2.</span> <span class="nav-text">资源的二进制补丁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6DIFF-PATCH%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">二进制DIFF&#x2F;PATCH算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6PATCH"><span class="nav-number">4.</span> <span class="nav-text">运行时PATCH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Patches-of-Resources"><span class="nav-number">2.</span> <span class="nav-text">Binary Patches of Resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-DIFF-PATCH-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Binary DIFF&#x2F;PATCH Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-PATCH"><span class="nav-number">4.</span> <span class="nav-text">Runtime PATCH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -631,19 +635,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -681,10 +685,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -711,9 +715,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -722,12 +723,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -880,7 +881,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/25136/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/25136/',]
       });
       });
   </script>
@@ -903,12 +904,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

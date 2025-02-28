@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="PixelStreaming是UE_4.21开始支持的一项技术，简单来说就是能够将游戏跑在服务器上，你可以通过浏览器来玩，玩家端不需要额外操作，只需要一个浏览器，所有的逻辑处理和渲染都在“云”端执行。它不仅仅只是一个插件(虽然有PixelStreamingPlugin这个插件，但它只是PixelStreaming实现中的一环)，其实现具有一套独立与UE游戏的设计和组织方式。本篇文章主要介绍Pixe">
+  <meta name="description" content="PixelStreaming is a technology supported by UE_4.21 that enables games to run on a server, allowing players to play via a browser. The player side requires no additional operation, only needing a brow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PixelStreaming：基本概念与上手初探">
-<meta property="og:url" content="https://imzlp.com/posts/9455/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="PixelStreaming是UE_4.21开始支持的一项技术，简单来说就是能够将游戏跑在服务器上，你可以通过浏览器来玩，玩家端不需要额外操作，只需要一个浏览器，所有的逻辑处理和渲染都在“云”端执行。它不仅仅只是一个插件(虽然有PixelStreamingPlugin这个插件，但它只是PixelStreaming实现中的一环)，其实现具有一套独立与UE游戏的设计和组织方式。本篇文章主要介绍Pixe">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="PixelStreaming: Basic Concepts and Getting Started">
+<meta property="og:url" content="https://en.imzlp.com/posts/9455/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="PixelStreaming is a technology supported by UE_4.21 that enables games to run on a server, allowing players to play via a browser. The player side requires no additional operation, only needing a brow">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/9455/pixelstreaming-cloud-simplified.webp">
 <meta property="article:published_time" content="2019-07-30T17:48:27.000Z">
 <meta property="article:modified_time" content="2019-07-30T17:48:27.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="Pixel Streaming">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/9455/pixelstreaming-cloud-simplified.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/9455/">
+<link rel="canonical" href="https://en.imzlp.com/posts/9455/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>PixelStreaming：基本概念与上手初探 | 循迹研究室</title>
+  <title>PixelStreaming: Basic Concepts and Getting Started | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/9455/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/9455/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PixelStreaming：基本概念与上手初探<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2019-07-30-9455.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/9455/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          PixelStreaming: Basic Concepts and Getting Started<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2019-07-30-9455.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/9455/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">PixelStreaming: Basic Concepts and Getting Started</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">PixelStreaming：基本概念与上手初探</sub>
           </div>
         
 
@@ -316,47 +316,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2019-07-30 17:48 17:48:27:48" itemprop="dateCreated datePublished" datetime="2019-07-30T17:48:27+00:00">2019-07-30 17:48</time>
+              <time title="Created: 2019-07-30 17:48 17:48:27:48" itemprop="dateCreated datePublished" datetime="2019-07-30T17:48:27+00:00">2019-07-30 17:48</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/PixelStreaming/" itemprop="url" rel="index"><span itemprop="name">PixelStreaming</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/9455/" class="post-meta-item leancloud_visitors" data-flag-title="PixelStreaming：基本概念与上手初探" title="阅读次数">
+            <span id="/posts/9455/" class="post-meta-item leancloud_visitors" data-flag-title="PixelStreaming: Basic Concepts and Getting Started" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -371,112 +371,113 @@
           <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
               <img src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/pixelstreaming-cloud-simplified.webp" itemprop="contentUrl" style="border-radius: 20px;">
          </div>
-        <p>PixelStreaming是UE_4.21开始支持的一项技术，简单来说就是能够将游戏跑在服务器上，你可以通过浏览器来玩，玩家端不需要额外操作，只需要一个浏览器，所有的逻辑处理和渲染都在“云”端执行。它不仅仅只是一个插件(虽然有PixelStreamingPlugin这个插件，但它只是<strong>PixelStreaming</strong>实现中的一环)，其实现具有一套独立与UE游戏的设计和组织方式。<br>本篇文章主要介绍PixelStreaming中的基本概念和使用PixelStreaming的Demo的实际体验。</p>
+        <p>PixelStreaming is a technology supported by UE_4.21 that enables games to run on a server, allowing players to play via a browser. The player side requires no additional operation, only needing a browser, while all logic processing and rendering occurs in the “cloud.” It is not merely a plugin (although there is the PixelStreamingPlugin, which is just one part of the <strong>PixelStreaming</strong> implementation). Its implementation has a distinct design and organizational approach independent of UE games.<br>This article mainly introduces the basic concepts of PixelStreaming and shares practical experiences with the Demo using PixelStreaming.</p>
 <span id="more"></span>
 
-<p>来看一下UE自己的介绍：</p>
+<p>Let’s take a look at UE’s own introduction:</p>
 <blockquote>
 <p>Run your Unreal Engine application on a server in the cloud, and stream its rendered frames and audio to browsers and mobile devices over WebRTC.</p>
 </blockquote>
-<p>PixelStreaming的数据传输使用的是<a target="_blank" rel="noopener" href="https://webrtc.org/">WebRTC</a>，P2P的连接延迟更低。</p>
+<p>The data transmission of PixelStreaming uses <a target="_blank" rel="noopener" href="https://webrtc.org/">WebRTC</a>, which results in lower latency for P2P connections.</p>
 <blockquote>
-<p>注意：本文所描述内容的测试引擎为UE_4.22.3，目前PixelStreaming只能运行在Windows平台(依赖于模块<code>D3DX11</code>和<code>NvVideoEncoder</code>库)。</p>
+<p>Note: The testing engine described in this article is UE_4.22.3, and currently, PixelStreaming can only run on the Windows platform (dependent on the <code>D3DX11</code> and <code>NvVideoEncoder</code> libraries).</p>
 </blockquote>
-<p>UE提供的PixelStreaming展示案例的代码分成了几个部分：</p>
+<p>The code provided by UE for the PixelStreaming demo is divided into several parts:</p>
 <ul>
-<li><strong>PixelStreamingPlugin</strong>：提供渲染帧与音频数据的捕获与编码，并创建一个链接将音频和渲染帧的数据传递给WebRTC服务器，使用的是UE的插件方式编写和使用。</li>
-<li><strong>WebRTCProxy</strong>：应用/游戏与WebServer交流的中间层，作用是将游戏内编码好的渲染帧数据(.h264)与音频数据传递给WebServer，并从WebServer上接收到的用户输入再传递给应用/游戏，从而可以从浏览器上控制游戏。使用UE的Program方式编写。</li>
-<li><strong>WebServer</strong>：PixelStreaming设计的组织方式中，<strong>WebServer</strong>是由两个模块组成：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/4.22/Engine/Source/Programs/PixelStreaming/WebServers/SignallingWebServer">SignalingWebServer</a>与<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/4.22/Engine/Source/Programs/PixelStreaming/WebServers/Matchmaker">Matchmaker</a>，使用的是nodejs编写。</li>
-<li><strong>SignallingWebServer</strong>：启动一个HTTP服务，从WebRTC接收渲染帧和音频数据传递给浏览器客户端，并接收远程用户的输入(键盘、鼠标等)再传递给WebRTC。</li>
-<li><strong>MatchMakerServer</strong>：如果只是启动一个游戏实例和单个的<strong>SignallingWebServer</strong>，那么使用浏览器访问的玩家操作的都是同一个游戏实例，他们的键盘和鼠标操作都会相互干扰。解决这个的问题的办法使用<strong>MatchMakerServer</strong>，但是这种方式也是需要启动多套<strong>游戏实例</strong>/<strong>WebRTCProxy</strong>以及<strong>SignallingWebServer</strong>，供外部用户每个人访问不同的游戏实例，使每个浏览器访问的客户端具有不同的连接。</li>
+<li><strong>PixelStreamingPlugin</strong>: Provides capturing and encoding of rendered frames and audio data, creating a link to pass audio and rendered frame data to the WebRTC server, written and used in UE’s plugin style.</li>
+<li><strong>WebRTCProxy</strong>: The middleware for communication between the application/game and the WebServer, serving to pass the game-encoded rendered frame data (.h264) and audio data to the WebServer, and also passing user inputs received from the WebServer back to the application/game, allowing control of the game from the browser. This is written using UE’s Program style.</li>
+<li><strong>WebServer</strong>: In the organizational design of PixelStreaming, the <strong>WebServer</strong> consists of two modules: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/4.22/Engine/Source/Programs/PixelStreaming/WebServers/SignallingWebServer">SignalingWebServer</a> and <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/tree/4.22/Engine/Source/Programs/PixelStreaming/WebServers/Matchmaker">Matchmaker</a>, both written in nodejs.</li>
+<li><strong>SignallingWebServer</strong>: Starts an HTTP service, receives rendered frames and audio data from WebRTC to pass to the browser client, and receives remote user inputs (keyboard, mouse, etc.) to pass back to WebRTC.</li>
+<li><strong>MatchMakerServer</strong>: If only a single game instance and a single <strong>SignallingWebServer</strong> are started, players accessing via the browser will be interacting with the same game instance, and their keyboard and mouse inputs will interfere with each other. The solution to this problem is to use the <strong>MatchMakerServer</strong>, which requires launching multiple sets of <strong>game instances</strong>/<strong>WebRTCProxy</strong> and <strong>SignallingWebServer</strong> to provide different game instances for each external user, ensuring that each browser accesses a unique client connection.</li>
 </ul>
-<p>用户访问单个实例的流程如下图：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/pixel-streaming-flow.webp"></p>
-<p>后续我会逐个分析一下它们各自的代码实现(上周末的简单分析了一下PixelStreamingPlugin的实现)，这篇文章的目的是介绍基本概念和简单的PixelStreamingDemo上手。</p>
-<p>本篇文章的参考资料主要是UE文档库中对于<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/index.html">PixelStreaming</a>的介绍，以及我读代码了解到的实现方式，目前官方文档页面的描述不是特别详细，有些细节和可以用的参数命令没有提及，还是看代码靠谱。</p>
-<h2 id="PixelStreamingDemo"><a href="#PixelStreamingDemo" class="headerlink" title="PixelStreamingDemo"></a>PixelStreamingDemo</h2><p>基本概念介绍完毕，下面进入实际的上手环节。</p>
-<h3 id="Launch-Game"><a href="#Launch-Game" class="headerlink" title="Launch Game"></a>Launch Game</h3><p>首先创建一个C++项目，我选择了一个第三人称模板：</p>
+<p>The process for a user accessing a single instance is shown in the diagram below:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/pixel-streaming-flow.webp"></p>
+<p>In the future, I will analyze the code implementations of each component (I did a simple analysis last weekend on the implementation of PixelStreamingPlugin). The purpose of this article is to introduce the basic concepts and get started with a simple PixelStreaming demo.</p>
+<p>The references for this article mainly include the introduction to <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/index.html">PixelStreaming</a> from the UE documentation library, as well as my understanding of the implementation from code reading. Currently, the official documentation page is not particularly detailed, omitting some details and usable parameter commands, so it’s still best to look at the code.</p>
+<h2 id="PixelStreamingDemo"><a href="#PixelStreamingDemo" class="headerlink" title="PixelStreamingDemo"></a>PixelStreamingDemo</h2><p>With the basic concepts introduced, let’s move on to the practical hands-on section.</p>
+<h3 id="Launch-Game"><a href="#Launch-Game" class="headerlink" title="Launch Game"></a>Launch Game</h3><p>First, create a C++ project; I chose a Third-Person template:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/create-pixelstreaming.webp"></p>
-<p>创建完成之后，打开<code>Edit</code>-<code>Plugins</code>搜索启用<code>PixelStreaming</code>:</p>
+<p>Once created, open <code>Edit</code> - <code>Plugins</code> and search to enable <code>PixelStreaming</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/enable-pixel-streaming-plugin.webp"></p>
-<p>然后重启编辑器。</p>
-<p>与UE的官网介绍(<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/PixelStreamingIntro/index.html">Getting Started with Pixel Streaming</a>)的需要打包不同，只要使用Standalone模式启动项目就可以加载<code>PixelStreamingPlugin</code>，这样可以省去每次都要打包的麻烦。<br>为了方便添加启动参数，可以使用我之前写的一个工具：<a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UE4 Launcher</a><br>并为其添加启动参数<code>-game</code>/<code>-log</code>/<code>-AudioMixer</code>(PixelStreamingPlugin需要这个参数):<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/launch-pixel-streaming-project-by-standalone.webp"></p>
+<p>Then restart the editor.</p>
+<p>Unlike the packaging required as described on UE’s official website (<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/PixelStreamingIntro/index.html">Getting Started with Pixel Streaming</a>), simply launching the project in Standalone mode allows loading the <code>PixelStreamingPlugin</code>, which saves you the trouble of packaging each time.<br>To conveniently add launch parameters, you can use a tool I previously wrote: <a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UE4 Launcher</a> and add the startup parameters <code>-game</code>/<code>-log</code>/<code>-AudioMixer</code> (the PixelStreamingPlugin requires this parameter):<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/launch-pixel-streaming-project-by-standalone.webp"></p>
 <blockquote>
-<p>注:PixelStreamingPlugin支持启动时指定要连接的WebRTCProxy的地址与端口，可以在上面的启动参数列表中添加。</p>
+<p>Note: The PixelStreamingPlugin supports specifying the address and port of the WebRTCProxy to connect to at startup; you can add the following parameters to the startup parameter list.</p>
 <ul>
-<li><code>-PixelStreamingIP=&lt;value&gt;</code>：指定WebRTCProxy服务器的地址，默认为<code>0.0.0.0</code>.</li>
-<li><code>-PixelStreamingPort=&lt;value&gt;</code>：指定WebRTCProxy服务器的端口，默认为<code>8124</code>.</li>
+<li><code>-PixelStreamingIP=&lt;value&gt;</code>: Specify the address of the WebRTCProxy server, defaults to <code>0.0.0.0</code>.</li>
+<li><code>-PixelStreamingPort=&lt;value&gt;</code>: Specify the port of the WebRTCProxy server, defaults to <code>8124</code>.</li>
 </ul>
 </blockquote>
-<p>然后点击<code>Launch Configuration</code>即可以Standalone模式启动项目。</p>
-<p>启动之后可以从Log窗口中看到PixelStreaming的Log输出：</p>
+<p>Click <code>Launch Configuration</code> to start the project in Standalone mode.</p>
+<p>After launching, you can see the PixelStreaming log output in the Log window:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/launch-pixel-streaming-project-by-standalone-log.webp"></p>
-<h3 id="WebRTCProxy"><a href="#WebRTCProxy" class="headerlink" title="WebRTCProxy"></a>WebRTCProxy</h3><p>经过上面的操作游戏启动完成之后，可以启动WebRTC了，打开引擎目录：</p>
+<h3 id="WebRTCProxy"><a href="#WebRTCProxy" class="headerlink" title="WebRTCProxy"></a>WebRTCProxy</h3><p>After the above operations, once the game has started, you can launch WebRTC by opening the engine directory:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin</span><br></pre></td></tr></table></figure>
 
-<p>可以看到目录下有五个文件：</p>
+<p>You will see five files in this directory:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019/07/29  01:21               110 Start_AWS_WebRTCProxy.bat</span><br><span class="line">2019/07/29  01:21               473 Start_AWS_WebRTCProxy.ps1</span><br><span class="line">2019/07/29  01:21                38 Start_WebRTCProxy.bat</span><br><span class="line">2019/07/29  01:21        18,032,016 WebRTCProxy.exe</span><br><span class="line">2019/07/29  01:21        15,511,552 WebRTCProxy.pdb</span><br></pre></td></tr></table></figure>
 
-<p>需要做的只有双击<code>Start_WebRTCProxy.bat</code>启动(它里面也仅仅只是启动了<strong>WebRTCProxy.exe</strong>).</p>
-<p>启动之后可以看到连接信息：</p>
+<p>All you need to do is double-click <code>Start_WebRTCProxy.bat</code> to start (which only starts <strong>WebRTCProxy.exe</strong>).</p>
+<p>After launching, you can see the connection information:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/Launch-WebRTCProxy-log.webp"></p>
-<p>此时在打开游戏项目的Log窗口可以看到如下内容：</p>
+<p>At this point, you can see the following content in the Log window of the game project:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2019.07.30-08.18.49:324][758]PixelStreamingNet: Accepted connection from WebRTC Proxy: 127.0.0.1:2703</span><br></pre></td></tr></table></figure>
 
-<p>表明PixelStreamingPlugin与WebRTCProxy已经连接成功了。</p>
-<p><strong>WebRTCProxy</strong>也可以指定游戏内<strong>PixelStreamingPlugin</strong>设定的端口，以及<strong>SignallingWebServer</strong>的地址/端口，可以通过<code>-help</code>参数来查看WebRTCProxy支持的参数（这部分的实现代码在<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Programs/PixelStreaming/WebRTCProxy/src/WebRTCProxy.cpp">Engine/Source/Programs/PixelStreaming/WebRTCProxy/src/WebRTCProxy.cpp</a>中）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">E:\UnrealEngine\Epic\UE_4.22\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin&gt;WebRTCProxy.exe -<span class="built_in">help</span></span><br><span class="line">WebRTCProxy</span><br><span class="line">Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line"></span><br><span class="line">-<span class="built_in">help</span></span><br><span class="line">Shows this <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">-Cirrus=&lt;IP:Port&gt;</span><br><span class="line">The Cirrus server to connect to. If not specified. it defaults to 127.0.0.1:8888</span><br><span class="line"></span><br><span class="line">-StunServer=&lt;IP:Port&gt;</span><br><span class="line">Stun server to use.</span><br><span class="line"></span><br><span class="line">-UE4Port=&lt;Port&gt;</span><br><span class="line">The port UE4 is listening on</span><br><span class="line"></span><br><span class="line">-AutoSetBitrate</span><br><span class="line">If specified, it forcibly sends a bitrate request to UE4 once a client gets</span><br><span class="line">quality control ownership</span><br><span class="line"></span><br><span class="line">-PlanB</span><br><span class="line">If specified, it will use PlanB sdp semantics. Default is UnifiedPlan.</span><br><span class="line"></span><br><span class="line">-dbgwindow=[Proxy|WebRTC|All|None]</span><br><span class="line">If running under the debugger (e.g: Visual Studio), it specifies what logs to</span><br><span class="line">send to the Output Window.</span><br><span class="line">        Proxy - Only logs from WebRTCProxy itself will be displayed.</span><br><span class="line">        WebRTC - Only logs from WebRTC internals will be displayed.</span><br><span class="line">        All - (Default) Both WebRTCProxy and WebRTC internal logs are displayed.</span><br><span class="line">        None - No logs sent to the Output Window</span><br><span class="line"></span><br><span class="line">-LocalTime</span><br><span class="line">If specified, it will use <span class="built_in">local</span> time <span class="keyword">in</span> logging, instead of UTC.</span><br></pre></td></tr></table></figure>
+<p>This indicates that the PixelStreamingPlugin has successfully connected to the WebRTCProxy.</p>
+<p><strong>WebRTCProxy</strong> can also specify the port set by the <strong>PixelStreamingPlugin</strong> within the game, as well as the address/port of the <strong>SignallingWebServer</strong>, which can be viewed by using the <code>-help</code> parameter to see the parameters supported by WebRTCProxy (the implementation code for this part is located at <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Programs/PixelStreaming/WebRTCProxy/src/WebRTCProxy.cpp">Engine/Source/Programs/PixelStreaming/WebRTCProxy/src/WebRTCProxy.cpp</a>):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">E:\UnrealEngine\Epic\UE_4.22\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin&gt;WebRTCProxy.exe -<span class="built_in">help</span></span><br><span class="line">WebRTCProxy</span><br><span class="line">Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line"></span><br><span class="line">-<span class="built_in">help</span></span><br><span class="line">Shows this <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">-Cirrus=&lt;IP:Port&gt;</span><br><span class="line">The Cirrus server to connect to. If not specified, it defaults to 127.0.0.1:8888</span><br><span class="line"></span><br><span class="line">-StunServer=&lt;IP:Port&gt;</span><br><span class="line">Stun server to use.</span><br><span class="line"></span><br><span class="line">-UE4Port=&lt;Port&gt;</span><br><span class="line">The port UE4 is listening on</span><br><span class="line"></span><br><span class="line">-AutoSetBitrate</span><br><span class="line">If specified, it forcibly sends a bitrate request to UE4 once a client gets</span><br><span class="line">quality control ownership</span><br><span class="line"></span><br><span class="line">-PlanB</span><br><span class="line">If specified, it will use PlanB sdp semantics. Default is UnifiedPlan.</span><br><span class="line"></span><br><span class="line">-dbgwindow=[Proxy|WebRTC|All|None]</span><br><span class="line">If running under the debugger (e.g: Visual Studio), it specifies what logs to</span><br><span class="line">send to the Output Window.</span><br><span class="line">        Proxy - Only logs from WebRTCProxy itself will be displayed.</span><br><span class="line">        WebRTC - Only logs from WebRTC internals will be displayed.</span><br><span class="line">        All - (Default) Both WebRTCProxy and WebRTC internal logs are displayed.</span><br><span class="line">        None - No logs sent to the Output Window</span><br><span class="line"></span><br><span class="line">-LocalTime</span><br><span class="line">If specified, it will use <span class="built_in">local</span> time <span class="keyword">in</span> logging, instead of UTC.</span><br></pre></td></tr></table></figure>
 
-<p>其中：</p>
+<p>Among them:</p>
 <ul>
-<li><code>-Cirrus=&lt;IP:Port&gt;</code>用来指定与<strong>SignallingWebServer</strong>通信的端口(默认为<code>127.0.0.1:8888</code>).</li>
-<li><code>-UEPort=&lt;Port&gt;</code>：用来指定与该WebRTCProxy关联的UE应用的端口(PixelStreamingPlugin中的连接端口，默认为<code>127.0.0.1:8124</code>)</li>
+<li><code>-Cirrus=&lt;IP:Port&gt;</code> is used to specify the port for communication with the <strong>SignallingWebServer</strong> (default is <code>127.0.0.1:8888</code>).</li>
+<li><code>-UEPort=&lt;Port&gt;</code>: Used to specify the port associated with the UE application for this WebRTCProxy (the connection port in the PixelStreamingPlugin, default is <code>127.0.0.1:8124</code>).</li>
 </ul>
-<h3 id="SignallingWebServer"><a href="#SignallingWebServer" class="headerlink" title="SignallingWebServer"></a>SignallingWebServer</h3><p>当游戏与<strong>WebRTCProxy</strong>都启动完毕之后，需要开始启动真正供浏览器可访问的HTTP服务器了。</p>
-<p>首先需要安装<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">node</a>，下载安装之后将其添加到系统的PATH路径，通过命令<code>node -v</code>与<code>npm -v</code>测试是否安装成功：</p>
+<h3 id="SignallingWebServer"><a href="#SignallingWebServer" class="headerlink" title="SignallingWebServer"></a>SignallingWebServer</h3><p>Once both the game and <strong>WebRTCProxy</strong> are up and running, you need to start the actual HTTP server that is accessible from the browser.</p>
+<p>First, you need to install <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">node</a>. After installation, add it to the system PATH and verify if it is installed successfully with the commands <code>node -v</code> and <code>npm -v</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\imzlp\Desktop&gt;node -v</span><br><span class="line">v10.16.0</span><br><span class="line">C:\Users\imzlp\Desktop&gt;npm -v</span><br><span class="line">6.9.0</span><br></pre></td></tr></table></figure>
 
-<p>如上图则没有问题，可以启动<strong>SignallingWebServer</strong>了，打开引擎目录：</p>
+<p>If it appears as shown, you can start the <strong>SignallingWebServer</strong>. Open the engine directory:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer</span><br></pre></td></tr></table></figure>
 
-<p>里面有一堆的文件，需要启动的是<code>run.bat</code>或者<code>runNoSetup.bat</code>(他们两个唯一的区别为是否执行<code>npm install</code>)，如果你是第一次打开，则<strong>以管理员权限</strong>启动<code>run.bat</code>，后续直接启动<code>runNoSetup.bat即可</code>。</p>
-<p>经过一堆的npm包的下载与安装之后，启动成功：</p>
+<p>There will be many files, and you need to run <code>run.bat</code> or <code>runNoSetup.bat</code> (the only difference is whether to execute <code>npm install</code>). If you are opening it for the first time, run <code>run.bat</code> <strong>as administrator</strong>, and afterwards, you can directly use <code>runNoSetup.bat</code>.</p>
+<p>After downloading and installing a variety of npm packages, it will start successfully:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/Launch-SignallingWebServer-runbat.webp"></p>
-<p>此时打开<strong>WebRTCProxy</strong>的窗口界面，可以看到以下内容：</p>
+<p>Now if you open the <strong>WebRTCProxy</strong> window, you can see the following content:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/WebRTCProxy-connected-to-Cirrus.webp"></p>
-<p>此时所有需要启动的服务都已启动完毕。</p>
+<p>At this point, all necessary services have been successfully started.</p>
 <blockquote>
-<p>注：<strong>SignallingWebServer</strong>默认连接<code>127.0.0.1:8888</code>的WebRTCProxy，并开启一个80端口的HTTP服务。</p>
+<p>Note: The <strong>SignallingWebServer</strong> connects to the WebRTCProxy at <code>127.0.0.1:8888</code> by default and starts an HTTP service on port 80.</p>
 <ul>
-<li>使用<code>--proxyPort &lt;Port&gt;</code>可以修改监听的WebRTCProxy端口，或者写在<code>SignallingWebSerber/config.json</code>配置下。</li>
-<li>使用<code>--httpPort &lt;Port&gt;</code>可以修改启动的HTTP服务器的端口。</li>
+<li>Use <code>--proxyPort &lt;Port&gt;</code> to modify the listening WebRTCProxy port, or specify it in the <code>SignallingWebSerber/config.json</code> configuration.</li>
+<li>Use <code>--httpPort &lt;Port&gt;</code> to modify the port of the HTTP server started.</li>
 </ul>
 </blockquote>
-<p>打开浏览器输入<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a>(使用的是默认端口80，不然需要指定端口号<a href="http://127.0.0.1:xxxx">https://127.0.0.1:xxxx</a>)就可以看到以下界面：</p>
+<p>Open your browser and access <a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a> (using the default port 80; otherwise, you need to specify the port number <a href="http://127.0.0.1:xxxx">https://127.0.0.1:xxxx</a>), and you can see the following interface:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/webbrowser-127-0-0-1.webp"></p>
-<p>鼠标点击即可进入游戏画面：</p>
+<p>Clicking with the mouse will bring you into the game screen:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/Final-Browser-view.webp"></p>
-<p>其他的移动设备如果在同一个网段，也是可以直接连接的：</p>
+<p>Other mobile devices on the same network segment can also connect directly:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/mobile-webbrowser-view.webp"></p>
-<p>我也录了一个简单的视频(在ipad上操作)：</p>
+<p>I also recorded a simple video (operating on an iPad):</p>
 <div class="video-container"><iframe src="https://www.youtube.com/embed/ag9wdNOge-8" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
 
-<h3 id="MatchMakerServer"><a href="#MatchMakerServer" class="headerlink" title="MatchMakerServer"></a>MatchMakerServer</h3><p>在文章的最开始，我简单说明了一下<strong>MatchMakerServer</strong>的用途，下面简单说一下如何做。</p>
-<p>先来看UE对<strong>MatchMakerServer</strong>的职责图：</p>
+<h3 id="MatchMakerServer"><a href="#MatchMakerServer" class="headerlink" title="MatchMakerServer"></a>MatchMakerServer</h3><p>At the beginning of the article, I briefly explained the purpose of the <strong>MatchMakerServer</strong>, and below is a simple explanation of how to implement it.</p>
+<p>First, let’s look at UE’s responsibility diagram for the <strong>MatchMakerServer</strong>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/Matchmaker-cloud-multi-server.webp"></p>
-<p>用法为：在启动单个的<strong>SignallingWebServer</strong>时，指定参数启用<code>Matchmaker</code>：</p>
+<p>The usage is: when starting a single <strong>SignallingWebServer</strong>, specify the parameter to enable <code>Matchmaker</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runNoSetup.bat --UseMatchmaker --matchmakeAddress 127.0.0.1 --matchmakerPort 9999</span><br></pre></td></tr></table></figure>
-<p>然后启动<strong>MatchmakerServer</strong>，找到以下路径：</p>
+<p>Then start the <strong>MatchmakerServer</strong>, located at:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine\Source\Programs\PixelStreaming\WebServers\Matchmaker</span><br></pre></td></tr></table></figure>
-<p>直接启动<code>run.bat</code>的默认<code>httpPort</code>为90,<code>matchmakerPort</code>为9999，即上面运行<strong>SignallingWebServer</strong>时指定的<code>--matchmakerPort 9999</code>，可以自己使用参数替换。</p>
+
+<p>Directly start <code>run.bat</code> with the default <code>httpPort</code> set to 90 and <code>matchmakerPort</code> set to 9999, which corresponds to the <code>--matchmakerPort 9999</code> specified when running the <strong>SignallingWebServer</strong>. You can also replace these parameters as needed.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run.bat --httpPort 88 --matchmakerPort 9988</span><br></pre></td></tr></table></figure>
 
-<p>下面使用的是默认的<code>httpPort</code>/<code>matchmakePort</code>端口</p>
+<p>The following usage is with the default <code>httpPort</code>/<code>matchmakePort</code> ports.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/matchmaker-and-signllingServer.webp"></p>
-<p>然后访问<a target="_blank" rel="noopener" href="http://127.0.0.1:90/">http:127.0.0.1:90</a>，可以看到与单独启动的<strong>SignallingWebServer</strong>一样，但是不允许其他的客户端再加入到当前的会话中来，会提示<code>WARNING: No empty Cirrus servers are available</code>。</p>
+<p>Then access <a target="_blank" rel="noopener" href="http://127.0.0.1:90/">http:127.0.0.1:90</a> to see the same interface as the separately started <strong>SignallingWebServer</strong>, but no other clients are allowed to join the current session, displaying the warning <code>WARNING: No empty Cirrus servers are available</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9455/matchmaker-warrning-no-empty-signallingwebserver.webp"></p>
-<p>除非同时运行多套<strong>游戏</strong>/<strong>WebRTCProxy</strong>/<strong>SignallingWebServer</strong>，使每个玩家独占一套不相互干扰，这也是<strong>MatchmakerServer</strong>的作用所在。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>Pixel Streaming这种“云”游戏的思路很好，但是目前的硬件环境和带宽瓶颈还是很大的问题，在我测试体验的过程中，局域网连接比较流畅，在设定最高60fps的情况下可以跑到满帧，但是也是会出现偶尔掉帧的情况。</p>
-<p>Google也推出了云游戏平台<a target="_blank" rel="noopener" href="https://stadia.dev/">Stadia</a>，但是离真的可以落地还很远，但是目前做一些行业应用还是可以的（比如雪佛兰的汽车展示<a target="_blank" rel="noopener" href="https://visualizer-west.chevrolet.com/ui?carline=corvette&modelyear=2020&brand=chevrolet&language=en&country=US&channel=b2c&fbclid=IwAR2bCJCcZe7GjggAemV6ht4RhqoPZF3cLlf643KTJd_7W_FlzXl1kVCVSL0">2020 CORVETTE STINGRAY</a>）。</p>
+<p>Unless multiple <strong>games</strong>/<strong>WebRTCProxy</strong>/<strong>SignallingWebServer</strong> instances are being run simultaneously, allowing each player to occupy a set without interference, which is also the purpose of the <strong>MatchmakerServer</strong>.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The Pixel Streaming concept of cloud gaming is promising, but current hardware environments and bandwidth limitations remain significant issues. During my testing experience, connections in a local network were relatively smooth, reaching full frames at a set maximum of 60fps, though occasional frame drops did occur.</p>
+<p>Google has also launched the cloud gaming platform <a target="_blank" rel="noopener" href="https://stadia.dev/">Stadia</a>, but it is still far from being fully realized. However, it can be applied in certain industry applications (such as Chevrolet’s car showcase <a target="_blank" rel="noopener" href="https://visualizer-west.chevrolet.com/ui?carline=corvette&modelyear=2020&brand=chevrolet&language=en&country=US&channel=b2c&fbclid=IwAR2bCJCcZe7GjggAemV6ht4RhqoPZF3cLlf643KTJd_7W_FlzXl1kVCVSL0">2020 CORVETTE STINGRAY</a>).</p>
 
     </div>
 
@@ -487,7 +488,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -497,7 +498,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -507,37 +508,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/9455/" target="_blank">PixelStreaming：基本概念与上手初探</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2019/07/30 17:48<br/>
+             <span>Title:</span><a href="/posts/9455/" target="_blank">PixelStreaming: Basic Concepts and Getting Started</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2019/07/30 17:48<br/>
              
-             <span>本文字数:</span><span class="page-count">3.9k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">7.8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/9455/" target="_blank" title="PixelStreaming：基本概念与上手初探">https://imzlp.com/posts/9455/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/9455/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/9455/" target="_blank" title="PixelStreaming: Basic Concepts and Getting Started">https://en.imzlp.com/posts/9455/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/9455/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -557,8 +558,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/9050/" rel="prev" title="分析UBT中EULA的内容分发限制">
-      <i class="fa fa-chevron-left"></i> 分析UBT中EULA的内容分发限制
+    <a href="/posts/9050/" rel="prev" title="Analyzing the content distribution restrictions of EULA in UBT">
+      <i class="fa fa-chevron-left"></i> Analyzing the content distribution restrictions of EULA in UBT
     </a></div>
       <div class="post-nav-item">
     <a href="/posts/31203/" rel="next" title="UE Modules:Find the DLL and load it">
@@ -633,25 +634,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PixelStreamingDemo"><span class="nav-number">1.</span> <span class="nav-text">PixelStreamingDemo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-Game"><span class="nav-number">1.1.</span> <span class="nav-text">Launch Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebRTCProxy"><span class="nav-number">1.2.</span> <span class="nav-text">WebRTCProxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SignallingWebServer"><span class="nav-number">1.3.</span> <span class="nav-text">SignallingWebServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MatchMakerServer"><span class="nav-number">1.4.</span> <span class="nav-text">MatchMakerServer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PixelStreamingDemo"><span class="nav-number">1.</span> <span class="nav-text">PixelStreamingDemo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-Game"><span class="nav-number">1.1.</span> <span class="nav-text">Launch Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebRTCProxy"><span class="nav-number">1.2.</span> <span class="nav-text">WebRTCProxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SignallingWebServer"><span class="nav-number">1.3.</span> <span class="nav-text">SignallingWebServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MatchMakerServer"><span class="nav-number">1.4.</span> <span class="nav-text">MatchMakerServer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">2.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -659,19 +660,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -709,10 +710,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -739,9 +740,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -750,12 +748,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -908,7 +906,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/9455/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/9455/',]
       });
       });
   </script>
@@ -931,12 +929,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

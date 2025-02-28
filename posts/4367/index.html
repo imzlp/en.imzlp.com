@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,28 +19,28 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="花了一个月的时间读完了TC++PL4E，因为我之前读过C++ Primer，C++大部分的语法内容都已了解，所以读的速度还是比较快的，但是通过组合阅读C++标准也发现了很多C++中我原本不知道的东西，从标准和C++之父的视角来看C++确实是足够全面了，由此来对比一下C++ Primer、TC++PL4E和ISO C++文档。">
+  <meta name="description" content="Spent a month reading TC++PL4E. Since I had previously read C++ Primer and understood most of the C++ syntax, the reading speed was quite fast. However, by reading alongside the C++ standard, I discov">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读TC++PL、C++Primer和ISO C++">
-<meta property="og:url" content="https://imzlp.com/posts/4367/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="花了一个月的时间读完了TC++PL4E，因为我之前读过C++ Primer，C++大部分的语法内容都已了解，所以读的速度还是比较快的，但是通过组合阅读C++标准也发现了很多C++中我原本不知道的东西，从标准和C++之父的视角来看C++确实是足够全面了，由此来对比一下C++ Primer、TC++PL4E和ISO C++文档。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Reading TC++PL&#x2F;C++Primer&#x2F;ISO C++">
+<meta property="og:url" content="https://en.imzlp.com/posts/4367/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Spent a month reading TC++PL4E. Since I had previously read C++ Primer and understood most of the C++ syntax, the reading speed was quite fast. However, by reading alongside the C++ standard, I discov">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/4367/C++11.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/4367/cpp14.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/4367/C++17.webp">
 <meta property="article:published_time" content="2016-12-06T23:16:00.000Z">
 <meta property="article:modified_time" content="2016-12-06T23:16:00.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/4367/C++11.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/4367/">
+<link rel="canonical" href="https://en.imzlp.com/posts/4367/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>读TC++PL、C++Primer和ISO C++ | 循迹研究室</title>
+  <title>Reading TC++PL/C++Primer/ISO C++ | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/4367/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/4367/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          读TC++PL、C++Primer和ISO C++<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-12-06-4367.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/4367/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Reading TC++PL/C++Primer/ISO C++<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-12-06-4367.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/4367/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Reading TC++PL/C++Primer/ISO C++</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">读TC++PL、C++Primer和ISO C++</sub>
           </div>
         
 
@@ -318,43 +318,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-12-06 23:16 23:16:00:16" itemprop="dateCreated datePublished" datetime="2016-12-06T23:16:00+00:00">2016-12-06 23:16</time>
+              <time title="Created: 2016-12-06 23:16 23:16:00:16" itemprop="dateCreated datePublished" datetime="2016-12-06T23:16:00+00:00">2016-12-06 23:16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/4367/" class="post-meta-item leancloud_visitors" data-flag-title="读TC++PL、C++Primer和ISO C++" title="阅读次数">
+            <span id="/posts/4367/" class="post-meta-item leancloud_visitors" data-flag-title="Reading TC++PL/C++Primer/ISO C++" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -366,22 +366,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>花了一个月的时间读完了TC++PL4E，因为我之前读过C++ Primer，C++大部分的语法内容都已了解，所以读的速度还是比较快的，但是通过组合阅读C++标准也发现了很多C++中我原本不知道的东西，从标准和C++之父的视角来看C++确实是足够全面了，由此来对比一下C++ Primer、TC++PL4E和ISO C++文档。</p>
+        <p>Spent a month reading TC++PL4E. Since I had previously read C++ Primer and understood most of the C++ syntax, the reading speed was quite fast. However, by reading alongside the C++ standard, I discovered many things in C++ that I previously didn’t know. From the perspective of the standard and the father of C++, C++ is indeed comprehensive enough. Thus, I’ll compare C++ Primer, TC++PL4E, and the ISO C++ documentation.</p>
 <span id="more"></span>
 
-<h3 id="C-Primer-5th"><a href="#C-Primer-5th" class="headerlink" title="C++ Primer 5th"></a>C++ Primer 5th</h3><p><a target="_blank" rel="noopener" href="https://item.jd.com/11306138.html">C++ Primer 5th</a>虽说书名冠以<code>Primer</code>但是我觉得实际上这不是一本面向零基础的C++书籍，而且我觉得书中章节顺序安排有些古怪，前面出现的内容只有看到后面才会有解答，但是这也确实是一本很好的C++书，<strong>如果你具有C语言的基础或者已经对C++有一些了解</strong>想比较全面和有些深度地学习C++，这本书是很好的选择，对于工程中常用到的C++的特性都讲解的十分清楚，而且代码示例也都通俗易懂，比较全面和深入的讲解了<strong>C++的大部分知识点</strong>。</p>
-<h3 id="TC-PL-4th"><a href="#TC-PL-4th" class="headerlink" title="TC++PL 4th"></a>TC++PL 4th</h3><p><a target="_blank" rel="noopener" href="https://item.jd.com/11986384.html">TC++PL</a>(The C++ Programming Language Fourth Edition)这本书也不是C++的零基础书籍，阅读本书的要求其实我觉得比C++ Primer要稍高一些。这是C++之父<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a>的著作，可以说这本书面面俱到地讲到了C++的所有特性。从C++的语言特性这个角度来看，这本比C++ Primer更全面(如详细讲解了ADL/POD等)，但是每个章节及其小结的篇幅更短(言简意赅)，如果说更深入或者更详实的资料还是要查阅其他的文档。TC++PL其实更像是一本手册或者是一份纲要，方便快速查询。示例代码也都十分精炼，但是某些知识点对于深度的剖析不如C++ Primer，例如lambda/类那部分在C++ Primer那里写的更全面一些。或许是C++之父想要把C++的各个部分都一碗水端平，他在序言中也讲到了碍于篇幅的膨胀(加上标准库部分已(中文)上千页，英文则一千三百多页)，已经是本大部头，总有些取舍。</p>
-<p>如果说没有足够的时间来通读这本书，可以用这样一个小技巧：Bjarne在每章的末尾够给出了一些编码的建议，可以通过阅读这些建议来思考为什么，如果说你看到建议能够想到为什么要这么做就算你熟悉了这部分知识，如果看到建议了不知道为什么要这么做就假定你不熟悉这部分知识，然后有针对性的去看。这样读书的效率会高很多，缺点只是不够系统。</p>
-<h3 id="ISO-C-2014"><a href="#ISO-C-2014" class="headerlink" title="ISO C++(2014)"></a>ISO C++(2014)</h3><p>这里说的<strong>ISO C++**是基于</strong>ISO/IEC 14882:2014(E)**的，也就是C++14。</p>
-<p>读标准和阅读语言书籍是两个感觉，读书籍可以看到作者的一些个人见解，很多大师(Bjarne Stroustrup/Stanley B. Lippman)的见解当然十分精妙，但是也有人在很多知识的口口相传或者理解过程中出现了偏差(读别人博客的时候就会发现…)，所以这时候就需要更权威的资料来佐证，对于语言来说那必然就是标准文档最权威。</p>
-<p>标准文档几乎不涉及具体的语法用途，主要是限定语言的语法应该实现什么样的语义。就这一点来说编译器实现的语言语义应该是完全按照标准要求来进行实现的，所有和标准文档相冲突的编译器都是不标准的，从这一点我们可以判定一个编译器的实现标准与否。</p>
-<p>可以在<a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/compiler_support">这里</a>这里看各个编译器对标准支持情况。</p>
-<p>读语言标准从学习语言的角度来说可以使我们更深层次地了解C++这门语言。因为标准文档对于语义的要求不是含混不清的，标准的规定既是真理(不论优劣)。但是很多语言特性的具体实现是没有规定的，所以在使用的时候由于<strong>编译器对语言特性的实现方式不一样</strong>(例如vptr)，在我们需要用到哪些奇淫巧计的时候会造成很多麻烦，所以如果不是必要还是少用那些奇淫巧计，而且学习C++最重要的是，谨记不要相信一个编译器，因为编译器的实现也可能是不标准的(如MSVC)，所以在写代码的时候还是要多用几个编译器来测试代码，遇到有歧义的地方就查阅标准文档。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>这三份资料各有优点，但是综合(质量/深度/性价比)来说(没有任何贬低的意思)，如果想比较深入全面的学习C++我建议是深入地去读C++ Primer，如果有时间的话可以买本TC++PL快速过一遍然后当做手册，配合标准文档阅读更佳(主要是用来消歧义)。</p>
-<p>其实C++ Primer和TC++PL是可以相互替代的，但是由于其书的立意不一样(至少我是这么觉得)，所以我建议如果有时间的话两本还是都要读读的，如果时间紧迫C++ Primer和TC+PL读其中一本也行，注意C++Primer一定要买第五版，而TC++PL一定要买第四版，这两个版本都是基于C++11标准的，和之前的标准(C++03)差别很大。</p>
-<p>建议的阅读顺序为(<code>&lt;=&gt;</code>为可相互替代，<code>=</code>为同时阅读，相互参考)：</p>
+<h3 id="C-Primer-5th"><a href="#C-Primer-5th" class="headerlink" title="C++ Primer 5th"></a>C++ Primer 5th</h3><p><a target="_blank" rel="noopener" href="https://item.jd.com/11306138.html">C++ Primer 5th</a> has “Primer” in its title, but I actually don’t think this is a beginner-level C++ book. I find the chapter arrangement a bit odd; the content introduced earlier only gets explained later. Nevertheless, it is indeed a very good C++ book. <strong>If you have a background in C or already have some understanding of C++,</strong> this book is a great choice for learning C++ comprehensively and with some depth. It explains the commonly used C++ features very clearly, and the code examples are easy to understand, covering <strong>most of the essential knowledge points of C++</strong> in a comprehensive and in-depth manner.</p>
+<h3 id="TC-PL-4th"><a href="#TC-PL-4th" class="headerlink" title="TC++PL 4th"></a>TC++PL 4th</h3><p><a target="_blank" rel="noopener" href="https://item.jd.com/11986384.html">TC++PL</a> (The C++ Programming Language Fourth Edition) is also not a zero-basis C++ book; I think the requirements for reading this one are slightly higher than C++ Primer. This book is written by the father of C++, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a>, and comprehensively covers all features of C++. In terms of C++ language features, this book is more comprehensive than C++ Primer (it includes detailed discussions on ADL/POD, etc.), but the length of each chapter and its summaries is shorter (concise). For more in-depth or detailed information, you still need to refer to other documents. TC++PL is more like a manual or an outline, suitable for quick reference. The example code is quite concise, but some knowledge points are not analyzed as deeply as in C++ Primer; for instance, the section on lambda/classes is written more comprehensively in C++ Primer. Perhaps the father of C++ wanted to treat all parts of C++ equally, as he mentions in the preface the swelling of content due to page limits (including the standard library part, which is over a thousand pages in Chinese and more than thirteen hundred in English), making it a hefty book that inevitably involves some trade-offs.</p>
+<p>If you don’t have enough time to read this book thoroughly, a small trick is: Bjarne provides some coding suggestions at the end of each chapter. You can read these suggestions and think about why they are made. If you can figure out why when you see the suggestion, it means you are familiar with that part of the knowledge. If you see a suggestion and don’t know why it’s suggested, assume you are not familiar with that part, and look into it with purpose. This approach can greatly improve reading efficiency, though the downside is that it may lack a systematic view.</p>
+<h3 id="ISO-C-2014"><a href="#ISO-C-2014" class="headerlink" title="ISO C++(2014)"></a>ISO C++(2014)</h3><p>What is referred to as <strong>ISO C++</strong> here is based on <strong>ISO/IEC 14882:2014(E)</strong>, which is C++14.</p>
+<p>Reading the standard and studying language books provide two different experiences. In books, you can see the author’s personal insights. Many masters (Bjarne Stroustrup/Stanley B. Lippman) offer brilliant perspectives, but there are also instances where misunderstandings arise during the transmission or comprehension of knowledge (you notice this when reading others’ blogs…). Thus, more authoritative materials are needed to back up information, and for language, the standard document is the most authoritative.</p>
+<p>The standard document hardly discusses specific syntax usages; it focuses on what semantics the language syntax should implement. In this context, the language semantics implemented by a compiler should strictly follow the standard requirements, and any compiler conflicting with the standard documentation is considered non-standard. Thus, we can determine the adherence of a compiler’s implementation to the standard based on this.</p>
+<p>You can check the compliance of various compilers with the standard <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/compiler_support">here</a>.</p>
+<p>From the perspective of learning the language, studying language standards allows us to understand C++ more deeply. The requirements laid out in the standard document are clear and unambiguous; the stipulations of the standard are the truth (regardless of quality). However, many specific implementations of language features are not specified, which can lead to confusion due to the <strong>different implementations of language features among compilers</strong> (for instance, vptr). When we need to employ certain tricks, it can cause a lot of trouble, so it’s best to avoid using those tricks unless necessary. Moreover, the most important thing about learning C++ is to remember not to rely on just one compiler, as its implementation might also be non-standard (like MSVC). Hence, while writing code, it’s advisable to test the code with multiple compilers and refer to the standard documentation for any ambiguous areas.</p>
+<h3 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h3><p>All three resources have their merits; however, in terms of overall quality, depth, and value, I recommend reading C++ Primer in depth for a more comprehensive understanding of C++. If time permits, purchase TC++PL to quickly skim through and use it as a reference manual, ideally in conjunction with the standard documentation (mainly used to resolve ambiguities).</p>
+<p>C++ Primer and TC++PL can be interchangeable, but since their purposes differ (at least that’s my view), I suggest reading both if time allows. If time is tight, you can read either C++ Primer or TC++PL, but make sure to buy the fifth edition of C++ Primer and the fourth edition of TC++PL. Both editions are based on the C++11 standard, which is quite different from the previous standard (C++03).</p>
+<p>The suggested reading order is (<code>&lt;=&gt;</code> indicates interchangeability, <code>=</code> indicates simultaneous reading and mutual reference):</p>
 <p>(<code>C++ Primer</code><strong>&lt;=&gt;</strong><code>TC++PL</code>)<strong>=</strong><code>ISO C++</code></p>
-<p>对于C++11/14/17之间的概览贴上Bjarne Stroustrup在<strong>2016 C++及系统软件技术大会</strong>上的PPT:</p>
+<p>For an overview of the changes between C++11/14/17, here are Bjarne Stroustrup’s PPT slides from the <strong>2016 C++ and Systems Software Conference</strong>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/4367/C++11.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/4367/cpp14.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/4367/C++17.webp"></p>
 
     </div>
@@ -393,7 +393,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -403,7 +403,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -413,37 +413,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/4367/" target="_blank">读TC++PL、C++Primer和ISO C++</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/12/06 23:16<br/>
+             <span>Title:</span><a href="/posts/4367/" target="_blank">Reading TC++PL/C++Primer/ISO C++</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/12/06 23:16<br/>
              
-             <span>本文字数:</span><span class="page-count">2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">5k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/4367/" target="_blank" title="读TC++PL、C++Primer和ISO C++">https://imzlp.com/posts/4367/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/4367/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/4367/" target="_blank" title="Reading TC++PL/C++Primer/ISO C++">https://en.imzlp.com/posts/4367/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/4367/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -463,8 +463,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/17446/" rel="prev" title="关于读书的一些思考">
-      <i class="fa fa-chevron-left"></i> 关于读书的一些思考
+    <a href="/posts/17446/" rel="prev" title="Some thoughts on reading">
+      <i class="fa fa-chevron-left"></i> Some thoughts on reading
     </a></div>
       <div class="post-nav-item">
     <a href="/posts/1140/" rel="next" title="What is POD in C++?">
@@ -539,25 +539,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Primer-5th"><span class="nav-number">1.</span> <span class="nav-text">C++ Primer 5th</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TC-PL-4th"><span class="nav-number">2.</span> <span class="nav-text">TC++PL 4th</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISO-C-2014"><span class="nav-number">3.</span> <span class="nav-text">ISO C++(2014)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Primer-5th"><span class="nav-number">1.</span> <span class="nav-text">C++ Primer 5th</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TC-PL-4th"><span class="nav-number">2.</span> <span class="nav-text">TC++PL 4th</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISO-C-2014"><span class="nav-number">3.</span> <span class="nav-text">ISO C++(2014)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Postscript"><span class="nav-number">4.</span> <span class="nav-text">Postscript</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -565,19 +565,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -615,10 +615,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -645,9 +645,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -656,12 +653,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -814,7 +811,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/4367/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/4367/',]
       });
       });
   </script>
@@ -837,12 +834,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

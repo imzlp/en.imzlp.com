@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在之前的文章中，主要在介绍HotPatcher如何应用在热更新流程里。但是HotPatcher并不只是能实现热更的需求，更是一个灵活的资源打包框架。 当项目开发进行到一定阶段，海量的资源需要进包，等待一次完整出包的时间会很久。如果真机出现问题，修复-&gt;打包-&gt;验证，这个串行流程就会变动极为冗长。经常会遇到脚本、数据或者某些的资源错误，导致包的异常。 这种情况下，再完整出一个包就等待数个">
+  <meta name="description" content="In previous articles, I primarily introduced how HotPatcher can be applied in the hot update process. However, HotPatcher is not just capable of fulfilling the needs for hot updates; it is also a flex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用HotPatcher加速真机资源验证">
-<meta property="og:url" content="https://imzlp.com/posts/76004/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在之前的文章中，主要在介绍HotPatcher如何应用在热更新流程里。但是HotPatcher并不只是能实现热更的需求，更是一个灵活的资源打包框架。 当项目开发进行到一定阶段，海量的资源需要进包，等待一次完整出包的时间会很久。如果真机出现问题，修复-&gt;打包-&gt;验证，这个串行流程就会变动极为冗长。经常会遇到脚本、数据或者某些的资源错误，导致包的异常。 这种情况下，再完整出一个包就等待数个">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Use HotPatcher to accelerate real device resource verification">
+<meta property="og:url" content="https://en.imzlp.com/posts/76004/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In previous articles, I primarily introduced how HotPatcher can be applied in the hot update process. However, HotPatcher is not just capable of fulfilling the needs for hot updates; it is also a flex">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/182636.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/161430.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/164320.png">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/20221018125828.png">
 <meta property="article:published_time" content="2024-04-07T18:40:11.000Z">
 <meta property="article:modified_time" content="2024-04-07T18:40:11.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
@@ -52,7 +52,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/182636.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/76004/">
+<link rel="canonical" href="https://en.imzlp.com/posts/76004/">
 
 
 <script id="page-configurations">
@@ -61,11 +61,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>利用HotPatcher加速真机资源验证 | 循迹研究室</title>
+  <title>Use HotPatcher to accelerate real device resource verification | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -105,7 +105,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -115,7 +115,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -126,7 +126,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -145,24 +145,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -172,7 +172,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -182,7 +182,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -190,14 +190,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -205,26 +205,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -240,7 +240,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -259,7 +259,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -278,12 +278,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -301,27 +301,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/76004/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/76004/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          利用HotPatcher加速真机资源验证<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2024-04-07-76004.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/76004/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Use HotPatcher to accelerate real device resource verification<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2024-04-07-76004.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/76004/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Use HotPatcher to accelerate real device resource verification</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">利用HotPatcher加速真机资源验证</sub>
           </div>
         
 
@@ -330,51 +330,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2024-04-07 18:40 18:40:11:40" itemprop="dateCreated datePublished" datetime="2024-04-07T18:40:11+00:00">2024-04-07 18:40</time>
+              <time title="Created: 2024-04-07 18:40 18:40:11:40" itemprop="dateCreated datePublished" datetime="2024-04-07T18:40:11+00:00">2024-04-07 18:40</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/HotPatcher/" itemprop="url" rel="index"><span itemprop="name">HotPatcher</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/76004/" class="post-meta-item leancloud_visitors" data-flag-title="利用HotPatcher加速真机资源验证" title="阅读次数">
+            <span id="/posts/76004/" class="post-meta-item leancloud_visitors" data-flag-title="Use HotPatcher to accelerate real device resource verification" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.4k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -386,103 +386,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在之前的文章中，主要在介绍<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>如何应用在热更新流程里。但是<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>并不只是能实现热更的需求，更是一个灵活的资源打包框架。</p>
-<p>当项目开发进行到一定阶段，海量的资源需要进包，等待一次完整出包的时间会很久。如果真机出现问题，<strong>修复-&gt;打包-&gt;验证</strong>，这个串行流程就会变动极为冗长。经常会遇到脚本、数据或者某些的资源错误，导致包的异常。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/182636.png"></p>
-<p>这种情况下，再完整出一个包就等待数个小时的时间，导致测试无法进行冒烟跑测。就算重新出包也难保一定没有其他遗漏的问题，否则又要重来一遍。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/161430.png"></p>
-<p>基于这种痛点，我们迫切地需要一种在开发阶段能够快速地修复包内资源问题，进行快速验证的方法。而<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>提供了这样的功能，如果能充分利用起来，就不必等待完整出包。</p>
-<p>本篇文章会介绍，如何利用HotPatcher提供的编辑器功能，来快速打包预设配置和特定资源。加速资源在真机上的验证流程，大幅提升测试效率。</p>
+        <p>In previous articles, I primarily introduced how <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> can be applied in the hot update process. However, <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> is not just capable of fulfilling the needs for hot updates; it is also a flexible resource packaging framework.</p>
+<p>As the project development reaches a certain stage, a massive amount of resources needs to be packaged, and waiting for a complete package to be built can take a long time. If a real device encounters issues, the serial process of <strong>repair -&gt; package -&gt; verify</strong> can become exceedingly lengthy. There are often cases of script, data, or other resource errors that lead to package abnormalities.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/182636.png"></p>
+<p>In such cases, waiting hours to generate a complete package prevents smoke testing from proceeding. Even if you rebuild the package, there’s no guarantee that there won’t be other overlooked issues; otherwise, you have to start over again.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/161430.png"></p>
+<p>Based on this pain point, we urgently need a method to quickly fix resource issues within packages and validate them during the development phase. <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> provides this functionality, allowing you to utilize it fully without waiting for a complete package.</p>
+<p>This article will introduce how to utilize the editor features provided by HotPatcher to quickly package preset configurations and specific resources, accelerating the validation process of resources on real devices and significantly improving testing efficiency.</p>
 <span id="more"></span>
-<h2 id="Preset-Actions"><a href="#Preset-Actions" class="headerlink" title="Preset Actions"></a>Preset Actions</h2><p>HotPatcher提供了一种叫做<code>Preset Actions</code>的功能，可以把自定义的Patch配置添加到项目设置中。在编辑器里可以快速唤起，执行打包过程。</p>
-<p>配置方法:</p>
+
+<h2 id="Preset-Actions"><a href="#Preset-Actions" class="headerlink" title="Preset Actions"></a>Preset Actions</h2><p>HotPatcher offers a feature called <code>Preset Actions</code> that allows custom patch configurations to be added to project settings. In the editor, these can be quickly invoked to execute the packaging process.</p>
+<p>Configuration method:</p>
 <ol>
-<li>打开HotPatcher的主界面</li>
-<li>编辑Patch的配置，不指定基础版本</li>
+<li>Open the main interface of HotPatcher</li>
+<li>Edit the patch configuration without specifying a base version</li>
 <li>AddToPreset</li>
 </ol>
-<p>以打包lua为例，需要把位于项目中的某个目录，以外部文件的形式打包出pak。则可以这么配置：</p>
+<p>For example, to package Lua, you need to package a specific directory in the project as an external file in the form of a pak. The configuration can be as follows:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/164320.png"></p>
-<p>它的配置文件为：</p>
+<p>The accompanying configuration file is:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;bByBaseVersion&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;baseVersion&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;filePath&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;versionId&quot;</span><span class="punctuation">:</span><span class="string">&quot;LUA&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bImportProjectSettings&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bBinariesPatch&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;binariesPatchConfig&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;binariesPatchType&quot;</span><span class="punctuation">:</span><span class="string">&quot;None&quot;</span><span class="punctuation">,</span><span class="attr">&quot;encryptSettings&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bUseDefaultCryptoIni&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;cryptoKeys&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;filePath&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;baseVersionPaks&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;matchRules&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;bIncludeEngineIni&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bIncludePluginIni&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bIncludeProjectIni&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bEnableExternFilesDiff&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;ignoreDeletionModulesAsset&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;addExternAssetsToPlatform&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;targetPlatform&quot;</span><span class="punctuation">:</span><span class="string">&quot;AllPlatforms&quot;</span><span class="punctuation">,</span><span class="attr">&quot;addExternFileToPak&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;addExternDirectoryToPak&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;directoryPath&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;[PROJECTDIR]/Source/Script&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;mountPoint&quot;</span><span class="punctuation">:</span><span class="string">&quot;../../../FGame/Source/Script&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bWildcard&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;wildcardStr&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bIncludePakVersionFile&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;pakVersionFileMountPoint&quot;</span><span class="punctuation">:</span><span class="string">&quot;../../../FGame/Versions/version.json&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bEnableChunk&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bCreateDefaultChunk&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;chunkInfos&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bCookPatchAssets&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;cookAdvancedOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bCookParallelSerialize&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;numberOfAssetsPerFrame&quot;</span><span class="punctuation">:</span><span class="number">100</span><span class="punctuation">,</span><span class="attr">&quot;overrideNumberOfAssetsPerFrame&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;Class&#x27;/Script/Engine.World&#x27;&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;bAccompanyCookForShader&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;cookShaderOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bSharedShaderLibrary&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bNativeShader&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;shaderNameRule&quot;</span><span class="punctuation">:</span><span class="string">&quot;CHUNK_NAME&quot;</span><span class="punctuation">,</span><span class="attr">&quot;customShaderName&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span><span class="attr">&quot;shaderLibMountPointRegular&quot;</span><span class="punctuation">:</span><span class="string">&quot;[PROJECTDIR]/ShaderLibs&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;serializeAssetRegistryOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bSerializeAssetRegistry&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bSerializeAssetRegistryManifest&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;assetRegistryMountPointRegular&quot;</span><span class="punctuation">:</span><span class="string">&quot;[PROJECTDIR]/AssetRegistry&quot;</span><span class="punctuation">,</span><span class="attr">&quot;assetRegistryRule&quot;</span><span class="punctuation">:</span><span class="string">&quot;PATCH&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bCustomAssetRegistryName&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;assetRegistryNameRegular&quot;</span><span class="punctuation">:</span><span class="string">&quot;[CHUNK_NAME]_AssetRegistry.bin&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;ioStoreSettings&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bIoStore&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bAllowBulkDataInIoStore&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;ioStorePakListOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;ioStoreCommandletOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;platformContainers&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;bStoragePakList&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bStorageBulkDataInfo&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;unrealPakSettings&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;unrealPakListOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;unrealCommandletOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bStoragePakList&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;defaultPakListOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;-compress&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;defaultCommandletOptions&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;-compress&quot;</span><span class="punctuation">,</span><span class="string">&quot;-compressionformats=Zlib&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;encryptSettings&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bUseDefaultCryptoIni&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;cryptoKeys&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;filePath&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;replacePakListTexts&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;pakTargetPlatforms&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bCustomPakNameRegular&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;pakNameRegular&quot;</span><span class="punctuation">:</span><span class="string">&quot;&#123;VERSION&#125;_&#123;CHUNKNAME&#125;_&#123;PLATFORM&#125;_001_P&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bCustomPakPathRegular&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;pakPathRegular&quot;</span><span class="punctuation">:</span><span class="string">&quot;&#123;CHUNKNAME&#125;/&#123;PLATFORM&#125;&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bStorageNewRelease&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bStoragePakFileInfo&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bIgnoreDeletedAssetsInfo&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bStorageDeletedAssetsToNewReleaseJson&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bStorageDiffAnalysisResults&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bStorageUnrealPakList&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bEnableProfiling&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;storageCookedDir&quot;</span><span class="punctuation">:</span><span class="string">&quot;[PROJECTDIR]/Saved/Cooked&quot;</span><span class="punctuation">,</span><span class="attr">&quot;assetScanConfig&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;bPackageTracker&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;assetIncludeFilters&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;assetIgnoreFilters&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bIncludeHasRefAssetsOnly&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bAnalysisFilterDependencies&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;assetRegistryDependencyTypes&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;Packages&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;includeSpecifyAssets&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;bRecursiveWidgetTree&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bAnalysisMaterialInstance&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;bSupportWorldComposition&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;bForceSkipContent&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;forceSkipContentRules&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;/Game/__ExternalActors__&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;/Game/__ExternalObjects__&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;/Engine/Editor*/&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;/Engine/VREditor/&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;forceSkipAssets&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;forceSkipClasses&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;bStorageConfig&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span><span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;path&quot;</span><span class="punctuation">:</span><span class="string">&quot;[PROJECTDIR]/Saved/HotPatcher/&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="attr">&quot;hashCalculator&quot;</span><span class="punctuation">:</span><span class="string">&quot;MD5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;bStandaloneMode&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="attr">&quot;additionalCommandletArgs&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>执行AddToPreset，会将这个配置添加到项目设置中，在<code>ProjectSettings</code>-<code>Plugins</code>-<code>HotPatcher</code>-<code>PresetConfigs</code>：</p>
+<p>Executing AddToPreset will add this configuration to project settings under <code>ProjectSettings</code>-<code>Plugins</code>-<code>HotPatcher</code>-<code>PresetConfigs</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/165001.png"></p>
-<p>它是一个数组，可以添加多个预设。也可以在项目设置中编辑预设的参数，与HotPatcher主界面里的配置项完全相同。</p>
-<p>然后就能够在ContentBrowser里的空白处点击右键，在<code>Preset Actions</code>中就能看到添加的预设了。</p>
-<p>选中名字，再选择平台，就能快速打包：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162145.png"></p>
-<p>打包完后会在引擎中弹出一个提示:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162241.png"></p>
-<p>点击超链接就会打开pak所在的文件夹，方便放入手机中测试：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162425.png"></p>
-<p>可以将脚本、ini、项目数据等内容都单独配置为一个独立的Action，这样对他们的修改可以快速地打包出来，直接进行验证。</p>
-<h2 id="Cook-And-Pak"><a href="#Cook-And-Pak" class="headerlink" title="Cook And Pak"></a>Cook And Pak</h2><p>对于资产的打包而言，大多数情况下，资源出现问题没有办法提前预知，也不好添加为一个固定的Preset-Action配置。</p>
-<p>比如某个贴图引用丢失、客户端本地修改了UMG、美术或策划想要临时跑测一个地图，等等。都需要精确地把某些资源给打包了，所以针对UASSET资源，我为HotPatcher提供了另一组功能，叫做CookAndPak。</p>
-<p>在Content Browser中，直接选中资源或目录，右键，就能看到底部有几个选择：</p>
+<p>It’s an array and can hold multiple presets. You can also edit the parameters of the presets within the project settings, which are identical to the configuration items in the HotPatcher main interface.</p>
+<p>Then, you can right-click in the blank area of the Content Browser and see the added preset in <code>Preset Actions</code>.</p>
+<p>Select the name, choose a platform, and you can quickly package:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162145.png"></p>
+<p>After packaging, a notification will pop up in the engine:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162241.png"></p>
+<p>Clicking the hyperlink will open the folder where the pak is located, making it convenient to test on a mobile device:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/162425.png"></p>
+<p>You can configure scripts, ini files, project data, and other content as an independent Action, allowing changes to be quickly packaged and directly validated.</p>
+<h2 id="Cook-And-Pak"><a href="#Cook-And-Pak" class="headerlink" title="Cook And Pak"></a>Cook And Pak</h2><p>For asset packaging, in most cases, resource issues cannot be predicted in advance, and it is not feasible to add them as a fixed Preset-Action configuration.</p>
+<p>For example, a missing texture reference, local modifications made by clients on UMG, or artists or planners wanting to temporarily test a map, etc. All require accurately packaging specific resources, so for UASSET resources, I provided another set of features for HotPatcher called CookAndPak.</p>
+<p>In the Content Browser, select the resource or directory, right-click, and you will see several choices at the bottom:</p>
 <ol>
-<li>Cook Actions，顾名思义只执行COOK，目的是验证Cook之后资源，通常用来分析资源参数对序列化大小的影响。如贴图压缩规格、动画压缩配置等。</li>
-<li>Cook And Pak Actions：执行Cook并且把结果打包为PAK</li>
-<li>Add To Patch Settings：将选中资源添加到HotPatcher的配置主界面中</li>
+<li>Cook Actions, as the name suggests, simply executes COOK, aiming to validate resources after being cooked, typically used to analyze the impact of resource parameters on serialization size, such as texture compression specifications, animation compression configurations, etc.</li>
+<li>Cook And Pak Actions: executes Cook and packages the result into a PAK.</li>
+<li>Add To Patch Settings: adds the selected resources to the HotPatcher configuration main interface.</li>
 </ol>
-<p>通常针对资源的快速打包，都使用CookAndPak模式：</p>
+<p>Typically, for quick resource packaging, the CookAndPak mode is used:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/172940.png"></p>
-<p>然后选择对应的平台，以及是否开启依赖分析，大多数情况下是要开启的，除非你能明确知道它们不需要。</p>
-<p>关于CookAndPak，我还提供了两种方式：</p>
+<p>Then select the corresponding platform and whether to enable dependency analysis, which is usually necessary unless you clearly know that they are not needed.</p>
+<p>Regarding CookAndPak, I also provide two execution methods:</p>
 <ol>
-<li>在当前Editor进程内执行，会阻塞编辑器</li>
-<li>拉起新的Cmdlet进程执行，不阻塞当前编辑器</li>
+<li>Execute within the current Editor process, which will block the editor.</li>
+<li>Launch a new Cmdlet process for execution, which does not block the current editor.</li>
 </ol>
-<p>对于资源较少的情况，在当前进程内执行速度更快，但是对于地图等具有大量依赖的资源来说，还是拉起单独的进程比较好。</p>
-<p>是否拉起独立的进程，可以在<code>ProjectSettings</code>-<code>Plugins</code>-<code>HotPatcher</code>-<code>TempPatchSetting</code>-<code>StandaloneMode</code>来控制。</p>
-<p>在当前Editor执行，打包完毕后会弹出提醒生成的文件，点击即可跳转到目录：</p>
+<p>For cases with fewer resources, executing within the current process is faster. However, for resources with large dependencies such as maps, launching a separate process is preferable.</p>
+<p>Whether to launch a separate process can be controlled under <code>ProjectSettings</code>-<code>Plugins</code>-<code>HotPatcher</code>-<code>TempPatchSetting</code>-<code>StandaloneMode</code>.</p>
+<p>When executed within the current Editor, a reminder will pop up after packaging is complete, allowing you to click to navigate to the directory:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/180343.png"></p>
-<p>拉起独立的Cmdlet执行，会弹出一个正在执行的持久性提醒，执行完毕会提醒：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/180445.png"></p>
-<p>需要等待执行完毕，这个过程不会卡住编辑器，可以做其他的编辑操作。</p>
+<p>Launching an independent Cmdlet execution will display a persistent reminder while executing, and will notify upon completion:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/07/180445.png"></p>
+<p>You need to wait for the execution to finish, but this process will not freeze the editor, allowing you to perform other editing operations.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20221018130012.png"></p>
 <blockquote>
-<p>执行的耗时取决于引用的资源量，以及所选择的资源之前有没有执行过打包（DDC）。</p>
+<p>The execution time depends on the number of referenced resources and whether the selected resources have been packaged before (DDC).</p>
 </blockquote>
-<p>执行完毕之后，会在项目的<code>Saved/HotPatcher/Paks/&#123;EXECUTE_TIME&#125;/Android_ASTC</code>下面创建出一个对应的 <strong>.pak</strong> 文件，这个 <strong>pak</strong> 文件就是打包资源的补丁包，文件名中包含了平台名，不同平台的 <strong>pak</strong> 文件<strong>不能混用</strong>。</p>
+<p>Once completed, a corresponding <strong>.pak</strong> file will be created under <code>Saved/HotPatcher/Paks/&#123;EXECUTE_TIME&#125;/Android_ASTC</code> in the project. This <strong>pak</strong> file serves as the patch package for the packaged resources, with its filename containing the platform name; <strong>pak</strong> files of different platforms <strong>cannot be mixed</strong>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20221018130123.png"></p>
-<h2 id="放入真机"><a href="#放入真机" class="headerlink" title="放入真机"></a>放入真机</h2><p>本地验证可以将Pak放入引擎自动挂载的路径，默认有三个：</p>
+<h2 id="Placing-on-the-Real-Device"><a href="#Placing-on-the-Real-Device" class="headerlink" title="Placing on the Real Device"></a>Placing on the Real Device</h2><p>For local validation, you can place the Pak file in the engine’s automatically mounted paths, which typically include three default locations:</p>
 <ul>
 <li>Engine/Content/Paks</li>
 <li>GAME_DIR/Content/Paks</li>
 <li>GAME_DIR/Saved/Paks</li>
 </ul>
-<p>通常在移动端我们会放到<code>Saved/Paks</code>下面，Windows则都可以。</p>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>Windows包需要将这个Pak文件放到以下目录中：</p>
+<p>Usually, on mobile devices, we place it under <code>Saved/Paks</code>, and for Windows, it can be placed in any of the mentioned directories.</p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>The Windows package requires placing this Pak file in the following directory:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WindowsNoEditor\PROJECT_NAME\Content\Paks</span><br></pre></td></tr></table></figure>
-<p>若不存在Paks目录，可手动创建。</p>
-<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>在Android中，需要将这个 <strong>pak</strong> 文件放到下面目录中：</p>
+<p>If the Paks directory does not exist, you can create it manually.</p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>For Android, this <strong>pak</strong> file needs to be placed in the following directory:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UE4Game/PROJECT_NAME/PROJECT_NAME/Saved/Paks</span><br></pre></td></tr></table></figure>
-<p>如果修改了数据目录到沙盒路径（<a href="https://imzlp.com/posts/20367">UE源码分析：修改游戏默认的数据存储路径</a>），则是这个路径：</p>
+<p>If the data directory has been modified to a sandbox path (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/20367">UE Source Analysis: Modify Game Default Data Storage Path</a>), then the path would be:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Android/data/com.xxxx.yyyy/files/UE4Game/PROJECT_NAME/PROJECT_NAME/Saved/Paks</span><br></pre></td></tr></table></figure>
-<p>如果没有Paks目录，可以手动创建一个。</p>
-<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>IOS则要复杂一些，需要用<strong>3utools</strong>或<strong>iMaZing</strong>等IOS管理工具传递文件。<br>放入 <strong>文稿</strong> - <strong>PROJECT_NAME</strong> - <strong>Saved</strong> - <strong>Paks</strong>下，若不存在Paks目录，可手动创建。</p>
+<p>If the Paks directory does not exist, you can create it manually.</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>For IOS, the process is more complex, as you need to use IOS management tools such as <strong>3utools</strong> or <strong>iMaZing</strong> to transfer files.<br>Place it in <strong>Documents</strong> - <strong>PROJECT_NAME</strong> - <strong>Saved</strong> - <strong>Paks</strong>, and create the Paks directory manually if it does not exist.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20221018125828.png"></p>
-<h3 id="检查挂载情况"><a href="#检查挂载情况" class="headerlink" title="检查挂载情况"></a>检查挂载情况</h3><p>当将<strong>pak</strong>文件放入上述目录之后，就可以启动游戏了。</p>
-<p>如果为了确认<strong>pak</strong>文件是否生效，可以从Log中查看：</p>
+<h3 id="Check-Mount-Status"><a href="#Check-Mount-Status" class="headerlink" title="Check Mount Status"></a>Check Mount Status</h3><p>After placing the <strong>pak</strong> file in the above directories, you can start the game.</p>
+<p>To confirm whether the <strong>pak</strong> file is effective, you can check the Log:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LogPakFile: Display: Found Pak file ../../../PROJECT_NAME/Saved/Paks/2022.10.18-13.02.53_IOS_001_P.pak attempting to mount.</span><br><span class="line">LogPakFile: Display: Mounting pak file ../../../PROJECT_NAME/Saved/Paks/2022.10.18-13.02.53_IOS_001_P.pak.</span><br></pre></td></tr></table></figure>
-<p>有这样的Log，就代表资源包被引擎读取成功，可以直接使用，<strong>就像它被打进了基础包中一样</strong>。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote>
-<p>手动打包<strong>Pak</strong>的优先级高于基础包内的资源，意味着一个资源如果<strong>补丁包</strong>和<strong>基础包</strong>中<strong>同时</strong>存在，就会<strong>替换</strong>基础包内的，就像热更新逻辑。</p>
+<p>If such logs appear, it indicates that the resource package has been successfully read by the engine and can be used just as if it were embedded in the base package.</p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><blockquote>
+<p>Manually packaging <strong>Pak</strong> has a higher priority than resources in the base package, which means that if a resource exists simultaneously in both <strong>the patch package</strong> and <strong>the base package</strong>, it will <strong>replace</strong> the resource in the base package, just like hot update logic.</p>
 </blockquote>
 <ol>
-<li>不同平台的<strong>pak</strong>不能混用！</li>
-<li>测试完毕之后最好把设备上的pak文件删除，不然后面新打的包可能会出现资源表现错误。</li>
+<li><strong>Pak</strong> files for different platforms cannot be mixed!</li>
+<li>After testing, it’s advisable to delete the pak files on the device, or else newly created packages might exhibit resource representation errors.</li>
 </ol>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇文章详细介绍了HotPatcher提供的快速打包功能的使用方法，可以在开发阶段无需等待完整包构建，按需打包资源和文件进行验证。最大限度地提升资源验证效率，快速创建补丁，避免等待。当补丁被验证之后，再启动完整包的构建流程也未尝不可，保证变动没有引起其他的问题。</p>
-<p>另外，我们还会将资源检查一起结合进来，最大限度地保证构建时的资源合规。<br>博客中有一批文章介绍：</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article details the usage methods for the rapid packaging features provided by HotPatcher, enabling resource and file packaging for validation during the development phase without waiting for a complete build. This maximizes validation efficiency, quickly creates patches, and avoids delays. Once patches are validated, initiating a complete package construction process is also acceptable to ensure that changes have not introduced other issues.</p>
+<p>Additionally, we will integrate resource checks to ensure compliance during the build process to the greatest extent possible. The blog contains a series of articles introducing:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/71162/">UE 中利用反射为资产建立属性缓存</a></li>
-<li><a href="https://imzlp.com/posts/19901/">UE 中资源自修正的设计与实现方案</a></li>
-<li><a href="https://imzlp.com/posts/22655/">UE 中多阶段的自动化资源检查方案</a></li>
-<li><a href="https://imzlp.com/posts/20376/">基于 ResScannerUE 的资源检查自动化实践</a></li>
-<li><a href="https://imzlp.com/posts/11750/">UE 资源合规检查工具 ResScannerUE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/71162/">Using Reflection to Establish Property Caches for Assets in UE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/19901/">Design and Implementation of Resource Self-Correction in UE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/22655/">Multi-Stage Automated Resource Inspection Solutions in UE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/20376/">Automation Practice of Resource Inspection Based on ResScannerUE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">Resource Compliance Inspection Tool ResScannerUE in UE</a></li>
 </ul>
-<p>它们分别从两个不同的维度提升版本稳定性和修复效率：</p>
+<p>These enhance version stability and repair efficiency from two different dimensions:</p>
 <ol>
-<li>资源检查保证进入打包流程的资源可靠；</li>
-<li>HotPatcher在资源出现异常时快速创建修复补丁；</li>
+<li>Resource inspections ensure the resources entering the packaging process are reliable.</li>
+<li>HotPatcher rapidly creates repair patches when resource anomalies occur.</li>
 </ol>
-<p>总的来说，项目中的游戏资产管理是一个非常庞杂的工作，需要接触到项目的各个地方。做得好了可以提升效率，避免问题。做的不好，将要花费大量的时间去排查资源问题。</p>
+<p>Overall, game asset management within a project is a highly complex task that requires involvement in various aspects of the project. Doing it well can improve efficiency and avoid problems; doing it poorly can lead to substantial time spent troubleshooting resource issues.</p>
 
     </div>
 
@@ -493,7 +494,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -503,7 +504,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -513,37 +514,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/76004/" target="_blank">利用HotPatcher加速真机资源验证</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2024/04/07 18:40<br/>
+             <span>Title:</span><a href="/posts/76004/" target="_blank">Use HotPatcher to accelerate real device resource verification</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2024/04/07 18:40<br/>
              
-             <span>本文字数:</span><span class="page-count">2.8k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">7.4k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/76004/" target="_blank" title="利用HotPatcher加速真机资源验证">https://imzlp.com/posts/76004/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/76004/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/76004/" target="_blank" title="Use HotPatcher to accelerate real device resource verification">https://en.imzlp.com/posts/76004/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/76004/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -565,12 +566,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/30014/" rel="prev" title="部署一个自托管的MEMOS笔记系统">
-      <i class="fa fa-chevron-left"></i> 部署一个自托管的MEMOS笔记系统
+    <a href="/posts/30014/" rel="prev" title="Deploy a self-hosted MEMOS note system">
+      <i class="fa fa-chevron-left"></i> Deploy a self-hosted MEMOS note system
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/16808/" rel="next" title="开源杂谈：HotPatcher的开发进展">
-      开源杂谈：HotPatcher的开发进展 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/16808/" rel="next" title="Open source: HotPatcher development progress">
+      Open source: HotPatcher development progress <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -641,25 +642,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preset-Actions"><span class="nav-number">1.</span> <span class="nav-text">Preset Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-And-Pak"><span class="nav-number">2.</span> <span class="nav-text">Cook And Pak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BE%E5%85%A5%E7%9C%9F%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">放入真机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">3.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">3.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS"><span class="nav-number">3.3.</span> <span class="nav-text">IOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%8C%82%E8%BD%BD%E6%83%85%E5%86%B5"><span class="nav-number">3.4.</span> <span class="nav-text">检查挂载情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.5.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preset-Actions"><span class="nav-number">1.</span> <span class="nav-text">Preset Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-And-Pak"><span class="nav-number">2.</span> <span class="nav-text">Cook And Pak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Placing-on-the-Real-Device"><span class="nav-number">3.</span> <span class="nav-text">Placing on the Real Device</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">3.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">3.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS"><span class="nav-number">3.3.</span> <span class="nav-text">IOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-Mount-Status"><span class="nav-number">3.4.</span> <span class="nav-text">Check Mount Status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes"><span class="nav-number">3.5.</span> <span class="nav-text">Notes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -667,19 +668,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -717,10 +718,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -747,9 +748,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -758,12 +756,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -916,7 +914,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/76004/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/76004/',]
       });
       });
   </script>
@@ -939,12 +937,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

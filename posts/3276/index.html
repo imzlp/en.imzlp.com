@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,28 +19,28 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="容器的大小指的是容器中的元素数目；容器的容量指的是重新分配更多内存之前容器能够保存的元素数目。在改变大小或容量时，元素可能会移动到新的存储位置。这意味着指向元素的迭代器(以及指针或引用)可能会失效(即指向旧元素的位置)。指向关联容器元素的迭代器只有当所指元素从容器中删除时(erase)才会失效。与之相反，指向顺序容器元素的迭代器当重新分配空间(resize()&#x2F;reverse()或push_bac">
+  <meta name="description" content="The size of a container refers to the number of elements in the container; the capacity of a container refers to the number of elements that the container can hold before reallocating more memory. Whe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STL容器的迭代器失效">
-<meta property="og:url" content="https://imzlp.com/posts/3276/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="容器的大小指的是容器中的元素数目；容器的容量指的是重新分配更多内存之前容器能够保存的元素数目。在改变大小或容量时，元素可能会移动到新的存储位置。这意味着指向元素的迭代器(以及指针或引用)可能会失效(即指向旧元素的位置)。指向关联容器元素的迭代器只有当所指元素从容器中删除时(erase)才会失效。与之相反，指向顺序容器元素的迭代器当重新分配空间(resize()&#x2F;reverse()或push_bac">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Iterator Invalidation of STL Containers">
+<meta property="og:url" content="https://en.imzlp.com/posts/3276/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="The size of a container refers to the number of elements in the container; the capacity of a container refers to the number of elements that the container can hold before reallocating more memory. Whe">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210610121651.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210610121825.webp">
 <meta property="article:published_time" content="2017-03-17T11:43:47.000Z">
 <meta property="article:modified_time" content="2017-03-17T11:43:47.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="STL">
 <meta property="article:tag" content="编程笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20210610121651.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/3276/">
+<link rel="canonical" href="https://en.imzlp.com/posts/3276/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>STL容器的迭代器失效 | 循迹研究室</title>
+  <title>Iterator Invalidation of STL Containers | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/3276/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/3276/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          STL容器的迭代器失效<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-03-17-3276.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/3276/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Iterator Invalidation of STL Containers<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-03-17-3276.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/3276/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Iterator Invalidation of STL Containers</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">STL容器的迭代器失效</sub>
           </div>
         
 
@@ -318,51 +318,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-03-17 11:43 11:43:47:43" itemprop="dateCreated datePublished" datetime="2017-03-17T11:43:47+00:00">2017-03-17 11:43</time>
+              <time title="Created: 2017-03-17 11:43 11:43:47:43" itemprop="dateCreated datePublished" datetime="2017-03-17T11:43:47+00:00">2017-03-17 11:43</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/STL/" itemprop="url" rel="index"><span itemprop="name">STL</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/3276/" class="post-meta-item leancloud_visitors" data-flag-title="STL容器的迭代器失效" title="阅读次数">
+            <span id="/posts/3276/" class="post-meta-item leancloud_visitors" data-flag-title="Iterator Invalidation of STL Containers" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.4k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -374,23 +374,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>容器的大小指的是容器中的元素数目；容器的容量指的是重新分配更多内存之前容器能够保存的元素数目。在改变大小或容量时，元素可能会移动到新的存储位置。这意味着指向元素的迭代器(以及指针或引用)可能会失效(即指向旧元素的位置)。<br>指向关联容器元素的迭代器只有当所指元素从容器中删除时(erase)才会失效。与之相反，指向顺序容器元素的迭代器当重新分配空间(<code>resize()</code>/<code>reverse()</code>或<code>push_back()</code>)或指向元素在容器中移动(如在前一个位置进行<code>erase()</code>或者<code>insert()</code>)也会失效。</p>
+        <p>The size of a container refers to the number of elements in the container; the capacity of a container refers to the number of elements that the container can hold before reallocating more memory. When resizing or changing capacity, the elements may move to new storage locations. This means that iterators (as well as pointers or references) pointing to the elements may become invalid (i.e., point to the old element locations).<br>Iterators pointing to elements of associative containers only become invalid when the pointed element is removed from the container (erased). In contrast, iterators pointing to elements of sequential containers may become invalid when memory is reallocated (<code>resize()</code>/<code>reverse()</code> or <code>push_back()</code>) or when the pointed element moves within the container (such as by performing an <code>erase()</code> or <code>insert()</code> at its previous position). </p>
 <span id="more"></span>
-<p>下面我们来看一下顺序容器中<code>erase</code>造成迭代器失效的情况。<br>当我们使用erase从容器中删除一个元素时，会使迭代器失效(invalidate)，其执行效果并不是我们直觉感觉的那样。</p>
+<p>Let’s take a look at how <code>erase</code> causes iterator invalidation in sequential containers.<br>When we use <code>erase</code> to remove an element from a container, it invalidates the iterator, and the effect is not as intuitive as one might think.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string coll&#123;<span class="string">&quot;aaaabbbccaadcvc&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> pos=coll.<span class="built_in">begin</span>();pos&lt;coll.<span class="built_in">end</span>();++pos)&#123;</span><br><span class="line">  <span class="keyword">if</span>(*pos==<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    coll.<span class="built_in">erase</span>(pos);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// result: aabbbccadcvc</span></span><br></pre></td></tr></table></figure>
-<p>上面的代码看似是要删除str中所有的字符a，但是实际结果并不是，会“漏掉”部分a字符。<br>先来看一下SGI STL中erase的实现<a target="_blank" rel="noopener" href="https://www.sgi.com/tech/stl/string">stl/string</a>：</p>
+<p>The above code seems to remove all the character ‘a’ from <code>str</code>, but the actual result is not so; some ‘a’ characters are “missed.”<br>First, let’s look at the implementation of <code>erase</code> in SGI STL <a target="_blank" rel="noopener" href="https://www.sgi.com/tech/stl/string">stl/string</a>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator __position)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// The move includes the terminating null.</span></span><br><span class="line">  _Traits::<span class="built_in">move</span>(__position, __position + <span class="number">1</span>, _M_finish - __position);</span><br><span class="line">  <span class="built_in">destroy</span>(_M_finish);</span><br><span class="line">  --_M_finish;</span><br><span class="line">  <span class="keyword">return</span> __position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>会将该迭代器之后的所有元素向前移动一位，虽然我们传入的迭代器__position本身并未变化，但是它在执行过erase之后所指向的是执行之前的下一元素的位置(注意，具体行为还要依赖于STL版本的实现，这里列出的只是SGI STL的一个实现，C++11之前的实现可能不带返回值)。</p>
+<p>It will move all elements after the iterator forward by one position. Although we did not change the iterator <code>__position</code> itself, after executing <code>erase</code>, it points to the next element after the one it pointed to before (Note that the exact behavior also depends on the STL implementation version; what’s listed here is just one implementation of SGI STL, older implementations before C++11 may not have a return value).</p>
 <blockquote>
 <p>Unfortunately, before C++11, it was a design decision not to return the following position, because if not needed, it costs unnecessary time.</p>
 </blockquote>
-<p>因为执行过erase之后已经相当于__position指向了下一个迭代器(SGI的这份实现)，所以我们再在循环中对其自增就会导致跳过了一个元素的检查。(实际上对已失效的迭代器操作是未定义行为。)</p>
+<p>Since after executing <code>erase</code>, <code>__position</code> essentially behaves as if it points to the next iterator (according to this SGI implementation), incrementing it in the loop will cause it to skip checking one element. (In fact, operating on an invalidated iterator is undefined behavior.)</p>
 <blockquote>
 <p>Calling erase() for the element to which you are referring with pos invalidates pos as an iterator of coll. Thus, if you use pos after removing its element without any reinitialization, all bets are off. In fact, calling ++pos results in undefined behavior.</p>
 </blockquote>
-<p>所以正确的写法为(C++11之前)：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string coll&#123;<span class="string">&quot;aaaabbbccaadcvc&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> pos=coll.<span class="built_in">begin</span>();pos&lt;coll.<span class="built_in">end</span>();)&#123;</span><br><span class="line">  <span class="keyword">if</span>(*pos==<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">	coll.<span class="built_in">erase</span>(pos); <span class="comment">// 执行之后相当于pos已经递增</span></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    ++pos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以在下面的链接中看几种常用容器的erase原型：</p>
+<p>Thus, the correct writing for (before C++11) is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string coll&#123;<span class="string">&quot;aaaabbbccaadcvc&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> pos=coll.<span class="built_in">begin</span>();pos&lt;coll.<span class="built_in">end</span>();)&#123;</span><br><span class="line">  <span class="keyword">if</span>(*pos==<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">	coll.<span class="built_in">erase</span>(pos); <span class="comment">// After execution, it is equivalent to pos having incremented</span></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    ++pos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can find several common container <code>erase</code> prototypes in the following links:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/container/map/erase">map/erase</a></li>
 <li><a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/container/set/erase">set/erase</a></li>
@@ -401,20 +401,20 @@
 <blockquote>
 <p>Since C++11, a solution is easy because erase() always returns the value of the following element.</p>
 </blockquote>
-<p>即在C++11中，可以这么写：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string coll&#123;<span class="string">&quot;aaaabbbccaadcvc&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> pos=coll.<span class="built_in">begin</span>();pos&lt;coll.<span class="built_in">end</span>();)&#123;</span><br><span class="line">  <span class="keyword">if</span>(*pos==<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">	pos=coll.<span class="built_in">erase</span>(pos); <span class="comment">// 返回erase之后的当前迭代器</span></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    ++pos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So in C++11, it can be written this way:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string coll&#123;<span class="string">&quot;aaaabbbccaadcvc&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> pos=coll.<span class="built_in">begin</span>();pos&lt;coll.<span class="built_in">end</span>();)&#123;</span><br><span class="line">  <span class="keyword">if</span>(*pos==<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">	pos=coll.<span class="built_in">erase</span>(pos); <span class="comment">// Returns the current iterator after erase</span></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    ++pos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>[TC++PL4]An iterator to an element of an associative container (e.g., a map) is only invalidated if the element to which it points is removed from the container (erase()d; §31.3.7). To contrast, an iterator to an element of a sequence container (e.g., a vector) is inv alidated if the elements are relocated (e.g.,by a resize(), reserve(), or push_back()) or if the element to which it points is moved within the container (e.g., by an erase() or insert() of an element with a lower index).<br>It is tempting to assume that reserve() improves performance, but the standard growth strategies for vector (§31.4.1.1) are so effective that performance is rarely a good reason to use reserve().Instead, see reserve() as a way of increasing the predictability of performance and for avoiding invalidation of iterators.</p>
+<p>[TC++PL4] An iterator to an element of an associative container (e.g., a map) is only invalidated if the element to which it points is removed from the container (erased; §31.3.7). To contrast, an iterator to an element of a sequence container (e.g., a vector) is invalidated if the elements are relocated (e.g., by a resize(), reserve(), or push_back()) or if the element to which it points is moved within the container (e.g., by an erase() or insert() of an element with a lower index).<br>It is tempting to assume that reserve() improves performance, but the standard growth strategies for vector (§31.4.1.1) are so effective that performance is rarely a good reason to use reserve(). Instead, see reserve() as a way of increasing the predictability of performance and for avoiding invalidation of iterators.</p>
 </blockquote>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210610121651.webp"></p>
 <p>Vector：</p>
 <blockquote>
-<p>Inserting or removing elements invalidates references, pointers, and iterators that refer to the follow-ing elements. An insertion that causes reallocation invalidates all references, iterators, and pointers.</p>
+<p>Inserting or removing elements invalidates references, pointers, and iterators that refer to the following elements. An insertion that causes reallocation invalidates all references, iterators, and pointers.</p>
 </blockquote>
 <p>Deque：</p>
 <blockquote>
-<p>An insertion or deletion of elements might cause a reallocation. Thus, any insertion or deletion<br>invalidates all pointers, references, and iterators that refer to other elements of the deque. The<br>exception is when elements are inserted at the front or the back. In this case, references and<br>pointers to elements stay valid, but iterators don’t.</p>
+<p>An insertion or deletion of elements might cause a reallocation. Thus, any insertion or deletion invalidates all pointers, references, and iterators that refer to other elements of the deque. The exception is when elements are inserted at the front or the back. In this case, references and pointers to elements stay valid, but iterators don’t.</p>
 </blockquote>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210610121825.webp"></p>
 
@@ -427,7 +427,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -437,7 +437,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -447,37 +447,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/3276/" target="_blank">STL容器的迭代器失效</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/03/17 11:43<br/>
+             <span>Title:</span><a href="/posts/3276/" target="_blank">Iterator Invalidation of STL Containers</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/03/17 11:43<br/>
              
-             <span>本文字数:</span><span class="page-count">2.3k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.4k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/3276/" target="_blank" title="STL容器的迭代器失效">https://imzlp.com/posts/3276/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/3276/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/3276/" target="_blank" title="Iterator Invalidation of STL Containers">https://en.imzlp.com/posts/3276/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/3276/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -498,12 +498,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/30933/" rel="prev" title="虚拟存储器的缺页异常分析">
-      <i class="fa fa-chevron-left"></i> 虚拟存储器的缺页异常分析
+    <a href="/posts/30933/" rel="prev" title="Analysis of Virtual Memory Page Fault Exception">
+      <i class="fa fa-chevron-left"></i> Analysis of Virtual Memory Page Fault Exception
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/20479/" rel="next" title="通过IR代码来分析C++代码语义">
-      通过IR代码来分析C++代码语义 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/20479/" rel="next" title="Analyze C++ code semantics through IR code">
+      Analyze C++ code semantics through IR code <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -574,10 +574,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -588,10 +588,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -599,19 +599,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -649,10 +649,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -679,9 +679,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -690,12 +687,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -848,7 +845,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/3276/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/3276/',]
       });
       });
   </script>
@@ -871,12 +868,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

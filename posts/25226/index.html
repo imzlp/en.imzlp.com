@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在大世界项目以及疫情导致的远程办公需求，开发中的协同编辑显得格外重要。在UE的资源机制中，地图是单个的资源，虽然可以使用Sub-level的形式拆分，但是最小元素仍然是单个资源，当不同的Designer修改相同的资源时，就会造成文件冲突，也没办法像文本那样合并。并且每个人负责编辑单个子关卡也没有办法实时预览整个场景的效果，在协同开发中，这是一个瓶颈。在UE4.23之后，UE官方推出了一个多人协作机">
+  <meta name="description" content="In the context of the large-scale project and the remote working demand caused by the pandemic, collaborative editing under development has become particularly important. In UE’s resource mechanism, m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE多用户协同编辑服务部署指南">
-<meta property="og:url" content="https://imzlp.com/posts/25226/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在大世界项目以及疫情导致的远程办公需求，开发中的协同编辑显得格外重要。在UE的资源机制中，地图是单个的资源，虽然可以使用Sub-level的形式拆分，但是最小元素仍然是单个资源，当不同的Designer修改相同的资源时，就会造成文件冲突，也没办法像文本那样合并。并且每个人负责编辑单个子关卡也没有办法实时预览整个场景的效果，在协同开发中，这是一个瓶颈。在UE4.23之后，UE官方推出了一个多人协作机">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Multi-User Collaborative Editing Service Deployment Guide">
+<meta property="og:url" content="https://en.imzlp.com/posts/25226/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the context of the large-scale project and the remote working demand caused by the pandemic, collaborative editing under development has become particularly important. In UE’s resource mechanism, m">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051839284.webp">
 <meta property="article:published_time" content="2021-08-05T16:15:28.000Z">
 <meta property="article:modified_time" content="2021-08-05T16:15:28.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="UnrealMultiUserServer">
 <meta property="article:tag" content="多用户协同">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202302051839284.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/25226/">
+<link rel="canonical" href="https://en.imzlp.com/posts/25226/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE多用户协同编辑服务部署指南 | 循迹研究室</title>
+  <title>UE Multi-User Collaborative Editing Service Deployment Guide | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/25226/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/25226/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE多用户协同编辑服务部署指南<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-08-05-25226.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/25226/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Multi-User Collaborative Editing Service Deployment Guide<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-08-05-25226.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/25226/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Multi-User Collaborative Editing Service Deployment Guide</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE多用户协同编辑服务部署指南</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-08-05 16:15 16:15:28:15" itemprop="dateCreated datePublished" datetime="2021-08-05T16:15:28+00:00">2021-08-05 16:15</time>
+              <time title="Created: 2021-08-05 16:15 16:15:28:15" itemprop="dateCreated datePublished" datetime="2021-08-05T16:15:28+00:00">2021-08-05 16:15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">工具开发</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/25226/" class="post-meta-item leancloud_visitors" data-flag-title="UE多用户协同编辑服务部署指南" title="阅读次数">
+            <span id="/posts/25226/" class="post-meta-item leancloud_visitors" data-flag-title="UE Multi-User Collaborative Editing Service Deployment Guide" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>22 mins.</span>
             </span>
 
         </div>
@@ -369,98 +369,100 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在大世界项目以及疫情导致的远程办公需求，开发中的协同编辑显得格外重要。在UE的资源机制中，地图是单个的资源，虽然可以使用Sub-level的形式拆分，但是最小元素仍然是单个资源，当不同的Designer修改相同的资源时，就会造成文件冲突，也没办法像文本那样合并。并且每个人负责编辑单个子关卡也没有办法实时预览整个场景的效果，在协同开发中，这是一个瓶颈。<br>在UE4.23之后，UE官方推出了一个多人协作机制，可以使多人共同地编辑同一份地图，并不会造成冲突，并且可以同步其他变动的资源并能够实时生效，作为版本控制的补充，能够比较完美地解决同步协作的问题。<br>本篇文章记录一下启用流程、使用规范以及网络策略等问题，也会提取独立的Server端程序而无需依赖完整的引擎，实现Server端的方便部署。</p>
+        <p>In the context of the large-scale project and the remote working demand caused by the pandemic, collaborative editing under development has become particularly important. In UE’s resource mechanism, maps are single resources; although they can be split using the Sub-level format, the smallest element remains a single resource. When different designers modify the same resource, it can lead to file conflicts, and merging is not as straightforward as with text. Furthermore, when each person is responsible for editing a single sub-level, there is no way to preview the entire scene’s effect in real-time, which is a bottleneck in collaborative development.</p>
+<p>After UE4.23, UE officially launched a multi-user collaboration mechanism that allows multiple people to edit the same map simultaneously without causing conflicts. It can also synchronize other changing resources and take effect in real time. As a supplement to version control, it effectively resolves issues of synchronized collaboration.</p>
+<p>This article records the enabling process, usage specifications, network strategies, and other issues. It will also extract an independent server-side program without relying on the complete engine, allowing for convenient deployment of the server side.</p>
 <span id="more"></span>
-<p>UE官方多用户编辑，其实现是一个C/S架构的方案，官方文档：<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/MultiUserEditing/">Multi-User Editing</a>。</p>
+<p>UE’s official multi-user editing is implemented as a C/S architecture solution. Official documentation: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/MultiUserEditing/">Multi-User Editing</a>。</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210729202731.webp"></p>
-<p>本质上是创建一个Server进程，用于管理多用户编辑的Session，并向各个Client之间传递相互变动的数据。每个Session代表着协同编辑的一个“房间”，只有加入到这个“房间”的人，才能够实时地预览和同步其他人的提交，每个Server上可以创建多个Session，可以由不同的用户创建、加入。</p>
-<p><strong>注意</strong>：UE并不是直接把变动的资源拷贝到各个Client，而是通过传递变动的数据到各个Client实现相同的表现，在传输效率上更好，但会带来一个问题，对于相同操作的资源，对于uasset来说，并不完全相同，即A用户修改了Weapon.uasset，将会把变动的数据同步到B用户，如果A和B用户都提交了Weapon这个资源，他们的二进制并不完全相同，在合并提交时会有冲突，提交规范还是需要注意的。</p>
-<h2 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h2><p>多用户编辑支持，依赖UE的<code>Multi-User Editing</code>插件：</p>
+<p>Essentially, it creates a server process to manage the multi-user editing sessions and transmit changing data between multiple clients. Each session represents one “room” for collaborative editing, and only those who join this “room” can preview and synchronize other people’s submissions in real time. Multiple sessions can be created on each server, which can be created and joined by different users.</p>
+<p><strong>Note</strong>: UE does not directly copy the changing resources to each client but achieves the same performance by transmitting the changing data to each client. This approach is more efficient in terms of data transmission, but there is a problem: for resources with the same operations, the uasset may not be completely identical. For instance, if user A modifies Weapon.uasset, the changing data will be synchronized to user B. If both A and B submit the Weapon resource, their binaries will not be exactly the same, leading to conflicts during the merge process. Submission specifications still need to be noted.</p>
+<h2 id="Usage-Process"><a href="#Usage-Process" class="headerlink" title="Usage Process"></a>Usage Process</h2><p>Multi-user editing support relies on UE’s <code>Multi-User Editing</code> plugin:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729203335300.webp"></p>
-<p>启用之后可以在<code>Project Settings</code>-<code>Plugins</code>中看到<code>Multi-User Editing</code>和<code>Multi-User Transactions</code>选项：</p>
+<p>After enabling, you can see the <code>Multi-User Editing</code> and <code>Multi-User Transactions</code> options in <code>Project Settings</code>-<code>Plugins</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729203605963.webp" alt="Multi-User Editing"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729203703864.webp" alt="Multi-User Transactions"></p>
-<p>能够配置多用户协作的参数。</p>
-<p>在开启插件之后，可以在编辑器<code>Windows</code>-<code>Developer Tools</code>中看到<code>Multi-User Browser</code>选项（也可以在<code>Project Settings</code>-<code>Plugins</code>-<code>Multi-User Editing</code>中开启<code>Enable Multi-User Toolbar Button</code>）：</p>
+<p>You can configure parameters for multi-user collaboration.</p>
+<p>Once the plugin is enabled, you can see the <code>Multi-User Browser</code> option in the editor under <code>Windows</code>-<code>Developer Tools</code> (you can also enable <code>Enable Multi-User Toolbar Button</code> in <code>Project Settings</code>-<code>Plugins</code>-<code>Multi-User Editing</code>):</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729204709785.webp"></p>
-<p>启动之后会自动搜索网络内可见的<code>UnrealMultiUserServer</code>服务器：</p>
+<p>After startup, it will automatically search for visible <code>UnrealMultiUserServer</code> servers in the network:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729204942481.webp" alt="Multi-User Browser"></p>
-<p>也可以通过<code>Launch a Server</code>拉起一个<code>UnrealMultiUserServer</code>进程，在本地创建一个Server。通常情况下，会有一个独立的机器作为Server，供其他用户连接。</p>
-<p><code>Mulit-User Browser</code>作为Client连接Server时，使用的是UDP协议，默认连接端口号为<code>6666</code>（<code>Launch a Server</code>启动默认是6666），也可以自己修改想要指定的端口号，Client会自动检测网络内可达的Server列表，创建Session时可以选择在哪个Server上创建。</p>
+<p>You can also launch an <code>UnrealMultiUserServer</code> process locally by using <code>Launch a Server</code>. Typically, there will be an independent machine serving as the server for other users to connect.</p>
+<p><code>Multi-User Browser</code> connects to the server as a client using the UDP protocol, with a default connection port number of <code>6666</code> (the default for <code>Launch a Server</code> is also 6666). You can modify it to specify another port number, and the client will automatically detect the list of reachable servers in the network to choose from when creating a session.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210729205737922.webp" alt="Launch a Server"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210730101133.webp"></p>
-<p><strong>注意</strong>：<code>Mulit-User Browser</code>依赖<code>UDP Messaging</code>插件作为网络传输的方式，所以，如果我们想要修改默认连接的端口号，就需要修改<code>UDP Messaging</code>中的默认端口号。</p>
-<p>可以在<code>Project Settings</code>-<code>Plugins</code>-<code>Networking</code>中修改（将<code>230.0.0.1:6666</code>修改为<code>230.0.0.1:XXXXX</code>即可）：</p>
+<p><strong>Note</strong>: <code>Multi-User Browser</code> relies on the <code>UDP Messaging</code> plugin for network transmission, so if we want to change the default connection port number, we need to modify the default port number in <code>UDP Messaging</code>.</p>
+<p>You can modify it in <code>Project Settings</code>-<code>Plugins</code>-<code>Networking</code> (change <code>230.0.0.1:6666</code> to <code>230.0.0.1:XXXXX</code>):</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210729192239.webp"></p>
-<p><strong>注意</strong>：230.0.0.1是RFC 5771(IPV4)和RFC 4291(IPV6)定义的多播地址，不能改成其他的地址。</p>
-<p>在编辑器中修改<code>UDP Messaging</code>的端口设置，默认是被保存在<code>Saved/Config/Windows/Engine.ini</code>下：</p>
+<p><strong>Note</strong>: 230.0.0.1 is a multicast address defined by RFC 5771 (IPV4) and RFC 4291 (IPV6) and cannot be changed to any other address.</p>
+<p>Modifying the <code>UDP Messaging</code> port settings in the editor is preserved in <code>Saved/Config/Windows/Engine.ini</code>:</p>
 <figure class="highlight ini"><figcaption><span>Saved/Config/Windows/Engine.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[/Script/UdpMessaging.UdpMessagingSettings]</span></span><br><span class="line"><span class="attr">EnableTransport</span>=<span class="literal">True</span></span><br><span class="line"><span class="attr">bAutoRepair</span>=<span class="literal">True</span></span><br><span class="line"><span class="attr">bStopServiceWhenAppDeactivates</span>=<span class="literal">True</span></span><br><span class="line"><span class="attr">UnicastEndpoint</span>=<span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">0</span></span><br><span class="line"><span class="attr">MulticastEndpoint</span>=<span class="number">230.0</span>.<span class="number">0.1</span>:<span class="number">11111</span></span><br><span class="line"><span class="attr">MessageFormat</span>=CborPlatformEndianness</span><br><span class="line"><span class="attr">MulticastTimeToLive</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">EnableTunnel</span>=<span class="literal">False</span></span><br><span class="line"><span class="attr">TunnelUnicastEndpoint</span>=</span><br><span class="line"><span class="attr">TunnelMulticastEndpoint</span>=</span><br><span class="line"></span><br><span class="line"><span class="section">[/Script/Concert.ConcertClientConfig]</span></span><br><span class="line"><span class="attr">bInstallEditorToolbarButton</span>=<span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p>并不会存储在项目的<code>Config</code>中，如果想要该配置随着项目提交，可以把上面的配置添加到<code>Config/DefaultEngine.ini</code>中（<code>Enable Multi-ser Toolbar Button</code>也同理）。</p>
-<p>修改完毕后，启动UnrealMultiUserServer即可使用变动后的端口：</p>
+<p>This will not be stored in the project’s <code>Config</code>. If you want this configuration to be included with the project submission, you can add the above configuration to <code>Config/DefaultEngine.ini</code> (the same applies to <code>Enable Multi-user Toolbar Button</code>).</p>
+<p>After modification, start UnrealMultiUserServer to use the changed port:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210729192422.webp"></p>
-<h2 id="网络策略"><a href="#网络策略" class="headerlink" title="网络策略"></a>网络策略</h2><p>Multi-User Editing主要是面对相同的LAN或者VPN网络的，但是，针对同一LAN下的不同类型的网络类型，有些区别。</p>
-<h3 id="LAN的相同子网"><a href="#LAN的相同子网" class="headerlink" title="LAN的相同子网"></a>LAN的相同子网</h3><p>如果Server和Client全部在相同的子网，如Server在192.168.2.123，Client在192.168.2.X，这种情况下，只需要把<code>UnicastEndpoint</code>设置为<code>0.0.0.0:0</code>或者<code>192.168.2.X:0</code>，<code>MulticastEndpoint</code>保持为<code>230.0.0.1:11111</code>这种形式即可。<br>这种配置就能够顺利地在Client搜索到Server，也是前文中介绍的方法。</p>
-<h3 id="LAN的不同子网"><a href="#LAN的不同子网" class="headerlink" title="LAN的不同子网"></a>LAN的不同子网</h3><p>对于Server与有些Client在同一子网，另一些Client又不在同一子网的情况，就复杂一些。<br>如：<br>Server：192.168.2.123<br>Client A：192.168.2.124<br>Client B：192.168.3.125</p>
-<p>对于这种情况，如果使用上一节在相同子网的配置，会导致Client B搜索不到Server，针对这种情况，需要单独设置<code>UnicastEndpoint</code>。</p>
-<p>首先，Server端在启动时，不能再把<code>UnicastEndpoint</code>设置为<code>0.0.0.0:0</code>，需要指定当前Server的IP和链接端口，如：</p>
+<h2 id="Network-Strategy"><a href="#Network-Strategy" class="headerlink" title="Network Strategy"></a>Network Strategy</h2><p>Multi-User Editing primarily targets users on the same LAN or VPN network. However, there are some distinctions concerning different types of networks within the same LAN.</p>
+<h3 id="Same-Subnet-of-LAN"><a href="#Same-Subnet-of-LAN" class="headerlink" title="Same Subnet of LAN"></a>Same Subnet of LAN</h3><p>If the server and clients are all on the same subnet, for instance, the server is at 192.168.2.123 and clients at 192.168.2.X, in this case, you only need to set the <code>UnicastEndpoint</code> to <code>0.0.0.0:0</code> or <code>192.168.2.X:0</code>, while keeping the <code>MulticastEndpoint</code> as 230.0.0.1:11111. This setup allows clients to successfully locate the server, as previously described.</p>
+<h3 id="Different-Subnets-of-LAN"><a href="#Different-Subnets-of-LAN" class="headerlink" title="Different Subnets of LAN"></a>Different Subnets of LAN</h3><p>In situations where the server and some clients are on the same subnet, but others are not, it becomes more complex. For example:<br>Server: 192.168.2.123<br>Client A: 192.168.2.124<br>Client B: 192.168.3.125</p>
+<p>In this case, if you use the previous configuration intended for the same subnet, it will prevent Client B from finding the server. Thus, you need to set <code>UnicastEndpoint</code> separately.</p>
+<p>First, the server cannot set <code>UnicastEndpoint</code> to <code>0.0.0.0:0</code> upon startup; instead, it needs to specify the current Server’s IP and link port, such as:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine/Binaries/Win64/UnrealMultiUserServer.exe -UDPMESSAGING_TRANSPORT_UNICAST=192.168.2.123:11112 -UDPMESSAGING_TRANSPORT_MULTICAST=230.0.0.1:11111</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210805160920.webp"></p>
-<p>客户端则需要在UE编辑器的<code>Project Settings</code>-<code>Plugins</code>-<code>UDP Messaging</code>中设置Server的<code>Static EndPoints</code>：</p>
+<p>Clients then need to set the server’s <code>Static EndPoints</code> in the UE editor under <code>Project Settings</code>-<code>Plugins</code>-<code>UDP Messaging</code>:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210805161239.webp"></p>
-<p><code>Static EndPoints</code>的值要是<code>ServerIP:UNICAST_PORT</code>这种形式，如上面的Server启动配置<code>192.168.2.123:11112</code>。</p>
-<p>进行这种配置之后就可以在同一LAN的不同子网搜索到启动的Server了（但也需要注意把UNICAST/MULTICAST的端口加入防火墙的放行端口）。</p>
-<h2 id="防火墙策略"><a href="#防火墙策略" class="headerlink" title="防火墙策略"></a>防火墙策略</h2><p>注意，因为Multi-User Editing使用的是UDP协议，所以指定的端口必须被防火墙放行才能够检测到Server。</p>
-<p>Windows可以使用以下批处理进行添加防火墙规则，保存为<code>.bat</code>使用管理员权限执行即可：</p>
+<p>The value for <code>Static EndPoints</code> should take the form <code>ServerIP:UNICAST_PORT</code>, such as the server’s startup configuration of <code>192.168.2.123:11112</code>. </p>
+<p>By employing this configuration, different subnets under the same LAN can successfully locate the started server (though keep in mind to add the UNICAST/MULTICAST ports in the firewall allowance).</p>
+<h2 id="Firewall-Strategy"><a href="#Firewall-Strategy" class="headerlink" title="Firewall Strategy"></a>Firewall Strategy</h2><p>Be aware that since Multi-User Editing utilizes the UDP protocol, the specified ports must be allowed through the firewall to detect the server.</p>
+<p>Windows users can employ the following batch file to add firewall rules, saving it as <code>.bat</code> and executing it with administrative privileges:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall add rule name=&quot;allowMultiUserServer&quot; protocol=TCP <span class="built_in">dir</span>=out localport=<span class="number">11111</span>,<span class="number">11112</span> action=allow</span><br><span class="line">netsh advfirewall firewall add rule name=&quot;allowMultiUserServer&quot; protocol=TCP <span class="built_in">dir</span>=<span class="keyword">in</span> localport=<span class="number">11111</span>,<span class="number">11112</span> action=allow</span><br><span class="line">netsh advfirewall firewall add rule name=&quot;allowMultiUserServer&quot; protocol=UDP <span class="built_in">dir</span>=out localport=<span class="number">11111</span>,<span class="number">11112</span> action=allow</span><br><span class="line">netsh advfirewall firewall add rule name=&quot;allowMultiUserServer&quot; protocol=UDP <span class="built_in">dir</span>=<span class="keyword">in</span> localport=<span class="number">11111</span>,<span class="number">11112</span> action=allow</span><br></pre></td></tr></table></figure>
 
-<p>Mac和Linux可以使用ufw进行防火墙配置：</p>
+<p>Mac and Linux users can utilize ufw for firewall configuration:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ufw allow 11111/udp</span><br><span class="line">$ ufw allow 11111/tcp</span><br></pre></td></tr></table></figure>
 
-<h2 id="独立的Server进程"><a href="#独立的Server进程" class="headerlink" title="独立的Server进程"></a>独立的Server进程</h2><p>前面介绍是从UE编辑器中通过<code>Multi-User Browser</code>中Launch a Server，但是对于Server而言，其实并不需要启动编辑器，UE也是通过拉起一个新的进程传递命令行参数来启动Server的，所以，我们可以自己使用命令行来启动<code>Multi-User Server</code>：</p>
+<h2 id="Independent-Server-Process"><a href="#Independent-Server-Process" class="headerlink" title="Independent Server Process"></a>Independent Server Process</h2><p>The previous section discussed starting a server via the <code>Multi-User Browser</code> in the UE editor. However, the server does not necessarily require the editor to be launched. UE can also start the server by launching a new process with command line parameters, allowing for manual command line initiation of the <code>Multi-User Server</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Engine/Binaries/Win64/UnrealMultiUserServer.exe -UDPMESSAGING_TRANSPORT_UNICAST=0.0.0.0:0 -UDPMESSAGING_TRANSPORT_MULTICAST=230.0.0.1:11111</span><br></pre></td></tr></table></figure>
-<p>Server的配置可以通过命令行参数或者配置文件的形式指定，独立的Server进程的配置文件在：</p>
+<p>The server’s configuration can be specified through command line parameters or configuration files. The configuration file for the standalone server process can be found at:</p>
 <figure class="highlight ini"><figcaption><span>Engine/Programs/UnrealMultiUserServer/Saved/Config/WindowsNoEditor/Engine.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[/Script/UdpMessaging.UdpMessagingSettings]</span></span><br><span class="line"><span class="attr">EnableTransport</span>=<span class="literal">True</span></span><br><span class="line"><span class="attr">UnicastEndpoint</span>=<span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">0</span></span><br><span class="line"><span class="attr">MulticastEndpoint</span>=<span class="number">230.0</span>.<span class="number">0.1</span>:<span class="number">11111</span></span><br><span class="line"><span class="attr">MulticastTimeToLive</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">EnableTunnel</span>=<span class="literal">False</span></span><br><span class="line"><span class="attr">TunnelUnicastEndpoint</span>=</span><br><span class="line">TunnelMulticastEndpoint=</span><br></pre></td></tr></table></figure>
-<p>与通过命令行指定是一样的。</p>
-<h2 id="独立的Server程序"><a href="#独立的Server程序" class="headerlink" title="独立的Server程序"></a>独立的Server程序</h2><p>因为UE的Multi-User Server会拉起一个独立的<code>UnrealMultiUserServer</code>进程，需要我们完整地把引擎Clone下载之后才能启动<code>Multi-User Server</code>程序，对于我们的需求而言，很浪费，因为我们并不需要完整的引擎功能，只是需要这个独立的Server程序而已，所以可以想办法把它抽离出来。</p>
-<p><code>UnrealMultiUserServer</code>是引擎中的一个<code>Programs</code>类型的程序，我之前有一些文章介绍相关的内容：<a href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a>。它本质上是用了UE的代码库和插件的独立程序，和UE4Editor是一种类型的程序，但是默认情况下它的<code>LinkType</code>是<code>Modular</code>的，即代码中引用的的模块功能都在每个独立的DLL中，这也符合UE编辑器的设计模式。</p>
-<p>所以，默认情况下<code>UnrealMultiUserServer</code>程序只有几十kb，具体的功能实现都是使用动态链接库方式调用DLL的，我们需要修改编译的模式，把它用到的引擎模块都编译到一个exe中，修改<code>UnrealMultiUserServer.targetr.cs</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// from</span><br><span class="line">LinkType = TargetLinkType.Modular;</span><br><span class="line">// to</span><br><span class="line">LinkType = TargetLinkType.Monolithic;</span><br></pre></td></tr></table></figure>
+<p>This is equivalent to specifying through the command line.</p>
+<h2 id="Independent-Server-Program"><a href="#Independent-Server-Program" class="headerlink" title="Independent Server Program"></a>Independent Server Program</h2><p>Since UE’s Multi-User Server launches a separate <code>UnrealMultiUserServer</code> process, we need to clone and download the entire engine to run the <code>Multi-User Server</code> program. This can be wasteful for our requirements, as we only need the independent server program with no need for complete engine functionality. Thus, we can find a way to extract it.</p>
+<p><code>UnrealMultiUserServer</code> is a <code>Programs</code> type program in the engine. I previously wrote articles about related content: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a>. It essentially uses UE’s codebase and plugins as an independent program, akin to UE4Editor, but by default, its <code>LinkType</code> is <code>Modular</code>, meaning that all modules referenced in the code are contained in separate DLLs. This aligns with UE editor’s design model.</p>
+<p>Thus, by default, the <code>UnrealMultiUserServer</code> program is only a few dozen KB. The actual functionality is implemented via dynamically linked libraries; we need to modify the compilation mode to compile all the engine modules it requires into a single executable by changing <code>UnrealMultiUserServer.target.cs</code>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// from</span></span><br><span class="line">LinkType = TargetLinkType.Modular;</span><br><span class="line"><span class="comment">// to</span></span><br><span class="line">LinkType = TargetLinkType.Monolithic;</span><br></pre></td></tr></table></figure>
 
-<p>改成<code>Monolithic</code>后再执行编译，UBT就会把该Program引用到的模块最终链接一个可执行程序。这部分内容在我之前的另一篇文章中有介绍：<a href="https://imzlp.com/posts/16643/">UE Build System：Target and Module</a></p>
-<p>这个操作<strong>只能</strong>解决<strong>引擎内模块</strong>的引用，<code>UnrealMultiUserServer</code>还引用了其他的插件，在<code>target.cs</code>里开启了Program的插件支持：</p>
+<p>After changing to <code>Monolithic</code> and executing the compilation, UBT will link all the Program’s referenced modules into a single executable program. This part is discussed in more detail in another article of mine: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/16643/">UE Build System：Target and Module</a>.</p>
+<p>This operation <strong>can only</strong> resolve references to <strong>internal engine modules</strong>. The <code>UnrealMultiUserServer</code> program still references other plugins, so <code>Program</code> plugin support must be enabled in <code>target.cs</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bCompileWithPluginSupport = <span class="literal">true</span>;</span><br><span class="line">bBuildDeveloperTools = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 
-<p>至于具体依赖了哪些插件，可以打开<code>UnrealMultiUserServer.target</code>查看其中的<code>RuntimeDependencies</code>项：</p>
+<p>To see which specific plugins it depends on, you can view the <code>RuntimeDependencies</code> section within <code>UnrealMultiUserServer.target</code>:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;RuntimeDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$(EngineDir)/Plugins/Messaging/UdpMessaging/UdpMessaging.uplugin&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UFS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$(EngineDir)/Plugins/Developer/Concert/ConcertSync/ConcertSyncServer/ConcertSyncServer.uplugin&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UFS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$(EngineDir)/Plugins/Developer/Concert/ConcertMain/ConcertMain.uplugin&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UFS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$(EngineDir)/Plugins/Developer/Concert/ConcertSync/ConcertSyncCore/ConcertSyncCore.uplugin&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UFS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$(EngineDir)/Plugins/Runtime/Database/SQLiteCore/SQLiteCore.uplugin&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UFS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
 
-<p>表示<code>UnrealMultiUserServer</code>引用了这几个插件，需要把引擎中的这几个插件目录放到独立程序的相应目录下（与引擎中的相对路径保持一致）。</p>
-<p>但是这样还不够，需要把插件加入到启用列表，不然程序启动时不会加载插件，导致模块加载错误：</p>
+<p>This indicates that the <code>UnrealMultiUserServer</code> references these several plugins, and we need to place the directories of these plugins from the engine into the corresponding folder of the standalone program while maintaining the relative paths as in the engine.</p>
+<p>Still, this isn’t sufficient; we need to add the plugins to the enable list to ensure the program loads them at startup, avoiding module loading errors:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LogPaths: Warning: No paths for game localization data were specifed in the game configuration.</span><br><span class="line">LogInit: Warning: No paths for engine localization data were specifed in the engine configuration.</span><br><span class="line">LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467</span><br><span class="line">LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.</span><br><span class="line">LogSyncServer: Error: ConcertSyncServer Module is needed for proper execution. Initialization failed!</span><br><span class="line">LogSyncServer: Error: ConcertSyncServer Module is needed for proper execution. Initialization failed!</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Shutdown</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Shutdown</span><br><span class="line">LogExit: Preparing to exit.</span><br><span class="line">LogExit: Object subsystem successfully closed.</span><br></pre></td></tr></table></figure>
 
-<p>解决的办法就是在<code>target.cs</code>里添加<code>EnablePlugins</code>列表：</p>
+<p>The solution is to add the <code>EnablePlugins</code> list in <code>target.cs</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EnablePlugins.AddRange(<span class="keyword">new</span> <span class="built_in">string</span>[]</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;UdpMessaging&quot;</span>,</span><br><span class="line">	<span class="string">&quot;ConcertSyncServer&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>这样我们抽离出来的独立程序就会在程序启动时加载需要的这两个插件了。<br>最后，还需要把原本引擎中<code>Engine/Content</code>下的<code>Internationalization</code>/<code>Localization</code>两个文件夹提取出来。</p>
-<p>我们也不需要代码和调试符号，可以删除多余的文件：</p>
+<p>With this adjustment, the standalone program we extracted will load the two required plugins at startup. Lastly, we also need to extract the original <code>Internationalization</code> and <code>Localization</code> folders from <code>Engine/Content</code>.</p>
+<p>We don’t require code or debug symbols; hence we can remove excess files:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;Source&quot;</span>|xargs <span class="built_in">rm</span> -rf</span><br><span class="line">find . -name <span class="string">&quot;Intermediate&quot;</span>|xargs <span class="built_in">rm</span> -rf</span><br><span class="line">find . -name <span class="string">&quot;*.pdb&quot;</span>|xargs <span class="built_in">rm</span> -rf</span><br><span class="line">find . -name <span class="string">&quot;*.modules&quot;</span>|xargs <span class="built_in">rm</span> -rf</span><br></pre></td></tr></table></figure>
 
-<p>最终独立的<code>UnrealMultiUserServer</code>程序的目录结构为：</p>
+<p>The final directory structure of the standalone <code>UnrealMultiUserServer</code> program would be:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">+---Binaries</span><br><span class="line">|   \---Win64</span><br><span class="line">|           UnrealMultiUserServer.exe</span><br><span class="line">+---Content</span><br><span class="line">|   +---Internationalization</span><br><span class="line">|   +---Localization</span><br><span class="line">|           </span><br><span class="line">\---Plugins</span><br><span class="line">    +---ConcertMain</span><br><span class="line">    |   |   ConcertMain.uplugin</span><br><span class="line">    |   |   </span><br><span class="line">    |   \---Binaries</span><br><span class="line">    |       \---Win64</span><br><span class="line">    |               UE4Editor-Concert.dll</span><br><span class="line">    |               UE4Editor-ConcertTransport.dll</span><br><span class="line">    |               UnrealMultiUserServer-Concert.dll</span><br><span class="line">    |               UnrealMultiUserServer-ConcertTransport.dll</span><br><span class="line">    |               </span><br><span class="line">    +---ConcertSyncCore</span><br><span class="line">    |   |   ConcertSyncCore.uplugin</span><br><span class="line">    |   |   </span><br><span class="line">    |   +---Binaries</span><br><span class="line">    |   |   \---Win64</span><br><span class="line">    |   |           UE4Editor-ConcertSyncCore.dll</span><br><span class="line">    |   |           UnrealMultiUserServer-ConcertSyncCore.dll</span><br><span class="line">    |   |           </span><br><span class="line">    |   \---Config</span><br><span class="line">    |           BaseConcertSyncCore.ini</span><br><span class="line">    |           </span><br><span class="line">    +---ConcertSyncServer</span><br><span class="line">    |   |   ConcertSyncServer.uplugin</span><br><span class="line">    |   |   </span><br><span class="line">    |   \---Binaries</span><br><span class="line">    |       \---Win64</span><br><span class="line">    |               UE4Editor-ConcertSyncServer.dll</span><br><span class="line">    |               UnrealMultiUserServer-ConcertSyncServer.dll</span><br><span class="line">    |               </span><br><span class="line">    +---SQLiteCore</span><br><span class="line">    |   |   SQLiteCore.uplugin</span><br><span class="line">    |   |   </span><br><span class="line">    |   \---Binaries</span><br><span class="line">    |       \---Win64</span><br><span class="line">    |               UE4Editor-SQLiteCore.dll</span><br><span class="line">    |               UnrealMultiUserServer-SQLiteCore.dll</span><br><span class="line">    |               </span><br><span class="line">    \---UdpMessaging</span><br><span class="line">        |   UdpMessaging.uplugin</span><br><span class="line">        |   </span><br><span class="line">        +---Binaries</span><br><span class="line">        |   \---Win64</span><br><span class="line">        |           UE4Editor-UdpMessaging.dll</span><br><span class="line">        |           UnrealFrontend-UdpMessaging.dll</span><br><span class="line">        |           UnrealLightmass-UdpMessaging.dll</span><br><span class="line">        |           UnrealMultiUserServer-UdpMessaging.dll</span><br><span class="line">        |           </span><br><span class="line">        \---Resources</span><br><span class="line">                Icon128.webp</span><br></pre></td></tr></table></figure>
 
-<p>执行效果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\lipengzha\Desktop\UnrealMultiUserServer\Engine\Binaries\Win64&gt;UnrealMultiUserServer.exe</span><br><span class="line">LogPaths: Warning: No paths for game localization data were specifed in the game configuration.</span><br><span class="line">LogInit: Warning: No paths for engine localization data were specifed in the engine configuration.</span><br><span class="line">LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467</span><br><span class="line">LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.</span><br><span class="line">LogTemp: IConcertSyncServerModule::Get().ParseServerSettings</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Initialized (Name: lipengzha-PC0, Version: 4.25, Role: MultiUser)</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Initialized (Name: lipengzha-PC0, Version: 4.25, Role: MultiUser</span><br></pre></td></tr></table></figure>
+<p>Execution effects:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\lipengzha\Desktop\UnrealMultiUserServer\Engine\Binaries\Win64&gt;UnrealMultiUserServer.exe</span><br><span class="line">LogPaths: Warning: No paths for game localization data were specifed in the game configuration.</span><br><span class="line">LogInit: Warning: No paths for engine localization data were specifed in the engine configuration.</span><br><span class="line">LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467</span><br><span class="line">LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.</span><br><span class="line">LogTemp: IConcertSyncServerModule::Get().ParseServerSettings</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Initialized (Name: lipengzha-PC0, Version: 4.25, Role: MultiUser)</span><br><span class="line">LogSyncServer: Display: Multi-User Editing Server Initialized (Name: lipengzha-PC0, Version: 4.25, Role: MultiUser)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Session的配置存储"><a href="#Session的配置存储" class="headerlink" title="Session的配置存储"></a>Session的配置存储</h2><p>当<code>Multi-User Server</code>启动之后，所有由用户创建的Session信息都会被保存在Server端，默认存储在以下路径中：</p>
+<h2 id="Session-Configuration-Storage"><a href="#Session-Configuration-Storage" class="headerlink" title="Session Configuration Storage"></a>Session Configuration Storage</h2><p>When the <code>Multi-User Server</code> is started, all sessions created by users will be stored on the server side by default in the following path:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\lipengzha\Desktop\UnrealMultiUserServer\Engine\Programs&gt;tree /a /f</span><br><span class="line">\---UnrealMultiUserServer</span><br><span class="line">    +---Intermediate</span><br><span class="line">    |   \---MultiUser</span><br><span class="line">    |       \---35E93D4D493990231B6D30B582298091</span><br><span class="line">    |               Session.db</span><br><span class="line">    |               Session.db-wal</span><br><span class="line">    |               SessionInfo.json</span><br><span class="line">    |</span><br><span class="line">    \---Saved</span><br><span class="line">        +---Logs</span><br><span class="line">        |       UnrealMultiUserServer.log</span><br><span class="line">        |</span><br><span class="line">        \---MultiUser</span><br><span class="line">                Repositories.json</span><br></pre></td></tr></table></figure>
 
-<p>当下次Server启动的时候这些Session会自动创建，可以避免需要重复创建的问题。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇文章记录了UE中多用户编辑的启动和配置流程，并提取了独立的Multi-User Server程序，无需完整的引擎内容，能够实现非常方便地部署多用户编辑服务。后续有时间会深入分析一下内部的实现机制以及同步策略。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<p>The next time the server is started, these sessions will automatically be created, avoiding the need to recreate them.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article recorded the startup and configuration process of multi-user editing in UE, and extracted an independent Multi-User Server program without requiring the complete engine content, thereby facilitating the deployment of multi-user editing services. Future work will include a detailed analysis of the internal implementation mechanisms and synchronization strategies.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/MultiUserEditing/">Multi-User Editing</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/MultiUserEditing/Overview/">Multi-User Editing Overview</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MPIpOdNmNGE&ab_channel=UnrealEngine">Explore Collaboration with Unreal Engine’s Multi-User Editor | Webinar</a></li>
-<li><a href="https://imzlp.com/posts/16643/">UE Build System：Target and Module</a></li>
-<li><a href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/16643/">UE Build System：Target and Module</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></li>
 </ul>
 
     </div>
@@ -472,7 +474,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -482,7 +484,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -492,37 +494,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/25226/" target="_blank">UE多用户协同编辑服务部署指南</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/08/05 16:15<br/>
+             <span>Title:</span><a href="/posts/25226/" target="_blank">UE Multi-User Collaborative Editing Service Deployment Guide</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/08/05 16:15<br/>
              
-             <span>本文字数:</span><span class="page-count">4.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">8.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/25226/" target="_blank" title="UE多用户协同编辑服务部署指南">https://imzlp.com/posts/25226/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/25226/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/25226/" target="_blank" title="UE Multi-User Collaborative Editing Service Deployment Guide">https://en.imzlp.com/posts/25226/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/25226/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -547,8 +549,8 @@
       <i class="fa fa-chevron-left"></i> Profiling IOS With Unreal Insights
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/30732/" rel="next" title="Zlib/Oodle/ZSTD压缩算法性能对比">
-      Zlib/Oodle/ZSTD压缩算法性能对比 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/30732/" rel="next" title="Comparison of Zlib/Oodle/ZSTD algorithm performance">
+      Comparison of Zlib/Oodle/ZSTD algorithm performance <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -619,25 +621,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">使用流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%AD%96%E7%95%A5"><span class="nav-number">2.</span> <span class="nav-text">网络策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LAN%E7%9A%84%E7%9B%B8%E5%90%8C%E5%AD%90%E7%BD%91"><span class="nav-number">2.1.</span> <span class="nav-text">LAN的相同子网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LAN%E7%9A%84%E4%B8%8D%E5%90%8C%E5%AD%90%E7%BD%91"><span class="nav-number">2.2.</span> <span class="nav-text">LAN的不同子网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E7%AD%96%E7%95%A5"><span class="nav-number">3.</span> <span class="nav-text">防火墙策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E7%9A%84Server%E8%BF%9B%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">独立的Server进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E7%9A%84Server%E7%A8%8B%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">独立的Server程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session%E7%9A%84%E9%85%8D%E7%BD%AE%E5%AD%98%E5%82%A8"><span class="nav-number">6.</span> <span class="nav-text">Session的配置存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage-Process"><span class="nav-number">1.</span> <span class="nav-text">Usage Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Strategy"><span class="nav-number">2.</span> <span class="nav-text">Network Strategy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Same-Subnet-of-LAN"><span class="nav-number">2.1.</span> <span class="nav-text">Same Subnet of LAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Different-Subnets-of-LAN"><span class="nav-number">2.2.</span> <span class="nav-text">Different Subnets of LAN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Firewall-Strategy"><span class="nav-number">3.</span> <span class="nav-text">Firewall Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Independent-Server-Process"><span class="nav-number">4.</span> <span class="nav-text">Independent Server Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Independent-Server-Program"><span class="nav-number">5.</span> <span class="nav-text">Independent Server Program</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session-Configuration-Storage"><span class="nav-number">6.</span> <span class="nav-text">Session Configuration Storage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -645,19 +647,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -695,10 +697,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -725,9 +727,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -736,12 +735,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -894,7 +893,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/25226/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/25226/',]
       });
       });
   </script>
@@ -917,12 +916,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,19 +19,19 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在上一篇文章突破C++类的访问控制机制中简略提到了C++类的成员访问控制(public&#x2F;protected&#x2F;private)只是限制了成员名字的可访问性(accessable)**而非可见性(visable)**。在这篇文章中主要分析这种性质带来的后果以及如何避免。">
+  <meta name="description" content="In the previous article Breaking the Access Control Mechanism of C++ Classes, we briefly mentioned that the member access control of C++ classes (public&#x2F;protected&#x2F;private) only limits the accessibilit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="访问控制机制的可见性与可访问性">
-<meta property="og:url" content="https://imzlp.com/posts/17586/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在上一篇文章突破C++类的访问控制机制中简略提到了C++类的成员访问控制(public&#x2F;protected&#x2F;private)只是限制了成员名字的可访问性(accessable)**而非可见性(visable)**。在这篇文章中主要分析这种性质带来的后果以及如何避免。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Visibility and accessibility of access control mechanisms">
+<meta property="og:url" content="https://en.imzlp.com/posts/17586/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the previous article Breaking the Access Control Mechanism of C++ Classes, we briefly mentioned that the member access control of C++ classes (public&#x2F;protected&#x2F;private) only limits the accessibilit">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-05-13T10:44:06.000Z">
 <meta property="article:modified_time" content="2017-05-13T10:44:06.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="编程笔记">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="pimpl">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/17586/">
+<link rel="canonical" href="https://en.imzlp.com/posts/17586/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>访问控制机制的可见性与可访问性 | 循迹研究室</title>
+  <title>Visibility and accessibility of access control mechanisms | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/17586/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/17586/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          访问控制机制的可见性与可访问性<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-05-13-17586.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/17586/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Visibility and accessibility of access control mechanisms<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-05-13-17586.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/17586/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Visibility and accessibility of access control mechanisms</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">访问控制机制的可见性与可访问性</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-05-13 10:44 10:44:06:44" itemprop="dateCreated datePublished" datetime="2017-05-13T10:44:06+00:00">2017-05-13 10:44</time>
+              <time title="Created: 2017-05-13 10:44 10:44:06:44" itemprop="dateCreated datePublished" datetime="2017-05-13T10:44:06+00:00">2017-05-13 10:44</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/17586/" class="post-meta-item leancloud_visitors" data-flag-title="访问控制机制的可见性与可访问性" title="阅读次数">
+            <span id="/posts/17586/" class="post-meta-item leancloud_visitors" data-flag-title="Visibility and accessibility of access control mechanisms" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.7k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -369,34 +369,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在上一篇文章<a href="https://imzlp.com/posts/12080">突破C++类的访问控制机制</a>中简略提到了C++类的成员访问控制(<code>public</code>/<code>protected</code>/<code>private</code>)只是限制了成员名字的<strong>可访问性(accessable)**而非</strong>可见性(visable)**。在这篇文章中主要分析这种性质带来的后果以及如何避免。</p>
+        <p>In the previous article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/12080">Breaking the Access Control Mechanism of C++ Classes</a>, we briefly mentioned that the member access control of C++ classes (<code>public</code>/<code>protected</code>/<code>private</code>) only limits the <strong>accessibility</strong> of member names, rather than their <strong>visibility</strong>. This article mainly analyzes the consequences of this property and how to avoid them.</p>
 <span id="more"></span>
-<h3 id="可访问性与可见性"><a href="#可访问性与可见性" class="headerlink" title="可访问性与可见性"></a>可访问性与可见性</h3><p>先来看一下C++标准中给出的定义：</p>
+
+<h3 id="Accessibility-vs-Visibility"><a href="#Accessibility-vs-Visibility" class="headerlink" title="Accessibility vs. Visibility"></a>Accessibility vs. Visibility</h3><p>First, let’s look at the definition given in the C++ standard:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123; &#125;;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">typedef</span> B BB;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  A::BB x; <span class="comment">// OK, typedef name A::BB is public</span></span><br><span class="line">  A::B y; <span class="comment">// access error, A::B is private</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>**[ISO/IEC 14882:2014]**It should be noted that it is access to members and base classes that is controlled, not their visibility. Names of members are still visible, and implicit conversions to base classes are still considered, when those members and base classes are inaccessible.</p>
+<p><strong>[ISO/IEC 14882:2014]</strong> It should be noted that it is access to members and base classes that is controlled, not their visibility. Names of members are still visible, and implicit conversions to base classes are still considered when those members and base classes are inaccessible.</p>
 </blockquote>
-<p>考虑下面这个例子：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func(int)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">double</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func(double)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	A example;</span><br><span class="line">	<span class="comment">// 调用的是哪个func?</span></span><br><span class="line">	example.<span class="built_in">func</span>(<span class="number">11.11</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然而上面的代码并不能编译通过，具有编译错误：</p>
+<p>Consider the following example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func(int)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">double</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func(double)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	A example;</span><br><span class="line">	<span class="comment">// Which func is being called?</span></span><br><span class="line">	example.<span class="built_in">func</span>(<span class="number">11.11</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However, the above code fails to compile with the compilation error:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: <span class="string">&#x27;func&#x27;</span> is a private member of <span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>为什么我们的fucn调用不会被匹配并隐式转换参数到<code>A::func(double)</code>呢？因为重载决议发生在可访问性检查之前。<br>编译器在对一个函数进行调用决议时，主要发生了三件事：</p>
+<p>Why isn’t our func call matched and implicitly converted to <code>A::func(double)</code>? Because the overload resolution happens before the accessibility check. When the compiler resolves a function call, three main things occur:</p>
 <ul>
-<li>名字查找。在做其他任何事情之前，编译器会首先寻找一个至少包含一个名为调用名字的实体的作用域，并将其中的候选实体列表。</li>
-<li>重载决议。接下来编译器会进行重载决议，这一步的目的是在候选的重载函数中选出唯一的最佳匹配。</li>
-<li>可访问性检查。最后，编译器会进行可访问性检查，以确定被选出的函数到底是否可被调用。</li>
+<li>Name lookup. Before doing anything else, the compiler first looks for a scope containing at least one entity with the name of the calling entity and creates a list of candidate entities.</li>
+<li>Overload resolution. Next, the compiler performs overload resolution to select the unique best match from the candidate overloaded functions.</li>
+<li>Accessibility check. Finally, the compiler conducts an accessibility check to determine whether the selected function can actually be called.</li>
 </ul>
-<p>我们使用<code>example.func(11.11);</code>成功地通过了名字查找和重载决议，但是在前两布中选出来的名字在执行可访问性检查时发生了错误！<br>因为在重载决议时会匹配到最优的候选函数，在类A中，对<code>example.func(11.11);</code>的调用匹配出来的最优的匹配函数就是<code>A::func(double)</code>，然后将其执行可访问性检查时发现其是类A的<code>private</code>成员，所以发生了编译错误。</p>
-<p>关于C++设计时对于访问控制的可见性与可访问性的描述：</p>
+<p>We successfully passed name lookup and overload resolution with <code>example.func(11.11);</code>, but an error occurred during the accessibility check on the name selected in the first two steps! During overload resolution, the optimal candidate function matched for the call of <code>example.func(11.11);</code> is <code>A::func(double)</code>, and when checking accessibility, it is found to be a <code>private</code> member of class A, leading to the compilation error.</p>
+<p>Regarding the description of visibility and accessibility in C++’s design:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  a;  <span class="comment">//  global  a</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">X</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> a;  <span class="comment">// member X::a</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">XX</span> : <span class="keyword">public</span> X &#123;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">()</span>  </span>&#123; a = l ;  &#125;  <span class="comment">// which a?</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以下内容摘自C++之父Bjarne Stroustrup的著作《The Design And Evolution Of C++》Section 2.10 。</p>
+<p>The following is excerpted from Bjarne Stroustrup, the father of C++, in his book “The Design And Evolution Of C++,” Section 2.10.</p>
 <blockquote>
-<p>Making public/private control visibility, rather than access, would have a change from public to private quietly change the meaning of the program from one legal interpretation (access <code>X::a</code>) to another (access the global <code>a</code>). I no longer consider this argument conclusive (if I ever did), but the decision made has proven useful in that it allows programmers to add and remove public and private specifications during debugging without quietly changing the meaning of programs. I do wonder if this aspect of the C++ definition is the result of a genuine design decision.<br>如果用public/private控制可见性而不是可访问性，那么用户将public改为private的举动就有可能悄无声息地改变了程序的含义，使之从一个合法解释变成了另一个合法解释。虽说我不再认为当初的看法是结论性的（如果我曾经那样认为的话），然而当时作出的决定后来被证明是有用的，因为它允许程序员在对代码查错的时候添加或移除public和private访问指示符而同时又不会改变程序的含义。我不知道这是否算得上是一个真正的设计决策的结果。</p>
+<p>Making public/private control visibility, rather than access, would have a change from public to private quietly change the meaning of the program from one legal interpretation (access <code>X::a</code>) to another (access the global <code>a</code>). I no longer consider this argument conclusive (if I ever did), but the decision made has proven useful in that it allows programmers to add and remove public and private specifications during debugging without quietly changing the meaning of programs. I do wonder if this aspect of the C++ definition is the result of a genuine design decision.<br>If public/private controls visibility rather than accessibility, changing public to private could silently change the meaning of a program, from one legal interpretation to another. Although I no longer regard this argument as conclusive (if I ever did), the decision made has proven useful as it allows programmers to add or remove public and private access indicators during debugging without altering the meaning of programs. I wonder if this aspect of the C++ definition is the result of a genuine design decision.</p>
 </blockquote>
-<p>既然访问控制的是可访问性而不是可见性，那么类内任何私有成员在任何可以看到类实现的代码都是<strong>可见的</strong>，即他们会参加名字查找和重载决议，这也就是上面例子中会产生编译错误的原因。</p>
-<h3 id="避免私有成员参加名字查找和重载决议"><a href="#避免私有成员参加名字查找和重载决议" class="headerlink" title="避免私有成员参加名字查找和重载决议"></a>避免私有成员参加名字查找和重载决议</h3><p>既然C++类的访问控制具有上面提到的问题，那么如何避免呢？可以将私有成员封装为另一个结构，从而避免私有成员参与名字查找和重载解析，这也就是所谓的<a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/language/pimpl">pimpl</a>惯用法。<br>同样使用上面所定义的类A为例子，但是我们将其<code>private</code>封装为另一个类：</p>
+<p>Since access control is about accessibility rather than visibility, any private members of a class are <strong>visible</strong> to any code that can see the class’s implementation, meaning they will participate in name lookup and overload resolution, which is the reason for the compilation error in the above example.</p>
+<h3 id="Avoiding-Private-Members-from-Name-Lookup-and-Overload-Resolution"><a href="#Avoiding-Private-Members-from-Name-Lookup-and-Overload-Resolution" class="headerlink" title="Avoiding Private Members from Name Lookup and Overload Resolution"></a>Avoiding Private Members from Name Lookup and Overload Resolution</h3><p>Given the aforementioned issues with C++ class access control, how can we avoid them? One can encapsulate private members within another structure to prevent private members from participating in name lookup and overload resolution, which is known as the <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/language/pimpl">pimpl</a> idiom.<br>Using the previously defined class A as an example, we will encapsulate its <code>private</code> members in another class:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="built_in">A</span>();</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123; cout&lt;&lt;<span class="string">&quot;A:func(int)&quot;</span>&lt;&lt;endl; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Apimpl</span>;</span><br><span class="line">	std::unique_ptr&lt;Apimpl&gt; privateMem;</span><br><span class="line">&#125;;</span><br><span class="line">A::<span class="built_in">A</span>():<span class="built_in">privateMem</span>(std::<span class="built_in">make_unique</span>&lt;Apimpl&gt;())&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>::Apimpl&#123;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">double</span>)</span></span>&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;A::func(double)&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A x;</span><br><span class="line">	x.<span class="built_in">func</span>(<span class="number">11.11</span>); <span class="comment">// call A::func(int)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过在类中又裹一层中间层将所有的私有成员放到不会被名字查找和重载解析访问到的地方，来避免C++访问控制只是限制可访问性而非可见性所带来的歧义问题。但是使用pimpl惯用法的好处不仅仅是更深层次地隐藏类内数据和实现，还有额外的好处，这个此处按下不表，我打算将其作为下篇文章的主题。</p>
+<p>By wrapping a layer within the class and placing all private members in a location that won’t be accessed by name lookup and overload resolution, we can avoid the ambiguity caused by the C++ access control, which only restricts accessibility rather than visibility. However, the benefits of using the pimpl idiom extend beyond simply hiding class data and implementation at a deeper level. This will be the topic of my next article.</p>
 
     </div>
 
@@ -407,7 +408,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -417,7 +418,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -427,37 +428,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/17586/" target="_blank">访问控制机制的可见性与可访问性</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/05/13 10:44<br/>
+             <span>Title:</span><a href="/posts/17586/" target="_blank">Visibility and accessibility of access control mechanisms</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/05/13 10:44<br/>
              
-             <span>本文字数:</span><span class="page-count">2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.7k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/17586/" target="_blank" title="访问控制机制的可见性与可访问性">https://imzlp.com/posts/17586/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/17586/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/17586/" target="_blank" title="Visibility and accessibility of access control mechanisms">https://en.imzlp.com/posts/17586/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/17586/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -480,12 +481,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/19441/" rel="prev" title="lambda在编译器中实现的方式">
-      <i class="fa fa-chevron-left"></i> lambda在编译器中实现的方式
+    <a href="/posts/19441/" rel="prev" title="How lambda is implemented in the compiler">
+      <i class="fa fa-chevron-left"></i> How lambda is implemented in the compiler
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/12080/" rel="next" title="突破C++类的访问控制机制">
-      突破C++类的访问控制机制 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/12080/" rel="next" title="Breaking through the access control mechanism of C++ classes">
+      Breaking through the access control mechanism of C++ classes <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -556,25 +557,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E4%B8%8E%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">可访问性与可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%82%E5%8A%A0%E5%90%8D%E5%AD%97%E6%9F%A5%E6%89%BE%E5%92%8C%E9%87%8D%E8%BD%BD%E5%86%B3%E8%AE%AE"><span class="nav-number">2.</span> <span class="nav-text">避免私有成员参加名字查找和重载决议</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accessibility-vs-Visibility"><span class="nav-number">1.</span> <span class="nav-text">Accessibility vs. Visibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoiding-Private-Members-from-Name-Lookup-and-Overload-Resolution"><span class="nav-number">2.</span> <span class="nav-text">Avoiding Private Members from Name Lookup and Overload Resolution</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -582,19 +583,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -632,10 +633,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -662,9 +663,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -673,12 +671,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -831,7 +829,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/17586/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/17586/',]
       });
       });
   </script>
@@ -854,12 +852,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

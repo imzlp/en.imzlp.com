@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="之前使用博客园，总觉得不爽，也试过自己搭建博客。wordpress太臃肿，其他的功能不强大(界面不好看)，仔细想来想去还是用Github Pages+Hexo搭建一个静态blog吧，专注于写作。  截至到2021.03.23，我已经持续用Hexo部署博客快要有六年的时间了，六年间写了一百多篇文章，使用Hexo部署的方式也经过了很多变化，写博客也逐渐变成了一种习惯。依稀记得在大学的某一天，我想要自己">
+  <meta name="description" content="Previously, I found using Blog Garden quite unsatisfactory, and I also tried building my own blog. WordPress is too bloated, and other options don’t have strong functionality (the interface doesn’t lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github Pages+Hexo博客搭建">
-<meta property="og:url" content="https://imzlp.com/posts/58952/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="之前使用博客园，总觉得不爽，也试过自己搭建博客。wordpress太臃肿，其他的功能不强大(界面不好看)，仔细想来想去还是用Github Pages+Hexo搭建一个静态blog吧，专注于写作。  截至到2021.03.23，我已经持续用Hexo部署博客快要有六年的时间了，六年间写了一百多篇文章，使用Hexo部署的方式也经过了很多变化，写博客也逐渐变成了一种习惯。依稀记得在大学的某一天，我想要自己">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Deploy an independent blog using Github Pages and Hexo">
+<meta property="og:url" content="https://en.imzlp.com/posts/58952/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Previously, I found using Blog Garden quite unsatisfactory, and I also tried building my own blog. WordPress is too bloated, and other options don’t have strong functionality (the interface doesn’t lo">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58952/git-ssh-key.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-bloggithub-add-ssh-key.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-1.webp">
@@ -36,14 +36,14 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-3.webp">
 <meta property="article:published_time" content="2014-11-18T11:11:11.000Z">
 <meta property="article:modified_time" content="2014-11-18T11:11:11.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="Github">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58952/git-ssh-key.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/58952/">
+<link rel="canonical" href="https://en.imzlp.com/posts/58952/">
 
 
 <script id="page-configurations">
@@ -52,11 +52,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>Github Pages+Hexo博客搭建 | 循迹研究室</title>
+  <title>Deploy an independent blog using Github Pages and Hexo | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -96,7 +96,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -106,7 +106,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -136,24 +136,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -163,7 +163,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -173,7 +173,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -181,14 +181,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -196,26 +196,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -231,7 +231,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -250,7 +250,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -269,12 +269,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -292,27 +292,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/58952/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/58952/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Github Pages+Hexo博客搭建<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2014-11-18-58952.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/58952/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Deploy an independent blog using Github Pages and Hexo<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2014-11-18-58952.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/58952/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Deploy an independent blog using Github Pages and Hexo</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Github Pages+Hexo博客搭建</sub>
           </div>
         
 
@@ -321,47 +321,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2014-11-18 11:11 11:11:11:11" itemprop="dateCreated datePublished" datetime="2014-11-18T11:11:11+00:00">2014-11-18 11:11</time>
+              <time title="Created: 2014-11-18 11:11 11:11:11:11" itemprop="dateCreated datePublished" datetime="2014-11-18T11:11:11+00:00">2014-11-18 11:11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">博客管理</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/58952/" class="post-meta-item leancloud_visitors" data-flag-title="Github Pages+Hexo博客搭建" title="阅读次数">
+            <span id="/posts/58952/" class="post-meta-item leancloud_visitors" data-flag-title="Deploy an independent blog using Github Pages and Hexo" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.7k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -373,77 +373,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>之前使用博客园，总觉得不爽，也试过自己搭建博客。<br>wordpress太臃肿，其他的功能不强大(界面不好看)，仔细想来想去还是用Github Pages+Hexo搭建一个静态blog吧，专注于写作。</p>
+        <p>Previously, I found using Blog Garden quite unsatisfactory, and I also tried building my own blog. WordPress is too bloated, and other options don’t have strong functionality (the interface doesn’t look good). After thinking it over, I decided to use GitHub Pages + Hexo to build a static blog, focusing on writing.</p>
 <blockquote>
-<p>截至到2021.03.23，我已经持续用Hexo部署博客快要有六年的时间了，六年间写了一百多篇文章，使用Hexo部署的方式也经过了很多变化，写博客也逐渐变成了一种习惯。依稀记得在大学的某一天，我想要自己搭建一个博客，于是折腾了一天写了这篇文章，本站的历史就从那里开始了，希望我能继续用Hexo写到十年、二十年！</p>
+<p>As of 2021.03.23, I have been using Hexo to deploy my blog for nearly six years. During these six years, I have written more than a hundred articles, and the way I deployed using Hexo has undergone many changes; writing blogs has gradually become a habit. I vaguely remember one day in college when I wanted to build my own blog, so I spent a day working on this article, and the history of this site began from there. I hope I can continue to use Hexo to write for ten years or twenty years!</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="安装下列软件"><a href="#安装下列软件" class="headerlink" title="安装下列软件"></a>安装下列软件</h3><ul>
+
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><h3 id="Install-the-following-software"><a href="#Install-the-following-software" class="headerlink" title="Install the following software"></a>Install the following software</h3><ul>
 <li>node.js</li>
 <li>git</li>
-<li>注册一个github账号</li>
+<li>Register a GitHub account</li>
 </ul>
-<h2 id="配置和使用Github"><a href="#配置和使用Github" class="headerlink" title="配置和使用Github"></a>配置和使用Github</h2><h3 id="配置SSH-Keys"><a href="#配置SSH-Keys" class="headerlink" title="配置SSH Keys"></a>配置SSH Keys</h3><p>我们如何让本地git项目与远程的github建立联系呢？用SSH keys。<br>检查SSH keys的设置<br>首先我们需要检查你电脑上现有的ssh key：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh 检查本机的ssh密钥</span><br></pre></td></tr></table></figure>
-<p>如果提示：No such file or directory 说明你是第一次使用git。<br>生成新的SSH Key：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;邮件地址@youremail.com&quot;</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;</span><br></pre></td></tr></table></figure>
-<p>注意1: 此处的邮箱地址，你可以输入自己的邮箱地址；注意2: 此处的「-C」的是大写的「C」<br>然后系统会要你输入密码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):&lt;输入加密串&gt;</span><br><span class="line">Enter same passphrase again:&lt;再次输入加密串&gt;</span><br></pre></td></tr></table></figure>
-<p>在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。<br>注意：输入密码的时候没有<code>*</code>字样的，你直接输入就可以了。</p>
-<p>最后看到这样的界面，就成功设置ssh key了：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/git-ssh-key.webp"></p>
-<h3 id="添加SSH-Key到GitHub"><a href="#添加SSH-Key到GitHub" class="headerlink" title="添加SSH Key到GitHub"></a>添加SSH Key到GitHub</h3><p>在本机设置SSH Key之后，需要添加到GitHub上，以完成SSH链接的设置。<br>1、打开本地C:\Users\visionsmile\.ssh\id_rsa.pub文件。此文件里面内容为刚才生成人密钥。如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。<br>2、登陆github系统。点击右上角的Settings —-&gt; SSH keys —-&gt; ADD SSH Key<br>3、把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-bloggithub-add-ssh-key.webp"></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>可以输入下面的命令，看看设置是否成功，<a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;</a>的部分不要修改：</p>
+<h2 id="Configuring-and-Using-GitHub"><a href="#Configuring-and-Using-GitHub" class="headerlink" title="Configuring and Using GitHub"></a>Configuring and Using GitHub</h2><h3 id="Configure-SSH-Keys"><a href="#Configure-SSH-Keys" class="headerlink" title="Configure SSH Keys"></a>Configure SSH Keys</h3><p>How can we establish a connection between the local git project and the remote GitHub? Use SSH keys.<br>Check the SSH keys settings.<br>First, we need to check the existing ssh key on your computer:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh Check the ssh keys on this machine</span><br></pre></td></tr></table></figure>
+<p>If you see: No such file or directory, it means this is your first time using git.<br>Generate a new SSH Key:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;email@example.com&quot;</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;just press Enter&gt;</span><br></pre></td></tr></table></figure>
+<p>Note 1: You can enter your own email address here; Note 2: The “-C” is an uppercase “C.”<br>Then the system will ask you to enter a password:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):&lt;enter the encrypted string&gt;</span><br><span class="line">Enter same passphrase again:&lt;re-enter the encrypted string&gt;</span><br></pre></td></tr></table></figure>
+<p>During the prompts, it will ask you to input a password, which will be used when you submit projects. If left blank, you won’t need to input when submitting projects. This setting is to prevent others from submitting content to your project.<br>Note: When entering the password, there will be no <code>*</code> character displayed; you can just type directly.</p>
+<p>Finally, when you see this interface, the ssh key has been successfully set:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/git-ssh-key.webp"></p>
+<h3 id="Add-SSH-Key-to-GitHub"><a href="#Add-SSH-Key-to-GitHub" class="headerlink" title="Add SSH Key to GitHub"></a>Add SSH Key to GitHub</h3><p>After setting the SSH Key on your local machine, you need to add it to GitHub to complete the SSH link setup.</p>
+<ol>
+<li>Open the local C:\Users\visionsmile\.ssh\id_rsa.pub file. This file contains the key you just generated. If you can’t see this file, you need to set it to show hidden files. Accurately copy the content of this file to ensure successful setup.</li>
+<li>Log into GitHub. Click on the upper right corner to Settings -&gt; SSH keys -&gt; ADD SSH Key.</li>
+<li>Paste your locally generated key into the input box (key textbox), then click add key, and you’re done.</li>
+</ol>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-bloggithub-add-ssh-key.webp"></p>
+<h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><p>You can enter the following command to see if the setup was successful; do not modify the <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a> part:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>如果是下面的反馈：</p>
+<p>If you receive the following feedback:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;github.com (207.97.227.239)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is 66:d6:87:33:75:12:f5:e5:24:19:df:1e:58:d3:81:33.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure>
-<p>不要紧张，输入yes就好，然后会看到：</p>
+<p>Don’t be nervous; just type yes, and you will see:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi hxhb! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide bash access.</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置用户信息"><a href="#设置用户信息" class="headerlink" title="设置用户信息"></a>设置用户信息</h3><p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。<br>Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;hxhb&quot;</span>//用户名</span><br><span class="line">$ git config --global user.email  <span class="string">&quot;hxhb@live.com&quot;</span>//填写自己的邮箱</span><br></pre></td></tr></table></figure>
-<p>SSH Key配置成功<br>本机已成功连接到github。</p>
-<h2 id="Github上建立仓库"><a href="#Github上建立仓库" class="headerlink" title="Github上建立仓库"></a>Github上建立仓库</h2><p>登录后系统，在github首页，点击页面右下角「New Repository」<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-1.webp"></p>
-<h3 id="填写项目信息"><a href="#填写项目信息" class="headerlink" title="填写项目信息"></a>填写项目信息</h3><p><strong>project name:</strong> username.github.io</p>
-<p><strong>description:</strong> Writing 1000 Words a Day Changed My Life<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-2.webp"><br>注：Github Pages的Repository名字是特定的，比如我Github账号是hxhb，那么我Github Pages Repository名字就是hxhb.github.io。<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-3.webp"></p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>打开git Bash(Linux下直接在终端输入)</p>
+
+<h3 id="Set-User-Information"><a href="#Set-User-Information" class="headerlink" title="Set User Information"></a>Set User Information</h3><p>Now you can connect to GitHub via SSH; there’s still some personal information to complete.<br>Git will track commits based on the user’s name and email. GitHub uses this information for permission handling. Input the code below to set your personal information, replacing the name and email with your own. The name must be your real name, not GitHub nicknames.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;hxhb&quot;</span> // username</span><br><span class="line">$ git config --global user.email  <span class="string">&quot;hxhb@live.com&quot;</span> // input your email</span><br></pre></td></tr></table></figure>
+<p>SSH Key configuration successful.<br>The local machine has successfully connected to GitHub.</p>
+<h2 id="Create-a-Repository-on-GitHub"><a href="#Create-a-Repository-on-GitHub" class="headerlink" title="Create a Repository on GitHub"></a>Create a Repository on GitHub</h2><p>After logging in, on the GitHub homepage, click the “New Repository” button at the bottom right of the page.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-1.webp"></p>
+<h3 id="Fill-in-Project-Information"><a href="#Fill-in-Project-Information" class="headerlink" title="Fill in Project Information"></a>Fill in Project Information</h3><p><strong>project name:</strong> username.github.io</p>
+<p><strong>description:</strong> Writing 1000 Words a Day Changed My Life</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-2.webp"></p>
+<p>Note: The Repository name for GitHub Pages is specific. For example, if my GitHub account is hxhb, then my GitHub Pages Repository name will be hxhb.github.io.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58952/github-new-repository-3.webp"></p>
+<h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><p>Open git Bash (directly type in the terminal on Linux)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-<p>注意：在Linux下可能需要更新npdejs后才可以安装hexo,可以使用以下命令</p>
+<p>Note: On Linux, you may need to update nodejs before installing hexo; you can use the following commands:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm cache clean -f</span><br><span class="line">$ sudo npm install -g n</span><br><span class="line">$ sudo n stable</span><br></pre></td></tr></table></figure>
 
-<h3 id="部署Hexo"><a href="#部署Hexo" class="headerlink" title="部署Hexo"></a>部署Hexo</h3><p>新建一个Blog文件夹，然后在该文件夹中打开Git Bash</p>
+<h3 id="Deploy-Hexo"><a href="#Deploy-Hexo" class="headerlink" title="Deploy Hexo"></a>Deploy Hexo</h3><p>Create a Blog folder, then open Git Bash in that folder.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>Hexo随后会自动在目标文件夹建立网站所需要的所有文件。<br>现在我们已经搭建起本地的hexo博客了，执行以下命令，然后到浏览器输入localhost:4000看看。</p>
+<p>Hexo will automatically create all the files needed for the website in the target folder.<br>Now we have set up a local hexo blog. Execute the following commands, then enter localhost:4000 in the browser to check.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 
-<h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+<h2 id="Install-Theme"><a href="#Install-Theme" class="headerlink" title="Install Theme"></a>Install Theme</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
 
-<h3 id="启用next的主题"><a href="#启用next的主题" class="headerlink" title="启用next的主题"></a>启用next的主题</h3><p>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为next。</p>
+<h3 id="Enable-the-next-theme"><a href="#Enable-the-next-theme" class="headerlink" title="Enable the next theme"></a>Enable the next theme</h3><p>Modify the theme attribute in the config.yml configuration file under the Hexo directory to set it to next.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<p>注意：Hexo有两个config.yml文件，一个在根目录，一个在theme下，此时修改的是在根目录下的。</p>
-<h2 id="更新主题"><a href="#更新主题" class="headerlink" title="更新主题"></a>更新主题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/jacman</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<p>注意：为避免出错，请先备份你的_config.yml 文件后再升级。</p>
-<h2 id="使用与调试"><a href="#使用与调试" class="headerlink" title="使用与调试"></a>使用与调试</h2><p>在本地如果需要预览或者调试你的博客，可以启动本地服务器：</p>
+<p>Note: Hexo has two config.yml files, one in the root directory and one in the theme directory. Here, we are modifying the one in the root directory.</p>
+<h2 id="Update-Theme"><a href="#Update-Theme" class="headerlink" title="Update Theme"></a>Update Theme</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/jacman</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<p>Note: To avoid errors, please back up your _config.yml file before upgrading.</p>
+<h2 id="Use-and-Debug"><a href="#Use-and-Debug" class="headerlink" title="Use and Debug"></a>Use and Debug</h2><p>If you need to preview or debug your blog locally, you can start the local server:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p>部署到Github前需要配置_config.yml文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repository: git@github.com:hxhb/hxhb.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>因为type是git，所以部署到Github前需要安装hexo-deployer-git</p>
+<p>Before deploying to GitHub, you need to configure the _config.yml file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:hxhb/hxhb.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>Since the type is git, you need to install hexo-deployer-git before deploying to GitHub:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>之后执行下列指令即可完成部署，注意部署会覆盖掉你之前在版本库中存放的文件。</p>
+<p>Then execute the following commands to complete the deployment; note that deployment will overwrite the files you previously stored in the repository.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>或可加入 —generate 选项，在部署前自动生成文件。<br>本地查看调试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g <span class="comment">#生成</span></span><br><span class="line">$ hexo s <span class="comment">#启动本地服务，进行文章预览调试</span></span><br></pre></td></tr></table></figure>
-<p>或者直接作用组合命令</p>
+<p>You may also add the —generate option to automatically generate files before deployment.<br>Local viewing and debugging:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g <span class="comment"># generate</span></span><br><span class="line">$ hexo s <span class="comment"># start the local service for article preview debugging</span></span><br></pre></td></tr></table></figure>
+<p>Or directly use the combined command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
-<p>此后的每次变更_config.yml 文件或者上传文件都可以先用此命令调试，非常好用，尤其是当你想调试出自己想要的主题时。</p>
-<p>详情参考：<a target="_blank" rel="noopener" href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
-<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>我的Hexo相关的部署文章：</p>
+<p>For subsequent changes to the _config.yml file or uploaded files, you can use this command for debugging, which is very useful, especially when you want to debug the theme you want.</p>
+<p>For details, refer to: <a target="_blank" rel="noopener" href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/">How to Build an Independent Blog - A Concise Tutorial on GitHub Pages and Hexo</a></p>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>My Hexo-related deployment articles:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/58952/">Github Pages+Hexo博客搭建</a></li>
-<li><a href="https://imzlp.com/posts/55550/">使用Github来管理博客源文件</a></li>
-<li><a href="https://imzlp.com/posts/58862/">使用Koding在线管理静态博客</a></li>
-<li><a href="https://imzlp.com/posts/42318/">使用Travis CI自动部署Github/Coding Pages博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/58952/">Building a Github Pages + Hexo Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/55550/">Using GitHub to Manage Blog Source Files</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/58862/">Managing Static Blogs Online with Koding</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/42318/">Automatically Deploying GitHub/Coding Pages Blogs with Travis CI</a></li>
 </ul>
-<p>目前我的博客部署方案是Dropbox+Github Actions，并且托管了国内的OSS+CDN，可以实现博客的一键发布与部署。</p>
+<p>Currently, my blog deployment scheme is Dropbox + GitHub Actions, and it is hosted on domestic OSS + CDN, allowing for one-click publishing and deployment of the blog.</p>
 
     </div>
 
@@ -454,7 +467,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -464,7 +477,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -474,37 +487,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/58952/" target="_blank">Github Pages+Hexo博客搭建</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2014/11/18 11:11<br/>
+             <span>Title:</span><a href="/posts/58952/" target="_blank">Deploy an independent blog using Github Pages and Hexo</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2014/11/18 11:11<br/>
              
-             <span>本文字数:</span><span class="page-count">2.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">4.7k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/58952/" target="_blank" title="Github Pages+Hexo博客搭建">https://imzlp.com/posts/58952/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/58952/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/58952/" target="_blank" title="Deploy an independent blog using Github Pages and Hexo">https://en.imzlp.com/posts/58952/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/58952/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -525,8 +538,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/55550/" rel="prev" title="使用Github来管理博客源文件">
-      <i class="fa fa-chevron-left"></i> 使用Github来管理博客源文件
+    <a href="/posts/55550/" rel="prev" title="Use Github to manage blog source files">
+      <i class="fa fa-chevron-left"></i> Use Github to manage blog source files
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -598,25 +611,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8B%E5%88%97%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">安装下列软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8Github"><span class="nav-number">2.</span> <span class="nav-text">配置和使用Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AESSH-Keys"><span class="nav-number">2.1.</span> <span class="nav-text">配置SSH Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0SSH-Key%E5%88%B0GitHub"><span class="nav-number">2.2.</span> <span class="nav-text">添加SSH Key到GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">2.4.</span> <span class="nav-text">设置用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github%E4%B8%8A%E5%BB%BA%E7%AB%8B%E4%BB%93%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">Github上建立仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%86%99%E9%A1%B9%E7%9B%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.</span> <span class="nav-text">填写项目信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">4.</span> <span class="nav-text">安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">部署Hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">安装主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8next%E7%9A%84%E4%B8%BB%E9%A2%98"><span class="nav-number">5.1.</span> <span class="nav-text">启用next的主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%BB%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">更新主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%B0%83%E8%AF%95"><span class="nav-number">7.</span> <span class="nav-text">使用与调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">8.</span> <span class="nav-text">Update</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-number">1.</span> <span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-the-following-software"><span class="nav-number">1.1.</span> <span class="nav-text">Install the following software</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-and-Using-GitHub"><span class="nav-number">2.</span> <span class="nav-text">Configuring and Using GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-SSH-Keys"><span class="nav-number">2.1.</span> <span class="nav-text">Configure SSH Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-SSH-Key-to-GitHub"><span class="nav-number">2.2.</span> <span class="nav-text">Add SSH Key to GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test"><span class="nav-number">2.3.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-User-Information"><span class="nav-number">2.4.</span> <span class="nav-text">Set User Information</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-Repository-on-GitHub"><span class="nav-number">3.</span> <span class="nav-text">Create a Repository on GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fill-in-Project-Information"><span class="nav-number">3.1.</span> <span class="nav-text">Fill in Project Information</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Hexo"><span class="nav-number">4.</span> <span class="nav-text">Install Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">Deploy Hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Theme"><span class="nav-number">5.</span> <span class="nav-text">Install Theme</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-the-next-theme"><span class="nav-number">5.1.</span> <span class="nav-text">Enable the next theme</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update-Theme"><span class="nav-number">6.</span> <span class="nav-text">Update Theme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-and-Debug"><span class="nav-number">7.</span> <span class="nav-text">Use and Debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">8.</span> <span class="nav-text">Update</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -624,19 +637,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -674,10 +687,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -704,9 +717,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -715,12 +725,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -873,7 +883,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/58952/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/58952/',]
       });
       });
   </script>
@@ -896,12 +906,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

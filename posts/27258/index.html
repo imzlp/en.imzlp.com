@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在C++中，如果一个运算符的运算对象类型不一致，这些运算对象将转换成同一种类型。类型转换分为隐式转换、和显式转换。">
+  <meta name="description" content="In C++, when the operand types of an operator are inconsistent, these operands will be converted to the same type. Type conversion is divided into implicit conversion and explicit conversion.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="详细分析C++中的类型转换">
-<meta property="og:url" content="https://imzlp.com/posts/27258/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在C++中，如果一个运算符的运算对象类型不一致，这些运算对象将转换成同一种类型。类型转换分为隐式转换、和显式转换。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Detailed analysis of type conversion in C++">
+<meta property="og:url" content="https://en.imzlp.com/posts/27258/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In C++, when the operand types of an operator are inconsistent, these operands will be converted to the same type. Type conversion is divided into implicit conversion and explicit conversion.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27258/arithmetic-type-in-cpp.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27258/signedToUnsigned.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27258/4294967185.webp">
@@ -36,14 +36,14 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27258/C:/Users/visionsmile/Desktop/doubleVal2voidPoint2doublePoint.webp">
 <meta property="article:published_time" content="2016-05-04T19:35:17.000Z">
 <meta property="article:modified_time" content="2016-05-04T19:35:17.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/27258/arithmetic-type-in-cpp.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/27258/">
+<link rel="canonical" href="https://en.imzlp.com/posts/27258/">
 
 
 <script id="page-configurations">
@@ -52,11 +52,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>详细分析C++中的类型转换 | 循迹研究室</title>
+  <title>Detailed analysis of type conversion in C++ | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -96,7 +96,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -106,7 +106,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -136,24 +136,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -163,7 +163,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -173,7 +173,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -181,14 +181,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -196,26 +196,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -231,7 +231,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -250,7 +250,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -269,12 +269,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -292,27 +292,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/27258/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/27258/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          详细分析C++中的类型转换<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-05-04-27258.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/27258/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Detailed analysis of type conversion in C++<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-05-04-27258.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/27258/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Detailed analysis of type conversion in C++</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">详细分析C++中的类型转换</sub>
           </div>
         
 
@@ -321,47 +321,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-05-04 19:35 19:35:17:35" itemprop="dateCreated datePublished" datetime="2016-05-04T19:35:17+00:00">2016-05-04 19:35</time>
+              <time title="Created: 2016-05-04 19:35 19:35:17:35" itemprop="dateCreated datePublished" datetime="2016-05-04T19:35:17+00:00">2016-05-04 19:35</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/27258/" class="post-meta-item leancloud_visitors" data-flag-title="详细分析C++中的类型转换" title="阅读次数">
+            <span id="/posts/27258/" class="post-meta-item leancloud_visitors" data-flag-title="Detailed analysis of type conversion in C++" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.9k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>17k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>20 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>43 mins.</span>
             </span>
 
         </div>
@@ -373,353 +373,348 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在C++中，如果一个运算符的运算对象类型不一致，这些运算对象将转换成同一种类型。<br>类型转换分为<strong>隐式转换</strong>、和<strong>显式转换</strong>。</p>
+        <p>In C++, when the operand types of an operator are inconsistent, these operands will be converted to the same type. Type conversion is divided into <strong>implicit conversion</strong> and <strong>explicit conversion</strong>.</p>
 <span id="more"></span>
 
-<p>首先我们先来了解一下C++中内置类型的含义和标准定义大小：</p>
+<p>First, let’s understand the meaning of built-in types in C++ and their standard defined sizes:</p>
 <table>
 <thead>
 <tr>
-<th align="center">类型</th>
-<th align="center">含义</th>
-<th align="center">最小尺寸</th>
+<th align="center">Type</th>
+<th align="center">Meaning</th>
+<th align="center">Minimum Size</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">bool</td>
-<td align="center">布尔类型</td>
-<td align="center">未定义</td>
+<td align="center">Boolean Type</td>
+<td align="center">Undefined</td>
 </tr>
 <tr>
 <td align="center">char</td>
-<td align="center">字符</td>
-<td align="center">8位</td>
+<td align="center">Character</td>
+<td align="center">8 bits</td>
 </tr>
 <tr>
 <td align="center">wchar_t</td>
-<td align="center">宽字符</td>
-<td align="center">16位</td>
+<td align="center">Wide Character</td>
+<td align="center">16 bits</td>
 </tr>
 <tr>
 <td align="center">char16_t</td>
-<td align="center">Unicode字符</td>
-<td align="center">16位</td>
+<td align="center">Unicode Character</td>
+<td align="center">16 bits</td>
 </tr>
 <tr>
 <td align="center">char32_t</td>
-<td align="center">Unicode字符</td>
-<td align="center">32位</td>
+<td align="center">Unicode Character</td>
+<td align="center">32 bits</td>
 </tr>
 <tr>
 <td align="center">short</td>
-<td align="center">短整型</td>
-<td align="center">16位</td>
+<td align="center">Short Integer</td>
+<td align="center">16 bits</td>
 </tr>
 <tr>
 <td align="center">int</td>
-<td align="center">整型</td>
-<td align="center">16位</td>
+<td align="center">Integer</td>
+<td align="center">16 bits</td>
 </tr>
 <tr>
 <td align="center">long</td>
-<td align="center">长整型</td>
-<td align="center">32位</td>
+<td align="center">Long Integer</td>
+<td align="center">32 bits</td>
 </tr>
 <tr>
 <td align="center">long long</td>
-<td align="center">长整型</td>
-<td align="center">64位</td>
+<td align="center">Long Long Integer</td>
+<td align="center">64 bits</td>
 </tr>
 <tr>
 <td align="center">float</td>
-<td align="center">单精度浮点型</td>
-<td align="center">6位有效数字</td>
+<td align="center">Single Precision Floating Point</td>
+<td align="center">6 Significant Digits</td>
 </tr>
 <tr>
 <td align="center">double</td>
-<td align="center">双精度浮点型</td>
-<td align="center">10位有效数字</td>
+<td align="center">Double Precision Floating Point</td>
+<td align="center">10 Significant Digits</td>
 </tr>
 <tr>
 <td align="center">long double</td>
-<td align="center">扩展精度浮点型</td>
-<td align="center">10位有效数字</td>
+<td align="center">Extended Precision Floating Point</td>
+<td align="center">10 Significant Digits</td>
 </tr>
 </tbody></table>
-<p>下面这段代码可以用来检测不同系统(32bit和64bit)上内置类型之间的大小</p>
+<p>The following code can be used to detect the sizes of built-in types across different systems (32-bit and 64-bit):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;bool&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">bool</span>),<span class="built_in">sizeof</span>(<span class="type">bool</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;char&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">char</span>),<span class="built_in">sizeof</span>(<span class="type">char</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;wchar_t&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">wchar_t</span>),<span class="built_in">sizeof</span>(<span class="type">wchar_t</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;char16_t&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">char16_t</span>),<span class="built_in">sizeof</span>(<span class="type">char16_t</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;char32_t&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">char32_t</span>),<span class="built_in">sizeof</span>(<span class="type">char32_t</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;short&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">short</span>),<span class="built_in">sizeof</span>(<span class="type">short</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;int&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">int</span>),<span class="built_in">sizeof</span>(<span class="type">int</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;long&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">long</span>),<span class="built_in">sizeof</span>(<span class="type">long</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;long long&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span>),<span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;float&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">float</span>),<span class="built_in">sizeof</span>(<span class="type">float</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;double&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">double</span>),<span class="built_in">sizeof</span>(<span class="type">double</span>)*<span class="number">8</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%11s\t%3d byte\t%3d bit\n&quot;</span>,<span class="string">&quot;long double&quot;</span>,<span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">double</span>),<span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">double</span>)*<span class="number">8</span>);</span><br></pre></td></tr></table></figure>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/arithmetic-type-in-cpp.webp"></p>
-<h2 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h2><p>在C++中触发**(隐式)类型转换**的三种情况：</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/arithmetic-type-in-cpp.webp"></p>
+<h2 id="Implicit-Type-Conversion"><a href="#Implicit-Type-Conversion" class="headerlink" title="Implicit Type Conversion"></a>Implicit Type Conversion</h2><p>In C++, three situations trigger <strong>(implicit) type conversion</strong>:</p>
 <ol>
-<li>混合类型表达式中，其操作数被转换为相同的类型。(整型提升)</li>
-<li>用作条件表达式被转换为bool类型(非0即true)</li>
-<li>用一表达式初始化某个变量，或将一表达式赋值给某个变量，则该表达式的值被转换为该变量的类型。</li>
+<li>In a mixed-type expression, the operands are converted to the same type (integer promotion).</li>
+<li>When used as a conditional expression, they are converted to bool (non-zero becomes true).</li>
+<li>When an expression initializes a variable or assigns a value to a variable, the value of that expression is converted to the type of that variable.</li>
 </ol>
-<p>在C++中**(隐式)类型转换**基本遵循以下几点:</p>
+<p>The basic rules for <strong>(implicit) type conversion</strong> in C++ are:</p>
 <ul>
-<li><strong>整型提升</strong>:将小整数类型转换为较大的整数类型.</li>
-<li><strong>截断</strong>:从高精度向低精度转换时发生截尾动作(比如从float-&gt;int是将float的小数点后部分舍去)</li>
-<li><strong>算数类型到bool类型</strong>:非0即true,其余皆为false.</li>
-<li><strong>signed到unsigned之间的转换</strong>:具有副作用(将负值赋值给unsigned类型)</li>
+<li><strong>Integer Promotion</strong>: Converts smaller integer types to larger integer types.</li>
+<li><strong>Truncation</strong>: When converting from higher precision to lower precision, truncation occurs (e.g., converting from float to int discards the decimal part).</li>
+<li><strong>Arithmetic types to bool</strong>: Non-zero becomes true, while all others become false.</li>
+<li><strong>Conversion between signed and unsigned</strong>: This has side effects (e.g., assigning a negative value to an unsigned type).</li>
 </ul>
-<h3 id="整型提升-intergral-promotion"><a href="#整型提升-intergral-promotion" class="headerlink" title="整型提升(intergral promotion)"></a>整型提升(intergral promotion)</h3><p>对于<code>bool</code>,<code>char</code>,<code>signed char</code>,<code>unsigned char</code>,<code>short</code>和<code>unsigned short</code>等类型来说,只要它们所有可能的值都能存在<code>int</code>里,他们就会提升至<code>int</code>类型,否则提升为<code>unsigned int</code>类型</p>
-<p>较大的<code>char</code>类型(<code>wchar_t</code>,<code>char16_t</code>,<code>char32_t</code>)提升为<code>int</code>,<code>unsigned int</code>,<code>long</code>,<code>unsigned long</code>,<code>long long</code>和<code>unsigned long long</code>中<strong>最小的一种类型</strong>,前提是<strong>转换后的类型必须保证能够容纳原类型所有可能的值.</strong></p>
-<p>如果位域的全部值都能用int表示，则它转换为int；否则，如果全部值能用unsigned int表示，则它转换为unsigned int；如果int和unsigned int都不行，则不执行任何整型提升。<br><code>位域</code>：可以使用struct来指定成员所占的位数，就能把它定义成位域了。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个32bit位域示例</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">PPN</span>&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> PFN:<span class="number">22</span>;</span><br><span class="line">  <span class="type">int</span>:<span class="number">3</span>;  <span class="comment">//未使用位</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> CCA:<span class="number">3</span>;</span><br><span class="line">  <span class="type">bool</span> nonreachable:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> dirty:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> valid:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> global:<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>bool值转换为int，其中，false变为0,而true变为1.</p>
-<h3 id="浮点类型的转换"><a href="#浮点类型的转换" class="headerlink" title="浮点类型的转换"></a>浮点类型的转换</h3><p>关于浮点数运算和舍入可以参照一下这两篇文章：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/IEEE_754">IEEE 754</a>和<a href="https://imzlp.com/2015/08/18/two-iterator-init-container-result-in-floating-point-rounding/">两个迭代器初始化容器出现浮点数舍入</a></p>
-<p>给定一个浮点值，我们能把它转换成其他浮点类型的值。如果原值能用目标类型完整地表示，则所得结果与原值相等。如果原值介于两个相邻的目标值之间，则取他们中的一个。其他情况下，结果是未定义的。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> d1=DBL_MAX;  <span class="comment">//最大的双精度浮点值</span></span><br><span class="line"><span class="type">float</span> f1=d1;  <span class="comment">//如果DBL_MAX&gt;FLT_MAX，则结果是未定义的。</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">double</span> ld=numeric_limits&lt;<span class="type">long</span> <span class="type">double</span>&gt;::<span class="built_in">max</span>();</span><br><span class="line"><span class="type">double</span> d1=ld; <span class="comment">//如果sizeof(long double)&gt;sizeof(double)，则结果是未定义的。</span></span><br></pre></td></tr></table></figure>
+<h3 id="Integer-Promotion"><a href="#Integer-Promotion" class="headerlink" title="Integer Promotion"></a>Integer Promotion</h3><p>For types such as <code>bool</code>, <code>char</code>, <code>signed char</code>, <code>unsigned char</code>, <code>short</code>, and <code>unsigned short</code>, they will be promoted to <code>int</code> if all their possible values can fit in <code>int</code>, otherwise, they will be promoted to <code>unsigned int</code>.</p>
+<p>Larger <code>char</code> types (<code>wchar_t</code>, <code>char16_t</code>, <code>char32_t</code>) are promoted to the <strong>smallest type</strong> among <code>int</code>, <code>unsigned int</code>, <code>long</code>, <code>unsigned long</code>, <code>long long</code>, and <code>unsigned long long</code>, provided that the <strong>converted type must be able to hold all possible values of the original type</strong>.</p>
+<p>If all possible values of a bit-field can be represented by <code>int</code>, it is converted to <code>int</code>; otherwise, if all values can be represented by <code>unsigned int</code>, it is converted to <code>unsigned int</code>; if neither <code>int</code> nor <code>unsigned int</code> can represent all values, no integer promotion is performed.<br><code>Bit-field</code>: You can specify the number of bits occupied by members using a struct to define it as a bit-field.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A 32-bit bit-field example</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">PPN</span>&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> PFN:<span class="number">22</span>;</span><br><span class="line">  <span class="type">int</span>:<span class="number">3</span>;  <span class="comment">// Unused bits</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> CCA:<span class="number">3</span>;</span><br><span class="line">  <span class="type">bool</span> nonreachable:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> dirty:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> valid:<span class="number">1</span>;</span><br><span class="line">  <span class="type">bool</span> global:<span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>The bool value converts to int, where false becomes 0 and true becomes 1.</p>
+<h3 id="Conversion-of-Floating-Point-Types"><a href="#Conversion-of-Floating-Point-Types" class="headerlink" title="Conversion of Floating Point Types"></a>Conversion of Floating Point Types</h3><p>For floating-point operations and rounding, you can refer to these two articles: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/IEEE_754">IEEE 754</a> and <a target="_blank" rel="noopener" href="https://imzlp.com/2015/08/18/two-iterator-init-container-result-in-floating-point-rounding/">Floating-point rounding in two iterator initialization containers</a>.</p>
+<p>Given a floating-point value, we can convert it to other floating-point types. If the original value can be completely represented by the target type, the resultant value is equal to the original value. If the original value lies between two adjacent target values, one of them is taken. In other cases, the result is undefined.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> d1=DBL_MAX;  <span class="comment">// The largest double precision floating-point value</span></span><br><span class="line"><span class="type">float</span> f1=d1;  <span class="comment">// If DBL_MAX &gt; FLT_MAX, the result is undefined.</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">double</span> ld=numeric_limits&lt;<span class="type">long</span> <span class="type">double</span>&gt;::<span class="built_in">max</span>();</span><br><span class="line"><span class="type">double</span> d1=ld; <span class="comment">// If sizeof(long double) &gt; sizeof(double), the result is undefined.</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>高精度到低精度的转换为截尾。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> dPI=<span class="number">3.14159</span>;</span><br><span class="line"><span class="comment">// iPI的结果为3，截尾</span></span><br><span class="line"><span class="type">int</span> iPI=dPI;</span><br></pre></td></tr></table></figure>
+<p><strong>Conversion from high precision to low precision involves truncation.</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> dPI=<span class="number">3.14159</span>;</span><br><span class="line"><span class="comment">// iPI results in 3, truncation occurs</span></span><br><span class="line"><span class="type">int</span> iPI=dPI;</span><br></pre></td></tr></table></figure>
 
-<p><strong>低精度到高精度的转换为扩充精度。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">3</span>;</span><br><span class="line"><span class="comment">// fval为3.00000</span></span><br><span class="line"><span class="type">float</span> fval=ival;</span><br></pre></td></tr></table></figure>
+<p><strong>Conversion from low precision to high precision involves widening.</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">3</span>;</span><br><span class="line"><span class="comment">// fval becomes 3.00000</span></span><br><span class="line"><span class="type">float</span> fval=ival;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>另外，C++早期版本允许结果为负值的上向上或向下取整，C++11新标准规定，商一律向0取整（即截尾-&gt;直接切除小数部分）</p>
+<p>Additionally, earlier versions of C++ allowed rounding up or down for results to be negative, while the C++11 standard stipulates that division is always truncated toward zero (i.e., truncation -&gt; direct removal of the decimal part).</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">-12</span>;</span><br><span class="line"><span class="type">int</span> y=<span class="number">5</span>;</span><br><span class="line"><span class="comment">// 结果为-2</span></span><br><span class="line">cout&lt;&lt;x/y&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
-<p>通过使用<code>numeric_limits</code>能确保截断以一种可移植的方式进行。在初始化过程中，<code>&#123;&#125;</code>初始化器，有助于避免截断的发生。</p>
-<h3 id="无符号类型-unsigned-type-间的转换"><a href="#无符号类型-unsigned-type-间的转换" class="headerlink" title="无符号类型(unsigned type)间的转换"></a>无符号类型(unsigned type)间的转换</h3><p>如果目标类型是unsigned的，则结果值所占的二进制位数以目标类型(如果有必要会丢掉靠前的二进制位)。更准确的说，转换前的整数值对$2^n$取模后的结果值就是转换结果，其中n是目标类型所占的位数。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二进制1111111111:uc的值变为二进制111111，即255</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> uc=<span class="number">1023</span>;</span><br></pre></td></tr></table></figure>
-<p>如果目标类型是signed的，则当原值能用目标类型表示时，它不发生改变；反之，结果值依赖于具体实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 依赖于实现，结果是127或者-1</span></span><br><span class="line"><span class="type">signed</span> <span class="type">char</span> sc=<span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
-<p>bool值或者普通枚举类型的值能隐式转换为等值的整数类型。</p>
-<p>如果某个运算对象时无符号类型，那么转换的结果就要依赖于机器中各个整数类型的相对大小了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">-12</span>;</span><br><span class="line"><span class="type">int</span> y=<span class="number">5</span>;</span><br><span class="line"><span class="comment">// Result is -2</span></span><br><span class="line">cout&lt;&lt;x/y&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>Using <code>numeric_limits</code> ensures that truncation occurs in a portable manner. During initialization, the <code>&#123;&#125;</code> initializer helps prevent truncation.</p>
+<h3 id="Conversion-Between-Unsigned-Types"><a href="#Conversion-Between-Unsigned-Types" class="headerlink" title="Conversion Between Unsigned Types"></a>Conversion Between Unsigned Types</h3><p>If the target type is unsigned, the resulting value occupies the same number of bits as the target type (losing leading bits if necessary). More accurately, the value of the integer before conversion is the result of taking the modulus with respect to $2^n$, where n is the number of bits the target type occupies.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In binary 1111111111: uc&#x27;s value becomes binary 111111, which is 255</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> uc=<span class="number">1023</span>;</span><br></pre></td></tr></table></figure>
+<p>If the target type is signed, when the original value can be represented by the target type, it remains unchanged; otherwise, the resulting value depends on the specific implementation:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Depends on the implementation, result is 127 or -1</span></span><br><span class="line"><span class="type">signed</span> <span class="type">char</span> sc=<span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
+<p>A bool value or a regular enum value can be implicitly converted to an equivalent integer type.</p>
+<p>If an operand is of an unsigned type, then the result of the conversion will depend on the relative sizes of the integer types in the machine.</p>
 <blockquote>
-<p>因为标准规定<strong>int</strong>不小于<strong>short</strong>,<strong>long</strong>不小于<strong>int</strong>,<strong>long long</strong>不小于<strong>long</strong>，有一种可能是<strong>int(缺省为signed)**有可能存不下</strong>unsigned short<strong>或者</strong>long<strong>存不下</strong>unsigned int<strong>、</strong>long long** 存不下<strong>unsigned long</strong>,对于这种情况要特别注意一下。</p>
+<p>Because the standard specifies that <strong>int</strong> is not less than <strong>short</strong>, <strong>long</strong> is not less than <strong>int</strong>, and <strong>long long</strong> is not less than <strong>long</strong>, there is a possibility that <strong>int (default is signed)</strong> may not fit <strong>unsigned short</strong> or <strong>long</strong> may not fit <strong>unsigned int</strong>, and <strong>long long</strong> may not fit <strong>unsigned long</strong>. Special care should be taken in such cases.</p>
 </blockquote>
-<p><strong>当表达式包含short和int时，short转换为int</strong></p>
-<p>当int型足够表示所有<strong>unsigned short</strong>类型的值,则将<strong>unsigned short</strong>转换为int,否则将两个操作数均转换为<strong>unsigned int.</strong></p>
-<p><strong>unsigned int-&gt;long</strong>和<strong>unsigned long-&gt;long long</strong>的转换也同理。</p>
-<p><strong>另外还需要注意的是：</strong></p>
+<p><strong>When an expression contains short and int, short is converted to int.</strong></p>
+<p>When the int type can adequately represent all <strong>unsigned short</strong> values, <strong>unsigned short</strong> is converted to int; otherwise, both operands will be converted to <strong>unsigned int.</strong></p>
+<p><strong>Converting from unsigned int to long</strong> and <strong>from unsigned long to long long</strong> follows the same principle.</p>
+<p><strong>In addition, note the following:</strong></p>
 <ul>
-<li><strong>赋给unsigned类型一个值:**结果是初始值对无符号类型</strong>表示数值的总数$2^n$(比如unsigned char能容纳从0~255,则它的能容纳数值的个数为256个)**取模后的结果(上面已经提到)</li>
-<li><strong>将signed(缺省)类型转换为unsigned类型</strong>有可能会导致<strong>副作用(即将负数赋值给unsigned)</strong></li>
-<li><strong>赋给signed类型一个超出他范围的值:**其结果是</strong>未定义的**,</li>
+<li><strong>Assign a value to an unsigned type:</strong> The result is the initial value modulo the total number of values that the unsigned type can represent $2^n$ (for example, unsigned char can contain values from 0 to 255, so it can represent 256 values).</li>
+<li><strong>Converting from signed (default) type to unsigned type</strong> may cause <strong>side effects (assigning a negative value to unsigned)</strong>.</li>
+<li><strong>Assigning a value outside its range to a signed type:</strong> The result is <strong>undefined</strong>.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">char</span> x=<span class="number">258</span>;</span><br><span class="line"><span class="comment">// out:2</span></span><br><span class="line">cout&lt;&lt;x;</span><br><span class="line"><span class="comment">// 其结果为258%256的值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">char</span> x=<span class="number">258</span>;</span><br><span class="line"><span class="comment">// out:2</span></span><br><span class="line">cout&lt;&lt;x;</span><br><span class="line"><span class="comment">// The result is the value of 258 % 256</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>将负数赋值给无符号(unsigned)类型</strong><br>负数在计算机中的表示方式涉及到补码的概念,在这里不赘述,详细可以看下这几篇文章:<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/IEEE_754">IEEE 754:二进制浮点数算术标准</a>,<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html">关于2的补码</a>,<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">原码, 反码, 补码 详解</a></p>
-<p>在此我们先简单了解一下,原码反码和补码的基本概念:</p>
+<p><strong>Assigning a negative value to an unsigned type</strong><br>Negative values in computers involve the concept of two’s complement; for detailed explanations, refer to these articles: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/IEEE_754">IEEE 754: Binary Floating-Point Arithmetic Standard</a>, <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html">About Two’s Complement</a>, <a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">Original Code, One’s Complement, Two’s Complement Explained</a>.</p>
+<p>We will briefly cover the basics of the concepts of original code, one’s complement, and two’s complement:</p>
 <blockquote>
-<p>**原码:**符号及值（sign &amp; magnitude）的处理办法是分配一个符号位（sign bit）来表示这个符号：设置这个位（通常为最高有效位）为0表示一个正数，为1表示一个负数。</p>
-<p>**反码:**一个数的二进制数反码形式为其绝对值部分按位取反（即符号位不变，其余各位按位取反）。</p>
-<p>**补码:**一个数的补码在该数大于或等于0时与原码相同，若该数小于零，则是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+<p><strong>Original code:</strong> The method for handling sign and magnitude is to allocate a sign bit to represent the sign: setting this bit (usually the most significant bit) to 0 denotes a positive number, and 1 denotes a negative number.</p>
+<p><strong>One’s complement:</strong> The binary representation of a number in one’s complement form is achieved by inverting its magnitude (the sign bit remains the same, but all other bits are inverted).</p>
+<p><strong>Two’s complement:</strong> When a number is greater than or equal to 0, its two’s complement remains the same as its original code; if the number is less than zero, it is obtained by keeping the sign bit the same while inverting all other bits, and then adding 1 (i.e., adding 1 to the one’s complement).</p>
 </blockquote>
-<p>有符号数据在计算机中通常是以补码形式编码的，因为不论是原码还是反码对于0都有两种表示方式<code>-0</code>和<code>+0</code>。</p>
-<p>我们以最简单的8bit来描述一下原码反码和补码:<br><code>0x16</code>：<br>原码：0001 0110<br>反码：0001 0110<br>补码：0001 0110<br><code>-0x16</code><br>原码：1001 0110<br>反码：1110 1001<br>补码：1110 1010</p>
-<p>我们来测试一下将一个负数赋值给unsigned类型:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为了方便解释,在此使用1byte的char</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> x=<span class="number">-2</span></span><br><span class="line"><span class="comment">// 输出字符x的数值(因为char字符中有很多空字符,所以直接输出有时不能直观地看出测试结果)</span></span><br><span class="line">cout&lt;&lt;(<span class="type">int</span>)x;</span><br></pre></td></tr></table></figure>
+<p>Signed data is typically encoded in computers using two’s complement, as both original and one’s complement representations have two forms for zero: <code>-0</code> and <code>+0</code>.</p>
+<p>Let’s test assigning a negative number to an unsigned type:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// To make things easier, we&#x27;ll use a 1-byte char here</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> x=<span class="number">-2</span>;</span><br><span class="line"><span class="comment">// Output the value of character x (since there are many null characters in char, direct output sometimes can&#x27;t intuitively show test results)</span></span><br><span class="line">cout&lt;&lt;(<span class="type">int</span>)x;</span><br></pre></td></tr></table></figure>
 
-<p>编译运行得到的结果为:254</p>
-<p>因为一个数的补码即是该数在计算机中的存储的方式,所以将负数的赋值给unsigned类型时,会丧失符号位的作用(unsigned和signed的char类型均为8bit,所以将signed类型赋值给unsigned时,会将符号位当做数值的2进制数据的一员赋值给unsigned类型),使负数的符号位表示的也是数值,所以负数赋值给unsigned类型后所存储的实际值是<strong>它的能容纳数值的个数减去将该负数的绝对值</strong></p>
-<p>将-2赋值给unsigned char图示:</p>
+<p>After compiling and running, the result is: 254.</p>
+<p>Since a number’s two’s complement is the way it is stored in a computer, assigning a negative value to an unsigned type causes the sign bit to act as a value. Thus, the actual value stored after assigning a negative value to an unsigned type is <strong>the total number of values it can represent minus the absolute value of that negative number</strong>.</p>
+<p>To illustrate assigning -2 to an unsigned char:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/signedToUnsigned.webp"></p>
-<p>测试一下其他的类型:</p>
-<p>假定一个平台上int型变量的大小为4byte,即32bit,则其能表示的数的范围为[−2147483648($-2^{31}$),21474836487($2^{31}$-1)]</p>
-<p>我们就选一个数吧:−111</p>
-<p>[原]1 0000000000000000000000001101111<br>[反]1 1111111111111111111111110010000<br>[补]1 1111111111111111111111110010001</p>
-<p>我们来推测一下:将其赋值给unsigned int变量后的值为4294967185</p>
-<p>用我自己造进制转换的轮子来验证一下:</p>
+<p>Let’s test other types:</p>
+<p>Assuming that an <code>int</code> variable is 4 bytes (32 bits) on one platform, it can represent a range from [−2147483648 ($-2^{31}$), 2147483647 ($2^{31}$-1)].</p>
+<p>Let’s choose a number: −111.</p>
+<p>[Original] 1 0000000000000000000000001101111<br>[One’s complement] 1 1111111111111111111111110010000<br>[Two’s complement] 1 1111111111111111111111110010001  </p>
+<p>We will estimate that assigning this to an <code>unsigned int</code> variable yields a value of 4294967185.</p>
+<p>Let’s verify with a custom base conversion wheel:</p>
 <blockquote>
-<p>binary 11111111111111111111111110010001 conver to decimalism is:4294967185</p>
+<p>binary 11111111111111111111111110010001 converts to decimalism is:4294967185</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> x = <span class="number">-111</span>;</span><br><span class="line">cout&lt;&lt;x&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果:</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/4294967185.webp"></p>
-<h3 id="数组转换成指针"><a href="#数组转换成指针" class="headerlink" title="数组转换成指针"></a>数组转换成指针</h3><p>在大多数用到数组的表达式中，数组自动转换成指向数组首元素的指针。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 含有10个int型元素的数组</span></span><br><span class="line"><span class="type">int</span> ia[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// ia转换成指向数组首元素的</span></span><br><span class="line"><span class="type">int</span> *ip=ia;</span><br></pre></td></tr></table></figure>
+<p>Run the result:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/4294967185.webp"></p>
+<h3 id="Arrays-Converting-to-Pointers"><a href="#Arrays-Converting-to-Pointers" class="headerlink" title="Arrays Converting to Pointers"></a>Arrays Converting to Pointers</h3><p>In most expressions involving arrays, the array automatically converts to a pointer to the first element of the array.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// An array containing 10 int elements</span></span><br><span class="line"><span class="type">int</span> ia[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// ia converts to point to the first element of the array</span></span><br><span class="line"><span class="type">int</span> *ip=ia;</span><br></pre></td></tr></table></figure>
 
-<p>当数组用作<code>decltype</code>关键字的参数，或者作为<strong>取地址符(&amp;)**、</strong>sizeof<strong>及</strong>typeid**等运算符的运算对象时，上述转换不会发生。</p>
-<p>同样的，如果<strong>用一个引用来初始化数组</strong>，上述转换也不会发生。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ia[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// ip指向一个含有10个int型元素的数组</span></span><br><span class="line"><span class="built_in">int</span> (*ip)[<span class="number">10</span>]=&amp;ia;</span><br></pre></td></tr></table></figure>
+<p>When an array is used as an argument of the <code>decltype</code> keyword, or as operands for operators such as <strong>address-of (&amp;)</strong>, <strong>sizeof</strong>, and <strong>typeid</strong>, the above conversion does not occur.</p>
+<p>Similarly, if <strong>an array is initialized with a reference</strong>, the above conversion will not occur.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ia[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// ip points to an array containing 10 int elements</span></span><br><span class="line"><span class="built_in">int</span> (*ip)[<span class="number">10</span>]=&amp;ia;</span><br></pre></td></tr></table></figure>
 
-<h3 id="指针的转换"><a href="#指针的转换" class="headerlink" title="指针的转换"></a>指针的转换</h3><p>C++还规定了几种其他指针的转换的方式。</p>
+<h3 id="Pointer-Conversions"><a href="#Pointer-Conversions" class="headerlink" title="Pointer Conversions"></a>Pointer Conversions</h3><p>C++ also specifies several other ways for pointer conversions.</p>
 <ol>
-<li>常量整数值0或者字面值<code>nullptr</code>(C++11特性)，能转换成任意指针类型。</li>
-<li>指向任意非常量的指针能转换成<code>void*</code></li>
-<li>指向任意对象的指针能转换成<code>const void*</code></li>
-<li><strong>具有继承关系的类之间的指针转换</strong>:可以把<strong>派生类对象</strong>或者<strong>派生类对象的引用</strong>在<strong>需要基类引用</strong>的地方,也可以把<strong>派生类对象的指针</strong>用在<strong>需要基类指针</strong>的地方。</li>
+<li>Constant integer value 0 or literal <code>nullptr</code> (C++11 feature) can convert to any pointer type.</li>
+<li>A pointer to any non-constant can convert to <code>void*</code>.</li>
+<li>A pointer to any object can convert to <code>const void*</code>.</li>
+<li><strong>Pointer conversion among classes with inheritance:</strong> A pointer or reference to a <strong>derived class object</strong> can be used in places where a <strong>base class reference</strong> is required, and a pointer to a <strong>derived class object</strong> can be used in places where a <strong>base class pointer</strong> is required.</li>
 </ol>
 <blockquote>
-<p>注意：指向函数的指针和指向成员的指针不能隐式地转换为void*；以及不存在从指向到数值类型的转换。</p>
+<p>Note: Pointers to functions and pointers to members cannot be implicitly converted to <code>void*</code>, and there is no conversion from pointer types to numeric types.</p>
 </blockquote>
-<p>求值结果为0的常量表达式能隐式地转换为任意指针类型的空指针。类似地，求值结果为0的常量表达式也能隐式地转换成指向成员的指针类型。例如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=(<span class="number">1</span>+<span class="number">2</span>)*(<span class="number">2</span>*(<span class="number">1</span><span class="number">-1</span>)); <span class="comment">//正确，但让人奇怪</span></span><br></pre></td></tr></table></figure>
-<p>最好直接使用<code>nullptr</code></p>
-<p><code>T*</code>可以隐式地转换为<code>const T*</code>，类似地，<code>T&amp;</code>能隐式地转换成<code>const T&amp;</code>。</p>
-<h3 id="具有继承关系的类之间的指针转换"><a href="#具有继承关系的类之间的指针转换" class="headerlink" title="具有继承关系的类之间的指针转换"></a>具有继承关系的类之间的指针转换</h3><p>具有继承关系的类之间的指针转换具有另一种方式：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Base item; <span class="comment">// 基类对象</span></span><br><span class="line">Derived bulk; <span class="comment">// 派生类对象</span></span><br><span class="line">Base *p=&amp;item; <span class="comment">// p指向Base对象</span></span><br><span class="line">p=&amp;bulk; <span class="comment">// p指向bulk的Base部分</span></span><br><span class="line">Base &amp;r=bulk; <span class="comment">//r绑定到bulk的Base部分</span></span><br></pre></td></tr></table></figure>
+<p>Constant expressions that evaluate to 0 can implicitly be converted to any pointer type, including member pointer types. For example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=(<span class="number">1</span>+<span class="number">2</span>)*(<span class="number">2</span>*(<span class="number">1</span><span class="number">-1</span>)); <span class="comment">// Correct, but curious</span></span><br></pre></td></tr></table></figure>
+<p>It’s best to directly use <code>nullptr</code>.</p>
+<p><code>T*</code> can implicitly be converted to <code>const T*</code>, and similarly <code>T&amp;</code> can implicitly be converted to <code>const T&amp;</code>.</p>
+<h3 id="Pointer-Conversions-Between-Inherited-Classes"><a href="#Pointer-Conversions-Between-Inherited-Classes" class="headerlink" title="Pointer Conversions Between Inherited Classes"></a>Pointer Conversions Between Inherited Classes</h3><p>Pointer conversions between classes with inheritance have another way:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Base item; <span class="comment">// Base class object</span></span><br><span class="line">Derived bulk; <span class="comment">// Derived class object</span></span><br><span class="line">Base *p=&amp;item; <span class="comment">// p points to Base object</span></span><br><span class="line">p=&amp;bulk; <span class="comment">// p points to the Base part of bulk</span></span><br><span class="line">Base &amp;r=bulk; <span class="comment">// r binds to the Base part of bulk</span></span><br></pre></td></tr></table></figure>
 
-<p>这种转换称为**派生类到基类(derived to base)**类型转换。和其他类型转换一样，编译器会隐式地执行派生类到基类的转换。<br>指向派生类的指针(或引用)能隐式地转换成指向其可访问的且明确无二义的基类的指针(或引用)。</p>
-<p>这种隐式特性意味着：</p>
+<p>This conversion is known as <strong>derived to base</strong> type conversion. Like other type conversions, the compiler will implicitly perform the conversion from derived class to base class.<br>A pointer (or reference) to a derived class can implicitly convert to a pointer (or reference) to its accessible and unambiguous base class.</p>
+<p>This implicit nature means:</p>
 <ul>
-<li>可以把<strong>派生类对象</strong>或者<strong>派生类对象的引用</strong>在<strong>需要基类引用</strong>的地方</li>
-<li>也可以把<strong>派生类对象的指针</strong>用在<strong>需要基类指针</strong>的地方</li>
+<li>You can use <strong>derived class objects</strong> or <strong>references to derived class objects</strong> in places that require base class references.</li>
+<li>You can also use <strong>pointers to derived class objects</strong> in places that require base class pointers.</li>
 </ul>
-<p><strong>派生类对象中含有与其基类对应的组成部分</strong>，这一事实是<strong>继承</strong>的关键。</p>
-<h3 id="bool类型的转换"><a href="#bool类型的转换" class="headerlink" title="bool类型的转换"></a>bool类型的转换</h3><p>指针、整数和浮点数都能隐式地转换为bool类型。非0值对应true，0值对象false.</p>
-<p>指针隐式转换为bool型时，只有当其为<code>nullptr</code>/<code>NULL</code>时为false。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=<span class="literal">nullptr</span>;</span><br><span class="line">  <span class="keyword">if</span>(p)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;true&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;false&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="type">int</span> *ivalp=<span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span>(ivalp)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;true&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;false&quot;</span>&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Derived class objects contain components corresponding to their base class</strong>, this fact is the key to <strong>inheritance</strong>.</p>
+<h3 id="Conversion-of-bool-Types"><a href="#Conversion-of-bool-Types" class="headerlink" title="Conversion of bool Types"></a>Conversion of bool Types</h3><p>Pointers, integers, and floating points can be implicitly converted to bool types. Non-zero values correspond to true, and zero values correspond to false.</p>
+<p>When a pointer is implicitly converted to bool, it is false only when it is <code>nullptr</code>/<code>NULL</code>.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=<span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">if</span>(p)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;true&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;false&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> *ivalp=<span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(ivalp)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;true&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;false&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>将一个非bool型的值赋值给bool型时,<strong>只有初始值为0时结果为false</strong>否则即为true.</p>
-<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//仅当test=0时才为fasle,当test_bool&gt;0||test_bool&lt;0时均为true</span></span><br><span class="line"><span class="type">bool</span> test_bool = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">if</span>(test_bool)&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;True!&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;False&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将一个bool类型值赋值给一个非bool类型值时,初始值为flase则结果为0,初始值为true结果为1.</p>
-<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> boolToInt_1=<span class="literal">true</span>;</span><br><span class="line"><span class="type">int</span> boolToInt_2=<span class="literal">false</span>;</span><br><span class="line"><span class="comment">//输出:1	0</span></span><br><span class="line">cout&lt;&lt;boolToInt_1&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;boolToInt_2&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>When converting a non-bool value to a bool value, <strong>only the initial value of 0 results in false</strong>, otherwise it will be true.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// true only when test=0; true when test_bool&gt;0 or test_bool&lt;0</span></span><br><span class="line"><span class="type">bool</span> test_bool = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">if</span>(test_bool)&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;True!&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;False&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Assigning a bool type value to a non-bool type will result in 0 if the initial value is false, and 1 if the initial value is true.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> boolToInt_1=<span class="literal">true</span>;</span><br><span class="line"><span class="type">int</span> boolToInt_2=<span class="literal">false</span>;</span><br><span class="line"><span class="comment">// Output: 1    0</span></span><br><span class="line">cout&lt;&lt;boolToInt_1&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;boolToInt_2&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<h3 id="枚举类型-enum-的转换"><a href="#枚举类型-enum-的转换" class="headerlink" title="枚举类型(enum)的转换"></a>枚举类型(enum)的转换</h3><p>C++自动将枚举成员(enumerator)转换为整型，其转换结果可以用于任何要求使用整数值的地方。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// point2d is 2,point2w is 3,point3d is 3,point3w is 4</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Points</span>&#123;point2d=<span class="number">2</span>,point2w,point3d=<span class="number">3</span>,point3w&#125;;</span><br><span class="line"><span class="comment">// 也可以使用auto(C++11)推断能够容纳potin3d的最小类型</span></span><br><span class="line"><span class="type">int</span> array3d=point3d;</span><br><span class="line">cout&lt;&lt;array3d&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<h3 id="Conversion-of-Enum-Types"><a href="#Conversion-of-Enum-Types" class="headerlink" title="Conversion of Enum Types"></a>Conversion of Enum Types</h3><p>C++ automatically converts enum members (enumerator) to integers, and the conversion result can be used wherever an integer value is required.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// point2d is 2, point2w is 3, point3d is 3, point3w is 4</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Points</span>&#123;point2d=<span class="number">2</span>, point2w, point3d=<span class="number">3</span>, point3w&#125;;</span><br><span class="line"><span class="comment">// Can also use auto (C++11) to infer the smallest type that can hold point3d</span></span><br><span class="line"><span class="type">int</span> array3d=point3d;</span><br><span class="line">cout&lt;&lt;array3d&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p>需要注意以下几点</p>
+<p>Note the following points:</p>
 <ul>
-<li>将enum对象或者枚举成员提升为什么类型有机器定义(取决于机器类型能否容纳)，并且依赖于枚举成员的最大值</li>
-<li>enum对象或者枚举成员至少提升为int型</li>
-<li>如果int型无法表示枚举成员的最大值(可以使用auto来推断能容纳枚举成员的类型)，则提升到能够表示所有枚举成员值的、大于int型的最小类型(unsigned int,long,unsigned long,long long,unsigned long long)</li>
+<li>The type to which an enum object or enum member is promoted is machine-defined (depends on whether the machine type can accommodate it) and depends on the maximum value of the enum member.</li>
+<li>Enum objects or members are at least promoted to int.</li>
+<li>If the int type cannot represent the maximum value of the enum member (using auto to infer the type that can hold the enum member), it is promoted to the smallest type that can represent all enum member values and is larger than int (unsigned int, long, unsigned long, long long, unsigned long long).</li>
 </ul>
-<h3 id="转换为常量-const-对象"><a href="#转换为常量-const-对象" class="headerlink" title="转换为常量(const)对象"></a>转换为常量(const)对象</h3><ul>
-<li>当使用非const对象初始化<strong>const对象的引用</strong>时，系统将非const对象转换为const对象。</li>
+<h3 id="Conversion-to-Constant-const-Objects"><a href="#Conversion-to-Constant-const-Objects" class="headerlink" title="Conversion to Constant (const) Objects"></a>Conversion to Constant (const) Objects</h3><ul>
+<li><p>When a non-const object is used to initialize a <strong>const reference</strong>, the system will convert the non-const object to a const object.</p>
+</li>
+<li><p>You can also convert a pointer to a non-const object (or non-const pointer) to a pointer to a const object.</p>
+</li>
+<li><p>It is not allowed to convert a const object to a non-const object.</p>
+</li>
 </ul>
-<ul>
-<li>还可以将指向非const对象的指针(或非const指针)转换为指向const对象的指针。</li>
-</ul>
-<ul>
-<li>不允许将const对象转换为非const对象</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;x=i;</span><br><span class="line"><span class="comment">// 输出 10</span></span><br><span class="line">cout&lt;&lt;x&lt;&lt;endl;</span><br><span class="line"><span class="comment">// 可以对i进行修改，但不能对x进行修改</span></span><br><span class="line">i=<span class="number">12</span>;</span><br><span class="line"><span class="comment">// 输出 12</span></span><br><span class="line">cout&lt;&lt;x&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;x=i;</span><br><span class="line"><span class="comment">// Output 10</span></span><br><span class="line">cout&lt;&lt;x&lt;&lt;endl;</span><br><span class="line"><span class="comment">// i can be modified, but x cannot be modified</span></span><br><span class="line">i=<span class="number">12</span>;</span><br><span class="line"><span class="comment">// Output 12</span></span><br><span class="line">cout&lt;&lt;x&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p>非const指针被转换为const指针：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">10</span>;</span><br><span class="line">cout&lt;&lt;&amp;i&lt;&lt;endl;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *x=&amp;i;</span><br><span class="line"><span class="comment">// 可以对i进行修改，但不能对x指向的值进行修改</span></span><br><span class="line">i=<span class="number">12</span>;</span><br><span class="line"><span class="comment">// *x=13 这样是错误的</span></span><br><span class="line"><span class="comment">//error: read-only variable is not assignable</span></span><br><span class="line">cout&lt;&lt;i&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;x&lt;&lt;<span class="string">&quot; is &quot;</span>&lt;&lt;*x&lt;&lt;endl;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *z=x;</span><br><span class="line">cout&lt;&lt;x&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;z&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>A non-const pointer becomes a const pointer:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">10</span>;</span><br><span class="line">cout&lt;&lt;&amp;i&lt;&lt;endl;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *x=&amp;i;</span><br><span class="line"><span class="comment">// i can be modified, but the value pointed to by x cannot be modified</span></span><br><span class="line">i=<span class="number">12</span>;</span><br><span class="line"><span class="comment">// *x=13  This is incorrect</span></span><br><span class="line"><span class="comment">//error: read-only variable is not assignable</span></span><br><span class="line">cout&lt;&lt;i&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;x&lt;&lt;<span class="string">&quot; is &quot;</span>&lt;&lt;*x&lt;&lt;endl;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *z=x;</span><br><span class="line">cout&lt;&lt;x&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;z&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/!const2const-Point-address.webp"></p>
-<p>如果T是一种类型，我们就能将指向T的指针或引用分别转换成指向const T的指针或引用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="comment">// 非常量转换成const int的引用</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;j=i;</span><br><span class="line"><span class="comment">// 得常量对象的地址转换为const指针</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *p=&amp;i;</span><br><span class="line"><span class="comment">// 错误 不允许const转换为非常量</span></span><br><span class="line"><span class="type">int</span> &amp;r=j,*p=p;</span><br><span class="line"><span class="comment">// error: binding value of type &#x27;const int&#x27; to reference to type &#x27;int&#x27; drops &#x27;const&#x27; qualifier</span></span><br><span class="line"><span class="comment">// error: cannot initialize a variable of type &#x27;int *&#x27; with an lvalue of type &#x27;const int *&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/!const2const-Point-address.webp"></p>
+<p>If T is a type, we can convert a pointer or reference to T into a pointer or reference to const T.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="comment">// Convert a non-const to a const int reference</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp;j=i;</span><br><span class="line"><span class="comment">// The address of the const object becomes the const pointer</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> *p=&amp;i;</span><br><span class="line"><span class="comment">// Error: Converting const to non-const is not allowed</span></span><br><span class="line"><span class="type">int</span> &amp;r=j,*p=p;</span><br><span class="line"><span class="comment">// error: binding value of type &#x27;const int&#x27; to reference to type &#x27;int&#x27; drops &#x27;const&#x27; qualifier</span></span><br><span class="line"><span class="comment">// error: cannot initialize a variable of type &#x27;int *&#x27; with an lvalue of type &#x27;const int *&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>相反的转换并不存在，因为它试图删除掉底层const</p>
-<h2 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h2><p>有时我们希望显式地将对象转换成另一种类型(比如两个整型的值进行除法运算结果的类型也为整型，舍弃了小数点后部分的精度，这有时并不是我们想要的结果)，这时就需要用到<strong>显式类型转换</strong>。<br>C++的显式类型转换操作指定了几种不同能力范围的转换操作，对于转换权限的控制更强，虽然这四种转换操作的行为都可以用C风格转换实现，但是为了更安全还是使用显式类型转换。</p>
-<h3 id="C-Style的显式类型转换"><a href="#C-Style的显式类型转换" class="headerlink" title="C-Style的显式类型转换"></a>C-Style的显式类型转换</h3><blockquote>
-<p>在C语言中，具有**指派运算符(type)**，在我们想要类型转换的时候可以用它来强制转换类型。</p>
+<p>The reverse conversion does not exist, as it attempts to remove the underlying const.</p>
+<h2 id="Explicit-Type-Conversion"><a href="#Explicit-Type-Conversion" class="headerlink" title="Explicit Type Conversion"></a>Explicit Type Conversion</h2><p>Sometimes we wish to explicitly convert an object to another type (for example, if the result of dividing two integers should also be of integer type, discarding the precision after the decimal point, which sometimes is not the desired result), we need to use <strong>explicit type conversion</strong>. C++’s explicit type conversion operations specify several different capabilities of conversion operations for stronger controls over conversion privileges. Although all four of these conversion operations can be accomplished using C-style conversion, it is safer to use explicit type conversion.</p>
+<h3 id="C-Style-Explicit-Type-Conversion"><a href="#C-Style-Explicit-Type-Conversion" class="headerlink" title="C-Style Explicit Type Conversion"></a>C-Style Explicit Type Conversion</h3><blockquote>
+<p>In C, the <strong>casting operator (type)</strong> is used to force conversion of types when needed.</p>
 </blockquote>
-<p>参照如下代码：</p>
+<p>Refer to the following code:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">12</span>,y=<span class="number">5</span>;</span><br><span class="line"><span class="type">float</span> z=(<span class="type">float</span>)x/y;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>,z);</span><br></pre></td></tr></table></figure>
 
-<p>如果我们不使用指派运算符的话，输出z的结果为2.000000,而我们使用了指派运算符的作用即是先将x转换为float类型，然后再执行除法运算，因为不同类型在同一个表达式中的类型转换隐式是从低精度到高精度转换的，所以y也会被转换成float型(隐式)，所以使用指派运算符的结果为:2.400000</p>
+<p>If we do not use the casting operator, the output of z would be 2.000000; by using the casting operator, x is first converted to float type, and then division is performed. Since the implicit type conversion of different types within the same expression goes from lower precision to higher precision, y will also be implicitly converted to float, resulting in: 2.400000.</p>
 <blockquote>
-<p>早期的C++还支持<code>type(expression)</code>这样的方式进行类型转换。</p>
+<p>Earlier versions of C++ also supported the <code>type(expression)</code> method for type conversion.</p>
 </blockquote>
-<h3 id="C-中的显式类型转换"><a href="#C-中的显式类型转换" class="headerlink" title="C++中的显式类型转换"></a>C++中的显式类型转换</h3><p>C++虽然支持C-Style的显式类型转换(指派运算符)，但是C++中有更好的替代方案。C++提供了几种不同的方式来进行显式类型转换。</p>
-<p>一个命名的强制类型转换具有如下形式：</p>
+<h3 id="Explicit-Type-Conversion-in-C"><a href="#Explicit-Type-Conversion-in-C" class="headerlink" title="Explicit Type Conversion in C++"></a>Explicit Type Conversion in C++</h3><p>C++ does support C-style explicit type conversions (casting operator), but there are better alternatives in C++. C++ offers several different ways to perform explicit type conversions.</p>
+<p>A named cast has the following form:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cast-<span class="built_in">name</span>&lt;type&gt;(expression);</span><br></pre></td></tr></table></figure>
 
-<p>其中，<strong>cast-name</strong>执行了执行的是哪种转换，<strong>type</strong>是转换的目标类型，而<strong>expression</strong>是要转换的值。</p>
+<p>Where <strong>cast-name</strong> determines the type of conversion being executed, <strong>type</strong> is the target type, and <strong>expression</strong> is the value to be converted.</p>
 <ul>
-<li>如果type是引用类型，则结果是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%80%BC_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)">左值</a>。</li>
+<li><p>If type is a reference type, the result is an <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%80%BC_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)">lvalue</a>.</p>
+</li>
+<li><p>Cast-name can be one of <code>static_cast</code>, <code>dynamic_cast</code>, <code>const_cast</code>, or <code>reinterpret_cast</code>.</p>
+</li>
 </ul>
-<ul>
-<li>cast-name是<code>static_cast</code>,<code>dynamic_cast</code>,<code>const_cast</code>,<code>reginterpret_cast</code>中的一种。</li>
-</ul>
-<h4 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h4><p>static_cast的作用是反转一个定义良好的隐式类型转换。</p>
-<p>任何具有明确定义的类型转换，只要不包含<strong>底层const</strong>(表示指针所指向的对象是一个常量)，都可以使用static_cast.</p>
-<p>注意：<code>static_cast</code>不能处理指针间的转换，指针间的转换是位模式的转换应该使用<code>reinterpret_cast</code>(伪装成另一种类型的指针):</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> x=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">int</span> *p1=&amp;x; <span class="comment">// 错误，不存在char*向int*的隐式类型转换</span></span><br><span class="line"><span class="type">int</span> *p2=<span class="built_in">static_cast</span>&lt;<span class="type">int</span>*&gt;(&amp;x);  <span class="comment">// 错误，不存在char*向int*的隐式类型转换</span></span><br><span class="line"><span class="type">int</span> *p3=<span class="built_in">reinterpret_cast</span>&lt;<span class="type">int</span>*&gt;(&amp;x); <span class="comment">//ok，责任自负</span></span><br></pre></td></tr></table></figure>
+<h4 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h4><p>The role of <code>static_cast</code> is to reverse a well-defined implicit type conversion.</p>
+<p>Any type conversion with a clear definition that does not involve <strong>underlying const</strong> (indicating that the object pointed to by the pointer is a constant) can use <code>static_cast</code>.</p>
+<p>Note: <code>static_cast</code> cannot handle pointer conversions, as pointer conversions are bit-pattern conversions and should use <code>reinterpret_cast</code> (to disguise as another type of pointer):</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> x=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">int</span> *p1=&amp;x; <span class="comment">// Error, no implicit conversion from char* to int*</span></span><br><span class="line"><span class="type">int</span> *p2=<span class="built_in">static_cast</span>&lt;<span class="type">int</span>*&gt;(&amp;x);  <span class="comment">// Error, no implicit conversion from char* to int*</span></span><br><span class="line"><span class="type">int</span> *p3=<span class="built_in">reinterpret_cast</span>&lt;<span class="type">int</span>*&gt;(&amp;x); <span class="comment">// OK, at your own risk</span></span><br></pre></td></tr></table></figure>
 
-<p>适用范围：</p>
+<p>Where it applies:</p>
 <ol>
-<li>具有<strong>浮点精度损失(double -&gt; float)**和</strong>将较大的算数类型赋值给较小的算数类型(int -&gt; char)<strong>，使用</strong>static_cast**表示我们明白并且不care这些风险:)</li>
-<li>编译器无法自动执行的类型转换*<em>(void</em> -&gt; otherType***).</li>
-<li>当编译器发现一个较大的数据类型试图赋值给较小的数据类型时会产生警告信息，当我们使用了显式类型转换之后，警告信息就会被关闭了。</li>
+<li><strong>Floating point precision loss (double -&gt; float)</strong> and <strong>assigning a larger arithmetic type to a smaller arithmetic type (int -&gt; char)</strong>, using <strong>static_cast</strong> signifies that we understand and do not care about these risks. :)</li>
+<li>Type conversions that the compiler cannot automatically carry out *<em>(void</em> -&gt; otherType)**.</li>
+<li>When the compiler detects that a larger data type is trying to be assigned to a smaller data type, it will raise a warning; using explicit type conversion will suppress the warning.</li>
 </ol>
-<p>参照如下几份代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">12</span>,y=<span class="number">5</span>;</span><br><span class="line"><span class="comment">// 使用static_cast强制将int型x的值转换为double型值，然后参与运算</span></span><br><span class="line"><span class="type">float</span> z=<span class="built_in">static_cast</span>&lt;<span class="type">double</span>&gt;(x)/y;</span><br><span class="line"><span class="comment">// 输出结果 2.4</span></span><br><span class="line">cout&lt;&lt;z&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>Refer to the following code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">12</span>,y=<span class="number">5</span>;</span><br><span class="line"><span class="comment">// Use static_cast to forcibly convert int x to double before computing </span></span><br><span class="line"><span class="type">float</span> z=<span class="built_in">static_cast</span>&lt;<span class="type">double</span>&gt;(x)/y;</span><br><span class="line"><span class="comment">// Output result 2.4</span></span><br><span class="line">cout&lt;&lt;z&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> dPI=<span class="number">3.14159</span>;</span><br><span class="line"><span class="comment">// iPI is 3.</span></span><br><span class="line"><span class="type">int</span> iPI=<span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(dPI);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">65</span>;</span><br><span class="line"><span class="type">char</span> capital_a=<span class="built_in">static_cast</span>&lt;<span class="type">char</span>&gt;(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">65</span>;</span><br><span class="line"><span class="type">char</span> capital_a=<span class="built_in">static_cast</span>&lt;<span class="type">char</span>&gt;(x);</span><br></pre></td></tr></table></figure>
 
-<p>使用static_cast找回存在的*<em>void**</em>指针</p>
+<p>Using <code>static_cast</code> to retrieve an existing *<em>void**</em> pointer:</p>
 <blockquote>
-<p>void*是一种特殊的指针类型，可用于存入任何非常量对象的地址。</p>
-<p>但是void能做的操作十分有限：*<em>和别的指针作比较、作为函数的输入或输出，赋值给另外一个void</em>对象。*<em>我们不能直接操作void</em>指针所指向的对象，因为我们不知道这个对象到底是什么类型，也无法确定能在这个对象上进行什么操作。</p>
+<p><code>void*</code> is a special pointer type that can store the address of any non-constant object.</p>
+<p>However, the operations that <code>void</code> can perform are very limited: <strong>comparing it with other pointers, using it as an input or output to functions, and assigning it to another <code>void*</code> object</strong>. We cannot directly manipulate a <code>void*</code> pointer because we do not know what type this object is and what operations can be performed on it.</p>
 </blockquote>
-<p>所以，当我们拥有一个明确知道void*指向对象的类型时，但是我们仍然不能对该void类型进行操作。</p>
-<p>现行的办法是可以使用static_cast将void<em>转换为我们知道的该void</em>所指向的对象的指针类型。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> dval=<span class="number">3.1415926</span>;</span><br><span class="line"><span class="comment">// 假设我们现在具有一个void*，且dpoint可能是函数返回值或者其他我们不能直观看到的指针类型</span></span><br><span class="line"><span class="type">void</span> *vpoint=&amp;dval;</span><br><span class="line"><span class="comment">// 我们可以用static_cast将void*转换为double*</span></span><br><span class="line"><span class="type">double</span> *p=<span class="built_in">static_cast</span>&lt;<span class="type">double</span>*&gt;(vpoint);</span><br></pre></td></tr></table></figure>
+<p>Therefore, when we have a <code>void*</code> whose object type is known, but we are still unable to operate on that <code>void</code> type, the current approach is to use <code>static_cast</code> to convert <code>void*</code> back to the known pointer type the <code>void*</code> points to.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> dval=<span class="number">3.1415926</span>;</span><br><span class="line"><span class="comment">// Assuming we have a void* and vpoint could be a function return value or another pointer type that is not directly visible</span></span><br><span class="line"><span class="type">void</span> *vpoint=&amp;dval;</span><br><span class="line"><span class="comment">// We can use static_cast to convert void* to double*</span></span><br><span class="line"><span class="type">double</span> *p=<span class="built_in">static_cast</span>&lt;<span class="type">double</span>*&gt;(vpoint);</span><br></pre></td></tr></table></figure>
 
-<p>当我们把指针存放在void*中，并且使用static_cast将其强制转换为原来的类型时，应该确保指针的值保持不变。也就是说，强制转换的结果与原始的地址值相等。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出dval的地址和强制转换void*到double*后指针的地址</span></span><br><span class="line">cout&lt;&lt;&amp;dval&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;p&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>When we store a pointer in <code>void*</code> and use <code>static_cast</code> to forcefully convert it back to its original type, we must ensure that the pointer’s value remains unchanged. In other words, the result of the cast must equal the original address value.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Output the address of dval and the address of the pointer after forcibly converting void* back to double*</span></span><br><span class="line">cout&lt;&lt;&amp;dval&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;p&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/C:/Users/visionsmile/Desktop/doubleVal2voidPoint2doublePoint.webp"></p>
-<p>输出了一样的地址。</p>
-<p>因此，我们必须确保转换后所得的类型就是指针所指的类型。类型一旦不符，将产生未定义错误(不知道会产生什么样的结果)。</p>
-<h4 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h4><p>const_cast的作用是为某些声明为const的对象获得写入的权利。</p>
-<p>const_cast只能改变运算对象的<strong>底层const(指针指向的对象是一个常量)**，即是</strong>使常量指针所指向的对象可以被修改的操作**。</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/27258/C:/Users/visionsmile/Desktop/doubleVal2voidPoint2doublePoint.webp"></p>
+<p>Both addresses output the same.</p>
+<p>Thus, we must ensure that the resulting type matches the type of the pointer being pointed to. If the types do not match, it will result in an undefined error (not knowing what kind of result will occur).</p>
+<h4 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h4><p>The role of <code>const_cast</code> is to grant write access to certain objects declared as const.</p>
+<p><code>const_cast</code> can only change the <strong>underlying const</strong> (the object pointed to by the pointer is a constant), which means <strong>making the object pointed to by a constant pointer modifiable</strong>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *pchar;</span><br><span class="line"><span class="type">char</span> *p=<span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pchar);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>对于将常量对象转换成非常量对象的行为，称其为”<strong>去掉const性质(cast away the const)</strong>“。一旦去掉了一个对象的const性质，编译器就不在阻止我们对该对象进行写操作了。</p>
+<p>The act of converting a constant object into a non-constant is termed “removing the const nature (cast away the const)”. Once a const nature is removed from an object, the compiler does not prevent operations that modify this object.</p>
 </blockquote>
-<p><strong>如果对象本身不是一个常量，使用强制类型转换获得写权限是合法的行为。如果对象是一个常量，再使用const_cast执行写操作就会产生未定义的后果。</strong></p>
-<p>底层const对象本身是一个变量：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *pchar=&amp;a;</span><br><span class="line"><span class="type">char</span> *p=<span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pchar);</span><br><span class="line"><span class="comment">// 将p指向的对象(即char类型的对象a)修改为b</span></span><br><span class="line">*p=<span class="string">&#x27;b&#x27;</span>;</span><br><span class="line"><span class="comment">// 输出 b</span></span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p><strong>If the object itself is not a constant, it is legal to use a cast to obtain write permission. If the object is a constant, attempting to perform write operations using <code>const_cast</code> would result in undefined behavior.</strong></p>
+<p>The underlying const object itself is a variable:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *pchar=&amp;a;</span><br><span class="line"><span class="type">char</span> *p=<span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pchar);</span><br><span class="line"><span class="comment">// Modify the object pointed to by p (i.e., the char object a) to b</span></span><br><span class="line">*p=<span class="string">&#x27;b&#x27;</span>;</span><br><span class="line"><span class="comment">// Output b</span></span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p>底层const对象本身是一个常量：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *a=<span class="string">&quot;HelloWorld&quot;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *pchar=a;</span><br><span class="line"><span class="type">char</span> *p=<span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pchar);</span><br><span class="line"><span class="comment">// 编译可以通过，但产生了未定义的错误</span></span><br><span class="line">*p=<span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<p>The underlying const object itself is a constant:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *a=<span class="string">&quot;HelloWorld&quot;</span>; </span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *pchar=a;</span><br><span class="line"><span class="type">char</span> *p=<span class="built_in">const_cast</span>&lt;<span class="type">char</span>*&gt;(pchar);</span><br><span class="line"><span class="comment">// Compilation passes, but results in undefined behavior</span></span><br><span class="line">*p=<span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<p>const_cast用在<strong>重载函数</strong>中时很有用。</p>
-<p>当我们的函数接收const引用的对象并返回函数操作后的该对象的引用时，因为接收的形参为const，所以函数的返回值也会是const属性，这显然有时候不是我们需要得到的结果。</p>
-<p>假设我们需要一个需要判断并返回两个字符串中较长的那个串的时，有如下代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数的参数和返回值均为const string</span></span><br><span class="line"><span class="function"><span class="type">const</span> string&amp; <span class="title">longString</span><span class="params">(<span class="type">const</span> string &amp;s1,<span class="type">const</span> string &amp;s2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> s1.<span class="built_in">size</span>()&gt;s2.<span class="built_in">size</span>()?s1:s2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>const_cast</code> is particularly useful in <strong>overloaded functions</strong>.</p>
+<p>When our function accepts a const reference of an object and returns a reference to the modified object, since the parameter is declared as const, the return value will also have const properties, which obviously isn’t always the result we want.</p>
+<p>Assuming we need a function that compares and returns the longer of two strings, we may have the following code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The function&#x27;s parameter and return value are both const string</span></span><br><span class="line"><span class="function"><span class="type">const</span> string&amp; <span class="title">longString</span><span class="params">(<span class="type">const</span> string &amp;s1,<span class="type">const</span> string &amp;s2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> s1.<span class="built_in">size</span>()&gt;s2.<span class="built_in">size</span>()?s1:s2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>当我们提供两个非常量的string实参调用longString时，它返回的结果仍然是const string的引用。因此我们需要一种新的longString函数，当它的实参不是常量时，得到的结果是一个普通的引用，使用const_cast可以做到这一点。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重载longString函数，其实参为非const时调用该版本，并返回非const对象</span></span><br><span class="line"><span class="function">string &amp;<span class="title">longString</span><span class="params">(string &amp;s1,string &amp;s2)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 调用接收两个const实参并返回const对象的longString版本</span></span><br><span class="line">  <span class="comment">// r的类型为const string&amp;</span></span><br><span class="line">  <span class="keyword">auto</span> &amp;r=<span class="built_in">longString</span>(<span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&amp;&gt;(s1),<span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&amp;&gt;(s2));</span><br><span class="line">  <span class="comment">// 使用const_cast将r从const string&amp;转换为string&amp;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">const_case</span>&lt;string&amp;&gt;(r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When we call longString with two non-const string arguments, the return value will still be a const reference to string. So we need a new longString function, and when its arguments are not constants, we wish for the result to be a regular reference, using <code>const_cast</code> can achieve this.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Overloaded longString function, which calls this version when parameters are non-const, returning a non-const object</span></span><br><span class="line"><span class="function">string &amp;<span class="title">longString</span><span class="params">(string &amp;s1,string &amp;s2)</span></span>&#123;</span><br><span class="line">  <span class="comment">// Call the version that accepts two const parameters and returns a const object</span></span><br><span class="line">  <span class="comment">// r&#x27;s type is const string&amp;</span></span><br><span class="line">  <span class="keyword">auto</span> &amp;r=<span class="built_in">longString</span>(<span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&amp;&gt;(s1),<span class="built_in">const_cast</span>&lt;<span class="type">const</span> string&amp;&gt;(s2));</span><br><span class="line">  <span class="comment">// Use const_cast to convert r from const string&amp; to string&amp;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">const_case</span>&lt;string&amp;&gt;(r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h4><p><code>reinterpret_cast</code>通常为运算对象的位模式提供了较低层次上的重新解释(改变位模式的函数)。</p>
-<p>如下代码：</p>
+<h4 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h4><p><code>reinterpret_cast</code> usually provides a lower-level reinterpretation of the bit patterns of the operands (a function for changing bit patterns).</p>
+<p>The following code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ipoint;</span><br><span class="line"><span class="type">char</span> *cpoint=<span class="built_in">reinterpret_cast</span>&lt;<span class="type">char</span>*&gt;(ipoint);</span><br></pre></td></tr></table></figure>
 
-<p>我们必须牢记cpoint所指向的是一个int而非char，如果把cpoint当成普通的字符指针(char*)使用就有可能在运行时发生错误。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这样并不会报错，但是在运行中可能出现很多问题。</span></span><br><span class="line"><span class="function">string <span class="title">str</span><span class="params">(cpoint)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>We must keep in mind that <code>cpoint</code> points to an <code>int</code>, not a <code>char</code>; using <code>cpoint</code> as a regular char pointer can lead to run-time errors.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This doesn&#x27;t report an error, but may lead to various problems during execution.</span></span><br><span class="line"><span class="function">string <span class="title">str</span><span class="params">(cpoint)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>当我们不使用<code>reinterpret_cast</code>而直接用ipoint来初始化string对象时，会报错:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ipoint;</span><br><span class="line"><span class="comment">// char *cpoint=reinterpret_cast&lt;char*&gt;(ipoint);</span></span><br><span class="line"><span class="function">string <span class="title">str</span><span class="params">(ipoint)</span></span>;</span><br><span class="line"><span class="comment">// 编译时报错:error: no matching constructor for initialization of &#x27;string&#x27; (aka &#x27;basic_string&lt;char&gt;&#x27;)</span></span><br></pre></td></tr></table></figure>
+<p>If we initialize the string object with <code>ipoint</code> without using <code>reinterpret_cast</code>, it will throw an error:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ipoint;</span><br><span class="line"><span class="comment">// char *cpoint=reinterpret_cast&lt;char*&gt;(ipoint);</span></span><br><span class="line"><span class="function">string <span class="title">str</span><span class="params">(ipoint)</span></span>;</span><br><span class="line"><span class="comment">// Compilation error: error: no matching constructor for initialization of &#x27;string&#x27; (aka &#x27;basic_string&lt;char&gt;&#x27;)</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>使用reinterpret_cast是非常危险的。</strong>如上例所示，其中的问题是，类型改变了，但编译器并没有警告或者报错。由于显式声明这么做是合法的，所以编译器不会发出任何警告和错误。在使用<code>reinterpret_cast&lt;char*&gt;(ipoint);</code>之后我们使用cpoint时就会认定它的值是char*类型，编译器无法知道它实际存储的是指向int的指针。</p>
+<p><strong>Using <code>reinterpret_cast</code> is very dangerous.</strong> As shown in the examples, the problem is that the type is changed, but the compiler doesn’t warn or report errors. Since explicitly stating this action is legal, the compiler will not issue any warnings or errors. After using <code>reinterpret_cast&lt;char*&gt;(ipoint);</code>, when we use <code>cpoint</code>, it will consider it a <code>char*</code> type, and the compiler cannot know that it actually stores a pointer to <code>int</code>.</p>
 </blockquote>
-<p>还可以手动指定一个地址转换为指定类型的指针：</p>
+<p>You can also manually specify an address to convert to a specified type pointer:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=<span class="built_in">reinterpret_cast</span>&lt;<span class="type">int</span>*&gt;(<span class="number">0xff00</span>);</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：编译器并不能确定整数0xff00是否是一个有效的int型地址，因此这条语句的正确性完全依赖于程序员。</strong></p>
-<h4 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a>dynamic_cast</h4><p><code>dynamic_cast</code>:动态地检查类层次关系。<br><strong>dynamic_cast的作用是</strong>:将<strong>基类(base calss)**的指针或引用安全第一转换成</strong>派生类(继承 (Derived class)**的指针或引用。</p>
-<p>dynamic_cast的使用形式如下:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// e必须是一个有效的指针</span></span><br><span class="line"><span class="built_in">dunamic_cast</span>&lt;type*&gt;(e);</span><br><span class="line"><span class="comment">// e必须是一个左值</span></span><br><span class="line"><span class="built_in">dunamic_cast</span>&lt;type&amp;&gt;(e);</span><br><span class="line"><span class="comment">// e不能是左值</span></span><br><span class="line"><span class="built_in">dunamic_cast</span>&lt;type&amp;&amp;&gt;(e);</span><br></pre></td></tr></table></figure>
+<p><strong>Note: The compiler cannot determine whether the integer <code>0xff00</code> is a valid int type address; hence the correctness of this statement depends entirely on the programmer.</strong></p>
+<h4 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a>dynamic_cast</h4><p><code>dynamic_cast</code>: Checks class hierarchy dynamically.<br><strong>The role of <code>dynamic_cast</code> is to</strong>: Safely convert a <strong>base class</strong> pointer or reference to a <strong>derived class (inherited class)</strong> pointer or reference.</p>
+<p>The usage format for <code>dynamic_cast</code> is as follows:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// e must be a valid pointer</span></span><br><span class="line"><span class="built_in">dynamic_cast</span>&lt;type*&gt;(e);</span><br><span class="line"><span class="comment">// e must be an lvalue</span></span><br><span class="line"><span class="built_in">dynamic_cast</span>&lt;type&amp;&gt;(e);</span><br><span class="line"><span class="comment">// e cannot be an lvalue</span></span><br><span class="line"><span class="built_in">dynamic_cast</span>&lt;type&amp;&amp;&gt;(e);</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>type</code>必须是一个类类型，并且<strong>通常</strong>该类型具有<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9A%E5%87%BD%E6%95%B0_(%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80)">虚函数</a>。</p>
-<p>在使用dunamic_cast的三种形式中,e的类型必须符合以下三个条件中的任意一个:</p>
+<p>Where <code>type</code> must be a class type, and <strong>typically</strong> that type has <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9A%E5%87%BD%E6%95%B0_(%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80)">virtual functions</a>.</p>
+<p>In the three forms of <code>dynamic_cast</code>, the type of e must meet at least one of the following three conditions:</p>
 <ul>
-<li>e的类型是目标type的<strong>公有派生类(public)</strong></li>
-<li>e的类型是目标type的<strong>公有基类</strong></li>
-<li>e的类型是<strong>目标type的类型</strong></li>
+<li>The type of e is a <strong>public derived class</strong> of the target type.</li>
+<li>The type of e is a <strong>public base class</strong> of the target type.</li>
+<li>The type of e is <strong>the type of the target type</strong>.</li>
 </ul>
-<p>如果符合其中之一，则可以转换成功，否则转换失败。</p>
-<p>如果<strong>dynamic_cast</strong>语句转换目标是<strong>指针类型</strong>并且失败了，则结果为0.</p>
-<p>如果<strong>dynamic_cast</strong>语句转换目标是<strong>引用类型</strong>并且失败了，<strong>dynamic_cast</strong>运算符将抛出一个<strong>bad_cast异常</strong>。</p>
-<h5 id="指针类型的dynamic-cast"><a href="#指针类型的dynamic-cast" class="headerlink" title="指针类型的dynamic_cast"></a>指针类型的dynamic_cast</h5><p>假定Base类至少含有一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9A%E5%87%BD%E6%95%B0_(%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80)">虚函数</a>，Derived是Base的公有派生类型，如果有一个指向Base的指针bp,则我们可以在运行时将它转换成Derived的指针。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否转换成功，并且指针bp在if外部是无法访问的</span></span><br><span class="line"><span class="comment">// 在条件部分执行dynamic_cast操作可以确保类型转换和结果检查在同一条表达式中完成</span></span><br><span class="line"><span class="keyword">if</span>(Drived *bp = <span class="built_in">dynamic_cast</span>&lt;Derived*&gt;(bp))&#123;</span><br><span class="line">  <span class="comment">// 使用dp指向的Derived对象</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;<span class="comment">// bp指向一个Base对象</span></span><br><span class="line">  <span class="comment">// 使用dp指向的Base对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If any of these conditions are met, the conversion succeeds; otherwise, it fails.</p>
+<p>If the <strong>dynamic_cast</strong> conversion target is of <strong>pointer type</strong> and fails, the result is 0.</p>
+<p>If the <strong>dynamic_cast</strong> conversion target is of <strong>reference type</strong> and fails, the <strong>dynamic_cast</strong> operator will throw a <strong>bad_cast exception</strong>.</p>
+<h5 id="Pointer-Type-dynamic-cast"><a href="#Pointer-Type-dynamic-cast" class="headerlink" title="Pointer Type dynamic_cast"></a>Pointer Type dynamic_cast</h5><p>Assuming the Base class has at least one <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9A%E5%87%BD%E6%95%B0_(%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80)">virtual function</a>, and Derived is a public derived type of Base, if we have a pointer to Base <code>bp</code>, then we can convert it to a pointer to Derived at runtime.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check if the conversion is successful; pointer bp cannot be accessed outside of the if</span></span><br><span class="line"><span class="comment">// The dynamic_cast operation in the condition part ensures that the type conversion and result check occur in the same expression</span></span><br><span class="line"><span class="keyword">if</span>(Derived *dp = <span class="built_in">dynamic_cast</span>&lt;Derived*&gt;(bp))&#123;</span><br><span class="line">  <span class="comment">// Use the Derived object pointed to by dp</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">// bp points to a Base object</span></span><br><span class="line">  <span class="comment">// Use dp to reference the Base object</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如果bp指向Derived对象，则上面的类型转换初始化dp并令其指向bp所指的Derived对象。此时，在if语句的内部使用Derived操作代码是安全的，否则，类型转换的结果为0，dp为0意味着if语句的条件失败，此时else子句执行相应的Base操作。</p>
+<p>If <code>bp</code> points to a Derived object, the type conversion initializes <code>dp</code> and points it to the Derived object pointed to by <code>bp</code>. At this point, using <code>dp</code> safely refers to Derived operations. Otherwise, the type conversion results in 0, meaning the condition of the if statement fails, and the else clause executes the relevant Base operations.</p>
 <blockquote>
-<p>可以对一个空指针执行dynamic_cast操作,结果是所需类型的空指针。</p>
+<p>You can execute dynamic_cast on a null pointer, which will yield a null pointer of the desired type.</p>
 </blockquote>
-<h5 id="引用类型的dynamic-cast"><a href="#引用类型的dynamic-cast" class="headerlink" title="引用类型的dynamic_cast"></a>引用类型的dynamic_cast</h5><p>引用类型dynamic_cast与指针类型的dynamic_cast在表示错误发生的方式上有所不同。</p>
-<p>因为<strong>不存在空引用</strong>，所以对于引用类型来说无法使用于指针类型完全相同的错误报告策略。当对引用的类型转换失败时，程序抛出一个名为<code>std::bad_cast</code>的异常，该异常定义在<code>typeinfo</code>标准头文件中。</p>
-<p>改写上面的程序使其使用引用类型:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">const</span> Base &amp;b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">  		<span class="type">const</span> Derived &amp;d=<span class="built_in">dynamic_cast</span>&lt;<span class="type">const</span> Derived7&gt;(b);</span><br><span class="line">      	<span class="comment">// 使用b引用的Derived对象</span></span><br><span class="line">  	&#125;<span class="built_in">catch</span>(bad_cast)&#123;</span><br><span class="line">      	<span class="comment">// 处理类型转换失败的情况</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<h5 id="Reference-Type-dynamic-cast"><a href="#Reference-Type-dynamic-cast" class="headerlink" title="Reference Type dynamic_cast"></a>Reference Type dynamic_cast</h5><p>The reference type <code>dynamic_cast</code> differs from the pointer type <code>dynamic_cast</code> in terms of error reporting.</p>
+<p>Because <strong>there is no null reference</strong>, it cannot use the same error reporting strategy as pointer types. When the type conversion fails for reference types, the program throws an exception named <code>std::bad_cast</code>, which is defined in the <code>typeinfo</code> standard header.</p>
+<p>Rewrite the program above to use reference types:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">const</span> Base &amp;b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">  		<span class="type">const</span> Derived &amp;d=<span class="built_in">dynamic_cast</span>&lt;<span class="type">const</span> Derived&amp;&gt;(b);</span><br><span class="line">      	<span class="comment">// Use the Derived object referenced by b</span></span><br><span class="line">  	&#125; <span class="built_in">catch</span> (bad_cast) &#123;</span><br><span class="line">      	<span class="comment">// Handle the type conversion failure</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -730,7 +725,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -740,7 +735,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -750,37 +745,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/27258/" target="_blank">详细分析C++中的类型转换</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/05/04 19:35<br/>
+             <span>Title:</span><a href="/posts/27258/" target="_blank">Detailed analysis of type conversion in C++</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/05/04 19:35<br/>
              
-             <span>本文字数:</span><span class="page-count">7.9k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">17k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/27258/" target="_blank" title="详细分析C++中的类型转换">https://imzlp.com/posts/27258/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/27258/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/27258/" target="_blank" title="Detailed analysis of type conversion in C++">https://en.imzlp.com/posts/27258/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/27258/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -801,12 +796,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/34573/" rel="prev" title="使用Gprof分析代码性能瓶颈">
-      <i class="fa fa-chevron-left"></i> 使用Gprof分析代码性能瓶颈
+    <a href="/posts/34573/" rel="prev" title="Use Gprof to analyze code performance bottlenecks">
+      <i class="fa fa-chevron-left"></i> Use Gprof to analyze code performance bottlenecks
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/34569/" rel="next" title="C++中面向对象部分知识整理">
-      C++中面向对象部分知识整理 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/34569/" rel="next" title="Summary of some object-oriented knowledge in C++">
+      Summary of some object-oriented knowledge in C++ <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -877,25 +872,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">隐式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%9E%8B%E6%8F%90%E5%8D%87-intergral-promotion"><span class="nav-number">1.1.</span> <span class="nav-text">整型提升(intergral promotion)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.</span> <span class="nav-text">浮点类型的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B-unsigned-type-%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">无符号类型(unsigned type)间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E6%8C%87%E9%92%88"><span class="nav-number">1.4.</span> <span class="nav-text">数组转换成指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">指针的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E6%9C%89%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E7%9A%84%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8C%87%E9%92%88%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">具有继承关系的类之间的指针转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bool%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">bool类型的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B-enum-%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.8.</span> <span class="nav-text">枚举类型(enum)的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%B8%E9%87%8F-const-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.9.</span> <span class="nav-text">转换为常量(const)对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">显式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Style%E7%9A%84%E6%98%BE%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">C-Style的显式类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E6%98%BE%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">C++中的显式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#static-cast"><span class="nav-number">2.2.1.</span> <span class="nav-text">static_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-cast"><span class="nav-number">2.2.2.</span> <span class="nav-text">const_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reinterpret-cast"><span class="nav-number">2.2.3.</span> <span class="nav-text">reinterpret_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dynamic-cast"><span class="nav-number">2.2.4.</span> <span class="nav-text">dynamic_cast</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84dynamic-cast"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">指针类型的dynamic_cast</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84dynamic-cast"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">引用类型的dynamic_cast</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implicit-Type-Conversion"><span class="nav-number">1.</span> <span class="nav-text">Implicit Type Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Promotion"><span class="nav-number">1.1.</span> <span class="nav-text">Integer Promotion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-of-Floating-Point-Types"><span class="nav-number">1.2.</span> <span class="nav-text">Conversion of Floating Point Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-Between-Unsigned-Types"><span class="nav-number">1.3.</span> <span class="nav-text">Conversion Between Unsigned Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arrays-Converting-to-Pointers"><span class="nav-number">1.4.</span> <span class="nav-text">Arrays Converting to Pointers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-Conversions"><span class="nav-number">1.5.</span> <span class="nav-text">Pointer Conversions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-Conversions-Between-Inherited-Classes"><span class="nav-number">1.6.</span> <span class="nav-text">Pointer Conversions Between Inherited Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-of-bool-Types"><span class="nav-number">1.7.</span> <span class="nav-text">Conversion of bool Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-of-Enum-Types"><span class="nav-number">1.8.</span> <span class="nav-text">Conversion of Enum Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion-to-Constant-const-Objects"><span class="nav-number">1.9.</span> <span class="nav-text">Conversion to Constant (const) Objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explicit-Type-Conversion"><span class="nav-number">2.</span> <span class="nav-text">Explicit Type Conversion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Style-Explicit-Type-Conversion"><span class="nav-number">2.1.</span> <span class="nav-text">C-Style Explicit Type Conversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explicit-Type-Conversion-in-C"><span class="nav-number">2.2.</span> <span class="nav-text">Explicit Type Conversion in C++</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#static-cast"><span class="nav-number">2.2.1.</span> <span class="nav-text">static_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-cast"><span class="nav-number">2.2.2.</span> <span class="nav-text">const_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reinterpret-cast"><span class="nav-number">2.2.3.</span> <span class="nav-text">reinterpret_cast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dynamic-cast"><span class="nav-number">2.2.4.</span> <span class="nav-text">dynamic_cast</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Pointer-Type-dynamic-cast"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">Pointer Type dynamic_cast</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reference-Type-dynamic-cast"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">Reference Type dynamic_cast</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -903,19 +898,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -953,10 +948,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -983,9 +978,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -994,12 +986,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -1152,7 +1144,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/27258/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/27258/',]
       });
       });
   </script>
@@ -1175,12 +1167,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

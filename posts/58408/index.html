@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="POSIX线程（英语：POSIX Threads，常被缩写为Pthreads）是POSIX的线程标准，定义了创建和操纵线程的一套API。">
+  <meta name="description" content="POSIX Threads (English: POSIX Threads, commonly abbreviated as Pthreads) is the POSIX thread standard that defines a set of APIs for creating and manipulating threads.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pthread多线程编程">
-<meta property="og:url" content="https://imzlp.com/posts/58408/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="POSIX线程（英语：POSIX Threads，常被缩写为Pthreads）是POSIX的线程标准，定义了创建和操纵线程的一套API。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Pthread multithreaded programming">
+<meta property="og:url" content="https://en.imzlp.com/posts/58408/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="POSIX Threads (English: POSIX Threads, commonly abbreviated as Pthreads) is the POSIX thread standard that defines a set of APIs for creating and manipulating threads.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58408/01.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58408/02.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58408/03.webp">
@@ -39,14 +39,14 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58408/08.webp">
 <meta property="article:published_time" content="2016-06-04T17:08:48.000Z">
 <meta property="article:modified_time" content="2016-06-04T17:08:48.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="编程笔记">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content="Pthread">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58408/01.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/58408/">
+<link rel="canonical" href="https://en.imzlp.com/posts/58408/">
 
 
 <script id="page-configurations">
@@ -55,11 +55,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>Pthread多线程编程 | 循迹研究室</title>
+  <title>Pthread multithreaded programming | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -99,7 +99,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -109,7 +109,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -120,7 +120,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -139,24 +139,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -166,7 +166,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -176,7 +176,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -184,14 +184,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -199,26 +199,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -234,7 +234,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -253,7 +253,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -272,12 +272,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -295,27 +295,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/58408/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/58408/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pthread多线程编程<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-06-04-58408.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/58408/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Pthread multithreaded programming<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-06-04-58408.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/58408/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Pthread multithreaded programming</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Pthread多线程编程</sub>
           </div>
         
 
@@ -324,47 +324,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-06-04 17:08 17:08:48:08" itemprop="dateCreated datePublished" datetime="2016-06-04T17:08:48+00:00">2016-06-04 17:08</time>
+              <time title="Created: 2016-06-04 17:08 17:08:48:08" itemprop="dateCreated datePublished" datetime="2016-06-04T17:08:48+00:00">2016-06-04 17:08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UNIX/" itemprop="url" rel="index"><span itemprop="name">UNIX</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UNIX/POSIX/" itemprop="url" rel="index"><span itemprop="name">POSIX</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/58408/" class="post-meta-item leancloud_visitors" data-flag-title="Pthread多线程编程" title="阅读次数">
+            <span id="/posts/58408/" class="post-meta-item leancloud_visitors" data-flag-title="Pthread multithreaded programming" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.6k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -376,152 +376,151 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/POSIX%E7%BA%BF%E7%A8%8B">POSIX线程</a>（英语：POSIX Threads，常被缩写为Pthreads）是POSIX的线程标准，定义了创建和操纵线程的一套API。</p>
+        <p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/POSIX%E7%BA%BF%E7%A8%8B">POSIX Threads</a> (English: POSIX Threads, commonly abbreviated as Pthreads) is the POSIX thread standard that defines a set of APIs for creating and manipulating threads.</p>
 <span id="more"></span>
 
-<p>在pthread线程库中我们常用到的有这些:</p>
-<p>Pthread线程库中创建线程的函数原型：</p>
+<p>In the pthread thread library, we commonly use the following:</p>
+<p>Prototype for the function that creates a thread in the Pthread library:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">pthread_create</span><span class="params">(<span class="type">pthread_t</span> *thread,<span class="type">pthread_attr_t</span> *attr,<span class="type">void</span> *(*func)(<span class="type">void</span>*),<span class="type">void</span> *arg)</span></span></span><br></pre></td></tr></table></figure>
 
-<p>一份简单的多线程代码，我将通过分析几份代码，来逐步总结多线程用到的知识。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM 5</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">print</span><span class="params">(<span class="type">void</span> *m)</span></span>&#123;</span><br><span class="line">	<span class="type">char</span> *cp=(<span class="type">char</span>*)m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;NUM;++i)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,cp);</span><br><span class="line">		<span class="comment">// 清除输入缓冲区</span></span><br><span class="line">		<span class="built_in">fflush</span>(stdout);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1,t2;</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, print, (<span class="type">void</span> *)<span class="string">&quot;t1 thread&quot;</span>);</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t2, <span class="literal">NULL</span>, print, (<span class="type">void</span> *)<span class="string">&quot;t2 thread&quot;</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t2, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here is a simple multithreading code. I will gradually summarize the knowledge used in multithreading by analyzing several pieces of code.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM 5</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">print</span><span class="params">(<span class="type">void</span> *m)</span></span>&#123;</span><br><span class="line">	<span class="type">char</span> *cp=(<span class="type">char</span>*)m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;NUM;++i)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,cp);</span><br><span class="line">		<span class="comment">// Clear the input buffer</span></span><br><span class="line">		<span class="built_in">fflush</span>(stdout);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1,t2;</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, print, (<span class="type">void</span> *)<span class="string">&quot;t1 thread&quot;</span>);</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t2, <span class="literal">NULL</span>, print, (<span class="type">void</span> *)<span class="string">&quot;t2 thread&quot;</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t2, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意：编译时必须要使用<code>-lpthread</code>参数。如：<code>clang++ -o pthread.exe pthread.cc -lpthread</code></p>
+<p>Note: The <code>-lpthread</code> parameter must be used when compiling. For example: <code>clang++ -o pthread.exe pthread.cc -lpthread</code></p>
 </blockquote>
-<p>使用<code>makefile</code>会更方便一些,我在这里使用的<code>makefile</code>如下:</p>
+<p>Using a <code>makefile</code> is more convenient, here is the <code>makefile</code> I used:</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># compile pthread.c</span></span><br><span class="line">CC=clang</span><br><span class="line">CBSJ=pthread.c</span><br><span class="line">EXXX=pthread.exe</span><br><span class="line">CANSHU=-std=c99</span><br><span class="line">LPTHREAD=-lpthread</span><br><span class="line">WARING=-W</span><br><span class="line"></span><br><span class="line"><span class="section">start:<span class="variable">$(OBJS)</span></span></span><br><span class="line">	<span class="variable">$(CC)</span> -o <span class="variable">$(EXXX)</span> <span class="variable">$(CBSJ)</span> <span class="variable">$(CANSHU)</span> <span class="variable">$(LPTHREAD)</span> <span class="variable">$(WARING)</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f <span class="variable">$(EXXX)</span></span><br></pre></td></tr></table></figure>
 
-<p>编译运行的结果为：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/01.webp"></p>
-<p>下面来分析一下代码中用到的pthread线程库中的几个函数：</p>
+<p>The compilation result is:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/01.webp"></p>
+<p>Next, let’s analyze several functions used from the pthread thread library:</p>
 <table>
 <thead>
 <tr>
 <th align="center">pthread_create</th>
-<th>创建一个新线程</th>
+<th>Create a new thread</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">头文件</td>
+<td align="center">Header File</td>
 <td><strong>pthread.h</strong></td>
 </tr>
 <tr>
-<td align="center">函数原型</td>
+<td align="center">Function Prototype</td>
 <td>int pthread_create(<strong>pthread_t</strong> thread,<strong>pthread_attr_t</strong> attr,<strong>void *(*func)(void*)</strong>,<strong>void</strong> *arg)</td>
 </tr>
 <tr>
-<td align="center">参数解析</td>
-<td><strong>thread</strong>——指向pthread_t类型变量的指针<br/><strong>attr</strong>——指向pthread_attr_t类型变量的指针，或者为NULL<br/><strong>func</strong>——指向新线程所运行函数的指针<br/><strong>arg</strong>——传递给func的参数</td>
+<td align="center">Parameter Analysis</td>
+<td><strong>thread</strong>——Pointer to a pthread_t type variable<br/><strong>attr</strong>——Pointer to a pthread_attr_t type variable, or NULL<br/><strong>func</strong>——Pointer to the function to be run by the new thread<br/><strong>arg</strong>——Argument passed to func</td>
 </tr>
 <tr>
-<td align="center">返回值</td>
-<td>0——成功返回<br/>errcode(非0错误代码)——错误</td>
+<td align="center">Return Value</td>
+<td>0——Successful return<br/>errcode (non-zero error code)——Error</td>
 </tr>
 </tbody></table>
-<p>pthread_create函数创建了一个新的执行线程，在此新的线程内调用了func(arg)。新线程的属性有attr参数来指定。如果attr值为NULL则线程使用默认属性。func是一个函数，它接收一个指针作为它的参数，并且运行结束后返回一个指针。参数和返回值都被定义为类型为void的指针，以允许他们指向任何类型的值。</p>
+<p>The <code>pthread_create</code> function creates a new execution thread, which calls func(arg) within the new thread. The new thread’s attributes can be specified by the attr parameter. If attr is NULL, the thread uses default attributes. func is a function that takes a pointer as an argument and returns a pointer upon completion. The parameters and return values are defined as pointers of type void, allowing them to point to any type of value.</p>
 <table>
 <thead>
 <tr>
 <th align="center">pthread_join</th>
-<th>等待某线程终止</th>
+<th>Wait for a thread to terminate</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">头文件</td>
+<td align="center">Header File</td>
 <td><strong>pthread.h</strong></td>
 </tr>
 <tr>
-<td align="center">函数原型</td>
+<td align="center">Function Prototype</td>
 <td>int pthread_join(<strong>pthread_t</strong> thread,<strong>void</strong> **retval)</td>
 </tr>
 <tr>
-<td align="center">参数</td>
-<td>thread——所等待的线程<br/>retval——指向某存储线程返回值的变量</td>
+<td align="center">Parameters</td>
+<td>thread——The thread to wait for<br/>retval——Pointer to a variable to store the thread’s return value</td>
 </tr>
 <tr>
-<td align="center">返回值</td>
-<td>0——成功返回<br/>errcode(非0错误代码)——错误</td>
+<td align="center">Return Value</td>
+<td>0——Successful return<br/>errcode (non-zero error code)——Error</td>
 </tr>
 </tbody></table>
-<p><code>pthread_join</code>使得调用线程挂起直至由thread参数指定的线程终止。如果retval不是NULL，线程的返回值就将存储在由retval指向的变量中。</p>
-<p>当线程终止时，pthread_join函数返回0，如果有错误发生，则返回一个非零错误代码。如果某线程试图等待一个并不存在的线程、多个线程同时等待一个线程返回或者线程试图等待自己都将导致函数返回一个错误代码。</p>
+<p><code>pthread_join</code> causes the calling thread to suspend until the thread specified by the thread parameter terminates. If retval is not NULL, the return value of the thread will be stored in the variable pointed to by retval.</p>
+<p>When the thread terminates, the pthread_join function returns 0. If an error occurs, a non-zero error code is returned. It will result in an error code if a thread tries to wait for a non-existent thread, multiple threads try to wait for the same thread, or a thread tries to wait for itself.</p>
 <blockquote>
-<p>进程间可以通过<code>管道</code>、<code>socket</code>、<code>信号</code>、<code>退出</code>以及运行环境来进行会话。线程间的通信也很容易。多个线程在一个单独的进程中运行，共享全局变量，因此线程间可以通过设置和读取这些全局变量来进行通信。不过要知道，对共享内存的访问可是线程的一个既有用又危险的动作。</p>
+<p>Inter-process communication can occur via <code>pipes</code>, <code>sockets</code>, <code>signals</code>, <code>exits</code>, and the runtime environment. Inter-thread communication is also straightforward. Multiple threads run in a single process and share global variables; therefore, they can communicate by setting and reading those global variables. However, accessing shared memory can be both useful and dangerous for threads.</p>
 </blockquote>
-<p>考虑如下代码，两个线程共同操作一个全局变量:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM 5</span></span><br><span class="line"><span class="comment">// 创建一个全局变量,供多个线程访问</span></span><br><span class="line"><span class="type">int</span> counter=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">print_counter</span><span class="params">(<span class="type">void</span>* m)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		<span class="comment">// 输出counter的值</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;count = %d\n&quot;</span>,counter);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1;</span><br><span class="line">  	<span class="comment">// 创建一个线程,调用print_counter函数且不传递给函数具有意义的值</span></span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, print_counter, <span class="literal">NULL</span>);</span><br><span class="line">  	<span class="comment">// 初始线程中对counter的访问</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">      	<span class="comment">// 对counter累加</span></span><br><span class="line">		counter++;</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的代码中使用了两个线程.初始化线程执行了一个循环来使计数器每秒钟增加1.初始线程在进入循环之前,创建了一个新的线程.新的线程运行了一个函数来将counter的值打印出来,.main函数和print_counter运行在同一个进程中,所有都具有对于counter的访问权限.</p>
-<p>上面的代码中,线程的运行顺序是不可预料的.从运行结果中就可以看出来.</p>
+<p>Consider the following code, where two threads operate on a global variable:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM 5</span></span><br><span class="line"><span class="comment">// Create a global variable for multiple threads to access</span></span><br><span class="line"><span class="type">int</span> counter=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">print_counter</span><span class="params">(<span class="type">void</span>* m)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		<span class="comment">// Output the value of counter</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;count = %d\n&quot;</span>,counter);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1;</span><br><span class="line">  	<span class="comment">// Create a thread that calls print_counter function without passing a meaningful value</span></span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, print_counter, <span class="literal">NULL</span>);</span><br><span class="line">  	<span class="comment">// Access to counter in the main thread</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">      	<span class="comment">// Increment counter</span></span><br><span class="line">		counter++;</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In the code above, two threads are used. The main thread executes a loop to increment the counter by 1 every second. Before entering the loop, the main thread creates a new thread, which runs a function to print the value of the counter. The main function and print_counter run in the same process, thus both have access to the counter.</p>
+<p>The order of execution of the threads is unpredictable. This can be seen from the output results.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/02.webp"></p>
-<p>可以看出来,有时候是可以按照我们预料的方式执行,但是有时候则不会.</p>
-<p>这是由于线程之间的调度不是一定要执行过初始化线程之后再执行我们创建的线程,有可能我们执行初始化线程之前,调用了X次我们创建的线程t1,也有可能,我们执行了初始化线程之后又执行了Y次t1线程,所以,输出的顺序是不一定的.</p>
+<p>It can be observed that sometimes it executes in the expected way, but other times it does not.</p>
+<p>This is because the scheduling between threads does not guarantee that the main thread will execute before the created thread. It is possible that we may execute the created thread t1 multiple times before the main thread starts, or after the main thread has entered its loop, hence the output order is not certain.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/03.webp"></p>
-<p>在不使用sleep的情况下的运行结果是这样的:</p>
+<p>When not using sleep, the execution result looks like this:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/04.webp"></p>
-<p>下面一份代码,使用两个线程统计两个文件中所有单词的个数:</p>
-<p>统计样本:</p>
+<p>Here is another piece of code that uses two threads to count the number of words in two files:</p>
+<p>Sample statistics:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test1.txt is 14 words</span></span><br><span class="line">I need to follow my heart.</span><br><span class="line">In order to see more of the world.</span><br><span class="line"><span class="comment">// test2.txt is 4 words</span></span><br><span class="line">My name is zhalipeng.</span><br></pre></td></tr></table></figure>
 
-<p>代码如下:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计数器</span></span><br><span class="line"><span class="type">int</span> total_words=<span class="number">0</span>;</span><br><span class="line"><span class="comment">// 创建互斥量,确保total_words安全地被连个线程读写.</span></span><br><span class="line"><span class="type">pthread_mutex_t</span> counter_lock=PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1,t2;</span><br><span class="line">	<span class="keyword">if</span>(arg!=<span class="number">3</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;usage:%s file1 file2\n&quot;</span>,args[<span class="number">0</span>]);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, count_words,(<span class="type">void</span>*)args[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t2,<span class="literal">NULL</span>,count_words,(<span class="type">void</span>*)args[<span class="number">2</span>]);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t2,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%5d total words\n&quot;</span>,total_words);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>&#123;</span><br><span class="line">	<span class="type">char</span> *filename=(<span class="type">char</span>*)f;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="type">int</span> c,prevc=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(filename, <span class="string">&quot;r&quot;</span>))!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>((c=<span class="built_in">getc</span>(fp))!=EOF)&#123;</span><br><span class="line">			<span class="comment">// 碰到非字母和数字的字符跟在数字和字符之后就把这个字母或数字当做单词的结尾</span></span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isalnum</span>(c)&amp;&amp;<span class="built_in">isalnum</span>(prevc))&#123;</span><br><span class="line">				<span class="built_in">pthread_mutex_lock</span>(&amp;counter_lock);</span><br><span class="line">				total_words++;</span><br><span class="line">				<span class="built_in">pthread_mutex_unlock</span>(&amp;counter_lock);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// printf(&quot;%c&quot;,c);</span></span><br><span class="line">			prevc=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fclose</span>(fp);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">perror</span>(filename);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// printf(&quot;\n&quot;);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The code is as follows:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Counter</span></span><br><span class="line"><span class="type">int</span> total_words=<span class="number">0</span>;</span><br><span class="line"><span class="comment">// Create a mutex to ensure total_words is safely read and written by both threads.</span></span><br><span class="line"><span class="type">pthread_mutex_t</span> counter_lock=PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">pthread_t</span> t1,t2;</span><br><span class="line">	<span class="keyword">if</span>(argc!=<span class="number">3</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;usage:%s file1 file2\n&quot;</span>,argv[<span class="number">0</span>]);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t1, <span class="literal">NULL</span>, count_words,(<span class="type">void</span>*)argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;t2,<span class="literal">NULL</span>,count_words,(<span class="type">void</span>*)argv[<span class="number">2</span>]);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t1, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">pthread_join</span>(t2,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%5d total words\n&quot;</span>,total_words);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>&#123;</span><br><span class="line">	<span class="type">char</span> *filename=(<span class="type">char</span>*)f;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="type">int</span> c,prevc=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(filename, <span class="string">&quot;r&quot;</span>))!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>((c=<span class="built_in">getc</span>(fp))!=EOF)&#123;</span><br><span class="line">			<span class="comment">// Encountering non-letter and non-digit characters after letters and numbers treats this letter or number as the end of a word</span></span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isalnum</span>(c) &amp;&amp; <span class="built_in">isalnum</span>(prevc))&#123;</span><br><span class="line">				<span class="built_in">pthread_mutex_lock</span>(&amp;counter_lock);</span><br><span class="line">				total_words++;</span><br><span class="line">				<span class="built_in">pthread_mutex_unlock</span>(&amp;counter_lock);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// printf(&quot;%c&quot;,c);</span></span><br><span class="line">			prevc=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fclose</span>(fp);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">perror</span>(filename);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// printf(&quot;\n&quot;);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果:</p>
+<p>The running result:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/05.webp"></p>
-<p>也可以在text1.txt或者test2.txt中添加数据:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test2.txt is 11 words</span></span><br><span class="line">My name is zhalipeng.</span><br><span class="line">I love my family.</span><br><span class="line">I love programing!</span><br></pre></td></tr></table></figure>
+<p>You can also add data to test1.txt or test2.txt:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test2.txt is 11 words</span></span><br><span class="line">My name is zhalipeng.</span><br><span class="line">I love my family.</span><br><span class="line">I love programming!</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/06.webp"></p>
-<p>如果输出线程读取两个文件的顺序的话,与上一份代码一样,也是乱序的,哈哈.我为什么老是关注这些东西.</p>
+<p>If you output the order in which threads read the two files, similar to the previous code, it will also be unordered, haha. Why do I keep paying attention to these things.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/05.webp"></p>
-<p>上面的代码中使用了几个新的pthread接口,分别是:<code>pthread_mutex_lock</code>还有<code>pthread_mutex_unlock</code>,用来确保共享全局变量在某一时刻之后一个线程可以读写.</p>
+<p>In the code above, several new pthread interfaces are used: <code>pthread_mutex_lock</code> and <code>pthread_mutex_unlock</code>, to ensure that the shared global variable can be read and written by one thread at a time.</p>
 <blockquote>
-<p>举个简单的例子:在机场或者公交终点站的公共存储柜始终是打开的，除非有人在里面存放了东西。当一个人在里面放了东西拿到钥匙之后，便没有人再能够打开那个柜子了。只有等到这个人归还了钥匙把柜子打开之后，这样其他人才可以使用这个柜子。</p>
-<p>类似的,如果两个线程需要安全地共享一个公共的计数器，他们也需要这样一种方法把变量加锁，即在某一时刻只能有一个线程读写该计数器。</p>
-<p>线程系统包含了称为<code>互斥锁</code>的变量，它可以使线程间更好的合作，避免对于变量、函数以及资源的访问冲突。</p>
+<p>A simple example: In an airport or bus station’s public storage locker, it remains unlocked unless someone is storing something inside. When someone stores something and takes the key, no one else can open that locker until that person returns the key and unlocks it. Similarly, if two threads need to safely share a common counter, they also need a method to lock the variable, so only one thread can read from or write to the counter at any time.</p>
+<p>The threading system contains a variable known as a <code>mutex</code>, which allows better cooperation between threads and avoids conflicts in accessing variables, functions, and resources.</p>
 </blockquote>
 <table>
 <thead>
 <tr>
 <th align="center">pthread_mutex_lock</th>
-<th>等待互斥锁解开然后锁住互斥量</th>
+<th>Wait for the mutex to unlock and then lock the mutex</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center"><strong>pthread_mutex_unlock</strong></td>
-<td><strong>给互斥量解锁</strong></td>
+<td><strong>Unlock the mutex</strong></td>
 </tr>
 <tr>
-<td align="center">头文件</td>
+<td align="center">Header File</td>
 <td><strong>pthread.h</strong></td>
 </tr>
 <tr>
-<td align="center">函数原型</td>
-<td>int pthread_mutex_lock(<strong>pthtead_mutex_t</strong> *mutex)<br/>int pthread_mutex_unlock(<strong>pthtead_mutex_t</strong> *mutex)</td>
+<td align="center">Function Prototype</td>
+<td>int pthread_mutex_lock(<strong>pthread_mutex_t</strong> *mutex)<br/>int pthread_mutex_unlock(<strong>pthread_mutex_t</strong> *mutex)</td>
 </tr>
 <tr>
-<td align="center">参数</td>
-<td><strong>mutex</strong>:指向互斥锁对象的指针</td>
+<td align="center">Parameters</td>
+<td><strong>mutex</strong>: Pointer to the mutex object</td>
 </tr>
 <tr>
-<td align="center">返回值</td>
-<td>0:成功返回<br/>errcode(非0错误代码):错误</td>
+<td align="center">Return Value</td>
+<td>0: Successful return<br/>errcode (non-zero error code): Error</td>
 </tr>
 </tbody></table>
-<p>首先，定义一个<code>pthread_mutex_t</code>类型的全局变量count_lock,然后赋值给它一个初值.然后可以把对全局变量计数器<code>total_words</code>的操作夹在<code>pthread_mutex_lock</code>和<code>pthread_mutex_unlock</code>的调用之间.</p>
+<p>Firstly, define a global variable of type <code>pthread_mutex_t</code> called counter_lock, and assign it an initial value. Then, operations on the global counter <code>total_words</code> can be wrapped between calls to <code>pthread_mutex_lock</code> and <code>pthread_mutex_unlock</code>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pthread_mutex_lock</span>(&amp;counter_lock);</span><br><span class="line">total_words++;</span><br><span class="line"><span class="built_in">pthread_mutex_unlock</span>(&amp;counter_lock);</span><br></pre></td></tr></table></figure>
 
-<p>现在两个线程可以安全地共享计数器了.当一个线程调用<code>pthread_mutex_lock</code>的时候,如果另一个线程已经将这个互斥量锁住了,那这个线程就会被阻塞等待着这个锁被另一个线程解开,然后才可以对计数器进行操作.每个线程对计数器进行操作之后都将互斥量解锁,以便共享的数据被其他的进程操作.</p>
-<p>任何数目的线程都可以挂起等待互斥量解锁.当一个线程对互斥量解锁之后,系统就将控制权交给等待的某一个线程.</p>
+<p>Now two threads can safely share the counter. When one thread calls <code>pthread_mutex_lock</code>, if another thread has already locked this mutex, that thread will be blocked waiting for the lock to be released before it can operate on the counter. Each thread unlocks the mutex after manipulating the counter so the shared data can be operated on by other threads.</p>
+<p>Any number of threads can be suspended waiting for the mutex to unlock. When a thread unlocks the mutex, the system grants control to one of the waiting threads.</p>
 <p><strong>Upgrade code:</strong></p>
 <ul>
-<li>可以接收不定个数的文件</li>
-<li>通过arg获取到的参数个数来决定创建多少个线程和多少个struct对象(存储文件信息)</li>
-<li>通过struct来记录单个文件中单词的个数(每个文件具有一个单独的计数器)</li>
+<li>Can accept an arbitrary number of files</li>
+<li>Determines how many threads and struct objects (to store file information) to create based on the number of arguments obtained via arg</li>
+<li>Uses struct to record the number of words in each individual file (each file has its own separate counter)</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个结构体,用于存储文件的信息</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">arg_set</span>&#123;</span><br><span class="line">	<span class="comment">// 存储文件名和计数器</span></span><br><span class="line">	<span class="type">char</span> *filename;</span><br><span class="line">	<span class="type">int</span> total_words;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">pthread_mutex_t</span> counter_lock=PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> NUM=arg<span class="number">-1</span>;</span><br><span class="line">	<span class="comment">// 创建NUM(接受的文件个数)个线程</span></span><br><span class="line">	<span class="type">pthread_t</span> thread[NUM];</span><br><span class="line">	<span class="comment">// 创建NUM(接受的文件个数)个结构体对象</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">arg_set</span> argSet[NUM];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		argSet[i].filename=args[i+<span class="number">1</span>];</span><br><span class="line">		argSet[i].total_words=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">pthread_create</span>(&amp;thread[i], <span class="literal">NULL</span>, count_words,(<span class="type">void</span>*)&amp;argSet[i]);</span><br><span class="line">		<span class="built_in">pthread_join</span>(thread[i],<span class="literal">NULL</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;File %s in %d words\n&quot;</span>,argSet[i].filename,argSet[i].total_words);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> sumWords=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		sumWords+=argSet[i].total_words;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;The total word count is %d\n&quot;</span>,sumWords);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">arg_set</span> *args=(<span class="keyword">struct</span> arg_set*)f;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="type">int</span> c,prevc=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(args-&gt;filename, <span class="string">&quot;r&quot;</span>))!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>((c=<span class="built_in">getc</span>(fp))!=EOF)&#123;</span><br><span class="line">			<span class="comment">// 碰到非字母和数字的字符跟在数字和字符之后就把这个字母或数字当做单词的结尾</span></span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isalnum</span>(c)&amp;&amp;<span class="built_in">isalnum</span>(prevc))&#123;</span><br><span class="line">				<span class="built_in">pthread_mutex_lock</span>(&amp;counter_lock);</span><br><span class="line">				args-&gt;total_words++;</span><br><span class="line">				<span class="built_in">pthread_mutex_unlock</span>(&amp;counter_lock);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// printf(&quot;%c&quot;,c);</span></span><br><span class="line">			prevc=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fclose</span>(fp);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">perror</span>(args-&gt;filename);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// printf(&quot;\n&quot;);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a struct to store file information</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">arg_set</span>&#123;</span><br><span class="line">	<span class="comment">// Store filename and counter</span></span><br><span class="line">	<span class="type">char</span> *filename;</span><br><span class="line">	<span class="type">int</span> total_words;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">pthread_mutex_t</span> counter_lock=PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> NUM=argc<span class="number">-1</span>; <span class="comment">// Number of files accepted</span></span><br><span class="line">	<span class="comment">// Create NUM threads (number of files received)</span></span><br><span class="line">	<span class="type">pthread_t</span> thread[NUM];</span><br><span class="line">	<span class="comment">// Create NUM struct objects for the received files</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">arg_set</span> argSet[NUM];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		argSet[i].filename=argv[i+<span class="number">1</span>];</span><br><span class="line">		argSet[i].total_words=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">pthread_create</span>(&amp;thread[i], <span class="literal">NULL</span>, count_words,(<span class="type">void</span>*)&amp;argSet[i]);</span><br><span class="line">		<span class="built_in">pthread_join</span>(thread[i],<span class="literal">NULL</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;File %s in %d words\n&quot;</span>,argSet[i].filename,argSet[i].total_words);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> sumWords=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">		sumWords+=argSet[i].total_words;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;The total word count is %d\n&quot;</span>,sumWords);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">count_words</span><span class="params">(<span class="type">void</span> *f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">arg_set</span> *args=(<span class="keyword">struct</span> arg_set*)f;</span><br><span class="line">	FILE *fp;</span><br><span class="line">	<span class="type">int</span> c,prevc=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span>((fp=<span class="built_in">fopen</span>(args-&gt;filename, <span class="string">&quot;r&quot;</span>))!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>((c=<span class="built_in">getc</span>(fp))!=EOF)&#123;</span><br><span class="line">			<span class="comment">// Encountering non-letter and non-digit characters after letters and numbers treats this letter or number as the end of a word</span></span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isalnum</span>(c)&amp;&amp;<span class="built_in">isalnum</span>(prevc))&#123;</span><br><span class="line">				<span class="built_in">pthread_mutex_lock</span>(&amp;counter_lock);</span><br><span class="line">				args-&gt;total_words++;</span><br><span class="line">				<span class="built_in">pthread_mutex_unlock</span>(&amp;counter_lock);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// printf(&quot;%c&quot;,c);</span></span><br><span class="line">			prevc=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fclose</span>(fp);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">perror</span>(args-&gt;filename);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// printf(&quot;\n&quot;);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>测试一下:</p>
-<p>这里使用四个文件作为程序的参数,test1.txt与test2.txt内容同上,test3.txt和test4.txt内容如下:</p>
+<p>Let’s test it:</p>
+<p>Here, we use four files as parameters for the program, the contents of test1.txt and test2.txt are the same as above, and the contents of test3.txt and test4.txt are as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test3.txt is 10 words</span></span><br><span class="line">commitment to excellence.</span><br><span class="line">Courage is holding on to your dream.</span><br><span class="line"><span class="comment">// test4.txt is 3 words</span></span><br><span class="line">Just <span class="keyword">for</span> fun!</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58408/08.webp"></p>
@@ -535,7 +534,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -545,7 +544,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -555,37 +554,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/58408/" target="_blank">Pthread多线程编程</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/06/04 17:08<br/>
+             <span>Title:</span><a href="/posts/58408/" target="_blank">Pthread multithreaded programming</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/06/04 17:08<br/>
              
-             <span>本文字数:</span><span class="page-count">2.6k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">5.6k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/58408/" target="_blank" title="Pthread多线程编程">https://imzlp.com/posts/58408/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/58408/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/58408/" target="_blank" title="Pthread multithreaded programming">https://en.imzlp.com/posts/58408/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/58408/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -606,12 +605,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/27665/" rel="prev" title="谈高考">
-      <i class="fa fa-chevron-left"></i> 谈高考
+    <a href="/posts/27665/" rel="prev" title="Talk about the college entrance examination">
+      <i class="fa fa-chevron-left"></i> Talk about the college entrance examination
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/6978/" rel="next" title="删除void*指针引发的内存泄露">
-      删除void*指针引发的内存泄露 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/6978/" rel="next" title="Memory leak caused by deleting void* pointer">
+      Memory leak caused by deleting void* pointer <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -682,10 +681,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -696,10 +695,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -707,19 +706,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -757,10 +756,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -787,9 +786,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -798,12 +794,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -956,7 +952,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/58408/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/58408/',]
       });
       });
   </script>
@@ -979,12 +975,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

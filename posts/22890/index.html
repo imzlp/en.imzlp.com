@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="近期遇到了一个极为诡异的bug，分别有两张地图，其中一张地图A的PAK放在引擎自动挂载路径下可以进入，但是在热更目录不行，另一张地图B则完全相反，在自动挂载目录异常，但是在热更目录正常。 乍一看这个问题完全难以捉摸，两个互斥的行为出现在同一个表现逻辑中。而且热更挂载与自动挂载只是时机不同，优先级不同而已，按理说应该不会出现这个问题。 虽然最终这个问题可以在业务侧逻辑解决，但是这个表现也牵扯到了引擎">
+  <meta name="description" content="Recently, I encountered an extremely bizarre bug involving two maps. One map, A, can be accessed with its PAK placed in the engine’s automatic mount directory, but it cannot be accessed from the hot u">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE热更新：一次资源异常的故障分析">
-<meta property="og:url" content="https://imzlp.com/posts/22890/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="近期遇到了一个极为诡异的bug，分别有两张地图，其中一张地图A的PAK放在引擎自动挂载路径下可以进入，但是在热更目录不行，另一张地图B则完全相反，在自动挂载目录异常，但是在热更目录正常。 乍一看这个问题完全难以捉摸，两个互斥的行为出现在同一个表现逻辑中。而且热更挂载与自动挂载只是时机不同，优先级不同而已，按理说应该不会出现这个问题。 虽然最终这个问题可以在业务侧逻辑解决，但是这个表现也牵扯到了引擎">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE hot update: Fault analysis of a resource anomaly">
+<meta property="og:url" content="https://en.imzlp.com/posts/22890/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Recently, I encountered an extremely bizarre bug involving two maps. One map, A, can be accessed with its PAK placed in the engine’s automatic mount directory, but it cannot be accessed from the hot u">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/09/134944.png">
 <meta property="article:published_time" content="2024-10-17T17:30:19.000Z">
 <meta property="article:modified_time" content="2024-10-17T17:30:19.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2024/09/134944.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/22890/">
+<link rel="canonical" href="https://en.imzlp.com/posts/22890/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE热更新：一次资源异常的故障分析 | 循迹研究室</title>
+  <title>UE hot update: Fault analysis of a resource anomaly | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/22890/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/22890/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE热更新：一次资源异常的故障分析<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2024-10-17-22890.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/22890/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE hot update: Fault analysis of a resource anomaly<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2024-10-17-22890.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/22890/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE hot update: Fault analysis of a resource anomaly</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE热更新：一次资源异常的故障分析</sub>
           </div>
         
 
@@ -318,51 +318,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2024-10-17 17:30 17:30:19:30" itemprop="dateCreated datePublished" datetime="2024-10-17T17:30:19+00:00">2024-10-17 17:30</time>
+              <time title="Created: 2024-10-17 17:30 17:30:19:30" itemprop="dateCreated datePublished" datetime="2024-10-17T17:30:19+00:00">2024-10-17 17:30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/22890/" class="post-meta-item leancloud_visitors" data-flag-title="UE热更新：一次资源异常的故障分析" title="阅读次数">
+            <span id="/posts/22890/" class="post-meta-item leancloud_visitors" data-flag-title="UE hot update: Fault analysis of a resource anomaly" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.1k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>9.1k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>23 mins.</span>
             </span>
 
         </div>
@@ -374,91 +374,91 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>近期遇到了一个极为诡异的bug，分别有两张地图，其中一张地图A的PAK放在引擎自动挂载路径下可以进入，但是在热更目录不行，另一张地图B则完全相反，在自动挂载目录异常，但是在热更目录正常。</p>
-<p>乍一看这个问题完全难以捉摸，两个互斥的行为出现在同一个表现逻辑中。而且热更挂载与自动挂载只是时机不同，优先级不同而已，按理说应该不会出现这个问题。</p>
-<p>虽然最终这个问题可以在业务侧逻辑解决，但是这个表现也牵扯到了引擎中另一个极为隐蔽的路径，搞懂为什么以及它的原理是十分必要的。所以，我根据这种表现分析了引擎的代码，并得出了合理的结论，并制定一种检测和规避这种问题的方法。</p>
-<p>本篇文章默认读者具有一些UE热更新的基础知识，如有疑问可查阅本博客中<a href="https://imzlp.com/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/">热更新系列</a>的其他文章。</p>
+        <p>Recently, I encountered an extremely bizarre bug involving two maps. One map, A, can be accessed with its PAK placed in the engine’s automatic mount directory, but it cannot be accessed from the hot update directory. The other map, B, behaves completely oppositely: it is abnormal in the automatic mount directory but works normally in the hot update directory.</p>
+<p>At first glance, the issue appears entirely elusive, with two mutually exclusive behaviors occurring within the same logical framework. Moreover, the hot update mount and the automatic mount only differ in timing and priority, so this problem shouldn’t theoretically exist.</p>
+<p>While the issue can ultimately be resolved on the business logic side, this behavior involves another very obscure path within the engine. Understanding why and how it works is crucial. Therefore, I analyzed the engine’s code based on this behavior, came to a reasonable conclusion, and devised a method to detect and mitigate this issue.</p>
+<p>This article assumes that readers have some basic knowledge of UE hot updates; if in doubt, please refer to other articles in this blog’s <a target="_blank" rel="noopener" href="https://imzlp.com/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/">hot update series</a> for more information.</p>
 <span id="more"></span>
 <blockquote>
-<p>注意：本篇文章基于UE4.25引擎版本进行调试分析，其他引擎版本的代码会有些区别，但我着重于分析过程和故障原因，可以在其他版本的引擎中作为参考。</p>
+<p>Note: This article is based on the debugging and analysis of the UE4.25 engine version. The code in other engine versions may differ slightly, but I focus on the analysis process and the causes of the failure, which can also serve as a reference for other versions of the engine.</p>
 </blockquote>
-<h2 id="挂载时机分析"><a href="#挂载时机分析" class="headerlink" title="挂载时机分析"></a>挂载时机分析</h2><p>一般情况下，对于引擎挂载PAK而言，我们只需要关注“优先级”以及资源加载是否在最高优先级的PAK挂载之后，来确保最新的资源能够被访问到。</p>
-<p>但是引擎的自动挂载与游戏内手动挂载，在逻辑上确实会有一些区别，取决于挂载时当前引擎的状态，也就是挂载的时机。</p>
-<p>具体来说，就是在引擎的<code>FPakPlatformFile::Mount</code>挂载成功之后，是否会调用<code>FCoreDelegates::NewFileAddedDelegate.Broadcast(Filename)</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/151530.png"><br>这里只是检查<code>FCoreDelegates::NewFileAddedDelegate</code>是否被绑定，那么影响到它是否执行的条件，就是挂载PAK的时机是否在绑定之后。</p>
-<p>绑定该代理的代码，在<code>Obj.cpp</code>中，绑上了<code>FLinkerLoad::OnNewFileAdded</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/151758.png"></p>
-<p>那么引擎启动时，执行那几个自动挂载目录下PAK的挂载，时机非常早，在<code>PreInitPreStartupScreen</code>中：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/153033.png"></p>
-<p>其实也能够理解，引擎的各种配置、属性、以及资产，全部都存储在PAK中，它们当然要优先挂载才能被找到，才能够让引擎顺利执行起来。</p>
-<p>而对于<code>Obj.cpp</code>中的<code>InitUObject</code>函数的调用，则在<code>PreInitPreStartupScreen</code>调用到<code>AppInit</code>时。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/153348.png"></p>
-<p>所以它是晚于引擎的自动挂载时机的，故而在自动挂载时，不会调用到<code>NewFileAddedDelegate</code>代理。</p>
-<p>而对于热更之后的文件挂载，因为引擎内游戏已经实际在运行了，代理已绑定，此时再去调用<code>FPakPlatformFile::Mount</code>挂载PAK，自然就会执行到<code>FCoreDelegates::NewFileAddedDelegate</code>代理了。</p>
-<p>挂载时机的不同，只有这个区别。他也是我们接下来进行BUG分析的关键点，只需要记得自动挂载和游戏内手动挂载，会有<code>FCoreDelegates::NewFileAddedDelegate</code>执行的区别就可以了。</p>
-<h2 id="故障分析"><a href="#故障分析" class="headerlink" title="故障分析"></a>故障分析</h2><p>接下来回到我文章开头介绍的BUG，起初我很疑惑，为什么自动挂载和手动挂载会有区别，所以我仔细分析了<code>FCoreDelegates::NewFileAddedDelegate</code>代理绑定到的<code>FLinkerLoad::OnNewFileAdded</code>中的逻辑，其实也没什么特殊的：</p>
-<p>在<code>FPakPlatformFile::Mount</code>中，在Mount成功之后，如果<code>NewFileAddedDelegate</code>具有绑定，则会为当前Pak中的所有文件调用<code>FCoreDelegates::NewFileAddedDelegate</code>：</p>
+<h2 id="Mount-Timing-Analysis"><a href="#Mount-Timing-Analysis" class="headerlink" title="Mount Timing Analysis"></a>Mount Timing Analysis</h2><p>In general, regarding the engine’s PAK mounting, we only need to focus on “priority” and whether resource loading occurs after the highest priority PAK is mounted, to ensure that the latest resources can be accessed.</p>
+<p>However, the engine’s automatic mount differs logically from manual in-game mounts, depending on the current state of the engine at the time of mounting.</p>
+<p>Specifically, this is related to whether <code>FCoreDelegates::NewFileAddedDelegate.Broadcast(Filename)</code> is called after <code>FPakPlatformFile::Mount</code> is successfully executed:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/151530.png"><br>Here, we are simply checking whether <code>FCoreDelegates::NewFileAddedDelegate</code> is bound. The condition affecting its execution is whether the PAK mounting occurred after this binding.</p>
+<p>The binding code for this delegate occurs in <code>Obj.cpp</code>, where it binds <code>FLinkerLoad::OnNewFileAdded</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/151758.png"></p>
+<p>So when the engine starts, it mounts the PAKs in the automatic mount directory very early, during <code>PreInitPreStartupScreen</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/153033.png"></p>
+<p>This makes sense because all configurations, properties, and assets of the engine are stored in PAK files, and they must be mounted first so they can be found, allowing the engine to execute smoothly.</p>
+<p>The calling of the <code>InitUObject</code> function in <code>Obj.cpp</code> occurs during the <code>AppInit</code> call from <code>PreInitPreStartupScreen</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/153348.png"></p>
+<p>Thus, it happens later than the engine’s automatic mounting, meaning that during the automatic mount process, <code>NewFileAddedDelegate</code> will not be called.</p>
+<p>In contrast, with file mounting after hot updates, since the game within the engine is already running, the delegate is bound, and calling <code>FPakPlatformFile::Mount</code> to mount the PAK will naturally execute the <code>FCoreDelegates::NewFileAddedDelegate</code>.</p>
+<p>The only difference is the timing of the mount. This is also a key point for our upcoming bug analysis; just remember that there will be a difference in the execution of <code>FCoreDelegates::NewFileAddedDelegate</code> between automatic mounting and manual in-game mounting.</p>
+<h2 id="Failure-Analysis"><a href="#Failure-Analysis" class="headerlink" title="Failure Analysis"></a>Failure Analysis</h2><p>Now returning to the bug introduced at the beginning of the article, I was initially puzzled as to why there were differences between automatic and manual mounts. So I closely analyzed the logic bound to <code>FCoreDelegates::NewFileAddedDelegate</code> in <code>FLinkerLoad::OnNewFileAdded</code>, and found that it’s not particularly special:</p>
+<p>In <code>FPakPlatformFile::Mount</code>, after successful mounting, if <code>NewFileAddedDelegate</code> is bound, it will call <code>FCoreDelegates::NewFileAddedDelegate</code> for all files in the current PAK:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (FCoreDelegates::NewFileAddedDelegate.<span class="built_in">IsBound</span>())</span><br><span class="line">&#123;</span><br><span class="line">	TArray&lt;FString&gt; Filenames;</span><br><span class="line">	Pak-&gt;<span class="built_in">GetFilenames</span>(Filenames);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">const</span> FString&amp; Filename : Filenames)</span><br><span class="line">	&#123;</span><br><span class="line">		FCoreDelegates::NewFileAddedDelegate.<span class="built_in">Broadcast</span>(Filename);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>所以，手动挂载PAK时，这个逻辑会走到，并且手动挂载的PAK中的所有文件都会走到这个流程。</p>
-<p>在<code>LinkerLoad.cpp</code>中定义的<code>FLinkerLoad::OnNewFileAdded</code>的逻辑：</p>
+<p>Therefore, when manually mounting the PAK, this logic will run, and all files within the manually mounted PAK will follow this process.</p>
+<p>The logic defined in <code>LinkerLoad.cpp</code> for <code>FLinkerLoad::OnNewFileAdded</code> is as follows:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FLinkerLoad::OnNewFileAdded</span><span class="params">(<span class="type">const</span> FString&amp; Filename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FString PackageName;</span><br><span class="line">	<span class="keyword">if</span> (FPackageName::<span class="built_in">TryConvertFilenameToLongPackageName</span>(Filename, PackageName))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function">FName <span class="title">PackageFName</span><span class="params">(*PackageName)</span></span>;</span><br><span class="line">		<span class="keyword">if</span> (FLinkerLoad::<span class="built_in">IsKnownMissingPackage</span>(PackageFName))</span><br><span class="line">		&#123;</span><br><span class="line">			FLinkerLoad::<span class="built_in">RemoveKnownMissingPackage</span>(PackageFName);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>逻辑上把传进来的Filename从UFS的路径转换为PackageName，也就是(<code>../../../PROJECTNAME/Content/XXXX</code>转换为<code>/Game/XXXX</code>)的形式，<strong>并构造出一个FName</strong>，然后用于检测是否为MissingPackage，如果是的话就移除。</p>
-<p>整个函数的逻辑就是为了把标记为<code>MissingPackage</code>的给移除，那么什么时候资源会被添加到<code>MissingPackage</code>呢？在资源加载失败的时候！<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/155428.png"></p>
-<p>原因很简单，资源加载失败了就记录起来，如果后面还有尝试加载资源，就可以检查是否时被标记过的。</p>
-<p>而<code>OnNewFileAdded</code>内的逻辑就是反过来，如果有新的PAK被Mount进来，就代表可能存在有新的资源。就把PAK中的文件列表转成资源路径，检查是否是标记为<code>MissingPackage</code>，是的话就移除。因为这个资源在新的PAK中，也已经被挂载进来了，实际上是可以找到它的。</p>
-<p>经过调试发现，其实逻辑压根就没有进入到<code>RemoveKnownMissingPackage</code>函数中，表明对<code>MissingPackage</code>的检测没有成功过。</p>
-<p>整个函数的逻辑只是如此，还是没找到为什么自动挂载与手动挂载会导致地图无法进入的问题。<br>但是只要把这段逻辑屏蔽掉，原本进不去的A地图可以了，进得去的B地图又不行了，看来确实是它引起的问题，只是还没找到关联性。</p>
-<p>最后，通过对实际加载时的资产与<code>OnNewFileAdded</code>内的<code>PackageName</code>对比，我发现真正有问题的问题在于构造了FName！</p>
+<p>This logical flow converts the incoming Filename from the UFS path to a PackageName, effectively transforming (<code>../../../PROJECTNAME/Content/XXXX</code> to <code>/Game/XXXX</code>), <strong>and constructs an FName</strong> to check if it is a MissingPackage; if so, it will be removed.</p>
+<p>The entire function’s logic is designed to remove items marked as <code>MissingPackage</code>. So when does a resource get added to <code>MissingPackage</code>? When loading that resource fails!<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/155428.png"></p>
+<p>The reason is straightforward: if loading a resource fails, it gets recorded. If there are subsequent attempts to load the resource, you can check if it was previously marked.</p>
+<p>The logic within <code>OnNewFileAdded</code> operates inversely. If a new PAK is mounted, it implies new resources could exist. It converts the file list from the PAK into resource paths and checks if they’re marked as missing; if so, it removes them, affirming the resource is now accessible since it’s been mounted in the new PAK.</p>
+<p>After debugging, it becomes evident that the logic never enters the <code>RemoveKnownMissingPackage</code> function, indicating that the detection for <code>MissingPackage</code> has been unsuccessful.</p>
+<p>The function’s logic is thus simple, yet it does not clarify why automatic and manual mounts lead to maps not being accessible. However, if I disable this logic, the originally inaccessible map A works, while map B does not. Clearly, this logic is causing the problem; it just remains to determine the correlation.</p>
+<p>Ultimately, by comparing the assets during actual loading with the <code>PackageName</code> within <code>OnNewFileAdded</code>, I discovered the real issue lies in constructing the FName!</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FLinkerLoad::OnNewFileAdded</span><span class="params">(<span class="type">const</span> FString&amp; Filename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FString PackageName;</span><br><span class="line">	<span class="keyword">if</span> (FPackageName::<span class="built_in">TryConvertFilenameToLongPackageName</span>(Filename, PackageName))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function">FName <span class="title">PackageFName</span><span class="params">(*PackageName)</span></span>;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这就是导致问题的代码，具体原因先按下不表，后面会详细分析。</p>
-<p>目前你需要知道：<a target="_blank" rel="noopener" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling-in-unreal-engine">FName</a>是引擎中的用于静态字符串的机制，它有一些特点：相同的字符串只记录一次，通过索引访问。而且<strong>它默认是不区分大小写的</strong>，这是问题的关键。</p>
-<h2 id="异常的资产操作"><a href="#异常的资产操作" class="headerlink" title="异常的资产操作"></a>异常的资产操作</h2><p>为什么FName的构造会是罪魁祸首呢？现在，让我们放下调试器和打包后的游戏。</p>
-<p>回到编辑器下，考虑下面这种情况：</p>
+<p>This is the problematic code, and the specific reason will be discussed later.</p>
+<p>For now, you need to know that <a target="_blank" rel="noopener" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling-in-unreal-engine">FName</a> is a mechanism in the engine used for static strings, having some characteristics: identical strings are only recorded once and accessed via indexing. Furthermore, <strong>it is by default case-insensitive</strong>, which is the crux of the issue.</p>
+<h2 id="Anomalous-Asset-Operations"><a href="#Anomalous-Asset-Operations" class="headerlink" title="Anomalous Asset Operations"></a>Anomalous Asset Operations</h2><p>Why does the construction of FName become the culprit? Let’s set aside the debugger and the packaged game for now.</p>
+<p>Back in the editor, consider the following situation:</p>
 <ol>
-<li><p>新建一个地图，位于路径<code>PrimaryTest</code>下：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/121621.png"></p>
+<li><p>Create a new map located in the <code>PrimaryTest</code> path:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/121621.png"></p>
 </li>
-<li><p>直接在操作系统中修改目录的文件夹，修改目录大小写为<code>PrimaryTEST</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/122241.png"></p>
+<li><p>Directly modify the folder name in the operating system to change its case to <code>PrimaryTEST</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/122241.png"></p>
 </li>
 </ol>
-<p>可以看到，工程中的目录产生了变化，但是资产中的<code>PrimaryAssetName</code>并没有变化。</p>
+<p>You can see that there’s a change in the project’s directory, but the <code>PrimaryAssetName</code> within the assets remains unchanged.</p>
 <ol start="3">
-<li>打包PAK时，UFS中uasset的路径就是磁盘的相对路径，大小写也一致<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/122803.png"></li>
+<li>When packaging a PAK, the UFS path of the uasset aligns with the disk’s relative path, maintaining the case consistency:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/122803.png"></li>
 </ol>
-<p>但，这就造成了一个问题：Cook后的uasset路径与实际的资产路径，出现了大小写不匹配。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/210012.png"></p>
-<p>从资源的序列化中读取时，它依然是小写的：</p>
+<p>However, this results in a critical issue: the cooked uasset path and the actual asset path exhibit case mismatches.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/210012.png"></p>
+<p>When reading from the asset serialization, it remains in lowercase:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/143409.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/202037.png"></p>
-<p>构造出了一个<code>/Game/xxxx/level/yyyyy</code>的FName，但是它的uasset在UFS的路径是<code>Content/xxxx/Level/yyyy</code>。</p>
-<p><strong>真相不远了！</strong></p>
-<p>让我们回到<code>FlinkerLoad::NewFileAdded</code>，再看一眼它的代码：</p>
+<p>This constructs an FName like <code>/Game/xxxx/level/yyyyy</code>, yet its uasset in the UFS path is <code>Content/xxxx/Level/yyyy</code>.</p>
+<p><strong>The truth is near!</strong></p>
+<p>Returning to <code>FLinkerLoad::NewFileAdded</code>, let’s take another look at its code:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FLinkerLoad::OnNewFileAdded</span><span class="params">(<span class="type">const</span> FString&amp; Filename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	FString PackageName;</span><br><span class="line">	<span class="keyword">if</span> (FPackageName::<span class="built_in">TryConvertFilenameToLongPackageName</span>(Filename, PackageName))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function">FName <span class="title">PackageFName</span><span class="params">(*PackageName)</span></span>;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>它是把UFS的路径转换为了<code>PackageName</code>！转换逻辑也只是单纯地对字符串进行操作，相对于Content的路径会被原样保留！</p>
-<p>举个例子，一个资源<code>/Game/Test/PrimaryTEST/NewWorld</code>，他被Cook后打进UFS的路径为：</p>
+<p>This conversion translates the UFS path to a <code>PackageName</code>! The conversion logic merely operates on the string; the path relative to Content gets preserved as is!</p>
+<p>For example, if a resource is located at <code>/Game/Test/PrimaryTEST/NewWorld</code>, its cooked path in the UFS is:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">../../../PROJECT_NAME/Content/Test//PrimaryTEST/NewWorld.umap</span><br></pre></td></tr></table></figure>
-<p>那么把它通过<code>FPackageName::TryConvertFilenameToLongPackageName</code>转换之后的PackageName为：</p>
+<p>When converted through <code>FPackageName::TryConvertFilenameToLongPackageName</code>, the resulting PackageName will be:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Game/Test/PrimaryTEST/NewWorld</span><br></pre></td></tr></table></figure>
 
-<p>并且将其构造成了FName！</p>
-<p>这就会造成UFS转换而来的PackageName与实际资产中记录的PackageName存在了大小写的差异。</p>
-<h2 id="调试验证"><a href="#调试验证" class="headerlink" title="调试验证"></a>调试验证</h2><p>分析到问题之后，还需要进行实际的调试验证，确认问题，毕竟<strong>实践是检验真理的唯一标准</strong>嘛！</p>
-<p>当我们执行了<code>FlinkerLoader::NewFileAdded</code>，从UFS的路径转换为PackageName时，依据的就是UFS中的文件路径，它确实是大写的：</p>
+<p>And then it constructs it as an FName!</p>
+<p>This will lead to a case difference between the PackageName derived from UFS and the actual one stored within the asset.</p>
+<h2 id="Debug-Verification"><a href="#Debug-Verification" class="headerlink" title="Debug Verification"></a>Debug Verification</h2><p>After analyzing the issue, it is crucial to perform real debugging to validate the problem, as <strong>practice is the only test of truth</strong>!</p>
+<p>When executing <code>FLinkerLoader::NewFileAdded</code>, the conversion from UFS path to PackageName relies on the UFS file path, which indeed is case-sensitive:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/204546.png"></p>
-<p>这里构造出了一个值为<code>/Game/xxxx/Level/yyyyy</code>的FName，该字符串已记录至NamePool。</p>
-<p>在实际加载该地图时，获取到的FName也是大写的了：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/202809.png"></p>
-<p>可以明显地看到Level目录变成了大写。</p>
-<p>如果在游戏逻辑中有哪里通过获取资产路径进行匹配的逻辑，如果区分大小写，就会导致无法匹配的问题了，而本次故障的事实也确实如此。</p>
-<h2 id="故障总结"><a href="#故障总结" class="headerlink" title="故障总结"></a>故障总结</h2><p>让我们再回到最初的问题：为什么资源放入自动挂载目录，与热更后手动挂载会出现逻辑上的区别？</p>
-<p><strong>问题的答案</strong>：就是因为自动挂载目录里的PAK，是在<code>FCoreDelegates::NewFileAddedDelegate</code>代理绑定之前，不会构造出任何PAK内文件的FName，而热更后手动挂载的，会走到<code>FLinkerLoad::NewFileAdded</code>，并为其中的文件，构造出FName。<br>而问题的原因，就是UFS的资产路径，与资产中实际存储的路径存在大小写的差异，从而导致游戏逻辑里的某些检测没有通过。</p>
-<h2 id="如何规避？"><a href="#如何规避？" class="headerlink" title="如何规避？"></a>如何规避？</h2><p>问题虽然已经排查到了，这个问题之所以复杂，主要是牵扯了各种方面：</p>
+<p>Here, an FName with a value of <code>/Game/xxxx/Level/yyyyy</code> is constructed, and this string is recorded in the NamePool.</p>
+<p>When loading this map, the fetched FName is also now case-sensitive:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/202809.png"></p>
+<p>It is evident that the Level directory has turned uppercase.</p>
+<p>If there is any logic in the game that matches asset paths and is case-sensitive, this leads to issues where matching fails, exactly as this incident has showed.</p>
+<h2 id="Failure-Summary"><a href="#Failure-Summary" class="headerlink" title="Failure Summary"></a>Failure Summary</h2><p>Let’s revisit the initial question: why do resources placed in the automatic mount directory yield a logical discrepancy compared to those manually mounted after hot updates?</p>
+<p><strong>The answer</strong>: This occurs because the PAK in the automatic mount directory does not construct any FNames for the files before binding the <code>FCoreDelegates::NewFileAddedDelegate</code>, while manual mounts after hot updates will trigger <code>FLinkerLoad::NewFileAdded</code>, creating FNames for those files. The underlying cause lies in the case differences between the asset path in UFS and what is recorded within the asset, leading to certain checks in the game logic failing.</p>
+<h2 id="How-to-Mitigate"><a href="#How-to-Mitigate" class="headerlink" title="How to Mitigate?"></a>How to Mitigate?</h2><p>Although the problem has been traced, its complexity arises from several different aspects:</p>
 <ol>
-<li>美术的资源的操作不规范</li>
-<li>游戏内逻辑检查考虑不充分</li>
-<li>文件系统的设计也确实会导致这个问题，而且很具有迷惑性</li>
+<li>Non-standard operations by artists on resources.</li>
+<li>Incomplete consideration in game logic checks.</li>
+<li>The design of the file system indeed contributes to this issue, and it’s quite misleading.</li>
 </ol>
-<p>其实究其根本，在于对资源操作绕过了Editor，直接在磁盘文件系统上的文件进行了修改，导致了资产存放路径与资产内记录的值不一致，而恰好修改也只是变动了大小写而已，所以这个故障就变得极为隐蔽。</p>
-<p>说是“资源操作不规范导致大小写异常引发的血案”也不为过，为了避免这种情况的再次发生，我添加了一个新的资源检查规则，用于自动化地检测资源的磁盘路径与PKG内记录的不一致的情况：</p>
+<p>Ultimately, the core lies in modifying resources directly on the file system, bypassing the Editor, which resulted in inconsistencies between the asset storage path and recorded values, with the modification being only a case change, rendering this fault extremely covert.</p>
+<p>Describing it as “a disaster caused by non-standard resource operations leading to case anomalies” would not be an exaggeration. To prevent a recurrence of such situations, I added a new resource check rule to automatically detect inconsistencies between disk paths and records within the PKG:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/09/164229.png"></p>
-<p>这样就能够比较及时、且批量地检查工程中存在相同问题的资产，进行处理。正如我过往文章中不断提到的那样，资源规范极为重要，可以极大地降低排查问题的成本，把问题扼杀在摇篮里。</p>
-<p>除此之外，最重要的还是要<strong>管住人</strong>。任何对于资产的操作，必须通过Editor来完成，包括但不限于新增、删除、重命名、移动目录等，并且操作之后必须修复重定向器，严禁通过文件系统目录进行修改。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇文章分析了UnrealEngine中挂载时机不同的逻辑区别、资产操作不规范导致资源与序列化路径不匹配的异常，并得出了明确的故障结论与规避方案。</p>
-<p>技术问题没有玄学，如果一件事情让你觉得玄学，只是你还没找到它们之间的联系而已。</p>
+<p>This enables timely bulk checks of assets in the project that share the same problem, facilitating remediation. As I’ve repeatedly stated in past articles, resource standardization is vital, greatly reducing the cost of troubleshooting and nipping problems in the bud.</p>
+<p>Beyond that, the most crucial aspect is to <strong>manage personnel</strong>. Any modifications to assets must be done through the Editor, including but not limited to adding, deleting, renaming, moving directories, etc., and redirection must be repaired afterward. Direct modifications via the file system directory are strictly prohibited.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article analyzed the logical differences arising from varying mounting timings in Unreal Engine, identified the abnormal operations leading to mismatches between resources and their serialized paths, and established clear conclusions regarding the failure along with mitigation strategies.</p>
+<p>Technical issues are not mystical; if something feels mystical to you, it merely means you have yet to ascertain the connection between them.</p>
 
     </div>
 
@@ -469,7 +469,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -479,7 +479,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -489,37 +489,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/22890/" target="_blank">UE热更新：一次资源异常的故障分析</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2024/10/17 17:30<br/>
+             <span>Title:</span><a href="/posts/22890/" target="_blank">UE hot update: Fault analysis of a resource anomaly</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2024/10/17 17:30<br/>
              
-             <span>本文字数:</span><span class="page-count">4.1k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">9.1k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/22890/" target="_blank" title="UE热更新：一次资源异常的故障分析">https://imzlp.com/posts/22890/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/22890/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/22890/" target="_blank" title="UE hot update: Fault analysis of a resource anomaly">https://en.imzlp.com/posts/22890/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/22890/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -541,12 +541,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/53079/" rel="prev" title="极致优化UE Android APK的大小">
-      <i class="fa fa-chevron-left"></i> 极致优化UE Android APK的大小
+    <a href="/posts/53079/" rel="prev" title="Ultimate Optimization: Reducing the size of UE Android APKs">
+      <i class="fa fa-chevron-left"></i> Ultimate Optimization: Reducing the size of UE Android APKs
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/30014/" rel="next" title="部署一个自托管的MEMOS笔记系统">
-      部署一个自托管的MEMOS笔记系统 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/30014/" rel="next" title="Deploy a self-hosted MEMOS note system">
+      Deploy a self-hosted MEMOS note system <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -617,25 +617,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E6%97%B6%E6%9C%BA%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">挂载时机分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">故障分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E8%B5%84%E4%BA%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">异常的资产操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E9%AA%8C%E8%AF%81"><span class="nav-number">4.</span> <span class="nav-text">调试验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">故障总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%84%E9%81%BF%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">如何规避？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mount-Timing-Analysis"><span class="nav-number">1.</span> <span class="nav-text">Mount Timing Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Failure-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Failure Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anomalous-Asset-Operations"><span class="nav-number">3.</span> <span class="nav-text">Anomalous Asset Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug-Verification"><span class="nav-number">4.</span> <span class="nav-text">Debug Verification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Failure-Summary"><span class="nav-number">5.</span> <span class="nav-text">Failure Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-Mitigate"><span class="nav-number">6.</span> <span class="nav-text">How to Mitigate?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -643,19 +643,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -693,10 +693,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -723,9 +723,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -734,12 +731,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -892,7 +889,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/22890/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/22890/',]
       });
       });
   </script>
@@ -915,12 +912,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

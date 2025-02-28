@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,28 +19,28 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="实现进程&#x2F;线程间通信的方法有:  进程间通信方法有：文件映射、共享内存、匿名管道、命名管道、邮件槽、剪切板、动态数据交换、对象连接与嵌入、动态连接库、远程过程调用等 线程同步的方法有：事件、临界区、互斥量、信号量">
+  <meta name="description" content="The methods for achieving inter-process&#x2F;thread communication include:  Inter-process communication methods: file mapping, shared memory, anonymous pipes, named pipes, message slots, clipboard, dynamic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程间通信">
-<meta property="og:url" content="https://imzlp.com/posts/58483/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="实现进程&#x2F;线程间通信的方法有:  进程间通信方法有：文件映射、共享内存、匿名管道、命名管道、邮件槽、剪切板、动态数据交换、对象连接与嵌入、动态连接库、远程过程调用等 线程同步的方法有：事件、临界区、互斥量、信号量">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Operating system interprocess communication">
+<meta property="og:url" content="https://en.imzlp.com/posts/58483/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="The methods for achieving inter-process&#x2F;thread communication include:  Inter-process communication methods: file mapping, shared memory, anonymous pipes, named pipes, message slots, clipboard, dynamic">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58483/fifo.gif">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58483/01.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58483/02.webp">
 <meta property="article:published_time" content="2016-05-17T19:48:04.000Z">
 <meta property="article:modified_time" content="2016-05-17T19:48:04.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="进程间通信">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/58483/fifo.gif">
 
-<link rel="canonical" href="https://imzlp.com/posts/58483/">
+<link rel="canonical" href="https://en.imzlp.com/posts/58483/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>进程间通信 | 循迹研究室</title>
+  <title>Operating system interprocess communication | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/58483/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/58483/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          进程间通信<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-05-17-58483.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/58483/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Operating system interprocess communication<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-05-17-58483.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/58483/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Operating system interprocess communication</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">进程间通信</sub>
           </div>
         
 
@@ -318,43 +318,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-05-17 19:48 19:48:04:48" itemprop="dateCreated datePublished" datetime="2016-05-17T19:48:04+00:00">2016-05-17 19:48</time>
+              <time title="Created: 2016-05-17 19:48 19:48:04:48" itemprop="dateCreated datePublished" datetime="2016-05-17T19:48:04+00:00">2016-05-17 19:48</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/58483/" class="post-meta-item leancloud_visitors" data-flag-title="进程间通信" title="阅读次数">
+            <span id="/posts/58483/" class="post-meta-item leancloud_visitors" data-flag-title="Operating system interprocess communication" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -366,70 +366,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>实现进程/线程间通信的方法有:</p>
+        <p>The methods for achieving inter-process/thread communication include:</p>
 <ol>
-<li>进程间通信方法有：文件映射、共享内存、匿名管道、命名管道、邮件槽、剪切板、动态数据交换、对象连接与嵌入、动态连接库、远程过程调用等</li>
-<li>线程同步的方法有：事件、临界区、互斥量、信号量</li>
+<li>Inter-process communication methods: file mapping, shared memory, anonymous pipes, named pipes, message slots, clipboard, dynamic data exchange, object linking and embedding, dynamic link libraries, remote procedure calls, etc.</li>
+<li>Thread synchronization methods: events, critical sections, mutexes, semaphores.</li>
 </ol>
 <span id="more"></span>
-<p>其实通过管道共享内存等等都是可以实现进程间同步的，比如使用管道就非常方便：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个命名管道</span></span><br><span class="line">mkfifo fifo</span><br></pre></td></tr></table></figure>
+<p>Actually, methods like pipes and shared memory can achieve inter-process synchronization. For example, using pipes is very convenient:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a named pipe</span></span><br><span class="line">mkfifo fifo</span><br></pre></td></tr></table></figure>
 
-<p>然后具有以下代码实现一个简单的进程间通信的功能：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// writefifo.cc</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	<span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifo&quot;</span>,O_WRONLY);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		cin&gt;&gt;buf;</span><br><span class="line">		<span class="keyword">if</span>(buf[<span class="number">0</span>]==<span class="string">&#x27;0&#x27;</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">write</span>(fd, buf,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(fd);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//readfifo</span></span><br><span class="line"><span class="comment">// 碍于篇幅readfifo的头文件忽略，但是编译时不可忽略。</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	<span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifo&quot;</span>,O_RDONLY);</span><br><span class="line">	<span class="keyword">while</span>((len=<span class="built_in">read</span>(fd,buf,<span class="built_in">sizeof</span>(buf))&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		cout&lt;&lt;buf&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(fd);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then, the following code implements a simple inter-process communication functionality:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// writefifo.cc</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	<span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifo&quot;</span>,O_WRONLY);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		cin&gt;&gt;buf;</span><br><span class="line">		<span class="keyword">if</span>(buf[<span class="number">0</span>]==<span class="string">&#x27;0&#x27;</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">write</span>(fd, buf,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(fd);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//readfifo</span></span><br><span class="line"><span class="comment">// Due to space, the header file for readfifo is omitted, but it cannot be ignored during compilation.</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="built_in">sizeof</span>(buf));</span><br><span class="line">	<span class="type">int</span> fd=<span class="built_in">open</span>(<span class="string">&quot;fifo&quot;</span>,O_RDONLY);</span><br><span class="line">	<span class="keyword">while</span>((len=<span class="built_in">read</span>(fd,buf,<span class="built_in">sizeof</span>(buf))&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		cout&lt;&lt;buf&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(fd);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行如图:</p>
+<p>The operation is shown as follows:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58483/fifo.gif"></p>
-<p>下面我们从操作系统的角度来描述一下实现进程间同步的要求。</p>
-<p>实现<code>进程间通信(Inter Process Communication,IPC)</code>具有三个问题。</p>
+<p>Now let’s describe the requirements for implementing inter-process synchronization from the operating system’s perspective.</p>
+<p>Implementing <code>Inter Process Communication (IPC)</code> involves three issues:</p>
 <ul>
-<li>一个进程如何把信息传递给另一个进程</li>
-<li>确保两个进程或更多的进城之间在关键活动中不会出现交叉。比如飞机订票系统上两个不同的进程为不同的客户争夺最后一个座位。</li>
-<li>正确的顺序，比如使用进程A产生数据而进程B需要使用这些数据，所以在A在产生数据完成之前，进程B必须等待(阻塞)</li>
+<li>How one process passes information to another process.</li>
+<li>Ensuring that two or more processes do not overlap during critical activities. For example, in an airplane ticket booking system, two different processes compete for the last seat for different customers.</li>
+<li>Correct sequencing; for instance, if process A generates data that process B needs, then process B must wait (block) until A finishes generating the data.</li>
 </ul>
-<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><p>在一些操作系统中，协作的进程可能共享一些彼此都能读写的公用存储区域。</p>
-<p>两个或者多个进程读写某些共享数据，而最后的结果取决于进程运行时的精确时间，称为<code>竞态条件(race condition)</code>。</p>
+<h3 id="Race-Conditions"><a href="#Race-Conditions" class="headerlink" title="Race Conditions"></a>Race Conditions</h3><p>In some operating systems, cooperating processes may share common storage areas that both can read and write.</p>
+<p>When two or more processes read and write certain shared data, the final result depends on the precise timing of the processes, which is known as a <code>race condition</code>.</p>
 <blockquote>
-<p>举个栗子：<br>进程A和进程B之间共享一个变量X，有可能发生的情况是，进程A向X中赋值了一个变量，但是恰好(Murphy定理，有可能的就一定会发生)此时操作系统的调度程序将其中断，进程A进入就绪态，进程B进入运行态。然后选择并运行了进程B，进程B也向X中存入了一个变量， 并在下次调度程序选择进程A之前都使用X，当调度程序再度运行进程A时，A并不知道X已经被进程B修改过了，所以会造成未定义的错误。</p>
-<p>原因在于，在进程A使用X完毕之前进程B就对X进行了操作，所以我们会得到错误的结果，这就为竞态条件。</p>
+<p>For example:<br>A variable X is shared between process A and process B. It is possible that process A assigns a value to X, but at that moment, the operating system’s scheduler interrupts, process A enters the ready state, and process B enters the running state. It then chooses to run process B, which also assigns a variable to X, using X until the scheduler selects process A again. When the scheduler runs process A again, A does not know that X has already been modified by process B, leading to undefined errors.</p>
+<p>The reason is that process B operated on X before process A finished using it, resulting in incorrect outcomes, which exemplifies a race condition.</p>
 </blockquote>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58483/01.webp"></p>
-<p><strong>如何避免竞态条件？</strong></p>
-<p>实际上在凡是涉及共享内存、共享文件以及共享任何资源的情况都有可能引发竞态条件。要避免竞态条件的发生关键是<strong>要找出某种途径来阻止多个进程同时读写共享的数据。</strong></p>
-<p>我们需要的是**互斥(mutual exclusion)**，即以某种手段确保当一个进程在使用一个共享的数据时，其他的文件不能进行同样的操作。</p>
-<p>一个进程的一部分时间做内部计算或另外一个不会引发竞态条件的操作。在某些进程可能需要访问共享内存或共享文件或执行一些会导致竞态条件的操作。</p>
-<p>对共享内存进行访问的操作程序片段(代码)称为<code>临界区(criticalsection)</code>。</p>
-<p>正像上面所说的原因，引发<code>竞态条件</code>的原因就是有两个进程同时处于<strong>临界区</strong>，所以避免引发竞态条件就需要我们适当的安排使两个进程不能同时处于临界区。</p>
-<p>对于一个好的避免进程同时处于临界区的四个条件:</p>
+<p><strong>How to Avoid Race Conditions?</strong></p>
+<p>In fact, whenever there is shared memory, shared files, or sharing of any resources, there’s a potential for race conditions. The key to avoiding race conditions is to <strong>find a way to prevent multiple processes from concurrently reading and writing shared data.</strong></p>
+<p>What we need is <strong>mutual exclusion</strong>, which means ensuring that when one process is using shared data, other processes cannot perform the same operation concurrently.</p>
+<p>A part of a process’s time may perform internal calculations or other operations that do not cause race conditions. Some processes may need to access shared memory or shared files or execute actions that could lead to race conditions.</p>
+<p>Accessing shared memory operations is referred to as a <code>critical section</code>.</p>
+<p>As mentioned above, the cause of a <code>race condition</code> is two processes being in the <strong>critical section</strong> at the same time, so to prevent race conditions, we must appropriately arrange conditions such that two processes cannot be in the critical section simultaneously.</p>
+<p>The four conditions for effectively avoiding processes being in the critical section at the same time are:</p>
 <ul>
-<li>任何两个进程不能同时处于其临界区</li>
-<li>不应对CPU的速度和数量做任何假设</li>
-<li>临界区外运行的进程不能阻塞其他进程</li>
-<li>不得使用进程无限等待进入临界区</li>
+<li>No two processes should be in their critical sections simultaneously.</li>
+<li>No assumptions should be made about CPU speed or the number of CPUs.</li>
+<li>Processes running outside the critical section must not block other processes.</li>
+<li>No process should have to wait indefinitely to enter the critical section.</li>
 </ul>
-<h3 id="临界区互斥的几种方案"><a href="#临界区互斥的几种方案" class="headerlink" title="临界区互斥的几种方案"></a>临界区互斥的几种方案</h3><h4 id="单处理系统"><a href="#单处理系统" class="headerlink" title="单处理系统"></a>单处理系统</h4><p>在单处理系统中实现互斥最简单的方法就是使每个进程在刚刚进入临界区之后立即屏蔽所有中断，在离开临界区之前再打开中断。这样就可以保证在当前进入临界区的程序完成之前系统不会调度其他的进程，从而保证进入临界区的只有一个进程。</p>
-<p>但是把屏蔽中断的权利交给用户进程是一个非常不好的选择，如果一个用户进程关闭了中断而忘记了打开，有可能会造成系统的终止(单处理系统)。</p>
-<p>如果是多处理操作系统，则屏蔽终端仅仅对执行关闭的那个CPU有效，其他的CPU仍继续运行，并意味着其上运行的进程也可以进入临界区。</p>
-<h4 id="锁变量"><a href="#锁变量" class="headerlink" title="锁变量"></a>锁变量</h4><p>另一种防止两个进程同时进入临界区软件解决方案是设定一个共享变量——<code>锁变量</code>，其初始值为0，当一个进程想要进入临界区时会先检验这把锁是否锁上(为1)，如果该锁的初始值为0，则该进程将其设置为1，并进入临界区。若这把锁的值已经为1则该进程等待知道锁值变为0再进入临界区。</p>
-<p><strong>注意：</strong>这种方案看起来很好但是也会引发竞态条件。</p>
-<p>如下图：</p>
+<h3 id="Several-Solutions-for-Mutual-Exclusion-in-Critical-Sections"><a href="#Several-Solutions-for-Mutual-Exclusion-in-Critical-Sections" class="headerlink" title="Several Solutions for Mutual Exclusion in Critical Sections"></a>Several Solutions for Mutual Exclusion in Critical Sections</h3><h4 id="Single-Processor-Systems"><a href="#Single-Processor-Systems" class="headerlink" title="Single-Processor Systems"></a>Single-Processor Systems</h4><p>In single-processor systems, the simplest way to implement mutual exclusion is to disable all interrupts immediately after a process enters the critical section and re-enable interrupts before leaving the critical section. This ensures that while the currently executing process completes its critical section, other processes cannot be scheduled.</p>
+<p>However, giving user processes the authority to disable interrupts is a very bad choice. If a user process disables interrupts and forgets to re-enable them, it could result in system termination (in single-processor systems).</p>
+<p>In multi-processor operating systems, however, disabling interrupts only affects the CPU executing the command, while other CPUs continue to run, meaning processes running on them can also enter the critical section.</p>
+<h4 id="Lock-Variables"><a href="#Lock-Variables" class="headerlink" title="Lock Variables"></a>Lock Variables</h4><p>Another software solution to prevent two processes from entering the critical section simultaneously is to set a shared variable—a <code>lock variable</code>—initialized to 0. When a process wants to enter the critical section, it first checks if this lock is set (to 1). If the lock’s initial value is 0, the process sets it to 1 and enters the critical section. If the lock’s value is already 1, then that process waits until the lock value changes to 0 before entering the critical section.</p>
+<p><strong>Note:</strong> This solution seems good, but it can also lead to race conditions.</p>
+<p>As shown in the following illustration:</p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/58483/02.webp"></p>
-<h4 id="严格轮换法"><a href="#严格轮换法" class="headerlink" title="严格轮换法"></a>严格轮换法</h4><p>定义一个变量turn初始值为0，用于记录轮到那个进程进入临界区，并检查或更新共享内存。开始时进程0检查turn发现其值为0时于是进入临界区。进程1也发现其值为0，所以在一个循环中不停的测试turn，看其值何时变为1.</p>
-<p>连续测试一个变量直到某个值出现为止称为<code>忙等待(busy waiting)</code>,这种方式非常浪费CPU时间，通常应该避免。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进程0</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">while</span>(turn!=<span class="number">0</span>)&#123;</span><br><span class="line">	  <span class="built_in">critical_region</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  trun=<span class="number">1</span>;</span><br><span class="line">  <span class="built_in">noncritical_region</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Strict-Alternation-Method"><a href="#Strict-Alternation-Method" class="headerlink" title="Strict Alternation Method"></a>Strict Alternation Method</h4><p>Define a variable <code>turn</code> initialized to 0 to indicate which process is allowed to enter the critical section, for checking or updating shared memory. Initially, process 0 checks <code>turn</code> and finds its value to be 0, allowing it to enter the critical section. Process 1 also sees its value as 0 and enters a loop to repeatedly check <code>turn</code> for when it changes to 1.</p>
+<p>Repeatedly testing a variable until a certain value occurs is termed <code>busy waiting</code>. This approach is very wasteful of CPU time and should generally be avoided.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Process 0</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">while</span>(turn!=<span class="number">0</span>)&#123;</span><br><span class="line">	  <span class="built_in">critical_region</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  turn=<span class="number">1</span>;</span><br><span class="line">  <span class="built_in">noncritical_region</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进程1</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">while</span>(turn!=<span class="number">1</span>)&#123;</span><br><span class="line">	  <span class="built_in">critical_region</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  trun=<span class="number">1</span>;</span><br><span class="line">  <span class="built_in">noncritical_region</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Process 1</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">while</span>(turn!=<span class="number">1</span>)&#123;</span><br><span class="line">	  <span class="built_in">critical_region</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  turn=<span class="number">1</span>;</span><br><span class="line">  <span class="built_in">noncritical_region</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>只有在有理由认为是非常短的情形下，才使用忙等待。</p>
-<p>用于忙等待的锁称为<code>自旋锁(spin lock)</code></p>
-<p>但是这种解法也会出现几个问题：</p>
+<p>Busy waiting should only be used in situations where it is reasonable to assume the wait will be very brief.</p>
+<p>Locks used for busy waiting are known as <code>spin locks</code>.</p>
+<p>However, this solution also has several issues:</p>
 <ol>
-<li>当进程0进入临界区之后，很快退出了临界区并将turn设为1，此时进程0和进程1都在临界区之外执行，但是，如果现在进程0突然结束了临界区外的操作回到循环的开始，此时进程0是无法进入临界区的(因为turn已经被进程0修改为1)，但是此时进程1在进行非临界区的操作，并没有进入临界区，所以turn并不会修改为0，所以进程0只有继续循环，直到进程1将turn设置为0(进程1进入并退出临界区)</li>
-<li>由1可得，在一个进程比另一个慢了很多的情况下，轮流进入临界区不是一个好办法</li>
-<li>上面的问题造成的后果为：进程0被临界区外运行的进程阻塞了</li>
+<li>If process 0 enters the critical section quickly exits and sets <code>turn</code> to 1, at this time both processes 0 and 1 are executing outside the critical section. If process 0 then abruptly resumes its loop from the start, it cannot enter the critical section (because <code>turn</code> has been modified to 1 by process 0). Meanwhile, process 1 is doing non-critical-region work, and does not enter the critical section, causing <code>turn</code> to remain 1. Thus, process 0 will keep looping until process 1 sets <code>turn</code> back to 0 (when it enters and exits the critical section).</li>
+<li>This demonstrates that in cases where one process is significantly slower than another, taking turns in the critical section is not a good strategy.</li>
+<li>These issues lead to the consequence that process 0 gets blocked by the process running outside the critical section.</li>
 </ol>
-<p>虽然使用严格轮换法能够实现避免所有的竞态条件，但是它违反了上面<strong>一个好的避免进程同时处于临界区的四个条件</strong>之条件三。</p>
-<h4 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h4>
+<p>Though using strict alternation can avoid all race conditions, it violates the third condition of the good practices for preventing simultaneous access to the critical section.</p>
+<h4 id="Peterson’s-Algorithm"><a href="#Peterson’s-Algorithm" class="headerlink" title="Peterson’s Algorithm"></a>Peterson’s Algorithm</h4>
     </div>
 
     
@@ -439,7 +439,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -449,7 +449,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -459,37 +459,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/58483/" target="_blank">进程间通信</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/05/17 19:48<br/>
+             <span>Title:</span><a href="/posts/58483/" target="_blank">Operating system interprocess communication</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/05/17 19:48<br/>
              
-             <span>本文字数:</span><span class="page-count">2.1k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">5.8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/58483/" target="_blank" title="进程间通信">https://imzlp.com/posts/58483/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/58483/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/58483/" target="_blank" title="Operating system interprocess communication">https://en.imzlp.com/posts/58483/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/58483/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -509,12 +509,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/7666/" rel="prev" title="关于编译器生成默认构造函数的一些误区">
-      <i class="fa fa-chevron-left"></i> 关于编译器生成默认构造函数的一些误区
+    <a href="/posts/7666/" rel="prev" title="Some misunderstandings about compiler-generated default constructors">
+      <i class="fa fa-chevron-left"></i> Some misunderstandings about compiler-generated default constructors
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/2441/" rel="next" title="C++11的语法糖">
-      C++11的语法糖 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/2441/" rel="next" title="C++11 syntactic sugar">
+      C++11 syntactic sugar <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -585,25 +585,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">竞争条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B4%E7%95%8C%E5%8C%BA%E4%BA%92%E6%96%A5%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">临界区互斥的几种方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.</span> <span class="nav-text">单处理系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%81%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">锁变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A5%E6%A0%BC%E8%BD%AE%E6%8D%A2%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">严格轮换法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Peterson%E7%AE%97%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">Peterson算法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Race-Conditions"><span class="nav-number">1.</span> <span class="nav-text">Race Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Several-Solutions-for-Mutual-Exclusion-in-Critical-Sections"><span class="nav-number">2.</span> <span class="nav-text">Several Solutions for Mutual Exclusion in Critical Sections</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-Processor-Systems"><span class="nav-number">2.1.</span> <span class="nav-text">Single-Processor Systems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock-Variables"><span class="nav-number">2.2.</span> <span class="nav-text">Lock Variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strict-Alternation-Method"><span class="nav-number">2.3.</span> <span class="nav-text">Strict Alternation Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Peterson%E2%80%99s-Algorithm"><span class="nav-number">2.4.</span> <span class="nav-text">Peterson’s Algorithm</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -611,19 +611,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -661,10 +661,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -691,9 +691,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -702,12 +699,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -860,7 +857,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/58483/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/58483/',]
       });
       });
   </script>
@@ -883,12 +880,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

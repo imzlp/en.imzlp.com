@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="近期查看了博客Google Analysic的访问数据，通过流量分析发现一些很有意思的点，能够在一定程度上体现出在使用虚幻引擎进行游戏开发方面的用户特征。文章内的数据样本为本站2021.11.14-2021.11.20一周的访问流量，总体数据量有限不一定能体现出真实趋势，仅供参考。">
+  <meta name="description" content="Recently, I checked the access data of the blog Google Analysic, and through traffic analysis, I found some very interesting points that can reflect, to some extent, the user characteristics in game d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="循迹研究：分析流量数据的二三事">
-<meta property="og:url" content="https://imzlp.com/posts/14354/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="近期查看了博客Google Analysic的访问数据，通过流量分析发现一些很有意思的点，能够在一定程度上体现出在使用虚幻引擎进行游戏开发方面的用户特征。文章内的数据样本为本站2021.11.14-2021.11.20一周的访问流量，总体数据量有限不一定能体现出真实趋势，仅供参考。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Things to Analyze Blog Traffic Data">
+<meta property="og:url" content="https://en.imzlp.com/posts/14354/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Recently, I checked the access data of the blog Google Analysic, and through traffic analysis, I found some very interesting points that can reflect, to some extent, the user characteristics in game d">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121090912.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091045.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091600.webp">
@@ -47,14 +47,14 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121095621.webp">
 <meta property="article:published_time" content="2021-11-21T10:25:13.000Z">
 <meta property="article:modified_time" content="2021-11-21T10:25:13.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="循迹研究">
 <meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121090912.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/14354/">
+<link rel="canonical" href="https://en.imzlp.com/posts/14354/">
 
 
 <script id="page-configurations">
@@ -63,11 +63,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>循迹研究：分析流量数据的二三事 | 循迹研究室</title>
+  <title>Things to Analyze Blog Traffic Data | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -107,7 +107,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -117,7 +117,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -128,7 +128,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -147,24 +147,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -174,7 +174,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -184,7 +184,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -192,14 +192,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -207,26 +207,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -242,7 +242,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -261,7 +261,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -280,12 +280,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -303,27 +303,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/14354/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/14354/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          循迹研究：分析流量数据的二三事<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-11-21-14354.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/14354/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Things to Analyze Blog Traffic Data<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-11-21-14354.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/14354/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Things to Analyze Blog Traffic Data</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">循迹研究：分析流量数据的二三事</sub>
           </div>
         
 
@@ -332,51 +332,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-11-21 10:25 10:25:13:25" itemprop="dateCreated datePublished" datetime="2021-11-21T10:25:13+00:00">2021-11-21 10:25</time>
+              <time title="Created: 2021-11-21 10:25 10:25:13:25" itemprop="dateCreated datePublished" datetime="2021-11-21T10:25:13+00:00">2021-11-21 10:25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">循迹研究</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/14354/" class="post-meta-item leancloud_visitors" data-flag-title="循迹研究：分析流量数据的二三事" title="阅读次数">
+            <span id="/posts/14354/" class="post-meta-item leancloud_visitors" data-flag-title="Things to Analyze Blog Traffic Data" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.4k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -388,61 +388,61 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>近期查看了博客Google Analysic的访问数据，通过流量分析发现一些很有意思的点，能够在一定程度上体现出在使用虚幻引擎进行游戏开发方面的用户特征。文章内的数据样本为本站2021.11.14-2021.11.20一周的访问流量，总体数据量有限不一定能体现出真实趋势，仅供参考。</p>
+        <p>Recently, I checked the access data of the blog Google Analysic, and through traffic analysis, I found some very interesting points that can reflect, to some extent, the user characteristics in game development using Unreal Engine. The data sample in this article is the access traffic from our site for the week of 2021.11.14-2021.11.20. The overall data amount is limited and may not truly reflect real trends, only for reference.</p>
 <span id="more"></span>
 
-<p>我的博客已经持续更新了7年的时间，虽然很早就接入了Google Analysis，但之前流量有限，主要是个人用来当作笔记使用，没有什么统计意义。随着站点内容的更新，访问量也增多，基本每天都有几百PV，每个月五六千。作为一个游戏开发、虚幻引擎、C++这个小众分类的技术站点，这个数据还算可以。</p>
-<h3 id="时间分布"><a href="#时间分布" class="headerlink" title="时间分布"></a>时间分布</h3><p>一天中各个时间段的访问量：</p>
+<p>My blog has been continuously updated for 7 years. Although I integrated Google Analysis quite early, the traffic was limited before, mainly used as personal notes, without statistical significance. As the site content has been updated, traffic has also increased, averaging a few hundred PVs daily, and around five to six thousand monthly. As a niche technical site focused on game development, Unreal Engine, and C++, this data is fairly decent.</p>
+<h3 id="Time-Distribution"><a href="#Time-Distribution" class="headerlink" title="Time Distribution"></a>Time Distribution</h3><p>Traffic volume at different times of the day:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121090912.webp"></p>
-<p>呈峰谷状，约每天10-23点是访问高峰，晚8点出现明显的下降趋势。</p>
-<p>周末有明显的下降趋势：</p>
+<p>It presents a peak-and-valley pattern, with peak visits occurring between 10 AM and 11 PM, and a noticeable decline at 8 PM.</p>
+<p>There is a significant decline trend on weekends:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091045.webp"></p>
-<p>周末就不研究技术，说明双休的公司还是不少的。</p>
-<h3 id="年龄分布"><a href="#年龄分布" class="headerlink" title="年龄分布"></a>年龄分布</h3><p>访客年龄，25-34是主力，35-呈现明显的下降趋势，技术人的中年危机？</p>
+<p>It indicates that technology is not studied on weekends, which suggests that there are still many companies with two-day weekends.</p>
+<h3 id="Age-Distribution"><a href="#Age-Distribution" class="headerlink" title="Age Distribution"></a>Age Distribution</h3><p>Visitor age, with 25-34 being the main group, and a noticeable decline after 35, is this the mid-life crisis for tech people?</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091600.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091808.webp"></p>
-<p>并且，男性访客占绝对主力，占比达到93.6%，可见行业的性别失衡。</p>
-<h3 id="地域分布"><a href="#地域分布" class="headerlink" title="地域分布"></a>地域分布</h3><p>站点访客的地理分布，中国大陆占主力，其次是美、日、韩：</p>
+<p>Moreover, male visitors make up the absolute majority, reaching 93.6%, indicating a gender imbalance in the industry.</p>
+<h3 id="Regional-Distribution"><a href="#Regional-Distribution" class="headerlink" title="Regional Distribution"></a>Regional Distribution</h3><p>The geographical distribution of site visitors, with Mainland China being the majority, followed by the U.S., Japan, and South Korea:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121091951.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121092134.webp"></p>
-<p>大陆部分暂时按下不表，国外访客主要分布北美、北欧、东南亚，比较意外的是南美也有，完全空白的是非洲、朝鲜:)</p>
+<p>I will refrain from discussing the Mainland part for now; foreign visitors are mainly concentrated in North America, Northern Europe, and Southeast Asia, and surprisingly, there are also visitors from South America, while Africa and North Korea are completely blank :)</p>
 <blockquote>
-<p>我博客虽然原始文章是中文的，但是集成了Google Translate，支持英语、日语、韩语、俄语的全文翻译，通过访问量和评论来看，还是有一些国外数据的，当然也不排除VPN用户的情况。</p>
+<p>Although the original articles on my blog are in Chinese, I integrated Google Translate, supporting full-text translation into English, Japanese, Korean, and Russian. Judging by the traffic and comments, there are still some foreign visitors, though we cannot rule out the possibility of VPN users.</p>
 </blockquote>
-<p>国内的访问情况，则主要分布在北上深为核心的东部沿海地区：</p>
+<p>The domestic access situation mainly clusters around the eastern coastal areas centered on Beijing, Shanghai, and Shenzhen:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121092851.webp"></p>
-<p>北上深三个城市占了总访问量的70%。</p>
-<p>其他的二线城市则依次为：广州、杭州、成都、苏州。其余的零星分布在中部城市，比较有意思的是，西北和东北几乎没有。在游戏开发和虚幻引擎方向，一线城市占了绝对主力。</p>
-<h3 id="设备和浏览器"><a href="#设备和浏览器" class="headerlink" title="设备和浏览器"></a>设备和浏览器</h3><p>Chrome占绝对主力：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121093833.webp"></p>
-<p>桌面用户远超移动端，看来很少有手机上看技术内容的习惯：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121093537.webp"></p>
-<p>在移动端访客中，iPhone占比达到70%：</p>
+<p>The three cities of Beijing, Shanghai, and Shenzhen account for 70% of the total traffic.</p>
+<p>Other second-tier cities in order are: Guangzhou, Hangzhou, Chengdu, and Suzhou. The remaining sporadic distributions are in central cities, and interestingly, there is almost none in the northwest and northeast. In game development and Unreal Engine, first-tier cities account for the absolute majority.</p>
+<h3 id="Devices-and-Browsers"><a href="#Devices-and-Browsers" class="headerlink" title="Devices and Browsers"></a>Devices and Browsers</h3><p>Chrome has the absolute majority:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121093833.webp"></p>
+<p>Desktop users far exceed mobile users, indicating that it seems rare to read technical content on mobile:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121093537.webp"></p>
+<p>Among mobile visitors, iPhone accounts for 70%:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121093707.webp"></p>
-<h3 id="流量来源"><a href="#流量来源" class="headerlink" title="流量来源"></a>流量来源</h3><p>通过域名直接访问和用搜索引擎的占比达到83.4%：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121094112.webp"></p>
-<p>其他的流量来源为链接跳转，知乎、github、百度搜索，km：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121094232.webp"></p>
-<p>知乎的主要流量来源是虚幻中国的周报，github则是我的开源项目中的链接，占总体流量的不到10%，但在引荐流量中占比达到60%.</p>
+<h3 id="Traffic-Sources"><a href="#Traffic-Sources" class="headerlink" title="Traffic Sources"></a>Traffic Sources</h3><p>Direct access through the domain and through search engines accounts for 83.4%:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121094112.webp"></p>
+<p>Other traffic sources include link redirections, Zhihu, GitHub, Baidu search, KM:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121094232.webp"></p>
+<p>The main traffic source from Zhihu is the Unreal China weekly report, while GitHub is from the links in my open-source projects, contributing less than 10% to total traffic, but accounting for 60% of referral traffic.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121094514.webp"></p>
-<h3 id="内容趋势"><a href="#内容趋势" class="headerlink" title="内容趋势"></a>内容趋势</h3><p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121095319.webp"></p>
-<p>2021年引入页面统计以来的访问量：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121104004.webp"></p>
-<p>我的热更新方案系列的流量占比最大，其次是工程实践类的文章，新发表的文章有增量优势。</p>
-<p>着陆页分析，访客在热门页面跳转到其他文章的情况：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121095621.webp"></p>
-<p>对内容的相关性要求较高。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>简单分析了博客流量个各方面数据，能够得到一些我博客访客的用户画像：</p>
+<h3 id="Content-Trends"><a href="#Content-Trends" class="headerlink" title="Content Trends"></a>Content Trends</h3><p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121095319.webp"></p>
+<p>Traffic since page statistics were introduced in 2021:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121104004.webp"></p>
+<p>The traffic proportion for my hot update solution series is the largest, followed by articles on engineering practices, with newly published articles having incremental advantages.</p>
+<p>Landing page analysis, the situation where visitors jump from popular pages to other articles:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211121095621.webp"></p>
+<p>There is a high demand for content relevance.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>A simple analysis of the blog traffic across various data points allows us to draw some user profiles of my blog visitors:</p>
 <ol>
-<li>主要用户分布在北上深，其次是广州杭州成都</li>
-<li>主要为男性用户、年龄在25-35居多</li>
-<li>直接访问、搜索引擎贡献大部分流量，知乎虚幻周报、Github项目README引流占比较低。</li>
-<li>访问时间主要分布在10点至20点，能够体现出部分加班情况</li>
-<li>国外访客集中在美、日、韩、东南亚</li>
-<li>热更新、工程技巧方面的文章在网站流量的占比高</li>
-<li>Chrome、Safari、火狐浏览器占比高</li>
-<li>移动端访客iOS远超Android</li>
+<li>The main users are distributed in Beijing, Shanghai, and Shenzhen, followed by Guangzhou, Hangzhou, and Chengdu.</li>
+<li>The majority are male users, predominantly aged 25-35.</li>
+<li>Direct access and search engines contribute most of the traffic, while the Zhihu Unreal Weekly Report and GitHub project README have a low referral share.</li>
+<li>Access time mainly ranges from 10 AM to 8 PM, indicating some overtime scenarios.</li>
+<li>Foreign visitors are concentrated in the U.S., Japan, South Korea, and Southeast Asia.</li>
+<li>Articles on hot updates and engineering techniques account for a high proportion of website traffic.</li>
+<li>Chrome, Safari, and Firefox browsers have high shares.</li>
+<li>Mobile visitors are dominated by iOS over Android.</li>
 </ol>
-<p>由数据分析得出的结论：</p>
+<p>Conclusions drawn from data analysis:</p>
 <ol>
-<li>虚幻引擎方向的游戏开发，一线城市机会更多，其次是杭州、成都</li>
-<li>35岁用户占比低，需要警惕技术人的中年危机</li>
-<li>对引擎工程实践和技巧方面的需求高，可持续发表此类文章</li>
-<li>着陆页引流对内容相关性要求高，成系列的内容有优势</li>
+<li>In game development focused on Unreal Engine, first-tier cities have more opportunities, followed by Hangzhou and Chengdu.</li>
+<li>The low proportion of users aged 35 requires attention to the mid-life crisis of tech professionals.</li>
+<li>There is a high demand for practical engineering and technique articles, making it feasible to continuously publish such content.</li>
+<li>Landing page redirection requires high content relevance, and series content has advantages.</li>
 </ol>
-<p>通过数据分析确实能得到一些有价值的数据，数据指导实践，与访客诸君共勉。</p>
+<p>Through data analysis, valuable insights can indeed be obtained, guiding practice, and I encourage all visitors to continue learning together.</p>
 
     </div>
 
@@ -453,7 +453,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -463,7 +463,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -473,37 +473,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/14354/" target="_blank">循迹研究：分析流量数据的二三事</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/11/21 10:25<br/>
+             <span>Title:</span><a href="/posts/14354/" target="_blank">Things to Analyze Blog Traffic Data</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/11/21 10:25<br/>
              
-             <span>本文字数:</span><span class="page-count">1.4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">4.4k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/14354/" target="_blank" title="循迹研究：分析流量数据的二三事">https://imzlp.com/posts/14354/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/14354/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/14354/" target="_blank" title="Things to Analyze Blog Traffic Data">https://en.imzlp.com/posts/14354/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/14354/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -524,12 +524,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/24854/" rel="prev" title="循迹研究：我的2021年度总结">
-      <i class="fa fa-chevron-left"></i> 循迹研究：我的2021年度总结
+    <a href="/posts/24854/" rel="prev" title="My 2021 Annual Summary">
+      <i class="fa fa-chevron-left"></i> My 2021 Annual Summary
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/17658/" rel="next" title="UE5：Game Feature预研">
-      UE5：Game Feature预研 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/17658/" rel="next" title="UE5: Game Feature Tech Preview">
+      UE5: Game Feature Tech Preview <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -600,25 +600,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">时间分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B4%E9%BE%84%E5%88%86%E5%B8%83"><span class="nav-number">2.</span> <span class="nav-text">年龄分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%9F%9F%E5%88%86%E5%B8%83"><span class="nav-number">3.</span> <span class="nav-text">地域分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">设备和浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%9D%A5%E6%BA%90"><span class="nav-number">5.</span> <span class="nav-text">流量来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%B6%8B%E5%8A%BF"><span class="nav-number">6.</span> <span class="nav-text">内容趋势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Distribution"><span class="nav-number">1.</span> <span class="nav-text">Time Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Age-Distribution"><span class="nav-number">2.</span> <span class="nav-text">Age Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regional-Distribution"><span class="nav-number">3.</span> <span class="nav-text">Regional Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Devices-and-Browsers"><span class="nav-number">4.</span> <span class="nav-text">Devices and Browsers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traffic-Sources"><span class="nav-number">5.</span> <span class="nav-text">Traffic Sources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Trends"><span class="nav-number">6.</span> <span class="nav-text">Content Trends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">7.</span> <span class="nav-text">Summary</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -626,19 +626,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -676,10 +676,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -706,9 +706,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -717,12 +714,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -875,7 +872,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/14354/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/14354/',]
       });
       });
   </script>
@@ -898,12 +895,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

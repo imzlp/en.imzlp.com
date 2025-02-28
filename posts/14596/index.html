@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="作为一个cpper，其实早就用惯了GCC这样的工具，不过不得不说啊，GCC的错误信息是真烂啊，虽然有错误提示，但是也经常需要自己肉眼Debug才能搞明白…现在福音来了，Clang的信息精准度不知道比GCC高到哪里去了。">
+  <meta name="description" content="As a C++ programmer, I have long been accustomed to using tools like GCC, but I must say that GCC’s error messages are terrible. Although there are error prompts, it often requires manual debugging to">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置SublimeText为C&#x2F;C++的轻量级IDE">
-<meta property="og:url" content="https://imzlp.com/posts/14596/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="作为一个cpper，其实早就用惯了GCC这样的工具，不过不得不说啊，GCC的错误信息是真烂啊，虽然有错误提示，但是也经常需要自己肉眼Debug才能搞明白…现在福音来了，Clang的信息精准度不知道比GCC高到哪里去了。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Configure SublimeText as a lightweight IDE for C&#x2F;C++">
+<meta property="og:url" content="https://en.imzlp.com/posts/14596/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="As a C++ programmer, I have long been accustomed to using tools like GCC, but I must say that GCC’s error messages are terrible. Although there are error prompts, it often requires manual debugging to">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/14596/windows-clang-v.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/14596/windows-mingw-gcc-v.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/14596/clang-hello-right.webp">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/14596/compile-system-test-2.webp">
 <meta property="article:published_time" content="2015-12-26T21:54:01.000Z">
 <meta property="article:modified_time" content="2017-04-10T18:18:34.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="SublimeText">
 <meta property="article:tag" content="Clang">
@@ -50,7 +50,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/14596/windows-clang-v.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/14596/">
+<link rel="canonical" href="https://en.imzlp.com/posts/14596/">
 
 
 <script id="page-configurations">
@@ -59,11 +59,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>配置SublimeText为C/C++的轻量级IDE | 循迹研究室</title>
+  <title>Configure SublimeText as a lightweight IDE for C/C++ | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -103,7 +103,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -113,7 +113,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -124,7 +124,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -143,24 +143,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -180,7 +180,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -188,14 +188,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -203,26 +203,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -238,7 +238,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -257,7 +257,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -276,12 +276,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -299,27 +299,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/14596/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/14596/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          配置SublimeText为C/C++的轻量级IDE<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2015-12-26-14596.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/14596/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Configure SublimeText as a lightweight IDE for C/C++<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2015-12-26-14596.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/14596/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Configure SublimeText as a lightweight IDE for C/C++</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">配置SublimeText为C/C++的轻量级IDE</sub>
           </div>
         
 
@@ -328,54 +328,54 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2015-12-26 21:54 21:54:01:54" itemprop="dateCreated datePublished" datetime="2015-12-26T21:54:01+00:00">2015-12-26 21:54</time>
+              <time title="Created: 2015-12-26 21:54 21:54:01:54" itemprop="dateCreated datePublished" datetime="2015-12-26T21:54:01+00:00">2015-12-26 21:54</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2017-04-10 18:18 18:18:34:18" itemprop="dateModified" datetime="2017-04-10T18:18:34+00:00">2017-04-10 18:18</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2017-04-10 18:18 18:18:34:18" itemprop="dateModified" datetime="2017-04-10T18:18:34+00:00">2017-04-10 18:18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">编程工具</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/SublimeText/" itemprop="url" rel="index"><span itemprop="name">SublimeText</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/14596/" class="post-meta-item leancloud_visitors" data-flag-title="配置SublimeText为C/C++的轻量级IDE" title="阅读次数">
+            <span id="/posts/14596/" class="post-meta-item leancloud_visitors" data-flag-title="Configure SublimeText as a lightweight IDE for C/C++" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.2k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>16 mins.</span>
             </span>
 
         </div>
@@ -387,109 +387,121 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>作为一个cpper，其实早就用惯了GCC这样的工具，不过不得不说啊，GCC的错误信息是真烂啊，虽然有错误提示，但是也经常需要自己肉眼Debug才能搞明白…现在福音来了，<code>Clang</code>的信息精准度不知道比GCC高到哪里去了。</p>
+        <p>As a C++ programmer, I have long been accustomed to using tools like GCC, but I must say that GCC’s error messages are terrible. Although there are error prompts, it often requires manual debugging to understand them… Now, the good news is here, the accuracy of <code>Clang</code>‘s messages is incomparably better than that of GCC.</p>
 <span id="more"></span>
-<p>但是Clang在编译C/C++程序的时候 ，后端是MinGW，所以两者都要存在的，这也是正合我意。</p>
+<p>However, Clang relies on MinGW as its backend when compiling C/C++ programs, so both need to exist, which is just fine by me.</p>
 <p><strong>2016.04.09-Upgrade</strong></p>
 <ol>
-<li>解决Sublime Text遇到编译错误时会输出系统PATH路径的问题（终于找到根源了）。</li>
-<li>配置Clang++和g++同时编译，且在编译出错时隐藏g++的提示信息(使用<code>1&gt;nul</code>)</li>
-<li>配置gprof来分析代码(这也是上面使用clang和g++同同时编译代码的原因)</li>
-<li>使用SublimeClang进行编码提示和错误提醒</li>
+<li>Resolved the issue where Sublime Text outputs the system PATH when encountering compilation errors (finally found the root cause).</li>
+<li>Configured Clang++ and g++ to compile simultaneously, and suppressed g++’s prompt messages when compilation fails (using <code>1&gt;nul</code>).</li>
+<li>Configured gprof to analyze code (which is also the reason for using both clang and g++ to compile simultaneously).</li>
+<li>Used SublimeClang for coding hints and error notifications.</li>
 </ol>
-<h3 id="Mingw-Clang环境配置"><a href="#Mingw-Clang环境配置" class="headerlink" title="Mingw/+Clang环境配置"></a>Mingw/+Clang环境配置</h3><p>首先可以在这里下载<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1hrrHtQG">Clang(LLVM-3.7.0-win64)</a>和<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1qXuOONy">MinGW</a>(x86_64-5.2.0-POSIX-SEH-RT_V4-REV1)。</p>
+<h3 id="Mingw-Clang-Environment-Configuration"><a href="#Mingw-Clang-Environment-Configuration" class="headerlink" title="Mingw/+Clang Environment Configuration"></a>Mingw/+Clang Environment Configuration</h3><p>First, you can download <a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1hrrHtQG">Clang (LLVM-3.7.0-win64)</a> and <a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1qXuOONy">MinGW</a> (x86_64-5.2.0-POSIX-SEH-RT_V4-REV1) here.</p>
 <ol>
-<li>安装完Clang（LLVM）之后添加至系统环境变量(PATH路径)。</li>
-<li>安装WinGW.</li>
-<li>将<code>\MinGW\bin</code>和<code>\MinGW\x86_64-w64-mingw32\include</code>添加至系统环境变量(PATH路径)</li>
-<li>注销/重启之后可试一下：<code>clang -v</code>和<code>gcc/g++ -v</code>，如下图才对。</li>
+<li>After installing Clang (LLVM), add it to the system environment variable (PATH).</li>
+<li>Install WinGW.</li>
+<li>Add <code>\MinGW\bin</code> and <code>\MinGW\x86_64-w64-mingw32\include</code> to the system environment variable (PATH).</li>
+<li>After logging off/restarting, try: <code>clang -v</code> and <code>gcc/g++ -v</code>, as shown in the images below.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/windows-clang-v.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/windows-mingw-gcc-v.webp"></p>
-<p>现在我们可以先试一下。<br>先祭上代码：</p>
+<p>Now we can give it a try.<br>Let’s start with some code:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">  cout&lt;&lt;&quot;HelloWorld&quot;&lt;&lt;endl;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="横向对比Clang和GCC"><a href="#横向对比Clang和GCC" class="headerlink" title="横向对比Clang和GCC"></a>横向对比Clang和GCC</h3><p>先用Clang++试下：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/clang-hello-right.webp"><br>然后故意删掉一个;试试，为了对比我也用g++编译一下：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/clang-contrast-gcc.webp"><br>额，我宣布G++完败。</p>
-<p>再来试个代码量稍微多一点的：<br>Clang：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/big-clang-compile-code.webp"></p>
-<p>G++：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/big-gcc-compile-code.webp"><br>啊，让我冷静一下，真是回不去的体验。</p>
-<p>下面进入第二部分：</p>
-<h3 id="配置Sublime-Text使用clang编译代码"><a href="#配置Sublime-Text使用clang编译代码" class="headerlink" title="配置Sublime Text使用clang编译代码"></a>配置Sublime Text使用clang编译代码</h3><p>其实之前一直都用sublime默认的build系统来编译代码，但是升级到Sublime Text 3之后出现了很多奇怪的问题，<del>比如下面就是我最难忍的</del>（<strong>已解决</strong>）：</p>
+<h3 id="Horizontal-Comparison-of-Clang-and-GCC"><a href="#Horizontal-Comparison-of-Clang-and-GCC" class="headerlink" title="Horizontal Comparison of Clang and GCC"></a>Horizontal Comparison of Clang and GCC</h3><p>First, let’s try using Clang++:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/clang-hello-right.webp"><br>Then, let’s deliberately delete a semicolon and check, and to compare, I’ll also compile it with g++:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/clang-contrast-gcc.webp"><br>Well, I declare G++ completely defeated.</p>
+<p>Next, let’s try a slightly larger piece of code:<br>Clang:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/big-clang-compile-code.webp"></p>
+<p>G++:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/big-gcc-compile-code.webp"><br>Ah, let me calm down; this is truly an unforgettable experience.</p>
+<p>Now we move on to the second part:</p>
+<h3 id="Configuring-Sublime-Text-to-Use-Clang-for-Code-Compilation"><a href="#Configuring-Sublime-Text-to-Use-Clang-for-Code-Compilation" class="headerlink" title="Configuring Sublime Text to Use Clang for Code Compilation"></a>Configuring Sublime Text to Use Clang for Code Compilation</h3><p>Previously, I always used Sublime’s default build system to compile code, but after upgrading to Sublime Text 3, many strange issues arose, <del>for instance, the most unbearable below</del> (<strong>Resolved</strong>):</p>
 <blockquote>
-<p>解决方案：<br>1 找到sublime Text3安装路径下的Default.sublime-package，如~Sublime Text 3\Packages\Default.sublime-package<br>2 解压Default.sublime-package包（改下后缀名为zip或rar即可解压），并提取其中的exec.py文件<br>3 将该exec.py文件放到C:\Users{UserName}\AppData\Roaming\Sublime Text 3\Packages 路径下<br>4 修改exec.py文件，将文件中的<br>self.append_string(proc, self.debug_text)<br>注释掉<br>5 重启Sublime Text，即可解决。</p>
+<p>Solution:</p>
 </blockquote>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/sublime-output-system-path.webp"><br>当编译错误时会遍历出出系统的PATH路径，重写了多次build规则无果之后，我选择狗带，忍了。但是，一直忍哪是我的Style，趁着今天折腾Clang的当口，再来折腾一下。<br>其实Sublime Text 3中C/C++默认的构建系统也是无比弱鸡的，程序输出会捕获到Sublime Text的窗口中，这样导致不能运行时输入信息的，遇到scanf/cin就挂了。所以，大部分的处理办法是使用默认的编译系统编译代码和捕获错误信息，如果编译成功使用cmd运行可执行文件。<br>所以这个球又踢回来了，我不想让他在sublime Text窗口显示错误（其实是错误爆出的PATH信息），我要让它使用一个cmd窗口显示编译/错误信息，一个窗口运行程序。<br>想法有了，本着不重复造轮子的心态我去Google了一下，貌似没人提到过这个问题，还是自己造个轮子吧。<br>Google到了一份关于Sublime Text构建系统的<a target="_blank" rel="noopener" href="https://sublime-undocs-zh.readthedocs.org/en/latest/reference/build_systems.html">文档</a>，除却基本语法外，构建系统变量这东西最重要：</p>
+<ol>
+<li>Locate the Default.sublime-package under the Sublime Text 3 installation path, e.g., ~Sublime Text 3\Packages\Default.sublime-package.</li>
+<li>Extract the Default.sublime-package file (just change the extension to zip or rar to extract) and obtain the exec.py file.</li>
+<li>Place the exec.py file in the path C:\Users{UserName}\AppData\Roaming\Sublime Text 3\Packages.</li>
+<li>Comment out the line <code>self.append_string(proc, self.debug_text)</code> in exec.py.</li>
+<li>Restart Sublime Text, and the issue is resolved.</li>
+</ol>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/sublime-output-system-path.webp"><br>When a compilation error occurs, it traverses the system PATH, and after rewriting the build rules multiple times without results, I chose to endure. However, enduring is not my style, so while messing around with Clang today, I decided to tackle this issue.</p>
+<p>Actually, the default build system for C/C++ in Sublime Text 3 is also incredibly weak; the program output gets captured in Sublime Text’s window, making it impossible to run and input information. If scanf/cin is encountered, it crashes. So, most solutions involve using the default compilation system to compile the code and capture error messages, running the executable file via cmd if the compilation succeeds.</p>
+<p>Thus, the ball is back in my court; I don’t want errors (which are actually the PATH information) to display in the Sublime Text window. I want to use a cmd window to show compilation/errors and another to run the program. </p>
+<p>Having conceived this idea, I did some Googling with the mindset of not reinventing the wheel, but it seems nobody mentioned this issue, so I’ll have to create a new solution myself.</p>
+<p>I found a document about the Sublime Text build system <a target="_blank" rel="noopener" href="https://sublime-undocs-zh.readthedocs.org/en/latest/reference/build_systems.html">here</a>, and apart from basic syntax, build system variables are essential:</p>
 <table>
 <thead>
 <tr>
-<th align="center">构建系统变量</th>
-<th align="center">含义</th>
+<th align="center">Build System Variable</th>
+<th align="center">Meaning</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">$file_path</td>
-<td align="center">当前文件目录，比如，C:Files.</td>
+<td align="center">Current file directory, e.g., C:Files.</td>
 </tr>
 <tr>
 <td align="center">$file</td>
-<td align="center">当前文件完整路径，比如，C:FilesChapter1.txt.</td>
+<td align="center">Full path of the current file, e.g., C:FilesChapter1.txt.</td>
 </tr>
 <tr>
 <td align="center">$file_name</td>
-<td align="center">当前文件的完整文件名，比如，Chapter1.txt.</td>
+<td align="center">Full filename of the current file, e.g., Chapter1.txt.</td>
 </tr>
 <tr>
 <td align="center">$file_extension</td>
-<td align="center">当前文件的扩展名，比如，txt.</td>
+<td align="center">Extension of the current file, e.g., txt.</td>
 </tr>
 <tr>
 <td align="center">$file_base_name</td>
-<td align="center">当前文件的名称，比如，Document.</td>
+<td align="center">Name of the current file, e.g., Document.</td>
 </tr>
 <tr>
 <td align="center">$packages</td>
-<td align="center"><em>Packages</em>目录的完整路径。</td>
+<td align="center">Full path of the <em>Packages</em> directory.</td>
 </tr>
 <tr>
 <td align="center">$project</td>
-<td align="center">当前project文件完整路径.</td>
+<td align="center">Full path of the current project file.</td>
 </tr>
 <tr>
 <td align="center">$project_path</td>
-<td align="center">当前porject文件所在的完整目录。</td>
+<td align="center">Full directory of the current project file.</td>
 </tr>
 <tr>
 <td align="center">$project_name</td>
-<td align="center">project文件的完整文件名。</td>
+<td align="center">Full filename of the project file.</td>
 </tr>
 <tr>
 <td align="center">$project_extension</td>
-<td align="center">当前project文件的扩展名。</td>
+<td align="center">Extension of the current project file.</td>
 </tr>
 <tr>
 <td align="center">$project_base_name</td>
-<td align="center">当前project文件的基本文件名。</td>
+<td align="center">Basic filename of the current project file.</td>
 </tr>
 </tbody></table>
-<p>更多的资料点这里——<a target="_blank" rel="noopener" href="https://sublime-undocs-zh.readthedocs.org/en/latest/reference/build_systems.html">Sublime Text构建系统</a>。</p>
-<p>现在有了Sublime构建系统变量名还有基本语法，按照以上的思路，要实现一键启动两个终端实现编译/运行的效果首先我们要解决以下几个问题：</p>
+<p>For more information, click here——<a target="_blank" rel="noopener" href="https://sublime-undocs-zh.readthedocs.org/en/latest/reference/build_systems.html">Sublime Text Build System</a>.</p>
+<p>Now that we have Sublime’s build system variable names and basic syntax, to achieve one-click launching of two terminals for compilation/running, we need to solve the following issues:</p>
 <ol>
-<li>按下Ctrl+B之后，构建系统cd到源文件所在目录</li>
-<li>在此目录下使用clang编译源文件</li>
-<li>编译完成之后启动程序（一定要编译完成之后，因为如果没有编译或者编译出错后面是没有程序可运行的）</li>
+<li>When Ctrl+B is pressed, the build system should cd to the source file’s directory.</li>
+<li>In this directory, use clang to compile the source file.</li>
+<li>After compilation, launch the program (it must compile successfully first, as there is no executable to run if compilation fails).</li>
 </ol>
-<p>其实前两步还好说，可以使用&amp;把两个语句连起来。<br>手动效果就是这样的：<br><code>cd C:\Users\visionsmile\Desktop &amp; clang++ -o test.exe test.cc -std=c++11 -w</code><br>所以我在上面说构建系统变量最重要啊。<br>使用构建系统变量之后，可以写成这样：<br><code>cd $file_path &amp; clang++ -o $file_base_name.exe $file_name -std=c++11 -w</code><br>再按照语法整理一下(按下Ctrl+B之后启动一个新窗口用来编译代码)：<br><code>&quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/k&quot;, &quot;cd&quot;, &quot;$file_path&quot;, &quot;&amp;&quot;, &quot;clang++&quot;, &quot;-o&quot;, &quot;$&#123;file_base_name&#125;.exe&quot;, &quot;$&#123;file_name&#125;&quot;, &quot;-std=c++11&quot;]</code><br>期间折腾的不少，这里省略了。思路就是这样的。</p>
-<p>说说遇到的问题：没想到怎么使用构建系统的语法判断编译成功了没有，所以，如果编译和运行写在一起如果编译中遇到错误，负责执行的窗口也是会执行的，不过因为没有编译成功可执行文件，会报错的，强迫症怎么能忍，我选了个折衷的方案：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/choose-compile-system.webp"><br>通过选择，执行哪一个方案，第一个是编译第二个是启动程序。</p>
-<p>下面贴上整个配置（<strong>已更新</strong>）：</p>
+<p>Actually, the first two steps are not too difficult; we can use &amp; to connect the two statements.<br>The manual command looks like this:<br><code>cd C:\Users\visionsmile\Desktop &amp; clang++ -o test.exe test.cc -std=c++11 -w</code><br>So, I said that build system variables are the most important.</p>
+<p>Using build system variables, we can write it like this:<br><code>cd $file_path &amp; clang++ -o $file_base_name.exe $file_name -std=c++11 -w</code><br>Then, we can organize it according to the syntax (launch a new window to compile the code when Ctrl+B is pressed):<br><code>&quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/k&quot;, &quot;cd&quot;, &quot;$file_path&quot;, &quot;&amp;&quot;, &quot;clang++&quot;, &quot;-o&quot;, &quot;$&#123;file_base_name&#125;.exe&quot;, &quot;$&#123;file_name&#125;&quot;, &quot;-std=c++11&quot;]</code><br>There were a lot of issues along the way, but I will skip them. The idea is like this.</p>
+<p>Let’s talk about the problem I encountered: I didn’t realize how to use the build system’s syntax to check whether the compilation was successful. So, if compilation and running are written together and compilation encounters an error, the executing window would also still execute. However, since the executable file doesn’t exist due to the compilation failure, an error will be thrown, and my perfectionism can’t tolerate that, so I chose a compromise solution:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/choose-compile-system.webp"><br>By making a choice, I can execute either plan; the first is compile, and the second is run the program.</p>
+<p>Here’s the complete configuration (<strong>Updated</strong>):</p>
 <blockquote>
-<p>Build——是使用Clang++和g++同时编译<br>Build - RUN——运行Clang++编译的版本<br>Build - G++——运行G++编译的版本<br>Build - G++ Profiler——分析代码</p>
+<p>Build——uses Clang++ and g++ to compile simultaneously.<br>Build - RUN——runs the version compiled by Clang++.<br>Build - G++——runs the version compiled by G++.<br>Build - G++ Profiler——analyzes the code.</p>
 </blockquote>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/20160409upgrade-cpp-build.webp"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     &quot;cmd&quot;: [&quot;clang++&quot;, &quot;-o&quot;, &quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;_clangxx.exe&quot;, &quot;$&#123;file&#125;&quot;, &quot;-std=c++11&quot;, &quot;-w&quot;,&quot;&amp;&quot;,&quot;g++&quot;, &quot;-o&quot;, &quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;_gxx.exe&quot;,&quot;$&#123;file&#125;&quot;, &quot;-std=c++11&quot;, &quot;-w&quot;, &quot;-pg&quot;,&quot;2&gt;nul&quot;],</span><br><span class="line">     &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,</span><br><span class="line">     &quot;working_dir&quot;: &quot;$&#123;file_path&#125;&quot;,</span><br><span class="line">     &quot;selector&quot;: &quot;source.c, source.c++&quot;,</span><br><span class="line">     &quot;shell&quot;: true,</span><br><span class="line">     &quot;variants&quot;:</span><br><span class="line">     [</span><br><span class="line">          &#123;</span><br><span class="line">               &quot;name&quot;: &quot;Run&quot;,</span><br><span class="line">                  &quot;cmd&quot;: [&quot;start&quot;,&quot;console_runner&quot;, &quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;_clangxx.exe&quot;]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">               &quot;name&quot;: &quot;G++ Run&quot;,</span><br><span class="line">                      &quot;cmd&quot;: [&quot;start&quot;,&quot;console_runner&quot;, &quot;$&#123;file_path&#125;/$&#123;file_base_name&#125;_gxx.exe&quot;]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">                &quot;name&quot;: &quot;G++ Profiler&quot;,</span><br><span class="line">                   &quot;cmd&quot;: [&quot;gprof&quot;,&quot;-b&quot;, &quot;$&#123;file_base_name&#125;_gxx.exe&quot;,&quot;gmon.out&quot;,&quot;&gt;&quot;,&quot;$&#123;file_base_name&#125;_prof.txt&quot;, &quot;&amp;&quot;, &quot;C:\\Program Files\\SystemTools\\Sublime Text 3\\sublime_text.exe&quot;, &quot;$&#123;file_base_name&#125;_prof.txt&quot;]</span><br><span class="line">          &#125;</span><br><span class="line">     ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>测试截图：</strong><br>有错误时编译：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/compile-system-test-1.webp"><br>修复错误，编译成功后运行：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/compile-system-test-2.webp"></p>
-<h3 id="使用SublimeClang进行代码提示"><a href="#使用SublimeClang进行代码提示" class="headerlink" title="使用SublimeClang进行代码提示"></a>使用SublimeClang进行代码提示</h3><p>网上已经有很多教程了，不过很多都是基于4.X的win32的MinGW，在我使用这个版本Mingw(gcc version 5.2.0 (x86_64-posix-seh-rev1)库的路径是和4.X的不一样的，下面直接扔上我的配置文件吧。<br>另：SublimeClang可以在<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1o8iqViE">这里</a>下载。<br><strong>注意：所附链接的SublimeClang必须使用32bit的SublimeText，64bit的无法使用。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;show_output_panel&quot;: false,</span><br><span class="line">    &quot;dont_prepend_clang_includes&quot;: true,</span><br><span class="line">    &quot;inhibit_sublime_completions&quot;: false,</span><br><span class="line">    &quot;hide_output_when_empty&quot;: true,</span><br><span class="line">    &quot;show_visual_error_marks&quot;: true,</span><br><span class="line">    &quot;options&quot;:</span><br><span class="line">    [</span><br><span class="line">    &quot;-m32&quot;,</span><br><span class="line">    //&quot;-w&quot;,</span><br><span class="line">    &quot;-ferror-limit=9&quot;,</span><br><span class="line">    &quot;-fgnu-runtime&quot;,</span><br><span class="line">    &quot;-fms-extensions&quot;,</span><br><span class="line">    &quot;-nostdinc&quot;,</span><br><span class="line">    // &quot;-std=c++11&quot;,</span><br><span class="line">    &quot;-std=gnu++11&quot;,</span><br><span class="line">    // &quot;-std=g++11&quot;,</span><br><span class="line">    // 此处填写自己pc中的实际位置和版本号.</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include\\c++&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\lib\\gcc\\x86_64-w64-mingw32\\5.2.0\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include\\c++\\x86_64-w64-mingw32&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\lib\\gcc\\x86_64-w64-mingw32\\5.2.0\\include&quot;,</span><br><span class="line">    &quot;-D__GNUC__=4&quot;,</span><br><span class="line">    &quot;-D__GNUC_MINOR__=2&quot;,</span><br><span class="line">    &quot;-D__GNUC_PATCHLEVEL__=1&quot;,</span><br><span class="line">    &quot;-D__GXX_ABI_VERSION__=1002&quot;,</span><br><span class="line">    &quot;-Di386=1&quot;,</span><br><span class="line">    &quot;-D__i386=1&quot;,</span><br><span class="line">    &quot;-D__i386__=1&quot;,</span><br><span class="line">    &quot;-DWIN32=1&quot;,</span><br><span class="line">    &quot;-D_WIN32=1&quot;,</span><br><span class="line">    &quot;-D__WIN32=1&quot;,</span><br><span class="line">    &quot;-D__WIN32__=1&quot;,</span><br><span class="line">    &quot;-DWINNT=1&quot;,</span><br><span class="line">    &quot;-D__WINNT=1&quot;,</span><br><span class="line">    &quot;-D__WINNT__=1&quot;,</span><br><span class="line">    &quot;-D_X86_=1&quot;,</span><br><span class="line">    &quot;-D__MSVCRT__=1&quot;,</span><br><span class="line">    &quot;-D__MINGW32__=1&quot;,</span><br><span class="line">    &quot;-D__STDC_VERSION__=201112L&quot;</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>后记</strong><br>其实这个是没什么技术含量的，这里写下来主要是想提醒自己，多看文档多看文档多看文档，比不明所以地Google或自己埋头造轮子强的太多了。</p>
-<p>我的配置文件可以在这里下载：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1dFJNcf3">SublimeText</a></p>
+<p><strong>Test Screenshots:</strong><br>Compilation with errors:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/compile-system-test-1.webp"><br>Fixing the errors leads to successful compilation and running:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/14596/compile-system-test-2.webp"></p>
+<h3 id="Using-SublimeClang-for-Code-Suggestions"><a href="#Using-SublimeClang-for-Code-Suggestions" class="headerlink" title="Using SublimeClang for Code Suggestions"></a>Using SublimeClang for Code Suggestions</h3><p>There are many tutorials online, but many are based on the 4.X version of Win32’s MinGW. The version of Mingw (gcc version 5.2.0 (x86_64-posix-seh-rev1)) I use has a library path different from 4.X. Below, I’ll directly throw up my configuration file.<br>Note: The SublimeClang linked must be used with 32-bit Sublime Text; 64-bit cannot be used.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;show_output_panel&quot;: false,</span><br><span class="line">    &quot;dont_prepend_clang_includes&quot;: true,</span><br><span class="line">    &quot;inhibit_sublime_completions&quot;: false,</span><br><span class="line">    &quot;hide_output_when_empty&quot;: true,</span><br><span class="line">    &quot;show_visual_error_marks&quot;: true,</span><br><span class="line">    &quot;options&quot;:</span><br><span class="line">    [</span><br><span class="line">    &quot;-m32&quot;,</span><br><span class="line">    //&quot;-w&quot;,</span><br><span class="line">    &quot;-ferror-limit=9&quot;,</span><br><span class="line">    &quot;-fgnu-runtime&quot;,</span><br><span class="line">    &quot;-fms-extensions&quot;,</span><br><span class="line">    &quot;-nostdinc&quot;,</span><br><span class="line">    // &quot;-std=c++11&quot;,</span><br><span class="line">    &quot;-std=gnu++11&quot;,</span><br><span class="line">    // &quot;-std=g++11&quot;,</span><br><span class="line">    // Fill in the actual location and version number for your PC here.</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include\\c++&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\lib\\gcc\\x86_64-w64-mingw32\\5.2.0\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\x86_64-w64-mingw32\\include\\c++\\x86_64-w64-mingw32&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\include&quot;,</span><br><span class="line">    &quot;-isystem&quot;, &quot;C:\\Program Files\\CompileBuild\\MinGW\\lib\\gcc\\x86_64-w64-mingw32\\5.2.0\\include&quot;,</span><br><span class="line">    &quot;-D__GNUC__=4&quot;,</span><br><span class="line">    &quot;-D__GNUC_MINOR__=2&quot;,</span><br><span class="line">    &quot;-D__GNUC_PATCHLEVEL__=1&quot;,</span><br><span class="line">    &quot;-D__GXX_ABI_VERSION__=1002&quot;,</span><br><span class="line">    &quot;-Di386=1&quot;,</span><br><span class="line">    &quot;-D__i386=1&quot;,</span><br><span class="line">    &quot;-D__i386__=1&quot;,</span><br><span class="line">    &quot;-DWIN32=1&quot;,</span><br><span class="line">    &quot;-D_WIN32=1&quot;,</span><br><span class="line">    &quot;-D__WIN32=1&quot;,</span><br><span class="line">    &quot;-D__WIN32__=1&quot;,</span><br><span class="line">    &quot;-DWINNT=1&quot;,</span><br><span class="line">    &quot;-D__WINNT=1&quot;,</span><br><span class="line">    &quot;-D__WINNT__=1&quot;,</span><br><span class="line">    &quot;-D_X86_=1&quot;,</span><br><span class="line">    &quot;-D__MSVCRT__=1&quot;,</span><br><span class="line">    &quot;-D__MINGW32__=1&quot;,</span><br><span class="line">    &quot;-D__STDC_VERSION__=201112L&quot;</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Postscript</strong><br>Actually, this doesn’t have much technical content. I write this down mainly to remind myself to read more documentation. Reading documentation is much better than aimlessly Googling or burying myself in building a wheel. </p>
+<p>My configuration file can be downloaded here: <a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1dFJNcf3">SublimeText</a></p>
 
     </div>
 
@@ -500,7 +512,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -510,7 +522,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -520,39 +532,39 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/14596/" target="_blank">配置SublimeText为C/C++的轻量级IDE</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2015/12/26 21:54<br/>
+             <span>Title:</span><a href="/posts/14596/" target="_blank">Configure SublimeText as a lightweight IDE for C/C++</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2015/12/26 21:54<br/>
              
-              <span>更新时间:</span>2017/04/10 18:18<br/>
+              <span>Update Date:</span>2017/04/10 18:18<br/>
              
-             <span>本文字数:</span><span class="page-count">3.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">6.2k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/14596/" target="_blank" title="配置SublimeText为C/C++的轻量级IDE">https://imzlp.com/posts/14596/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/14596/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/14596/" target="_blank" title="Configure SublimeText as a lightweight IDE for C/C++">https://en.imzlp.com/posts/14596/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/14596/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -574,12 +586,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/38656/" rel="prev" title="C++中错用宏定义造成的二义性">
-      <i class="fa fa-chevron-left"></i> C++中错用宏定义造成的二义性
+    <a href="/posts/38656/" rel="prev" title="Ambiguity caused by incorrect use of macro definitions in C++">
+      <i class="fa fa-chevron-left"></i> Ambiguity caused by incorrect use of macro definitions in C++
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/8531/" rel="next" title="使用Wolfram|Alpha求积分">
-      使用Wolfram|Alpha求积分 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/8531/" rel="next" title="Using Wolfram|Alpha to Evaluate Integrals">
+      Using Wolfram|Alpha to Evaluate Integrals <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -650,25 +662,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mingw-Clang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Mingw&#x2F;+Clang环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94Clang%E5%92%8CGCC"><span class="nav-number">2.</span> <span class="nav-text">横向对比Clang和GCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AESublime-Text%E4%BD%BF%E7%94%A8clang%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">配置Sublime Text使用clang编译代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SublimeClang%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA"><span class="nav-number">4.</span> <span class="nav-text">使用SublimeClang进行代码提示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mingw-Clang-Environment-Configuration"><span class="nav-number">1.</span> <span class="nav-text">Mingw&#x2F;+Clang Environment Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Horizontal-Comparison-of-Clang-and-GCC"><span class="nav-number">2.</span> <span class="nav-text">Horizontal Comparison of Clang and GCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuring-Sublime-Text-to-Use-Clang-for-Code-Compilation"><span class="nav-number">3.</span> <span class="nav-text">Configuring Sublime Text to Use Clang for Code Compilation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-SublimeClang-for-Code-Suggestions"><span class="nav-number">4.</span> <span class="nav-text">Using SublimeClang for Code Suggestions</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -676,19 +688,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -726,10 +738,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -756,9 +768,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -767,12 +776,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -925,7 +934,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/14596/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/14596/',]
       });
       });
   </script>
@@ -948,12 +957,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

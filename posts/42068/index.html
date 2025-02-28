@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="最近折腾上了几款开发相关的工具堪称神器，工欲善其事必先利其器也。有时间来整理一下写出来。">
+  <meta name="description" content="Recently, I’ve been experimenting with a few development-related tools that can be considered artifacts. As the saying goes, “A workman must sharpen his tools before he can work well.” I’ll take some">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Source Insight插件与配置">
-<meta property="og:url" content="https://imzlp.com/posts/42068/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="最近折腾上了几款开发相关的工具堪称神器，工欲善其事必先利其器也。有时间来整理一下写出来。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Source Insight plugin and configuration">
+<meta property="og:url" content="https://en.imzlp.com/posts/42068/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Recently, I’ve been experimenting with a few development-related tools that can be considered artifacts. As the saying goes, “A workman must sharpen his tools before he can work well.” I’ll take some">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42068/sourceinsight.webp">
 <meta property="article:published_time" content="2016-08-14T08:08:31.000Z">
 <meta property="article:modified_time" content="2016-08-14T08:08:31.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="编程工具">
 <meta property="article:tag" content="CodeReview">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42068/sourceinsight.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/42068/">
+<link rel="canonical" href="https://en.imzlp.com/posts/42068/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>Source Insight插件与配置 | 循迹研究室</title>
+  <title>Source Insight plugin and configuration | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/42068/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/42068/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Source Insight插件与配置<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-08-14-42068.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/42068/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Source Insight plugin and configuration<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-08-14-42068.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/42068/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Source Insight plugin and configuration</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Source Insight插件与配置</sub>
           </div>
         
 
@@ -316,43 +316,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-08-14 08:08 08:08:31:08" itemprop="dateCreated datePublished" datetime="2016-08-14T08:08:31+00:00">2016-08-14 08:08</time>
+              <time title="Created: 2016-08-14 08:08 08:08:31:08" itemprop="dateCreated datePublished" datetime="2016-08-14T08:08:31+00:00">2016-08-14 08:08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">编程工具</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/42068/" class="post-meta-item leancloud_visitors" data-flag-title="Source Insight插件与配置" title="阅读次数">
+            <span id="/posts/42068/" class="post-meta-item leancloud_visitors" data-flag-title="Source Insight plugin and configuration" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -364,36 +364,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近折腾上了几款开发相关的工具堪称神器，工欲善其事必先利其器也。有时间来整理一下写出来。</p>
+        <p>Recently, I’ve been experimenting with a few development-related tools that can be considered artifacts. As the saying goes, “A workman must sharpen his tools before he can work well.” I’ll take some time to organize and write about it.</p>
 <span id="more"></span>
-<p>使用VisualStudio和SublimeText来写代码固然很爽，但是想要更轻量级和更精准的代码分析就显得略有不足了。使用VS写代码时非常舒服各种智能提示/调试非常好但是单纯的从代码阅读工具来说也是太臃肿了点，而且对于代码符号的支持也并不是太好(装上VA可破)，不过仅仅是看代码，还是找个轻量级的方案比较好。SublimeText作文文本编辑器确实是神器，我写代码时也都在用，但是使用它阅读代码最大的问题是不能够很方便的在项目间跳转，而且对于符号分析也几乎没有(不考虑插件的情况下)。解决以上问题的答案是——可以用Source Insight！</p>
-<p>下面简单的附上Source Insight的介绍：</p>
+<p>Using Visual Studio and Sublime Text to write code is undoubtedly enjoyable, but they fall short when it comes to more lightweight and accurate code analysis. Writing code in VS is very comfortable with its smart suggestions and debugging features; however, as a pure code reading tool, it’s a bit too bulky, and its support for code symbols isn’t great (installing VA can solve that). But if you’re just looking to read code, a lightweight solution is better. Sublime Text is indeed a great text editor; I use it for coding as well, but the biggest problem when reading code with it is the inconvenience of jumping between projects, and it lacks symbol analysis (not considering plugins). The solution to the above problems is—using Source Insight!</p>
+<p>Here’s a brief introduction to Source Insight:</p>
 <blockquote>
-<p>Source Insight能分析你的源代码并在你工作的同时动态维护它自己的符号数据库，并自动为你显示有用的上下文信息。 Source Insight不仅仅是一个强大的程序编辑器，它还能显示reference trees，class inheritance diagrams和call trees。Source Insight提供了最快速的对源代码的导航和任何程序编辑器的源信息。</p>
+<p>Source Insight can analyze your source code and dynamically maintain its own symbol database while you’re working, automatically displaying useful contextual information. Source Insight is not just a powerful program editor; it can also show reference trees, class inheritance diagrams, and call trees. Source Insight provides the fastest navigation of source code and source information of any program editor.</p>
 </blockquote>
-<p>废话不多说，看图。</p>
+<p>Without further ado, here’s an image.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42068/sourceinsight.webp"></p>
-<p>可以很方便看到代码中的各种信息，上面窗口中包含了代码符号/编辑器/项目文件/上下文窗口/关联窗口。</p>
-<p>我最喜欢的就是上下文窗口和关联窗口的功能，可以很方便的在项目中跳转，代码分析<strong>非常精准</strong>，用了几天就觉得离不开了，哈哈。</p>
-<p>具体的还是自己去体验一下吧，我对它的评价是：代码阅读神器，没的说！</p>
-<p>下面来说一下这款软件的问题。</p>
-<p>Source Insight默认是不支持UTF-8的，所以如果代码注释中含有中文，是会显示乱码的，我试了有很多方案都不太完美，直到我看到了这篇文章——<a target="_blank" rel="noopener" href="http://www.cnblogs.com/Red_angelX/p/4730461.html">Source Insight 3.X 插件新loader发布</a>，懒得去看文章的可以直接<a href="SourceInsightPlugin.zip">点此下载</a>博主编译好的插件。</p>
-<p>使用方法：直接解压到Source Insight安装目录即可。<br>这个博主写的这两个插件，实现了Source Insight支持UTF-8编码和多标签页(多标签页非常好用)。</p>
-<p>该博主实现该插件的方式是使用dll注入，有兴趣的可以看看这一系列文章：<a target="_blank" rel="noopener" href="http://blog.csdn.net/orbit/article/details/1099963">给Source Insight做个外挂</a></p>
-<p>还有一些关于dll劫持、注入的文章，也基本都是同一种方法，有兴趣的可以研究一下。</p>
+<p>You can conveniently see various information in the code, with the upper window containing code symbols, editor, project files, context window, and association window.</p>
+<p>What I like most are the context window and association window, which allow for easy jumping within projects. The code analysis is <strong>very accurate</strong>, and after a few days of use, I feel I can’t live without it! Haha.</p>
+<p>You should try it out yourself; my review of it is: a reading artifact for code, no doubt about it!</p>
+<p>Now, let’s talk about some issues with this software.</p>
+<p>Source Insight does not support UTF-8 by default, so if your code comments contain Chinese characters, they will display as garbled text. I tried many solutions that weren’t perfect until I came across this article—<a target="_blank" rel="noopener" href="http://www.cnblogs.com/Red_angelX/p/4730461.html">Source Insight 3.X New Loader Plugin Release</a>. If you don’t want to read the article, you can directly <a href="SourceInsightPlugin.zip">click here to download</a> the compiled plugin by the author.</p>
+<p>Usage: Unzip it directly into the Source Insight installation directory.<br>The author has written two plugins that enable Source Insight to support UTF-8 encoding and multiple tabs (the multiple tabs function is very useful).</p>
+<p>The author implemented this plugin using DLL injection. If you’re interested, you can check out this series of articles: <a target="_blank" rel="noopener" href="http://blog.csdn.net/orbit/article/details/1099963">Creating a Plugin for Source Insight</a>.</p>
+<p>There are also several articles on DLL hijacking and injection, which mostly use the same method; feel free to research them.</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="http://www.voidcn.com/blog/Hot_VC/article/p-5715778.html">Win7下dll劫持、注入</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/daxingxing/archive/2011/12/16/2290353.html">Ring3下Dll注入方法整理汇总</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.it610.com/article/5623964.htm">Dll注入技术之劫持进程创建注入</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/system/93413.html">DLL注入的几种姿势（一）：Windows Hooks</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/system/94693.html">DLL注入的几种姿势（二）：CreateRemoteThread And More</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.voidcn.com/blog/Hot_VC/article/p-5715778.html">DLL Hijacking and Injection on Win7</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/daxingxing/archive/2011/12/16/2290353.html">Summary of DLL Injection Methods Under Ring3</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.it610.com/article/5623964.htm">DLL Injection Techniques to Hijack Process Creation Injection</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/system/93413.html">Several Methods for DLL Injection (I): Windows Hooks</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/system/94693.html">Several Methods for DLL Injection (II): CreateRemoteThread And More</a></li>
 </ol>
-<p>但是这个博主的插件在我这里有点BUG，我自己这两天用Source Insight读了读他写的多标签页插件的代码(用Source Insight来读代码简直爽的没话说)，我做了一些修改，包括插件的英文化以及针对我个人喜好的微调。<br>原作博主的代码地址：<a target="_blank" rel="noopener" href="https://github.com/redxu/sihook">sihook</a><br>我修改之后的代码：<a href="fixsihook.zip">fixsihook</a>，修复了一点小问题并添加了一些注释，我编译好的三份sihook.dll<a href="sihookdll.zip">点此下载</a>(标签页略有不同，凭个人喜好选择)。</p>
-<p>sihook项目中多标签的主要功能是在<code>Tabctl.c</code>中的实现的，当然你也可以读下他所有的代码凭个人喜好修改。</p>
-<p>上面的代码中sihook的项目均为Code::Block为工程，使用GCC编译。想要自己搭建一个编译环境可以去<a target="_blank" rel="noopener" href="http://www.codeblocks.org/downloads">Code::Block官网</a>下载一份带有编译环境(Mingw/GCC)的(二进制版本)安装包，或者直接使用makefile编译。</p>
-<p>另外，另附自用Source Insight配置一份(尤其是编辑器配色，搞了好久)——<a href="SourceInsightSettings.CF3">点此下载</a>。<br>下载完之后再Source Insight中选择Options-LoadConfiguration选择下载的SourceInsightSettings.CF3即可。</p>
-<p>Source Insight最新版本以及中文化程序/个人自用配置——<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1eSuPcsy">打包下载</a></p>
-<p>同样的工具还有<strong>Understand</strong>，有时间再尝试一下咯。</p>
+<p>However, I encountered a bug with this author’s plugin. I used Source Insight to read the code of his multi-tab plugin over the past couple of days (reading code with Source Insight is just amazing), and I made some modifications, including English localization of the plugin and tweaks to suit my preferences.<br>The original author’s code can be found at: <a target="_blank" rel="noopener" href="https://github.com/redxu/sihook">sihook</a><br>My modified code: <a href="fixsihook.zip">fixsihook</a>, which fixes a few minor issues and adds some comments. You can download the three compiled versions of sihook.dll I created <a href="sihookdll.zip">here</a> (the tabs may vary, choose according to your preference).</p>
+<p>The main feature of the multi-tabs in the sihook project is implemented in <code>Tabctl.c</code>, but you can also read all of his code and modify it based on your preferences.</p>
+<p>The above sihook projects are all built using Code::Block and compiled with GCC. If you want to set up your own compilation environment, you can go to the <a target="_blank" rel="noopener" href="http://www.codeblocks.org/downloads">Code::Block official website</a> and download a binary version installation package with the compiler (Mingw/GCC), or compile directly using makefile.</p>
+<p>Additionally, here’s a self-made configuration for Source Insight (especially the editor color scheme, which took me a long time)——<a href="SourceInsightSettings.CF3">click here to download</a>.<br>After downloading, you can choose Options - Load Configuration in Source Insight and select the downloaded SourceInsightSettings.CF3.</p>
+<p>The latest version of Source Insight and the Chinese localization program/personal settings—<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1eSuPcsy">download packaged version</a>.</p>
+<p>There’s also a similar tool called <strong>Understand</strong>; I’ll try it out when I have time.</p>
 
     </div>
 
@@ -404,7 +404,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -414,7 +414,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -424,37 +424,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/42068/" target="_blank">Source Insight插件与配置</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/08/14 08:08<br/>
+             <span>Title:</span><a href="/posts/42068/" target="_blank">Source Insight plugin and configuration</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/08/14 08:08<br/>
              
-             <span>本文字数:</span><span class="page-count">1.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/42068/" target="_blank" title="Source Insight插件与配置">https://imzlp.com/posts/42068/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/42068/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/42068/" target="_blank" title="Source Insight plugin and configuration">https://en.imzlp.com/posts/42068/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/42068/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -474,12 +474,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/4280/" rel="prev" title="动态内存和智能指针">
-      <i class="fa fa-chevron-left"></i> 动态内存和智能指针
+    <a href="/posts/4280/" rel="prev" title="Dynamic memory and smart pointers">
+      <i class="fa fa-chevron-left"></i> Dynamic memory and smart pointers
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/9932/" rel="next" title="使用VisualGDB在VS上编写Linux程序">
-      使用VisualGDB在VS上编写Linux程序 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/9932/" rel="next" title="Use VisualGDB to write Linux programs on VS">
+      Use VisualGDB to write Linux programs on VS <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -550,10 +550,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -564,10 +564,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -575,19 +575,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -625,10 +625,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -655,9 +655,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -666,12 +663,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -824,7 +821,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/42068/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/42068/',]
       });
       });
   </script>
@@ -847,12 +844,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

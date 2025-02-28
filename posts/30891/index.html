@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这两天看到《数学之美》中讲到的计算机中的数学模型，以及《What is Mathematics》的数论，看的心痒痒。今天懒癌暂时被抑制住了，我就要分析一下，密码学中的数学模型！">
+  <meta name="description" content="Recently, I’ve been intrigued by the mathematical models in computers discussed in “The Beauty of Mathematics” and the number theory from “What is Mathematics.” Today, I managed to suppress my lazines">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析密码学中的数学原理">
-<meta property="og:url" content="https://imzlp.com/posts/30891/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="这两天看到《数学之美》中讲到的计算机中的数学模型，以及《What is Mathematics》的数论，看的心痒痒。今天懒癌暂时被抑制住了，我就要分析一下，密码学中的数学模型！">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Analyzing the Mathematical Principles in Cryptography">
+<meta property="og:url" content="https://en.imzlp.com/posts/30891/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Recently, I’ve been intrigued by the mathematical models in computers discussed in “The Beauty of Mathematics” and the number theory from “What is Mathematics.” Today, I managed to suppress my lazines">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30891/RSA-Flow-chart.webp">
 <meta property="article:published_time" content="2015-09-09T18:19:26.000Z">
 <meta property="article:modified_time" content="2015-09-09T18:19:26.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="循迹研究">
 <meta property="article:tag" content="算法">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/30891/RSA-Flow-chart.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/30891/">
+<link rel="canonical" href="https://en.imzlp.com/posts/30891/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>分析密码学中的数学原理 | 循迹研究室</title>
+  <title>Analyzing the Mathematical Principles in Cryptography | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/30891/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/30891/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分析密码学中的数学原理<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2015-09-09-30891.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/30891/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Analyzing the Mathematical Principles in Cryptography<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2015-09-09-30891.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/30891/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Analyzing the Mathematical Principles in Cryptography</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">分析密码学中的数学原理</sub>
           </div>
         
 
@@ -318,51 +318,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2015-09-09 18:19 18:19:26:19" itemprop="dateCreated datePublished" datetime="2015-09-09T18:19:26+00:00">2015-09-09 18:19</time>
+              <time title="Created: 2015-09-09 18:19 18:19:26:19" itemprop="dateCreated datePublished" datetime="2015-09-09T18:19:26+00:00">2015-09-09 18:19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">循迹研究</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%9A%8F%E7%AC%94/%E5%BE%AA%E8%BF%B9%E7%A0%94%E7%A9%B6/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/30891/" class="post-meta-item leancloud_visitors" data-flag-title="分析密码学中的数学原理" title="阅读次数">
+            <span id="/posts/30891/" class="post-meta-item leancloud_visitors" data-flag-title="Analyzing the Mathematical Principles in Cryptography" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.2k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -374,38 +374,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这两天看到《数学之美》中讲到的计算机中的数学模型，以及《What is Mathematics》的<code>数论</code>，看的心痒痒。今天懒癌暂时被抑制住了，我就要分析一下，密码学中的数学模型！</p>
+        <p>Recently, I’ve been intrigued by the mathematical models in computers discussed in “The Beauty of Mathematics” and the <code>number theory</code> from “What is Mathematics.” Today, I managed to suppress my laziness for a moment, and I’m going to analyze the mathematical models in cryptography!</p>
 <span id="more"></span>
-<p>我们依据RSA加密算法的基本特性(也是很多加密算法的共同点)：</p>
+<p>We base our analysis on the basic characteristics of the RSA encryption algorithm (which is also a commonality among many encryption algorithms):</p>
 <ul>
-<li>它们都有两个完全不同的样式，一个用于加密，一个用于解密。</li>
-<li>两个看上去无关的钥匙，在数学上是有联系的。</li>
+<li>They have two completely different keys, one for encryption and one for decryption.</li>
+<li>Two seemingly unrelated keys are mathematically linked.</li>
 </ul>
-<p>现在，我们先使用相对简单的RSA算法来表明公钥的原理，并给<code>Vision</code>加密和解密。<br>首先，先将<code>Vision</code>变成一串数字，以它的<code>ASCII</code>值为例:<br>$$X=086105115105111110$$(每三位代表一个字母)做明码，针对这个明码来设计一个密码系统。</p>
+<p>Now, we first use a relatively simple RSA algorithm to illustrate the principle of public keys and encrypt and decrypt <code>Vision</code>.<br>First, let’s turn <code>Vision</code> into a string of numbers, using its <code>ASCII</code> values as an example:<br>$$X=086105115105111110$$ (each three digits represent a letter) as plaintext, and design a cryptographic system for this plaintext.</p>
 <ul>
-<li><p>找两个很大的素数$P$和$Q$，越大越好，比如100位长的，计算他们的乘积（因为越大越难分解）<br>$N=P\times Q$<br>$M=(P-1)\times (Q-1)$</p>
+<li><p>Find two large prime numbers $P$ and $Q$, the larger the better, for example, 100 digits long, and calculate their product (the larger the number, the harder it is to factor).<br>$N=P\times Q$<br>$M=(P-1)\times (Q-1)$</p>
 </li>
-<li><p>找一个与$M$互素的整数$E$(互素，$M$与$E$除了1之外没有公约数)</p>
+<li><p>Find an integer $E$ that is coprime to $M$ (coprime means $M$ and $E$ share no common factors other than 1).</p>
 </li>
-<li><p>找一个整数$D$，使得$E\times D\ mod\ M=1$ (<strong>费马小定理</strong>)</p>
+<li><p>Find an integer $D$ such that $E\times D\ mod\ M=1$ (<strong>Fermat’s Little Theorem</strong>).</p>
 </li>
 </ul>
 <blockquote>
-<p><strong>费马小定理</strong>：如果p是任意一个不能整除整数a的素数，则满足：<br>$$a^{p-1}\equiv 1(mod\ p)$$</p>
+<p><strong>Fermat’s Little Theorem</strong>: If $p$ is a prime number that does not divide the integer $a$, then:<br>$$a^{p-1} \equiv 1 \ (mod \ p)$$</p>
 </blockquote>
-<p>现在这样一个密码系统就已经设计好了。其中$E$是公钥(用于加密)，$D$是私钥(用于解密),联系公钥和秘钥的乘积$N$是公开的。<br>现在我们对要加密的数据进行加密：<br>$$X^E\ mod\ N=Y$$<br>加密，完成！现在没有密钥$D$神仙也不能从$Y$中解密出$X$(运算量太大，从$N$中分解出$P$和$Q$就要算上好多年)<br>可以使用密钥就可以轻而易举地从$Y$中得到$X$<br>$$Y^D\ mod\ N=X$$<br>基本流程如下:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30891/RSA-Flow-chart.webp"><br>可以看出，公钥加密的好处：</p>
+<p>Now a cryptographic system has been designed. Here, $E$ is the public key (used for encryption), and $D$ is the private key (used for decryption), with the product of the public key and secret key $N$ being public.<br>Now we encrypt the data:<br>$$X^E\ mod\ N=Y$$<br>Encryption is complete! Without the key $D$, even a celestial being cannot decrypt $X$ from $Y$ (the computational load is too great, factoring $P$ and $Q$ from $N$ can take many years).<br>Using the key, one can easily obtain $X$ from $Y$:<br>$$Y^D\ mod\ N=X$$<br>The basic flow is as follows:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/30891/RSA-Flow-chart.webp"><br>We can see the benefits of public key encryption:</p>
 <ul>
-<li>简单，就是一些乘除开方。</li>
-<li>可靠，很难逆向破解，公钥只能用来加密，加密后非密钥不能解密。</li>
-<li>灵活，可以产生很多公钥和密钥的组合分配给不同的加密者。</li>
+<li>Simple, it’s just some multiplication and division.</li>
+<li>Reliable, it’s very difficult to reverse engineer; the public key can only be used for encryption, and once encrypted, it cannot be decrypted without the secret key.</li>
+<li>Flexible, it can produce many combinations of public keys and private keys for different encryptors.</li>
 </ul>
 <blockquote>
-<p>世界上没有不能破解的密码，关键是它能保证在多长时间内不被破解。</p>
+<p>There is no password that cannot be cracked; the key is how long it can remain unbroken.</p>
 </blockquote>
-<p>要破解公钥加密的方式，迄今为止最有效的办法还是分解$N$，通过$N$逆向分解出$P$和$Q$，这也是$N$和$Q$一定要找非常大的素数的原因，因为素数的重要性就在于：<code>每一个整数都能表示为素数的乘积，除了次序可以任意排列外，一个数N的素因子分解是唯一的。</code>意思是要在大数$N$的所有素因子中组合出$P$和$Q$满足$P\times Q=N$，因为选择的$P$和$Q$都是极大的素数，所以，这个计算量是不可估量的，就算由计算机<code>穷举</code>每一种可能性，也要很久，实际上就是再拼计算机的计算速度。</p>
-<p>总结：其实加密运算用到的最重要的概念就是<code>素数</code>，这才是加密算法中的根本，在于其难分解性。<br>其实数学的很多知识都是如此，看起来没有什么大用，但实际上，用处很大，就拿搜索引擎来说吧，究其本质也是布尔运算，但是其中也掺杂了很多技术。<br><strong>最后一句感叹：数学，学以致用才好！</strong></p>
+<p>To break public key encryption, the most effective method so far remains to factor $N$, to reverse engineer $P$ and $Q$ from $N$. This is also the reason $N$ and $Q$ must find very large prime numbers, as the importance of prime numbers lies in the fact that: <code>every integer can be expressed as a product of primes, and apart from permutation, the prime factorization of a number $N$ is unique.</code> This means that among all the prime factors of the large number $N$, one must combine $P$ and $Q$ such that $P\times Q=N$. Since the selected $P$ and $Q$ are extremely large primes, this computational load is unimaginable; even if one uses a computer to <code>exhaustively</code> enumerate every possibility, it would take a very long time, in essence, it’s a battle of computational speed.</p>
+<p>In summary: the most important concept used in encryption operations is <code>prime numbers</code>; this is fundamental to encryption algorithms due to their difficulty in factorization.<br>A lot of mathematical knowledge is like this; it may seem not very useful, but in reality, it has great value. Take search engines as an example, at its core, it’s also boolean operations, but it also involves a lot of technology.<br><strong>Final remark: Mathematics is best when applied!</strong></p>
 <blockquote>
-<p><strong>参考资料</strong><br><a target="_blank" rel="noopener" href="http://book.douban.com/subject/10750155/">《数学之美》（由电视剧《暗算》所想到的 — 谈谈原理）</a><br><a target="_blank" rel="noopener" href="http://book.douban.com/subject/10455982/">《什么是数学：对思想和方法的基本研究》（素数章节）</a></p>
+<p><strong>References</strong><br><a target="_blank" rel="noopener" href="http://book.douban.com/subject/10750155/">“The Beauty of Mathematics” (Inspired by the drama “Dark Calculation” — Discussing the principles)</a><br><a target="_blank" rel="noopener" href="http://book.douban.com/subject/10455982/">“What is Mathematics: A Fundamental Study of Thought and Methods” (Prime number chapter)</a></p>
 </blockquote>
 
     </div>
@@ -417,7 +417,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -427,7 +427,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -437,37 +437,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/30891/" target="_blank">分析密码学中的数学原理</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2015/09/09 18:19<br/>
+             <span>Title:</span><a href="/posts/30891/" target="_blank">Analyzing the Mathematical Principles in Cryptography</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2015/09/09 18:19<br/>
              
-             <span>本文字数:</span><span class="page-count">1.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.2k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/30891/" target="_blank" title="分析密码学中的数学原理">https://imzlp.com/posts/30891/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/30891/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/30891/" target="_blank" title="Analyzing the Mathematical Principles in Cryptography">https://en.imzlp.com/posts/30891/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/30891/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -489,12 +489,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/19425/" rel="prev" title="读《数学之美》">
-      <i class="fa fa-chevron-left"></i> 读《数学之美》
+    <a href="/posts/19425/" rel="prev" title="Reading "The Beauty of Mathematics"">
+      <i class="fa fa-chevron-left"></i> Reading "The Beauty of Mathematics"
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/23429/" rel="next" title="Linux部署Shadowsocks服务">
-      Linux部署Shadowsocks服务 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/23429/" rel="next" title="Deploy Shadowsocks service on Linux">
+      Deploy Shadowsocks service on Linux <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -565,10 +565,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -579,10 +579,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -590,19 +590,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -640,10 +640,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -670,9 +670,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -681,12 +678,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -892,7 +889,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/30891/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/30891/',]
       });
       });
   </script>
@@ -915,12 +912,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

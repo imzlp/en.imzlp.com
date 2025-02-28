@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在游戏项目开发中，会涉及到大量的开发、美术、策划以及外包等等各个方面的研发人员。出于资源安全和信息保密的考虑，通常会做一些复杂的权限控制和同步逻辑。 但抛开权限控制，仅探讨资源本身，在UE中资源是向上兼容的，用同版本号的引擎或者更高版本号的引擎可以直接打开。这意味着分发出去的资源，可以直接在另外的项目里使用。所以，该如何保证开发阶段资源的安全性是要重点关注的。 本篇文章提供一种加密工程中原始UA">
+  <meta name="description" content="In game project development, a large number of developers from various aspects such as development, art, planning, and outsourcing will be involved. For reasons of resource security and information c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="资源管理：UASSET资源加密方案">
-<meta property="og:url" content="https://imzlp.com/posts/32412/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在游戏项目开发中，会涉及到大量的开发、美术、策划以及外包等等各个方面的研发人员。出于资源安全和信息保密的考虑，通常会做一些复杂的权限控制和同步逻辑。 但抛开权限控制，仅探讨资源本身，在UE中资源是向上兼容的，用同版本号的引擎或者更高版本号的引擎可以直接打开。这意味着分发出去的资源，可以直接在另外的项目里使用。所以，该如何保证开发阶段资源的安全性是要重点关注的。 本篇文章提供一种加密工程中原始UA">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Unreal Resource Management: A raw uasset Encryption Scheme">
+<meta property="og:url" content="https://en.imzlp.com/posts/32412/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In game project development, a large number of developers from various aspects such as development, art, planning, and outsourcing will be involved. For reasons of resource security and information c">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202304051053107.webp">
 <meta property="article:published_time" content="2023-04-07T12:50:04.000Z">
 <meta property="article:modified_time" content="2023-04-07T12:50:04.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="资源管理">
 <meta property="article:tag" content="加密">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202304051053107.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/32412/">
+<link rel="canonical" href="https://en.imzlp.com/posts/32412/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>资源管理：UASSET资源加密方案 | 循迹研究室</title>
+  <title>Unreal Resource Management: A raw uasset Encryption Scheme | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/32412/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/32412/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          资源管理：UASSET资源加密方案<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2023-04-07-32412.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/32412/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Unreal Resource Management: A raw uasset Encryption Scheme<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2023-04-07-32412.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/32412/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Unreal Resource Management: A raw uasset Encryption Scheme</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">资源管理：UASSET资源加密方案</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2023-04-07 12:50 12:50:04:50" itemprop="dateCreated datePublished" datetime="2023-04-07T12:50:04+00:00">2023-04-07 12:50</time>
+              <time title="Created: 2023-04-07 12:50 12:50:04:50" itemprop="dateCreated datePublished" datetime="2023-04-07T12:50:04+00:00">2023-04-07 12:50</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/32412/" class="post-meta-item leancloud_visitors" data-flag-title="资源管理：UASSET资源加密方案" title="阅读次数">
+            <span id="/posts/32412/" class="post-meta-item leancloud_visitors" data-flag-title="Unreal Resource Management: A raw uasset Encryption Scheme" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.9k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.4k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -370,89 +370,89 @@
 
       
         <!-- ![](https://img.imzlp.com/imgs/zlp/picgo/2023/20230407125507.webp) -->
-<p>在游戏项目开发中，会涉及到大量的开发、美术、策划以及外包等等各个方面的研发人员。出于资源安全和信息保密的考虑，通常会做一些复杂的权限控制和同步逻辑。</p>
-<p>但抛开权限控制，仅探讨资源本身，在UE中资源是向上兼容的，用同版本号的引擎或者更高版本号的引擎可以直接打开。这意味着分发出去的资源，可以直接在另外的项目里使用。所以，该如何保证开发阶段资源的安全性是要重点关注的。</p>
-<p>本篇文章提供一种加密工程中原始UASSET资源的思路，并介绍可以用于资源加密的基础原理。但如果公开具体的加密实现，就等同于裸奔，所以本篇文章仅提供对uasset资源结构的分析以及可用于实现加密的思路，但不会提供具体的实现代码。</p>
+<p>In game project development, a large number of developers from various aspects such as development, art, planning, and outsourcing will be involved. For reasons of resource security and information confidentiality, complex permission controls and synchronization logic are usually implemented.</p>
+<p>However, leaving aside permission control and focusing on the resources themselves, in UE, resources are upward compatible, meaning resources can be opened directly with the same version engine or a higher version engine. This means that distributed resources can be used directly in other projects. Therefore, ensuring the security of resources during the development phase is a key focus.</p>
+<p>This article provides an idea for encrypting the original UASSET resources in the project and introduces the basic principles that can be used for resource encryption. However, publicly disclosing the specific encryption implementation would be akin to running naked, so this article will only provide an analysis of the uasset resource structure and ideas for implementing encryption, but will not provide specific implementation code.</p>
 <span id="more"></span>
 
-<h2 id="核心需求"><a href="#核心需求" class="headerlink" title="核心需求"></a>核心需求</h2><ol>
-<li>让项目侧导出的资源只在自有引擎内能才能访问，不能被公版引擎打开。</li>
-<li>加密仅在Editor阶段，不对运行时造成影响。</li>
-<li>降低对资产的影响，是否有可能造成资源损坏、以及对Cook的影响</li>
-<li>不影响未加密的资源，让加密后和未加密的资源都能正常读取</li>
+<h2 id="Core-Requirements"><a href="#Core-Requirements" class="headerlink" title="Core Requirements"></a>Core Requirements</h2><ol>
+<li>Resources exported from the project side can only be accessed within the proprietary engine and cannot be opened with the public version engine.</li>
+<li>Encryption only occurs in the Editor stage, without affecting runtime.</li>
+<li>Minimize the impact on assets, evaluating the potential for resource damage and its effect on Cook.</li>
+<li>Ensure that unencrypted resources remain unaffected, allowing both encrypted and unencrypted resources to be read normally.</li>
 </ol>
-<h2 id="uasset格式分析"><a href="#uasset格式分析" class="headerlink" title="uasset格式分析"></a>uasset格式分析</h2><p>uasset的文件是UE的资源文件，用于存储游戏中的数据和内容。导入不同的类型的资源，如贴图、模型、动画序列等，都会将其转换为UE的uasset资源，用于在引擎中访问与编辑。</p>
-<p>可以使用WinHex64等工具，以二进制的形式查看uasset文件：</p>
-<p>uasset文件的起始4个字节就是<code>PACKAGE_FILE_TAG</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230330161425.webp"></p>
-<p>它是一个固定值：<a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/5ca9da84c694c6eee288c30a547fcaa1a40aed9b/Engine/Source/Runtime/Core/Public/UObject/ObjectVersion.h#L13">Core/Public/UObject/ObjectVersion.h</a></p>
+<h2 id="uasset-Format-Analysis"><a href="#uasset-Format-Analysis" class="headerlink" title="uasset Format Analysis"></a>uasset Format Analysis</h2><p>uasset files are resource files for UE, used to store data and content in games. Different resource types, such as textures, models, and animation sequences, are converted into UE’s uasset resources for access and editing within the engine.</p>
+<p>Tools like WinHex64 can be used to view uasset files in binary format:</p>
+<p>The first four bytes of the uasset file are the <code>PACKAGE_FILE_TAG</code>:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230330161425.webp"></p>
+<p>It is a fixed value: <a target="_blank" rel="noopener" href="https://github.com/EpicGames/UnrealEngine/blob/5ca9da84c694c6eee288c30a547fcaa1a40aed9b/Engine/Source/Runtime/Core/Public/UObject/ObjectVersion.h#L13">Core/Public/UObject/ObjectVersion.h</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PACKAGE_FILE_TAG          0x9E2A83C1  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PACKAGE_FILE_TAG_SWAPPED   0xC1832A9E</span></span><br></pre></td></tr></table></figure>
-<p>用于标识该文件是否是uasset的资源，引擎尝试加载资源时，会先检测该TAG，如果为<code>0x9E2A83C1</code>则认为它是资源，再进行后续的序列化行为。</p>
-<p>简单地说，如果不考虑加密，只实现在其他引擎中不能识别资源而言，只把uasset文件头的4位数据改成另外一个magic number就可以了。</p>
-<h3 id="Summary序列化"><a href="#Summary序列化" class="headerlink" title="Summary序列化"></a>Summary序列化</h3><p>当检测文件的前4个字节的<code>PACKAGE_FILE_TAG</code>为<code>0x9E2A83C1</code>后，则会继续从磁盘上读取已序列化的数据，从而构造出一个<code>PackageFileSummary</code>的结构。</p>
-<p>经过调试，PackageFileSummary的数据如下：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230328163908.webp"></p>
-<p>而PackageFileSummary也是直接序列化到uasset的文件头中的，从第0个字节开始：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230404120935.webp"></p>
-<p>但引擎中并非是完完全全把整个PackageFileSummary都序列化的，而是逐个属性序列化，引擎的版本、不同的设置、以及资源的情况不同而不同。所以它并不是一个固定大小的数据。</p>
-<p>以上面截图中的Summary数据为例，将其序列化后，我列出了属性和序列化的字节排列顺序：</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Tag(int32) 0x9E2A83C1 C1832A9F 0x9E2A83C1</span><br><span class="line">LegacyFileVersion(int32) -7 F9FFFFFF 0xfffffff9</span><br><span class="line">LegacyUE3Version(int32) 863 60300000 0x360 </span><br><span class="line">FileVersionUE4(int32) 520 08020000 0x208 </span><br><span class="line">FileVersionLicenseeUE4(int32) 0 00000000 0x0</span><br><span class="line">CustomVersions(Array):</span><br><span class="line">uint32 ArraySize 2 0x2 02000000</span><br><span class="line">Version.Key(4*uint32)</span><br><span class="line">A 0x29E575DD</span><br><span class="line">B 0xE0A34627</span><br><span class="line">C 0x9D10D276</span><br><span class="line">D 0x232CDCEA</span><br><span class="line">Version(int32) 17 11000000  0x11</span><br><span class="line">Version.Key(4*uint32)</span><br><span class="line">A 0xE4B068ED</span><br><span class="line">B 0xF49442E9</span><br><span class="line">C 0xA231DA0B</span><br><span class="line">D 0x2E46BB41</span><br><span class="line">Version(int32) 38 26000000 0x26</span><br><span class="line">TotalHeaderSize(int32) 55184 90D70000 0xd790</span><br><span class="line">FolderName(FString)</span><br><span class="line">FolderName Num(int32) 5 05000000 0x5</span><br><span class="line">FolderName Str(ANSICHAR)  None 4E6F6E6500 0x00656E6F4E (end \0)</span><br><span class="line">PackageFlags(int32) 0 00000000 0x0</span><br><span class="line">NameCount(int32) 38 0x26</span><br><span class="line">NameOffset(int32) 302 2E010000 0x012E</span><br><span class="line">LocalizationId(FString) Num=33 L&quot;23FD62A744D4EEEE38CE78805684C51E&quot;</span><br><span class="line">LocalizationId Num(int32) 33 21000000 0x21</span><br><span class="line">FolderName Str(ANSICHAR) 23FD62A744D4EEEE38CE78805684C51E(end \0)</span><br><span class="line">2  3  F  D  6  2  A  7  4  4  D  4  E  E  E  E  3  8  C  E  7  8  8  0  5  6  8  4  C  5  1  E  0</span><br><span class="line">32 33 46 44 36 32 41 37 34 34 44 34 45 45 45 45 33 38 43 45 37 38 38 30 35 36 38 34 43 35 31 45 \0</span><br><span class="line">GatherableTextDataCount(int32) 0 00000000 0x0</span><br><span class="line">GatherableTextDataOffset(int32) </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Used to identify whether the file is a uasset resource; when the engine attempts to load the resource, it will first check this TAG. If it is <code>0x9E2A83C1</code>, it will be considered a resource, and then subsequent serialization actions will occur.</p>
+<p>In simple terms, if encryption is not considered, the only way to make the resources unrecognizable in other engines is to change the first four bytes of the uasset file header to another magic number.</p>
+<h3 id="Summary-Serialization"><a href="#Summary-Serialization" class="headerlink" title="Summary Serialization"></a>Summary Serialization</h3><p>When the first four bytes of the file are detected as <code>PACKAGE_FILE_TAG</code> being <code>0x9E2A83C1</code>, the serialized data will be read from the disk to construct a <code>PackageFileSummary</code> structure.</p>
+<p>After debugging, here is the data for the PackageFileSummary:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230328163908.webp"></p>
+<p>The PackageFileSummary is also serialized directly into the uasset file header, starting from byte 0:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230404120935.webp"></p>
+<p>However, the engine does not serialize the entire PackageFileSummary entirely; it serializes each attribute individually, meaning it varies depending on the engine version, different settings, and resource situations. Thus, it is not a fixed size of data.</p>
+<p>Taking the Summary data shown in the screenshot as an example, once serialized, I listed the attributes and the byte order of serialization:</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Tag(int32) 0x9E2A83C1 C1832A9F 0x9E2A83C1</span><br><span class="line">LegacyFileVersion(int32) -7 F9FFFFFF 0xfffffff9</span><br><span class="line">LegacyUE3Version(int32) 863 60300000 0x360 </span><br><span class="line">FileVersionUE4(int32) 520 08020000 0x208 </span><br><span class="line">FileVersionLicenseeUE4(int32) 0 00000000 0x0</span><br><span class="line">CustomVersions(Array):</span><br><span class="line">uint32 ArraySize 2 0x2 02000000</span><br><span class="line">Version.Key(4*uint32)</span><br><span class="line">A 0x29E575DD</span><br><span class="line">B 0xE0A34627</span><br><span class="line">C 0x9D10D276</span><br><span class="line">D 0x232CDCEA</span><br><span class="line">Version(int32) 17 11000000  0x11</span><br><span class="line">Version.Key(4*uint32)</span><br><span class="line">A 0xE4B068ED</span><br><span class="line">B 0xF49442E9</span><br><span class="line">C 0xA231DA0B</span><br><span class="line">D 0x2E46BB41</span><br><span class="line">Version(int32) 38 26000000 0x26</span><br><span class="line">TotalHeaderSize(int32) 55184 90D70000 0xd790</span><br><span class="line">FolderName(FString)</span><br><span class="line">FolderName Num(int32) 5 05000000 0x5</span><br><span class="line">FolderName Str(ANSICHAR)  None 4E6F6E6500 0x00656E6E4E (end \0)</span><br><span class="line">PackageFlags(int32) 0 00000000 0x0</span><br><span class="line">NameCount(int32) 38 0x26</span><br><span class="line">NameOffset(int32) 302 2E010000 0x012E</span><br><span class="line">LocalizationId(FString) Num=33 L&quot;23FD62A744D4EEEE38CE78805684C51E&quot;</span><br><span class="line">LocalizationId Num(int32) 33 21000000 0x21</span><br><span class="line">FolderName Str(ANSICHAR) 23FD62A744D4EEEE38CE78805684C51E(end \0)</span><br><span class="line">2  3  F  D  6  2  A  7  4  4  D  4  E  E  E  E  3  8  C  E  7  8  8  0  5  6  8  4  C  5  1  E  0</span><br><span class="line">32 33 46 44 36 32 41 37 34 34 44 34 45 45 45 45 33 38 43 45 37 38 38 30 35 36 38 34 43 35 31 45 \0</span><br><span class="line">GatherableTextDataCount(int32) 0 00000000 0x0</span><br><span class="line">GatherableTextDataOffset(int32) </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>可以看到是逐属性的紧凑形式。</p>
-<p>PackageFileSummary的数据序列化调用栈：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230330153647.webp"><br>引擎中的代码为<code>PackageFileSummary.cpp</code>中的<code>operator&lt;&lt;</code>操作符重载：</p>
+<p>It can be seen that it is in a compact form, serialized attribute by attribute.</p>
+<p>The serialization call stack of PackageFileSummary:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230330153647.webp"><br>The engine code is found in <code>PackageFileSummary.cpp</code>, specifically in the overloaded <code>operator&lt;&lt;</code> function:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime\CoreUObject\Private\UObject\PackageFileSummary.cpp</span></span><br><span class="line"><span class="type">void</span> <span class="keyword">operator</span>&lt;&lt;(FStructuredArchive::FSlot Slot, FPackageFileSummary&amp; Sum)  </span><br><span class="line">&#123;  </span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> (bCanStartSerializing)  </span><br><span class="line">	&#123;  </span><br><span class="line">	   Record &lt;&lt; <span class="built_in">SA_VALUE</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;Tag&quot;</span>), Sum.Tag);  </span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="comment">// only keep loading if we match the magic  </span></span><br><span class="line">	<span class="keyword">if</span> (Sum.Tag == PACKAGE_FILE_TAG || Sum.Tag == PACKAGE_FILE_TAG_SWAPPED)  </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>UE的序列化机制，是基于FArchive的形式进行的，究竟是读取还是写入，取决于传进来的Archive的类型。<br>所以，对于单个<code>operator&lt;&lt;</code>操作符的重载既可以实现加载，也能够实现写入。</p>
-<h3 id="加密思路"><a href="#加密思路" class="headerlink" title="加密思路"></a>加密思路</h3><p>通过前面一节，能够知道UE的资产识别和序列化方式。现在我们来看Summary包含了哪些内容。<br>同样以上面的资源为例：</p>
+<p>The serialization mechanism in UE is based on the form of FArchive, meaning whether to read or write depends on the type of Archive passed in. Thus, the overloaded <code>operator&lt;&lt;</code> can realize both loading and writing.</p>
+<h3 id="Encryption-Ideas"><a href="#Encryption-Ideas" class="headerlink" title="Encryption Ideas"></a>Encryption Ideas</h3><p>From the previous section, we can understand the asset recognition and serialization method of UE. Now let’s look at what the Summary contains.<br>Similarly, using the aforementioned resource as an example:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406132407.webp"></p>
-<p>可以看到：</p>
+<p>We can see that:</p>
 <ol>
-<li>Summary的信息，是对整个资源的概述</li>
-<li>记录个关键数据的偏移值</li>
-<li>当需要加载资源中的数据，必须基于Summary中的信息，去对应的偏移中加载</li>
+<li>Summary provides an overview of the entire resource.</li>
+<li>It records the offset values of key data.</li>
+<li>To load data from the resource, it is necessary to base the loading on the offset information contained in the Summary.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406132616.webp"></p>
-<p>如果不知道对应数据的具体offset，则无法成功地加载出资源。</p>
-<p>那么到此，我们对于uasset的加密需求，就可以转换为对于Summary的加密。</p>
-<p>最终的目的是让我们的资源，在公版或其他引擎中无法识别，并无法访问关键数据的offset偏移，就能够起到加密的作用。</p>
-<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p>引擎内内置了多种加密算法，AES、SHA等等，本文以AES为例。AES是一个基于分组密码的加密算法，一个分组的长度是128位（16字节）。</p>
-<p>AES具有多种加密模式，UE中采用的是<code>CBC</code>模式（Cipher Block Chaining），采用前一块密文与当前块铭文异或的方式加密，能够避免相同明文块加密后密文相同的情况，避免被基于统计学的方式解密。</p>
-<p>在UE中使用AES进行加密的简要代码：</p>
+<p>If the specific offsets of corresponding data are unknown, the resource cannot be successfully loaded.</p>
+<p>Thus, we can convert our encryption needs for uasset into summary encryption.</p>
+<p>The ultimate goal is to make our resources unrecognizable in public versions or other engines, and prevent access to the offset values of key data, which can achieve the effect of encryption.</p>
+<h2 id="Encryption-Algorithm"><a href="#Encryption-Algorithm" class="headerlink" title="Encryption Algorithm"></a>Encryption Algorithm</h2><p>The engine has various built-in encryption algorithms, such as AES and SHA. This article will take AES as an example. AES is a block cipher-based encryption algorithm with a block length of 128 bits (16 bytes).</p>
+<p>AES has several encryption modes, with UE adopting the <code>CBC</code> mode (Cipher Block Chaining), which encrypts by XORing the previous ciphertext with the current plaintext block, helping to avoid identical ciphertexts for identical plaintext blocks and preventing statistical attacks.</p>
+<p>Here is a simple code snippet for using AES encryption in UE:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TArray&lt;uint8&gt; Text;  </span><br><span class="line">FString Str = <span class="built_in">TEXT</span>(<span class="string">&quot;helloworld&quot;</span>);  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> Char:Str)  </span><br><span class="line">&#123;  </span><br><span class="line">   Text.<span class="built_in">Add</span>(*<span class="built_in">TCHAR_TO_ANSI</span>(&amp;Char));  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">while</span>((Text.<span class="built_in">Num</span>() % <span class="number">16</span>) != <span class="number">0</span>)&#123; Text.<span class="built_in">AddZeroed</span>(); &#125;  </span><br><span class="line">FAES::<span class="built_in">EncryptData</span>(Text.<span class="built_in">GetData</span>(),Text.<span class="built_in">Num</span>(),AES_KEY);</span><br></pre></td></tr></table></figure>
 
-<p>为了保证加密算法的安全性和性能，要求输入数据和密钥都是16字节的整数倍（一个AES分组长度），对于不满足的数据，需要填充对齐。<br>不然会触发断言：</p>
+<p>To ensure the security and performance of the encryption algorithm, it is required that both the input data and the key be multiples of 16 bytes (one AES block length). Data that does not meet these criteria must be padded for alignment; otherwise, an assertion will be triggered:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">checkf</span>((NumBytes &amp; (AESBlockSize - <span class="number">1</span>)) == <span class="number">0</span>, <span class="built_in">TEXT</span>(<span class="string">&quot;NumBytes needs to be a multiple of 16 bytes&quot;</span>));</span><br><span class="line"><span class="built_in">checkf</span>(NumKeyBytes &gt;= <span class="built_in">KEYLENGTH</span>(AES_KEYBITS), <span class="built_in">TEXT</span>(<span class="string">&quot;AES key needs to be at least %d characters&quot;</span>), <span class="built_in">KEYLENGTH</span>(AES_KEYBITS));</span><br></pre></td></tr></table></figure>
 
-<p>如下图所示：</p>
+<p>As shown in the figure below:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406125058.webp"></p>
-<p>基于这种方式，需要记录加密前数据的原始大小和填充大小，在解密之后进行修正。</p>
-<h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><p>前面讲到了，可以通过对Summary的加密实现我们的需求，但在什么样的时机去做加密这件事情呢？</p>
+<p>Based on this method, it is necessary to record the original size of the data before encryption and the padding size to correct it after decryption.</p>
+<h2 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h2><p>As mentioned earlier, we can achieve our needs through Summary encryption, but when should we perform this encryption?</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406144332.webp"></p>
-<p>合适的时机是在保存时，当保存资源时，是把内存中的数据写入到磁盘。想要实现加密，就要在保存时拦截住存盘的行为，通过把原始的Summary数据执行自定义的加密行为之后，再进行存盘。</p>
-<p>最终的实现，是要把uasset的文件结构，在序列化之后，改成如下的形式：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406144113.webp"></p>
-<p>使用一个独特的Magic Number标识是否为加密后的资源，Header中记录数据大小，后续跟加密后的Buffer。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406144855.webp"></p>
-<p>在UE中保存资源会触发三次<code>PackageFileSummary</code>的序列化：</p>
+<p>The appropriate timing is during the save operation. When saving resources, data in memory is written to disk. To achieve encryption, the save behavior should be intercepted to encrypt the original Summary data through custom behavior before writing it to disk.</p>
+<p>The final implementation is to change the structure of the uasset file after serialization to the following form:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406144113.webp"></p>
+<p>Using a unique Magic Number to indicate whether it is an encrypted resource, the header records the data size, followed by the encrypted buffer.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406144855.webp"></p>
+<p>In UE, saving resources will trigger three serializations of <code>PackageFileSummary</code>:</p>
 <ol>
-<li>保存 <code>ArIsSaving == true</code>，但此时的数据是不完全的，只是为了计算Summary的大小，写入一个填充Summary大小的数据，为后续的数据计算偏移。</li>
+<li>While saving <code>ArIsSaving == true</code>, the data is not complete yet; it is only to calculate the Summary size, writing a padding summary size for subsequent offset calculations.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230407124726.webp"></p>
 <ol start="2">
-<li>保存 <code>ArIsSaving == true</code>，此时数据是完全的，从pos 0重新写入Summary，序列化的大小与第一次写入时相同。</li>
+<li>Saving <code>ArIsSaving == true</code>, now the data is complete, from pos 0, re-writing the Summary, with serialized size equal to that during the first write.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230407124738.webp"></p>
 <ol start="3">
-<li>读取，当资源被重新保存之后就会重新生成AssetRegistry数据，就是通过扫描变动资产的Summary进而获取的。</li>
+<li>Reading; after the resource is re-saved, the AssetRegistry data is regenerated by scanning the changed asset’s Summary.</li>
 </ol>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230407124808.webp"></p>
-<p>在实现中，加密要能覆盖到这三次序列化的所有情况，并且Cook时的序列化也会走到这个流程。</p>
-<p>资源加密后，如果在不支持解密的引擎中打开资源会无法识别为资源：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230413170000.webp"></p>
-<h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>同样地，在尝试加载资源时，要对已经执行加密的资源，进行解密。</p>
-<p>以建立AssetRegistry的加载为例：</p>
+<p>In the implementation, encryption must cover all cases of these three serializations, and serialization during Cook will also follow this process.</p>
+<p>Once encrypted, if the resource is opened in an engine that does not support decryption, it will not be recognized as a resource:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230413170000.webp"></p>
+<h2 id="Decryption"><a href="#Decryption" class="headerlink" title="Decryption"></a>Decryption</h2><p>Similarly, when attempting to load encrypted resources, decryption must be performed.</p>
+<p>Taking the loading of AssetRegistry as an example:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406145816.webp"></p>
-<p>此时是ArIsLoading的状态，并通过一个空的Summary的引用用于接收反序列化后的结果。基于前面的加密结构，执行反向操作。</p>
-<p>从磁盘加载TAG，检测是否为加密后的MagicNumber，然后读取Header，进而将加密后的数据从磁盘读出，然后进行解密。并在解密之后，正确地把Summary填充。</p>
+<p>At this point, it is in the state of ArIsLoading, using a reference to an empty Summary to receive the results of deserialization. Based on the previous encryption structure, reverse operations should be executed.</p>
+<p>Load the TAG from the disk, check if it matches the encrypted MagicNumber, then read the Header, subsequently read the encrypted data from the disk and perform decryption. Finally, correctly fill in the Summary after decryption.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230406145222.webp"></p>
-<h2 id="自定义流程"><a href="#自定义流程" class="headerlink" title="自定义流程"></a>自定义流程</h2><p>上面的内容，就是在UE中实现资源加密的核心内容和基础逻辑。但除此之外，在本实现框架内，可以尽可能多地去实现额外的混淆流程。</p>
-<p>不同的项目还可以按需在各个阶段添加自定义的流程，如加密额外的数据、往资源中填充一些垃圾混淆数据、提升Key的安全性等等。保证加密行为的复杂性，增加被破解的成本。</p>
-<p>严格来说，没有绝对的安全，只能尽可能地增加逆向的成本，当破解的成本大于重做本身，那破解也就没有意义了。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇文章研究了uasset文件结构，并提出了一种基于Summary的加密方案。基于此种方式，项目侧就可以加密产出的资源，防止将资源直接导出到其他项目中。<br>但具体的落地实现还需要根据项目去做一些自定义的混淆流程，避免被简单破解的情况，这部分内容就不再赘述了。</p>
+<h2 id="Custom-Process"><a href="#Custom-Process" class="headerlink" title="Custom Process"></a>Custom Process</h2><p>The above content outlines the core content and basic logic for implementing resource encryption in UE. In addition, within this implementation framework, additional obfuscation processes can be as implemented as possible.</p>
+<p>Different projects can also add custom processes at various stages as needed, such as encrypting additional data, filling some junk obfuscation data into resources, enhancing key security, etc. The goal is to ensure the complexity of the encryption process and increase the cost of cracking.</p>
+<p>Strictly speaking, there is no absolute security; we can only try to increase the cost of reverse engineering. Once the cost of cracking exceeds the cost of redoing, cracking becomes meaningless.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article researched the uasset file structure and proposed an encryption solution based on the Summary. Based on this method, projects can encrypt the resources they produce, preventing them from being directly exported to other projects. However, specific landing implementations still require customizing some obfuscation processes based on the project to avoid being easily cracked; this part will not be elaborated further.</p>
 
     </div>
 
@@ -463,7 +463,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -473,7 +473,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -483,37 +483,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/32412/" target="_blank">资源管理：UASSET资源加密方案</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2023/04/07 12:50<br/>
+             <span>Title:</span><a href="/posts/32412/" target="_blank">Unreal Resource Management: A raw uasset Encryption Scheme</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2023/04/07 12:50<br/>
              
-             <span>本文字数:</span><span class="page-count">2.9k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">7.4k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/32412/" target="_blank" title="资源管理：UASSET资源加密方案">https://imzlp.com/posts/32412/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/32412/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/32412/" target="_blank" title="Unreal Resource Management: A raw uasset Encryption Scheme">https://en.imzlp.com/posts/32412/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/32412/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -534,12 +534,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/83875/" rel="prev" title="循迹研究：在复杂的世界中寻找确定性">
-      <i class="fa fa-chevron-left"></i> 循迹研究：在复杂的世界中寻找确定性
+    <a href="/posts/83875/" rel="prev" title="Finding Certainty in a Complex World">
+      <i class="fa fa-chevron-left"></i> Finding Certainty in a Complex World
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/27475/" rel="next" title="UE插件与工具开发：Commandlet">
-      UE插件与工具开发：Commandlet <i class="fa fa-chevron-right"></i>
+    <a href="/posts/27475/" rel="next" title="UE plug-in and tool development:Commandlet">
+      UE plug-in and tool development:Commandlet <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -610,25 +610,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">核心需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uasset%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">uasset格式分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">2.1.</span> <span class="nav-text">Summary序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%80%9D%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">加密思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">加密算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">4.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86"><span class="nav-number">5.</span> <span class="nav-text">解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B5%81%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">自定义流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Requirements"><span class="nav-number">1.</span> <span class="nav-text">Core Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uasset-Format-Analysis"><span class="nav-number">2.</span> <span class="nav-text">uasset Format Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary-Serialization"><span class="nav-number">2.1.</span> <span class="nav-text">Summary Serialization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encryption-Ideas"><span class="nav-number">2.2.</span> <span class="nav-text">Encryption Ideas</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encryption-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Encryption Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encryption"><span class="nav-number">4.</span> <span class="nav-text">Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decryption"><span class="nav-number">5.</span> <span class="nav-text">Decryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Custom-Process"><span class="nav-number">6.</span> <span class="nav-text">Custom Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -636,19 +636,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -686,10 +686,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -716,9 +716,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -727,12 +724,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -885,7 +882,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/32412/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/32412/',]
       });
       });
   </script>
@@ -908,12 +905,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

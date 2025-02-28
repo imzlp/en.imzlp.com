@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在C++14标准(C++98&#x2F;11也一样)中，在Annex C Compatibility里有这么一条：  Change: Converting void* to a pointer-to-object type requires casting  12345char a[10];void* b&#x3D;a;void foo() &amp;#123;  char* c&#x3D;b;&amp;#125;  ISO C will a">
+  <meta name="description" content="In the C++14 standard (as well as C++98&#x2F;11), there is a statement in Annex C Compatibility:  Change: Converting void* to a pointer-to-object type requires casting  12345char a[10];void* b&#x3D;a;void foo()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="operator new：void*到T*的转换">
-<meta property="og:url" content="https://imzlp.com/posts/21564/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在C++14标准(C++98&#x2F;11也一样)中，在Annex C Compatibility里有这么一条：  Change: Converting void* to a pointer-to-object type requires casting  12345char a[10];void* b&#x3D;a;void foo() &amp;#123;  char* c&#x3D;b;&amp;#125;  ISO C will a">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="operator new: void* to T* conversion">
+<meta property="og:url" content="https://en.imzlp.com/posts/21564/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the C++14 standard (as well as C++98&#x2F;11), there is a statement in Annex C Compatibility:  Change: Converting void* to a pointer-to-object type requires casting  12345char a[10];void* b&#x3D;a;void foo()">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-05-22T18:03:33.000Z">
 <meta property="article:modified_time" content="2017-05-22T18:03:33.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="编程笔记">
 <meta property="article:tag" content="C++标准">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/21564/">
+<link rel="canonical" href="https://en.imzlp.com/posts/21564/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>operator new：void*到T*的转换 | 循迹研究室</title>
+  <title>operator new: void* to T* conversion | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/21564/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/21564/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          operator new：void*到T*的转换<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-05-22-21564.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/21564/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          operator new: void* to T* conversion<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-05-22-21564.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/21564/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">operator new: void* to T* conversion</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">operator new：void*到T*的转换</sub>
           </div>
         
 
@@ -316,47 +316,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-05-22 18:03 18:03:33:03" itemprop="dateCreated datePublished" datetime="2017-05-22T18:03:33+00:00">2017-05-22 18:03</time>
+              <time title="Created: 2017-05-22 18:03 18:03:33:03" itemprop="dateCreated datePublished" datetime="2017-05-22T18:03:33+00:00">2017-05-22 18:03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">标准解读</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/C-%E6%A0%87%E5%87%86/" itemprop="url" rel="index"><span itemprop="name">C++标准</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/21564/" class="post-meta-item leancloud_visitors" data-flag-title="operator new：void*到T*的转换" title="阅读次数">
+            <span id="/posts/21564/" class="post-meta-item leancloud_visitors" data-flag-title="operator new: void* to T* conversion" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>844</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.3k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -368,36 +368,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在C++14标准(C++98/11也一样)中，在<strong>Annex C Compatibility</strong>里有这么一条：</p>
+        <p>In the C++14 standard (as well as C++98/11), there is a statement in <strong>Annex C Compatibility</strong>:</p>
 <blockquote>
 <p>Change: Converting void* to a pointer-to-object type requires casting</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a[<span class="number">10</span>];</span><br><span class="line"><span class="type">void</span>* b=a;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">char</span>* c=b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>ISO C will accept this usage of pointer to void being assigned to a pointer to object type. C ++ will not.</p>
+<p>ISO C will accept this usage of pointer to void being assigned to a pointer to object type. C++ will not.</p>
 </blockquote>
-<p>但是为什么<code>operator new()</code>会返回<code>void*</code>且不用显式转换为<code>T*</code>就能赋值给<code>T*</code>呢？</p>
+<p>But why does <code>operator new()</code> return <code>void*</code> and allow assigning to <code>T*</code> without an explicit conversion to <code>T*</code>?</p>
 <span id="more"></span>
-<p><strong>global scope</strong>的<code>operator new</code>基本原型为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span>  <span class="params">( std::<span class="type">size_t</span> count )</span></span>;</span><br><span class="line"><span class="type">void</span>* <span class="keyword">operator</span> <span class="keyword">new</span>[]( std::<span class="type">size_t</span> count );</span><br></pre></td></tr></table></figure>
-<p>这么写不会有任何警告：</p>
+<p>The basic prototype of <code>operator new</code> in <strong>global scope</strong> is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(std::<span class="type">size_t</span> count)</span></span>;</span><br><span class="line"><span class="type">void</span>* <span class="keyword">operator</span> <span class="keyword">new</span>[](std::<span class="type">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<p>Writing this will not produce any warnings:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;&#125;;</span><br><span class="line">A* ap=<span class="keyword">new</span> A;</span><br><span class="line"><span class="keyword">delete</span> ap;</span><br></pre></td></tr></table></figure>
-<p>自己在类内重载一个<code>operator new</code>返回<code>void*</code>也不会有问题：</p>
+<p>Overloading an <code>operator new</code> within a class to return <code>void*</code> also works fine:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(std::<span class="type">size_t</span> x)</span></span>&#123; <span class="keyword">return</span> <span class="built_in">malloc</span>(x); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">A* ap=<span class="keyword">new</span> A; <span class="comment">// OK</span></span><br><span class="line"><span class="keyword">delete</span> ap;</span><br></pre></td></tr></table></figure>
-<p>但是使用<code>std::malloc</code>来分配再赋值就有问题：</p>
+<p>However, using <code>std::malloc</code> for allocation and then assignment leads to issues:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error: cannot initialize a variable of type &#x27;A *&#x27; with an rvalue of type &#x27;void *&#x27;</span></span><br><span class="line">A* ap=std::<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(A));</span><br></pre></td></tr></table></figure>
-<p>编译器也是支持<code>C++14</code>标准的<code>Clang 3.9</code>…</p>
-<p>我通过使用LLVM-IR分析发现，调用<code>operator new</code>时编译器会自动将<code>void*</code>转换为<code>T*</code>:</p>
+<p>The compiler is also using the C++14 standard, Clang 3.9…</p>
+<p>By analyzing the LLVM-IR, I found that when calling <code>operator new</code>, the compiler automatically converts <code>void*</code> to <code>T*</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A *z=<span class="keyword">new</span> A;</span><br><span class="line">  <span class="keyword">delete</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其LLVM-IR为：</p>
+<p>The corresponding LLVM-IR is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">define i32 @<span class="built_in">main</span>() #<span class="number">4</span> &#123;</span><br><span class="line">  %<span class="number">1</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">  %<span class="number">2</span> = alloca %<span class="keyword">struct</span>.A*, align <span class="number">8</span></span><br><span class="line">  store i32 <span class="number">0</span>, i32* %<span class="number">1</span>, align <span class="number">4</span></span><br><span class="line">  %<span class="number">3</span> = call i8* @_Znwy(i64 <span class="number">1</span>) #<span class="number">7</span></span><br><span class="line">  %<span class="number">4</span> = bitcast i8* %<span class="number">3</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line">  store %<span class="keyword">struct</span>.A* %<span class="number">4</span>, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">5</span> = load %<span class="keyword">struct</span>.A*, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">6</span> = icmp eq %<span class="keyword">struct</span>.A* %<span class="number">5</span>, null</span><br><span class="line">  br i1 %<span class="number">6</span>, label %<span class="number">9</span>, label %<span class="number">7</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">7</span>:                                      ; preds = %<span class="number">0</span></span><br><span class="line">  %<span class="number">8</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">5</span> to i8*</span><br><span class="line">  call <span class="type">void</span> @_ZdlPv(i8* %<span class="number">8</span>) #<span class="number">8</span></span><br><span class="line">  br label %<span class="number">9</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">9</span>:                                      ; preds = %<span class="number">7</span>, %<span class="number">0</span></span><br><span class="line">  %<span class="number">10</span> = load i32, i32* %<span class="number">1</span>, align <span class="number">4</span></span><br><span class="line">  ret i32 %<span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line">; Function Attrs: nobuiltin</span><br><span class="line">declare noalias i8* @_Znwy(i64) #<span class="number">5</span></span><br><span class="line"></span><br><span class="line">; Function Attrs: nobuiltin nounwind</span><br><span class="line">declare <span class="type">void</span> @_ZdlPv(i8*) #<span class="number">6</span></span><br></pre></td></tr></table></figure>
-<p>其中最重要的就是<code>%4</code>的操作：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 调用<span class="keyword">new</span>获得内存地址</span><br><span class="line">%<span class="number">3</span> = call i8* @_Znwy(i64 <span class="number">1</span>) #<span class="number">7</span></span><br><span class="line"># 将上一步获得的地址转换为<span class="keyword">struct</span>.A*</span><br><span class="line">%<span class="number">4</span> = bitcast i8* %<span class="number">3</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line"># 将转换后的地址存储为我们声明的指针</span><br><span class="line">store %<span class="keyword">struct</span>.A* %<span class="number">4</span>, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>经过测试，自己在类内重载<code>operator new</code>也会具有转换。</p>
+<p>The most important operation is at <code>%4</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Call <span class="keyword">new</span> to obtain the memory address</span><br><span class="line">%<span class="number">3</span> = call i8* @_Znwy(i64 <span class="number">1</span>) #<span class="number">7</span></span><br><span class="line"># Convert the address obtained to <span class="keyword">struct</span>.A*</span><br><span class="line">%<span class="number">4</span> = bitcast i8* %<span class="number">3</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line"># Store the converted address as the declared pointer</span><br><span class="line">store %<span class="keyword">struct</span>.A* %<span class="number">4</span>, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>Tests show that overloading <code>operator new</code> within a class also causes the conversion.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span>&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(std::<span class="type">size_t</span> x)</span></span>&#123; <span class="keyword">return</span> <span class="built_in">malloc</span>(x); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  A *z=<span class="keyword">new</span> A;</span><br><span class="line">  <span class="keyword">delete</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其LLVM-IR代码为：</p>
+<p>The LLVM-IR for this code is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">define i32 @<span class="built_in">main</span>() #<span class="number">4</span> &#123;</span><br><span class="line">  %<span class="number">1</span> = alloca i32, align <span class="number">4</span></span><br><span class="line">  %<span class="number">2</span> = alloca %<span class="keyword">struct</span>.A*, align <span class="number">8</span></span><br><span class="line">  store i32 <span class="number">0</span>, i32* %<span class="number">1</span>, align <span class="number">4</span></span><br><span class="line">  %<span class="number">3</span> = call i8* @_ZN1AnwEy(i64 <span class="number">1</span>)</span><br><span class="line">  %<span class="number">4</span> = bitcast i8* %<span class="number">3</span> to %<span class="keyword">struct</span>.A*</span><br><span class="line">  store %<span class="keyword">struct</span>.A* %<span class="number">4</span>, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">5</span> = load %<span class="keyword">struct</span>.A*, %<span class="keyword">struct</span>.A** %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">6</span> = icmp eq %<span class="keyword">struct</span>.A* %<span class="number">5</span>, null</span><br><span class="line">  br i1 %<span class="number">6</span>, label %<span class="number">9</span>, label %<span class="number">7</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">7</span>:                                      ; preds = %<span class="number">0</span></span><br><span class="line">  %<span class="number">8</span> = bitcast %<span class="keyword">struct</span>.A* %<span class="number">5</span> to i8*</span><br><span class="line">  call <span class="type">void</span> @_ZdlPv(i8* %<span class="number">8</span>) #<span class="number">6</span></span><br><span class="line">  br label %<span class="number">9</span></span><br><span class="line"></span><br><span class="line">; &lt;label&gt;:<span class="number">9</span>:                                      ; preds = %<span class="number">7</span>, %<span class="number">0</span></span><br><span class="line">  %<span class="number">10</span> = load i32, i32* %<span class="number">1</span>, align <span class="number">4</span></span><br><span class="line">  ret i32 %<span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">; Function Attrs: uwtable</span><br><span class="line">define linkonce_odr i8* @_ZN1AnwEy(i64) #<span class="number">0</span> comdat align <span class="number">2</span> &#123;</span><br><span class="line">  %<span class="number">2</span> = alloca i64, align <span class="number">8</span></span><br><span class="line">  store i64 %<span class="number">0</span>, i64* %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">3</span> = load i64, i64* %<span class="number">2</span>, align <span class="number">8</span></span><br><span class="line">  %<span class="number">4</span> = call i8* @<span class="built_in">malloc</span>(i64 %<span class="number">3</span>)</span><br><span class="line">  ret i8* %<span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">; Function Attrs: nobuiltin nounwind</span><br><span class="line">declare <span class="type">void</span> @_ZdlPv(i8*) #<span class="number">5</span></span><br><span class="line"></span><br><span class="line">declare i8* @<span class="built_in">malloc</span>(i64) #<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>可以看到<code>%4</code>处仍然具有<code>void*</code>到<code>struct.A*</code>的转换。<br>我没有在标准中找到<code>operator new</code>应该会转换<code>void*</code>到<code>T*</code>类型的显式要求，但是标准中提到了下面这样的描述：</p>
+<p>As observed, the conversion from <code>void*</code> to <code>struct.A*</code> still occurs at <code>%4</code>.<br>I haven’t found an explicit requirement in the standard stating that <code>operator new</code> should convert <code>void*</code> to <code>T*</code>, but the standard mentions the following description:</p>
 <blockquote>
 <p>The pointer returned shall be suitably aligned so that it can be converted to a pointer of any complete object type with a fundamental alignment requirement (3.11) and then used to access the object or array in the storage allocated (until the storage is explicitly deallocated by a call to a corresponding deallocation function).</p>
 </blockquote>
@@ -411,7 +411,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -421,7 +421,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -431,37 +431,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/21564/" target="_blank">operator new：void*到T*的转换</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/05/22 18:03<br/>
+             <span>Title:</span><a href="/posts/21564/" target="_blank">operator new: void* to T* conversion</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/05/22 18:03<br/>
              
-             <span>本文字数:</span><span class="page-count">844 字</span><br/>
+             <span>Word Count:</span><span class="page-count">1.3k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/21564/" target="_blank" title="operator new：void*到T*的转换">https://imzlp.com/posts/21564/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/21564/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/21564/" target="_blank" title="operator new: void* to T* conversion">https://en.imzlp.com/posts/21564/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/21564/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -483,12 +483,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/23043/" rel="prev" title="C++模板元编程资料辑录">
-      <i class="fa fa-chevron-left"></i> C++模板元编程资料辑录
+    <a href="/posts/23043/" rel="prev" title="C++ Template Metaprogramming Data Collection">
+      <i class="fa fa-chevron-left"></i> C++ Template Metaprogramming Data Collection
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/19441/" rel="next" title="lambda在编译器中实现的方式">
-      lambda在编译器中实现的方式 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/19441/" rel="next" title="How lambda is implemented in the compiler">
+      How lambda is implemented in the compiler <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -559,10 +559,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -573,10 +573,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -584,19 +584,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -634,10 +634,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -664,9 +664,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -675,12 +672,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -833,7 +830,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/21564/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/21564/',]
       });
       });
   </script>
@@ -856,12 +853,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

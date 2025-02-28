@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本博客已切换为Github Action进行自动化部署。  使用Hexo生成静态博客然后部署到Github&#x2F;Coding Pages是目前我的博客的托管方式。用起来是很爽，但是存在几个问题：  Hexo的环境配置太麻烦，麻烦到几乎换台电脑就不能更新博客了 每次修改文章之后都要重新生成一遍 再加上提交博客源文件的话执行命令的次数太多了(主要是第一步)  在提交博文的时候浪费了很多时间，我优化了一下">
+  <meta name="description" content="This blog has switched to Github Action for automated deployment.  Using Hexo to generate a static blog and then deploying it to Github&#x2F;Coding Pages is currently how my blog is hosted. It’s quite enj">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Travis CI自动部署Github&#x2F;Coding Pages博客">
-<meta property="og:url" content="https://imzlp.com/posts/42318/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="本博客已切换为Github Action进行自动化部署。  使用Hexo生成静态博客然后部署到Github&#x2F;Coding Pages是目前我的博客的托管方式。用起来是很爽，但是存在几个问题：  Hexo的环境配置太麻烦，麻烦到几乎换台电脑就不能更新博客了 每次修改文章之后都要重新生成一遍 再加上提交博客源文件的话执行命令的次数太多了(主要是第一步)  在提交博文的时候浪费了很多时间，我优化了一下">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Automatically deploy Github&#x2F;Coding Pages blog using Travis CI">
+<meta property="og:url" content="https://en.imzlp.com/posts/42318/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="This blog has switched to Github Action for automated deployment.  Using Hexo to generate a static blog and then deploying it to Github&#x2F;Coding Pages is currently how my blog is hosted. It’s quite enj">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42318/0.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42318/1.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42318/2.webp">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42318/6.webp">
 <meta property="article:published_time" content="2016-10-21T06:36:49.000Z">
 <meta property="article:modified_time" content="2016-10-21T06:36:49.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="Github">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="工具集锦">
@@ -48,7 +48,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/42318/0.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/42318/">
+<link rel="canonical" href="https://en.imzlp.com/posts/42318/">
 
 
 <script id="page-configurations">
@@ -57,11 +57,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>使用Travis CI自动部署Github/Coding Pages博客 | 循迹研究室</title>
+  <title>Automatically deploy Github/Coding Pages blog using Travis CI | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -101,7 +101,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -111,7 +111,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -122,7 +122,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -141,24 +141,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -178,7 +178,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -186,14 +186,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -201,26 +201,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -236,7 +236,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -255,7 +255,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -274,12 +274,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -297,27 +297,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/42318/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/42318/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用Travis CI自动部署Github/Coding Pages博客<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-10-21-42318.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/42318/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Automatically deploy Github/Coding Pages blog using Travis CI<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-10-21-42318.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/42318/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Automatically deploy Github/Coding Pages blog using Travis CI</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">使用Travis CI自动部署Github/Coding Pages博客</sub>
           </div>
         
 
@@ -326,47 +326,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-10-21 06:36 06:36:49:36" itemprop="dateCreated datePublished" datetime="2016-10-21T06:36:49+00:00">2016-10-21 06:36</time>
+              <time title="Created: 2016-10-21 06:36 06:36:49:36" itemprop="dateCreated datePublished" datetime="2016-10-21T06:36:49+00:00">2016-10-21 06:36</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">博客管理</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/42318/" class="post-meta-item leancloud_visitors" data-flag-title="使用Travis CI自动部署Github/Coding Pages博客" title="阅读次数">
+            <span id="/posts/42318/" class="post-meta-item leancloud_visitors" data-flag-title="Automatically deploy Github/Coding Pages blog using Travis CI" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.1k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>9.9k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>25 mins.</span>
             </span>
 
         </div>
@@ -379,113 +379,131 @@
 
       
         <blockquote>
-<p>本博客已切换为Github Action进行自动化部署。</p>
+<p>This blog has switched to Github Action for automated deployment.</p>
 </blockquote>
-<p>使用Hexo生成静态博客然后部署到Github/Coding Pages是目前我的博客的托管方式。<br>用起来是很爽，但是存在几个问题：</p>
+<p>Using Hexo to generate a static blog and then deploying it to Github/Coding Pages is currently how my blog is hosted. It’s quite enjoyable to use, but there are several issues:</p>
 <ol>
-<li>Hexo的环境配置太麻烦，麻烦到几乎换台电脑就不能更新博客了</li>
-<li>每次修改文章之后都要重新生成一遍</li>
-<li>再加上提交博客源文件的话执行命令的次数太多了(主要是第一步)</li>
+<li>The environment configuration for Hexo is too cumbersome; it’s almost impossible to update the blog when changing to a new computer.</li>
+<li>Each time I modify an article, I have to regenerate everything.</li>
+<li>Additionally, the number of command executions for submitting the blog source files is too high (mainly the first step).</li>
 </ol>
-<p>在提交博文的时候浪费了很多时间，我优化了一下流程几乎可以全自动提交更新了。</p>
-<span id="more"></span>
-<p>按照上面的步骤，就算部署的环境已经配置好，但是最基本的修改/同步一篇文章还要经历以下几步：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">修改文章</span><br><span class="line">执行hexo d -g</span><br><span class="line"># 下面是同步博客源文件</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;commit message&quot;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>如果说写的文章有谬误的话更正之后上面几步都要重来一遍，浪费了很多时间。<br>幸好最近发现了<strong>持续集成</strong>这个6的没边的部署方式，我觉得可以把我的博客也部署一下，使其能够尽可能地简化这些步骤。</p>
-<p>其思想主要就是：当我推送新文件(代码)到Github仓库时触发一系列动作。我们可以设定一系列的指令来当我们添加/修改**.md**文章之后自动执行<code>hexo d -g</code>指令生成并部署到Github/Coding Pages仓库。</p>
-<p><strong>持续集成</strong>的产品我选择的是<a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis CI</a>，使用Travis CI的原因在于可以无缝集成Github和Public仓库免费。另外，因为Travis CI只能从Github导入仓库，而且目前coding.net也不支持Token，所以我们没办法直接在Travis上push到coding.net的仓库，需要我们折腾一下私钥的问题，这个暂时按下不表。</p>
-<p>首先，你目前有一个已经部署成功hexo的仓库，假如是:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:imzlp/blog-source.git,gh-pages</span><br></pre></td></tr></table></figure>
-<p>而你的博客源文件则在:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:imzlp/blog-source.git,master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>I wasted a lot of time submitting articles, so I optimized the process to almost achieve fully automated submissions.  </p>
+<span id="more"></span>  
+<p>According to the steps above, even if the deployment environment is already set up, the most basic modification/synchronization of an article still involves the following steps:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Modify the article</span><br><span class="line">Execute hexo d -g</span><br></pre></td></tr></table></figure>
 
-<p>第一，打开<a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis CI</a>使用你的github账号登陆进去。</p>
+<blockquote>
+<p>This blog has switched to Github Action for automated deployment.</p>
+</blockquote>
+<p>Using Hexo to generate a static blog and then deploying it to Github/Coding Pages is currently how my blog is hosted. It’s quite enjoyable to use, but there are several issues:</p>
+<ol>
+<li>The environment configuration for Hexo is too cumbersome; it’s almost impossible to update the blog when changing to a new computer.</li>
+<li>Each time I modify an article, I have to regenerate everything.</li>
+<li>Additionally, the number of command executions for submitting the blog source files is too high (mainly the first step).</li>
+</ol>
+<p>I wasted a lot of time submitting articles, so I optimized the process to almost achieve fully automated submissions.  </p>
+<!-- more -->  
+<p>According to the steps above, even if the deployment environment is already set up, the most basic modification/synchronization of an article still involves the following steps:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Modify the article</span><br><span class="line">Execute hexo d -g</span><br><span class="line"># The following is to synchronize the blog source files</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;commit message&quot;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>If there are errors in the written article, after correcting them, I have to start over with the above steps, wasting a lot of time. Fortunately, I recently discovered a <strong>Continuous Integration</strong> deployment method that I think can also be applied to my blog to simplify these steps as much as possible.</p>
+<p>The main concept is: when I push new files (code) to the Github repository, a series of actions are triggered. We can set a series of commands to automatically execute <code>hexo d -g</code> when we add/modify <strong>.md</strong> articles to generate and deploy to the Github/Coding Pages repository.</p>
+<p>For <strong>Continuous Integration</strong>, I chose <a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis CI</a> because it seamlessly integrates with Github and offers free access to public repositories. Additionally, since Travis CI can only import repositories from Github and currently coding.net does not support Tokens, we can’t push directly to the coding.net repository on Travis, which requires some tweaking with private keys, but that is not discussed for now.</p>
+<p>First, you need to have a successfully deployed hexo repository, for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:imzlp/blog-source.git,gh-pages</span><br></pre></td></tr></table></figure>
+<p>And your blog source files are in:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:imzlp/blog-source.git,master</span><br></pre></td></tr></table></figure>
+
+<p>First, open <a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis CI</a> and log in using your Github account.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/0.webp"></p>
-<p>点击红框中的+号，选择你博客所在的仓库。</p>
-<p>如果没有显示，点击右上角的“Sync account”按钮，就可以同步过来了。</p>
+<p>Click on the + sign in the red box and select the repository where your blog is located.</p>
+<p>If it does not show up, click the “Sync account” button in the upper right corner to synchronize it.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/1.webp"></p>
-<p>然后返回主界面，就会看到你的所选的库已经在列表中了。</p>
-<p>我这是已经部署成功过得，所以会显示绿色对号。</p>
+<p>Then return to the main interface, and you will see your selected repository in the list.</p>
+<p>Since I have deployed successfully before, it will display a green checkmark.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/2.webp"></p>
-<p>打开设置开启<code>Build only if .travis.yml is present</code>和<code>Build pushes</code></p>
+<p>Open the settings and enable <code>Build only if .travis.yml is present</code> and <code>Build pushes</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/3.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/4.webp"></p>
-<p>这两个选项代表的含义是:</p>
+<p>The meanings of these two options are:</p>
 <ul>
-<li><strong>Build only if .travis.yml is present</strong>：是只有在.travis.yml文件中配置的分支改变了才构建。</li>
-<li><strong>Build pushes</strong>：当推送完这个分支后开始构建。</li>
+<li><strong>Build only if .travis.yml is present</strong>: Only build if the branch configured in .travis.yml has changed.</li>
+<li><strong>Build pushes</strong>: Start building after pushing to this branch.</li>
 </ul>
-<p>其基本思路就是在博客源程序所在的下创建一个<code>.travis.yml</code>自己写好配置文件，等你往这个分支push之后Travis CI会检测到该库变动然后按照<code>.travis.yml</code>文件中配置的命令来进行操作。</p>
-<p>但是这里有一个问题，如果往Github推送或者Coding推送是需要ssh私钥的，但是我们在Travis CI中创建的私钥没办法放到Github/Coding ssh-key中。现在Github支持token-key了，可以不需要ssh-key也能推送了，但是如果你想要把博客部署到不同服务商的仓库(Github Pages/Coding Pages)这样还不是一个通用的办法。</p>
-<p>所以我的思路是，既然总要生成私钥，那么我直接把我VPS上的ssh私钥上传到Travis CI上后不就可以顺利部署了(VPS上公钥已添加至Github/Coding ssh-key)，但是这样哪里还有安全性….</p>
-<p>幸好我发现可以先加密私钥后push到博客的源文仓库中，然后在travis CI上clone下来该仓库后对私钥加密后的文件再解密，然后自己执行<code>hexo d -g</code>操作，最后再删除私钥，这样就解决了部分安全性的问题(push到博客源文件的私钥是加密后的，就算是public仓库也能保证安全性，唯一有安全漏洞的是需要把你的私钥放到travis上，这个需要你自己保证你的travis(Github)账户是安全的…)。</p>
-<p>首先，先在你可以部署hexo的VPS(Linux环境)上安装Ruby环境(根据环境选择)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For Debian, and other distributions using Debian style packaging the ruby development headers are installed by:</span></span><br><span class="line">$ sudo apt-get install ruby-dev</span><br><span class="line"><span class="comment"># For Ubuntu the ruby development headers are installed by:</span></span><br><span class="line">$ sudo apt-get install ruby-all-dev</span><br><span class="line"><span class="comment"># If you are using a earlier version of ruby (such as 2.2), then you will need to run:</span></span><br><span class="line">$ sudo apt-get install ruby2.2-dev</span><br></pre></td></tr></table></figure>
-<p>然后安装<code>gem</code>和<code>travis</code>客户端：</p>
+<p>The basic idea is to create a <code>.travis.yml</code> file in the directory where the blog source code is located and write your configuration file there. Once you push to this branch, Travis CI will detect the changes in the repository and execute the commands configured in the <code>.travis.yml</code> file.</p>
+<p>However, there is a problem; pushing to Github or Coding requires an SSH private key, but we cannot put the key created in Travis CI into the Github/Coding ssh-key. Currently, Github supports token-key, which allows for pushes without an ssh-key, but if you want to deploy your blog to different service providers’ repositories (Github Pages/Coding Pages), this is not a universal solution.</p>
+<p>So my idea is that since a private key is to be generated anyway, I can directly upload the SSH private key from my VPS to Travis CI, allowing smooth deployment (the public key on the VPS has already been added to the Github/Coding ssh-key), but then there’s the issue of security…</p>
+<p>Fortunately, I found that I could encrypt the private key before pushing it to the blog source repository. Then, after cloning the repository in Travis CI, I can decrypt the file of the encrypted private key, execute <code>hexo d -g</code>, and finally delete the private key, which solves part of the security issue (the private key pushed to the blog source files is encrypted, ensuring security even in a public repository, the only security vulnerability is that you need to ensure that your Travis (Github) account is secure…).</p>
+<p>First, install the Ruby environment on your VPS (Linux environment) where you can deploy hexo (choose according to your environment):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For Debian and other distributions using Debian style packaging the ruby development headers are installed by:</span></span><br><span class="line">$ sudo apt-get install ruby-dev</span><br><span class="line"><span class="comment"># For Ubuntu the ruby development headers are installed by:</span></span><br><span class="line">$ sudo apt-get install ruby-all-dev</span><br><span class="line"><span class="comment"># If you are using an earlier version of ruby (such as 2.2), then you will need to run:</span></span><br><span class="line">$ sudo apt-get install ruby2.2-dev</span><br></pre></td></tr></table></figure>
+<p>Then install the <code>gem</code> and <code>travis</code> client:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install gem</span></span><br><span class="line">$ apt-get install gem</span><br><span class="line"><span class="comment"># install travis</span></span><br><span class="line">$ gem install travis</span><br></pre></td></tr></table></figure>
-<p>安装完后使用下面的命令登陆到travis中：</p>
+<p>After installation, log in to Travis with the following command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># travis-ci.org</span></span><br><span class="line">$ travis login --auto</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注：如果使用<a href="travis-ci.com">travis-ci.com</a>，则需要使用命令<code>travis login --pro</code>.</p>
+<p>Note: If using <a href="travis-ci.com">travis-ci.com</a>, then you need to use the command <code>travis login --pro</code>.</p>
 </blockquote>
-<p>然后会提示你输入账号密码，在这里要使用Github账号。</p>
-<p>登陆上之后我们就可以将我们的私钥加密之后放到博客源文件仓库中供Travis CI之后部署时解密使用了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加密私钥id_rsa，注意要指定你自己的私钥位置，顺便也指定下仓库-r $&#123;Repo_Name&#125;</span></span><br><span class="line">$ travis encrypt-file ~/.ssh/id_rsa --add -r imzlp/blog-source</span><br></pre></td></tr></table></figure>
-<p>此时，travis-ci中的imzlp/blog-source仓库的settings中就会看到创建了两个环境变量<code>$encrypted_1fc90f464345_key</code>和<code>$encrypted_1fc90f464345_iv</code>，两个环境变量所定义的内容别人是看不到的，因此也就保证了我们私钥的安全。用来解密我们的私钥。<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/EnvironmentVariables.webp"><br>然后还会在当前目录下生成<code>.travis.yml</code>/<code>id_rsa.enc</code>这两个文件，其中<code>id_rsa.enc</code>使我们把私钥加密后得到的文件，<code>.travis.yml</code>中通过上面的指令会在里面添加解密<code>id_rsa.enc</code>的指令，形式如同下面这样(注意每个人的都不同，不能照抄我这段代码)：</p>
+<p>You will be prompted to enter your username and password; here you should use your Github account.</p>
+<p>Once logged in, we can encrypt our private key and place it into the blog source repository for later decryption during deployment by Travis CI.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Encrypt the private key id_rsa; pay attention to specify your private key location, and also specify the repository -r $&#123;Repo_Name&#125;</span></span><br><span class="line">$ travis encrypt-file ~/.ssh/id_rsa --add -r imzlp/blog-source</span><br></pre></td></tr></table></figure>
+<p>At this point, you will see two environment variables created in the settings of the imzlp/blog-source repository in travis-ci: <code>$encrypted_1fc90f464345_key</code> and <code>$encrypted_1fc90f464345_iv</code>. The contents defined by these two environment variables are not visible to others, ensuring the safety of our private key, which will be used to decrypt it.<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/EnvironmentVariables.webp"><br>Then, the current directory will generate two files: <code>.travis.yml</code> and <code>id_rsa.enc</code>. The <code>id_rsa.enc</code> is the file obtained after encrypting our private key, and in <code>.travis.yml</code> we will add commands to decrypt <code>id_rsa.enc</code>, in a format like this (note that everyone’s will be different, do not directly copy my code):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_1fc90f464345_key</span> -iv <span class="variable">$encrypted_1fc90f464345_iv</span></span><br><span class="line">  -<span class="keyword">in</span> .travis/id_rsa.enc -out ~/.ssh/id_rsa -d</span><br></pre></td></tr></table></figure>
 
-<p>这条命令利用openssl和上面所定义的两个环境变量来解密私钥，然后将解密后的私钥存放在<code>~/.ssh/id_rsa</code>中。</p>
-<p>然后我们要在<code>.travis.yml</code>加上设置私钥的权限的指令，使之有权限可读：</p>
+<p>This command uses openssl and the two environment variables defined above to decrypt the private key and store the decrypted private key in <code>~/.ssh/id_rsa</code>.</p>
+<p>Next, we need to add a command in <code>.travis.yml</code> to set the permission of the private key, making it readable:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- <span class="built_in">chmod</span> 600 ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
 
-<p>然后将该私钥添加至系统中：</p>
+<p>Then add this private key to the system:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- <span class="built_in">eval</span> $(ssh-agent)</span><br><span class="line">- ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
 
-<p>随后将<code>id_rsa.enc</code>移动至<code>.travis</code>中：</p>
+<p>Subsequently, move <code>id_rsa.enc</code> to <code>.travis</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> id_rsa.enc .travis</span><br></pre></td></tr></table></figure>
 
-<p>因为当我们通过SSH 连接远程主机时，会检查主机的公钥。如果是第一次该主机，会显示该主机的公钥摘要，提示用户是否信任该主机，但是，我们在travis-ci持续集成过程中是不能输入yes的…所以如果直接push就会在这里卡住，解决方案是禁用SSH远程主机的公钥检查。</p>
-<p>在<code>.travis</code>下新建一个<code>ssh_config</code>文件，将下面的内容填入其中：</p>
+<p>When we connect to a remote host via SSH, it will check the host’s public key. If it’s the first time connecting to that host, it will display a fingerprint of the host’s public key, prompting users to trust the host, but during continuous integration with Travis, we can’t input yes… Hence, if you directly push, it will hang here. The solution is to disable public key checking for remote hosts in SSH.</p>
+<p>Create a new file named <code>ssh_config</code> in <code>.travis</code> and fill in the following content:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">StrictHostKeyChecking no</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">IdentitiesOnly <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
 
-<p>意思就是对于所有的主机都禁用SSH远程主机的公钥检查并指定私钥地址为<code>~/.ssh/is_rsa</code>。</p>
-<p>在travis中我会将其覆盖掉travis的默认ssh_config(/etc/ssh/ssh_config)。</p>
-<p>然后将<code>.travis</code>和<code>.travis.yml</code>移动到博客源文件中，其目录结构如下:</p>
+<p>This means that public key checking for all hosts is disabled, and the private key address is specified as <code>~/.ssh/id_rsa</code>.</p>
+<p>In Travis, I will overwrite the default ssh_config from Travis (<code>/etc/ssh/ssh_config</code>).</p>
+<p>Next, move both <code>.travis</code> and <code>.travis.yml</code> to the blog source files, with the following directory structure:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.deploy_git</span><br><span class="line">.git</span><br><span class="line">.travis</span><br><span class="line">node_modules</span><br><span class="line">public</span><br><span class="line">scaffolds</span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">themes</span><br><span class="line">.directory</span><br><span class="line">.gitignore</span><br><span class="line">.travis.yml</span><br><span class="line">README.md</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
 
-<p>打开<code>.travis.yml</code>将下面代码块中的内容填入其中，注意解密代码要改为你自己的参数。<br><strong>注意：node_js版本不要填stable，近期nodejs更新到了7.0，与hexo的插件有不兼容，最好还是不要写stable，因为在travis上是使用nvm来管理node版本的，所以我们可以直接指定版本号。为了防止不必要的问题，我建议填5.9.1</strong></p>
+<p>Open <code>.travis.yml</code> and fill in the content from the code block below, ensuring you modify the decryption code with your own parameters.<br><strong>Note:</strong> Do not set the node_js version to stable, as the recent update to nodejs 7.0 is not compatible with some hexo plugins. It’s best not to write stable; since Travis uses nvm to manage node versions, we can directly specify the version number. To prevent unnecessary issues, I recommend setting it to 5.9.1.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">language: node_js</span><br><span class="line">node_js: 5.9.1</span><br><span class="line">install:</span><br><span class="line">- npm install</span><br><span class="line">- npm install hexo-cli -g</span><br><span class="line">script:</span><br><span class="line">- hexo g</span><br><span class="line">- hexo d</span><br><span class="line">- <span class="built_in">rm</span> -rf ~/.ssh</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">  - master</span><br><span class="line">before_install:</span><br><span class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_1fc90f464345_key</span> -iv <span class="variable">$encrypted_1fc90f464345_iv</span></span><br><span class="line">  -<span class="keyword">in</span> .travis/id_rsa.enc -out ~/.ssh/id_rsa -d</span><br><span class="line">- <span class="built_in">chmod</span> 600 ~/.ssh/id_rsa</span><br><span class="line">- sudo <span class="built_in">cp</span> .travis/ssh_config /etc/ssh/ssh_config</span><br><span class="line">- sudo <span class="built_in">chmod</span> 755 /etc/ssh/ssh_config</span><br><span class="line">- <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span></span><br><span class="line">- ssh-add ~/.ssh/id_rsa</span><br><span class="line">- git config --global user.name <span class="string">&quot;userName&quot;</span></span><br><span class="line">- git config --global user.email <span class="string">&quot;userName@gmail.com&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>可以看到，就类似于一台Linux主机上可以执行的bash命令，首先执行<code>install</code>的部分，然后执行<code>before_install</code>的部分，然后再执行<code>script</code>部分。本质就是将部署博客到GithubPages/CodingPages的环境在<code>travis-ci</code>上现搭一个并执行<code>hexo d -g</code>操作。</p>
-<p>然后就可以将博客源文件推送到github仓库了(注意是博客源文件不是<code>hexo g</code>生成的public文件夹中的文件)</p>
+<p>As can be seen, it’s akin to a bash command that can be executed on a Linux host. The <code>install</code> part is executed first, followed by the <code>before_install</code> part, and finally the <code>script</code> part. Essentially, it sets up an environment on <code>travis-ci</code> for deploying the blog to GithubPages/CodingPages and performs the <code>hexo d -g</code> operation.</p>
+<p>You can then push the blog source files to the Github repository (note that this is the blog source files, not the files in the <code>public</code> folder generated by <code>hexo g</code>).</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;add travis-ci&quot;</span></span><br><span class="line">$ git push origin master</span><br><span class="line"><span class="comment"># git@github.com:imzlp/blog-source.git,master</span></span><br></pre></td></tr></table></figure>
 
-<p>推送完毕之后打开travis-ci页面登陆进去就会看到它自己在后台部署了。</p>
+<p>After pushing, log in to the Travis CI page and see if it is deploying in the background.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/5.webp"></p>
-<p>等部署成功之后去你GithubPages仓库看提交成功了没有或者等你的博客页面刷新，如果travis-ci报错，请认真核对下上面的流程。</p>
-<p>我的<code>_config.yml</code>中写了两个仓库，<code>hexo d</code>时会推送到这两个仓库中(原本travis-ci只支持Github仓库)。</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/7.webp"></p>
-<p>现在，更新博客文章只需要往博客源仓库(分支)推送<code>.md</code>的文章就行了，travis-ci会检测到更新然后<strong>持续集成</strong>自动部署更新我们的博客。</p>
-<p><strong>可能遇到的问题</strong></p>
-<p>最可能遇到的还是私钥/部署时的公钥检查的问题，注意在travis-ci中替换ssh_config之后一定要设置权限(我上面设置的是755)，不然push时还是会检查公钥。</p>
-<p>注意使用<code>hexo d -g</code>之前也一定要设置git全局变量user和email，不然<code>hexo -d</code>会提示你who are you?</p>
+<p>Once the deployment is successful, check your Github Pages repository to see if the submission was successful or wait for your blog page to refresh. If Travis CI reports an error, please carefully verify the steps above.</p>
+<p>In my <code>_config.yml</code>, I’ve written two repositories; during <code>hexo d</code>, it will push to these two repositories (originally, Travis CI only supports Github repositories).</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/7.webp"></p>
+<p>Now, updating the blog articles only requires pushing <code>.md</code> articles to the blog source repository (branch), and Travis CI will detect the update and <strong>Continuous Integration</strong> will automatically deploy the updates to our blog.</p>
+<p><strong>Possible Problems</strong></p>
+<p>The most common issues encountered are still related to the private key/public key checks during deployment. Remember that after replacing the ssh_config in Travis CI, you must set permissions (I set it to 755 above), otherwise it will still check the public key when pushing.</p>
+<p>Don’t forget to set the global git variables for user and email before executing <code>hexo d -g</code>, otherwise <code>hexo d</code> will prompt you with “who are you?”.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- git config --global user.name <span class="string">&quot;userName&quot;</span></span><br><span class="line">- git config --global user.email <span class="string">&quot;userName@gmail.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>仓库目录和配置文件具体可以参照<a target="_blank" rel="noopener" href="https://github.com/imzlp/blog-source/tree/master">我的博客源文件库(master分支)</a>。travis-ci的配置主要依赖于<code>.travis</code>目录里的文件和<code>.travis.yml</code>文件。</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/6.webp"></p>
-<p><strong>后记</strong><br>目前我博客的部署方式已经非常方便了，而且再也不需要自己手动生成并推送了。<br>我使用Dropbox同步了博客的源文件并同时部署在了VPS和我的电脑上，这样我每次在本地修改或添加文章之后就会立即同步到VPS上，我又写了一个shell脚本并添加至<code>.bashrc</code>的<code>alias</code>，使用Xshell或者juiceSSH(Android)或者也可以使用<a target="_blank" rel="noopener" href="https://www.putty.org/">Putty</a>中的<code>plink</code>一键就可以登录到VPS上，只需要输入一条命令就会自动推送更新到我的Github上了(使用Xshell的快速指令集或者使用plink自动链接执行命令的脚本则一个字都不用输，点一下就执行了)，而travis-ci则一直在监控我的Blog仓库，发现提交之后立即生成并推送至<code>gh-pages</code>分支。<br>现在的步骤就只是：</p>
+
+<p>You can refer to the repository directory and configuration files from <a target="_blank" rel="noopener" href="https://github.com/imzlp/blog-source">my blog source repository (master branch)</a>. The Travis CI configuration mainly relies on the files in the <code>.travis</code> directory and the <code>.travis.yml</code> file.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/42318/6.webp"></p>
+<p><strong>Postscript</strong><br>Currently, my blog deployment method has become very convenient, and no longer requires manual generation and pushing.<br>I’ve used Dropbox to synchronize the blog source files and deployed them simultaneously on my VPS and my computer. This way, whenever I modify or add articles locally, they will instantly sync to my VPS. I also wrote a shell script and added it to the <code>.bashrc</code> as an <code>alias</code>. Using Xshell, JuiceSSH (for Android), or the <code>plink</code> in <a target="_blank" rel="noopener" href="https://www.putty.org/">Putty</a>, I can log into my VPS with a single command, and with just one command, it will automatically push the updates to my Github! (Using Xshell’s quick command set or a script for automatic command execution doesn’t require typing anything; just a click will execute it), while Travis CI constantly monitors my blog repository, generating and pushing updates to the <code>gh-pages</code> branch as soon as it detects submissions.<br>Now the steps are just:  </p>
 <ol>
-<li>添加/修改文章(本地修改，通过dropbox会立即同步到VPS上)</li>
-<li>执行自动提交脚本(在windows上启动plink快速连接到VPS并执行命令的脚本)</li>
+<li>Add/modify articles (local modifications are immediately synced to VPS through Dropbox).  </li>
+<li>Execute the automatic submission script (start <code>plink</code> to quickly connect to VPS and execute the command script).</li>
 </ol>
-<p>其实也可以写个程序让它运行在VPS上自动检测文章目录的变动然后执行快速提交的命令。这样就可以全自动化了。但是这样你就是修改一个字也会执行整个流程造成commit污染，等以后实在是懒了就这么搞吧…<br>后记：使用<code>plink</code>可以自动登录到VPS上并执行命令，真正实现一条指令都不需要输了，现有快速提交脚本如下：</p>
+<p>It’s also possible to write a program to run on the VPS that automatically detects changes in the article directory and executes quick submission commands. This way, it could be entirely automated. But doing so would result in a commit pollution every time you modify a single character, so perhaps I will implement such a solution when I am too lazy in the future…<br>Postscript: Using <code>plink</code> can automatically log into the VPS and execute commands, achieving a truly password-less experience. The current quick submission script is as follows:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># save to ~/blog</span></span><br><span class="line"><span class="comment">#!/usr/bin/env bash</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;quickly submit&quot;</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 
-<p>然后按照下面的语法执行就会执行时自动连接VPS并快速提交了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plink -pw <span class="variable">$&#123;server-username-password&#125;</span> <span class="variable">$&#123;username@Host&#125;</span> -P <span class="variable">$&#123;portNum&#125;</span> <span class="string">&quot;<span class="variable">$&#123;order&#125;</span>&quot;</span></span><br><span class="line"><span class="comment"># 连接到root@192.168.1.111上并执行快速提交命令</span></span><br><span class="line"><span class="comment"># plink -pw 123456abc root@192.168.1.111 -P 1111 &quot;cd ~/blog&amp;&amp;sh ~/blog/quicklypush.sh&quot;</span></span><br></pre></td></tr></table></figure>
-<p>plink也可以使用秘钥登陆的，但是plink需要使用puttygen生成的ppk私钥，因此我们需要把ssh的私钥使用puttygen打开然后另存为ppk私钥即可。<br>plink使用私钥自动登陆指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plink -i <span class="variable">$&#123;KeyPath&#125;</span>\puttygen.ppk <span class="variable">$&#123;username@Host&#125;</span> -P <span class="variable">$&#123;portNum&#125;</span> <span class="string">&quot;<span class="variable">$&#123;order&#125;</span>&quot;</span></span><br><span class="line"><span class="comment"># plink -i C:\Users\visionsmile\.ssh\puttygen.ppk root@192.168.1.111 -P 1111 &quot;cd ~/blog&amp;&amp;sh ~/blog/quicklypush.sh&quot;</span></span><br></pre></td></tr></table></figure>
-<p>从而实现免密登陆的效果。</p>
-<p><strong>参考文章</strong><br><a target="_blank" rel="noopener" href="https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/">用 Travis CI 自動部署網站到 GitHub</a><br><a target="_blank" rel="noopener" href="https://oncemore2020.github.io/blog/travis-deploy/">Travis CI Push 权限配置</a><br><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/e22c13d85659">教你使用Travis CI自动部署你的Hexo博客到Github上</a><br><a target="_blank" rel="noopener" href="http://www.worldhello.net/2010/04/08/1026.html">禁用SSH远程主机的公钥检查</a></p>
+<p>Then, using the following syntax will automatically connect to the VPS and quickly submit:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plink -pw <span class="variable">$&#123;server-username-password&#125;</span> <span class="variable">$&#123;username@Host&#125;</span> -P <span class="variable">$&#123;portNum&#125;</span> <span class="string">&quot;<span class="variable">$&#123;order&#125;</span>&quot;</span></span><br><span class="line"><span class="comment"># Connect to root@192.168.1.111 and execute the quick submission command</span></span><br><span class="line"><span class="comment"># plink -pw 123456abc root@192.168.1.111 -P 1111 &quot;cd ~/blog&amp;&amp;sh ~/blog/quicklypush.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Plink can also use keys for login, but plink requires ppk keys generated by puttygen, so we need to open the SSH private key with puttygen and save it as a ppk private key.<br>The command to login automatically using a private key with plink is as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plink -i <span class="variable">$&#123;KeyPath&#125;</span>/puttygen.ppk <span class="variable">$&#123;username@Host&#125;</span> -P <span class="variable">$&#123;portNum&#125;</span> <span class="string">&quot;<span class="variable">$&#123;order&#125;</span>&quot;</span></span><br><span class="line"><span class="comment"># plink -i C:\Users\visionsmile\.ssh\puttygen.ppk root@192.168.1.111 -P 1111 &quot;cd ~/blog&amp;&amp;sh ~/blog/quicklypush.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Thus achieving password-less login.</p>
+<p><strong>References</strong><br><a target="_blank" rel="noopener" href="https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/">Using Travis CI to Automatically Deploy Websites to GitHub</a><br><a target="_blank" rel="noopener" href="https://oncemore2020.github.io/blog/travis-deploy/">Travis CI Push Permission Configuration</a><br><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/e22c13d85659">How to Use Travis CI to Automatically Deploy Your Hexo Blog to Github</a><br><a target="_blank" rel="noopener" href="http://www.worldhello.net/2010/04/08/1026.html">Disable SSH Host Key Checking</a></p>
 
     </div>
 
@@ -496,7 +514,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -506,7 +524,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -516,37 +534,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/42318/" target="_blank">使用Travis CI自动部署Github/Coding Pages博客</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/10/21 06:36<br/>
+             <span>Title:</span><a href="/posts/42318/" target="_blank">Automatically deploy Github/Coding Pages blog using Travis CI</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/10/21 06:36<br/>
              
-             <span>本文字数:</span><span class="page-count">4.1k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">9.9k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/42318/" target="_blank" title="使用Travis CI自动部署Github/Coding Pages博客">https://imzlp.com/posts/42318/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/42318/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/42318/" target="_blank" title="Automatically deploy Github/Coding Pages blog using Travis CI">https://en.imzlp.com/posts/42318/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/42318/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -568,12 +586,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/10205/" rel="prev" title="CppQuiz一些有趣的题和分析">
-      <i class="fa fa-chevron-left"></i> CppQuiz一些有趣的题和分析
+    <a href="/posts/10205/" rel="prev" title="Some interesting questions and analysis of CppQuiz">
+      <i class="fa fa-chevron-left"></i> Some interesting questions and analysis of CppQuiz
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/18194/" rel="next" title="Boost源码分析笔记">
-      Boost源码分析笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/18194/" rel="next" title="Boost source code analysis notes">
+      Boost source code analysis notes <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -644,10 +662,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -658,10 +676,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -669,19 +687,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -719,10 +737,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -749,9 +767,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -760,12 +775,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -918,7 +933,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/42318/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/42318/',]
       });
       });
   </script>
@@ -941,12 +956,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

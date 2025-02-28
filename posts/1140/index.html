@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,25 +19,25 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="POD is  Plain Old Data(普通旧数据).在C++中是指能被“仅当作数据”处理的对象，程序员无暇顾及类布局的复杂性以及用户自定义的构造、拷贝和移动语义。">
+  <meta name="description" content="POD is Plain Old Data. In C++, it refers to objects that can be treated as “data only,” where programmers do not need to worry about the complexity of class layout, as well as user-defined constructor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What is POD in C++?">
-<meta property="og:url" content="https://imzlp.com/posts/1140/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="POD is  Plain Old Data(普通旧数据).在C++中是指能被“仅当作数据”处理的对象，程序员无暇顾及类布局的复杂性以及用户自定义的构造、拷贝和移动语义。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:url" content="https://en.imzlp.com/posts/1140/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="POD is Plain Old Data. In C++, it refers to objects that can be treated as “data only,” where programmers do not need to worry about the complexity of class layout, as well as user-defined constructor">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-12-03T00:04:28.000Z">
 <meta property="article:modified_time" content="2016-12-03T00:04:28.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="标准解读">
 <meta property="article:tag" content="C++标准">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://imzlp.com/posts/1140/">
+<link rel="canonical" href="https://en.imzlp.com/posts/1140/">
 
 
 <script id="page-configurations">
@@ -46,11 +46,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>What is POD in C++? | 循迹研究室</title>
+  <title>What is POD in C++? | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -90,7 +90,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,7 +100,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -111,7 +111,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -130,24 +130,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -157,7 +157,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -167,7 +167,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -175,14 +175,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -190,26 +190,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -225,7 +225,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -244,7 +244,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -263,12 +263,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -286,22 +286,22 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/1140/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/1140/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          What is POD in C++?<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-12-03-1140.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/1140/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          What is POD in C++?<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-12-03-1140.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/1140/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
@@ -311,47 +311,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-12-03 00:04 00:04:28:04" itemprop="dateCreated datePublished" datetime="2016-12-03T00:04:28+00:00">2016-12-03 00:04</time>
+              <time title="Created: 2016-12-03 00:04 00:04:28:04" itemprop="dateCreated datePublished" datetime="2016-12-03T00:04:28+00:00">2016-12-03 00:04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">标准解读</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/C-%E6%A0%87%E5%87%86/" itemprop="url" rel="index"><span itemprop="name">C++标准</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/1140/" class="post-meta-item leancloud_visitors" data-flag-title="What is POD in C++?" title="阅读次数">
+            <span id="/posts/1140/" class="post-meta-item leancloud_visitors" data-flag-title="What is POD in C++?" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.8k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -363,12 +363,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>POD is  Plain Old Data(普通旧数据).在C++中是指能被“仅当作数据”处理的对象，程序员无暇顾及类布局的复杂性以及用户自定义的构造、拷贝和移动语义。</p>
+        <p>POD is Plain Old Data. In C++, it refers to objects that can be treated as “data only,” where programmers do not need to worry about the complexity of class layout, as well as user-defined constructors, copy, and move semantics.</p>
 <span id="more"></span>
 
-<p>在介绍什么是POD之前，应该先了解一下以下几个概念。</p>
+<p>Before introducing what POD is, it is essential to understand the following concepts.</p>
 <h2 id="Scalar-types"><a href="#Scalar-types" class="headerlink" title="Scalar types"></a>Scalar types</h2><p>Arithmetic types (3.9.1), enumeration types, pointer types, pointer to member types (3.9.2), std::nullptr_t, and cv-qualified versions of these types (3.9.3) are collectively called <strong>scalar types</strong>.</p>
-<h2 id="standard-layout-types"><a href="#standard-layout-types" class="headerlink" title="standard-layout types"></a>standard-layout types</h2><p>Scalar types, standard-layout class types (Clause 9), arrays of such types and cv-qualified versions of these types (3.9.3) are collectively called <strong>standard-layout types</strong>.<strong>(ISO/IEC 14882:2014(E) §3.9.1 P71)</strong></p>
+<h2 id="standard-layout-types"><a href="#standard-layout-types" class="headerlink" title="standard-layout types"></a>standard-layout types</h2><p>Scalar types, standard-layout class types (Clause 9), arrays of such types and cv-qualified versions of these types (3.9.3) are collectively called <strong>standard-layout types</strong>. <strong>(ISO/IEC 14882:2014(E) §3.9.1 P71)</strong></p>
 <h3 id="standard-layout-class"><a href="#standard-layout-class" class="headerlink" title="standard-layout class"></a>standard-layout class</h3><p>A <strong>standard-layout class</strong> is a class that:</p>
 <ul>
 <li>has no non-static data members of type non-standard-layout class (or array of such types) or reference,</li>
@@ -376,23 +376,23 @@
 <li>has the same access control (Clause 11) for all non-static data members,</li>
 <li>has no non-standard-layout base classes,</li>
 <li>either has no non-static data members in the most derived class and at most one base class with non-static data members, or has no base classes with non-static data members, and</li>
-<li>has no base classes of the same type as the first non-static data member.(This ensures that two subobjects that have the same class type and that belong to the same most derived object are not allocated at the same address)</li>
+<li>has no base classes of the same type as the first non-static data member. (This ensures that two subobjects that have the same class type and that belong to the same most derived object are not allocated at the same address)</li>
 </ul>
-<p>通俗点来说一个类型具有标准布局，<strong>不应该</strong>具有以下几种性质：</p>
+<p>In simpler terms, a type has a standard layout if it <strong>must not</strong> have the following properties:</p>
 <ul>
-<li>含有一个非标准布局的非static成员或基类</li>
-<li>包含virtual函数</li>
-<li>包含virtual基类</li>
-<li>含有引用类型的成员</li>
-<li>其中的非static数据成员有多种访问修饰符(public/private/protected)</li>
-<li>阻止重要的布局优化<ul>
-<li>在多个基类中含有非static数据成员，或者在派生类和基类中都含有非static数据成员</li>
-<li>基类类型与第一个非static数据成员类型相同</li>
+<li>Contains a non-standard layout non-static member or base class</li>
+<li>Contains virtual functions</li>
+<li>Contains virtual base classes</li>
+<li>Contains member of reference type</li>
+<li>Has non-static data members with multiple access specifiers (public/private/protected)</li>
+<li>Prevents important layout optimizations<ul>
+<li>Contains non-static data members in multiple base classes, or contains non-static data members in both the derived class and base class</li>
+<li>Has a base class type that is the same as the type of the first non-static data member</li>
 </ul>
 </li>
 </ul>
-<p>基本上，标准布局类型是指与C语言的布局兼容的类型，并且应该能被常规的C++ ABI(应用程序二进制接口)处理。</p>
-<h3 id="std-is-standard-layout"><a href="#std-is-standard-layout" class="headerlink" title="std::is_standard_layout"></a>std::is_standard_layout</h3><p>标准库中有<code>std::is_standard_layout</code>可以判断一个类型是否为标准布局,它定义在<code>type_traits</code>中。</p>
+<p>Essentially, standard-layout types are those that are compatible with C language layout and should be able to be handled by the regular C++ ABI (Application Binary Interface).</p>
+<h3 id="std-is-standard-layout"><a href="#std-is-standard-layout" class="headerlink" title="std::is_standard_layout"></a>std::is_standard_layout</h3><p>The standard library provides <code>std::is_standard_layout</code> to determine whether a type is a standard layout, defined in <code>type_traits</code>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt; <span class="keyword">class</span> <span class="title class_">T</span> &gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">is_standard_layout</span>;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -403,7 +403,7 @@
 </thead>
 <tbody><tr>
 <td align="center"><strong>value</strong> [static]</td>
-<td><code>true</code> if T is a standard-layout type type , <code>false</code> otherwise</td>
+<td><code>true</code> if T is a standard-layout type, <code>false</code> otherwise</td>
 </tr>
 <tr>
 <td align="center"><strong>Member functions</strong></td>
@@ -436,7 +436,7 @@
 </tbody></table>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;type_traits&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> &#123;<span class="type">int</span> m;&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">B</span> &#123;</span><br><span class="line">    <span class="type">int</span> m1;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span> &#123;<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; std::boolalpha;</span><br><span class="line">    std::cout &lt;&lt; std::is_standard_layout&lt;A&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    std::cout &lt;&lt; std::is_standard_layout&lt;B&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    std::cout &lt;&lt; std::is_standard_layout&lt;C&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="trivially-copyable-types"><a href="#trivially-copyable-types" class="headerlink" title="trivially copyable types"></a>trivially copyable types</h2><p>Cv-unqualified scalar types, trivially copyable class types (Clause 9), arrays of such types, and non-volatile const-qualified versions of these types (3.9.3) are collectively called trivially copyable types.<strong>(ISO/IEC 14882:2014(E) §3.9.1 P71)</strong></p>
+<h2 id="trivially-copyable-types"><a href="#trivially-copyable-types" class="headerlink" title="trivially copyable types"></a>trivially copyable types</h2><p>Cv-unqualified scalar types, trivially copyable class types (Clause 9), arrays of such types, and non-volatile const-qualified versions of these types (3.9.3) are collectively called trivially copyable types. <strong>(ISO/IEC 14882:2014(E) §3.9.1 P71)</strong></p>
 <h3 id="trivially-copyable-class"><a href="#trivially-copyable-class" class="headerlink" title="trivially copyable class"></a>trivially copyable class</h3><p>A trivially copyable class is a class that:</p>
 <ul>
 <li>has no non-trivial copy constructors (12.8),</li>
@@ -446,37 +446,40 @@
 <li>has a trivial destructor (12.4).</li>
 </ul>
 <blockquote>
-<p>A trivial class is a class that has a default constructor (12.1), has no non-trivial default constructors,and is trivially copyable.[ Note: In particular, a trivially copyable or trivial class does not have virtual functions or virtual base classes. — end note ] (<strong>ISO/IEC 14882:2014(E) §9 P215</strong>)</p>
+<p>A trivial class is a class that has a default constructor (12.1), has no non-trivial default constructors, and is trivially copyable. [Note: In particular, a trivially copyable or trivial class does not have virtual functions or virtual base classes. — end note] (<strong>ISO/IEC 14882:2014(E) §9 P215</strong>)</p>
 </blockquote>
-<p>除非在类型内部含有<em>non-trivial</em>的拷贝、移动或者析构，否则该类型就是平凡可拷贝的类型(<em>trivially copyable type</em>)。<br>内置类型的变量都是平凡可拷贝的，且拥有标准布局。同样，由平凡可拷贝对象组成的数组是平凡可拷贝的，由标准布局对象组成的数组拥有标准布局。</p>
-<h2 id="POD-types"><a href="#POD-types" class="headerlink" title="POD types"></a>POD types</h2><p>Scalar types, POD classes(Clause 9), arrays of such types and cv-qualified versions of these types (3.9.3) are collectively called <strong>POD types</strong>.</p>
-<p>POD<strong>必须</strong>属于下列类型的对象：</p>
+<p>Unless a type contains <em>non-trivial</em> copy, move, or destructor operations internally, it is considered a trivially copyable type. Built-in type variables are all trivially copyable and have standard layout. Similarly, arrays composed of trivially copyable objects are trivially copyable, and arrays comprised of standard layout objects have standard layout.</p>
+<h2 id="POD-types"><a href="#POD-types" class="headerlink" title="POD types"></a>POD types</h2><p>Scalar types, POD classes (Clause 9), arrays of such types, and cv-qualified versions of these types (3.9.3) are collectively called <strong>POD types</strong>.</p>
+<p>POD <strong>must</strong> belong to the following types of objects:</p>
 <ul>
-<li>标准布局类型(<em>standard-layout types</em>)</li>
-<li>平凡可拷贝类型(<em>trivially copyable type</em>)</li>
+<li>Standard layout types (<em>standard-layout types</em>)</li>
+<li>Trivially copyable types (<em>trivially copyable type</em>)</li>
 </ul>
-<p>即如果我们想把某个对象”仅当做数据“处理(POD)，则要求该对象必须满足下述条件：</p>
+<p>Thus, if we want to treat an object as “data only” (POD), the object must satisfy the following conditions:</p>
 <ul>
-<li>不具有复杂的布局(比如含有vptr)</li>
-<li>不具有非标准(用户自定义)的拷贝语义</li>
-<li>含有一个最普通(trivial)的默认构造函数</li>
+<li>Does not have a complex layout (for example, contains a vptr)</li>
+<li>Does not have non-standard (user-defined) copy semantics</li>
+<li>Contains a most trivial (trivial) default constructor</li>
 </ul>
 <blockquote>
-<p><strong>trivial default constructor</strong>:a default constructor is trivial if it does not need to do any work (use =default if you need to define one).(TC++PL4E(E) §8.2.6 P211)</p>
+<p><strong>trivial default constructor</strong>: a default constructor is trivial if it does not need to do any work (use =default if you need to define one). (TC++PL4E(E) §8.2.6 P211)</p>
 </blockquote>
-<p>需要注意的是，增加或删除非默认构造函数不会影响布局和性能(在C++98中不是这样)。</p>
+<p>It should be noted that adding or removing non-default constructors will not affect the layout and performance (this was not the case in C++98).</p>
 <blockquote>
-<p>A POD struct is a non-union class that is both a trivial class and a standard-layout class, and has no non-static data members of type non-POD struct, non-POD union (or array of such types). Similarly, a POD union is a union that is both a trivial class and a standard-layout class, and has no non-static data members of type non-POD struct, non-POD union (or array of such types). A POD class is a class that is either a POD struct or a POD union.(<strong>ISO/IEC 14882:2014(E)§9.1 P216</strong>)</p>
+<p>A POD struct is a non-union class that is both a trivial class and a standard-layout class, and has no non-static data members of type non-POD struct, non-POD union (or array of such types). Similarly, a POD union is a union that is both a trivial class and a standard-layout class, and has no non-static data members of type non-POD struct, non-POD union (or array of such types). A POD class is a class that is either a POD struct or a POD union. (<strong>ISO/IEC 14882:2014(E) §9.1 P216</strong>)</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">N</span> &#123; <span class="comment">// neither trivial nor standard-layout</span></span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  <span class="type">int</span> j;</span><br><span class="line">  <span class="keyword">virtual</span> ~<span class="built_in">N</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">T</span> &#123; <span class="comment">// trivial but not standard-layout</span></span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="type">int</span> j;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SL</span> &#123; <span class="comment">// standard-layout but not trivial</span></span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  <span class="type">int</span> j;</span><br><span class="line">  ~<span class="built_in">SL</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">POD</span> &#123; <span class="comment">// both trivial and standard-layout</span></span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  <span class="type">int</span> j;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>再考虑下面的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">s0</span>&#123;&#125;; <span class="comment">// is POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">s1</span>&#123;<span class="type">int</span> a;&#125;; <span class="comment">// is POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">s2</span>&#123;<span class="type">int</span> a;<span class="built_in">s2</span>(<span class="type">int</span> aa):a&#123;aa&#125;&#123;&#125;&#125;; <span class="comment">// not a POD (no default constructor)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S3</span> &#123; <span class="type">int</span> a; <span class="built_in">S3</span>(<span class="type">int</span> aa) : <span class="built_in">a</span>(aa) &#123; &#125; <span class="built_in">S3</span>() &#123;&#125; &#125;; <span class="comment">// a POD (user-defined default constructor)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S4</span> &#123; <span class="type">int</span> a; <span class="built_in">S4</span>(<span class="type">int</span> aa) : <span class="built_in">a</span>(aa) &#123; &#125; <span class="built_in">S4</span>() = <span class="keyword">default</span>; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S5</span> &#123; <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">f</span><span class="params">()</span></span>; <span class="comment">/*...*/</span> &#125;; <span class="comment">// not a POD (has a virtual function)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S6</span> : S1 &#123; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S7</span> : S0 &#123; <span class="type">int</span> b; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S8</span> : S1 &#123; <span class="type">int</span> b; &#125;; <span class="comment">// not a POD (data in both S1 and S8)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S9</span> : S0, S1 &#123;&#125;; <span class="comment">//a POD</span></span><br></pre></td></tr></table></figure>
+<p>Now consider the following code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">s0</span>&#123;&#125;; <span class="comment">// is POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">s1</span>&#123;<span class="type">int</span> a;&#125;; <span class="comment">// is POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">s2</span>&#123;<span class="type">int</span> a;<span class="built_in">s2</span>(<span class="type">int</span> aa):a&#123;aa&#125;&#123;&#125;&#125;; <span class="comment">// not a POD (no default constructor)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S3</span> &#123; <span class="type">int</span> a; <span class="built_in">S3</span>(<span class="type">int</span> aa) : <span class="built_in">a</span>(aa) &#123; &#125; <span class="built_in">S3</span>() &#123;&#125; &#125;; <span class="comment">// a POD (user-defined default constructor)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S4</span> &#123; <span class="type">int</span> a; <span class="built_in">S4</span>(<span class="type">int</span> aa) : <span class="built_in">a</span>(aa) &#123; &#125; <span class="built_in">S4</span>() = <span class="keyword">default</span>; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S5</span> &#123; <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">f</span><span class="params">()</span></span>; <span class="comment">/*...*/</span> &#125;; <span class="comment">// not a POD (has a virtual function)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S6</span> : S1 &#123; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S7</span> : S0 &#123; <span class="type">int</span> b; &#125;; <span class="comment">// a POD</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S8</span> : S1 &#123; <span class="type">int</span> b; &#125;; <span class="comment">// not a POD (data in both S1 and S8)</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S9</span> : S0, S1 &#123;&#125;; <span class="comment">// a POD</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="std-is-pod"><a href="#std-is-pod" class="headerlink" title="std::is_pod"></a>std::is_pod</h3><p>可以使用<code>std::is_pod</code>来判断一个类型是否是POD类型。<code>std::is_pod</code>是一个标准库类型属性谓词，它定义在<code>type_traits</code>中，用法以及成员函数、成员类型与<code>std::is_standard_layout</code>相同。</p>
+
+
+<h3 id="std-is-pod"><a href="#std-is-pod" class="headerlink" title="std::is_pod"></a>std::is_pod</h3><p>You can use <code>std::is_pod</code> to determine whether a type is a POD type. <code>std::is_pod</code> is a standard library type trait predicate defined in <code>type_traits</code>, with the same usage, member functions, and member types as <code>std::is_standard_layout</code>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt; <span class="keyword">class</span> <span class="title class_">T</span> &gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">is_pod</span>;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; std::boolalpha;</span><br><span class="line">    std::cout &lt;&lt; std::is_pod&lt;A&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    std::cout &lt;&lt; std::is_pod&lt;B&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    std::cout &lt;&lt; std::is_pod&lt;C&gt;::value &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -486,7 +489,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -496,7 +499,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -506,37 +509,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/1140/" target="_blank">What is POD in C++?</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/12/03 00:04<br/>
+             <span>Title:</span><a href="/posts/1140/" target="_blank">What is POD in C++?</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/12/03 00:04<br/>
              
-             <span>本文字数:</span><span class="page-count">3.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">4.8k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/1140/" target="_blank" title="What is POD in C++?">https://imzlp.com/posts/1140/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/1140/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/1140/" target="_blank" title="What is POD in C++?">https://en.imzlp.com/posts/1140/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/1140/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -557,12 +560,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/4367/" rel="prev" title="读TC++PL、C++Primer和ISO C++">
-      <i class="fa fa-chevron-left"></i> 读TC++PL、C++Primer和ISO C++
+    <a href="/posts/4367/" rel="prev" title="Reading TC++PL/C++Primer/ISO C++">
+      <i class="fa fa-chevron-left"></i> Reading TC++PL/C++Primer/ISO C++
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/25788/" rel="next" title="激进的ADL(Argument-dependent lookup)">
-      激进的ADL(Argument-dependent lookup) <i class="fa fa-chevron-right"></i>
+    <a href="/posts/25788/" rel="next" title="Radical ADL (Argument-dependent lookup)">
+      Radical ADL (Argument-dependent lookup) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -633,10 +636,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -648,10 +651,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -659,19 +662,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -709,10 +712,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -739,9 +742,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -750,12 +750,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -908,7 +908,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/1140/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/1140/',]
       });
       });
   </script>
@@ -931,12 +931,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

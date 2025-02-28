@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在使用UnrealEngine进行项目开发的过程中，经常会开发和接入各种类型的插件来对引擎进行扩展，从而实现不同的需求。对于开发者而言，对运行机制的理解优于工具的使用。所以对于插件的接入和开发，有必要了解其原理。 之前我也开发了一些UE的工具和插件，我希望写一个相关的系列文章，把UE插件与工具开发相关具有共性的技术内容做一些总结，并分享一些我开发插件时的一些思考和功能脚手架。尽可能用最少的代码、最">
+  <meta name="description" content="During the process of project development using Unreal Engine, various types of plugins are often developed and integrated to extend the engine, thereby fulfilling different requirements. For develope">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE插件与工具开发：基础概念">
-<meta property="og:url" content="https://imzlp.com/posts/75405/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在使用UnrealEngine进行项目开发的过程中，经常会开发和接入各种类型的插件来对引擎进行扩展，从而实现不同的需求。对于开发者而言，对运行机制的理解优于工具的使用。所以对于插件的接入和开发，有必要了解其原理。 之前我也开发了一些UE的工具和插件，我希望写一个相关的系列文章，把UE插件与工具开发相关具有共性的技术内容做一些总结，并分享一些我开发插件时的一些思考和功能脚手架。尽可能用最少的代码、最">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE plug-in and tool development: basic concepts">
+<meta property="og:url" content="https://en.imzlp.com/posts/75405/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="During the process of project development using Unreal Engine, various types of plugins are often developed and integrated to extend the engine, thereby fulfilling different requirements. For develope">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230204122944.webp">
 <meta property="article:published_time" content="2023-01-29T12:12:55.000Z">
 <meta property="article:modified_time" content="2023-01-29T12:12:55.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="插件开发">
 <meta property="article:tag" content="Tools">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230204122944.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/75405/">
+<link rel="canonical" href="https://en.imzlp.com/posts/75405/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE插件与工具开发：基础概念 | 循迹研究室</title>
+  <title>UE plug-in and tool development: basic concepts | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/75405/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/75405/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE插件与工具开发：基础概念<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2023-01-29-75405.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/75405/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE plug-in and tool development: basic concepts<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2023-01-29-75405.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/75405/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE plug-in and tool development: basic concepts</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE插件与工具开发：基础概念</sub>
           </div>
         
 
@@ -318,47 +318,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2023-01-29 12:12 12:12:55:12" itemprop="dateCreated datePublished" datetime="2023-01-29T12:12:55+00:00">2023-01-29 12:12</time>
+              <time title="Created: 2023-01-29 12:12 12:12:55:12" itemprop="dateCreated datePublished" datetime="2023-01-29T12:12:55+00:00">2023-01-29 12:12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">插件开发</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/75405/" class="post-meta-item leancloud_visitors" data-flag-title="UE插件与工具开发：基础概念" title="阅读次数">
+            <span id="/posts/75405/" class="post-meta-item leancloud_visitors" data-flag-title="UE plug-in and tool development: basic concepts" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>12k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>29 mins.</span>
             </span>
 
         </div>
@@ -370,156 +370,155 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在使用UnrealEngine进行项目开发的过程中，经常会开发和接入各种类型的插件来对引擎进行扩展，从而实现不同的需求。对于开发者而言，对运行机制的理解优于工具的使用。所以对于插件的接入和开发，有必要了解其原理。</p>
-<p>之前我也开发了一些UE的工具和插件，我希望写一个相关的系列文章，把UE插件与工具开发相关具有共性的技术内容做一些总结，并分享一些我开发插件时的一些思考和功能脚手架。尽可能用最少的代码、最小的侵入式和最佳的实现策略，来实现需要的功能。</p>
+        <p>During the process of project development using Unreal Engine, various types of plugins are often developed and integrated to extend the engine, thereby fulfilling different requirements. For developers, understanding the operational mechanism is more important than using the tools. Thus, it is necessary to understand the principles behind the integration and development of plugins.</p>
+<p>Previously, I also developed some tools and plugins for UE, and I hope to write a series of related articles summarizing the common technical content related to UE plugin and tool development and sharing some of my thoughts and functional scaffolding during plugin development. The goal is to achieve the desired functionality with minimal code, minimal invasiveness, and the best implementation strategies.</p>
 <span id="more"></span>
 
-<h2 id="什么是UE中的插件？"><a href="#什么是UE中的插件？" class="headerlink" title="什么是UE中的插件？"></a>什么是UE中的插件？</h2><p>UE中的插件是通过<code>uplugin</code>进行组织的一些模块（Module）集合。可以在引擎中进行方便地启用，能够基于引擎中的已有功能进行开发，也可以包含其他插件中的模块进行扩展。</p>
-<p>一般情况下，从功能上进行区分，最常用的模块类型可以分为以下几类：</p>
+<h2 id="What-is-a-plugin-in-UE"><a href="#What-is-a-plugin-in-UE" class="headerlink" title="What is a plugin in UE?"></a>What is a plugin in UE?</h2><p>A plugin in UE is a collection of modules organized through <code>uplugin</code>. They can be conveniently enabled in the engine, developed based on the existing functionalities within the engine, and may also include modules from other plugins for extension.</p>
+<p>Generally speaking, in terms of functionality distinction, the most commonly used module types can be categorized into the following:</p>
 <ol>
-<li>Runtime，引擎的运行时，在Editor和打包后都会运行；</li>
-<li>Developer，在非Shipping阶段都会参与编译和运行，用于一些开发阶段的功能，在Shipping时会自动剔除，避免测试功能进入发行包；</li>
-<li>Editor，在Target为Editor的目标程序加载的类型，如启动引擎的编辑器、Commandlet等，都会启动Editor类型的模块。通常情况下，Editor类型的模块用于扩展编辑器功能，如创建独立的视口、给某些资源添加功能按钮、以及配置面板等等。</li>
+<li>Runtime: the engine’s runtime, which runs both in the Editor and after packaging.</li>
+<li>Developer: involved in compilation and execution during non-shipping stages, used for some functionalities in the development stage, automatically excluded during shipping to avoid testing functionalities entering the release package.</li>
+<li>Editor: loaded when the Target is an Editor type of application, such as launching the engine’s editor, Commandlet, etc. Usually, Editor-type modules are used to extend editor functionalities, such as creating standalone viewports, adding function buttons to certain resources, and configuration panels, etc.</li>
 </ol>
-<p>单个插件可以包含多个不同类型的模块，如同时包含Runtime/Developer/Editor等类型，只需要在<code>uplugin</code>中描述即可。</p>
-<p>在引擎的组织结构中，引擎内的插件位于<code>Engine/Plugins</code>目录下：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221225.webp"></p>
-<p>项目的工程则位于<code>PROJECT_DIR/Plugins</code>下：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226.webp"></p>
-<p>引擎和项目中的插件有一定的依赖层级关系，需要控制好依赖层级，避免出现依赖混乱。</p>
+<p>A single plugin can contain multiple different types of modules, such as Runtime/Developer/Editor, which can simply be described in the <code>uplugin</code>.</p>
+<p>In the organizational structure of the engine, plugins are located in the <code>Engine/Plugins</code> directory:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221225.webp"></p>
+<p>The project’s engineering files are located in the <code>PROJECT_DIR/Plugins</code> directory:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226.webp"></p>
+<p>There is a certain dependency hierarchy between plugins in the engine and the project, and it is necessary to manage the dependency hierarchy well to avoid confusion.</p>
 <ol>
-<li>引擎中的Module应该只依赖引擎内置的Module，不应该包含其他插件中的Module。</li>
-<li>引擎插件中的Module可以依赖引擎内置的Module和其他引擎内置插件中的Module，不应包含工程的Module</li>
-<li>工程插件的Module可以包含<code>引擎内置Module</code>/<code>引擎插件Module</code>/<code>其他工程插件的Module</code>，不应包含工程里定义的Module</li>
-<li>工程中的Module则可以包含以上所有Module的集合。</li>
+<li>Modules in the engine should only depend on the built-in modules of the engine and should not include modules from other plugins.</li>
+<li>Modules in engine plugins can depend on built-in engine modules and modules from other built-in plugins of the engine, but should not include project-specific modules.</li>
+<li>Modules in project plugins can contain <code>engine built-in modules</code> / <code>engine plugin modules</code> / <code>modules from other project plugins</code>, but should not include modules defined within the project.</li>
+<li>Modules in the project can include a collection of all the above modules.</li>
 </ol>
-<p>依赖关系如下图所示：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-1.webp"></p>
-<p>插件必须依托于某个工程启动，工程不单指游戏工程，而是指包含target.cs定义的代码单元。一个工程既可以包含插件，也可以包含自己的模块。工程的Target配置会影响插件中的Module加载。</p>
-<p>以UE创建的默认工程为例：</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-2.webp">)</p>
-<p>在Source目录下，创建出了两个<code>target*.cs</code>文件，用于区分打包的Runtime和Editor，当然如果DS工程也会有对应的target.cs，这里对每个target.cs的定义都统称为工程编译目标。</p>
-<p>它们的区别和文件命名无关，和文件内容相关。对比一下两者区别：</p>
+<p>The dependency relationships are shown in the following diagram:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-1.webp"></p>
+<p>Plugins must rely on a specific project to be initiated, where a project does not solely refer to a game project, but instead refers to a code unit defined by target.cs. A project can contain both plugins and its own modules. The Target configuration of the project will affect the loading of modules within plugins.</p>
+<p>Taking the default project created by UE as an example:</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-2.webp"></p>
+<p>In the Source directory, two <code>target*.cs</code> files are created to distinguish between the packaged Runtime and Editor. Certainly, if there’s a DS project, there will also be a corresponding target.cs; here, each definition of target.cs is collectively referred to as the project compilation target.</p>
+<p>Their differences are related to file content, not naming. Comparing the two:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-3.webp"></p>
-<p>通过<code>TargetType</code>指定当前Target的类型。</p>
-<p><code>TargetType</code>是在UBT中定义的枚举类型，可选值为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">namespace UnrealBuildTool</span><br><span class="line">&#123;</span><br><span class="line">	[Serializable]</span><br><span class="line">	public enum TargetType</span><br><span class="line">	&#123;</span><br><span class="line">		/// Cooked monolithic game executable (GameName.exe).  Also used for a game-agnostic engine executable (UE4Game.exe or RocketGame.exe)</span><br><span class="line">		Game,</span><br><span class="line"></span><br><span class="line">		/// Uncooked modular editor executable and DLLs (UE4Editor.exe, UE4Editor*.dll, GameName*.dll)</span><br><span class="line">		Editor,</span><br><span class="line"></span><br><span class="line">		/// Cooked monolithic game client executable (GameNameClient.exe, but no server code)</span><br><span class="line">		Client,</span><br><span class="line"></span><br><span class="line">		/// Cooked monolithic game server executable (GameNameServer.exe, but no client code)</span><br><span class="line">		Server,</span><br><span class="line"></span><br><span class="line">		/// Program (standalone program, e.g. ShaderCompileWorker.exe, can be modular or monolithic depending on the program)</span><br><span class="line">		Program,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>表示了UE项目的五种工程的Target类型。</p>
-<p>在IDE中选择不同的BuildConfiguration时，就会使用不同的Target：</p>
+<p>The <code>TargetType</code> specifies the type of the current Target.</p>
+<p><code>TargetType</code> is an enumeration defined in UBT with optional values:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">UnrealBuildTool</span></span><br><span class="line">&#123;</span><br><span class="line">	[<span class="meta">Serializable</span>]</span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">enum</span> TargetType</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment"><span class="doctag">///</span> Cooked monolithic game executable (GameName.exe).  Also used for a game-agnostic engine executable (UE4Game.exe or RocketGame.exe)</span></span><br><span class="line">		Game,</span><br><span class="line"></span><br><span class="line">		<span class="comment"><span class="doctag">///</span> Uncooked modular editor executable and DLLs (UE4Editor.exe, UE4Editor*.dll, GameName*.dll)</span></span><br><span class="line">		Editor,</span><br><span class="line"></span><br><span class="line">		<span class="comment"><span class="doctag">///</span> Cooked monolithic game client executable (GameNameClient.exe, but no server code)</span></span><br><span class="line">		Client,</span><br><span class="line"></span><br><span class="line">		<span class="comment"><span class="doctag">///</span> Cooked monolithic game server executable (GameNameServer.exe, but no client code)</span></span><br><span class="line">		Server,</span><br><span class="line"></span><br><span class="line">		<span class="comment"><span class="doctag">///</span> Program (standalone program, e.g. ShaderCompileWorker.exe, can be modular or monolithic depending on the program)</span></span><br><span class="line">		Program,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This represents five different project Target types in UE.</p>
+<p>When selecting different BuildConfigurations in the IDE, different Targets will be used:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-4.webp"></p>
-<p>如</p>
+<p>For instance:</p>
 <ul>
-<li>Development Editor会使用<code>Blank427Editor.Target.cs</code>中定义的配置（<code>TargetType.Editor</code>）</li>
-<li>Development会使用<code>Blank427.Target.cs</code>中定义的配置（<code>TargetType.Game</code>）</li>
+<li>Development Editor will use the configuration defined in <code>Blank427Editor.Target.cs</code> (<code>TargetType.Editor</code>)</li>
+<li>Development will use the configuration defined in <code>Blank427.Target.cs</code> (<code>TargetType.Game</code>)</li>
 </ul>
-<p>在编译时，工程的BuildConfiguration也会传递给插件，用于决定插件中的哪些Module参与编译。</p>
-<p>在插件的build.cs中可以对当前Target的信息进行检测，用于处理编译不同Target时行为不同的情况：</p>
+<p>During compilation, the BuildConfiguration of the project will also be passed to plugins to determine which Modules within the plugins participate in the compilation.</p>
+<p>In the plugin’s build.cs, the current Target’s information can be checked to handle different behaviors during the compilation of different Targets:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LearnPlugin</span>(<span class="params">ReadOnlyTargetRules Target</span>) : <span class="title">base</span>(<span class="params">Target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Target.Type == TargetType.Editor)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="如何描述一个插件？"><a href="#如何描述一个插件？" class="headerlink" title="如何描述一个插件？"></a>如何描述一个插件？</h2><h3 id="uplugin"><a href="#uplugin" class="headerlink" title="uplugin"></a>uplugin</h3><p>UE中通过<code>uplugin</code>文件描述插件，它是一种基于json语法表示一个插件的组织结构和关键信息的配置。</p>
+<h2 id="How-to-describe-a-plugin"><a href="#How-to-describe-a-plugin" class="headerlink" title="How to describe a plugin?"></a>How to describe a plugin?</h2><h3 id="uplugin"><a href="#uplugin" class="headerlink" title="uplugin"></a>uplugin</h3><p>In UE, plugins are described through the <code>uplugin</code> file, which is a configuration that represents the organizational structure and key information of a plugin based on JSON syntax.</p>
 <ol>
-<li>插件的命名、作者等基础信息</li>
-<li>插件模块的类型</li>
-<li>模块的启动时机</li>
-<li>对其他插件的依赖</li>
-<li>平台黑白名单</li>
+<li>Basic information such as the name of the plugin, the author, etc.</li>
+<li>The type of the plugin module</li>
+<li>The timing of module activation</li>
+<li>Dependencies on other plugins</li>
+<li>Platform whitelists and blacklists</li>
 </ol>
-<p>以HotChunker的uplugin为例：</p>
+<p>For example, the uplugin of HotChunker could look like this:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;FileVersion&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Version&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;VersionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;FriendlyName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Other&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CreatedBy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lipengzha&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CreatedByURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://imzlp.com/&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;DocsURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;MarketplaceURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;SupportURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;EnabledByDefault&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;CanContainContent&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;IsBetaVersion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;IsExperimentalVersion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Installed&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;SupportedPrograms&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Plugins&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotPatcher&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Modules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Program&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PostConfigInit&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;ProgramAllowList&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunkerCore&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Runtime&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunkerEditor&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Editor&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>通过该信息，能清晰地知道插件中的模块数量、类型和启动时机。</p>
+<p>From this information, the quantity, types, and activation timing of modules in the plugin can be clearly known.</p>
 <ul>
-<li>在编译时，UBT也会读取插件的Type，决定模块是否参与编译。</li>
-<li>在引擎启动时，会根据模块定义的信息进行启动。如LoadingPhase配置，在不同的启动阶段加载插件。</li>
+<li>During compilation, UBT will also read the plugin’s Type to decide whether the module participates in the compilation.</li>
+<li>When starting the engine, the module definitions will dictate the loading based on the information. For instance, the LoadingPhase configuration loads the plugin at different startup stages.</li>
 </ul>
-<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>uplugin中的<code>Modules</code>元素是一个数组，用于描述当前插件中的模块，每个Module的描述有以下基础信息：</p>
+<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>The <code>Modules</code> element in uplugin is an array used to describe the current plugin’s modules, with the following basic information for each Module:</p>
 <ol>
-<li>Module名，也就是Build.cs里定义的模块名</li>
-<li>Type，模块的类型，Runtime/Developer/Editor/Program等，在哪些Target时参与编译和加载。</li>
-<li>Loadingphase，模块的启动时机，引擎中的模块都是有启动顺序的，通过调整该配置，可以控制插件模块的加载时机，在有些依赖执行顺序的流程中非常有有，如引擎内某些模块会检测启动参数，如果不想要通过手动指定而在插件代码中实现，就可以创建出一个先于它启动的模块，把启动参数追加到FCommandLine中，实现无需手动操作的流程自动化。</li>
+<li>Module name, which is the name defined in Build.cs</li>
+<li>Type, the type of the module such as Runtime/Developer/Editor/Program, dictating when it participates in compilation and loading for which Targets.</li>
+<li>Loading phase, the module’s activation timing, as the modules in the engine are loaded in sequence; by adjusting this configuration, the loading timing of the plugin module can be controlled, which can be very important for processes that depend on execution order. For instance, some modules in the engine might detect startup parameters. If these parameters are not wanted to be manually specified but achieved through plugin code, a module that starts before can be created to append the startup parameters to FCommandLine, thus automating the process without manual intervention.</li>
 </ol>
-<p>当然，对于一些特殊的Module，如上面HotChunker模块的<code>Type</code>是<code>Program</code>的，它表示只有在Target为Program的时，才会参与编译与启动，并且可以通过<code>ProgramAllowList</code>来指定在哪些Program中才有效。</p>
-<p>同样的，引擎中LoadingPhase的所有支持值（4.27+）：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> ELoadingPhase</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">enum</span> <span class="title class_">Type</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">/** As soon as possible - in other words, uplugin files are loadable from a pak file (as well as right after PlatformFile is set up in case pak files aren&#x27;t used) Used for plugins needed to read files (compression formats, etc) */</span></span><br><span class="line">		EarliestPossible,</span><br><span class="line">		<span class="comment">/** Loaded before the engine is fully initialized, immediately after the config system has been initialized.  Necessary only for very low-level hooks */</span></span><br><span class="line">		PostConfigInit,</span><br><span class="line">		<span class="comment">/** The first screen to be rendered after system splash screen */</span></span><br><span class="line">		PostSplashScreen,</span><br><span class="line">		<span class="comment">/** Loaded before coreUObject for setting up manual loading screens, used for our chunk patching system */</span></span><br><span class="line">		PreEarlyLoadingScreen,</span><br><span class="line">		<span class="comment">/** Loaded before the engine is fully initialized for modules that need to hook into the loading screen before it triggers */</span></span><br><span class="line">		PreLoadingScreen,</span><br><span class="line">		<span class="comment">/** Right before the default phase */</span></span><br><span class="line">		PreDefault,</span><br><span class="line">		<span class="comment">/** Loaded at the default loading point during startup (during engine init, after game modules are loaded.) */</span></span><br><span class="line">		Default,</span><br><span class="line">		<span class="comment">/** Right after the default phase */</span></span><br><span class="line">		PostDefault,</span><br><span class="line">		<span class="comment">/** After the engine has been initialized */</span></span><br><span class="line">		PostEngineInit,</span><br><span class="line">		<span class="comment">/** Do not automatically load this module */</span></span><br><span class="line">		None,</span><br><span class="line">		<span class="comment">// <span class="doctag">NOTE:</span> If you add a new value, make sure to update the ToString() method below!</span></span><br><span class="line">		Max</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Furthermore, for some special modules, such as the <code>Type</code> of the HotChunker module being <code>Program</code>, this indicates it will only participate in compilation and startup when the Target is Program, and can specify which Programs are valid through <code>ProgramAllowList</code>.</p>
+<p>Similarly, the supported values for LoadingPhase in the engine (4.27+) are:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> ELoadingPhase</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">enum</span> <span class="title class_">Type</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">/** As soon as possible. In other words, uplugin files are loadable from a pak file (as well as right after PlatformFile is set up in case pak files aren&#x27;t used). Used for plugins needed to read files (compression formats, etc.) */</span></span><br><span class="line">		EarliestPossible,</span><br><span class="line">		<span class="comment">/** Loaded before the engine is fully initialized, immediately after the config system has been initialized. Necessary only for very low-level hooks */</span></span><br><span class="line">		PostConfigInit,</span><br><span class="line">		<span class="comment">/** The first screen rendered after the system splash screen */</span></span><br><span class="line">		PostSplashScreen,</span><br><span class="line">		<span class="comment">/** Loaded before coreUObject for setting up manual loading screens, used for our chunk patching system */</span></span><br><span class="line">		PreEarlyLoadingScreen,</span><br><span class="line">		<span class="comment">/** Loaded before the engine is fully initialized for modules that need to hook into the loading screen before it triggers */</span></span><br><span class="line">		PreLoadingScreen,</span><br><span class="line">		<span class="comment">/** Right before the default phase */</span></span><br><span class="line">		PreDefault,</span><br><span class="line">		<span class="comment">/** Loaded at the default loading point during startup (during engine init, after game modules are loaded.) */</span></span><br><span class="line">		Default,</span><br><span class="line">		<span class="comment">/** Right after the default phase */</span></span><br><span class="line">		PostDefault,</span><br><span class="line">		<span class="comment">/** After the engine has been initialized */</span></span><br><span class="line">		PostEngineInit,</span><br><span class="line">		<span class="comment">/** Do not automatically load this module */</span></span><br><span class="line">		None,</span><br><span class="line">		<span class="comment">// <span class="doctag">NOTE:</span> If you add a new value, make sure to update the ToString() method below!</span></span><br><span class="line">		Max</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>以以下模块的描述为例：</p>
+<p>Taking the following module description as an example:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Program&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PostConfigInit&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;ProgramAllowList&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;WhitelistPlatforms&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;Win64&quot;</span></span><br><span class="line">	<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-
-<p>该模块表达的意思是：HotChunker是一个Program类型的模块，并且启动时机是在配置文件加载之后（PostConfigInit），只允许在<code>UnrealPak</code>这个Program中使用，并且只在Win64的平台中参与编译。</p>
-<p>通过对uplugin文件的内容分析，可以根据开发需要描述插件中的所有Module，指导UBT找到对应的模块进行编译以及在引擎启动时对它们进行加载。</p>
+<p>This module indicates that: HotChunker is a Program-type module, and its startup timing is after the configuration file is loaded (PostConfigInit), only allowed to be used in the <code>UnrealPak</code> Program, and will only participate in compilation on the Win64 platform.</p>
+<p>By analyzing the contents of the uplugin file, one can describe all the modules in the plugin based on development needs, guiding UBT to find the corresponding modules for compilation and load them during the engine startup.</p>
 <blockquote>
-<p>注意：模块在平台中的白黑名单描述（<code>WhitelistPlatforms</code>），如果一个模块A被标记了平台白名单，全平台模块B引用了A，A会被带进来参与全平台的编译，这跟模块A自身的定义没有关系。是引用者出现的问题。</p>
+<p>Note: The white and black list description of modules on platforms (<code>WhitelistPlatforms</code>). If a module A is marked with a platform whitelist, and an all-platform module B references A, A will be brought in to participate in the full-platform compilation, regardless of A’s own definition. This is an issue that arises from the referencer.</p>
 </blockquote>
-<h2 id="Plugin的目录结构"><a href="#Plugin的目录结构" class="headerlink" title="Plugin的目录结构"></a>Plugin的目录结构</h2><p>通常一个插件会包含以下几个目录和文件：</p>
+<h2 id="Directory-Structure-of-Plugin"><a href="#Directory-Structure-of-Plugin" class="headerlink" title="Directory Structure of Plugin"></a>Directory Structure of Plugin</h2><p>Typically, a plugin will contain the following directories and files:</p>
 <ol>
-<li>Content：可选，插件的uasset资源，类似于游戏工程的Content目录。需要<code>uplugin</code>中的<code>CanContainContent=true</code></li>
-<li>Resources：插件依赖的其他资源，如插件内的图标Icon等等</li>
-<li>Config：可选，插件的配置文件，类似于工程的Config目录，用于存储一些ini的配置项</li>
-<li>Source：插件中的代码目录</li>
-<li>*.uplugin：当前插件的uplugin描述</li>
+<li>Content: optional, the plugin’s uasset resources, similar to the Content directory of game projects. Requires <code>uplugin</code> to have <code>CanContainContent=true</code>.</li>
+<li>Resources: other resources that the plugin depends on, such as icons within the plugin, etc.</li>
+<li>Config: optional, the plugin’s configuration files, similar to the project’s Config directory, used for storing some ini configuration items.</li>
+<li>Source: directory for the plugin’s code.</li>
+<li>*.uplugin: the current plugin’s uplugin description.</li>
 </ol>
-<p>需要重点关注的是<code>Source</code>目录，它是实现代码插件的关键。通常Source下会创建对应Module的目录，用于存储不同Module的代码，让不同的Module的文件组织相互隔离。</p>
-<p>如uplugin中定义了两个Module：</p>
+<p>Particular attention should be given to the <code>Source</code> directory, which is key for implementing the code plugin. Usually, a corresponding directory for each Module is created under Source to store the code of different Modules, isolating the file organization of different Modules.</p>
+<p>For example, if the uplugin defines two Modules:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;Modules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ResScanner&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Developer&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ResScannerEditor&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Editor&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
 
-<p>就在Source目录下创建两个对应名字的目录：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-5.webp"></p>
-<p>以及分别创建它们的build.cs和实际的C++代码文件。</p>
-<h2 id="编译环境"><a href="#编译环境" class="headerlink" title="编译环境"></a>编译环境</h2><p>UE的编译环境是有UBT决定的，UBT会分析参与编译工程的target.cs作为目标的基础编译环境。<br><code>target.cs</code>中控制的是整个工程，它会作用到工程中所有会参与编译的Module。</p>
-<p><code>*.Target.cs</code> 与 <code>*.Build.cs</code> 是 Unreal 构建系统的实际控制者，UBT 通过扫描这两个文件来确定整个编译环境，它们也是本篇文章研究的重点。<br>它们的职责各不相同：</p>
+<p>Two corresponding directories named after them are created under the Source directory:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/ob-20221226-5.webp"></p>
+<p>And their respective build.cs and actual C++ code files are created.</p>
+<h2 id="Compilation-Environment"><a href="#Compilation-Environment" class="headerlink" title="Compilation Environment"></a>Compilation Environment</h2><p>The compilation environment of UE is determined by UBT, which analyzes participating compiler target.cs as the basic compilation environment.<br><code>target.cs</code> controls the entire project and affects every module that will participate in compilation.</p>
+<p><code>*.Target.cs</code> and <code>*.Build.cs</code> are the actual controllers of the Unreal build system, and UBT determines the entire compilation environment by scanning these two files. They are also the focus of this article.<br>Their roles differ:</p>
 <ul>
-<li>  <code>*.Target.cs</code> 控制的是生成的可执行程序的外部编译环境，就是所谓的 <strong>Target</strong>。比如，生成的是什么 <code>Type</code>(Game/Client/Server/Editor/Program)，开不开启 RTTI (<code>bForceEnableRTTI</code>)，CRT 使用什么方式链接 (<code>bUseStaticCRT</code>) 等等。</li>
-<li>  <code>*.Build.cs</code> 控制的是 Module 编译过程，由它来控制所属 Module 的对其他 Module 的依赖、文件包含、链接、宏定义等等相关的操作，<code>*.Build.cs</code> 告诉 UE 的构建系统，它是一个 Module，并且编译的时候要做哪些事情。</li>
+<li>  <code>*.Target.cs</code> controls the external compilation environment of the generated executable program, known as the <strong>Target</strong>. For example, it defines what <code>Type</code> (Game/Client/Server/Editor/Program) the generated target is, whether to enable RTTI (<code>bForceEnableRTTI</code>), how CRT is linked (<code>bUseStaticCRT</code>), etc.</li>
+<li>  <code>*.Build.cs</code> controls the Module compilation process, governing dependencies on other Modules, file inclusions, linking, macro definitions, and so on. <code>*.Build.cs</code> tells UE’s build system that it’s a Module and what needs to be done during compilation.</li>
 </ul>
-<p>以一言以蔽之：与外部编译环境相关的都归 <code>*.target.cs</code> 管，与 Module 自身相关的都归 <code>*.build.cs</code> 管。</p>
+<p>In short: everything related to the external compilation environment is managed by <code>*.target.cs</code>, while everything related to modules themselves is managed by <code>*.build.cs</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230129172925.webp"></p>
-<p>我在文章<a href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a>中有更详细的描述。</p>
-<h2 id="Module的C-定义"><a href="#Module的C-定义" class="headerlink" title="Module的C++定义"></a>Module的C++定义</h2><p>C++的插件，通常都包含一个继承自<code>IModuleInterface</code>的类，用于注册到引擎中，当启动该模块时，作为模块的执行入口，并且在引擎关闭时，执行模块卸载，可以清理资源。</p>
-<p>定义如下：</p>
-<figure class="highlight cpp"><figcaption><span>NewCreateModule.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once  </span></span><br><span class="line">  </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;CoreMinimal.h&quot;</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Modules/ModuleManager.h&quot;</span>  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FNewCreateModule</span> : <span class="keyword">public</span> IModuleInterface  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">  </span><br><span class="line">   <span class="comment">/** IModuleInterface implementation */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">StartupModule</span><span class="params">()</span> <span class="keyword">override</span></span>;  </span><br><span class="line">   <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ShutdownModule</span><span class="params">()</span> <span class="keyword">override</span></span>;  </span><br><span class="line">  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以及定义：</p>
+<p>I have more detailed descriptions in my article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a>.</p>
+<h2 id="C-Definition-of-Module"><a href="#C-Definition-of-Module" class="headerlink" title="C++ Definition of Module"></a>C++ Definition of Module</h2><p>C++ plugins usually contain a class that inherits from <code>IModuleInterface</code>, which registers itself with the engine. When this module is activated, it serves as the execution entry point of the module, and upon the engine’s shutdown, it handles the module’s unloading and resource cleanup.</p>
+<p>The definition is as follows:</p>
+<figure class="highlight cpp"><figcaption><span>NewCreateModule.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once  </span></span><br><span class="line">  </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;CoreMinimal.h&quot;</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Modules/ModuleManager.h&quot;</span>  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FNewCreateModule</span> : <span class="keyword">public</span> IModuleInterface  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">  </span><br><span class="line">   <span class="comment">/** IModuleInterface implementation */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">StartupModule</span><span class="params">()</span> <span class="keyword">override</span></span>;  </span><br><span class="line">   <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ShutdownModule</span><span class="params">()</span> <span class="keyword">override</span></span>;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>And the implementation:</p>
 <figure class="highlight cpp"><figcaption><span>NewCreateModule.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;NewCreateModule.h&quot;</span>  </span></span><br><span class="line">  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOCTEXT_NAMESPACE <span class="string">&quot;FNewCreateModule&quot;</span>  </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FNewCreateModule::StartupModule</span><span class="params">()</span> </span>&#123;&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FNewCreateModule::ShutdownModule</span><span class="params">()</span> </span>&#123;&#125;  </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> LOCTEXT_NAMESPACE  </span></span><br><span class="line"><span class="built_in">IMPLEMENT_MODULE</span>(FNewCreateModule, NewCreate)</span><br></pre></td></tr></table></figure>
-<p>最为关键的就是最后的<code>IMPLEMENT_MODULE</code>宏，它是把模块暴露给外部的。</p>
-<p>UE编译的可执行程序，有两种链接模式，分别是<code>Modular</code>、<code>Monolithic</code>模式。</p>
-<p>可以在<code>target.cs</code>中进行控制，不过默认情况下，Editor是<code>Modular</code>的，其他的Target类型（如Game、Program）都是<code>Monolithic</code>的：</p>
+<p>The key element here is the last <code>IMPLEMENT_MODULE</code> macro, which exposes the module to the outside.</p>
+<p>There are two linking modes for executable programs compiled in UE, namely <code>Modular</code> and <code>Monolithic</code>.</p>
+<p>This can be controlled in <code>target.cs</code>, but by default, the Editor is <code>Modular</code>, while other target types (like Game, Program) are <code>Monolithic</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TargetLinkType LinkType</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> (LinkTypePrivate != TargetLinkType.Default) ? LinkTypePrivate : ((Type == <span class="keyword">global</span>::UnrealBuildTool.TargetType.Editor) ? TargetLinkType.Modular : TargetLinkType.Monolithic);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">set</span></span><br><span class="line">	&#123;</span><br><span class="line">		LinkTypePrivate = <span class="keyword">value</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Modular模式"><a href="#Modular模式" class="headerlink" title="Modular模式"></a>Modular模式</h3><p>Modular模式，就是所谓的分片模式，每个模块都被编译为独立的可执行文件，优点是可以增量编译变动的模块，而不用编译整个工程。</p>
-<p><strong>以Editor下的非Monolithic模式为例</strong>（模块编译为DLL），它的宏定义为：</p>
+<h3 id="Modular-Mode"><a href="#Modular-Mode" class="headerlink" title="Modular Mode"></a>Modular Mode</h3><p>Modular mode refers to a segmented mode where each module is compiled into an independent executable file. The advantage is that it allows for incremental compilation of changed modules without needing to compile the entire project.</p>
+<p><strong>For example, in non-Monolithic mode under Editor</strong> (modules are compiled as DLLs), the macro definition is:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> IMPLEMENT_MODULE( ModuleImplClass, ModuleName ) \</span></span><br><span class="line"><span class="meta">	\</span></span><br><span class="line"><span class="meta">	<span class="comment">/**/</span> \</span></span><br><span class="line"><span class="meta">	<span class="comment">/* InitializeModule function, called by module manager after this module&#x27;s DLL has been loaded */</span> \</span></span><br><span class="line"><span class="meta">	<span class="comment">/**/</span> \</span></span><br><span class="line"><span class="meta">	<span class="comment">/* @return	Returns an instance of this module */</span> \</span></span><br><span class="line"><span class="meta">	<span class="comment">/**/</span> \</span></span><br><span class="line"><span class="meta">	extern <span class="string">&quot;C&quot;</span> DLLEXPORT IModuleInterface* InitializeModule() \</span></span><br><span class="line"><span class="meta">	&#123; \</span></span><br><span class="line"><span class="meta">		return new ModuleImplClass(); \</span></span><br><span class="line"><span class="meta">	&#125; \</span></span><br><span class="line"><span class="meta">	<span class="comment">/* Forced reference to this function is added by the linker to check that each module uses IMPLEMENT_MODULE */</span> \</span></span><br><span class="line"><span class="meta">	extern <span class="string">&quot;C&quot;</span> void IMPLEMENT_MODULE_##ModuleName() &#123; &#125; \</span></span><br><span class="line"><span class="meta">	PER_MODULE_BOILERPLATE \</span></span><br><span class="line"><span class="meta">	PER_MODULE_BOILERPLATE_ANYLINK(ModuleImplClass, ModuleName)</span></span><br></pre></td></tr></table></figure>
-<p>把宏展开之后为：</p>
+<p>After macro expansion:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for not-monolithic</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function">DLLEXPORT IModuleInterface* <span class="title">InitializeModule</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">FNewCreateModule</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span> <span class="title">IMPLEMENT_MODULE_NewCreate</span><span class="params">()</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>查看DLL文件的导出表就能看到<code>InitializeModule</code>函数，以及其他标记了导出的符号（都是经过name-mangling后的）：</p>
+<p>Viewing the export table of the DLL will reveal the <code>InitializeModule</code> function and other exported symbols (which are all name-mangled):</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2023/20230129163357.webp"></p>
-<h3 id="Monolithic模式"><a href="#Monolithic模式" class="headerlink" title="Monolithic模式"></a>Monolithic模式</h3><p>Monolithic模式，就是工程中所有的C++代码，都被静态链接编译在同一个可执行程序之内。（添加的动态链接库不算，额外的静态链接库的也会编译到可执行程序之内。</p>
-<p>UE中，默认打包时就是Monolithic的模式，引擎和工程的代码都会编译到一个文件，如：</p>
+<h3 id="Monolithic-Mode"><a href="#Monolithic-Mode" class="headerlink" title="Monolithic Mode"></a>Monolithic Mode</h3><p>Monolithic mode means that all C++ code in the project is statically linked and compiled into the same executable program (excluding added dynamic libraries; extra static libraries are also compiled into the executable program).</p>
+<p>By default, packaging in UE uses the Monolithic mode, where both the engine and the project code are compiled into one file, such as:</p>
 <ul>
-<li>WindowsNoEditor：<code>WindowsNoEditor/GameName/Binaries/Win64/GameName.exe</code></li>
-<li>Android：<code>lib/arm64-v8a/libUE4.so</code></li>
-<li>IOS：<code>Payload/GameName.app/GameName</code></li>
+<li>WindowsNoEditor: <code>WindowsNoEditor/GameName/Binaries/Win64/GameName.exe</code></li>
+<li>Android: <code>lib/arm64-v8a/libUE4.so</code></li>
+<li>IOS: <code>Payload/GameName.app/GameName</code></li>
 </ul>
-<p>这种方式，优点就是没有额外的PE文件查找和加载开销，所有的操作都是在当前的进程空间内执行。</p>
-<p>模块的定义也对应有些区别，在<code>Not-Monolithic</code>模式下，为了编译为独立的可执行程序，会创建标记了<code>DLLEXPORT</code>的<code>InitializeModule</code>函数，但Monolithic模式不需要，它使用的是静态符号：</p>
+<p>The advantage of this approach is that there are no extra PE file lookup and loading overhead, and all operations are executed in the current process space.</p>
+<p>The definition of modules also differs accordingly, in the Not-Monolithic mode, to enable compilation as an independent executable file, a <code>DLLEXPORT</code> marked <code>InitializeModule</code> function will be created, but this is not needed in Monolithic mode. Instead, it uses static symbols:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If we&#x27;re linking monolithically we assume all modules are linked in with the main binary.  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IMPLEMENT_MODULE( ModuleImplClass, ModuleName ) \  </span></span><br><span class="line">	<span class="comment">/** Global registrant object for this module when linked statically */</span> \  </span><br><span class="line">	<span class="type">static</span> FStaticallyLinkedModuleRegistrant&lt; ModuleImplClass &gt; ModuleRegistrant##<span class="built_in">ModuleName</span>( <span class="built_in">TEXT</span>(#ModuleName) ); \  </span><br><span class="line">   <span class="comment">/* Forced reference to this function is added by the linker to check that each module uses IMPLEMENT_MODULE */</span> \  </span><br><span class="line">   <span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="type">void</span> IMPLEMENT_MODULE_##<span class="built_in">ModuleName</span>() &#123; &#125; \  </span><br><span class="line">   <span class="built_in">PER_MODULE_BOILERPLATE_ANYLINK</span>(ModuleImplClass, ModuleName)</span><br></pre></td></tr></table></figure>
-<p>宏展开之后为：</p>
+<p>After macro expansion:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> FStaticallyLinkedModuleRegistrant&lt; FNewCreateModule &gt; <span class="title">ModuleRegistrantNewCreateModule</span><span class="params">( TEXT(<span class="string">&quot;NewCreateModule&quot;</span>) )</span></span>;</span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span> <span class="title">IMPLEMENT_MODULE_NewCreate</span><span class="params">()</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>实际上是定义了一个static的对象，它其实利用到了C++里的一个特性：具有static storage dutation的对象的初始化会在main函数的第一个语句之前执行！</p>
+<p>In fact, it defines a static object that leverages a C++ feature: the initialization of objects with static storage duration will occur before the first statement of the main function!</p>
 <blockquote>
-<p>[ISO/IEC 14882:2014(E)] It is implementation-deﬁned whether the dynamic initialization of a non-local variable with static storageduration is done before the ﬁrst statement of main.</p>
+<p>[ISO/IEC 14882:2014(E)] It is implementation-defined whether the dynamic initialization of a non-local variable with static storage duration is done before the first statement of main.</p>
 </blockquote>
-<p>所以，当引擎启动时，所有的模块，都会构造出一个这样的static对象，并进行初始化。</p>
-<p>在<code>FStaticallyLinkedModuleRegistrant</code>的构造函数中，创建出注册的模块类单例，并将其注册到<code>ModuleManager</code>中：</p>
+<p>Thus, when the engine starts, all modules create such a static object for initialization.</p>
+<p>In the constructor of <code>FStaticallyLinkedModuleRegistrant</code>, a singleton of the registered module class is created and registered with the <code>ModuleManager</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Utility class for registering modules that are statically linked.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">template</span>&lt; <span class="keyword">class</span> <span class="title class_">ModuleClass</span> &gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FStaticallyLinkedModuleRegistrant</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">FStaticallyLinkedModuleRegistrant</span>( FLazyName InModuleName )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Create a delegate to our InitializeModule method</span></span><br><span class="line">		FModuleManager::FInitializeStaticallyLinkedModule InitializerDelegate = FModuleManager::FInitializeStaticallyLinkedModule::<span class="built_in">CreateRaw</span>(</span><br><span class="line">				<span class="keyword">this</span>, &amp;FStaticallyLinkedModuleRegistrant&lt;ModuleClass&gt;::InitializeModule );</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Register this module</span></span><br><span class="line">		FModuleManager::<span class="built_in">Get</span>().<span class="built_in">RegisterStaticallyLinkedModule</span>(</span><br><span class="line">			InModuleName,			<span class="comment">// Module name</span></span><br><span class="line">			InitializerDelegate );	<span class="comment">// Initializer delegate</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">IModuleInterface* <span class="title">InitializeModule</span><span class="params">( )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ModuleClass</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>用于引擎后续根据<code>uplugin</code>中的模块的启动时机信息进行调用。</p>
-<p>这样，UE就在接口层面统一了Modular和Monolithic模式。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇文章，介绍了UE中插件的基本信息，以及如何描述一个插件（uplugin）、并对Plugin的目录结构、Module定义做了介绍。</p>
-<p>之前我在博客中写的涉及C++编译模型和UE构建系统的相关文章：</p>
+<p>This is used by the engine to subsequently call based on the startup timing information of the modules defined in the uplugin.</p>
+<p>Thus, UE unifies the interface layer between Modular and Monolithic modes.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article introduces the basic information about plugins in UE, as well as how to describe a plugin (uplugin), and provides an introduction to the directory structure of the Plugin and the definition of Modules.</p>
+<p>Previously, I wrote articles related to the C++ compilation model and the UE build system on my blog:</p>
 <ul>
-<li>  <a href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a></li>
-<li>  <a href="https://imzlp.com/posts/31203/">UE Modules:Find the DLL and load it</a></li>
-<li>  <a href="https://imzlp.com/posts/24007/">UE Modules:Load and Startup</a></li>
-<li>  <a href="https://imzlp.com/posts/6362/">Build flow of the Unreal Engine4 project</a></li>
-<li>  <a href="https://imzlp.com/posts/5214/">Macro defined by UBT in UE4</a></li>
-<li>  <a href="https://imzlp.com/posts/5392">为什么需要 extern “C”?</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/16643">UE Build System: Target and Module</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/31203/">UE Modules: Find the DLL and load it</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/24007/">UE Modules: Load and Startup</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/6362/">Build flow of the Unreal Engine4 project</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/5214/">Macro defined by UBT in UE4</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://imzlp.com/posts/5392">Why is extern “C”?</a></li>
 </ul>
-<p>它们是在UE中进行工具开发的基础概念，了解并最大限度利用UE自身的实现机制，尽可能用最少的代码实现需要的功能。</p>
+<p>These are the foundational concepts for tool development in UE, understanding and maximizing the use of UE’s own implementation mechanisms to achieve the desired functionality with minimal code.</p>
 
     </div>
 
@@ -530,7 +529,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -540,7 +539,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -550,37 +549,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/75405/" target="_blank">UE插件与工具开发：基础概念</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2023/01/29 12:12<br/>
+             <span>Title:</span><a href="/posts/75405/" target="_blank">UE plug-in and tool development: basic concepts</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2023/01/29 12:12<br/>
              
-             <span>本文字数:</span><span class="page-count">5.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">12k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/75405/" target="_blank" title="UE插件与工具开发：基础概念">https://imzlp.com/posts/75405/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/75405/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/75405/" target="_blank" title="UE plug-in and tool development: basic concepts">https://en.imzlp.com/posts/75405/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/75405/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -602,12 +601,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/56381/" rel="prev" title="内存扩展：UE中利用IOS新的内存特性">
-      <i class="fa fa-chevron-left"></i> 内存扩展：UE中利用IOS新的内存特性
+    <a href="/posts/56381/" rel="prev" title="Memory Expansion: Utilize new memory features of IOS in UE">
+      <i class="fa fa-chevron-left"></i> Memory Expansion: Utilize new memory features of IOS in UE
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/30178/" rel="next" title="HotPatcher的模块化改造和开发规划">
-      HotPatcher的模块化改造和开发规划 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/30178/" rel="next" title="HotPatcher Modular Transformation and Development Planning">
+      HotPatcher Modular Transformation and Development Planning <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -678,25 +677,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFUE%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是UE中的插件？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">如何描述一个插件？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uplugin"><span class="nav-number">2.1.</span> <span class="nav-text">uplugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">2.2.</span> <span class="nav-text">Modules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">Plugin的目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="nav-number">4.</span> <span class="nav-text">编译环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module%E7%9A%84C-%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">Module的C++定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modular%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">Modular模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Monolithic%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.2.</span> <span class="nav-text">Monolithic模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-a-plugin-in-UE"><span class="nav-number">1.</span> <span class="nav-text">What is a plugin in UE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-describe-a-plugin"><span class="nav-number">2.</span> <span class="nav-text">How to describe a plugin?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uplugin"><span class="nav-number">2.1.</span> <span class="nav-text">uplugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">2.2.</span> <span class="nav-text">Modules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Directory-Structure-of-Plugin"><span class="nav-number">3.</span> <span class="nav-text">Directory Structure of Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compilation-Environment"><span class="nav-number">4.</span> <span class="nav-text">Compilation Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Definition-of-Module"><span class="nav-number">5.</span> <span class="nav-text">C++ Definition of Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modular-Mode"><span class="nav-number">5.1.</span> <span class="nav-text">Modular Mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Monolithic-Mode"><span class="nav-number">5.2.</span> <span class="nav-text">Monolithic Mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -704,19 +703,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -754,10 +753,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -784,9 +783,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -795,12 +791,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -953,7 +949,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/75405/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/75405/',]
       });
       });
   </script>
@@ -976,12 +972,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

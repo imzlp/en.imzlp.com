@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="工欲善其事必先利其器，本文主要介绍在我在使用UE的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在资源页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。">
+  <meta name="description" content="工欲善其事必先利其器，本文主要介绍我在使用 UE 的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在 资源 页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE工具集：我的开源项目介绍">
-<meta property="og:url" content="https://imzlp.com/posts/21696/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="工欲善其事必先利其器，本文主要介绍在我在使用UE的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在资源页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Toolset: Introduction to my open source project">
+<meta property="og:url" content="https://en.imzlp.com/posts/21696/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="工欲善其事必先利其器，本文主要介绍我在使用 UE 的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在 资源 页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323183817.webp">
 <meta property="article:published_time" content="2020-10-11T10:33:56.000Z">
 <meta property="article:modified_time" content="2020-10-11T10:33:56.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="开源">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323183817.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/21696/">
+<link rel="canonical" href="https://en.imzlp.com/posts/21696/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE工具集：我的开源项目介绍 | 循迹研究室</title>
+  <title>UE Toolset: Introduction to my open source project | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/21696/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/21696/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE工具集：我的开源项目介绍<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2020-10-11-21696.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/21696/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Toolset: Introduction to my open source project<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2020-10-11-21696.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/21696/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Toolset: Introduction to my open source project</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE工具集：我的开源项目介绍</sub>
           </div>
         
 
@@ -316,47 +316,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2020-10-11 10:33 10:33:56:33" itemprop="dateCreated datePublished" datetime="2020-10-11T10:33:56+00:00">2020-10-11 10:33</time>
+              <time title="Created: 2020-10-11 10:33 10:33:56:33" itemprop="dateCreated datePublished" datetime="2020-10-11T10:33:56+00:00">2020-10-11 10:33</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E5%BC%80%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">开源</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/21696/" class="post-meta-item leancloud_visitors" data-flag-title="UE工具集：我的开源项目介绍" title="阅读次数">
+            <span id="/posts/21696/" class="post-meta-item leancloud_visitors" data-flag-title="UE Toolset: Introduction to my open source project" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.5k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>14 mins.</span>
             </span>
 
         </div>
@@ -368,69 +368,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>工欲善其事必先利其器，本文主要介绍在我在使用UE的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在<a href="https://imzlp.com/resources/">资源</a>页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。</p>
+        <p>工欲善其事必先利其器，本文主要介绍我在使用 UE 的过程中开发的一些开源的工具和插件，能够方便地在项目中使用，提高开发效率。之前简单罗列在 <a target="_blank" rel="noopener" href="https://imzlp.com/resources/">资源</a> 页面里，今天做一个详细的整理，对各个工具、插件做一些介绍。</p>
 <span id="more"></span>
 
-<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><p>本节主要介绍我开发和部署的UE的外部工具，可以方便开发流程。</p>
-<h3 id="UE4PROGRAM"><a href="#UE4PROGRAM" class="headerlink" title="UE4PROGRAM"></a>UE4PROGRAM</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4program">ue4program</a>是一个命令行工具，用于方便地创建UE的<code>Standalone Application</code>的工具（官方没有提供它的创建方法），可以使用UE来写一些独立程序而不依赖引擎启动的流程，也可以方便地测试引擎的功能而不用创建一个游戏项目。</p>
-<p>详细介绍见我之前的文章：<a href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></p>
-<h3 id="UE4Launcher"><a href="#UE4Launcher" class="headerlink" title="UE4Launcher"></a>UE4Launcher</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UE4Launcher</a>是一个使用UE的<code>Standalone Application</code>的方式开发的独立程序，用来方便地切换引擎、启动项目、添加启动参数、保存配置，使用命令行通过配置启动，支持关联<code>uproject</code>文件，支持配置列表，是一个功能完备的启动器，可替代Epic Launcher作为本地引擎管理工具。</p>
-<p>主界面：</p>
+<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><p>This section mainly introduces the external tools developed and deployed for UE, which can facilitate the development process.</p>
+<h3 id="UE4PROGRAM"><a href="#UE4PROGRAM" class="headerlink" title="UE4PROGRAM"></a>UE4PROGRAM</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4program">ue4program</a> is a command-line tool for easily creating UE’s <code>Standalone Application</code> (the official method for creating it is not provided). It allows you to write independent programs using UE without relying on the engine startup process and can conveniently test engine functionalities without creating a game project.</p>
+<p>For detailed information, see my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></p>
+<h3 id="UE4Launcher"><a href="#UE4Launcher" class="headerlink" title="UE4Launcher"></a>UE4Launcher</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4Launcher">UE4Launcher</a> is an independent program developed using UE’s <code>Standalone Application</code> method, designed to conveniently switch engines, start projects, add startup parameters, and save configurations. It can be started through command line configuration, supports <code>uproject</code> file association, and has a configuration list, making it a feature-complete launcher that can replace Epic Launcher as a local engine management tool.</p>
+<p>Main interface:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20211223205344.webp"></p>
-<p>uproject的文件关联：</p>
+<p>uproject file association:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31962/ue4launcher-uproject-rightmouse-menu.webp"></p>
-<p>详细的用法和介绍可以看<a href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></p>
-<h3 id="UE4-API-FOR-DASH"><a href="#UE4-API-FOR-DASH" class="headerlink" title="UE4_API_FOR_DASH"></a>UE4_API_FOR_DASH</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4_API_FOR_DASH">UE4_API_FOR_DASH</a>是我制作的UE4 API的Dash文档源。可以方便地使用<code>Dash</code>或者<code>Zeal</code>来查询UE的C++ API，目前最新的文档源是生成UE4.25.3引擎版本，如果后续有新的引擎版本发布，我也会不定期更新。</p>
+<p>For detailed usage and introduction, see <a target="_blank" rel="noopener" href="https://imzlp.com/posts/31962/">Create A Standalone Application in UE4</a></p>
+<h3 id="UE4-API-FOR-DASH"><a href="#UE4-API-FOR-DASH" class="headerlink" title="UE4_API_FOR_DASH"></a>UE4_API_FOR_DASH</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/UE4_API_FOR_DASH">UE4_API_FOR_DASH</a> is the Dash documentation source for UE4 API that I created. It can be easily used with <code>Dash</code> or <code>Zeal</code> to query UE’s C++ API. The latest documentation source is generated for UE4.25.3, and I will periodically update it with new engine releases.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/11515/ue-doc-for-dash-425.webp"></p>
-<p>文档源的下载和更新，见我之前的文章：<a href="https://imzlp.com/posts/11515/">抓取 UE4 API 并生成带索引的 Dash 文档</a></p>
-<h3 id="UE4-Console-Help"><a href="#UE4-Console-Help" class="headerlink" title="UE4 Console Help"></a>UE4 Console Help</h3><p>UE提供了Console命令的帮助文档，我把它部署到了公网，可以方便在线查看和搜索。</p>
-<p>地址：<a target="_blank" rel="noopener" href="https://consolehelp.imzlp.com/">consolehelp.imzlp.com</a></p>
+<p>For downloading and updating the documentation source, see my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/11515/">抓取 UE4 API 并生成带索引的 Dash 文档</a></p>
+<h3 id="UE4-Console-Help"><a href="#UE4-Console-Help" class="headerlink" title="UE4 Console Help"></a>UE4 Console Help</h3><p>UE provides help documentation for Console commands, which I have deployed for public access to facilitate online viewing and searching.</p>
+<p>Address: <a target="_blank" rel="noopener" href="https://consolehelp.imzlp.com/">consolehelp.imzlp.com</a></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/21696/20201011094844.webp"></p>
-<h3 id="UE4-Wiki-Archive"><a href="#UE4-Wiki-Archive" class="headerlink" title="UE4 Wiki Archive"></a>UE4 Wiki Archive</h3><p>UE4的官方wiki经历了很大改版，之前老Wiki中的内容都没了，很可惜，老wiki中有很多很棒的内容，所以我部署了UE4老wiki的站点，作为备份。地址：<a target="_blank" rel="noopener" href="https://ue4wiki.imzlp.com/">ue4wiki.imzlp.com</a></p>
+<h3 id="UE4-Wiki-Archive"><a href="#UE4-Wiki-Archive" class="headerlink" title="UE4 Wiki Archive"></a>UE4 Wiki Archive</h3><p>The official wiki of UE4 has undergone significant revisions, and the content from the old Wiki is gone; it’s unfortunate, as there was a lot of excellent content there. Therefore, I deployed a site for the old UE4 wiki as a backup. Address: <a target="_blank" rel="noopener" href="https://ue4wiki.imzlp.com/">ue4wiki.imzlp.com</a></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/21696/20201011095152.webp"></p>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>本节介绍我业余开发的UE中的一些插件，简单介绍一下它们的功能和解决了什么问题。</p>
-<h3 id="HotPatcher"><a href="#HotPatcher" class="headerlink" title="HotPatcher"></a>HotPatcher</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>是我开发的用于UE热更新资源的打包工具，用来管理热更新版本，进行资源的差异分析并打出pak，支持全平台。</p>
-<p>详细的介绍见我之前的文章：<a href="https://imzlp.com/posts/17590/">UE资源热更打包工具HotPatcher</a>，Github地址：<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">hxhb/HotPatcher</a></p>
-<p>以及我关于UE热更新方案的系列文字，详见<a href="https://imzlp.com/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/">Unreal Engine#热更新</a>。</p>
-<h3 id="ResScannerUE"><a href="#ResScannerUE" class="headerlink" title="ResScannerUE"></a>ResScannerUE</h3><p><a href="https://imzlp.com/posts/11750/">ResScannerUE</a>是一个基于AssetRegistry和反射机制实现的资源扫描工具，具有以下优点：</p>
+<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>This section introduces some plugins I developed in my spare time in UE, briefly explaining their functions and the problems they solve.</p>
+<h3 id="HotPatcher"><a href="#HotPatcher" class="headerlink" title="HotPatcher"></a>HotPatcher</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> is a packaging tool for UE hot update resources that I developed, used for managing hot update versions, conducting resource difference analysis, and generating pak files, supporting all platforms.</p>
+<p>For detailed introduction, see my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">UE资源热更打包工具HotPatcher</a>, Github address: <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">hxhb/HotPatcher</a></p>
+<p>And my series of articles on UE hot update solutions can be found at <a target="_blank" rel="noopener" href="https://imzlp.com/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/">Unreal Engine#热更新</a> .</p>
+<h3 id="ResScannerUE"><a href="#ResScannerUE" class="headerlink" title="ResScannerUE"></a>ResScannerUE</h3><p><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750/">ResScannerUE</a> is a resource scanning tool based on AssetRegistry and reflection mechanism, with the following advantages:</p>
 <ol>
-<li>名字、路径规则检查无需加载资源</li>
-<li>名字、路径规则提供通配符支持</li>
-<li>可以通过提供<strong>属性名</strong>和<strong>值</strong>的方式检查资源中的选项</li>
-<li>支持属性名、值的直接选择，避免输入</li>
-<li>非常方便自定义拓展检查规则（创建蓝图或C++类实现）</li>
-<li>支持任意资源类型，绝大部分需求都能Zero-Code实现</li>
-<li>支持配置的导入/导出</li>
-<li>支持Commandlet实现自动化</li>
-<li>支持Git提交的版本比对、待提交文件比对</li>
+<li>Name and path rule checks without loading resources</li>
+<li>Name and path rules support wildcard</li>
+<li>Options in resources can be checked by providing <strong>property name</strong> and <strong>value</strong></li>
+<li>Direct selection support for property names and values, avoiding input</li>
+<li>Very convenient for custom extension check rules (create blueprint or C++ class)</li>
+<li>Supports any resource type, with most needs achievable with Zero-Code</li>
+<li>Supports import/export of configurations</li>
+<li>Supports Commandlet for automation</li>
+<li>Supports Git commit version comparison and pending file comparison</li>
 </ol>
 <blockquote>
-<p>命名、路径、属性可以严格匹配多个，也可以从多个规则中匹配一个，可以实现类似(<code>(expression) &amp;&amp; (expression || expression)</code>，如以<code>T_</code>开头，以<code>_x</code>或<code>_d</code>等结尾这种模式的匹配)。</p>
+<p>Names, paths, and properties can match multiple strictly or match one from multiple rules, achieving similar to <code> (expression) &amp;&amp; (expression || expression)</code> logic, such as matching patterns that start with <code>T_</code> and end with <code>_x</code> or <code>_d</code>.</p>
 </blockquote>
-<p>界面预览（与<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>风格保持一致）：</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917170647793.webp"><br>详细的用法和介绍可以看以下两篇文章:</p>
+<p>Interface preview (maintaining a style consistent with <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>):</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/image-20210917170647793.webp"></p>
+<p>For detailed usage and introduction, see the following two articles:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/11750">UE资源合规检查工具ResScannerUE</a></li>
-<li><a href="https://imzlp.com/posts/20376/">基于ResScannerUE的资源检查自动化实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/11750">UE资源合规检查工具ResScannerUE</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/20376/">基于ResScannerUE的资源检查自动化实践</a></li>
 </ul>
-<h3 id="ExportNav"><a href="#ExportNav" class="headerlink" title="ExportNav"></a>ExportNav</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data">ue4-export-nav-data</a>是我开发的用于从UE4导出Recast Navigation寻路数据的插件，可以用在非DS架构的服务器中用作地图同步以及寻路计算使用。该插件上架了<a target="_blank" rel="noopener" href="http://unrealengine.com/marketplace">虚幻商城</a>，但是依然在Github上开源。<br>详细的文档介绍见我之前的文章：<a href="https://imzlp.com/posts/20203/">Export Recast Navigation Data from UE4</a></p>
+<h3 id="ExportNav"><a href="#ExportNav" class="headerlink" title="ExportNav"></a>ExportNav</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-export-nav-data">ue4-export-nav-data</a> is a plugin I developed for exporting Recast Navigation pathfinding data from UE4, which can be used on non-DS architecture servers for map synchronization and pathfinding calculations. The plugin is available on the <a target="_blank" rel="noopener" href="http://unrealengine.com/marketplace">Unreal Marketplace</a> but is still open-source on Github. Detailed documentation can be found in my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/20203/">Export Recast Navigation Data from UE4</a></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/20203/diff-ue-nav-and-recastdemo-nav.webp"></p>
-<p>另外，针对外部服务器使用导出的Recast数据，我也抽出了UE所使用的recast-detour版本，可以用在外部服务器的寻路：<a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-recast-detour">ue4-recast-detour</a></p>
-<h3 id="AppCmderUE"><a href="#AppCmderUE" class="headerlink" title="AppCmderUE"></a>AppCmderUE</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">AppCmderUE</a>：支持通过命令行启动UE Android App并传递参数。详见文章：<a href="https://imzlp.com/posts/29169/">高效调试：命令行参数启动UE Android App</a></p>
-<p>用法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.gworld <span class="string">&quot;-test123&quot;</span> <span class="string">&quot;-test456&quot;</span> <span class="string">&quot;-test789&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>运行日志：</p>
+<p>Additionally, for external servers using the exported Recast data, I have also extracted the version of recast-detour used by UE, which can be used for pathfinding on external servers: <a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-recast-detour">ue4-recast-detour</a></p>
+<h3 id="AppCmderUE"><a href="#AppCmderUE" class="headerlink" title="AppCmderUE"></a>AppCmderUE</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/AppCmderUE">AppCmderUE</a>: Supports starting UE Android App via command line and passing parameters. See the article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/29169/">高效调试：命令行参数启动UE Android App</a></p>
+<p>Usage:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append_cmd.bat com.imzlp.gworld <span class="string">&quot;-test123&quot;</span> <span class="string">&quot;-test456&quot;</span> <span class="string">&quot;-test789&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Running log:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Final commandline: ../../../Blank426/Blank426.uproject -test123 -test456 -test789</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220102125237.webp"></p>
-<h3 id="ue-zstd"><a href="#ue-zstd" class="headerlink" title="ue-zstd"></a>ue-zstd</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue-zstd">ue-zstd</a>是我集成到UE的ZSTD压缩算法，使用ModularFeature的方式集成，可以替换引擎中默认的ZLib算法，也可以配合<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>使用，替换pak的压缩算法。<br>详细的文档见我之前的文章：<a href="https://imzlp.com/posts/8470/">ModularFeature：为 UE4 集成 ZSTD 压缩算法</a></p>
-<h3 id="ue4-dtkit"><a href="#ue4-dtkit" class="headerlink" title="ue4-dtkit"></a>ue4-dtkit</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-dtkit">ue4-dtkit</a>是我基于HTTP封装了一个下载库，支持<strong>边下边存</strong>/<strong>边下边计算MD5</strong>，这样当文件下载完也已经存到本地了，并且还计算出了MD5值可以供校验用。还支持暂停/继续/分片下载，自己改一下也可以改成断点续传的。<br>开源在Github上：<a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-dtkit">ue4-dtkit</a>，支持IOS/Android/Windows/Mac四个平台。<br>在这个插件中我还封装了一个<code>MD5Wrapper.hpp</code>可以用来在其他地方的MD5计算，使用的是<code>OpenSSL</code>的库。</p>
-<h3 id="PlatformUtils"><a href="#PlatformUtils" class="headerlink" title="PlatformUtils"></a>PlatformUtils</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/PlatformUtils">PlatformUtils</a>是一个跨平台插件，用于在四个平台（Win/Mac/Android/iOS）获取硬件信息，主要是用作展示UE的跨平台写法，如何集成iOS的<code>framework</code>并使用、Android添加Java代码、使用JNI调用等特定平台的原生操作。</p>
-<h3 id="unreal-pb"><a href="#unreal-pb" class="headerlink" title="unreal-pb"></a>unreal-pb</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/unlua-pb">unlua-pb</a>是集成<a target="_blank" rel="noopener" href="https://github.com/starwing/lua-protobuf">lua-ptorobuf</a>到<a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/">UnLua</a>的Module，之前没有UnLua的版本，我做了集成。</p>
-<h3 id="debugable-unlua"><a href="#debugable-unlua" class="headerlink" title="debugable-unlua"></a>debugable-unlua</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/debugable-unlua">debugable-unlua</a>是Fork自Tencent的<a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/">UnLua</a>，我在其基础上修改，基础版本为<a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/commit/106fa9c3a1a75b4af0e3e6b7e61b0c45609dd53d">106fa9c</a>，目的是打造一个开箱即用的UnLua，<strong>可调试</strong>和一些基础lua库、编辑器优化。</p>
-<h3 id="GitControllerUE"><a href="#GitControllerUE" class="headerlink" title="GitControllerUE"></a>GitControllerUE</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/GitControllerUE">GitControllerUE</a>可以在UE中操作Git仓库，可以用来拓展UE的版本控制功能。</p>
+<h3 id="ue-zstd"><a href="#ue-zstd" class="headerlink" title="ue-zstd"></a>ue-zstd</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue-zstd">ue-zstd</a> is a ZSTD compression algorithm that I integrated into UE, using the ModularFeature method for integration. It can replace the default ZLib algorithm in the engine and can be used in conjunction with <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> to replace the compression algorithm of pak files. Detailed documentation can be found in my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/8470/">ModularFeature：为 UE4 集成 ZSTD 压缩算法</a></p>
+<h3 id="ue4-dtkit"><a href="#ue4-dtkit" class="headerlink" title="ue4-dtkit"></a>ue4-dtkit</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-dtkit">ue4-dtkit</a> is a download library I wrapped based on HTTP, supporting <strong>downloading while saving</strong>/<strong>downloading while calculating MD5</strong>, so when the file downloads, it is already saved locally, and the MD5 value can be calculated for verification. It also supports pause/resume/segmented downloads, and you can modify it to support breakpoint resume. It is open-sourced on Github: <a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-dtkit">ue4-dtkit</a>, supporting IOS/Android/Windows/Mac platforms. In this plugin, I also wrapped an <code>MD5Wrapper.hpp</code> for MD5 calculation in other places, using the <code>OpenSSL</code> library.</p>
+<h3 id="PlatformUtils"><a href="#PlatformUtils" class="headerlink" title="PlatformUtils"></a>PlatformUtils</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/PlatformUtils">PlatformUtils</a> is a cross-platform plugin for obtaining hardware information on four platforms (Win/Mac/Android/iOS), mainly used to demonstrate UE’s cross-platform writing, how to integrate iOS’s <code>framework</code> and use it, add Java code for Android, and perform native operations unique to specific platforms using JNI.</p>
+<h3 id="unreal-pb"><a href="#unreal-pb" class="headerlink" title="unreal-pb"></a>unreal-pb</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/unlua-pb">unlua-pb</a> is a module that integrates <a target="_blank" rel="noopener" href="https://github.com/starwing/lua-protobuf">lua-ptorobuf</a> into <a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/">UnLua</a>. Previously, there was no UnLua version, so I created the integration.</p>
+<h3 id="debugable-unlua"><a href="#debugable-unlua" class="headerlink" title="debugable-unlua"></a>debugable-unlua</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/debugable-unlua">debugable-unlua</a> is forked from Tencent’s <a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/">UnLua</a>, and I modified it based on the original, with the base version being <a target="_blank" rel="noopener" href="https://github.com/Tencent/UnLua/commit/106fa9c3a1a75b4af0e3e6b7e61b0c45609dd53d">106fa9c</a> to create a ready-to-use UnLua with <strong>debugging capability</strong> and some basic lua libraries and editor optimizations.</p>
+<h3 id="GitControllerUE"><a href="#GitControllerUE" class="headerlink" title="GitControllerUE"></a>GitControllerUE</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/GitControllerUE">GitControllerUE</a> allows for Git repository operations within UE, which can be used to extend UE’s version control capabilities.</p>
 <p><img data-src="https://imgs.imzlp.com/imgs/zlp/blog/notes/ue/index/UE4/git-diff-in-ue4-no-runtime.webp"></p>
-<h3 id="ue4-protobuf"><a href="#ue4-protobuf" class="headerlink" title="ue4-protobuf"></a>ue4-protobuf</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-protobuf">ue4-protobuf</a>是以源码方式集成的protobuf，版本为3.5.1。</p>
-<h3 id="ue4-jwt"><a href="#ue4-jwt" class="headerlink" title="ue4-jwt"></a>ue4-jwt</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-jwt">ue4-jwt</a>在UE中集成JWT的插件，可以用来跨域认证。</p>
+<h3 id="ue4-protobuf"><a href="#ue4-protobuf" class="headerlink" title="ue4-protobuf"></a>ue4-protobuf</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-protobuf">ue4-protobuf</a> is the protobuf integrated in source code form, version 3.5.1.</p>
+<h3 id="ue4-jwt"><a href="#ue4-jwt" class="headerlink" title="ue4-jwt"></a>ue4-jwt</h3><p><a target="_blank" rel="noopener" href="https://github.com/hxhb/ue4-jwt">ue4-jwt</a> is a plugin that integrates JWT into UE for cross-domain authentication.</p>
 
     </div>
 
@@ -441,7 +443,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -451,7 +453,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -461,37 +463,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/21696/" target="_blank">UE工具集：我的开源项目介绍</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2020/10/11 10:33<br/>
+             <span>Title:</span><a href="/posts/21696/" target="_blank">UE Toolset: Introduction to my open source project</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2020/10/11 10:33<br/>
              
-             <span>本文字数:</span><span class="page-count">2.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">5.5k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/21696/" target="_blank" title="UE工具集：我的开源项目介绍">https://imzlp.com/posts/21696/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/21696/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/21696/" target="_blank" title="UE Toolset: Introduction to my open source project">https://en.imzlp.com/posts/21696/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/21696/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -511,12 +513,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/27392/" rel="prev" title="二零二零：下一个五年计划">
-      <i class="fa fa-chevron-left"></i> 二零二零：下一个五年计划
+    <a href="/posts/27392/" rel="prev" title="2020: The next five-year plan">
+      <i class="fa fa-chevron-left"></i> 2020: The next five-year plan
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/29551/" rel="next" title="如何构建自己的知识体系？">
-      如何构建自己的知识体系？ <i class="fa fa-chevron-right"></i>
+    <a href="/posts/29551/" rel="next" title="How to build your own knowledge system?">
+      How to build your own knowledge system? <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -587,10 +589,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -602,10 +604,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -613,19 +615,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -663,10 +665,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -693,9 +695,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -704,12 +703,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -862,7 +861,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/21696/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/21696/',]
       });
       });
   </script>
@@ -885,12 +884,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

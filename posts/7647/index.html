@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Unreal Editor中提供的Source Control可以通过Git实现蓝图项目的版本提交&#x2F;版本比对&#x2F;撤销修改等一些基本功能，远远比不上Git Bash强大，但是BluePrint间的Diff还是很好用的。">
+  <meta name="description" content="The Source Control provided in Unreal Editor allows you to implement basic functions such as version submission&#x2F;version comparison&#x2F;reverting changes through Git for blueprint projects, which is far le">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在UE中使用Git进行版本控制">
-<meta property="og:url" content="https://imzlp.com/posts/7647/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="Unreal Editor中提供的Source Control可以通过Git实现蓝图项目的版本提交&#x2F;版本比对&#x2F;撤销修改等一些基本功能，远远比不上Git Bash强大，但是BluePrint间的Diff还是很好用的。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Using Git for version control in UE4">
+<meta property="og:url" content="https://en.imzlp.com/posts/7647/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="The Source Control provided in Unreal Editor allows you to implement basic functions such as version submission&#x2F;version comparison&#x2F;reverting changes through Git for blueprint projects, which is far le">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/7647/0.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/7647/1.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/7647/2.webp">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/7647/8-diffOtherCommit.webp">
 <meta property="article:published_time" content="2016-10-07T23:31:01.000Z">
 <meta property="article:modified_time" content="2016-10-07T23:31:01.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="SourceControl">
@@ -50,7 +50,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/7647/0.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/7647/">
+<link rel="canonical" href="https://en.imzlp.com/posts/7647/">
 
 
 <script id="page-configurations">
@@ -59,11 +59,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>在UE中使用Git进行版本控制 | 循迹研究室</title>
+  <title>Using Git for version control in UE4 | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -103,7 +103,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -113,7 +113,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -124,7 +124,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -143,24 +143,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -180,7 +180,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -188,14 +188,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -203,26 +203,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -238,7 +238,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -257,7 +257,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -276,12 +276,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -299,27 +299,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/7647/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/7647/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在UE中使用Git进行版本控制<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-10-07-7647.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/7647/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Using Git for version control in UE4<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-10-07-7647.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/7647/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Using Git for version control in UE4</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">在UE中使用Git进行版本控制</sub>
           </div>
         
 
@@ -328,47 +328,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-10-07 23:31 23:31:01:31" itemprop="dateCreated datePublished" datetime="2016-10-07T23:31:01+00:00">2016-10-07 23:31</time>
+              <time title="Created: 2016-10-07 23:31 23:31:01:31" itemprop="dateCreated datePublished" datetime="2016-10-07T23:31:01+00:00">2016-10-07 23:31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/7647/" class="post-meta-item leancloud_visitors" data-flag-title="在UE中使用Git进行版本控制" title="阅读次数">
+            <span id="/posts/7647/" class="post-meta-item leancloud_visitors" data-flag-title="Using Git for version control in UE4" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.7k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -380,50 +380,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Unreal Editor中提供的Source Control可以通过Git实现蓝图项目的<strong>版本提交/版本比对/撤销修改</strong>等一些基本功能，远远比不上Git Bash强大，但是BluePrint间的Diff还是很好用的。</p>
+        <p>The Source Control provided in Unreal Editor allows you to implement basic functions such as <strong>version submission/version comparison/reverting changes</strong> through Git for blueprint projects, which is far less powerful than Git Bash, but the Diff between BluePrints is still very useful.</p>
 <span id="more"></span>
-<p>在执行UE中的Git版本控制之前最好先在<code>Git Bash</code>中进行一些Git全局的初始化操作。</p>
+<p>Before executing Git version control in UE, it is best to perform some global initialization operations in <code>Git Bash</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>生成SSH Key(邮件地址换成你自己的邮件地址):</p>
+<p>Generate SSH Key (replace the email address with your own):</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
 
-<p>然后一路Enter(或者你自己设置密码)，执行完毕后会在<code>C:\Users\$&#123;userName&#125;\</code>(linux则是在~/下)下创建一个<code>.ssh</code>目录，其中有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件。</p>
-<p><code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人(保存到Github/GitLab的SSH Key中)。</p>
-<p>更多的<code>Git Bash</code>下的一些操作可以看这篇文章——<a href="https://imzlp.com/2016/09/29/git-quick-start-guide/">Git快速上手指南</a>。</p>
+<p>Then hit Enter continuously (or set your own password), and after completion, a <code>.ssh</code> directory will be created under <code>C:\Users\$&#123;userName&#125;\</code> (in linux it will be under ~/), containing two files: <code>id_rsa</code> and <code>id_rsa.pub</code>.</p>
+<p><code>id_rsa</code> is the private key and must not be disclosed, while <code>id_rsa.pub</code> is the public key that can be shared freely (save it in the SSH Key section of Github/GitLab).</p>
+<p>For more operations in <code>Git Bash</code>, you can refer to this article — <a target="_blank" rel="noopener" href="https://imzlp.com/2016/09/29/git-quick-start-guide/">Git Quick Start Guide</a> .</p>
 <hr>
-<p>打开UE项目，在虚幻编辑器中点击<code>Source Control</code></p>
+<p>Open the UE project and click on <code>Source Control</code> in the Unreal Editor.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/0.webp"></p>
-<p>选中<code>connect to Source Contorl</code></p>
+<p>Select <code>connect to Source Control</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/1.webp"></p>
-<p>在弹出的窗口中<code>Provider</code>选项中选择<code>Git</code>并在<code>Git Path</code>中填入系统中<code>git.exe</code>的绝对路径。<br>选中<code>Add a .gitignore file</code>，然后点击<code>initialize project with Git</code>，最后点击<code>Accept Settings</code>完成初始化。<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/2.webp"></p>
-<p>现在，可以看到<code>Source Control</code>上出现了绿色的圆圈上有上下两个箭头。</p>
-<p>这时我们需要<code>commit</code>的一次我们的工程(同时也是对所有的文件改动进行提交。在这里因为是初始化，所以需要提交一次所有的文件)。点击<code>Source Control</code>选中<code>Submit to Source Control</code>。</p>
+<p>In the pop-up window, choose <code>Git</code> in the <code>Provider</code> option and fill in the absolute path of <code>git.exe</code> in your system in <code>Git Path</code>.<br>Select <code>Add a .gitignore file</code>, then click <code>initialize project with Git</code>, and finally click <code>Accept Settings</code> to complete the initialization.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/2.webp"></p>
+<p>Now, you can see a green circle with up and down arrows appearing on <code>Source Control</code>.</p>
+<p>At this point, we need to do a <code>commit</code> of our project (which is also a submission of all file changes. Since it’s initialization, we need to submit all files at once). Click on <code>Source Control</code> and select <code>Submit to Source Control</code>.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/3.webp"></p>
-<p>在弹出的窗口中填入提交信息(等同于git中的<code>add</code>与<code>commit</code>)，然后点OK。</p>
+<p>In the pop-up window, enter the commit message (equivalent to <code>add</code> and <code>commit</code> in git), and then click OK.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/4.webp"></p>
-<p><code>Source Control</code>初始化完成，现在我们可以测试一下。</p>
-<p>新建一个蓝图类EmptyActor，只是测试我们写入一个节点。</p>
+<p>The <code>Source Control</code> initialization is complete, and now we can test it.</p>
+<p>Create a new blueprint class EmptyActor, just to test writing a node.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/5-initBP.webp"></p>
-<p>然后在<code>Content Browser</code>中右键点击该蓝图类，<code>Source Control</code>-&gt;<code>Check In</code>对该蓝图类做一次<code>初始化提交</code>。</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/5-checkIn.webp"></p>
-<p>在弹出的窗口中填入相关的信息(commit)，然后点OK。</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/5-commit.webp"></p>
-<p> 现在我们可以再次编辑EmptyActor这个蓝图类，但是我们不提交(don’t check in)。</p>
+<p>Then right-click on this blueprint class in the <code>Content Browser</code>, go to <code>Source Control</code> -&gt; <code>Check In</code> for an <code>initial commit</code> of this blueprint class.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/5-checkIn.webp"></p>
+<p>In the pop-up window, fill in the relevant information (commit), then click OK.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/5-commit.webp"></p>
+<p>Now we can edit the EmptyActor blueprint class again, but we will not submit (don’t check in).</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/6-addOtherNode.webp"></p>
-<p>可以通过<code>diff</code>来检测我们此次相较于上次提交的版本做了哪些修改：在该蓝图类上右键<code>Source Control</code>-&gt;<code>Diff Against Depot</code>，会弹出<code>diff</code>窗口。我们可以看到我们在该蓝图类中修改了哪些东西。</p>
+<p>You can use <code>diff</code> to check what changes have been made compared to the last submitted version: right-click on the blueprint class and select <code>Source Control</code> -&gt; <code>Diff Against Depot</code>, and a <code>diff</code> window will pop up. We can see what modifications have been made in that blueprint class.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/7-diffWindow.webp"></p>
-<p>在蓝图类上右键-&gt;<code>Source Control</code>下共有以下几个选项：<code>Check In</code>/<code>Refresh</code>/<code>History</code>/<code>Diff Against Depot</code>/<code>Revert</code>，其中<code>Check In</code>和<code>Diff Against Depot</code>的用途上面已经说过了。</p>
-<p><strong>Check In</strong>提交当前文件。</p>
-<p><strong>Refresh</strong>刷新当前文件(蓝图类)状态(status)。</p>
-<p><strong>History</strong>查看提交(Check In)的历史，也可以提供当前未提交改动与某一提交版本的区别。</p>
-<p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/8-diffOtherCommit.webp"></p>
-<p><strong>Diff Against Depot</strong>查看当前未提交(Check In)改动与上次提交版本的区别。</p>
-<p><strong>Revert</strong>丢弃当前未提交(Check In)改动(就是回滚到上一次Check In时的状态)。注意：Revert之后需要重启引擎才会生效，这应该是UE(4.12.5)的一个BUG。<strong>Revert</strong>的效果等同于直接在Git Bash下执行<code>git checkout -- $&#123;filename&#125;</code>。</p>
+<p>On the blueprint class right-click -&gt; <code>Source Control</code>, there are the following options: <code>Check In</code> / <code>Refresh</code> / <code>History</code> / <code>Diff Against Depot</code> / <code>Revert</code>, of which the uses of <code>Check In</code> and <code>Diff Against Depot</code> have been mentioned above.</p>
+<p><strong>Check In</strong> submits the current file.</p>
+<p><strong>Refresh</strong> refreshes the current file (blueprint class) status.</p>
+<p><strong>History</strong> views the history of submissions (Check In), and can also provide the differences between the current unsubmitted changes and a certain submitted version.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/7647/8-diffOtherCommit.webp"></p>
+<p><strong>Diff Against Depot</strong> views the differences between the current unsubmitted (Check In) changes and the last submitted version.</p>
+<p><strong>Revert</strong> discards the current unsubmitted (Check In) changes (which means reverting to the state at the last Check In). Note: After Revert, restarting the engine is required to take effect, which seems to be a bug in UE (4.12.5). The effect of <strong>Revert</strong> is equivalent to executing <code>git checkout -- $&#123;filename&#125;</code> directly in Git Bash.</p>
 <hr>
-<p>UE中集成的Source Control::Git是不能够直接在虚幻编辑器中直接回滚到某一提交版本的，总的来说可供操作的功能还比较少(蓝图的节点比对还是很爽的)，但是可以结合<code>Git Bash</code>来使用Git的其他操作(版本回退/分支管理/远程推送等等)。</p>
-<p>需要注意的是，使用<code>Git Bash</code>来进行版本回退的话一定要关闭虚幻编辑器，因为回退需要对文件进行改动，而虚幻编辑器正在占用(打开)该文件(蓝图类)，而对未占用(打开)的文件(蓝图类)进行版本回退也需要重启虚幻编辑器才可以(不重启不会看到回退效果)。</p>
-<p>使用Git来推送(push)和拉取(pull)远程分支的话需要在Git Bash中执行。同样也需要关闭虚幻编辑器。注意编辑<code>.gitignore</code>来忽略不必要的文件来节省push/pull时间。</p>
+<p>The integrated Source Control::Git in UE cannot directly revert to a certain submitted version in the Unreal Editor; in general, the operable functions are still quite limited (the node comparison of blueprints is still quite nice), but you can use Git’s other operations (version rollback/branch management/remote pushing, etc.) in conjunction with <code>Git Bash</code>.</p>
+<p>It should be noted that when using <code>Git Bash</code> for version rollback, you must close the Unreal Editor, as the rollback requires modifications to files, and the Unreal Editor currently occupies (opens) that file (blueprint class). Performing a version rollback on a file (blueprint class) that is not occupied (opened) also requires restarting the Unreal Editor to see the rollback effect (the effect will not be seen if not restarted).</p>
+<p>When using Git to push (push) and pull (pull) remote branches, you need to execute it in Git Bash. Similarly, you need to close the Unreal Editor. Be sure to edit the <code>.gitignore</code> to ignore unnecessary files to save push/pull time.</p>
 
     </div>
 
@@ -434,7 +435,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -444,7 +445,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -454,37 +455,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/7647/" target="_blank">在UE中使用Git进行版本控制</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/10/07 23:31<br/>
+             <span>Title:</span><a href="/posts/7647/" target="_blank">Using Git for version control in UE4</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/10/07 23:31<br/>
              
-             <span>本文字数:</span><span class="page-count">1.8k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.7k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/7647/" target="_blank" title="在UE中使用Git进行版本控制">https://imzlp.com/posts/7647/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/7647/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/7647/" target="_blank" title="Using Git for version control in UE4">https://en.imzlp.com/posts/7647/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/7647/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -506,12 +507,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/354/" rel="prev" title="使用Docker部署shadowsocks服务">
-      <i class="fa fa-chevron-left"></i> 使用Docker部署shadowsocks服务
+    <a href="/posts/354/" rel="prev" title="Deploy shadowsocks service using Docker">
+      <i class="fa fa-chevron-left"></i> Deploy shadowsocks service using Docker
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/53696/" rel="next" title="Git快速上手指南">
-      Git快速上手指南 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/53696/" rel="next" title="Git Quick Start Guide">
+      Git Quick Start Guide <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -582,10 +583,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -596,10 +597,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -607,19 +608,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -657,10 +658,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -687,9 +688,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -698,12 +696,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -856,7 +854,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/7647/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/7647/',]
       });
       });
   </script>
@@ -879,12 +877,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

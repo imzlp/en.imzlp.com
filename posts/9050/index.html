@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="UE的EULA License Grant&#x2F;(A) 中明确说明了，使用UE开发并再分发的内容不得包含 未Cook的源格式 和基于 引擎工具 开发的付费内容，本篇文章研究一下EULA里对内容分发的具体内容和从技术上怎么绕过这个限制。">
+  <meta name="description" content="The EULA License Grant&#x2F;(A) of UE clearly states that content developed using UE and redistributed must not include uncooked source formats or paid content developed based on engine tools. This article">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析UBT中EULA的内容分发限制">
-<meta property="og:url" content="https://imzlp.com/posts/9050/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="UE的EULA License Grant&#x2F;(A) 中明确说明了，使用UE开发并再分发的内容不得包含 未Cook的源格式 和基于 引擎工具 开发的付费内容，本篇文章研究一下EULA里对内容分发的具体内容和从技术上怎么绕过这个限制。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Analyzing the content distribution restrictions of EULA in UBT">
+<meta property="og:url" content="https://en.imzlp.com/posts/9050/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="The EULA License Grant&#x2F;(A) of UE clearly states that content developed using UE and redistributed must not include uncooked source formats or paid content developed based on engine tools. This article">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323192003.webp">
 <meta property="article:published_time" content="2019-08-24T14:15:36.000Z">
 <meta property="article:modified_time" content="2019-08-24T14:15:36.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="EULA">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230323192003.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/9050/">
+<link rel="canonical" href="https://en.imzlp.com/posts/9050/">
 
 
 <script id="page-configurations">
@@ -47,11 +47,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>分析UBT中EULA的内容分发限制 | 循迹研究室</title>
+  <title>Analyzing the content distribution restrictions of EULA in UBT | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -91,7 +91,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -112,7 +112,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -131,24 +131,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -158,7 +158,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -168,7 +168,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -176,14 +176,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -191,26 +191,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -226,7 +226,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -245,7 +245,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -264,12 +264,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -287,27 +287,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/9050/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/9050/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分析UBT中EULA的内容分发限制<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2019-08-24-9050.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/9050/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Analyzing the content distribution restrictions of EULA in UBT<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2019-08-24-9050.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/9050/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Analyzing the content distribution restrictions of EULA in UBT</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">分析UBT中EULA的内容分发限制</sub>
           </div>
         
 
@@ -316,47 +316,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2019-08-24 14:15 14:15:36:15" itemprop="dateCreated datePublished" datetime="2019-08-24T14:15:36+00:00">2019-08-24 14:15</time>
+              <time title="Created: 2019-08-24 14:15 14:15:36:15" itemprop="dateCreated datePublished" datetime="2019-08-24T14:15:36+00:00">2019-08-24 14:15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/UBT/" itemprop="url" rel="index"><span itemprop="name">UBT</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/9050/" class="post-meta-item leancloud_visitors" data-flag-title="分析UBT中EULA的内容分发限制" title="阅读次数">
+            <span id="/posts/9050/" class="post-meta-item leancloud_visitors" data-flag-title="Analyzing the content distribution restrictions of EULA in UBT" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.6k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -368,39 +368,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>UE的<a target="_blank" rel="noopener" href="https://www.unrealengine.com/en-US/eula">EULA</a> <strong>License Grant/(A)</strong> 中明确说明了，使用UE开发并再分发的内容不得包含 <strong>未Cook的源格式</strong> 和基于 <strong>引擎工具</strong> 开发的付费内容，本篇文章研究一下EULA里对内容分发的具体内容和从技术上怎么绕过这个限制。</p>
+        <p>The <a target="_blank" rel="noopener" href="https://www.unrealengine.com/en-US/eula">EULA</a> <strong>License Grant/(A)</strong> of UE clearly states that content developed using UE and redistributed must not include <strong>uncooked source formats</strong> or paid content developed based on <strong>engine tools</strong>. This article studies the specific content distribution details in the EULA and how to technically circumvent this limitation.</p>
 <span id="more"></span>
 
 <blockquote>
 <p>There is no restriction on your Distribution of a Product made using the Licensed Technology that does not include any Engine Code or any Paid Content Distributed in uncooked source format (in each case, including as modified by you under the License) and does not require any Licensed Technology (including as modified by you under the License) to run (“Unrestricted Products”). For clarity, the foregoing does not constitute a license under any patents, copyrights, trademarks, trade secrets or other intellectual property rights, whether by implication, estoppel or otherwise.</p>
 </blockquote>
-<p>而EULA中对于<code>Engine Tools</code>的定义是：</p>
+<p>The definition of <code>Engine Tools</code> in the EULA is:</p>
 <blockquote>
 <p>“Engine Tools” means (a) editors and other tools included in the Engine Code; (b) any code and modules in either the Developer or Editor folders, including in object code format, whether statically or dynamically linked; and (c) other software that may be used to develop standalone products based on the Licensed Technology.</p>
 </blockquote>
-<p>这意味着开发者无法在游戏内容中使用<code>Editor</code>与<code>Developer</code>下的任何模块。<br>用户协议是具有<strong>法律效力</strong>的协议文件，我本着要折腾一下的精神并且想顺便看一下UE是怎么实现这个限制的，仅作记录分析用，<strong>并不会对内容进行收费的二次分发</strong>或用在正式的项目中。我读了一下UBT的处理逻辑，UBT的代码只需要简单地改几处。</p>
+<p>This means developers cannot use any modules under <code>Editor</code> or <code>Developer</code> in game content.<br>The user agreement is a <strong>legally binding</strong> document. I intend to tinker a bit and also take a look at how UE implements this limitation, solely for the purpose of record analysis, <strong>and will not engage in commercial redistribution</strong> or use it in formal projects. I read through the logic in UBT, and the code only needs a few simple modifications.</p>
 <blockquote>
-<p>注意：在正式的发行版本中这么做是违反UE的EULA的，强烈不建议在正式项目中这么做。<br>本文代码和编译均基于UE_4.18版本(本地通过源码编译出的引擎)，本文介绍的操作不适用从EpicLauncher安装的引擎，文末会写原因。</p>
+<p>Note: Doing this in a formal release version violates the UE’s EULA, and it is strongly discouraged in official projects.<br>The code and compilation in this article are based on UE_4.18 (engine compiled from source locally), and the operations described in this article do not apply to engines installed from EpicLauncher, the reasons will be noted at the end.</p>
 </blockquote>
-<p>在UE中，当打包的游戏(Target is <code>Game</code>)为<code>Shipping</code>的时候，如果工程中中包含了<code>Editor</code>/<code>Developer</code>的模块，会报下列错误：</p>
+<p>In UE, when the packaged game (Target is <code>Game</code>) is <code>Shipping</code>, if the project contains <code>Editor</code>/<code>Developer</code> modules, the following error will be reported:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UATHelper: <span class="built_in">Packaging</span> (<span class="built_in">Windows</span> (<span class="number">64</span>-bit)):   ERROR: ERROR: Non-editor build cannot depend on non-redistributable modules. C:\Users\imzlp\Documents\Unreal Projects\EULA418\Binaries\Win64\EULA418-Win64-Shipping.exe depends on <span class="string">&#x27;DesktopPlatform&#x27;</span>.</span><br></pre></td></tr></table></figure>
-<p>意思就是<code>DesktopPlatform</code>是不可再发行的模块，你不能在<code>Game</code>中用，通过查看UBT的代码发现这个异常是在UBT的<code>CheckForEULAViolation</code>中抛出的：</p>
+<p>This means the <code>DesktopPlatform</code> is a non-redistributable module, and cannot be used in <code>Game</code>. By reviewing the UBT code, this exception is thrown in UBT’s <code>CheckForEULAViolation</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Source/Programs/UnrealBuildTools/Configuration/UEBuildTarget.cs</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CheckForEULAViolation</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (TargetType != TargetType.Editor &amp;&amp; TargetType != TargetType.Program &amp;&amp; Configuration == UnrealTargetConfiguration.Shipping &amp;&amp;</span><br><span class="line">    Rules.bCheckLicenseViolations)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">bool</span> bLicenseViolation = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">foreach</span> (UEBuildBinary Binary <span class="keyword">in</span> AppBinaries)</span><br><span class="line">    &#123;</span><br><span class="line">      List&lt;UEBuildModule&gt; AllDependencies = Binary.GetAllDependencyModules(<span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">      IEnumerable&lt;UEBuildModule&gt; NonRedistModules = AllDependencies.Where((DependencyModule) =&gt;</span><br><span class="line">        !IsRedistributable(DependencyModule) &amp;&amp; DependencyModule.Name != AppName</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (NonRedistModules.Count() != <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        IEnumerable&lt;UEBuildModule&gt; NonRedistDeps = AllDependencies.Where((DependantModule) =&gt;</span><br><span class="line">          DependantModule.GetDirectDependencyModules().Intersect(NonRedistModules).Any()</span><br><span class="line">        );</span><br><span class="line">        <span class="built_in">string</span> Message = <span class="built_in">string</span>.Format(<span class="string">&quot;Non-editor build cannot depend on non-redistributable modules. &#123;0&#125; depends on &#x27;&#123;1&#125;&#x27;.&quot;</span>, Binary.ToString(), <span class="built_in">string</span>.Join(<span class="string">&quot;&#x27;, &#x27;&quot;</span>, NonRedistModules));</span><br><span class="line">        <span class="keyword">if</span> (NonRedistDeps.Any())</span><br><span class="line">        &#123;</span><br><span class="line">          Message = <span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0&#125;\nDependant modules &#x27;&#123;1&#125;&#x27;&quot;</span>, Message, <span class="built_in">string</span>.Join(<span class="string">&quot;&#x27;, &#x27;&quot;</span>, NonRedistDeps));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(Rules.bBreakBuildOnLicenseViolation)</span><br><span class="line">        &#123;</span><br><span class="line">          Log.TraceError(<span class="string">&quot;ERROR: &#123;0&#125;&quot;</span>, Message);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          Log.TraceWarning(<span class="string">&quot;WARNING: &#123;0&#125;&quot;</span>, Message);</span><br><span class="line">        &#125;</span><br><span class="line">          bLicenseViolation = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Rules.bBreakBuildOnLicenseViolation &amp;&amp; bLicenseViolation)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> BuildException(<span class="string">&quot;Non-editor build cannot depend on non-redistributable modules.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关键的判断是<code>IsRedistributable</code>这个方法(概念等同于C++里的成员函数)：</p>
+<p>The key judgment is the <code>IsRedistributable</code> method (conceptually similar to a member function in C++):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Source/Programs/UnrealBuildTools/Configuration/UEBuildTarget.cs</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="type">static</span> <span class="type">bool</span> <span class="title">IsRedistributable</span><span class="params">(UEBuildModule Module)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(Module.Rules != null &amp;&amp; Module.Rules.IsRedistributableOverride.HasValue)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> Module.Rules.IsRedistributableOverride.Value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(Module.RulesFile != null)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> !Module.RulesFile.<span class="built_in">IsUnderDirectory</span>(UnrealBuildTool.EngineSourceDeveloperDirectory) &amp;&amp; !Module.RulesFile.<span class="built_in">IsUnderDirectory</span>(UnrealBuildTool.EngineSourceEditorDirectory);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里做的判断是模块是不是属于<code>Editor</code>/<code>Developer</code>的，是就返回<code>true</code>，从而进行下面的异常抛出。为了测试我将这里直接修改为<code>return true;</code></p>
-<p>只是改了上面之后还是打包不成功，不过现在的错误变成了链接错误。继续看UBT的代码后发现还有一个地方对打包是<code>Shipping</code>的模式做了判断（前后的<code>// ...</code>表示省略了不相关代码）：</p>
+<p>The judgment here is whether the module belongs to <code>Editor</code>/<code>Developer</code>; if so, it returns <code>true</code>, leading to the exception being thrown later. For testing, I directly modified it to <code>return true;</code>.</p>
+<p>However, even after making just that change, the packaging still fails, but now the error changes to a linking error. Continuing to look at the UBT code, I find another place that makes a check for the <code>Shipping</code> mode (the <code>// ...</code> indicates omitted unrelated code):</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Source/Programs/UnrealBuildTools/Configuration/UEBuildTarget.cs</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">AddPrecompiledModules</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="built_in">bool</span> bAllowDeveloperModules = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(Configuration != UnrealTargetConfiguration.Shipping)</span><br><span class="line">  &#123;</span><br><span class="line">    Directories.Add(UnrealBuildTool.EngineSourceDeveloperDirectory);</span><br><span class="line">    bAllowDeveloperModules = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Find all the modules that are not part of the standard set</span></span><br><span class="line">  HashSet&lt;<span class="built_in">string</span>&gt; FilteredModuleNames = <span class="keyword">new</span> HashSet&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">  <span class="keyword">foreach</span> (<span class="built_in">string</span> ModuleName <span class="keyword">in</span> ModuleNames)</span><br><span class="line">  &#123;</span><br><span class="line">    FileReference ModuleFileName = RulesAssembly.GetModuleFileName(ModuleName);</span><br><span class="line">    <span class="keyword">if</span> (Directories.Any(x =&gt; ModuleFileName.IsUnderDirectory(x)))</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">string</span> RelativeFileName = ModuleFileName.MakeRelativeTo(UnrealBuildTool.EngineSourceDirectory);</span><br><span class="line">      <span class="keyword">if</span> (ExcludeFolders.All(x =&gt; RelativeFileName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) == <span class="number">-1</span>) &amp;&amp; !PrecompiledModules.Any(x =&gt; x.Name == ModuleName))</span><br><span class="line">      &#123;</span><br><span class="line">        FilteredModuleNames.Add(ModuleName);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Add all the plugins which aren&#x27;t already being built</span></span><br><span class="line">  <span class="keyword">foreach</span>(UEBuildPlugin PrecompilePlugin <span class="keyword">in</span> PrecompilePlugins)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">foreach</span> (ModuleDescriptor ModuleDescriptor <span class="keyword">in</span> PrecompilePlugin.Descriptor.Modules)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> (ModuleDescriptor.IsCompiledInConfiguration(Platform, TargetType, bAllowDeveloperModules &amp;&amp; Rules.bBuildDeveloperTools, Rules.bBuildEditor, Rules.bBuildRequiresCookedData))</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="built_in">string</span> RelativeFileName = RulesAssembly.GetModuleFileName(ModuleDescriptor.Name).MakeRelativeTo(UnrealBuildTool.EngineDirectory);</span><br><span class="line">        <span class="keyword">if</span> (!ExcludeFolders.Any(x =&gt; RelativeFileName.Contains(x)) &amp;&amp; !PrecompiledModules.Any(x =&gt; x.Name == ModuleDescriptor.Name))</span><br><span class="line">        &#123;</span><br><span class="line">          FilteredModuleNames.Add(ModuleDescriptor.Name);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将上面关于<code>bAllowDeveloperModules</code>的部分注释掉，然后直接：</p>
+<p>Comment out the above part regarding <code>bAllowDeveloperModules</code>, then change it to:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Directories.Add(UnrealBuildTool.EngineSourceDeveloperDirectory);</span><br><span class="line"><span class="built_in">bool</span> bAllowDeveloperModules=<span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-<p>重新编译UBT即可。</p>
-<p>然后可以写个简单的例子测试了，比如使用Developer下的<code>DesktopPlatform</code>来调用系统的选择文件。<br>首先在<code>*.build.cs</code>中添加<code>DesktopPlatform</code>模块依赖：</p>
+<p>Recompiling UBT is sufficient.</p>
+<p>Now I can write a simple example to test, such as using the <code>DesktopPlatform</code> from Developer to call the system’s file selection.<br>First, add the <code>DesktopPlatform</code> module dependency in <code>*.build.cs</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PublicDependencyModuleNames.AddRange(<span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;Core&quot;</span>, <span class="string">&quot;CoreUObject&quot;</span>, <span class="string">&quot;Engine&quot;</span>, <span class="string">&quot;InputCore&quot;</span> ,<span class="string">&quot;DesktopPlatform&quot;</span>&#125;);</span><br><span class="line">PrivateDependencyModuleNames.AddRange(<span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;DesktopPlatform&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
-<p>然后写一个简单的函数暴露给蓝图：</p>
+<p>Then write a simple function exposed to Blueprints:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h</span></span><br><span class="line"><span class="built_in">UCLASS</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EULA418_API</span> UFileOperatorFlib : <span class="keyword">public</span> UBlueprintFunctionLibrary</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">GENERATED_BODY</span>()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UFUNCTION</span>(BlueprintCallable)</span><br><span class="line">    <span class="function"><span class="type">static</span> FString <span class="title">ExtendGetOpenFileName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// .cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FileOperatorFlib.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Developer/DesktopPlatform/Public/DesktopPlatformModule.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Paths.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">FString <span class="title">UFileOperatorFlib::ExtendGetOpenFileName</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::<span class="built_in">Get</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (DesktopPlatform)</span><br><span class="line">  &#123;</span><br><span class="line">    TArray&lt;FString&gt; OpenFilenames;</span><br><span class="line">    <span class="type">const</span> <span class="type">bool</span> bOpened = DesktopPlatform-&gt;<span class="built_in">OpenFileDialog</span>(</span><br><span class="line">      <span class="literal">nullptr</span>,</span><br><span class="line">      <span class="built_in">TEXT</span>(<span class="string">&quot;OpenFileDialog&quot;</span>),</span><br><span class="line">      <span class="built_in">FString</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>)),</span><br><span class="line">      <span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>),</span><br><span class="line">      <span class="built_in">TEXT</span>(<span class="string">&quot;All Files (*.*)&quot;</span>),</span><br><span class="line">      EFileDialogFlags::None,</span><br><span class="line">      OpenFilenames</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (OpenFilenames.<span class="built_in">Num</span>() &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">return</span> FPaths::<span class="built_in">ConvertRelativePathToFull</span>(OpenFilenames[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">TEXT</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>正常的情况下，将上面的代码打包Shipping会产生文章最开始的错误，但是我们改过之后可以打包成功并且可以正确执行，这个简单的工程和打包的内容可以在<a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:f:/g/personal/2017020625_stu_sdnu_edu_cn/EsWiScEXarZNmEOWXSHcGLEBVE00xqNH7eT9Pyp_6xtlRA?e=ZH4XAo">这里</a>下载。<br>启动之后按下数字键<code>1</code>(不是<code>Num 1</code>)即可打开windows的选择文件窗口，选择之后会将选择的文件的路径显示到屏幕上。<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9050/EULA418-00.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9050/EULA418-01.webp"></p>
+<p>Under normal circumstances, packaging the above code as Shipping will produce the initial error mentioned in the article, but after our modifications, it can package successfully and execute correctly. This simple project and its packaged content can be downloaded <a target="_blank" rel="noopener" href="https://stusdnueducn-my.sharepoint.com/:f:/g/personal/2017020625_stu_sdnu_edu_cn/EsWiScEXarZNmEOWXSHcGLEBVE00xqNH7eT9Pyp_6xtlRA?e=ZH4XAo">here</a>.<br>After launching, press the number key <code>1</code> (not <code>Num 1</code>) to open the Windows file selection window, and after selecting, the path of the chosen file will be displayed on the screen.<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9050/EULA418-00.webp"><br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/9050/EULA418-01.webp"></p>
 <blockquote>
-<p>注意：需要使用源码版引擎编译项目，如果编译时具有<code>noexcept</code>的错误，则可以在项目的<code>*.target.cs</code>中添加<code>bForceEnableExceptions = true;</code>。<br>重新编译项目会编译引擎内的模块(打开从EpicLauncher安装的引擎文件夹就可以知道，默认Editor/Developer的模块是没有编译出静态链接库的，这也是不能用从EpicLauncher安装的引擎来执行本文的操作的原因)。</p>
+<p>Note: You need to use the source version of the engine to compile the project. If you encounter a <code>noexcept</code> compilation error, you can add <code>bForceEnableExceptions = true;</code> in the project’s <code>*.target.cs</code>.<br>Recompiling the project will compile the modules in the engine (opening the folder of the engine installed from EpicLauncher will show that the default Editor/Developer modules have not compiled static libraries, which is why you cannot execute the operations described in this article using the engine installed from EpicLauncher).</p>
 </blockquote>
 
     </div>
@@ -412,7 +412,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -422,7 +422,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -432,37 +432,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/9050/" target="_blank">分析UBT中EULA的内容分发限制</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2019/08/24 14:15<br/>
+             <span>Title:</span><a href="/posts/9050/" target="_blank">Analyzing the content distribution restrictions of EULA in UBT</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2019/08/24 14:15<br/>
              
-             <span>本文字数:</span><span class="page-count">2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.6k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/9050/" target="_blank" title="分析UBT中EULA的内容分发限制">https://imzlp.com/posts/9050/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/9050/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/9050/" target="_blank" title="Analyzing the content distribution restrictions of EULA in UBT">https://en.imzlp.com/posts/9050/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/9050/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -482,12 +482,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/12143/" rel="prev" title="UE工具链配置与开发技巧">
-      <i class="fa fa-chevron-left"></i> UE工具链配置与开发技巧
+    <a href="/posts/12143/" rel="prev" title="UE tool chain configuration and development skills">
+      <i class="fa fa-chevron-left"></i> UE tool chain configuration and development skills
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/9455/" rel="next" title="PixelStreaming：基本概念与上手初探">
-      PixelStreaming：基本概念与上手初探 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/9455/" rel="next" title="PixelStreaming: Basic Concepts and Getting Started">
+      PixelStreaming: Basic Concepts and Getting Started <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -558,10 +558,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -572,10 +572,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -583,19 +583,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -633,10 +633,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -663,9 +663,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -674,12 +671,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -832,7 +829,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/9050/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/9050/',]
       });
       });
   </script>
@@ -855,12 +852,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

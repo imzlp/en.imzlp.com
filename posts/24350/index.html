@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="UE默认的资源管理较为复杂，默认情况下是根据在ProjectSetting里配置的地图、目录、PrimaryAsset的配置，以及对一些条件的组合检测来执行资源打包过程的。并且，UE的Cook是根据运行时的动态加载来实时添加资源打到包中的，这导致打包的资源进包过程几乎等同于黑盒。 博客中介绍默认的进包资源规则及基础包拆分的文章：  UE 资源管理：引擎打包资源分析 UE 热更新：拆分基础包  本篇">
+  <meta name="description" content="UE’s default resource management is relatively complex. By default, the resource packaging process is executed based on the configurations of maps, directories, and PrimaryAsset specified in ProjectSe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一种灵活与非侵入式的基础包拆分方案">
-<meta property="og:url" content="https://imzlp.com/posts/24350/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="UE默认的资源管理较为复杂，默认情况下是根据在ProjectSetting里配置的地图、目录、PrimaryAsset的配置，以及对一些条件的组合检测来执行资源打包过程的。并且，UE的Cook是根据运行时的动态加载来实时添加资源打到包中的，这导致打包的资源进包过程几乎等同于黑盒。 博客中介绍默认的进包资源规则及基础包拆分的文章：  UE 资源管理：引擎打包资源分析 UE 热更新：拆分基础包  本篇">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="A Flexible and Non-Intrusive Basic Package Splitting Scheme">
+<meta property="og:url" content="https://en.imzlp.com/posts/24350/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="UE’s default resource management is relatively complex. By default, the resource packaging process is executed based on the configurations of maps, directories, and PrimaryAsset specified in ProjectSe">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231032930.webp">
 <meta property="article:published_time" content="2022-10-23T15:20:00.000Z">
 <meta property="article:modified_time" content="2022-10-23T15:20:00.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231032930.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/24350/">
+<link rel="canonical" href="https://en.imzlp.com/posts/24350/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>一种灵活与非侵入式的基础包拆分方案 | 循迹研究室</title>
+  <title>A Flexible and Non-Intrusive Basic Package Splitting Scheme | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/24350/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/24350/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一种灵活与非侵入式的基础包拆分方案<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2022-10-23-24350.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/24350/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          A Flexible and Non-Intrusive Basic Package Splitting Scheme<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2022-10-23-24350.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/24350/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">A Flexible and Non-Intrusive Basic Package Splitting Scheme</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">一种灵活与非侵入式的基础包拆分方案</sub>
           </div>
         
 
@@ -318,47 +318,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2022-10-23 15:20 15:20:00:20" itemprop="dateCreated datePublished" datetime="2022-10-23T15:20:00+00:00">2022-10-23 15:20</time>
+              <time title="Created: 2022-10-23 15:20 15:20:00:20" itemprop="dateCreated datePublished" datetime="2022-10-23T15:20:00+00:00">2022-10-23 15:20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">资源管理</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/24350/" class="post-meta-item leancloud_visitors" data-flag-title="一种灵活与非侵入式的基础包拆分方案" title="阅读次数">
+            <span id="/posts/24350/" class="post-meta-item leancloud_visitors" data-flag-title="A Flexible and Non-Intrusive Basic Package Splitting Scheme" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>28 mins.</span>
             </span>
 
         </div>
@@ -373,135 +373,139 @@
           <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
               <img src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231032930.webp" itemprop="contentUrl" style="border-radius: 20px;">
          </div>
-        <p>UE默认的资源管理较为复杂，默认情况下是根据在<code>ProjectSetting</code>里配置的地图、目录、PrimaryAsset的配置，以及对一些条件的组合检测来执行资源打包过程的。并且，UE的Cook是根据运行时的动态加载来实时添加资源打到包中的，这导致打包的资源进包过程几乎等同于黑盒。</p>
-<p>博客中介绍<strong>默认的进包资源规则</strong>及<strong>基础包拆分</strong>的文章：</p>
+        <p>UE’s default resource management is relatively complex. By default, the resource packaging process is executed based on the configurations of maps, directories, and PrimaryAsset specified in <code>ProjectSetting</code>, as well as a combination of condition checks. Furthermore, UE’s Cook dynamically adds resources to the package based on runtime loading, making the resource packaging process almost a black box.</p>
+<p>The blog introduces articles on <strong>default resource packaging rules</strong> and <strong>basic package splitting</strong>:</p>
 <ul>
-<li><a href="https://imzlp.com/posts/22570/">UE 资源管理：引擎打包资源分析</a></li>
-<li><a href="https://imzlp.com/posts/13765/">UE 热更新：拆分基础包</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/22570/">UE Resource Management: Engine Packaging Resource Analysis</a></li>
+<li><a target="_blank" rel="noopener" href="https://imzlp.com/posts/13765/">UE Hot Update: Splitting Basic Packages</a></li>
 </ul>
-<p>本篇文章提供了一种新的思路，利用<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的精确Cook和打包机制，实现了一个HotChunker的Mod，能够对引擎的<strong>非侵入式</strong>，直接<strong>复用UE默认打包过程</strong>、<strong>简单清晰</strong>地进行拆分基础包。本篇文会具体介绍使用方式以及实现原理。</p>
+<p>This article presents a new idea, utilizing <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>‘s precise Cook and packaging mechanism to implement a HotChunker Mod that can perform <strong>non-intrusive</strong>, direct <strong>reuse of UE’s default packaging process</strong> and <strong>clearly</strong> split the basic package. This article will specifically introduce the usage and implementation principles.</p>
 <span id="more"></span>
 
-<h3 id="默认打包的问题"><a href="#默认打包的问题" class="headerlink" title="默认打包的问题"></a>默认打包的问题</h3><p>前面提到了，UE打包参数和配置较为复杂，以及一些无法处理的问题：</p>
+<h3 id="Issues-with-Default-Packaging"><a href="#Issues-with-Default-Packaging" class="headerlink" title="Issues with Default Packaging"></a>Issues with Default Packaging</h3><p>As mentioned earlier, the UE packaging parameters and configurations are complex, and there are some unresolvable issues:</p>
 <ol>
-<li>无法直接地预估有哪些资源进包以及最终进包的大小</li>
-<li>打包的配置可以零散分布在各种地方，难以管理</li>
-<li>所有的Non-uasset资源全在0号pak中（也就是必须进基础包）</li>
-<li>无法根据pak的拆分来拆分Shaderlibrary（可能会非常大）</li>
-<li>无法根据pak的拆分来拆分AssetRegistry</li>
-<li>精确地控制某个pak规则的忽略资源</li>
-<li>为所有平台共用一套PakFilter规则</li>
+<li>It is impossible to directly estimate which resources will enter the package and the final package size.</li>
+<li>The packaging configurations can be scattered in various places, making them difficult to manage.</li>
+<li>All Non-uasset resources are in package 0 (meaning they must enter the basic package).</li>
+<li>It is impossible to split ShaderLibrary based on package splits (which can be very large).</li>
+<li>It is impossible to split AssetRegistry based on package splits.</li>
+<li>The ability to precisely control the ignored resources of a certain package rule.</li>
+<li>A single set of PakFilter rules shared across all platforms.</li>
 </ol>
-<p>在资源管理的角度来说，希望能够清晰、并且精确地控制资源打包规则，默认情况下UE提供的无法做到这些。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231048454.webp"></p>
-<h3 id="干净的基础包"><a href="#干净的基础包" class="headerlink" title="干净的基础包"></a>干净的基础包</h3><p>在文章<a href="https://imzlp.com/posts/22570/">UE 资源管理：引擎打包资源分析</a>中，我分析了引擎打包时的资源分析规则。<br>除了资源之外，还有很多Non-uasset的文件，如：Slate的图片、Ini、ShaderLib/AssetRegistry，以及项目中配置的<code>DirectoriesToAlwaysStageAsUFS</code>路径。</p>
-<p>常见的情况是，新建了一个工程，添加了很多资源，什么打包规则都没配置，执行打包，会把非常多的资源给打包进来。</p>
+<p>From a resource management perspective, it is hoped to have a clear and precise control of resource packaging rules; the default options provided by UE cannot achieve this.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231048454.webp"></p>
+<h3 id="Clean-Basic-Package"><a href="#Clean-Basic-Package" class="headerlink" title="Clean Basic Package"></a>Clean Basic Package</h3><p>In the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/22570/">UE Resource Management: Engine Packaging Resource Analysis</a>, I analyzed the resource analysis rules when the engine packages resources.<br>In addition to resources, there are many Non-uasset files, such as: Slate images, Ini files, ShaderLib/AssetRegistry, and paths configured in the project for <code>DirectoriesToAlwaysStageAsUFS</code>.</p>
+<p>A common situation is that when a new project is created, many resources are added, and no packaging rules are configured, executing packaging will package many unnecessary resources.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210221953315.webp"></p>
-<p>对于新手很友好，但想要精细管理的时候，这种默认进包方式就有比较大的负担。</p>
-<p>首先，第一个问题是：哪些是引擎启动的必要文件，必须要位于基础包中？<br>我大概总结为以下几种：</p>
+<p>While this is user-friendly for beginners, it becomes a significant burden when wanting to manage things finely.</p>
+<p>Firstly, the first question is: which are the necessary files for engine startup that must be in the basic package?<br>I summarize the following:</p>
 <ol>
-<li>SlateResources、Ini</li>
+<li>SlateResources, Ini</li>
 <li>Global ShaderLib</li>
 <li>AssetRegistry</li>
-<li>配置的Startup的地图、以及依赖到的蓝图GameMode、GameInstance等Gameplay框架资源</li>
-<li>移动端的自定义摇杆资源</li>
-<li>一些可能用到的基础UI资源</li>
+<li>Configured startup maps, along with dependent blueprint GameMode, GameInstance, and other Gameplay framework resources.</li>
+<li>Custom joystick resources for mobile terminals.</li>
+<li>Basic UI resources that may be used.</li>
 </ol>
-<p>在UE默认打包的过程中，会对这些资源、文件进行分析以及进包。但我们如果想要打包出一个干净的基础包，就需要把这些<strong>必要资源</strong>的过程独立出来，让引擎去分析，额外的非必要资源就由业务自己控制。</p>
-<p>第二个问题：如何排除非必要资源？</p>
-<p>在文章<a href="https://imzlp.com/posts/22570/#AssetManager">引擎打包资源分析#AssetManager</a>中，记录了CookOnTheFlyServer中的这样一种条件检测：</p>
-<p>如果命令行没有显式指定任何资源、以及从 <code>FGameDelegates::Get().GetCookModificationDelegate()</code>、<code>UAssetManager::Get().Modify</code> 都没有获取到任何资源，则添加插件、项目所有的资源。</p>
-<p>执行条件为：</p>
+<p>During the UE default packaging process, these resources and files will be analyzed and added to the package. However, to pack a clean basic package, we need to isolate the process for these <strong>necessary resources</strong> and allow the engine to analyze them, while additional non-essential resources are controlled by the business itself.</p>
+<p>The second question is: how to exclude non-essential resources?</p>
+<p>In the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/22570/#AssetManager">Engine Packaging Resource Analysis #AssetManager</a>, a condition check in CookOnTheFlyServer is recorded:</p>
+<p>If no resources are explicitly specified on the command line and no resources are retrieved from <code>FGameDelegates::Get().GetCookModificationDelegate()</code> or <code>UAssetManager::Get().Modify</code>, then all resources from plugins and the project will be added.</p>
+<p>The execution conditions are:</p>
 <ol>
-<li> <code>DefaultEditor.ini</code> 中的 <code>AlwaysCookMaps</code> 为空，<code>AllMaps</code> 为空</li>
-<li> 项目设置中 <code>List of maps to include in a packaged build</code> 为空</li>
-<li> 项目设置中 <code>DirectoriesToAlwaysCook</code> 为空</li>
-<li> <code>FGameDelegates::Get().GetCookModificationDelegate()</code> 获取到的资源为空</li>
-<li> <code>UAssetManager::Get().ModifyCook</code> 获取到的资源为空</li>
+<li><code>AlwaysCookMaps</code> in <code>DefaultEditor.ini</code> is empty, and <code>AllMaps</code> is empty.</li>
+<li>The project settings <code>List of maps to include in a packaged build</code> is empty.</li>
+<li>The project settings <code>DirectoriesToAlwaysCook</code> is empty.</li>
+<li><code>FGameDelegates::Get().GetCookModificationDelegate()</code> retrieves no resources.</li>
+<li><code>UAssetManager::Get().ModifyCook</code> retrieves no resources.</li>
 </ol>
-<p>这意味着，不配置任何资源也无法使基础包变小，反而会变大。如果想要避免包含所有的资源进包，就要从上面的方式中喂给CookOnTheFly一些资源，让它不要去添加非标记的工程资源。</p>
-<p>我选择的方式是重载<code>AssetManager</code>并重写<code>ModifyCook</code>函数：</p>
+<p>This means that not configuring any resources does not make the basic package smaller; it may actually make it larger. To avoid including all resources in the package, we need to feed some resources to CookOnTheFly using the methods above to prevent it from adding unmarked project resources.</p>
+<p>The approach I chose is to overload <code>AssetManager</code> and override the <code>ModifyCook</code> function:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">UHotChunkerAssetManager::ModifyCook</span><span class="params">(TArray&lt;FName&gt;&amp; PackagesToCook, TArray&lt;FName&gt;&amp; PackagesToNeverCook)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   FName DefaultAsset = <span class="built_in">TEXT</span>(<span class="string">&quot;/Engine/EngineMaterials/DefaultDiffuse&quot;</span>);  </span><br><span class="line">   PackagesToCook.<span class="built_in">Add</span>(DefaultAsset);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在项目设置中指定AssetManager的Classes为<code>UHotChunkerAssetManager</code>：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210221948334.webp"></p>
-<p>再次执行CookCommandlet可以看到这个条件不再满足：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210221951677.webp"></p>
-<p>前面讲到的是Cook阶段的资源控制，在Cook之后还要控制资源进入Pak。</p>
-<p>在4.27中，会默认把当前打包任务中Cooked下的资源全进包：</p>
+<p>Then, specify the AssetManager class as <code>UHotChunkerAssetManager</code> in project settings:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210221948334.webp"></p>
+<p>Executing CookCommandlet again shows that this condition is no longer satisfied:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210221951677.webp"></p>
+<p>The previous discussion dealt with resource control during the Cook phase. After Cook, it’s essential to control what resources enter the Pak.</p>
+<p>In 4.27, all resources under Cooked in the current packaging task are added to the package by default:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210222344804.webp"></p>
-<p>如果想要打出一个干净的包，就要控制真正进入0号Pak的文件，也就是要控制只有必要的文件才存储在<code>[PROJECTDIR]/Saved/Cooked</code>。</p>
-<p>我给<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>新加了一个功能，可以自定义指定Cook时保存的路径：</p>
+<p>If we want to produce a clean package, we need to control which files actually enter package 0, meaning only necessary files should be stored in <code>[PROJECTDIR]/Saved/Cooked</code>.</p>
+<p>I added a feature to <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> that allows custom specification of the path where resources are saved during Cook:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210230904187.webp"></p>
-<p>对Cooked的无干扰，从而实现基础包拆分包的分离。</p>
-<h3 id="介入CookCommandlet"><a href="#介入CookCommandlet" class="headerlink" title="介入CookCommandlet"></a>介入CookCommandlet</h3><p>默认情况下，我们无法直接介入到UE的打包过程。</p>
-<p>UE的打包是通过拉起UAT执行BuildCookRun实现的，它是一个独立的程序，相当于是一个任务调度器，拉起多个进程执行不同阶段地任务，用于统筹整个打包过程，并且可以控制跳过某些阶段。</p>
+<p>This allows for a non-intrusive Cook, thus achieving the separation of the basic package splitting.</p>
+<h3 id="Intervening-in-CookCommandlet"><a href="#Intervening-in-CookCommandlet" class="headerlink" title="Intervening in CookCommandlet"></a>Intervening in CookCommandlet</h3><p>By default, we cannot directly intervene in UE’s packaging process.</p>
+<p>UE’s packaging is executed by running UAT to perform BuildCookRun, a standalone program that acts like a task scheduler, launching multiple processes to execute different stages of tasks to orchestrate the entire packaging process and can skip certain stages.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210230933114.webp"></p>
-<p>这就造成一个问题，没有办法很方便地介入到这个过程中去，因为UAT独立与我们的业务代码。</p>
-<p>但如果需要修改引擎，那就很难受了，不是一种通用的解决方案。遇事不决就改引擎，太过无脑，不是我的风格，所以我研究了一种非侵入式的方案。</p>
-<p>通过上面的图可以看到，UAT执行的过程中是会拉起CookCommandlet去执行Cook的，虽然我们没有办法直接介入到UAT的流程，但是可以想一些奇技淫巧，介入到CookCommandlet的过程。</p>
-<p><code>CookCommandlet</code>是一个Commandlet，执行方式为：</p>
+<p>This creates a problem, as it is inconvenient to intervene in this process because UAT is independent of our business code.</p>
+<p>However, if modifications to the engine are necessary, that becomes problematic; it is not a universal solution. Modifying the engine every time there is a problem is too simplistic and not my style, so I researched a non-intrusive approach.</p>
+<p>From the diagram above, we can see that UAT executes a commandlet for Cook, so while we cannot directly intervene in UAT’s flow, we can use some clever methods to intervene in the CookCommandlet process.</p>
+<p><code>CookCommandlet</code> is a Commandlet executed with:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UE4Editor-cmd.exe PROJECT.uproject -run=CookCommandlet</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>，它本质上是<strong>通过引擎启动项目，去执行一个命令行任务。</strong>这意味着，启动它时会加载我们项目中的插件。</p>
-<p>利用这一点我们就能实现非侵入式介入CookCommandlet的过程。</p>
-<p>其次，我们可以在CookCommandlet的什么阶段做事情，对于本文的需求而言，希望在Cook完成之后，拉起来<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>执行拆分打包。</p>
-<p>那么在什么时机合适呢？</p>
-<p>在之前的文章中介绍了，UE的Cook是根据运行时的加载到内存中的资源动态Cook进包的，所以，我们不能在Cook完成之前就拉起我们自定义的打包任务，不然会导致进基础包。</p>
-<p>只能在Cook完成之后才可以，但引擎没有暴露出Cook完成之后的回调，所以又要想一个其他的方案。</p>
-<p>CookCommandlet本质上也是启动引擎，我们可以利用引擎暴露的<code>CoreDelegates</code>时机去做选择，通过阅读代码，发现比较合适的时机是<code>OnEnginePreExit</code>，因为这个阶段Cook已经完毕，并且引擎还没有开始退出，保持了完整的引擎启动状态，在这个阶段去做想做的事情，可以利用完整地引擎功能，而不会出现有些模块被卸载的情况。</p>
+<p><strong>Note</strong>, it essentially <strong>starts the project through the engine to execute a command line task.</strong> This means that when it starts, it will load the plugins within our project.</p>
+<p>By leveraging this, we can achieve a non-intrusive intervention in the CookCommandlet process.</p>
+<p>Next, we need to determine at what stage we want to do something in the CookCommandlet. For the needs of this article, we hope to invoke <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> to execute the split packaging after Cook completes.</p>
+<p>So at what timing is appropriate?</p>
+<p>In previous articles, it has been introduced that UE’s Cook dynamically cooks the resources loaded into memory at runtime, meaning we cannot invoke our custom packaging task before Cook completes; otherwise, it would lead to inclusion in the basic package.</p>
+<p>We can only do this after Cook finishes, but there is no exposed callback for completion, so we need to consider other solutions.</p>
+<p>Because CookCommandlet is also an engine startup, we can use the engine’s exposed <code>CoreDelegates</code> timing to make choices. By reading the code, we find that a suitable timing is <code>OnEnginePreExit</code>, as this phase confirms that Cook is complete, and the engine hasn’t begun exiting yet, maintaining a full engine start state. Actions taken during this phase can utilize all engine functionalities without the risk of some modules being unloaded.</p>
 <blockquote>
-<p>但要注意的是，这个回调在4.25中才存在，之前的引擎版本中没有。</p>
+<p>Note that this callback only exists in version 4.25 and later; earlier engine versions do not have it.</p>
 </blockquote>
-<p>首先是创建一个插件，创建一个Editor的模块，在StartupModule中监听<code>FCoreDelegates::OnEnginePreExit</code>：</p>
+<p>First, create a plugin, set up an Editor module, and listen to <code>FCoreDelegates::OnEnginePreExit</code> in <code>StartupModule</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FHotChunkerEditorModule::StartupModule</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line"></span><br><span class="line">   <span class="meta">#<span class="keyword">if</span> ENGINE_MAJOR_VERSION &gt; 4 || (ENGINE_MAJOR_VERSION == 4 &amp;&amp; ENGINE_MINOR_VERSION &gt; 24)  </span></span><br><span class="line">       FCoreDelegates::OnEnginePreExit.<span class="built_in">AddRaw</span>(<span class="keyword">this</span>,&amp;FHotChunkerEditorModule::OnPreEngineExit_Commandlet);  </span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span>  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在监听的回调过程中，可以做想要做的事情了。<br>但要检测是否是在CookCommandlet中执行，因为Editor的模块，在引擎启动时都会执行，我们只需要它在CookCommandlet中生效，所以要做检测：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CommandletHelper::IsCookCommandlet</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   <span class="type">bool</span> bIsCookCommandlet = <span class="literal">false</span>;  </span><br><span class="line">  </span><br><span class="line">   <span class="keyword">if</span>(::<span class="built_in">IsRunningCommandlet</span>())  </span><br><span class="line">   &#123;      FString CommandletName;  </span><br><span class="line">      <span class="type">bool</span> bIsCommandlet = CommandletHelper::<span class="built_in">GetCommandletArg</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;-run=&quot;</span>),CommandletName); <span class="comment">//FParse::Value(FCommandLine::Get(), TEXT(&quot;-run=&quot;), CommandletName);  </span></span><br><span class="line">   <span class="keyword">if</span>(bIsCommandlet &amp;&amp; !CommandletName.<span class="built_in">IsEmpty</span>())  </span><br><span class="line">      &#123;         bIsCookCommandlet = CommandletName.<span class="built_in">Equals</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;cook&quot;</span>),ESearchCase::IgnoreCase);  </span><br><span class="line">      &#125;   &#125;   <span class="keyword">return</span> bIsCookCommandlet;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FHotChunkerEditorModule::OnPreEngineExit_Commandlet</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   <span class="keyword">if</span>(CommandletHelper::<span class="built_in">IsCookCommandlet</span>())  </span><br><span class="line">   &#123;  </span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过这种方式，就能实现非侵入式地监听Cook完成的时机，进行自定义的打包行为。</p>
+<p>In the listened callback, we can perform desired actions. However, we need to ensure that this is executed in the CookCommandlet, because the Editor module is executed whenever the engine starts; we simply need it to be effective in the CookCommandlet context:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CommandletHelper::IsCookCommandlet</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   <span class="type">bool</span> bIsCookCommandlet = <span class="literal">false</span>;  </span><br><span class="line">  </span><br><span class="line">   <span class="keyword">if</span>(::<span class="built_in">IsRunningCommandlet</span>())  </span><br><span class="line">   &#123;     </span><br><span class="line">      FString CommandletName;  </span><br><span class="line">      <span class="type">bool</span> bIsCommandlet = CommandletHelper::<span class="built_in">GetCommandletArg</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;-run=&quot;</span>),CommandletName); </span><br><span class="line">      <span class="keyword">if</span>(bIsCommandlet &amp;&amp; !CommandletName.<span class="built_in">IsEmpty</span>())  </span><br><span class="line">      &#123;         </span><br><span class="line">         bIsCookCommandlet = CommandletName.<span class="built_in">Equals</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;cook&quot;</span>),ESearchCase::IgnoreCase);  </span><br><span class="line">      &#125;   </span><br><span class="line">   &#125;  </span><br><span class="line">   <span class="keyword">return</span> bIsCookCommandlet;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FHotChunkerEditorModule::OnPreEngineExit_Commandlet</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   <span class="keyword">if</span>(CommandletHelper::<span class="built_in">IsCookCommandlet</span>())  </span><br><span class="line">   &#123;  </span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Through this method, it becomes possible to non-intrusively listen for when Cook is complete and implement custom packaging actions.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210230957399.webp"></p>
-<h3 id="自动化Stage"><a href="#自动化Stage" class="headerlink" title="自动化Stage"></a>自动化Stage</h3><p>前一小结，讲到了如何利用Hook Commandlet的方式，在Cook完成之后，拉起<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>进行打包。<br>在执行完毕CookCommandlet之后，打包的状态如下：</p>
+<h3 id="Automated-Staging"><a href="#Automated-Staging" class="headerlink" title="Automated Staging"></a>Automated Staging</h3><p>The previous section discussed how to use the Hook Commandlet approach to invoke <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> for packaging after Cook is completed.<br>After executing CookCommandlet, the packaging status is as follows:</p>
 <ol>
-<li>基础资源已经被Cook，但未打包成Pak</li>
-<li>HotChunker拆分的资源已经被Cook，并被打包成了Pak，暂存在临时目录中。</li>
+<li>Basic resources have been cooked but not yet packaged into Pak.</li>
+<li>Resources split by HotChunker have already been cooked and packaged into Pak, temporarily stored in a staging directory.</li>
 </ol>
-<p>CookCommandlet默认是没有打包Pak的行为的，把CookCommandlet的结果打包成Pak是UAT拉起UnrealPak做的事情。</p>
-<p>在CookCommandlet中，我们打包出来的Pak，并没有直接存储在<code>Saved/StagedBuilds</code>目录下，因为UAT里后续创建Pak的过程，会清掉StagedBuilds下的目录，如果在清掉之前拷贝过去，其实没什么意义，会被删除。</p>
-<p>所以，要找到一个稍微靠后的时机，不会把我们创建的Pak清理掉的方法。</p>
-<p>看一下这张图：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231008946.webp"></p>
-<p>引擎中的代码（<code>Scripts/CopyBuildToStagingDirectory.Automation.cs</code>）：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231010067.webp"></p>
-<p>它是在UAT拉起UnrealPak之前去做的清理，然后直接把UnrealPak的产出生成到干净的StagedBuilds目录里。</p>
-<p>所以我们要在UnrealPak及之后的时机才能做事情。那么如何<strong>不改动引擎</strong>实现？</p>
-<p>这里需要插入一些UE模块加载的科普。<br>对于UE的Module而言，可以具有多种类型，一般情况下会用到<code>Runtime</code>、<code>Editor</code>、<code>Developer</code>等日常开发用法。但UE还提供了一种<code>Program</code>的类型，可以让引擎中的一些Program启动时去加载。<br>以HotChunker的<code>.uplugin</code>为例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>   </span><br><span class="line">   <span class="attr">&quot;FriendlyName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CreatedBy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lipengzha&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CreatedByURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://imzlp.com/&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CanContainContent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;SupportedPrograms&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;Plugins&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">      <span class="punctuation">&#123;</span>         <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotPatcher&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span>  </span><br><span class="line">      <span class="punctuation">&#125;</span>  </span><br><span class="line">   <span class="punctuation">]</span><span class="punctuation">,</span>   </span><br><span class="line">   <span class="attr">&quot;Modules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">      <span class="punctuation">&#123;</span>         <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Program&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PostConfigInit&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;ProgramAllowList&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span>  </span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>通过指定<code>SupportedPrograms</code>，标记该插件可以被Program启动时加载，Modules中的<code>ProgramAllowList</code>用于控制，该模块能够被哪个程序加载。</p>
-<p>这意味着，能在不变动引擎的情况下，让UnrealPak去加载我们工程中的一个特定模块，来做我们想做的事情。</p>
+<p>By default, CookCommandlet does not package into Pak. The task of packaging the results of CookCommandlet into Pak is performed by UAT invoking UnrealPak.</p>
+<p>The Pak we packaged in CookCommandlet does not directly reside in the <code>Saved/StagedBuilds</code> directory because subsequent creation of Pak by UAT will clear the StagedBuilds directory, making copying over before clearing essentially meaningless as it would be deleted.</p>
+<p>Therefore, we need to find a slightly later opportunity where our created Pak will not be cleared.</p>
+<p>Refer to this diagram:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231008946.webp"></p>
+<p>The relevant code in the engine (<code>Scripts/CopyBuildToStagingDirectory.Automation.cs</code>):<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231010067.webp"></p>
+<p>This executes the cleanup prior to UAT invoking UnrealPak, and directly generates the output of UnrealPak into a clean StagedBuilds directory.</p>
+<p>Thus, we need to execute our actions after UnrealPak but before the task concludes.</p>
+<p>How to do this <strong>without modifying the engine</strong>?</p>
+<p>Here, we need to introduce some basics about loading UE module types.<br>UE modules can have multiple types usually utilized in daily development like <code>Runtime</code>, <code>Editor</code>, <code>Developer</code>, etc. However, UE also provides a <code>Program</code> type that can allow the loading of some programs when starting.</p>
+<p>Using HotChunker’s <code>.uplugin</code> as an example:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>   </span><br><span class="line">   <span class="attr">&quot;FriendlyName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CreatedBy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lipengzha&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CreatedByURL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://imzlp.com/&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;CanContainContent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;SupportedPrograms&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span>  </span><br><span class="line">   <span class="attr">&quot;Plugins&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">      <span class="punctuation">&#123;</span>         </span><br><span class="line">         <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotPatcher&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span>  </span><br><span class="line">      <span class="punctuation">&#125;</span>  </span><br><span class="line">   <span class="punctuation">]</span><span class="punctuation">,</span>   </span><br><span class="line">   <span class="attr">&quot;Modules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">      <span class="punctuation">&#123;</span>         </span><br><span class="line">         <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HotChunker&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Program&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;LoadingPhase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PostConfigInit&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">         <span class="attr">&quot;ProgramAllowList&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;UnrealPak&quot;</span> <span class="punctuation">]</span>  </span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Specifying <code>SupportedPrograms</code> indicates that this plugin can be loaded when a Program starts, and the <code>ProgramAllowList</code> in Modules controls which programs can load that module.</p>
+<p>This means we can have UnrealPak load a specific module in our project to perform our intended actions without impacting the engine.</p>
 <blockquote>
-<p>注意，引擎提供这个机制，本质上是想要能够非侵入式地实现拓展压缩算法，本文介绍的这种用法，是一种合理的使用方式。</p>
+<p>Note, this mechanism is fundamentally provided by the engine to enable non-intrusive extension of compression algorithms, and the way described in this article is a reasonable application.</p>
 </blockquote>
-<p>当然要求是启动Program的过程中，要传递项目路径，而UAT拉起UnrealPak时，就是这么传递的。<br>在打包时，UAT拉起UnrealPak执行的命令：</p>
+<p>Of course, this requires passing the project path when starting the Program, which UAT does when invoking UnrealPak.</p>
+<p>Within the packaging, the command executed by UAT to invoke UnrealPak is as follows:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\UnrealProjects\BlankExample\BlankExample.uproject E:\UnrealProjects\BlankExample\Saved\StagedBuilds\WindowsNoEditor\BlankExample\Content\Paks\BlankExample-WindowsNoEditor.pak -create=D:\UnrealEngine\Source\UE_4.27.2\Engine\Programs\AutomationTool\Saved\Logs\PakList_BlankExample-WindowsNoEditor.txt -cryptokeys</span><br><span class="line">=E:\UnrealProjects\BlankExample\Saved\Cooked\WindowsNoEditor\BlankExample\Metadata\Crypto.json -secondaryOrder=E:\UnrealProjects\BlankExample\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.<span class="built_in">log</span> -patchpaddingalign=2048 -platform=Windows -compressionformats=Oodle -compressmethod=Kraken -compresslevel=3  -multiprocess -abslog=D:\UnrealEngine\Source\UE_4.27.</span><br><span class="line">2\Engine\Programs\AutomationTool\Saved\Logs\UnrealPak-BlankExample-WindowsNoEditor-2022.10.22-13.58.14.txt -compressionblocksize=256KB</span><br></pre></td></tr></table></figure>
 
-<p>这样我们就可以在Module的<code>StartupModule</code>或者<code>ShutdownModule</code>中自定义的操作了：</p>
+<p>Now we can perform custom actions in the Module’s <code>StartupModule</code> or <code>ShutdownModule</code>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FHotChunkerModule::StartupModule</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">   <span class="type">bool</span> bIsRunningProgram = FPlatformProperties::<span class="built_in">IsProgram</span>();  </span><br><span class="line">   <span class="built_in">UE_LOG</span>(LogHotChunker,Display,<span class="built_in">TEXT</span>(<span class="string">&quot;HotChunker StartupModule,is Program %s&quot;</span>), bIsRunningProgram ? <span class="built_in">TEXT</span>(<span class="string">&quot;TRUE&quot;</span>):<span class="built_in">TEXT</span>(<span class="string">&quot;FALSE&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意，需要在运行时检测，是否是以Program启动的模块，用于区分是正常的引擎启动还是Program启动。可以用<code>FPlatformProperties::IsProgram()</code>进行判断。</p>
+<p>Note, it is essential to check at runtime whether the module is started as a Program to distinguish between a normal engine startup and Program startup. Use <code>FPlatformProperties::IsProgram()</code> for this check.</p>
 </blockquote>
-<p>此时，再通过UAT打包工程，在拉起UnrealPak时会启动项目Module，可以在UAT拉起UnrealPak的Log中看到：</p>
+<p>At this point, when triggering packaging, the UnrealPak trigger will start our project Module, which can be seen in the UAT logs when UnrealPak is triggered:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogHotChunker: Display: HotChunker StartupModule,is Program TRUE</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231025746.webp"></p>
-<p>在这个Module中，把CookCommandlet中我们打包出来的Pak从临时目录拷贝到真正进包的<code>StagedBuilds</code>目录中即可。</p>
-<h3 id="通用的Pak过滤规则"><a href="#通用的Pak过滤规则" class="headerlink" title="通用的Pak过滤规则"></a>通用的Pak过滤规则</h3><p>在文章<a href="https://imzlp.com/posts/13765/">UE 热更新：拆分基础包</a>中，我介绍了UE给Android提供的Pak不进Obb的方法，并提供了IOS的等价实现。</p>
-<p>但缺点也是要改动引擎才能实现，不是一个<strong>非侵入式</strong>的完全<strong>跨平台</strong>的通用实现。</p>
-<p>基于本篇文章的拆分方案，可以在<code>UnrealPak</code>拉起<code>HotChunker</code>执行<code>Copy to StagedBuilds</code>时进行过滤，避免进入基础包。</p>
-<p>只需要一份配置，对所有的平台都是通用的。支持通配符，方便指定忽略规则：</p>
+<p>Within this Module, we simply need to copy the Pak we packaged in CookCommandlet from the temporary directory to the actual packaging <code>StagedBuilds</code> directory.</p>
+<h3 id="General-Pak-Filtering-Rules"><a href="#General-Pak-Filtering-Rules" class="headerlink" title="General Pak Filtering Rules"></a>General Pak Filtering Rules</h3><p>In the article <a target="_blank" rel="noopener" href="https://imzlp.com/posts/13765/">UE Hot Update: Splitting Basic Packages</a>, I introduced a method to prevent Android Pak from entering OBB and provided an equivalent implementation for iOS.</p>
+<p>However, the downside is that it requires modifying the engine, which is not a <strong>non-intrusive</strong> complete <strong>cross-platform</strong> solution.</p>
+<p>Based on the package splitting scheme in this article, during the execution of <code>UnrealPak</code> invoking <code>HotChunker</code>, we can perform filtering to avoid entering the basic package.</p>
+<p>Only one configuration is needed, and it is applicable across all platforms. It supports wildcards, making it easy to specify ignore rules:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231049018.webp"></p>
-<h3 id="Chunk的配置"><a href="#Chunk的配置" class="headerlink" title="Chunk的配置"></a>Chunk的配置</h3><p>新的拆分方式，和UE的PrimaryAssetLabel类似，可以创建一个<code>HotPatcherPrimaryLabel</code>资源进行配置,与<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>插件中Chunk的配置一致，可以指定目录、资源、是否进行依赖分析、非资源文件的配置，强制忽略哪些目录等等,都可以灵活配置。</p>
+<h3 id="Chunk-Configuration"><a href="#Chunk-Configuration" class="headerlink" title="Chunk Configuration"></a>Chunk Configuration</h3><p>The new splitting approach, much like UE’s PrimaryAssetLabel, allows the creation of a <code>HotPatcherPrimaryLabel</code> resource for configuration. This is consistent with the Chunk configuration in the <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> plugin, allowing for the specification of directories, resources, dependency analysis, non-resource file configurations, and forced ignoring of certain directories, all of which can be flexibly configured.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231054945.webp"></p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231054208.webp"></p>
-<p>并且可以在项目设置中修改打包Chunk使用的Pak的配置模板，完全复用<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的配置：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231056458.webp"></p>
-<p>可以控制生成Pak的命名规则等等。</p>
-<h3 id="编辑器的支持"><a href="#编辑器的支持" class="headerlink" title="编辑器的支持"></a>编辑器的支持</h3><p>我为<code>HotPatcherPrimaryLabel</code>资源支持了右键菜单支持：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231058735.webp"></p>
-<p>可以直接右键打包当前的配置，也可以将其添加到<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>的Chunk配置中。</p>
-<p>并且可以直接通过引用视图，查看当前Pak包含的资源：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231059005.webp"></p>
-<h3 id="包内Pak预览"><a href="#包内Pak预览" class="headerlink" title="包内Pak预览"></a>包内Pak预览</h3><p>以Android为例，使用本方案的拆包方式将某个Pak打到包内：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20221123103823.webp"></p>
-<p>具有更清晰和更灵活的优势。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>本篇文章介绍了UE默认拆分包的缺点，以及利用<a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>进行非侵入式拆分基础包的方式和实现。<br>利用了很多引擎隐藏的特性，基于Commandlet Hook和Module for Program的方式实现，避免了对引擎的修改。<br>本文的方案已经完全实现，后续会作为HotPatcher的一个Mod发布，只需要简单地配置，然后执行UE默认的打包，就能实现完整的流程。</p>
+<p>Additionally, the packaging Chunk’s configuration template can be modified in project settings, completely reusing <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> settings:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231056458.webp"></p>
+<p>This allows for control over the naming rules of the generated Pak, etc.</p>
+<h3 id="Editor-Support"><a href="#Editor-Support" class="headerlink" title="Editor Support"></a>Editor Support</h3><p>I added right-click menu support for the <code>HotPatcherPrimaryLabel</code> resource:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231058735.webp"></p>
+<p>This enables direct right-clicking to package the current configuration or to add it to <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a>‘s Chunk configuration.</p>
+<p>Moreover, it is possible to view the resources included in the current Pak through the reference view:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/202210231059005.webp"></p>
+<h3 id="Preview-of-Pak-within-Pak"><a href="#Preview-of-Pak-within-Pak" class="headerlink" title="Preview of Pak within Pak"></a>Preview of Pak within Pak</h3><p>Taking Android as an example, using this packaging approach will allow a certain Pak to be included within a package:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2022/20221123103823.webp"></p>
+<p>This provides clearer and more flexible advantages.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This article has introduced the shortcomings of UE’s default package splitting and the non-intrusive splitting of basic packages using <a target="_blank" rel="noopener" href="https://github.com/hxhb/HotPatcher">HotPatcher</a> methods and implementations. By leveraging many hidden features of the engine, the approach is realized through Commandlet Hook and Module for Program, avoiding modifications to the engine. </p>
+<p>The proposed solution has been fully implemented and will be released as a Mod for HotPatcher, requiring only simple configuration and executing the default UE packaging to achieve the complete process.</p>
 
     </div>
 
@@ -512,7 +516,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -522,7 +526,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -532,37 +536,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/24350/" target="_blank">一种灵活与非侵入式的基础包拆分方案</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2022/10/23 15:20<br/>
+             <span>Title:</span><a href="/posts/24350/" target="_blank">A Flexible and Non-Intrusive Basic Package Splitting Scheme</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2022/10/23 15:20<br/>
              
-             <span>本文字数:</span><span class="page-count">5k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">11k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/24350/" target="_blank" title="一种灵活与非侵入式的基础包拆分方案">https://imzlp.com/posts/24350/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/24350/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/24350/" target="_blank" title="A Flexible and Non-Intrusive Basic Package Splitting Scheme">https://en.imzlp.com/posts/24350/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/24350/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -588,8 +592,8 @@
       <i class="fa fa-chevron-left"></i> 2022 Unreal Open Day
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/23932/" rel="next" title="循迹研究：如何写好一篇技术文章">
-      循迹研究：如何写好一篇技术文章 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/23932/" rel="next" title="How to write a good technical article">
+      How to write a good technical article <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -660,25 +664,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%89%93%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">默认打包的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B2%E5%87%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">干净的基础包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E5%85%A5CookCommandlet"><span class="nav-number">3.</span> <span class="nav-text">介入CookCommandlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96Stage"><span class="nav-number">4.</span> <span class="nav-text">自动化Stage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E7%9A%84Pak%E8%BF%87%E6%BB%A4%E8%A7%84%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text">通用的Pak过滤规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chunk%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">Chunk的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-number">7.</span> <span class="nav-text">编辑器的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%85%E5%86%85Pak%E9%A2%84%E8%A7%88"><span class="nav-number">8.</span> <span class="nav-text">包内Pak预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">9.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Issues-with-Default-Packaging"><span class="nav-number">1.</span> <span class="nav-text">Issues with Default Packaging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clean-Basic-Package"><span class="nav-number">2.</span> <span class="nav-text">Clean Basic Package</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intervening-in-CookCommandlet"><span class="nav-number">3.</span> <span class="nav-text">Intervening in CookCommandlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automated-Staging"><span class="nav-number">4.</span> <span class="nav-text">Automated Staging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Pak-Filtering-Rules"><span class="nav-number">5.</span> <span class="nav-text">General Pak Filtering Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chunk-Configuration"><span class="nav-number">6.</span> <span class="nav-text">Chunk Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Editor-Support"><span class="nav-number">7.</span> <span class="nav-text">Editor Support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preview-of-Pak-within-Pak"><span class="nav-number">8.</span> <span class="nav-text">Preview of Pak within Pak</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">9.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -686,19 +690,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -736,10 +740,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -766,9 +770,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -777,12 +778,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -935,7 +936,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/24350/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/24350/',]
       });
       });
   </script>
@@ -958,12 +959,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

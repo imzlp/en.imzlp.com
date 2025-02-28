@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在之前的几篇文章中，分别介绍了UE热更新的实现机制，以及热更的自动化流程，近期打算继续写几篇文章介绍下UE里热更新中资源包管理的流程和规则。 当然，不同类型的项目会有不同的打包策略，资源管理也没有通用的最佳策略。本篇文章主要介绍热更新流程中基础包的拆分的工程实践，涉及修改引擎实现Android&#x2F;IOS通用拆分方式的方法，希望对不同业务的项目能提供一些有用的思路。  在实际的工程实践中，我们抛弃了U">
+  <meta name="description" content="In previous articles, we introduced the implementation mechanism of UE hot updates and the automation process of hot updates. Recently, we plan to continue writing a few articles to discuss the proces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE热更新：拆分基础包">
-<meta property="og:url" content="https://imzlp.com/posts/13765/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在之前的几篇文章中，分别介绍了UE热更新的实现机制，以及热更的自动化流程，近期打算继续写几篇文章介绍下UE里热更新中资源包管理的流程和规则。 当然，不同类型的项目会有不同的打包策略，资源管理也没有通用的最佳策略。本篇文章主要介绍热更新流程中基础包的拆分的工程实践，涉及修改引擎实现Android&#x2F;IOS通用拆分方式的方法，希望对不同业务的项目能提供一些有用的思路。  在实际的工程实践中，我们抛弃了U">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Hot Update: split the basic package">
+<meta property="og:url" content="https://en.imzlp.com/posts/13765/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In previous articles, we introduced the implementation mechanism of UE hot updates and the automation process of hot updates. Recently, we plan to continue writing a few articles to discuss the proces">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206155458.webp">
 <meta property="article:published_time" content="2021-01-27T21:51:56.000Z">
 <meta property="article:modified_time" content="2021-01-27T21:51:56.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/20230206155458.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/13765/">
+<link rel="canonical" href="https://en.imzlp.com/posts/13765/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE热更新：拆分基础包 | 循迹研究室</title>
+  <title>UE Hot Update: split the basic package | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -177,14 +177,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -192,26 +192,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -227,7 +227,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -246,7 +246,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -265,12 +265,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -288,27 +288,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/13765/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/13765/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE热更新：拆分基础包<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2021-01-27-13765.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/13765/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Hot Update: split the basic package<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2021-01-27-13765.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/13765/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Hot Update: split the basic package</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE热更新：拆分基础包</sub>
           </div>
         
 
@@ -317,47 +317,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2021-01-27 21:51 21:51:56:51" itemprop="dateCreated datePublished" datetime="2021-01-27T21:51:56+00:00">2021-01-27 21:51</time>
+              <time title="Created: 2021-01-27 21:51 21:51:56:51" itemprop="dateCreated datePublished" datetime="2021-01-27T21:51:56+00:00">2021-01-27 21:51</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/13765/" class="post-meta-item leancloud_visitors" data-flag-title="UE热更新：拆分基础包" title="阅读次数">
+            <span id="/posts/13765/" class="post-meta-item leancloud_visitors" data-flag-title="UE Hot Update: split the basic package" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.5k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>19 mins.</span>
             </span>
 
         </div>
@@ -369,90 +369,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在之前的几篇文章中，分别介绍了UE热更新的实现机制，以及热更的自动化流程，近期打算继续写几篇文章介绍下UE里热更新中资源包管理的流程和规则。</p>
-<p>当然，不同类型的项目会有不同的打包策略，资源管理也没有通用的最佳策略。本篇文章主要介绍热更新流程中基础包的拆分的工程实践，涉及修改引擎实现Android/IOS通用拆分方式的方法，希望对不同业务的项目能提供一些有用的思路。</p>
+        <p>In previous articles, we introduced the implementation mechanism of UE hot updates and the automation process of hot updates. Recently, we plan to continue writing a few articles to discuss the process and rules of resource package management in UE hot updates.</p>
+<p>Of course, different types of projects will have different packaging strategies, and resource management does not have a universal best strategy. This article mainly introduces the engineering practice of splitting the base package in the hot update process, involving the modification of the engine to implement a common splitting method for Android/iOS. We hope to provide some useful ideas for projects in different businesses.</p>
 <blockquote>
-<p>在实际的工程实践中，我们抛弃了UE自带的包拆分方案，基于<a href="https://imzlp.com/posts/17590/">HotPatcher</a>框架实现了一套灵活的包拆分方案，详见文章：<a href="https://imzlp.com/posts/37036/">资源管理：重塑 UE 的包拆分方案</a>。</p>
+<p>In practical engineering, we abandoned the default package splitting scheme provided by UE and implemented a flexible package splitting scheme based on the <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> framework. For details, see the article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/37036/">Resource Management: Reshaping UE’s Package Splitting Scheme</a>.</p>
 </blockquote>
 <span id="more"></span>
 
-<p>当项目发展到中后期的时候，会有大量的地图和美术资源，对于手游而言，包体的大小也是比较敏感的，而且Android还是2G的包体大小限制，所以当项目进行到一定阶段，拆分包体就是需要考虑的事情了，并且巨型的安装包也不利于推广。</p>
-<p>在具有热更的情况下拆分基础包需要兼顾两个因素：</p>
+<p>When projects develop to the mid- to late-stages, there will be a large number of maps and art resources. For mobile games, the size of the package is also quite sensitive, and Android has a 2G package size limitation. Therefore, when a project reaches a certain stage, splitting the package becomes a necessary consideration, and a giant installation package is not conducive to promotion.</p>
+<p>In the case of hot updates, splitting the base package needs to consider two factors:</p>
 <ul>
-<li>减小包体的同时不能影响玩法</li>
-<li>要减少玩家的下载等待时间</li>
+<li>Reducing the package size without affecting gameplay</li>
+<li>Minimizing players’ download waiting time</li>
 </ul>
-<p>这两个因素的取舍和实现或多或少都是需要与具体的游戏业务相关的，这里仅从实现层面来拆分基础包，不同的业务根据适合自己的业务规则来拆分就好。</p>
-<p>UE本身的资源管理，是可以在打包时进行拆分资源的，就是通过<code>Asset Manager</code>或者<code>AssetPrimaryLable</code>对资源按照类型、目录、地图、依赖分析等粒度进行资源的划分，也就是所谓的Chunk机制。<br>Chunk划分的操作方法可以看UE的文档：</p>
+<p>The trade-offs and implementations of these two factors are more or less related to specific game businesses. Here, we will only split the base package from the implementation level; different businesses can split according to their own business rules.</p>
+<p>UE’s resource management can split resources during packaging, using <code>Asset Manager</code> or <code>AssetPrimaryLabel</code> to categorize resources by type, directory, map, dependency analysis, etc. This is the so-called Chunk mechanism.<br>For the operation method of Chunk division, refer to UE’s documentation:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/SharingAndReleasing/Patching/GeneralPatching/ChunkingExample/index.html">Preparing Assets for Chunking</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/SharingAndReleasing/Patching/GeneralPatching/ChunkingExample/index.html">Preparing Assets for Chunking</a>.</li>
 <li><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/en-US/SharingAndReleasing/Patching/GeneralPatching/CookingAndChunking/index.html">Cooking and Chunking</a></li>
 </ul>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/13765/split-base-pack.webp"></p>
-<p>UE的Chunk机制，可以把默认情况下打出来一个单独的巨型pak根据设置的拆分粒度打包成数个小的pak（在<code>Priority</code>相同的情况下会具有一份资源在多个chunk中存在的情况），如果以地图和其依赖的资源作为chunk的划分机制，就可以让基础包内包含初始的关键地图，在热更或者运行时把其余的资源动态下载下来。</p>
-<p>其实拆分基础包的关键就两点：</p>
+<p>UE’s Chunk mechanism can turn a single giant pak that is created by default into several smaller pak files based on the specified splitting granularity (when <code>Priority</code> is the same, there may be a situation where a resource exists in multiple chunks). If you take maps and their dependent resources as the chunk division mechanism, you can include the initial key maps in the base package and dynamically download the remaining resources during hot updates or runtime.</p>
+<p>The key to splitting the base package lies in two points:</p>
 <ol>
-<li>能够按照自定义分类拆分资源（chunk）</li>
-<li>能够自己控制资源打包到基础包内的规则</li>
+<li>Being able to split resources (chunks) based on custom classifications</li>
+<li>Being able to control the rules for packing resources into the base package</li>
 </ol>
-<p>第一点可以通过Asset Manager的Chunk机制实现，那么第二点如何实现呢？</p>
-<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>对于Android平台，因为有超过2G就会出包失败的问题，所以UE对Android默认提供了<code>ObbFilter</code>的功能，可以指定哪些文件要被添加到Obb中（pak/mp4）等。</p>
-<p>控制方法只需要添加配置即可。</p>
+<p>The first point can be achieved through the Chunk mechanism of Asset Manager. So, how can the second point be achieved?</p>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>For the Android platform, because a package larger than 2GB will cause packaging failures, UE provides the <code>ObbFilter</code> functionality by default to specify which files should be added to OBB (pak/mp4), etc.</p>
+<p>The control method only requires adding configurations.</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Config/DefaultEngine.ini</span></span><br><span class="line"><span class="section">[/Script/AndroidRuntimeSettings.AndroidRuntimeSettings]</span></span><br><span class="line">+<span class="attr">ObbFilters</span>=-pakchunk1-*</span><br><span class="line">+<span class="attr">ObbFilters</span>=-pakchunk2-*</span><br><span class="line">+<span class="attr">ObbFilters</span>=-pakchunk3-*</span><br></pre></td></tr></table></figure>
-<p>ObbFilters的规则以<code>-</code>开头就是排除规则，会把基础包中的<code>chunk1-3</code>的pak给过滤掉，可以用于后续的下载流程。</p>
-<p>也可以指定<code>Exclute</code>和<code>Include</code>规则组合来用：</p>
+<p>The rules of ObbFilters starting with <code>-</code> serve as exclusion rules, which filter out <code>chunk1-3</code> pak from the base package and can be used for subsequent download processes.</p>
+<p>It is also possible to specify a combination of <code>Exclude</code> and <code>Include</code> rules:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="attr">ObbFilters</span>=-*.pak</span><br><span class="line">+<span class="attr">ObbFilters</span>=pakchunk0-*</span><br></pre></td></tr></table></figure>
-<p>第一步忽略掉所有的pak文件，然后把<code>pakchunk0-*.pak</code>显式添加至obb中。</p>
-<h2 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h2><p><strong>但是</strong>，IOS并没有提供这个功能，为了实现IOS与Android一样的过滤机制，我翻了下UE中打包IOS的代码，可以通过以下方式实现（需要修改<code>iPhonePackager</code>的代码），思考和实现过程记录如下。</p>
+<p>The first step ignores all pak files and then explicitly adds <code>pakchunk0-*.pak</code> to the obb.</p>
+<h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><p><strong>However</strong>, iOS does not provide this functionality. To achieve iOS filtering mechanisms similar to Android, I looked into the UE packaging code for iOS, and it can be implemented in the following way (modifying the <code>iPhonePackager</code> code). The thought and implementation process is recorded as follows.</p>
 <blockquote>
-<p><strong>注意</strong>：我使用的IPA打包方式是远程构建，详见之前的文章：<a href="https://imzlp.com/posts/1948/">UE4 开发笔记：Mac/iOS 篇</a>。</p>
+<p><strong>Note</strong>: The IPA packaging method I use is remote building. For details, see the previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/1948/">UE4 Development Notes: Mac/iOS</a>.</p>
 </blockquote>
-<p>在前面提到了UE为Android提供了打包到obb中的文件过滤规则：</p>
+<p>In the earlier sections, it was mentioned that UE provides file filtering rules for packaging into OBB for Android:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Config/DefaultEngine.ini</span></span><br><span class="line"><span class="section">[/Script/AndroidRuntimeSettings.AndroidRuntimeSettings]</span></span><br><span class="line">+<span class="attr">ObbFilters</span>=-pakchunk1-*</span><br></pre></td></tr></table></figure>
-<p>但是UE并没有为IOS提供相应的操作，默认情况下会把IOS的所有的pak文件都打包至IPA中。</p>
-<p>为了统一Android和IOS的基础包规则，我自己实现了IOS上类似Android那种指定过滤规则的功能，做个简单的介绍。</p>
-<p>我使用的是Mac远程打包，流程是在Mac上编译代码生成IPA，拉回Win，在Win上进行Cook，生成Pak文件，最后把原始IPA解包，再添加Pak等文件组合成最终IPA。</p>
-<p>我的需求是，自定义指定过滤规则，可以把某些文件忽略，不打包到IPA中。那么这一步的操作其实就位于把IPA解包再打包的流程里，经过翻阅UE的代码，发现这个操作是通过<code>iPhonePackager</code>这个独立程序来实现的，那么就需要对这个程序的代码进行改造了。</p>
-<p>经过调试分析，发现真正实现重新打包IPA的操作是在以下函数中执行的：</p>
-<figure class="highlight plaintext"><figcaption><span>Programs/IOS/iPhonePackager/CookTime.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/** </span><br><span class="line">* Using the stub IPA previously compiled on the Mac, create a new IPA with assets</span><br><span class="line">*/</span><br><span class="line">static public void RepackageIPAFromStub();</span><br></pre></td></tr></table></figure>
-<p>该函数位于<code>iPhonePackager</code>-<code>CookTime</code>类中。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RepackageIPAFromStub</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="built_in">string</span> SourceDir = Path.GetFullPath(ZipSourceDir);</span><br><span class="line">	<span class="built_in">string</span>[] PayloadFiles = Directory.GetFiles(SourceDir, <span class="string">&quot;*.*&quot;</span>, Config.bIterate ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);</span><br><span class="line"> 	<span class="keyword">foreach</span> (<span class="built_in">string</span> Filename <span class="keyword">in</span> PayloadFiles)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="comment">// read file to memory,add to ZipFileSystem</span></span><br><span class="line">       <span class="comment">// generate stub and ipa</span></span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要做的操作就是介入这个过程，把<code>PayloadFiles</code>中的文件列表通过我们自定义的规则来执行过滤。</p>
-<p>从流程上分为以下几个步骤：</p>
+<p>However, UE does not provide a corresponding operation for iOS. By default, all pak files for iOS are packaged into the IPA.</p>
+<p>To unify the base package rules of Android and iOS, I implemented a filtering rule functionality on iOS similar to Android. Here’s a simple introduction.</p>
+<p>I used Mac for remote packaging. The process involves compiling code to generate IPA on Mac, pulling it back to Windows for cooking, generating Pak files, and finally unpackaging the original IPA, adding Pak and other files to form the final IPA.</p>
+<p>My requirement is to specify custom filtering rules that can ignore certain files and not pack them into the IPA. This operation actually lies within the process of unpackaging and repackaging the IPA. After reviewing UE’s code, I found that this operation is performed through the <code>iPhonePackager</code> standalone program, which means that I need to modify the code of this program.</p>
+<p>After debugging and analysis, I found that the actual operation of repackaging the IPA occurs in the following function:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Programs/IOS/iPhonePackager/CookTime.cs</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">* Using the stub IPA previously compiled on the Mac, create a new IPA with assets</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RepackageIPAFromStub</span>()</span>;</span><br></pre></td></tr></table></figure>
+<p>This function is located in the <code>iPhonePackager</code> - <code>CookTime</code> class.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RepackageIPAFromStub</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="built_in">string</span> SourceDir = Path.GetFullPath(ZipSourceDir);</span><br><span class="line">	<span class="built_in">string</span>[] PayloadFiles = Directory.GetFiles(SourceDir, <span class="string">&quot;*.*&quot;</span>, Config.bIterate ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);</span><br><span class="line"> 	<span class="keyword">foreach</span> (<span class="built_in">string</span> Filename <span class="keyword">in</span> PayloadFiles)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="comment">// read file to memory, add to ZipFileSystem</span></span><br><span class="line">       <span class="comment">// generate stub and ipa</span></span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The operation to perform is to intervene in this process and filter the list of files in <code>PayloadFiles</code> based on our custom rules.</p>
+<p>The process can be divided into the following steps:</p>
 <ol>
-<li>从项目中读取Filter的配置</li>
-<li>创建出真正的过滤器</li>
-<li>在<code>RepackageIPAFromStub</code>遍历文件的流程里使用过滤器进行检测是否需要被打入ipa</li>
+<li>Read Filter configuration from the project</li>
+<li>Create the actual filter</li>
+<li>Use the filter to check whether files should be included in the IPA during the <code>RepackageIPAFromStub</code> file traversal process</li>
 </ol>
-<p>只需要几十行代码就可以实现，首先需要添加一个IniReader的类：</p>
+<p>This can be achieved with just a few dozen lines of code. First, an IniReader class needs to be added:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Tools.DotNETCommon;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"><span class="keyword">using</span> Ini;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Ini</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IniReader</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="built_in">string</span> path;</span><br><span class="line"></span><br><span class="line">		[<span class="meta">DllImport(<span class="string">&quot;kernel32&quot;</span>)</span>]</span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="built_in">int</span> <span class="title">GetPrivateProfileString</span>(<span class="params"><span class="built_in">string</span> section, <span class="built_in">string</span> key, <span class="built_in">string</span> def,</span></span></span><br><span class="line"><span class="params"><span class="function">			StringBuilder retVal, <span class="built_in">int</span> size, <span class="built_in">string</span> filePath</span>)</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">IniReader</span>(<span class="params"><span class="built_in">string</span> INIPath</span>)</span></span><br><span class="line">		&#123;</span><br><span class="line">			path = INIPath;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">ReadValue</span>(<span class="params"><span class="built_in">string</span> Section, <span class="built_in">string</span> Key</span>)</span></span><br><span class="line">		&#123;</span><br><span class="line">			StringBuilder ReaderBuffer = <span class="keyword">new</span> StringBuilder(<span class="number">255</span>);</span><br><span class="line">			<span class="built_in">int</span> ret = GetPrivateProfileString(Section, Key, <span class="string">&quot;&quot;</span>, ReaderBuffer, <span class="number">255</span>, <span class="keyword">this</span>.path);</span><br><span class="line">			<span class="keyword">return</span> ReaderBuffer.ToString();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在<code>RepackageIPAFromStub</code>函数中创建过滤器：</p>
+<p>Then, create the filter in the <code>RepackageIPAFromStub</code> function:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">FileFilter IpaPakFileFilter = <span class="keyword">new</span> FileFilter(FileFilterType.Include);</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">string</span> ProjectDir = Directory.GetParent(Path.GetFullPath(Config.ProjectFile)).FullName;</span><br><span class="line">	<span class="comment">// Program.Log(&quot;ProjectDir path &#123;0&#125;&quot;, ProjectDir);</span></span><br><span class="line">	<span class="built_in">string</span> EngineIni = Path.Combine(ProjectDir,<span class="string">&quot;Config&quot;</span>,<span class="string">&quot;DefaultEngine.ini&quot;</span>);</span><br><span class="line">	<span class="comment">// Program.Log(&quot;EngineIni path &#123;0&#125;&quot;, EngineIni);</span></span><br><span class="line">	IniReader EngineIniReader = <span class="keyword">new</span> IniReader(EngineIni);</span><br><span class="line">	<span class="built_in">string</span> RawPakFilterRules = EngineIniReader.ReadValue(<span class="string">&quot;/Script/IOSRuntimeSettings.IOSRuntimeSettings&quot;</span>, <span class="string">&quot;IPAFilters&quot;</span>);</span><br><span class="line">	Program.Log(<span class="string">&quot;RawPakFilterRules &#123;0&#125;&quot;</span>, RawPakFilterRules);</span><br><span class="line">	<span class="built_in">string</span>[] PakRules = RawPakFilterRules.Split(<span class="string">&#x27;,&#x27;</span>);		</span><br><span class="line">	<span class="comment">// foreach(string Rule in PakRules) &#123;Program.Log(&quot;PakRules &#123;0&#125;&quot;, Rule);&#125;</span></span><br><span class="line">  </span><br><span class="line">	List&lt;<span class="built_in">string</span>&gt; PakFilters = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;(PakRules);</span><br><span class="line">	<span class="keyword">if</span> (PakFilters != <span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		IpaPakFileFilter.AddRules(PakFilters);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里从项目的<code>Config/DefaultEngine.ini</code>的[/Script/IOSRuntimeSettings.IOSRuntimeSettings]项读取<code>IPAFilters</code>的值，规则与Android相同，也可以指定<code>Exclute</code>和<code>Include</code>规则，但是要把规则都写在一行，多个规则以逗号分隔。</p>
+<p>Here, the value of <code>IPAFilters</code> is read from the project’s <code>Config/DefaultEngine.ini</code> under [/Script/IOSRuntimeSettings.IOSRuntimeSettings], with rules similar to Android, allowing specification of both <code>Exclude</code> and <code>Include</code> rules, but all rules must be written in one line and separated by commas.</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[/Script/IOSRuntimeSettings.IOSRuntimeSettings]</span></span><br><span class="line"><span class="attr">IPAFilters</span>=-*.pak,pakchunk0-*</span><br></pre></td></tr></table></figure>
 
-<p>最终，还需要在<code>RepackageIPAFromStub</code>遍历<code>Payload</code>文件的循环中进行检测是否匹配我们指定的过滤规则：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RepackageIPAFromStub</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="built_in">string</span> SourceDir = Path.GetFullPath(ZipSourceDir);</span><br><span class="line">	<span class="built_in">string</span>[] PayloadFiles = Directory.GetFiles(SourceDir, <span class="string">&quot;*.*&quot;</span>, Config.bIterate ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);</span><br><span class="line">	<span class="keyword">foreach</span> (<span class="built_in">string</span> Filename <span class="keyword">in</span> PayloadFiles)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!IpaPakFileFilter.Matches(Filename))</span><br><span class="line">		&#123;</span><br><span class="line">			Program.Log(<span class="string">&quot;IpaPakFileFilter not match file &#123;0&#125;&quot;</span>, Filename);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Program.Log(&quot;IpaPakFileFilter  match file &#123;0&#125;&quot;, Filename);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样再执行打包IOS，就会按照指定的过滤规则来添加文件了，实现了与Android上一致的行为。</p>
-<p>打包过程中的Log如下（上文代码已注释）：</p>
+<p>Finally, you also need to detect whether the files match our specified filtering rules during the iteration of <code>Payload</code> files in <code>RepackageIPAFromStub</code>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RepackageIPAFromStub</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="built_in">string</span> SourceDir = Path.GetFullPath(ZipSourceDir);</span><br><span class="line">	<span class="built_in">string</span>[] PayloadFiles = Directory.GetFiles(SourceDir, <span class="string">&quot;*.*&quot;</span>, Config.bIterate ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);</span><br><span class="line">	<span class="keyword">foreach</span> (<span class="built_in">string</span> Filename <span class="keyword">in</span> PayloadFiles)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!IpaPakFileFilter.Matches(Filename))</span><br><span class="line">		&#123;</span><br><span class="line">			Program.Log(<span class="string">&quot;IpaPakFileFilter not match file &#123;0&#125;&quot;</span>, Filename);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Program.Log(&quot;IpaPakFileFilter match file &#123;0&#125;&quot;, Filename);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now, when packaging for iOS, files will be added according to the specified filtering rules, achieving consistent behavior with Android.</p>
+<p>The log during the packaging process is as follows (the above code has been commented out):</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Saving IPA ...</span><br><span class="line">ProjectDir path C:\BuildAgent\workspace\PackageWindows\Client</span><br><span class="line">EngineIni path C:\BuildAgent\workspace\PackageWindows\Client\Config\DefaultEngine.ini</span><br><span class="line">RawPakFilterRules -*.pak,pakchunk0-*</span><br><span class="line">PakRules -*.pak</span><br><span class="line">PakRules pakchunk0-*</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\Assets.car</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\Info.plist</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\LaunchScreenIOS.webp</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\Manifest_DebugFiles_IOS.txt</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\Manifest_NonUFSFiles_IOS.txt</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\mute.caf</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\ue4commandline.txt</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\cookeddata\fgame\content\movies\logo.mp4</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\cookeddata\fgame\content\movies\sparkmore.mp4</span><br><span class="line">IpaPakFileFilter match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\cookeddata\fgame\content\paks\pakchunk0-ios.pak</span><br><span class="line">IpaPakFileFilter not match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\cookeddata\fgame\content\paks\pakchunk1-ios.pak</span><br><span class="line">IpaPakFileFilter not match file C:\BuildAgent\workspace\PackageWindows\Client\Saved\StagedBuilds\IOS\cookeddata\fgame\content\paks\pakchunk2-ios.pak</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>可以看到，过滤规则已经生效了，除此之外不会对打出来的包有任何其他影响（当然这种默认情况下是丢失了资源的，还要实现一套下载机制，可以参考我之前热更系列的文章）。</p>
+<p>As can be seen, the filtering rules have taken effect. Additionally, this will not have any other adverse effects on the packaged bundle (of course, this may result in losing resources by default, and a download mechanism needs to be implemented, which can refer to my previous articles in the hot update series).</p>
 <blockquote>
-<p>注意：因为iPhonePackager是个Program类型的程序，并不依赖引擎，所以将其编译完之后是可以拷贝到非源码版引擎使用的。</p>
+<p>Note: Since iPhonePackager is a Program-type program that does not depend on the engine, it can be compiled and then copied for use with non-source versions of the engine.</p>
 </blockquote>
-<p><strong>注意</strong>，在非远程构建，直接在Mac中打IOS包的并不能修改IphonePackager的代码，因为非远程构建不会用到它。实现相同的效果需要修改<code>IOSPlatform.Automation.cs</code>中的流程，把上面的代码加到<code>Package</code>函数中，实现过滤行为。</p>
+<p><strong>Note</strong>: In non-remote builds, you cannot modify the iPhonePackager code when packaging the iOS package directly on Mac, as non-remote builds will not utilize it. To achieve the same effect, it is necessary to modify the process in <code>IOSPlatform.Automation.cs</code>, adding the above code to the <code>Package</code> function to implement the filtering behavior.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210603164600.webp"></p>
-<p>而且，默认UE在mac上应该也不会编译csharp的program的工程，可以在Win上修改了AutomationTool后拷贝到Mac上。</p>
-<h2 id="Priority打包时失效"><a href="#Priority打包时失效" class="headerlink" title="Priority打包时失效"></a>Priority打包时失效</h2><p>当拆分基础包时，想要通过控制<code>PrimaryAssetLabel</code>的<code>Priority</code>来减少资源冗余，但是测试发现并不会生效（优先级较高和较低的Chunk中都会包含相同的资源）：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210812161321.webp"></p>
-<p>看了下引擎中的代码，是在<code>AssetManager::GetPackageManagers</code>中获取资源被哪些<code>PrimaryAssetId</code>管理的：</p>
-<figure class="highlight cpp"><figcaption><span>Engine\Source\Runtime\Engine\Private\AssetManager.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">UAssetManager::GetPackageManagers</span><span class="params">(FName PackageName, <span class="type">bool</span> bRecurseToParents, TSet&lt;FPrimaryAssetId&gt;&amp; ManagerSet)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  IAssetRegistry&amp; AssetRegistry = <span class="built_in">GetAssetRegistry</span>();</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> bFoundAny = <span class="literal">false</span>;</span><br><span class="line">  TArray&lt;FAssetIdentifier&gt; ReferencingPrimaryAssets;</span><br><span class="line">  ReferencingPrimaryAssets.<span class="built_in">Reserve</span>(<span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">  AssetRegistry.<span class="built_in">GetReferencers</span>(PackageName, ReferencingPrimaryAssets, EAssetRegistryDependencyType::Manage);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (int32 IdentifierIndex = <span class="number">0</span>; IdentifierIndex &lt; ReferencingPrimaryAssets.<span class="built_in">Num</span>(); IdentifierIndex++)</span><br><span class="line">  &#123;</span><br><span class="line">    FPrimaryAssetId PrimaryAssetId = ReferencingPrimaryAssets[IdentifierIndex].<span class="built_in">GetPrimaryAssetId</span>();</span><br><span class="line">    <span class="keyword">if</span> (PrimaryAssetId.<span class="built_in">IsValid</span>())</span><br><span class="line">    &#123;</span><br><span class="line">      bFoundAny = <span class="literal">true</span>;</span><br><span class="line">      ManagerSet.<span class="built_in">Add</span>(PrimaryAssetId);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (bRecurseToParents)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="type">const</span> TArray&lt;FPrimaryAssetId&gt; *ManagementParents = ManagementParentMap.<span class="built_in">Find</span>(PrimaryAssetId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ManagementParents)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">const</span> FPrimaryAssetId&amp; Manager : *ManagementParents)</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> (!ManagerSet.<span class="built_in">Contains</span>(Manager))</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="comment">// Add to end of list, this will recurse again if needed</span></span><br><span class="line">              ReferencingPrimaryAssets.<span class="built_in">Add</span>(Manager);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bFoundAny;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>默认情况下，就完全没有用到<code>Priority</code>这个值。</p>
-<p>所以需要修改引擎的这部分实现，让获取资源属于哪个PrimaryAssetId时，获取<code>Priotiry</code>最大（或最大的相同值）的Label列表。但是，如果Label有在运行中使用的话有点违反直觉，建议Priority的功能只在打包时有效，在运行时如果加载<code>PrimaryAssetLabel</code>不会对资源管理造成影响，可以通过<code>FParse::Param</code>获取引擎启动参数来进行检测。</p>
+<p>Furthermore, by default, UE should not compile the C# program’s project on Mac. You can modify the AutomationTool on Windows and then copy it to Mac.</p>
+<h2 id="Priority-Packaging-Fails"><a href="#Priority-Packaging-Fails" class="headerlink" title="Priority Packaging Fails"></a>Priority Packaging Fails</h2><p>When splitting the base package, I wanted to minimize resource redundancy by controlling the <code>PrimaryAssetLabel</code>‘s <code>Priority</code>, but tests showed that it did not work (resources with both high and low priority were present in the same chunk):<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210812161321.webp"></p>
+<p>Looking at the code in the engine, resource management is obtained via <code>AssetManager::GetPackageManagers</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Engine\Source\Runtime\Engine\Private\AssetManager.<span class="function">cpp</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">UAssetManager::GetPackageManagers</span><span class="params">(FName PackageName, <span class="type">bool</span> bRecurseToParents, TSet&lt;FPrimaryAssetId&gt;&amp; ManagerSet)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  IAssetRegistry&amp; AssetRegistry = <span class="built_in">GetAssetRegistry</span>();</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> bFoundAny = <span class="literal">false</span>;</span><br><span class="line">  TArray&lt;FAssetIdentifier&gt; ReferencingPrimaryAssets;</span><br><span class="line">  ReferencingPrimaryAssets.<span class="built_in">Reserve</span>(<span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">  AssetRegistry.<span class="built_in">GetReferencers</span>(PackageName, ReferencingPrimaryAssets, EAssetRegistryDependencyType::Manage);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (int32 IdentifierIndex = <span class="number">0</span>; IdentifierIndex &lt; ReferencingPrimaryAssets.<span class="built_in">Num</span>(); IdentifierIndex++)</span><br><span class="line">  &#123;</span><br><span class="line">    FPrimaryAssetId PrimaryAssetId = ReferencingPrimaryAssets[IdentifierIndex].<span class="built_in">GetPrimaryAssetId</span>();</span><br><span class="line">    <span class="keyword">if</span> (PrimaryAssetId.<span class="built_in">IsValid</span>())</span><br><span class="line">    &#123;</span><br><span class="line">      bFoundAny = <span class="literal">true</span>;</span><br><span class="line">      ManagerSet.<span class="built_in">Add</span>(PrimaryAssetId);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (bRecurseToParents)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="type">const</span> TArray&lt;FPrimaryAssetId&gt; *ManagementParents = ManagementParentMap.<span class="built_in">Find</span>(PrimaryAssetId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ManagementParents)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">const</span> FPrimaryAssetId&amp; Manager : *ManagementParents)</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> (!ManagerSet.<span class="built_in">Contains</span>(Manager))</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="comment">// Add to end of list, this will recurse again if needed</span></span><br><span class="line">              ReferencingPrimaryAssets.<span class="built_in">Add</span>(Manager);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bFoundAny;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>By default, the <code>Priority</code> value is not utilized at all.</p>
+<p>Thus, I need to modify this part of the engine’s implementation so that when retrieving the resource’s associated PrimaryAssetId, it captures the list of Labels with the maximum (or highest identical) <code>Priority</code>. However, if labels are used at runtime, it becomes a bit counterintuitive. It is recommended that the <code>Priority</code> function be effective only during packaging, and at runtime, loading a <code>PrimaryAssetLabel</code> should not affect resource management. The engine launch parameters can be checked through <code>FParse::Param</code> to detect this.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">FPrimaryAssetId AddPrimaryAssetId = PrimaryAssetId;</span><br><span class="line"><span class="keyword">if</span>(FParse::<span class="built_in">Param</span>(FCommandLine::<span class="built_in">Get</span>(),<span class="built_in">TEXT</span>(<span class="string">&quot;labelpriority&quot;</span>)))</span><br><span class="line">&#123;</span><br><span class="line">  TArray&lt;FPrimaryAssetId&gt; ManagerArray = ManagerSet.<span class="built_in">Array</span>();</span><br><span class="line">  FPrimaryAssetRules Rules = <span class="built_in">GetPrimaryAssetRules</span>(PrimaryAssetId);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; Manager:ManagerArray)</span><br><span class="line">  &#123;</span><br><span class="line">    FPrimaryAssetRules ExistRules = <span class="built_in">GetPrimaryAssetRules</span>(Manager);</span><br><span class="line">    <span class="keyword">if</span>(Rules.Priority &gt; ExistRules.Priority)</span><br><span class="line">    &#123;</span><br><span class="line">      ManagerSet.<span class="built_in">Remove</span>(Manager);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Rules.Priority &lt; ExistRules.Priority)</span><br><span class="line">    &#123;</span><br><span class="line">      AddPrimaryAssetId = <span class="built_in">FPrimaryAssetId</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(AddPrimaryAssetId.<span class="built_in">IsValid</span>())</span><br><span class="line">&#123;</span><br><span class="line">  ManagerSet.<span class="built_in">Add</span>(PrimaryAssetId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210812204254.webp"></p>
-<p>在Cook时开启<code>-labelpriority</code>之后，资源就只会在<code>Priority</code>值高的chunk中存在了。</p>
+<p>By enabling <code>-labelpriority</code> during cook time, resources will only exist in chunks with a higher <code>Priority</code> value.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20210812203916.webp"></p>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>通过上面的操作，可以实现Android/IOS相同的基础包过滤规则，把工程内最关键的资源打包到基础包中，其余的pak可以在打完基础包之后从<code>Saved/StagedBuilds</code>中提取出来，放到热更平台启动时下载或者根据项目的类型和需求设计运行时下载的方案。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>Through the above operations, you can realize consistent base package filtering rules for Android/iOS, packing the most critical resources into the base package. The remaining pak files can be extracted from <code>Saved/StagedBuilds</code> after completing the base package, to be downloaded at runtime according to the startup of the hot update platform, or designed according to the project’s type and requirements for a runtime download scheme.</p>
 
     </div>
 
@@ -463,7 +463,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -473,7 +473,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -483,37 +483,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/13765/" target="_blank">UE热更新：拆分基础包</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2021/01/27 21:51<br/>
+             <span>Title:</span><a href="/posts/13765/" target="_blank">UE Hot Update: split the basic package</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2021/01/27 21:51<br/>
              
-             <span>本文字数:</span><span class="page-count">3.2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">7.5k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/13765/" target="_blank" title="UE热更新：拆分基础包">https://imzlp.com/posts/13765/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/13765/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/13765/" target="_blank" title="UE Hot Update: split the basic package">https://en.imzlp.com/posts/13765/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/13765/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -534,12 +534,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/3675/" rel="prev" title="UE热更新：资产管理与审计工具">
-      <i class="fa fa-chevron-left"></i> UE热更新：资产管理与审计工具
+    <a href="/posts/3675/" rel="prev" title="UE Hot Update: asset management and audit tools">
+      <i class="fa fa-chevron-left"></i> UE Hot Update: asset management and audit tools
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/10938/" rel="next" title="UE热更新：基于HotPatcher的自动化流程">
-      UE热更新：基于HotPatcher的自动化流程 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/10938/" rel="next" title="UE hot update: automated process based on HotPatcher">
+      UE hot update: automated process based on HotPatcher <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -610,25 +610,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android"><span class="nav-number">1.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS"><span class="nav-number">2.</span> <span class="nav-text">IOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority%E6%89%93%E5%8C%85%E6%97%B6%E5%A4%B1%E6%95%88"><span class="nav-number">3.</span> <span class="nav-text">Priority打包时失效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">4.</span> <span class="nav-text">End</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android"><span class="nav-number">1.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS"><span class="nav-number">2.</span> <span class="nav-text">iOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Packaging-Fails"><span class="nav-number">3.</span> <span class="nav-text">Priority Packaging Fails</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">4.</span> <span class="nav-text">End</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -636,19 +636,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -686,10 +686,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -716,9 +716,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -727,12 +724,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -885,7 +882,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/13765/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/13765/',]
       });
       });
   </script>
@@ -908,12 +905,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

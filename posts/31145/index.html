@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这两天帮同事搭了一台用作代理的VPS，顺道把这些东西整理了一下。本文不是面向零基础读者的，在阅读下面的东西之前，你首先应该有一台可以访问外网(国外网络)的VPS，其次你也应该具有一些基本的Linux操作的知识。">
+  <meta name="description" content="In the past few days, I helped a colleague set up a VPS for proxy use and organized some related materials along the way. This article is not aimed at beginners. Before reading the following content,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在VPS上部署shadowsocks服务">
-<meta property="og:url" content="https://imzlp.com/posts/31145/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="这两天帮同事搭了一台用作代理的VPS，顺道把这些东西整理了一下。本文不是面向零基础读者的，在阅读下面的东西之前，你首先应该有一台可以访问外网(国外网络)的VPS，其次你也应该具有一些基本的Linux操作的知识。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Deploy shadowsocks service on VPS">
+<meta property="og:url" content="https://en.imzlp.com/posts/31145/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the past few days, I helped a colleague set up a VPS for proxy use and organized some related materials along the way. This article is not aimed at beginners. Before reading the following content,">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/31145/01.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/31145/02.webp">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/31145/03.webp">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/31145/ssserver-status.webp">
 <meta property="article:published_time" content="2016-07-27T20:34:32.000Z">
 <meta property="article:modified_time" content="2016-07-27T20:34:32.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="Shadowsocks">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="UNIX">
@@ -44,7 +44,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/31145/01.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/31145/">
+<link rel="canonical" href="https://en.imzlp.com/posts/31145/">
 
 
 <script id="page-configurations">
@@ -53,11 +53,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>在VPS上部署shadowsocks服务 | 循迹研究室</title>
+  <title>Deploy shadowsocks service on VPS | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -97,7 +97,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -107,7 +107,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -118,7 +118,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -137,24 +137,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -164,7 +164,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -174,7 +174,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -182,14 +182,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -197,26 +197,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -232,7 +232,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -251,7 +251,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -270,12 +270,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -293,27 +293,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/31145/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/31145/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在VPS上部署shadowsocks服务<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2016-07-27-31145.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/31145/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Deploy shadowsocks service on VPS<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2016-07-27-31145.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/31145/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Deploy shadowsocks service on VPS</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">在VPS上部署shadowsocks服务</sub>
           </div>
         
 
@@ -322,47 +322,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2016-07-27 20:34 20:34:32:34" itemprop="dateCreated datePublished" datetime="2016-07-27T20:34:32+00:00">2016-07-27 20:34</time>
+              <time title="Created: 2016-07-27 20:34 20:34:32:34" itemprop="dateCreated datePublished" datetime="2016-07-27T20:34:32+00:00">2016-07-27 20:34</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux%E7%8E%AF%E5%A2%83/" itemprop="url" rel="index"><span itemprop="name">Linux环境</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux%E7%8E%AF%E5%A2%83/Shadowsocks/" itemprop="url" rel="index"><span itemprop="name">Shadowsocks</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/31145/" class="post-meta-item leancloud_visitors" data-flag-title="在VPS上部署shadowsocks服务" title="阅读次数">
+            <span id="/posts/31145/" class="post-meta-item leancloud_visitors" data-flag-title="Deploy shadowsocks service on VPS" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.2k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -374,97 +374,98 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这两天帮同事搭了一台用作代理的VPS，顺道把这些东西整理了一下。<br>本文不是面向零基础读者的，在阅读下面的东西之前，你首先应该有一台可以访问外网(国外网络)的VPS，其次你也应该具有一些基本的Linux操作的知识。</p>
+        <p>In the past few days, I helped a colleague set up a VPS for proxy use and organized some related materials along the way. This article is not aimed at beginners. Before reading the following content, you should first have a VPS that can access the external network (foreign network), and secondly, you should have some basic knowledge of Linux operations. </p>
 <span id="more"></span>
-<p>之前我写过一篇博文是讲在Linux下使用Shadowsocks的，有兴趣的可以看这里：<a href="https://imzlp.com/2015/08/26/using-shadowsocks-on-linux/">Linux下使用Shadowsocks服务</a></p>
-<h4 id="安装Shadowsocks-Python"><a href="#安装Shadowsocks-Python" class="headerlink" title="安装Shadowsocks-Python"></a>安装Shadowsocks-Python</h4><p><strong>安装方法：</strong></p>
+
+<p>I previously wrote a blog post about using Shadowsocks on Linux. If you’re interested, you can check it out here: <a target="_blank" rel="noopener" href="https://imzlp.com/2015/08/26/using-shadowsocks-on-linux/">Using Shadowsocks on Linux</a></p>
+<h4 id="Installing-Shadowsocks-Python"><a href="#Installing-Shadowsocks-Python" class="headerlink" title="Installing Shadowsocks-Python"></a>Installing Shadowsocks-Python</h4><p><strong>Installation Method:</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">$ <span class="built_in">chmod</span> +x shadowsocks.sh</span><br><span class="line">$ ./shadowsocks.sh 2&gt;&amp;1 | <span class="built_in">tee</span> shadowsocks.log</span><br></pre></td></tr></table></figure>
 
-<p><strong>卸载方法：</strong><br>使用root用户登录，运行以下命令：</p>
+<p><strong>Uninstallation Method:</strong><br>Log in as the root user and run the following command:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./shadowsocks.sh uninstall</span><br></pre></td></tr></table></figure>
 
-<p><strong>单用户配置文件 Sample：</strong><br>配置文件路径：/etc/shadowsocks.json</p>
+<p><strong>Single User Configuration File Sample:</strong><br>Configuration file path: /etc/shadowsocks.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span><span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;server_port&quot;</span><span class="punctuation">:</span><span class="number">8989</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_address&quot;</span><span class="punctuation">:</span><span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span><span class="number">1080</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;yourpassword&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;timeout&quot;</span><span class="punctuation">:</span><span class="number">300</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span><span class="string">&quot;aes-256-cfb&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;fast_open&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>多用户多端口配置文件 Sample：</strong><br>配置文件路径：/etc/shadowsocks.json</p>
+<p><strong>Multi-User Multi-Port Configuration File Sample:</strong><br>Configuration file path: /etc/shadowsocks.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span><span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_address&quot;</span><span class="punctuation">:</span><span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span><span class="number">1080</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;port_password&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">         <span class="attr">&quot;8989&quot;</span><span class="punctuation">:</span><span class="string">&quot;password0&quot;</span><span class="punctuation">,</span></span><br><span class="line">         <span class="attr">&quot;9001&quot;</span><span class="punctuation">:</span><span class="string">&quot;password1&quot;</span><span class="punctuation">,</span></span><br><span class="line">         <span class="attr">&quot;9002&quot;</span><span class="punctuation">:</span><span class="string">&quot;password2&quot;</span><span class="punctuation">,</span></span><br><span class="line">         <span class="attr">&quot;9003&quot;</span><span class="punctuation">:</span><span class="string">&quot;password3&quot;</span><span class="punctuation">,</span></span><br><span class="line">         <span class="attr">&quot;9004&quot;</span><span class="punctuation">:</span><span class="string">&quot;password4&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;timeout&quot;</span><span class="punctuation">:</span><span class="number">300</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span><span class="string">&quot;aes-256-cfb&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;fast_open&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>使用命令：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">$ /etc/init.d/shadowsocks start</span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">$ /etc/init.d/shadowsocks stop</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">$ /etc/init.d/shadowsocks restart</span><br><span class="line"><span class="comment"># 状态</span></span><br><span class="line">$ /etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>
+<p><strong>Usage Commands:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start</span></span><br><span class="line">$ /etc/init.d/shadowsocks start</span><br><span class="line"><span class="comment"># Stop</span></span><br><span class="line">$ /etc/init.d/shadowsocks stop</span><br><span class="line"><span class="comment"># Restart</span></span><br><span class="line">$ /etc/init.d/shadowsocks restart</span><br><span class="line"><span class="comment"># Status</span></span><br><span class="line">$ /etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>
 
-<h4 id="安装libsodium-CHACHA20加密"><a href="#安装libsodium-CHACHA20加密" class="headerlink" title="安装libsodium(CHACHA20加密)"></a>安装libsodium(CHACHA20加密)</h4><p>chacha20 依赖 libsodium，以下是编译安装 libsodium 的方法：</p>
-<p>首先，编译安装依赖gcc和g++:</p>
+<h4 id="Installing-libsodium-CHACHA20-Encryption"><a href="#Installing-libsodium-CHACHA20-Encryption" class="headerlink" title="Installing libsodium (CHACHA20 Encryption)"></a>Installing libsodium (CHACHA20 Encryption)</h4><p>chacha20 depends on libsodium. Here’s how to compile and install libsodium:</p>
+<p>First, install the dependency gcc and g++:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install gcc g++</span><br></pre></td></tr></table></figure>
 
-<p>下载libsodium源码并编译安装：</p>
+<p>Download the libsodium source code and compile:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz</span><br><span class="line">$ tar zxf LATEST.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libsodium*</span><br><span class="line">$ ./configure</span><br><span class="line">$ make &amp;&amp; make install</span><br><span class="line"> </span><br><span class="line">$ <span class="built_in">echo</span> /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</span><br><span class="line">$ ldconfig</span><br></pre></td></tr></table></figure>
 
-<p>安装完毕之后需要自己手动编辑Shadowsocks的配置文件<code>shadowsocks.json</code>中的<code>method</code>条目为<code>chacha20</code>来启用，上面一键安装SS脚本的配置文件路径为<code>/etc/shadowsocks.json</code></p>
-<p>修改结果如下(只修改method)：</p>
+<p>After installation, manually edit Shadowsocks configuration file <code>shadowsocks.json</code> to change the <code>method</code> entry to <code>chacha20</code> to enable it. The configuration file path from the one-click install SS script is <code>/etc/shadowsocks.json</code>.</p>
+<p>Modify the result as follows (only change method):</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span><span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;server_port&quot;</span><span class="punctuation">:</span><span class="number">8989</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_address&quot;</span><span class="punctuation">:</span><span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span><span class="number">1080</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;yourpassword&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;timeout&quot;</span><span class="punctuation">:</span><span class="number">300</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span><span class="string">&quot;chacha20&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;fast_open&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="安装net-speeder"><a href="#安装net-speeder" class="headerlink" title="安装net-speeder"></a>安装net-speeder</h4><p><strong>安装步骤：</strong><br><strong>1：下载源码并解压</strong></p>
+<h4 id="Installing-net-speeder"><a href="#Installing-net-speeder" class="headerlink" title="Installing net-speeder"></a>Installing net-speeder</h4><p><strong>Installation Steps:</strong><br><strong>1: Download the source code and unzip</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/snooda/net-speeder/archive/master.zip</span><br><span class="line">$ unzip master.zip</span><br></pre></td></tr></table></figure>
 
-<p><strong>2：准备编译环境</strong><br>debian/ubuntu：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装libnet-dev：</span></span><br><span class="line">$ apt-get install libnet1-dev</span><br><span class="line"><span class="comment">#安装libpcap-dev：</span></span><br><span class="line">$ apt-get install libpcap0.8-dev </span><br></pre></td></tr></table></figure>
+<p><strong>2: Prepare the compilation environment</strong><br>debian/ubuntu:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install libnet-dev:</span></span><br><span class="line">$ apt-get install libnet1-dev</span><br><span class="line"><span class="comment"># Install libpcap-dev:</span></span><br><span class="line">$ apt-get install libpcap0.8-dev </span><br></pre></td></tr></table></figure>
 
-<p>centos：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载epel：https://fedoraproject.org/wiki/EPEL/zh-cn.比如 CentOS6 64位：</span></span><br><span class="line">$ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br><span class="line"><span class="comment">#（如果是centos5，则在epel/5/下）</span></span><br><span class="line"><span class="comment">#安装epel：</span></span><br><span class="line">$ rpm -ivh epel-release-6-8.noarch.rpm</span><br><span class="line"><span class="comment"># 然后即可使用yum安装：</span></span><br><span class="line">$ yum install libnet libpcap libnet-devel libpcap-devel</span><br></pre></td></tr></table></figure>
+<p>centos:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Download epel: https://fedoraproject.org/wiki/EPEL/zh-cn. For example, 64-bit CentOS6:</span></span><br><span class="line">$ wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br><span class="line"><span class="comment"># (If it’s centos5, go to epel/5/)</span></span><br><span class="line"><span class="comment"># Install epel:</span></span><br><span class="line">$ rpm -ivh epel-release-6-8.noarch.rpm</span><br><span class="line"><span class="comment"># Then you can use yum to install:</span></span><br><span class="line">$ yum install libnet libpcap libnet-devel libpcap-devel</span><br></pre></td></tr></table></figure>
 
-<p><strong>编译：</strong></p>
-<p>Linux Cooked interface使用编译（venetX，OpenVZ）：</p>
+<p><strong>Compile:</strong></p>
+<p>Compile using the Linux Cooked interface (venetX, OpenVZ):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh build.sh -DCOOKED</span><br></pre></td></tr></table></figure>
 
-<p>普通网卡使用编译（Xen，KVM，物理机）：</p>
+<p>Compile using a regular network card (Xen, KVM, physical machine):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh build.sh</span><br></pre></td></tr></table></figure>
 
-<p>使用方法(需要root权限启动）：</p>
+<p>Usage (needs to be started with root permissions):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">nohup</span> net_speeder venet0 <span class="string">&quot;ip&quot;</span> &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 
-<h4 id="使用finalspeed加速"><a href="#使用finalspeed加速" class="headerlink" title="使用finalspeed加速"></a>使用finalspeed加速</h4><blockquote>
-<p>2017.07.20 19:54注：我已弃用finalspeed，推荐使用锐速或者bbr.</p>
+<h4 id="Using-finalspeed-for-acceleration"><a href="#Using-finalspeed-for-acceleration" class="headerlink" title="Using finalspeed for acceleration"></a>Using finalspeed for acceleration</h4><blockquote>
+<p>2017.07.20 19:54 Note: I have discontinued the use of finalspeed and recommend using锐速 or bbr.</p>
 </blockquote>
-<p><strong>一键安装代码：</strong></p>
+<p><strong>One-click installation code:</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/finalspeed/master/install_fs.sh &amp;&amp; bash install_fs.sh</span><br></pre></td></tr></table></figure>
 
-<p><strong>一键卸载代码:</strong></p>
+<p><strong>One-click uninstallation code:</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/finalspeed/master/install_fs.sh &amp;&amp; bash install_fs.sh uninstall</span><br></pre></td></tr></table></figure>
 
-<p><strong>finalspeed操作命令</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">$ /etc/init.d/finalspeed start</span><br><span class="line"><span class="comment"># 停止命令</span></span><br><span class="line">$ /etc/init.d/finalspeed stop</span><br><span class="line"><span class="comment"># 状态命令（查看日志）</span></span><br><span class="line">$ /etc/init.d/finalspeed status</span><br></pre></td></tr></table></figure>
+<p><strong>finalspeed operational commands</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start</span></span><br><span class="line">$ /etc/init.d/finalspeed start</span><br><span class="line"><span class="comment"># Stop command</span></span><br><span class="line">$ /etc/init.d/finalspeed stop</span><br><span class="line"><span class="comment"># Status command (view logs)</span></span><br><span class="line">$ /etc/init.d/finalspeed status</span><br></pre></td></tr></table></figure>
 
-<p><strong>finalspeed安装路径</strong></p>
-<p>安装路径： /fs/<br>日志路径：/fs/server.log</p>
-<p><strong>finalspeed使用方法</strong></p>
-<p>假设服务器IP为10.10.10.10、finalspeed端口为默认150、SS服务端端口为898.<br>加速前提SS服务端运行正常，SS客户端也能正常登录。</p>
-<p><strong>1.运行FinalSpeed客户端,填写你的服务器IP</strong></p>
+<p><strong>finalspeed installation path</strong></p>
+<p>Installation path: /fs/<br>Log path: /fs/server.log</p>
+<p><strong>finalspeed usage method</strong></p>
+<p>Assume the server IP is 10.10.10.10, finalspeed port is the default 150, and SS server port is 898. The prerequisite for acceleration is that the SS server is running properly, and the SS client can also log in normally.</p>
+<p><strong>1. Run the FinalSpeed client and enter your server IP</strong></p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/01.webp"></p>
-<p>2.点击添加-增加加速端口，加速端口为SS的服务端端口8989。如果为其他端口请相应修改。本地端口任意，这里是2000 。</p>
+<p><strong>2. Click Add - Increase acceleration port, the acceleration port is the SS server port 8989. If it is another port, please modify accordingly. The local port can be arbitrary; here it is 2000.</strong></p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/02.webp"></p>
-<p>3.打开SS客户端添加服务器，服务器IP为127.0.0.1，服务器端口为加速端口对应的本地端口，这里是2000,然后设置你的SS密码、加密方式。</p>
+<p><strong>3. Open the SS client to add the server, server IP is 127.0.0.1, server port is the corresponding local port of the acceleration port, here it is 2000, then set your SS password and encryption method.</strong></p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/03.webp"></p>
-<p>5.确定保存,选择使用刚添加的服务器,并设置浏览器代理,成功连接后,FinalSpeed状态栏会出现”连接服务器成功”提示.</p>
+<p><strong>5. Confirm and save, choose to use the just added server, and set the browser proxy. After successfully connecting, the FinalSpeed status bar will display the prompt “Connected to server successfully.”</strong></p>
 <p> <img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/04.webp"></p>
-<h4 id="添加到VPS开机启动"><a href="#添加到VPS开机启动" class="headerlink" title="添加到VPS开机启动"></a>添加到VPS开机启动</h4><p>最后，把我们安装的这几项服务添加到VPS的开机启动了里，这样就算VPS重启也会启动我们的SS服务。</p>
-<p>将下面这几段代码添加到<code>/etc/rc.local</code>中:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> /etc/init.d/shadowsocks start &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="comment"># 注意：net-speeder设置成开机启动要写上绝对路径(比如/etc/net_speeder)</span></span><br><span class="line"><span class="built_in">nohup</span> /etc/net_speeder venet0 <span class="string">&quot;ip&quot;</span> &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="built_in">nohup</span> /etc/init.d/finalspeed start &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<h4 id="Add-to-VPS-startup"><a href="#Add-to-VPS-startup" class="headerlink" title="Add to VPS startup"></a>Add to VPS startup</h4><p>Finally, add these services we installed to VPS’s startup so that our SS service will start even after the VPS restarts.</p>
+<p>Add the following lines of code to <code>/etc/rc.local</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> /etc/init.d/shadowsocks start &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="comment"># Note: To set net-speeder to start at boot, write the absolute path (e.g., /etc/net_speeder)</span></span><br><span class="line"><span class="built_in">nohup</span> /etc/net_speeder venet0 <span class="string">&quot;ip&quot;</span> &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="built_in">nohup</span> /etc/init.d/finalspeed start &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 
-<p>最后，依次输入下面几条命令，检查程序状态：</p>
+<p>Finally, enter the following commands to check the status of the programs:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ /etc/init.d/shadowsocks status</span><br><span class="line">$ /etc/init.d/finalspeed status</span><br><span class="line">$ ps</span><br></pre></td></tr></table></figure>
 
-<p>如下图这样运行就OK.<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/ssserver-status.webp"></p>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>文中用到的工具的地址：</p>
+<p>As shown below, running this way is OK.<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/31145/ssserver-status.webp"></p>
+<h4 id="References"><a href="#References" class="headerlink" title="References"></a>References</h4><p>The addresses of the tools mentioned in the article:</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/shadowsocks">shadowsocket</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/snooda/net-speeder">net-speeder</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/jedisct1/libsodium">libsodium</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/hxhb/finalspeed">finalSpeed</a></li>
 </ol>
-<p>参考文章：</p>
-<p><a target="_blank" rel="noopener" href="https://teddysun.com/342.html">Shadowsocks Python版一键安装脚本</a><br><a target="_blank" rel="noopener" href="https://teddysun.com/358.html">Debian下shadowsocks-libev一键安装脚本</a><br><a target="_blank" rel="noopener" href="https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup">ShadowsocksR 服务端安装教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.91yun.org/archives/2775">finalspeed一键安装包</a><br><a target="_blank" rel="noopener" href="https://www.91yun.org/archives/615">双边加速<strong>FinalSpeed</strong>客户端下载及教程 ，Openvz福音</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.kuoruan.com/48.html">搬瓦工(Bandwagonhost)搭建Shadowsocks并优化速度</a><br><a target="_blank" rel="noopener" href="https://github.com/snooda/net-speeder">net-speeder 在高延迟不稳定链路上优化单线程下载速度</a></p>
+<p>Reference articles:</p>
+<p><a target="_blank" rel="noopener" href="https://teddysun.com/342.html">One-click installation script for Shadowsocks Python version</a><br><a target="_blank" rel="noopener" href="https://teddysun.com/358.html">One-click installation script for shadowsocks-libev on Debian</a><br><a target="_blank" rel="noopener" href="https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup">ShadowsocksR Server Installation Tutorial</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.91yun.org/archives/2775">One-click installation package for finalspeed</a><br><a target="_blank" rel="noopener" href="https://www.91yun.org/archives/615">Dual-speed <strong>FinalSpeed</strong> client download and tutorial, a boon for Openvz</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://blog.kuoruan.com/48.html">Building Shadowsocks on Bandwagonhost and optimizing speed</a><br><a target="_blank" rel="noopener" href="https://github.com/snooda/net-speeder">Optimizing single-thread download speed on high-latency unstable links with net-speeder</a>  </p>
 
     </div>
 
@@ -475,7 +476,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -485,7 +486,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -495,37 +496,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/31145/" target="_blank">在VPS上部署shadowsocks服务</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2016/07/27 20:34<br/>
+             <span>Title:</span><a href="/posts/31145/" target="_blank">Deploy shadowsocks service on VPS</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2016/07/27 20:34<br/>
              
-             <span>本文字数:</span><span class="page-count">1.5k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3.2k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/31145/" target="_blank" title="在VPS上部署shadowsocks服务">https://imzlp.com/posts/31145/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/31145/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/31145/" target="_blank" title="Deploy shadowsocks service on VPS">https://en.imzlp.com/posts/31145/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/31145/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -547,12 +548,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/9932/" rel="prev" title="使用VisualGDB在VS上编写Linux程序">
-      <i class="fa fa-chevron-left"></i> 使用VisualGDB在VS上编写Linux程序
+    <a href="/posts/9932/" rel="prev" title="Use VisualGDB to write Linux programs on VS">
+      <i class="fa fa-chevron-left"></i> Use VisualGDB to write Linux programs on VS
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/64054/" rel="next" title="学习C/C++的一些书籍和工具">
-      学习C/C++的一些书籍和工具 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/64054/" rel="next" title="Some books and tools for learning C/C++">
+      Some books and tools for learning C/C++ <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -623,25 +624,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Shadowsocks-Python"><span class="nav-number">1.</span> <span class="nav-text">安装Shadowsocks-Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85libsodium-CHACHA20%E5%8A%A0%E5%AF%86"><span class="nav-number">2.</span> <span class="nav-text">安装libsodium(CHACHA20加密)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85net-speeder"><span class="nav-number">3.</span> <span class="nav-text">安装net-speeder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8finalspeed%E5%8A%A0%E9%80%9F"><span class="nav-number">4.</span> <span class="nav-text">使用finalspeed加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%B0VPS%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-number">5.</span> <span class="nav-text">添加到VPS开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Installing-Shadowsocks-Python"><span class="nav-number">1.</span> <span class="nav-text">Installing Shadowsocks-Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Installing-libsodium-CHACHA20-Encryption"><span class="nav-number">2.</span> <span class="nav-text">Installing libsodium (CHACHA20 Encryption)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Installing-net-speeder"><span class="nav-number">3.</span> <span class="nav-text">Installing net-speeder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-finalspeed-for-acceleration"><span class="nav-number">4.</span> <span class="nav-text">Using finalspeed for acceleration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-to-VPS-startup"><span class="nav-number">5.</span> <span class="nav-text">Add to VPS startup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -649,19 +650,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -699,10 +700,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -729,9 +730,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -740,12 +738,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -898,7 +896,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/31145/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/31145/',]
       });
       });
   </script>
@@ -921,12 +919,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',

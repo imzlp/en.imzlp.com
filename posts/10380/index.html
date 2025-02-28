@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="不同于类模板，可以具有显式特化和局部特化(partial specializations)，函数模板没有”局部特化”的概念，只有显式特化和重载。">
+  <meta name="description" content="Unlike class templates, which can have explicit specializations and partial specializations, function templates do not have the concept of “partial specializations”; they only have explicit specializa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++函数模板的特化和重载">
-<meta property="og:url" content="https://imzlp.com/posts/10380/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="不同于类模板，可以具有显式特化和局部特化(partial specializations)，函数模板没有”局部特化”的概念，只有显式特化和重载。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Specialization and overloading of C++ function templates">
+<meta property="og:url" content="https://en.imzlp.com/posts/10380/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="Unlike class templates, which can have explicit specializations and partial specializations, function templates do not have the concept of “partial specializations”; they only have explicit specializa">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/10380/diff-function-template-same-type.webp">
 <meta property="article:published_time" content="2017-05-04T00:20:56.000Z">
 <meta property="article:modified_time" content="2017-05-04T00:20:56.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="编程笔记">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/blog/posts/10380/diff-function-template-same-type.webp">
 
-<link rel="canonical" href="https://imzlp.com/posts/10380/">
+<link rel="canonical" href="https://en.imzlp.com/posts/10380/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>C++函数模板的特化和重载 | 循迹研究室</title>
+  <title>Specialization and overloading of C++ function templates | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -178,14 +178,14 @@
       
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>友链</a>
+    <a href="/friends/" rel="section"><i class="fas fa-link fa-fw"></i>Friends</a>
 
   </li>
         
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -193,26 +193,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -228,7 +228,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -247,7 +247,7 @@
 
 
 <script type="text/javascript">
-  let domain='imzlp.com';
+  let domain='en.imzlp.com';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -266,12 +266,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -289,27 +289,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/10380/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/10380/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C++函数模板的特化和重载<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2017-05-04-10380.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/10380/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Specialization and overloading of C++ function templates<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2017-05-04-10380.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/10380/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Specialization and overloading of C++ function templates</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">C++函数模板的特化和重载</sub>
           </div>
         
 
@@ -318,47 +318,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2017-05-04 00:20 00:20:56:20" itemprop="dateCreated datePublished" datetime="2017-05-04T00:20:56+00:00">2017-05-04 00:20</time>
+              <time title="Created: 2017-05-04 00:20 00:20:56:20" itemprop="dateCreated datePublished" datetime="2017-05-04T00:20:56+00:00">2017-05-04 00:20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">标准解读</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/C-%E6%A0%87%E5%87%86/" itemprop="url" rel="index"><span itemprop="name">C++标准</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/10380/" class="post-meta-item leancloud_visitors" data-flag-title="C++函数模板的特化和重载" title="阅读次数">
+            <span id="/posts/10380/" class="post-meta-item leancloud_visitors" data-flag-title="Specialization and overloading of C++ function templates" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
             </span>
 
         </div>
@@ -370,57 +370,57 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>不同于类模板，可以具有显式特化和局部特化(partial specializations)，函数模板没有”局部特化”的概念，只有显式特化和重载。</p>
+        <p>Unlike class templates, which can have explicit specializations and partial specializations, function templates do not have the concept of “partial specializations”; they only have explicit specializations and overloads.</p>
 <span id="more"></span>
-<p>函数模板在C++标准中的描述：</p>
+<p>Description of function templates in the C++ standard:</p>
 <blockquote>
 <p>A function template deﬁnes an unbounded set of related functions.</p>
 </blockquote>
-<p>函数模板特化和函数重载的区别是什么？</p>
+<p>What is the difference between specialization and function overloading?</p>
 <blockquote>
 <p>**[TC++PL4th]**How does a specialization differ from overloading? From a technical point of view, they differ because individual functions take part in overloading whereas only the primary template takes part in specialization.</p>
 </blockquote>
-<p>函数模板的特化和普通的函数重载略有不同：</p>
+<p>The specialization of function templates is slightly different from ordinary function overloading:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;typeinfo&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(T)</span></span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="built_in">typeid</span>(T).<span class="built_in">name</span>()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="built_in">typeid</span>(<span class="type">int</span>).<span class="built_in">name</span>()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;type is int.&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ival=<span class="number">123</span>;</span><br><span class="line">	<span class="built_in">func</span>(ival);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: type is int.</span></span><br></pre></td></tr></table></figure>
-<p>这里<code>void func(int)</code>是函数重载，而不是函数模板特化(不过从本质来说模板特化出来的函数也是重载函数)。<br>注意下面的问题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">123</span>;</span><br><span class="line"><span class="built_in">func</span>(ival); <span class="comment">// type is int.</span></span><br><span class="line"><span class="comment">// 调用的是不同的函数</span></span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">int</span>&gt;(ival); <span class="comment">// i</span></span><br></pre></td></tr></table></figure>
-<p>从中间代码(LLVM-IR)的角度来看更直观一些：</p>
+<p>Here, <code>void func(int)</code> is function overloading, not function template specialization (although function specialization functions are also overloaded functions in essence). Note the following issues:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival=<span class="number">123</span>;</span><br><span class="line"><span class="built_in">func</span>(ival); <span class="comment">// type is int.</span></span><br><span class="line"><span class="comment">// Calls different functions</span></span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">int</span>&gt;(ival); <span class="comment">// i</span></span><br></pre></td></tr></table></figure>
+<p>From an intermediate code (LLVM-IR) perspective, this is more intuitive:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%1 = alloca i32, align 4</span><br><span class="line">store i32 123, i32* %1, align 4</span><br><span class="line">%2 = load i32, i32* %1, align 4</span><br><span class="line">call void @_Z4funci(i32 %2)</span><br><span class="line">%3 = load i32, i32* %1, align 4</span><br><span class="line">call void @_Z4funcIiEvT_(i32 %3)</span><br></pre></td></tr></table></figure>
-<p>原因在于<code>func&lt;int&gt;(ival)</code>显式地通过函数模板得到一个重载的func实例，而和<code>void func(int)</code>调用的函数不同是由于普通的函数和函数模板具有两种不同的签名规则：</p>
+<p>The reason is that <code>func&lt;int&gt;(ival)</code> explicitly generates an overloaded func instance through the function template, while the function called with <code>void func(int)</code> is different due to the fact that ordinary functions and function templates have two different signature rules:</p>
 <ul>
 <li><code>&lt;function&gt;</code> name, parameter type list (8.3.5), and enclosing namespace (if any)</li>
 <li><code>&lt;function template&gt;</code> name, parameter type list (8.3.5), enclosing namespace (if any), return type, and template parameter list</li>
 <li><code>&lt;function template specialization&gt;</code> signature of the template of which it is a specialization and its template arguments (whether explicitly speciﬁed or deduced)</li>
 </ul>
-<p>C++标准中给出了更直接的描述：</p>
+<p>The C++ standard provides a more direct description:</p>
 <blockquote>
 <p>A non-template function is not related to a function template (i.e., it is never considered to be a specialization), even if it has the same name and type as a potentially generated function template specialization.<br>That is, declarations of non-template functions do not merely guide overload resolution of function template specializations with the same name. If such a non-template function is odr-used (3.2) in a program, it must be deﬁned; it will not be implicitly instantiated using the function template deﬁnition.</p>
 </blockquote>
-<p>关于重载决议的描述：</p>
+<p>About overload resolution:</p>
 <blockquote>
 <p>A function template can be overloaded either by (non-template) functions of its name or by (other) function templates of the same name.</p>
 </blockquote>
-<p>函数的重载决议的最佳可行函数(Best viable function)具有一个非常复杂的规则，在本篇文章中按下不表。<br>函数特化的功能有限，在对无参函数进行匹配时有用：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="type">void</span> <span class="built_in">func</span>&lt;<span class="type">int</span>&gt;()&#123;<span class="comment">/*int*/</span>&#125;</span><br><span class="line"><span class="type">void</span> <span class="built_in">func</span>&lt;<span class="type">double</span>&gt;()&#123;<span class="comment">/*double*/</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// call</span></span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">int</span>&gt;();</span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">double</span>&gt;();</span><br></pre></td></tr></table></figure>
-<p>而且，两个不同的函数模板有可能会特化出相同的类型:</p>
+<p>The best viable function resolution for function overloading has a very complex rule, which will not be discussed in this article.<br>Function specialization has limited functionality and is useful for matching zero-argument functions:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="type">void</span> <span class="built_in">func</span>&lt;<span class="type">int</span>&gt;()&#123;<span class="comment">/*int*/</span>&#125;</span><br><span class="line"><span class="type">void</span> <span class="built_in">func</span>&lt;<span class="type">double</span>&gt;()&#123;<span class="comment">/*double*/</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call</span></span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">int</span>&gt;();</span><br><span class="line"><span class="built_in">func</span>&lt;<span class="type">double</span>&gt;();</span><br></pre></td></tr></table></figure>
+<p>Moreover, two different function templates can specialize to the same type:</p>
 <blockquote>
 <p>It is possible to overload function templates so that two different function template specializations have the same type.</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file1.cc</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T*)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">(<span class="type">int</span>* p)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">f</span>(p); <span class="comment">// calls f&lt;int&gt;(int*)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以及：</p>
+<p>And:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file2.cc</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">h</span><span class="params">(<span class="type">int</span>* p)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">f</span>(p); <span class="comment">// calls f&lt;int*&gt;(int*)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样的特化并不违反ODR：</p>
+<p>Such specializations do not violate ODR:</p>
 <blockquote>
 <p>Such specializations are distinct functions and do not violate the one deﬁnition rule (3.2).</p>
 </blockquote>
-<p>原因就是前面提到的函数模板的签名规则是包含<code>parameter type list</code>的。<br>所以,<code>void f(T*)</code>与<code>void func(T)</code>是具有不同签名的函数:</p>
+<p>The reason is that the signature rules of function templates include the <code>parameter type list</code>.<br>Thus, <code>void f(T*)</code> and <code>void func(T)</code> are functions with different signatures:</p>
 <ul>
-<li><code>void func(T*)</code>的参数类型列表为T，函数参数为T*</li>
-<li><code>void func(T)</code>的参数类型列表为T*,参数类型也为T*</li>
+<li>The parameter type list for <code>void func(T*)</code> is T, and the function parameter is T*</li>
+<li>The parameter type list for <code>void func(T)</code> is T*, and the parameter type is also T*</li>
 </ul>
-<p>可以看一下上面代码的IR代码：</p>
+<p>You can look at the IR code of the above:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// file1.cc</span><br><span class="line">; Function Attrs: uwtable</span><br><span class="line">define void @_Z1gPi(i32*) #0 &#123;</span><br><span class="line">  %2 = alloca i32*, align 8</span><br><span class="line">  store i32* %0, i32** %2, align 8</span><br><span class="line">  %3 = load i32*, i32** %2, align 8</span><br><span class="line">  call void @_Z1fIiEvPT_(i32* %3)</span><br><span class="line">  ret void</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// file2.cc</span><br><span class="line">; Function Attrs: uwtable</span><br><span class="line">define void @_Z1gPi(i32*) #0 &#123;</span><br><span class="line">  %2 = alloca i32*, align 8</span><br><span class="line">  store i32* %0, i32** %2, align 8</span><br><span class="line">  %3 = load i32*, i32** %2, align 8</span><br><span class="line">  call void @_Z1fIPiEvT_(i32* %3)</span><br><span class="line">  ret void</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用直观的diff来看一下：<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/10380/diff-function-template-same-type.webp"><br>可以看到，虽然两个不同的函数模板可以特化出接收相同参数的函数类型，但是本质上他们还是不一样的。</p>
+<p>Using an intuitive diff view:<br><img data-src="https://img.imzlp.com/imgs/zlp/blog/posts/10380/diff-function-template-same-type.webp"><br>It can be seen that although two different function templates can specialize to functions that receive the same parameters, essentially they are still different.</p>
 
     </div>
 
@@ -431,7 +431,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -441,7 +441,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -451,37 +451,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/10380/" target="_blank">C++函数模板的特化和重载</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2017/05/04 00:20<br/>
+             <span>Title:</span><a href="/posts/10380/" target="_blank">Specialization and overloading of C++ function templates</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2017/05/04 00:20<br/>
              
-             <span>本文字数:</span><span class="page-count">2k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">3k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/10380/" target="_blank" title="C++函数模板的特化和重载">https://imzlp.com/posts/10380/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/10380/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/10380/" target="_blank" title="Specialization and overloading of C++ function templates">https://en.imzlp.com/posts/10380/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/10380/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -503,12 +503,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/21790/" rel="prev" title="特殊成员函数的隐式声明及其标准行为">
-      <i class="fa fa-chevron-left"></i> 特殊成员函数的隐式声明及其标准行为
+    <a href="/posts/21790/" rel="prev" title="Implicit declaration of special member-func and their standard behavior">
+      <i class="fa fa-chevron-left"></i> Implicit declaration of special member-func and their standard behavior
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/27615/" rel="next" title="C++中指向类成员的指针并非指针">
-      C++中指向类成员的指针并非指针 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/27615/" rel="next" title="Pointers to class members in C++ are not pointers">
+      Pointers to class members in C++ are not pointers <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -579,10 +579,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -593,10 +593,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="https://img.imzlp.com/imgs/zlp/picgo/2023/202304152112902.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -604,19 +604,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">190</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">95</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">190</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -654,10 +654,10 @@
           <a href="https://consolehelp.imzlp.com/" title="https:&#x2F;&#x2F;consolehelp.imzlp.com&#x2F;" rel="noopener" target="_blank">UE Console Help</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;">UE C++ API Dash Documents</a>
+          <a href="https://imzlp.com/posts/11515/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;posts&#x2F;11515&#x2F;" rel="noopener" target="_blank">UE C++ API Dash Documents</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -684,9 +684,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -695,12 +692,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">757k</span>
+    <span title="Symbols count total">1.5m</span>
 </div>
   <div class="powered-by-other">
     
@@ -853,7 +850,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/10380/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/10380/',]
       });
       });
   </script>
@@ -876,12 +873,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : '',
