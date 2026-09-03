@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="今年对我来说是个非常意义重大的一年：我娃出生了。在新生的喜悦中，也不免有很多焦虑——总担心不能科学地喂养宝宝、有什么纰漏。在月子中心时，月嫂会比较规律的喂养信息记录——什么时间喝奶、睡了多久，几次大小便，有没有吃AD等，都会记录下来，可以追踪喂养状态。 但她们是通过纸笔记录，不够数字化。 当回家之后，需要自己带娃了，我觉得记录下来宝宝的抚养状态依然是有必要的：一是可以追踪每日具体的喂养状况，方便备">
+  <meta name="description" content="This year has been a very significant year for me: my baby was born. Amid the joy of new life, there’s also a lot of anxiety—always worrying about whether I can feed the baby scientifically or whether">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从Vibe Coding到AI Agent：一个喂养系统的完整实践">
-<meta property="og:url" content="https://imzlp.com/posts/84248/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="今年对我来说是个非常意义重大的一年：我娃出生了。在新生的喜悦中，也不免有很多焦虑——总担心不能科学地喂养宝宝、有什么纰漏。在月子中心时，月嫂会比较规律的喂养信息记录——什么时间喝奶、睡了多久，几次大小便，有没有吃AD等，都会记录下来，可以追踪喂养状态。 但她们是通过纸笔记录，不够数字化。 当回家之后，需要自己带娃了，我觉得记录下来宝宝的抚养状态依然是有必要的：一是可以追踪每日具体的喂养状况，方便备">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System">
+<meta property="og:url" content="https://en.imzlp.com/posts/84248/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="This year has been a very significant year for me: my baby was born. Amid the joy of new life, there’s also a lot of anxiety—always worrying about whether I can feed the baby scientifically or whether">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7b2a65654e3370b1.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/d15833f4e1866d0b.png">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af373fb662ea7c13.png">
@@ -56,14 +56,14 @@
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af160f9716d535a4.png">
 <meta property="article:published_time" content="2026-08-13T14:05:07.000Z">
 <meta property="article:modified_time" content="2026-08-13T14:05:07.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="VibeCoding">
 <meta property="article:tag" content="Agent">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7b2a65654e3370b1.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/84248/">
+<link rel="canonical" href="https://en.imzlp.com/posts/84248/">
 
 
 <script id="page-configurations">
@@ -72,11 +72,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>从Vibe Coding到AI Agent：一个喂养系统的完整实践 | 循迹研究室</title>
+  <title>From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -116,7 +116,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -126,7 +126,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -137,7 +137,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -156,24 +156,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -183,7 +183,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -193,7 +193,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -203,7 +203,7 @@
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -211,26 +211,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -246,7 +246,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -265,7 +265,7 @@
 
 
 <script type="text/javascript">
-  let domain='aW16bHAuY29t';
+  let domain='ZW4uaW16bHAuY29t';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -284,12 +284,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -307,27 +307,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/84248/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/84248/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          从Vibe Coding到AI Agent：一个喂养系统的完整实践<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2026-08-13-84248.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/84248/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2026-08-13-84248.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/84248/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">从Vibe Coding到AI Agent：一个喂养系统的完整实践</sub>
           </div>
         
 
@@ -336,51 +336,51 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2026-08-13 14:05 14:05:07:05" itemprop="dateCreated datePublished" datetime="2026-08-13T14:05:07+00:00">2026-08-13 14:05</time>
+              <time title="Created: 2026-08-13 14:05 14:05:07:05" itemprop="dateCreated datePublished" datetime="2026-08-13T14:05:07+00:00">2026-08-13 14:05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AI/Agent/" itemprop="url" rel="index"><span itemprop="name">Agent</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AI/Agent/VibeCoding/" itemprop="url" rel="index"><span itemprop="name">VibeCoding</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/84248/" class="post-meta-item leancloud_visitors" data-flag-title="从Vibe Coding到AI Agent：一个喂养系统的完整实践" title="阅读次数">
+            <span id="/posts/84248/" class="post-meta-item leancloud_visitors" data-flag-title="From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -392,134 +392,137 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>今年对我来说是个非常意义重大的一年：我娃出生了。在新生的喜悦中，也不免有很多焦虑——总担心不能科学地喂养宝宝、有什么纰漏。在月子中心时，月嫂会比较规律的喂养信息记录——什么时间喝奶、睡了多久，几次大小便，有没有吃AD等，都会记录下来，可以追踪喂养状态。</p>
-<p>但她们是通过纸笔记录，不够数字化。</p>
-<p>当回家之后，需要自己带娃了，我觉得记录下来宝宝的抚养状态依然是有必要的：一是可以追踪每日具体的喂养状况，方便备忘，二是我希望能够基于日常的喂养数据，分析出宝宝的状态，给出针对性的建议，避免过度喂养或喂养不足，也能追踪宝宝的生长趋势。</p>
-<p>想法有了，说干就干。</p>
-<p>得益于近一年AI的发展，AI Coding已经跨过了可用性门槛，已经能够实际参与到真实项目的开发之中了。所以，我计划用AI帮我实现一个能够记录宝宝喂养和成长状态的系统——最好完全不用我自己写代码。</p>
-<p>另外，随着AI Agent的发展，也让我思考如何把AI介入到宝宝的日常喂养中，作为专属的AI喂养助理，文章中会介绍我的实践。</p>
+        <p>This year has been a very significant year for me: my baby was born. Amid the joy of new life, there’s also a lot of anxiety—always worrying about whether I can feed the baby scientifically or whether there might be any oversights. At the confinement center, the maternity matron recorded feeding information fairly regularly—when milk was drunk, how long the baby slept, how many bowel movements, whether AD supplements were taken, etc.—all recorded to track feeding status.</p>
+<p>But they recorded with pen and paper, not digitized enough.</p>
+<p>After going home, when we needed to take care of the baby ourselves, I felt it was still necessary to record the baby’s care status: first, to track daily feeding specifics for easy reference; second, I hoped to analyze the baby’s condition based on daily feeding data, give targeted suggestions, avoid overfeeding or underfeeding, and also track the baby’s growth trends.</p>
+<p>With the idea in mind, I got to work.</p>
+<p>Thanks to the development of AI over the past year, AI Coding has crossed the usability threshold and can actually participate in real project development. So I planned to use AI to help me implement a system that records the baby’s feeding and growth status—ideally without me writing any code myself.</p>
+<p>Also, with the development of AI Agents, it made me think about how to involve AI in the baby’s daily feeding as a dedicated AI feeding assistant. This article will introduce my practice.</p>
 <span id="more"></span>
-<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>虽然喂养系统这个需求可能小众且非常私人化，但是我依然希望把它当作一个完整的小产品来设计。</p>
-<p>我希望这个系统不仅仅能记录喂养状态，而是一个全面的婴儿成长记录：</p>
+
+<h2 id="Requirements-Analysis"><a href="#Requirements-Analysis" class="headerlink" title="Requirements Analysis"></a>Requirements Analysis</h2><p>Although this feeding system requirement might be niche and very personal, I still want to design it as a complete small product.</p>
+<p>I hope this system can not only record feeding status, but be a comprehensive baby growth record:</p>
 <ol>
-<li>基础喂养系统（母乳亲喂、瓶喂、奶粉、辅食、尿布、睡眠记录）</li>
-<li>营养补剂（AD、维生素D等）</li>
-<li>健康（用药、体温、疫苗）</li>
-<li>成长（身高、体重、长牙顺序等）</li>
-<li>备忘系统</li>
+<li>Basic feeding system (breastfeeding, bottle feeding, formula, complementary food, diapers, sleep records)</li>
+<li>Nutritional supplements (AD, Vitamin D, etc.)</li>
+<li>Health (medication, temperature, vaccines)</li>
+<li>Growth (height, weight, teething order, etc.)</li>
+<li>Reminder system</li>
 </ol>
-<p>除了这些基础记录之外，我还希望能够基于这些记录数据，搞一个数据看板，可以跨天追踪近期的整体状态。</p>
+<p>Besides these basic records, I also hope to build a data dashboard based on these records, allowing cross-day tracking of recent overall status.</p>
 <ol>
-<li>按时间轴展示喂养数据</li>
-<li>高频数据进行统计展示（如喂养量、大小便、睡眠时长、补剂服用情况等）</li>
-<li> 身高、体重曲线（以及与WHO的参考值对比）</li>
-<li>未完成的疫苗记录</li>
-<li>喂养、作息是否规律</li>
+<li>Display feeding data on a timeline</li>
+<li>Statistical display of high-frequency data (such as feeding amount, bowel movements, sleep duration, supplement intake, etc.)</li>
+<li>Height and weight curves (and comparison with WHO reference values)</li>
+<li>Uncompleted vaccine records</li>
+<li>Whether feeding and daily routine are regular</li>
 <li>…..</li>
 </ol>
-<p>总的来说，我希望能够基于原始的喂养信息，分析所有可知的数据。</p>
-<p>几个关键的技术点的选择：</p>
+<p>Overall, I hope to analyze all knowable data based on the raw feeding information.</p>
+<p>Several key technical choices:</p>
 <ol>
-<li>基于Next.js + Tailwind CSS</li>
-<li>响应式设计，优化移动端体验</li>
-<li>纯Web实现，需支持PWA</li>
-<li>采用Sqlite单文件存储</li>
-<li>支持多租户，数据的隔离和安全性需要保证</li>
-<li>完整的HTTP API、支持Webhook</li>
-<li>方便Docker部署</li>
+<li>Based on Next.js + Tailwind CSS</li>
+<li>Responsive design, optimized for mobile experience</li>
+<li>Pure Web implementation, needs PWA support</li>
+<li>Sqlite single-file storage</li>
+<li>Multi-tenant support; data isolation and security must be guaranteed</li>
+<li>Complete HTTP API, Webhook support</li>
+<li>Easy Docker deployment</li>
 </ol>
-<p>从功能支持，到基础技术点，以及部署的方便性都提出了要求。而不是只是一个笼统的概念，比较清晰的设计也能够方便让AI来实现，这也是AI最擅长的领域——把明确的事情做好。</p>
-<h2 id="实现-体验迭代"><a href="#实现-体验迭代" class="headerlink" title="实现 / 体验迭代"></a>实现 / 体验迭代</h2><p>虽然AI已经可以写代码了，但是对于一个完善产品的理解和设计能力还是有很大差距，它可以针对单点问题给出合理的实现，但不能很好地基于产品的整体架构考虑，以及模块之前的关联，有时候改完一个问题，又冒出来几个新的问题。</p>
-<p>所以就算有了AI加持，如果从零开始设计一个系统，需要人脑中先有一个整体框架，基于这个框架优先设计数据结构和数据库，然后让AI填充逻辑和细节。<br><strong>数据结构和数据库设计非常重要</strong>，一定要慎重。字段语义需要明确，且要考虑扩展性，不然一旦新增、修改功能，对已有数据的迁移和兼容会存在挑战。</p>
-<p>当然，这部分内容也可以跟AI不断讨论后进行迭代，有了AI确实可以解放生产力，来实现那些之前不擅长、人力投入产出比没有那么多的事情。</p>
-<p>当具有一个整体的需求和关键技术点的选择后，使用AI来实现初版功能是非常快的，半天就可以迭代出一个能跑的服务。</p>
+<p>Requirements were set from feature support to basic technical points and deployment convenience. Rather than just a vague concept, a clearer design also makes it easier for AI to implement—this is also where AI excels: doing clear things well.</p>
+<h2 id="Implementation-Experience-Iteration"><a href="#Implementation-Experience-Iteration" class="headerlink" title="Implementation / Experience Iteration"></a>Implementation / Experience Iteration</h2><p>Although AI can already write code, there’s still a big gap in understanding and designing a complete product. It can give reasonable implementations for isolated problems, but it can’t think well based on the overall product architecture and the relationships between modules. Sometimes after fixing one problem, several new problems pop up.</p>
+<p>So even with AI’s help, when designing a system from scratch, one needs to have an overall framework in mind first, design the data structure and database based on that framework, then let AI fill in the logic and details.<br><strong>Data structure and database design are very important</strong>—they must be treated with care. Field semantics need to be clear, and extensibility must be considered. Otherwise, once new features are added or modified, there will be challenges with existing data migration and compatibility.</p>
+<p>Of course, this part can also be iterated through continuous discussion with AI. With AI, productivity can indeed be liberated to accomplish things that were previously not our strength and where human effort had low ROI.</p>
+<p>Once you have the overall requirements and key technical choices, using AI to implement the initial version is very fast—you can iterate a working service in half a day.</p>
 <blockquote>
-<p>注：我使用 ClaudeCode +Opus 4.6实现了初始的版本，后续用DeepSeek + GPT5.6做过多轮优化。</p>
+<p>Note: I used ClaudeCode + Opus 4.6 to implement the initial version, and later used DeepSeek + GPT5.6 for multiple rounds of optimization.</p>
 </blockquote>
-<p>AI能把功能实现，或许没什么太大问题，但AI不知道怎么样的交互才是最方便与合理的——尤其是对于一个需要高频操作的功能来说，麻烦的操作会磨灭记录的耐心——还不如手写记录一下，这也是我老婆最初的真实吐槽。</p>
-<p>所以，VibeCoding或许可以极高提升编码效率，但对产品的细微体验的提升或许当前阶段还是需要人来做，毕竟有人味的产品，一定会超越冷冰冰的功能堆砌。</p>
-<p>产品的设计与功能的实现，一定不能脱离真实的用户反馈，毕竟每天真实使用产品的人，才是最了解一个功能应该是什么样的人。</p>
-<p>从最初实现的版本，到今天已有半年，期间经过了我多轮优化，更新了20多个版本。目前是我体验起来整体比较满意的了，这个小产品，也正随着我娃一起成长。</p>
-<p>我将迭代的范围总结为下面几点：</p>
+<p>AI can implement features—that’s probably not a big problem—but AI doesn’t know what interaction is most convenient and reasonable. Especially for a feature that requires high-frequency operations, cumbersome operations will wear down the patience for recording—might as well write it down by hand. That was my wife’s initial honest complaint.</p>
+<p>So, VibeCoding might greatly improve coding efficiency, but improving the subtle experience of a product might still need human input at this stage. After all, a product with a human touch will definitely surpass cold feature stacking.</p>
+<p>Product design and feature implementation must not be detached from real user feedback. After all, the people who actually use the product every day are the ones who best know what a feature should be like.</p>
+<p>From the initial version to today, half a year has passed, with multiple rounds of optimization across 20+ versions. It’s now at a point where I’m quite satisfied with the overall experience. This little product is growing along with my baby.</p>
+<p>I summarize the iteration scope as follows:</p>
 <ol>
-<li>功能设计随着宝宝的增长可能逐渐不符合预期</li>
-<li>不同时段的宝宝，需要记录的侧重点不同（新生早期可能侧重奶粉，后面可能母乳、混合辅食）</li>
-<li>随着一天天长大，又有新的项目需要记录（如辅食、长牙）</li>
-<li>数据需要新的流转方式——如接入到AI Agent</li>
+<li>Feature design may gradually not match expectations as the baby grows</li>
+<li>Babies at different stages need different recording priorities (early newborn might focus on formula, later breastfeeding, then mixed complementary food)</li>
+<li>As the baby grows day by day, new items need recording (like complementary food, teething)</li>
+<li>Data needs new flow methods—such as integration into AI Agents</li>
 </ol>
-<p>可能一个产品完全做完了，就是产品生命力结束的那天，用户体验的提升可能是永无止境的。</p>
-<h2 id="使用-部署"><a href="#使用-部署" class="headerlink" title="使用 / 部署"></a>使用 / 部署</h2><p>我将项目开源到了github上，详见：<a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a>。</p>
-<p>可以自己用Docker部署，我将最新的版本也发布到了DockerHub上，使用下面的配置即可部署：</p>
+<p>Perhaps the day a product is completely finished is the day its vitality ends. User experience improvement might be endless.</p>
+<h2 id="Usage-Deployment"><a href="#Usage-Deployment" class="headerlink" title="Usage / Deployment"></a>Usage / Deployment</h2><p>I open-sourced the project on GitHub, see: <a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a>.</p>
+<p>You can deploy it yourself with Docker. I also published the latest version to DockerHub. Use the following configuration to deploy:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">baby-feed:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ahzknarf/baby-feed:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">baby-feed</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3010:3000&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">NODE_ENV=production</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DATABASE_URL=file:/app/data/baby-feed.db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">NEXTAUTH_SECRET=$&#123;NEXTAUTH_SECRET&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">NEXTAUTH_URL=$&#123;NEXTAUTH_URL&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TRUST_PROXY=$&#123;TRUST_PROXY:-true&#125;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/app/data</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;node&quot;</span>, <span class="string">&quot;-e&quot;</span>, <span class="string">&quot;fetch(&#x27;http://localhost:3000/&#x27;).then(r=&gt;&#123;process.exit(r.ok?0:1)&#125;).catch(()=&gt;process.exit(1))&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">40s</span></span><br></pre></td></tr></table></figure>
 
-<p>默认运行在3000端口，首次登录注册的账号为管理员账户。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7b2a65654e3370b1.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/d15833f4e1866d0b.png"></p>
-<p>每个记录项目的控件，都是完全独立的，力求达到用最方便和直观的方式记录。</p>
-<h3 id="项目记录"><a href="#项目记录" class="headerlink" title="项目记录"></a>项目记录</h3><p>下面挑几个特色的项目介绍一下：<br>如亲喂和睡眠，支持实时计时和事后补记：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af373fb662ea7c13.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/3ba357636c98dd5b.png"></p>
-<p>疫苗会自动带入未完成的针次，可以快速记录：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/a42c29d611e7a09d.png"></p>
-<p>牙齿萌出，可以直观选中牙齿：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/209861a91231b2cc.png"></p>
-<h3 id="统计信息"><a href="#统计信息" class="headerlink" title="统计信息"></a>统计信息</h3><p>并且正如前面所说，我提供了丰富的基于原始数据的统计信息，可以对比近期的喂养趋势：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/389f3ff5df4fa61b.png"></p>
-<p>身高、体重、BMI趋势：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7dea312ef09b0d23.png"></p>
-<p>疫苗记录，可以方便查看未完成疫苗、剩余针次：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/b134d45801e55275.png"></p>
-<h3 id="数据洞察"><a href="#数据洞察" class="headerlink" title="数据洞察"></a>数据洞察</h3><p>在洞察中，还可以查看当前身高体重的WHO位点：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/9c630cb7fd8e3146.png"></p>
-<p>婴儿体检时，医生也是依据当前所处的WHO位点判断生长情况的。</p>
-<p>除此之外还包含喂养洞察、成长洞察、健康洞察等，不再一一介绍。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/95dd0e271fe6cf53.png"></p>
-<h2 id="AI-Agent：自然语言交互"><a href="#AI-Agent：自然语言交互" class="headerlink" title="AI Agent：自然语言交互"></a>AI Agent：自然语言交互</h2><p>前面介绍的内容，还是传统应用的思路，无非是功能、交互。</p>
-<p>但现在是2026年，AI Agent爆发的时代。所以我一直在思考，怎么样才能更方便地使用这个喂养系统。</p>
-<p>让我们只需要动动嘴，就可以记录宝宝状态。<br>有什么疑问，就可以直接问它，它能够基于宝宝的事实数据，给出针对性的回答，而不是笼统地问Chat。</p>
-<p>一个完全基于宝宝的数据上下文的贴心AI助手！</p>
-<p>为实现这个需求，我改造了<a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a>项目，为每个可操作行为，都配备了HTTP请求接口：<a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed/blob/master/docs/HTTP_REQUESTS.md">HTTP API</a>。</p>
-<p>并且账户系统中，还提供了API KEY机制，可以基于API KEY进行账户验证、获取数据。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/581ceae7ddad9b23.png"></p>
-<p>通过这些接口，就能操作整个系统——包括新增、删除、修改记录，获取近期数据。并且准备了所有API的数据Schema，这样提供了能让AI操作的可能。</p>
-<p>基于这些接口，我实现了一个喂养系统专属的SKILL：<a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed-assistant/">hxhb/baby-feed-assistant</a></p>
-<p>这个SKILL也迭代了很多版本，踩过一些坑，下面是我觉得必须要做的：</p>
+<p>It runs on port 3000 by default. The account registered on first login is the administrator account.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7b2a65654e3370b1.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/d15833f4e1866d0b.png"></p>
+<p>The controls for each recording item are completely independent, striving for the most convenient and intuitive way to record.</p>
+<h3 id="Item-Recording"><a href="#Item-Recording" class="headerlink" title="Item Recording"></a>Item Recording</h3><p>Let me introduce a few distinctive features:<br>For example, breastfeeding and sleep support real-time timing and after-the-fact recording:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af373fb662ea7c13.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/3ba357636c98dd5b.png"></p>
+<p>Vaccines automatically bring up uncompleted doses for quick recording:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/a42c29d611e7a09d.png"></p>
+<p>Tooth eruption allows intuitive tooth selection:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/209861a91231b2cc.png"></p>
+<h3 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics"></a>Statistics</h3><p>And as mentioned earlier, I provided rich statistics based on raw data, allowing comparison of recent feeding trends:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/389f3ff5df4fa61b.png"></p>
+<p>Height, weight, BMI trends:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/7dea312ef09b0d23.png"></p>
+<p>Vaccine records make it easy to view uncompleted vaccines and remaining doses:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/b134d45801e55275.png"></p>
+<h3 id="Data-Insights"><a href="#Data-Insights" class="headerlink" title="Data Insights"></a>Data Insights</h3><p>In Insights, you can also view the current height/weight WHO percentile:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/9c630cb7fd8e3146.png"></p>
+<p>When taking the baby for checkups, doctors also judge growth based on the current WHO percentile.</p>
+<p>There are also feeding insights, growth insights, health insights, etc., which I won’t introduce one by one.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/95dd0e271fe6cf53.png"></p>
+<h2 id="AI-Agent-Natural-Language-Interaction"><a href="#AI-Agent-Natural-Language-Interaction" class="headerlink" title="AI Agent: Natural Language Interaction"></a>AI Agent: Natural Language Interaction</h2><p>The content introduced above is still the traditional app approach—features and interactions.</p>
+<p>But it’s 2026, the era of AI Agent explosion. So I’ve been thinking about how to make this feeding system more convenient to use.</p>
+<p>Let us just speak and record the baby’s status.<br>If we have questions, we can just ask it directly. It can give targeted answers based on the baby’s factual data, rather than vaguely asking ChatGPT.</p>
+<p>A thoughtful AI assistant fully grounded in the baby’s data context!</p>
+<p>To implement this requirement, I refactored the <a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a> project, equipping every operable action with an HTTP request interface: <a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed/blob/master/docs/HTTP_REQUESTS.md">HTTP API</a>.</p>
+<p>The account system also provides an API KEY mechanism, allowing account verification and data retrieval based on the API KEY.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/581ceae7ddad9b23.png"></p>
+<p>Through these interfaces, the entire system can be operated—including adding, deleting, modifying records, and retrieving recent data. Schemas for all API data are also prepared, enabling AI operation.</p>
+<p>Based on these interfaces, I implemented a SKILL dedicated to the feeding system: <a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed-assistant/">hxhb/baby-feed-assistant</a></p>
+<p>This SKILL has also been iterated through many versions and I’ve stepped on some pitfalls. Here’s what I think is essential:</p>
 <ol>
-<li>不要往SKILL中写太多内容，拆分引用文档，支持渐进式加载</li>
-<li>把明确的部分，拆分为脚本，让AI执行脚本，获取确定性结果</li>
-<li>系统功能更新时，及时更新SKILL，通过版本号标记</li>
+<li>Don’t write too much content into the SKILL; split into referenced documents and support progressive loading</li>
+<li>Split deterministic parts into scripts and let the AI execute scripts for deterministic results</li>
+<li>When system features update, update the SKILL promptly and mark it with version numbers</li>
 </ol>
-<p>可以把它装到任何你喜欢的Agent中——ClaudeCode、Codex、Pi、Hermes、OpenClaw，都没问题。</p>
-<p>我个人主要使用Hermes，接入到了QQ和微信中，就可以用自然语言让它操作喂养系统了，并且还能支持语音识别，更为方便。</p>
-<p>询问宝宝状态怎么样：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/123f9a1ce01289ae.png"></p>
-<p>添加记录：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/bc4d5015becf319f.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0f7771230f2f3d12.png"></p>
-<p>可以添加什么辅食：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/9bbd6c0b1ddcbcb6.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/5cc1c062c4012d85.png"></p>
-<p>对宝宝大便带血丝的担心：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/04785f87b5d21c1e.png"></p>
-<p>基于这个SKILL，就能完全操作整个喂养系统，AI可以添加、修改、删除、询问。并且数据依然可以在Web中访问、继续查看统计和洞察。</p>
-<p>结合了两者的优点：</p>
+<p>You can install it into any Agent you like—ClaudeCode, Codex, Pi, Hermes, OpenClaw—all fine.</p>
+<p>I personally mainly use Hermes, connected to QQ and WeChat, so I can use natural language to operate the feeding system, and it even supports speech recognition for added convenience.</p>
+<p>Asking how the baby is doing:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/123f9a1ce01289ae.png"></p>
+<p>Adding a record:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/bc4d5015becf319f.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0f7771230f2f3d12.png"></p>
+<p>Ask what complementary food can be added:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/9bbd6c0b1ddcbcb6.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/5cc1c062c4012d85.png"></p>
+<p>Worries about blood streaks in the baby’s stool:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/04785f87b5d21c1e.png"></p>
+<p>Based on this SKILL, the entire feeding system can be fully operated. AI can add, modify, delete, and answer questions. And the data remains accessible on the Web, with statistics and insights still viewable.</p>
+<p>It combines the strengths of both:</p>
 <ul>
-<li>利用AI提供了一种更方便和人性化的交互方式，使用自然语言、语音，就可以操作记录信息，询问问题，并分析数据给出针对性的回答。</li>
-<li>保持Web的高信息密度，可以打开页面直观看到整体情况。</li>
+<li>AI provides a more convenient and humanized interaction—using natural language and voice to record information, ask questions, and analyze data for targeted answers.</li>
+<li>The Web maintains high information density, allowing you to open the page and see the overall situation at a glance.</li>
 </ul>
-<p>AI Agent确实提供了非常丰富的可能性——只要数据足够丰富，给AI的指南足够明确，就可以实现非常惊艳的效果。</p>
-<p>拥抱AI从来都不是最重要的目标，更重要是怎么样能通过它带来更好的用户体验。</p>
-<h2 id="Webhook：让AI主动提醒"><a href="#Webhook：让AI主动提醒" class="headerlink" title="Webhook：让AI主动提醒"></a>Webhook：让AI主动提醒</h2><p>前面介绍的，还只是能够让AI回答问题，但是随着喂养系统+AI，我越来越有一个新的想法：能不能根据记录数据，让AI在需要的时间主动提醒我？</p>
-<p>为什么Agent的定时任务不够？</p>
-<p>定时任务——顾名思义，它是固定时间段内执行的任务。</p>
-<p>但我希望的是即时性，如：</p>
+<p>AI Agents indeed offer very rich possibilities—as long as the data is rich enough and the guidance given to the AI is clear enough, impressive results can be achieved.</p>
+<p>Embracing AI has never been the most important goal; what matters more is how to bring better user experiences through it.</p>
+<h2 id="Webhook-Let-AI-Proactively-Remind"><a href="#Webhook-Let-AI-Proactively-Remind" class="headerlink" title="Webhook: Let AI Proactively Remind"></a>Webhook: Let AI Proactively Remind</h2><p>What I introduced above only allows AI to answer questions. But with the feeding system + AI, I increasingly have a new idea: can the AI proactively remind me when needed based on recorded data?</p>
+<p>Why aren’t Agent scheduled tasks enough?</p>
+<p>Scheduled tasks—as the name implies—are tasks executed at fixed time intervals.</p>
+<p>But what I want is timeliness, such as:</p>
 <ul>
-<li>宝宝隔了一段时间没喂，提醒我喂养。它不是固定时间定时的，而是需要根据上次喂养时间推导</li>
-<li>宝宝打了疫苗，提醒我隔几个小时量体温</li>
-<li>宝宝还没喂养AD，提醒服用</li>
-<li>宝宝几个小时没睡了，提醒我要不要让他睡觉，避免过度劳累</li>
+<li>If the baby hasn’t been fed for a while, remind me to feed. It’s not a fixed-time schedule; it needs to be derived from the last feeding time</li>
+<li>After vaccination, remind me to take the baby’s temperature a few hours later</li>
+<li>If the baby hasn’t taken AD yet, remind me</li>
+<li>If the baby hasn’t slept for several hours, remind me whether to put the baby to sleep to avoid overtiredness</li>
 </ul>
-<p>它需要基于系统的记录时间戳，根据规则，即时提醒我。</p>
-<p>如果这些事情交由Agent的定时系统来做，要么就需要忍受不能及时提醒，要么就需要高频触发——浪费Token！</p>
-<p>所以，我给喂养系统添加了支持Webhook机制，当达到设定条件时，主动推送给Agent，也就是QQ微信发消息给我。</p>
-<p>允许创建Webhook，监听事件：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0ce4dd1d84f5cca4.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0348a966e9d604ab.png"></p>
-<p>并添加了提醒功能：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/da2af1bdf25a44a0.png"><br>并且结合了健康项目记录事件——当记录宝宝打疫苗了，自动创建体温提醒。</p>
-<p>我将其接入到了Hermes的Webhook中，这样就可以顺利接收提醒了。</p>
-<p>3小时喂奶提醒：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/95b0e14f10bf2372.png"></p>
-<p>疫苗后体温提醒：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/80188ef0fb89a380.png"></p>
-<p>睡眠提醒：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/97a088a1b0fa7f7c.png"></p>
-<p>从被动询问，到主动提醒，AI已经更深地介入到了宝宝的日常抚养中。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这个项目，随着我娃的成长，一直在迭代，也是我纯Vibe出来的一个完整生命周期的自用产品，麻雀虽小，五脏俱全。</p>
-<p>我们已经在这个系统上，记录了宝宝3600条数据，它们是宝宝成长的见证，伴随他一天一天慢慢长大：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af160f9716d535a4.png"><br>也给了我们作为新手父母的自信——带娃可以用更科学的方式。</p>
-<p>另外，在这个喂养系统中做的AI Agent尝试，也带给了我更多思考。</p>
+<p>It needs to be based on the system’s record timestamps, according to rules, and remind me in real time.</p>
+<p>If these tasks were left to the Agent’s scheduling system, either you’d have to tolerate untimely reminders, or you’d need high-frequency triggers—wasting Tokens!</p>
+<p>So, I added Webhook support to the feeding system. When set conditions are met, it proactively pushes to the Agent, which then sends me a message via QQ/WeChat.</p>
+<p>Webhooks can be created to listen for events:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0ce4dd1d84f5cca4.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/0348a966e9d604ab.png"></p>
+<p>And a reminder feature was added:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/da2af1bdf25a44a0.png"></p>
+<p>It also integrates with health item record events—when a vaccination is recorded, a temperature reminder is automatically created.</p>
+<p>I connected it to Hermes’s Webhook, so reminders are received smoothly.</p>
+<p>3-hour feeding reminder:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/95b0e14f10bf2372.png"></p>
+<p>Post-vaccination temperature reminder:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/80188ef0fb89a380.png"></p>
+<p>Sleep reminder:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/97a088a1b0fa7f7c.png"></p>
+<p>From passive questioning to proactive reminders, AI has become more deeply involved in the baby’s daily care.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This project has been continuously iterating along with my baby’s growth. It’s also a complete lifecycle personal product that I purely Vibe-coded. Small as a sparrow, yet complete with all its organs.</p>
+<p>We’ve recorded 3,600 data points about the baby on this system. They are testimonies of the baby’s growth, accompanying him as he grows day by day:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/08/13/af160f9716d535a4.png"></p>
+<p>It also gives us, as first-time parents, confidence—that raising a baby can be done in a more scientific way.</p>
+<p>Additionally, the AI Agent experiments in this feeding system have brought me more thoughts.</p>
 <ul>
-<li>AI可以快速实现功能，但落点一定要能解决具体且实际的需求，它才是有价值的。</li>
-<li>丰富的结构化可解释的数据，是AI应用的飞轮。没有数据的AI应用可能只是无根之水，有了数据才与你有关，才能够深度介入到你的生活中。</li>
+<li>AI can quickly implement features, but the landing point must solve concrete and practical needs for it to be valuable.</li>
+<li>Rich, structured, explainable data is the flywheel of AI applications. AI applications without data may be like water without a source. Only with data does it become relevant to you and able to deeply integrate into your life.</li>
 </ul>
-<p>AI从不是目的，能提供更好的体验才是。</p>
-<p>如果你是新手奶爸/妈，且有自部署服务的经验，欢迎你体验<a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a>，如果有好的建议也可以反馈给我，持续进化。</p>
+<p>AI is never the goal; providing a better experience is.</p>
+<p>If you’re a new father/mother with experience in self-hosting services, you’re welcome to try <a target="_blank" rel="noopener" href="https://github.com/hxhb/baby-feed">hxhb/baby-feed</a>. If you have good suggestions, feel free to share them with me—it’s continuously evolving.</p>
 
     </div>
 
@@ -530,7 +533,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -540,7 +543,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -550,37 +553,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/84248/" target="_blank">从Vibe Coding到AI Agent：一个喂养系统的完整实践</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2026/08/13 14:05<br/>
+             <span>Title:</span><a href="/posts/84248/" target="_blank">From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2026/08/13 14:05<br/>
              
-             <span>本文字数:</span><span class="page-count">4k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">11k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/84248/" target="_blank" title="从Vibe Coding到AI Agent：一个喂养系统的完整实践">https://imzlp.com/posts/84248/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/84248/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/84248/" target="_blank" title="From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System">https://en.imzlp.com/posts/84248/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/84248/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -602,8 +605,8 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/posts/99122/" rel="next" title="包体优化：UE跨版本资源复用的方案">
-      包体优化：UE跨版本资源复用的方案 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/99122/" rel="next" title="Package size optimization: Solution for reusing old-version resources in UE">
+      Package size optimization: Solution for reusing old-version resources in UE <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -674,25 +677,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-%E4%BD%93%E9%AA%8C%E8%BF%AD%E4%BB%A3"><span class="nav-number">2.</span> <span class="nav-text">实现 &#x2F; 体验迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">使用 &#x2F; 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">项目记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.</span> <span class="nav-text">统计信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B4%9E%E5%AF%9F"><span class="nav-number">3.3.</span> <span class="nav-text">数据洞察</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-Agent%EF%BC%9A%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E4%BA%A4%E4%BA%92"><span class="nav-number">4.</span> <span class="nav-text">AI Agent：自然语言交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webhook%EF%BC%9A%E8%AE%A9AI%E4%B8%BB%E5%8A%A8%E6%8F%90%E9%86%92"><span class="nav-number">5.</span> <span class="nav-text">Webhook：让AI主动提醒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Requirements-Analysis"><span class="nav-number">1.</span> <span class="nav-text">Requirements Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-Experience-Iteration"><span class="nav-number">2.</span> <span class="nav-text">Implementation &#x2F; Experience Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage-Deployment"><span class="nav-number">3.</span> <span class="nav-text">Usage &#x2F; Deployment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Item-Recording"><span class="nav-number">3.1.</span> <span class="nav-text">Item Recording</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistics"><span class="nav-number">3.2.</span> <span class="nav-text">Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Insights"><span class="nav-number">3.3.</span> <span class="nav-text">Data Insights</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-Agent-Natural-Language-Interaction"><span class="nav-number">4.</span> <span class="nav-text">AI Agent: Natural Language Interaction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webhook-Let-AI-Proactively-Remind"><span class="nav-number">5.</span> <span class="nav-text">Webhook: Let AI Proactively Remind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="/images/avatar.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -700,19 +703,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">198</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">99</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">194</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -744,7 +747,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -771,9 +774,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -782,12 +782,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">794k</span>
+    <span title="Symbols count total">1.6m</span>
 </div>
   <div class="powered-by-other">
     
@@ -940,7 +940,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/84248/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/84248/',]
       });
       });
   </script>
@@ -963,12 +963,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : 'https://appcounter.imzlp.com',

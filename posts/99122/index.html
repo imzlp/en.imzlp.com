@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,20 +19,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="对于游戏项目而言，我们总希望玩家能用最小的成本体验到最新的游戏。它既包含运营时的CDN成本，也包含玩家下载时的流量、时间成本。更小、更快、更省是永恒的追求。 那么，当游戏的安装包更新时（也就是所谓的大版本），玩家是否需要完整再完整下载一遍资源？当前游戏市场的大型手游，资源体量也非常庞大，能达到10+GB的量级，如果每次换包都完整下载，对于运营成本和用户体验都是比较差的选择。而在换版本时，玩家本地实">
+  <meta name="description" content="For game projects, we always want players to experience the latest version with minimal cost. This includes CDN costs during operation, as well as the bandwidth and time costs for players during downl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="包体优化：UE跨版本资源复用的方案">
-<meta property="og:url" content="https://imzlp.com/posts/99122/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="对于游戏项目而言，我们总希望玩家能用最小的成本体验到最新的游戏。它既包含运营时的CDN成本，也包含玩家下载时的流量、时间成本。更小、更快、更省是永恒的追求。 那么，当游戏的安装包更新时（也就是所谓的大版本），玩家是否需要完整再完整下载一遍资源？当前游戏市场的大型手游，资源体量也非常庞大，能达到10+GB的量级，如果每次换包都完整下载，对于运营成本和用户体验都是比较差的选择。而在换版本时，玩家本地实">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Package size optimization: Solution for reusing old-version resources in UE">
+<meta property="og:url" content="https://en.imzlp.com/posts/99122/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="For game projects, we always want players to experience the latest version with minimal cost. This includes CDN costs during operation, as well as the bandwidth and time costs for players during downl">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/02/13/01c235b761cccaf6.png">
 <meta property="article:published_time" content="2026-02-13T09:42:27.000Z">
 <meta property="article:modified_time" content="2026-02-13T09:42:27.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="HotPatcher">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2026/02/13/01c235b761cccaf6.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/99122/">
+<link rel="canonical" href="https://en.imzlp.com/posts/99122/">
 
 
 <script id="page-configurations">
@@ -49,11 +49,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>包体优化：UE跨版本资源复用的方案 | 循迹研究室</title>
+  <title>Package size optimization: Solution for reusing old-version resources in UE | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -93,7 +93,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,7 +114,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -133,24 +133,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -160,7 +160,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -170,7 +170,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -180,7 +180,7 @@
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -188,26 +188,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -223,7 +223,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -242,7 +242,7 @@
 
 
 <script type="text/javascript">
-  let domain='aW16bHAuY29t';
+  let domain='ZW4uaW16bHAuY29t';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -261,12 +261,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -284,27 +284,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/99122/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/99122/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          包体优化：UE跨版本资源复用的方案<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2026-02-13-99122.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/99122/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          Package size optimization: Solution for reusing old-version resources in UE<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2026-02-13-99122.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/99122/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">Package size optimization: Solution for reusing old-version resources in UE</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">包体优化：UE跨版本资源复用的方案</sub>
           </div>
         
 
@@ -313,43 +313,43 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2026-02-13 09:42 09:42:27:42" itemprop="dateCreated datePublished" datetime="2026-02-13T09:42:27+00:00">2026-02-13 09:42</time>
+              <time title="Created: 2026-02-13 09:42 09:42:27:42" itemprop="dateCreated datePublished" datetime="2026-02-13T09:42:27+00:00">2026-02-13 09:42</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/99122/" class="post-meta-item leancloud_visitors" data-flag-title="包体优化：UE跨版本资源复用的方案" title="阅读次数">
+            <span id="/posts/99122/" class="post-meta-item leancloud_visitors" data-flag-title="Package size optimization: Solution for reusing old-version resources in UE" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.7k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>12k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>14 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>30 mins.</span>
             </span>
 
         </div>
@@ -361,153 +361,152 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>对于游戏项目而言，我们总希望玩家能用最小的成本体验到最新的游戏。它既包含运营时的CDN成本，也包含玩家下载时的流量、时间成本。更小、更快、更省是永恒的追求。</p>
-<p>那么，当游戏的安装包更新时（也就是所谓的<strong>大版本</strong>），玩家是否需要完整再完整下载一遍资源？<br>当前游戏市场的大型手游，资源体量也非常庞大，能达到10+GB的量级，如果每次换包都完整下载，对于运营成本和用户体验都是比较差的选择。<br>而在换版本时，玩家本地实际有上个版本的完整资源，如果能把它利用起来，就可以大幅减少需要下载的部分。所以需要一种能够复用旧版本资源的机制！</p>
-<p>本篇文章会基于该痛点，分享一种大版本更新后的资源复用方案，使玩家下载的资源最小化，并且易于发布和维护。<br>在实际的线上项目运营中，取得了<strong>极佳的效果</strong>。</p>
+        <p>For game projects, we always want players to experience the latest version with minimal cost. This includes CDN costs during operation, as well as the bandwidth and time costs for players during downloads. Smaller, faster, and more efficient are our eternal pursuits.</p>
+<p>So, when a game update (what we call a <strong>major version</strong> update) occurs, must players re-download the entire set of resources?<br>Large mobile games in the current market have massive resource sizes, often reaching 10+ GB. Requiring a full download for every update is a poor choice for both operational costs and user experience.<br>However, since players have the full resources of the previous version locally, we can significantly reduce the required download size by leveraging them. We need a mechanism to reuse old version resources!</p>
+<p>This article shares a resource reuse solution for major version updates based on this pain point, minimizing player downloads while ensuring ease of release and maintenance.<br>In actual live project operations, this has achieved <strong>excellent results</strong>.</p>
 <span id="more"></span>
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，先考虑一个问题：<strong>当UE重新打包时，有哪些文件/资源可能会产生变化？</strong></p>
-<p>因为UE的构建流程，当完整重新打包时，它相较于上个版本潜在变更的资源就非常复杂。从引擎基础配置到底层渲染、从资产类的属性变动到序列化方式，都有可能会对构建的产物造成差异。</p>
-<p>与热更不同的是，热更是在保证引擎基础不变的情况下进行增量，只做Gameplay逻辑更新，不涉及资产序列化的变动。但是当完整重新出包，任何资源都有可能产生变化！</p>
-<p>在我之前的文章（<a href="https://imzlp.com/posts/12188">虚幻引擎中 Pak 的运行时重组方案</a>）中提出过一种基于运行时重组的更新方案，但是它需要在客户端实现pak的创建与加密，会增加客户端的执行压力：差异计算、下载请求分散、本地生成pak、加密等。以及潜在密钥泄露的风险（重组前需要对所有pak进行解密）。</p>
-<p>所以我们需要提供一种能够兼顾任何资产变动的方案，并且尽可能利于维护，不增加客户端的计算压力。另外也希望仅在客户端进行解密，这样也可以实现密钥的动态下发，保护未正式发布的预埋资产（参考<a href="https://imzlp.com/posts/88478/">UE PAK的加密分析与加固策略</a>）。</p>
-<h2 id="本地旧资源"><a href="#本地旧资源" class="headerlink" title="本地旧资源"></a>本地旧资源</h2><p>在正式开始之前，先思考一个问题：当安装包版本从1.x升级到2.0时，本地包含了哪些资产？</p>
-<p>让我们以Android为例，从安装行为分析app的安装与UE加载安装包内文件的行为。</p>
-<p>当APK安装到手机上时，本质上是把app安装到了下面的路径中（<code>/data/app/</code> + 包名 + 随机字符）：</p>
+<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>First, let’s consider a question: <strong>When Unreal Engine (UE) re-packages, which files/resources might change?</strong></p>
+<p>Due to UE’s build process, when performing a full re-package, the potential changes compared to the previous version are highly complex. From engine base configurations to underlying rendering, and from asset property changes to serialization methods, any of these can cause discrepancies in the build artifacts.</p>
+<p>Unlike hot patching—which performs incremental updates while keeping the engine core stable, only modifying Gameplay logic without affecting asset serialization—full version updates can cause changes to any resource!</p>
+<p>In my previous article (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/12188">Runtime Pak Reorganization Scheme in UE</a>), I proposed a runtime-reorganization-based update scheme. However, it requires the client to handle Pak creation and encryption, increasing computational pressure: diff calculation, fragmented download requests, local Pak generation, and encryption. It also introduces potential risks of key leakage (as all Paks must be decrypted before reorganization).</p>
+<p>Therefore, we need a solution that accommodates any asset change while being easy to maintain and not increasing client computational pressure. We also prefer client-side decryption, which allows for dynamic key distribution to protect unreleased pre-embedded assets (refer to <a target="_blank" rel="noopener" href="https://imzlp.com/posts/88478/">UE PAK Encryption Analysis and Hardening Strategies</a>).</p>
+<h2 id="Local-Legacy-Resources"><a href="#Local-Legacy-Resources" class="headerlink" title="Local Legacy Resources"></a>Local Legacy Resources</h2><p>Before we begin, let’s consider: when the installation package updates from 1.x to 2.0, what assets are contained locally?</p>
+<p>Let’s take Android as an example and analyze the app’s installation and UE’s process for loading files from the installation package.</p>
+<p>When an APK is installed on a phone, it is essentially installed into the following path (<code>/data/app/</code> + package name + random characters):</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sagit:/data/app/com.xxx.yyy-zpgq5nHyY9CNxdLbiAdAgQ== <span class="meta"># ls -R</span></span><br><span class="line">.</span><br><span class="line">├── base.apk</span><br><span class="line">├── lib</span><br><span class="line">│   └── arm64</span><br><span class="line">│       └── libUE4.so</span><br><span class="line">│       └── ...</span><br><span class="line">└── oat</span><br><span class="line">    └── arm64</span><br><span class="line">        ├── base.odex</span><br><span class="line">        └── base.vdex</span><br></pre></td></tr></table></figure>
 
-<p>而UE的资源文件是存在于apk中<code>assets/main.obb.png</code>文件内的，并不会被解压出来，依然存在于<code>base.apk</code>内：</p>
+<p>UE’s resource files reside within <code>assets/main.obb.png</code> inside the APK; they are not extracted and remain inside <code>base.apk</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Archive:  base.apk</span><br><span class="line">  Length      Date    Time    Name</span><br><span class="line">---------  ---------- -----   ----</span><br><span class="line">    42176  2025-12-30 14:09   AndroidManifest.xml</span><br><span class="line"> 54084235  2025-12-30 14:09   assets/main.obb.png</span><br><span class="line">      525  2025-12-30 14:09   assets/...</span><br><span class="line">150120496  2025-12-30 14:09   lib/arm64-v8a/libUE4.so</span><br><span class="line">   911696  2025-12-30 14:09   lib/arm64-v8a/...</span><br><span class="line">      388  2025-12-30 14:09   res/...</span><br><span class="line">      375  1970-01-01 08:00   third_party/...</span><br><span class="line">     1360  2025-12-30 14:09   META-INF/...</span><br><span class="line">      *    2025-12-30 14:09   ...</span><br><span class="line">---------                     -------</span><br><span class="line">313547787                     789 files</span><br></pre></td></tr></table></figure>
 
-<p>在游戏启动时，会在AndroidPlatformFile初始化时，从<code>base.apk</code>中读取<code>main.obb.png</code>，在引擎中建立虚拟映射结构，从而实现在不解压的情况下读取内部pak等文件的目的。</p>
+<p>When the game launches, the <code>AndroidPlatformFile</code> initializes by reading <code>main.obb.png</code> from <code>base.apk</code> and establishing a virtual mapping structure, allowing for reading internal Paks without extraction.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">Initialize</span><span class="params">(IPlatformFile* Inner, <span class="type">const</span> TCHAR* CmdLine)</span> <span class="keyword">override</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> (GOBBinAPK)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Open the APK as a ZIP</span></span><br><span class="line">		FZipUnionFile APKZip;</span><br><span class="line">		int32 Handle = <span class="built_in">open</span>(<span class="built_in">TCHAR_TO_UTF8</span>(*GAPKFilename), O_RDONLY);</span><br><span class="line">		<span class="keyword">if</span> (Handle == <span class="number">-1</span>)&#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">		FFileHandleAndroid* APKFile = <span class="keyword">new</span> <span class="built_in">FFileHandleAndroid</span>(GAPKFilename, Handle);</span><br><span class="line">		APKZip.<span class="built_in">AddPatchFile</span>(<span class="built_in">MakeShareable</span>(APKFile));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Now open the OBB in the APK and mount it</span></span><br><span class="line">		<span class="keyword">if</span> (APKZip.<span class="built_in">HasEntry</span>(<span class="string">&quot;assets/main.obb.png&quot;</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">auto</span> OBBEntry = APKZip.<span class="built_in">GetEntry</span>(<span class="string">&quot;assets/main.obb.png&quot;</span>);</span><br><span class="line">			FFileHandleAndroid* OBBFile = <span class="built_in">static_cast</span>&lt;FFileHandleAndroid*&gt;(<span class="keyword">new</span> <span class="built_in">FFileHandleAndroid</span>(*OBBEntry.File, <span class="number">0</span>, OBBEntry.File-&gt;<span class="built_in">Size</span>()));</span><br><span class="line">			<span class="built_in">check</span>(<span class="literal">nullptr</span> != OBBFile);</span><br><span class="line">			ZipResource.<span class="built_in">AddPatchFile</span>(<span class="built_in">MakeShareable</span>(OBBFile));</span><br><span class="line">			<span class="comment">// ...</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而<code>main.obb.png</code>内部的目录结构就是引擎定义的虚拟路径：</p>
+<p>The directory structure inside <code>main.obb.png</code> matches the virtual paths defined by the engine:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Archive:  main.obb.png</span><br><span class="line">  Length      Date    Time    Name</span><br><span class="line">---------  ---------- -----   ----</span><br><span class="line">  5636706  2025-05-14 14:15   FGame/Content/Movies/SplashAll.mp4</span><br><span class="line"> 48447043  2025-12-30 14:05   FGame/Content/Paks/pakchunk0-Android_ASTC.pak</span><br><span class="line">---------                     -------</span><br><span class="line"> 54083749                     2 files</span><br></pre></td></tr></table></figure>
 
-<p>还记得博客中之前文章（<a href="https://imzlp.com/posts/16895/#pak%E7%9A%84%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95">pak 的自动挂载目录</a>）介绍过的引擎自动挂载的三个目录吗？通过这样的方式就对应起来了，然后走引擎UFS的PlatformFile机制，就可以实现跨平台的包内文件读取了。</p>
-<p>而游戏运行时产生的数据目录（Saved等），则不会存在于<code>/data/app/</code>中，它被写入独立的沙盒目录（详见文章<a href="https://imzlp.com/posts/20367">UE 源码分析：修改游戏默认的数据存储路径</a>），跟app程序目录是脱离的，在升级app时，数据目录会保留。</p>
-<p>当APP覆盖安装时，底层产生了下面的变化：</p>
+<p>Remember the three auto-mounted directories in the engine introduced in my blog (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/16895/#pak%E7%9A%84%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95">Pak Automatic Mount Directories</a>)? This mapping allows for cross-platform file reading within the package via the engine’s UFS PlatformFile mechanism.</p>
+<p>Runtime data directories (e.g., <code>Saved</code>) do not exist in <code>/data/app/</code>. They are written to a separate sandbox directory (refer to <a target="_blank" rel="noopener" href="https://imzlp.com/posts/20367">UE Source Analysis: Modifying the Default Game Data Storage Path</a>), which is independent of the app directory and persists during app upgrades.</p>
+<p>When an app is overwritten/updated, the following underlying changes occur:</p>
 <ol>
-<li><strong>APK路径更新</strong>：旧的安装路径（<code>/data/app/</code> + 包名 + 随机字符）会被删除，新的APK会被放入一个新的随机字符目录;</li>
-<li><strong>库文件更新：</strong> <code>/lib/</code> 目录下的 <code>.so</code> 原生库会被全部清空，并根据新 APK 里的内容重新解压;</li>
-<li><strong>重新编译字节码：</strong> 系统会删除旧的 <code>.odex</code> 或 <code>.vdex</code> 优化文件，并针对新 APK 重新进行 AOT（预编译）或类验证;</li>
+<li><strong>APK Path Update</strong>: The old installation path is deleted; the new APK is placed in a new random-character directory.</li>
+<li><strong>Library Update</strong>: Native <code>.so</code> libraries in <code>/lib/</code> are cleared and re-extracted from the new APK.</li>
+<li><strong>Bytecode Recompilation</strong>: The system deletes old <code>.odex</code> or <code>.vdex</code> optimization files and performs AOT (Ahead-Of-Time) compilation or class verification for the new APK.</li>
 </ol>
-<p>所以，根据上面的分析可以得出一个结论：当APP覆盖安装时，安装包内部的文件都会<strong>被替换为新版本</strong>，但<strong>数据目录依然保留</strong>。</p>
-<p>则对UE而言，更新APP的覆盖安装，会产生下面的结果：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/19c600abada9a6e8.png"></p>
-<p>如图所示，在本地会残留1.0版本安装包之外的所有资产（通常是所有动态下载的部分）。</p>
-<p>对于大版本资源复用的需求，我们能做的就是<strong>在2.0的APP版本基础</strong>上，复用1.0<strong>安装包之外</strong>的资产。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/ebfe1c66124dfe9a.png"></p>
-<h2 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h2><p>当本地残留了上个APP版本的资源时，对于UE来说意味着什么？</p>
-<p>当更换APP版本时，通常都会有底层的变化，如：</p>
+<p>Conclusion: When an app is updated via overwrite, files inside the installation package are <strong>replaced with the new version</strong>, but the <strong>data directory remains intact</strong>.</p>
+<p>For UE, updating the app via overwrite results in the following:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/19c600abada9a6e8.png" alt="Asset status after app update"></p>
+<p>As shown, assets outside the 1.0 installation package (usually all dynamically downloaded parts) remain locally.</p>
+<p>For the requirement of major version resource reuse, we can reuse assets <strong>outside the installation package</strong> of version 1.0 on top of the 2.0 app version.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/ebfe1c66124dfe9a.png" alt="Reuse logic"></p>
+<h2 id="Feasibility-Analysis"><a href="#Feasibility-Analysis" class="headerlink" title="Feasibility Analysis"></a>Feasibility Analysis</h2><p>When legacy assets from the previous app version remain locally, what does this mean for UE?</p>
+<p>When changing app versions, underlying changes typically occur:</p>
 <ul>
-<li>修改资源的类：新增、删除属性，修改序列化方式</li>
-<li>修改引擎配置：造成资产的被动变化</li>
-<li>修改C++类：对蓝图资产的影响</li>
-<li>修改底层渲染代码：Shader需要重新编译</li>
-<li>……</li>
+<li>Asset class modifications: adding/deleting properties, changing serialization methods.</li>
+<li>Engine configuration changes: causing passive asset changes.</li>
+<li>C++ class modifications: affecting Blueprint assets.</li>
+<li>Underlying rendering code changes: requiring Shader recompilation.</li>
+<li>…</li>
 </ul>
-<p>这些都会造成程序与旧的资产无法对齐，如果直接使用，<strong>可能</strong>会造成崩溃或表现异常。</p>
-<p>从UE的底层虚拟文件系统出发，游戏的正确运行依赖加载正确的文件。但对于新app而言，旧版app的资源内一部分资源已经变成错误的了，所以需要通过补丁替换掉不匹配的文件、添加旧版本中不存在的文件。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/358d9473752baa1a.png"></p>
-<p>只需要对补丁和旧版本资产利用引擎本身的Pak Order机制做好优先级，确保补丁比旧版本资源的优先级更高，就能实现文件替换的需求，这一点与热更新完全一致。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220523131938.webp" alt="PakOrder决定加载优先级"></p>
-<p>从引擎的基础机制上完全可以实现，那么接下来问题关键，是如何识别旧版本残留资源中，哪些是不匹配的部分？</p>
-<h2 id="如何识别差异？"><a href="#如何识别差异？" class="headerlink" title="如何识别差异？"></a>如何识别差异？</h2><p>对于UFS来说，我们需要让引擎能够读取最新的文件，不管是UASSET还是代码脚本抑或是数据文件，对于UFS来说，他们都只是”文件”，唯一的区别是，对于UASSET在COOK后才产出最终进包的文件列表。<br>那么，就需要对1.0与2.0这两个版本，所有安装包之外的文件进行差异计算。因为2.0的安装包内已经自带了一部分最新的资源，所以可以忽略。</p>
+<p>These can cause programs to be misaligned with old assets, leading to potential crashes or rendering errors.</p>
+<p>Relying on UE’s virtual file system, the game depends on loading the correct files. For a new app, some old resources may now be incorrect, so we must use patches to replace mismatched files and add files missing from the old version.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/358d9473752baa1a.png" alt="Patching mechanism"></p>
+<p>Simply set the correct priority using the engine’s Pak Order mechanism, ensuring patches have higher priority than old version resources—just like hot patching.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2021/20220523131938.webp" alt="PakOrder determines load priority"></p>
+<p>Since the engine’s base mechanism supports this, the key is: how do we identify which legacy assets are mismatched?</p>
+<h2 id="How-to-Identify-Differences"><a href="#How-to-Identify-Differences" class="headerlink" title="How to Identify Differences?"></a>How to Identify Differences?</h2><p>For UFS, we need the engine to read the latest files—whether UASSETs, script code, or data files. They are all “files” to UFS. The only difference is that UASSETs generate a final file list after COOKing.<br>Thus, we need to calculate the difference for all files outside the installation package between 1.0 and 2.0 (ignoring those already included in the 2.0 APK).</p>
 <ul>
-<li>对于普通文件，直接计算HASH值</li>
-<li>对于UASSET，需要计算COOKED产物的HASH值</li>
+<li>For ordinary files, calculate the HASH value directly.</li>
+<li>For UASSETs, calculate the HASH of the COOKED artifact.</li>
 </ul>
-<p>简单地说，需要在打包构建时能够记录每个版本中所有的文件的HASH值，并且还需要能够区分每个文件存在于安装包的内部或外部。基于相同路径文件HASH的差异，来识别文件是否与最新版本的有差异。</p>
-<p>我在<a href="https://imzlp.com/posts/17590/">HotPatcher</a>的导出Release过程中实现了这个过程，之前的版本中只记录了UASSET原始资产的GUID与文件的HASH值，我扩展了这部分，对UASSET还会记录该资产在每个平台的COOKED的文件的HASH值。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/4d3b76a9a85dfd78.png"></p>
-<p>UASSET的导出信息：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/eb6fb49a46e3afdc.png"></p>
-<p>并且还会记录每个文件所属于哪个pak，这样就能够识别每个资产是否存在与安装包内了。</p>
-<p>在<a href="https://imzlp.com/posts/17590/">HotPatcher</a>的热更流程内，每次打包后都需要先生成Release数据。对于大版本补丁的需求而言，可以直接复用两个版本的Release数据进行差异，这样就能够对比出新旧两个版本的所有完整差异了。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/0743aafa901d6168.png"></p>
-<p>只需要基于<strong>最新的工程</strong>+<strong>新旧两个版本的Release数据</strong>，就可以实现大版本补丁的差异流程，并且可以直接基于<a href="https://imzlp.com/posts/17590/">HotPatcher</a>打出完整的补丁。</p>
-<p>或许你会问：我直接拿到新旧两个版本中所有的PAK，不是就可以进行差异了吗？那使用<a href="https://imzlp.com/posts/17590/">HotPatcher</a>的Release的作用是什么呢？<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/343b8805564e00e7.png"></p>
-<p>问得好！我来回答这个问题。</p>
-<p>理想情况下确实是这样，<a href="https://imzlp.com/posts/17590/">HotPatcher</a>本质上也是利用完成PAK的数据导出的，所以直接对两个版本中所有的普通文件和UASSET COOKED的差异确实没什么问题。<br>但大版本之间的差异还有一些例外情况以及维护成本：</p>
+<p>Simply put, we must record the HASH value of every file in each version during packaging and distinguish whether a file resides inside or outside the installation package. Differences in HASH values for files with the same path identify mismatches.</p>
+<p>I implemented this in the release export process of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>. Previous versions only recorded the GUID of original UASSETs and the HASH of the file; I extended this to record the HASH of the COOKED file for each platform.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/4d3b76a9a85dfd78.png" alt="UASSET metadata"></p>
+<p>UASSET export information:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/eb6fb49a46e3afdc.png" alt="UASSET export info"></p>
+<p>It also records which Pak a file belongs to, allowing us to identify if an asset exists within the installation package.</p>
+<p>In <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>‘s hot-patching workflow, we generate Release data after every build. For major version patching, we can directly reuse Release data from two versions to calculate the diff, revealing all differences between the old and new versions.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/0743aafa901d6168.png" alt="Release diff logic"></p>
+<p>By using the <strong>latest project</strong> + <strong>new and old Release data</strong>, we can execute the major version patch diff process and generate complete patches using <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>.</p>
+<p>You might ask: “Can’t I just take all the PAKs from both versions and diff them? What’s the point of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>‘s Release data?”</p>
+<p>Great question! The answer:<br>While it is true that one could diff the PAKs directly, <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> also utilizes the PAK data exports. However, major versions have exceptions and maintenance costs:</p>
 <ol>
-<li>对于ShaderCodeLibrary，两个版本间它必定会产生差异，完整进补丁会造成大幅浪费（如IOS动辄数百M的大小）</li>
-<li>不仅ShaderCode，所有涉及数据生成的文件都存在这个问题，另一个例子是AssetRegistry数据</li>
-<li>维护每个版本完整的PAK文件，每个版本10+G是版本管理噩梦</li>
-<li>在新版本中删除的文件，需在补丁中标记UFS删除</li>
+<li><strong>ShaderCodeLibrary</strong>: Always differs between versions; including it entirely is wasteful (e.g., hundreds of MBs on iOS).</li>
+<li><strong>Data files</strong>: Similar to ShaderCode, files like AssetRegistry face the same issue.</li>
+<li><strong>Maintenance</strong>: Keeping full PAK files (10GB+) for every version is a nightmare.</li>
+<li><strong>Deletions</strong>: Files removed in the new version must be marked as deleted via UFS in the patch.</li>
 </ol>
-<p>利用<a href="https://imzlp.com/posts/17590/">HotPatcher</a>框架内的能力，则可以完全避免这些问题，用极低的维护成本，实现最灵活的版本控制（以40W+规模UASSET的工程为例（约100w个文件），生成的Release数据只有50M）。并且不需要处理任何ShaderCodeLibrary与Regiatry等数据的差异逻辑，一步生成补丁即可发布。</p>
-<p>从工程化的角度看，<a href="https://imzlp.com/posts/17590/">HotPatcher</a>提供的是一种完整链路的优化方案，无需关注内部技术细节，实现全自动化差异、打包与发布。与热更流程完美契合，共用同一套技术框架。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/e67dc6c1639eff10.png"></p>
-<h3 id="打包哪些部分？"><a href="#打包哪些部分？" class="headerlink" title="打包哪些部分？"></a>打包哪些部分？</h3><p><strong>大版本补丁</strong>只能基于所有玩家共同的基础版本进行打包。<br>比如，第一个玩家在1.1，第二个玩家在1.2，第三个玩家1.3版本，他们本地的热更补丁是不一致的。所以，我们只能基于他们共同的版本1.0来作为差异的基础，而不能基于某个热更的版本。</p>
-<p>这确实会造成一部分的浪费：2.0新版本里的部分资源或许已经在热更包中存在了，但这是取舍后的选择（当然如果想要做的足够细致，技术实现上也是没问题的），但真实的项目中只能基于维护成本、方案复杂性与收益之间做一个取舍。</p>
-<p>除此之外，<a href="https://imzlp.com/posts/17590/">HotPatcher</a>还实现了一种多阶段分层的差异机制，可以把差异文件最小化：</p>
+<p>Using <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>‘s framework avoids these problems, offering flexible version control with minimal maintenance (e.g., for a 400k+ UASSET project, Release data is only 50MB). You don’t need to handle differential logic for ShaderCodeLibrary or Registry; simply generate the patch and release.</p>
+<p>From an engineering perspective, <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> provides an end-to-end optimization solution—no need to manage internal technical details. It integrates perfectly with the hot-patching workflow.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/e67dc6c1639eff10.png" alt="Workflow"></p>
+<h3 id="What-to-Package"><a href="#What-to-Package" class="headerlink" title="What to Package?"></a>What to Package?</h3><p><strong>Major version patches</strong> can only be packaged based on a base version shared by all players.<br>For example, if players are at 1.1, 1.2, and 1.3, their local hot-patch status is inconsistent. We must use their common version, 1.0, as the base for the diff.</p>
+<p>This does cause some waste (some resources in 2.0 might already exist in hot-patches), but it is a trade-off. Real-world projects must balance maintenance cost, complexity, and gains.</p>
+<p>Additionally, <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> implements a multi-stage layered diff mechanism to minimize the size:</p>
 <ul>
-<li>基于UASSET变动进行初始差异分析，并分析被动变更</li>
-<li>基于UASSET的差异，转变为基于COOKED文件的差异。当修改了UASSET，但只影响了部分COOK产物，则只会打包变动的那个文件</li>
-<li>在2的基础上，如果UASSET GUID变化，但COOKED没变化，则会被完全剔除<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/61e47bd9529b18a3.png"></li>
+<li>Initial diff analysis based on UASSET changes, including passive changes.</li>
+<li>Convert UASSET diffs to COOKED file diffs. If a UASSET modification only affects part of the COOKed output, only that file is packaged.</li>
+<li>If a UASSET’s GUID changes but the COOKED output doesn’t, it is excluded.</li>
 </ul>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/61e47bd9529b18a3.png" alt="Diff mechanism"></p>
 <blockquote>
-<p>注意：该机制可同时用在大版本补丁，以及热更补丁流程。</p>
+<p>Note: This mechanism can be used for both major version patches and hot-patch flows.</p>
 </blockquote>
-<p>这样就能够把两个版本中，所有实际产生了变化的部分打包成补丁了。</p>
-<h3 id="横跨多版本的补丁"><a href="#横跨多版本的补丁" class="headerlink" title="横跨多版本的补丁"></a>横跨多版本的补丁</h3><p>简单地说，基于上面的方案，打包大版本补丁就简化为了三个步骤:</p>
+<p>This packages only the actual changed parts between the two versions.</p>
+<h3 id="Cross-Version-Patching"><a href="#Cross-Version-Patching" class="headerlink" title="Cross-Version Patching"></a>Cross-Version Patching</h3><p>Simply put, the major version patching process is:</p>
 <ol>
-<li>选择某个旧版本的Release数据</li>
-<li>最新版本的工程+最新版本Release数据</li>
-<li>调用HotPatcher执行打包</li>
+<li>Select an old version’s Release data.</li>
+<li>Use the latest project + latest version Release data.</li>
+<li>Call <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> to build.</li>
 </ol>
-<p>只需要控制旧版本的Release数据，就可以打包出横跨多版本的补丁，维护成本也就只是多几个Release数据而已。</p>
-<h2 id="运行时流程"><a href="#运行时流程" class="headerlink" title="运行时流程"></a>运行时流程</h2><p>当补丁准备好后，需要对运行时下载与加载流程做改造，才能正确适配新版本APP+旧版本资源+大版本补丁。</p>
-<p>需要处理两部分事情：</p>
+<p>By controlling the old version’s Release data, you can build patches spanning multiple versions; maintenance cost is just keeping a few extra Release data files.</p>
+<h2 id="Runtime-Workflow"><a href="#Runtime-Workflow" class="headerlink" title="Runtime Workflow"></a>Runtime Workflow</h2><p>Once the patch is ready, the runtime download and loading flow must be adapted to handle the new app + legacy resources + major version patch.</p>
+<p>Two tasks:</p>
 <ol>
-<li>检测本地版本的资源完整性、区分下载大版本补丁与完整包</li>
-<li>在新APP + 旧版本资源 + 大版本补丁 + 热更新的基础上，正确处理PakOrder<h3 id="下载切换"><a href="#下载切换" class="headerlink" title="下载切换"></a>下载切换</h3>启动时检测本地环境执行下载的流程：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/bdbef51d6aa754e8.png"><h3 id="挂载处理PakOrder"><a href="#挂载处理PakOrder" class="headerlink" title="挂载处理PakOrder"></a>挂载处理PakOrder</h3>最关键的问题是正确处理多种来源的Pak的挂载Order，它是让引擎正确加载的核心要素。</li>
+<li>Detect local resource integrity; distinguish between downloading major version patches vs. full packages.</li>
+<li>Correctly handle PakOrder based on: New App + Legacy Resources + Major Patch + Hot Updates.</li>
 </ol>
-<p>对于大版本补丁而言，存在以下几种来源：</p>
+<h3 id="Download-Switching"><a href="#Download-Switching" class="headerlink" title="Download Switching"></a>Download Switching</h3><p>Launch-time environment detection flow:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/bdbef51d6aa754e8.png" alt="Flowchart"></p>
+<h3 id="Mounting-and-PakOrder"><a href="#Mounting-and-PakOrder" class="headerlink" title="Mounting and PakOrder"></a>Mounting and PakOrder</h3><p>The crucial issue is managing the load Order of Paks from multiple sources.</p>
+<p>For major version patches, sources include:</p>
 <ol>
-<li>旧版本资源</li>
-<li>大版本补丁（可能存在多个，如1.0_to_2.0、2.0_to_3.0，3.0_to_4.0）</li>
-<li>新版本安装包内的PAK，如pakchunk0</li>
-<li>需动态下载的资源</li>
-<li>热更的资源</li>
+<li>Legacy resources.</li>
+<li>Major version patches (potentially multiple, e.g., 1.0_to_2.0, 2.0_to_3.0, 3.0_to_4.0).</li>
+<li>New app internal PAKs (e.g., <code>pakchunk0</code>).</li>
+<li>Dynamically downloaded resources.</li>
+<li>Hot-patched resources.</li>
 </ol>
-<p>他们的优先级要依次递增，不然就会造成混乱：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/7d05cfa667e748e1.png"></p>
-<p>对于存在多个大版本补丁累计类型的情况，也要能够正确处理任意版本累计的情况，维护好版本关系与优先级：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/93b274699fd75433.png"></p>
-<p>基于这样的设计，活跃的玩家（正常跟随版本发布节奏升级），每次都能够享受到下载量级最小的服务。而对于横跨多个版本的玩家回归，可以考虑让玩家下载从本地版本到最新版本的所有补丁，也可以为间隔多个版本的专门打出一个合并的补丁。具体的策略可以根据项目的运营情况决定。</p>
-<h2 id="对热更的影响？"><a href="#对热更的影响？" class="headerlink" title="对热更的影响？"></a>对热更的影响？</h2><p>没有影响，对于同一个版本而言，存在两种情况：</p>
+<p>Priorities must increase incrementally to avoid conflicts:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/7d05cfa667e748e1.png" alt="Priority layers"></p>
+<p>This design handles cumulative major patches correctly. Active players enjoy minimal download sizes. Returning players can download all patches from their local version to the latest, or we can provide a single merged patch for those skipping many versions, depending on project needs.</p>
+<h2 id="Impact-on-Hot-Patching"><a href="#Impact-on-Hot-Patching" class="headerlink" title="Impact on Hot Patching?"></a>Impact on Hot Patching?</h2><p>No impact. For any version, there are two scenarios:</p>
 <ol>
-<li>全新安装，下载整包</li>
-<li>从旧版本+大版本补丁升级而来</li>
+<li>Fresh installation: Download full package.</li>
+<li>Upgraded from old version + major patch.</li>
 </ol>
-<p>根据前面的流程，旧版本+大版本补丁，能够对齐最新版本的完整资源。对于热更来说，他们都是基于相同的基线版本进行更新，所以没有区别。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/92b229fc139d0b0d.png"></p>
-<p>后续的热更新，只需要用<a href="https://imzlp.com/posts/17590/">HotPatcher</a>对2.0的一致性版本的RELEASE打包差异即可。无需关注客户端是完整安装还是有大版本补丁，在热更层面没有区别，也降低了复杂度。</p>
-<h2 id="潜在问题及优化思路"><a href="#潜在问题及优化思路" class="headerlink" title="潜在问题及优化思路"></a>潜在问题及优化思路</h2><p>对于大版本补丁而言，本质上是客户端本地多挂载了几个PAK，并且其中有一些文件冗余的部分。除非做运行时重组，冗余的空间才可以清除。<br>但除了存储空间占用多了之外，我更关注运行时执行效率的问题。</p>
-<p>那么大版本补丁，可能会带来哪些运行时执行效率的问题，以及如何处理呢？</p>
-<p>首先，因为大版本补丁是一个或多个PAK文件，所以在挂载时会有一些固定内存开销，但这部分较少可以忽略不计。真正需要关注的是随着冗余文件规模增加而增加的部分：PakEntry。</p>
-<p>PakEntry对应了PAK中的每一个文件，是UFS用来查找与加载的文件描述。当随着大版本补丁不断更新，会导致本地Pak中冗余的文件越来越多，而在PAK挂载时，PakEntry就会被构造出来具有内存占用，所以它的开销是随着冗余数量增加线性增长的。</p>
-<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/8bff41ceda11a778.png"></p>
-<p>它会带来两部分开销：</p>
+<p>Based on the flow, old version + major patch aligns perfectly with the latest baseline. For hot patching, since both are based on the same baseline, there is no difference.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/92b229fc139d0b0d.png" alt="Hot patch impact"></p>
+<p>Subsequent hot updates simply use <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> to diff against the 2.0 baseline. The complexity is lowered because the hot-patching layer doesn’t care if the client was a fresh install or a patched one.</p>
+<h2 id="Potential-Issues-and-Optimization"><a href="#Potential-Issues-and-Optimization" class="headerlink" title="Potential Issues and Optimization"></a>Potential Issues and Optimization</h2><p>Major version patching essentially mounts several extra PAKs, leaving some redundant files. Unless runtime reorganization is performed, redundant space cannot be cleared.<br>Beyond storage, I focus on runtime efficiency.</p>
+<p>Does patching cause performance issues?<br>It involves fixed memory overhead for Pak mounting, which is negligible. The main concern is <code>PakEntry</code> growth: <code>PakEntry</code> corresponds to every file in a PAK, used for UFS lookups. As redundant files accumulate, memory usage for <code>PakEntry</code> increases linearly.</p>
+<p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/8bff41ceda11a778.png" alt="PakEntry overhead"></p>
+<p>It impacts:</p>
 <ol>
-<li>内存占用</li>
-<li>文件查询</li>
+<li>Memory usage.</li>
+<li>File query speed.</li>
 </ol>
-<p>所以，基于此方案还需要做一步优化，对于冗余的资产，在运行时剔除它的PakEntry。<strong>无论有多少个大版本补丁、内存占用始终与完整包一致，热更也同理</strong>。</p>
-<h2 id="数据展示"><a href="#数据展示" class="headerlink" title="数据展示"></a>数据展示</h2><p>本方案已正式应用在上线项目中，在首次测试期间APP换包更新时，具有极佳的数据收益：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/70f570023cf1f6df.png"></p>
-<p>通过大版本补丁升级上来，下载量降低了两个数量级。</p>
+<p>Therefore, an optimization step is needed: remove <code>PakEntry</code> for redundant assets at runtime. <strong>Regardless of the number of major patches, memory usage remains consistent with a full package, as does hot patching.</strong></p>
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p>This scheme is live. During the first test when the app updated, it showed excellent results:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/f07ca536c59e5a41.png" alt="Data benefits"></p>
+<p>Upgrading via major patches reduced download volume by two orders of magnitude.</p>
 <blockquote>
-<p>注意：首测毕竟时间较短，差异没那么大。但它也可以侧面证明：当APP更新不可避免（如致命BUG、严重问题修复）等，利用大版本补丁的机制，同样可以让用户的下载感知最小化，降低流失率。</p>
+<p>Note: The first test was short, but it proves that when app updates are unavoidable (e.g., critical bug fixes), this mechanism minimizes user download perception and churn.</p>
 </blockquote>
-<p>补充另一份数据，在长期运营隔数个月后正常的换版本节奏时，依然有极佳的效果：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/f07ca536c59e5a41.png"></p>
-<p>利用大版本补丁方案，把游戏运行时需动态下载的大小<strong>降低到了</strong>10%左右，**减少了90%**。</p>
-<p><strong>综合收益：</strong></p>
+<p>Another data point: after months of operation, typical version updates still show great results:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2026/02/12/f07ca536c59e5a41.png" alt="Long-term results"></p>
+<p>The major version patch scheme <strong>reduced dynamic download sizes by 90%</strong>, down to about 10%.</p>
+<p><strong>Total Benefits:</strong></p>
 <ol>
-<li>大幅减少了下载大小、缩短了下载耗时</li>
-<li>CDN峰值骤减（推送预下载+下载耗时减少）</li>
-<li>平摊了CDN的峰值压力<br>大幅降低了项目运营期的CDN成本。</li>
+<li>Significant reduction in download size and time.</li>
+<li>Drastic reduction in CDN spikes.</li>
+<li>Lower CDN costs during operations.</li>
 </ol>
-<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h2><p>以上介绍的内容还并不是极致的大小优化，除此之外还可以结合我之前的这篇文章：<a href="https://imzlp.com/posts/25136">UE 热更新：资源的二进制补丁方案</a>，为大版本补丁创建二进制的文件差异，可以在此基础上更大幅度地降低补丁大小。</p>
-<p>因为底层技术都复用HotPatcher热更的流程，所以之前博客中介绍的所有热更新的优化策略，都可以在大版本补丁中使用，实现1+1&gt;2的效果。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文介绍了一种在新版本APP上复用旧版本资源的方案，能够在换版本时大幅降低下载大小，在线上项目中具有极佳的收益。</p>
-<p>我把大版本补丁的部分实现了一个独立的MOD：ReleasePatcher。整套方案+优化策略，都可以在<a href="https://imzlp.com/posts/17590/">HotPatcher</a>的技术框架内实现，只需要接入<a href="https://imzlp.com/posts/17590/">HotPatcher</a> + ReleasePatcher(Mod)，就能够完整实现大版本补丁的功能。</p>
-<p>最新版本的<a href="https://imzlp.com/posts/17590/">HotPatcher</a>与Mod暂未公开发布，本文可作为工程实践参考。</p>
+<h2 id="Further-Optimization"><a href="#Further-Optimization" class="headerlink" title="Further Optimization"></a>Further Optimization</h2><p>This is not the absolute limit. You can combine this with my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/25136">UE Hot Patching: Binary Patching Scheme for Resources</a> to create binary file diffs, further reducing patch sizes.</p>
+<p>Since all underlying technology reuses the <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> flow, all previously introduced optimization strategies apply to major version patches, achieving a “1+1&gt;2” effect.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This article introduced a scheme to reuse legacy resources with new app versions, significantly reducing download sizes during updates. It is highly beneficial for live projects.</p>
+<p>I implemented the major version patch logic as a separate MOD: <code>ReleasePatcher</code>. The entire solution and optimization strategies can be implemented within the <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> framework. Simply integrate <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> + <code>ReleasePatcher</code> (Mod) to achieve complete major version patching.</p>
+<p>The latest version of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> and the Mod are not yet publicly released; this article serves as an engineering practice reference.</p>
 
     </div>
 
@@ -518,7 +517,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -528,7 +527,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -538,37 +537,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/99122/" target="_blank">包体优化：UE跨版本资源复用的方案</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2026/02/13 09:42<br/>
+             <span>Title:</span><a href="/posts/99122/" target="_blank">Package size optimization: Solution for reusing old-version resources in UE</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2026/02/13 09:42<br/>
              
-             <span>本文字数:</span><span class="page-count">5.7k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">12k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/99122/" target="_blank" title="包体优化：UE跨版本资源复用的方案">https://imzlp.com/posts/99122/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/99122/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/99122/" target="_blank" title="Package size optimization: Solution for reusing old-version resources in UE">https://en.imzlp.com/posts/99122/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/99122/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -590,12 +589,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/84248/" rel="prev" title="从Vibe Coding到AI Agent：一个喂养系统的完整实践">
-      <i class="fa fa-chevron-left"></i> 从Vibe Coding到AI Agent：一个喂养系统的完整实践
+    <a href="/posts/84248/" rel="prev" title="From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System">
+      <i class="fa fa-chevron-left"></i> From Vibe Coding to AI Agent: A Complete Journey of Building a Baby Feeding System
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/54672/" rel="next" title="利用旧笔记本打造家用Homelab服务器">
-      利用旧笔记本打造家用Homelab服务器 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/54672/" rel="next" title="Build a Homelab server using an old laptop">
+      Build a Homelab server using an old laptop <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -666,25 +665,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%A7%E8%B5%84%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">本地旧资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">可行性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB%E5%B7%AE%E5%BC%82%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">如何识别差异？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">打包哪些部分？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%AA%E8%B7%A8%E5%A4%9A%E7%89%88%E6%9C%AC%E7%9A%84%E8%A1%A5%E4%B8%81"><span class="nav-number">4.2.</span> <span class="nav-text">横跨多版本的补丁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">运行时流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%88%87%E6%8D%A2"><span class="nav-number">5.1.</span> <span class="nav-text">下载切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%A4%84%E7%90%86PakOrder"><span class="nav-number">5.2.</span> <span class="nav-text">挂载处理PakOrder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%83%AD%E6%9B%B4%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">对热更的影响？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BD%9C%E5%9C%A8%E9%97%AE%E9%A2%98%E5%8F%8A%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF"><span class="nav-number">7.</span> <span class="nav-text">潜在问题及优化思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA"><span class="nav-number">8.</span> <span class="nav-text">数据展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BC%98%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">进一步优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">10.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Legacy-Resources"><span class="nav-number">2.</span> <span class="nav-text">Local Legacy Resources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feasibility-Analysis"><span class="nav-number">3.</span> <span class="nav-text">Feasibility Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-Identify-Differences"><span class="nav-number">4.</span> <span class="nav-text">How to Identify Differences?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-to-Package"><span class="nav-number">4.1.</span> <span class="nav-text">What to Package?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Version-Patching"><span class="nav-number">4.2.</span> <span class="nav-text">Cross-Version Patching</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-Workflow"><span class="nav-number">5.</span> <span class="nav-text">Runtime Workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-Switching"><span class="nav-number">5.1.</span> <span class="nav-text">Download Switching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mounting-and-PakOrder"><span class="nav-number">5.2.</span> <span class="nav-text">Mounting and PakOrder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Impact-on-Hot-Patching"><span class="nav-number">6.</span> <span class="nav-text">Impact on Hot Patching?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Potential-Issues-and-Optimization"><span class="nav-number">7.</span> <span class="nav-text">Potential Issues and Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data"><span class="nav-number">8.</span> <span class="nav-text">Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Further-Optimization"><span class="nav-number">9.</span> <span class="nav-text">Further Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">10.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="/images/avatar.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -692,19 +691,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">198</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">99</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">194</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -736,7 +735,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -763,9 +762,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -774,12 +770,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">794k</span>
+    <span title="Symbols count total">1.6m</span>
 </div>
   <div class="powered-by-other">
     
@@ -932,7 +928,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/99122/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/99122/',]
       });
       });
   </script>
@@ -955,12 +951,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : 'https://appcounter.imzlp.com',

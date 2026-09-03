@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,default">
+<html lang="en,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,27 +19,27 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
+    var CONFIG = {"hostname":"en.imzlp.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"width":280},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"code_unfold":{"enable":true,"CODE_MAX_HEIGHT":600},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在游戏开发过程中，热更新是非常重要的能力，它能够让我们在不换包的情况下更新功能、修复BUG。但是哪些东西可以热更，哪些不能热更，哪些存在风险、目前没有很详细地文章进行介绍。 本篇文章我会介绍我在开发HotPatcher及项目热更实践过程中，对热更能力和热更安全的一些思考。确保项目上线时，热更的能力和稳定性是有保障的，并且在热更迭代阶段，也能够清晰地知道哪些是可以热更的，这样也能很好地评估更新风险。">
+  <meta name="description" content="In the process of game development, hot update is a very important capability that allows us to update features and fix bugs without replacing the entire package. However, there aren’t many detailed a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE热更新：更新能力与热更安全">
-<meta property="og:url" content="https://imzlp.com/posts/66804/index.html">
-<meta property="og:site_name" content="循迹研究室">
-<meta property="og:description" content="在游戏开发过程中，热更新是非常重要的能力，它能够让我们在不换包的情况下更新功能、修复BUG。但是哪些东西可以热更，哪些不能热更，哪些存在风险、目前没有很详细地文章进行介绍。 本篇文章我会介绍我在开发HotPatcher及项目热更实践过程中，对热更能力和热更安全的一些思考。确保项目上线时，热更的能力和稳定性是有保障的，并且在热更迭代阶段，也能够清晰地知道哪些是可以热更的，这样也能很好地评估更新风险。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="UE Hot Update: Updateability and Security">
+<meta property="og:url" content="https://en.imzlp.com/posts/66804/index.html">
+<meta property="og:site_name" content="Z&#39;s Blog">
+<meta property="og:description" content="In the process of game development, hot update is a very important capability that allows us to update features and fix bugs without replacing the entire package. However, there aren’t many detailed a">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.imzlp.com/imgs/zlp/picgo/2025/07/135453.png">
 <meta property="article:published_time" content="2025-07-17T14:03:51.000Z">
 <meta property="article:modified_time" content="2025-07-17T14:03:51.000Z">
-<meta property="article:author" content="查利鹏">
+<meta property="article:author" content="LIPENGZHA">
 <meta property="article:tag" content="UnrealEngine">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="资源管理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imzlp.com/imgs/zlp/picgo/2025/07/135453.png">
 
-<link rel="canonical" href="https://imzlp.com/posts/66804/">
+<link rel="canonical" href="https://en.imzlp.com/posts/66804/">
 
 
 <script id="page-configurations">
@@ -48,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
-  <title>UE热更新：更新能力与热更安全 | 循迹研究室</title>
+  <title>UE Hot Update: Updateability and Security | Z's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDCJ41EFP5"></script>
     <script>
@@ -92,7 +92,7 @@
   </style>
 </noscript>
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="循迹研究室" type="application/atom+xml">
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Z's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,7 +102,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,7 +113,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">循迹研究室</h1>
+      <h1 class="site-title">Z's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -132,24 +132,24 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         
             
   <li class="menu-item menu-item-notes">
 
-    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>笔记</a>
+    <a href="/notes/" rel="section"><i class="fa fa-edit fa-fw"></i>Notes</a>
 
   </li>
 
@@ -159,7 +159,7 @@
             
   <li class="menu-item menu-item-essay">
 
-    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>随笔</a>
+    <a href="/essay/" rel="section"><i class="fas fa-feather-alt fa-fw"></i>Essay</a>
 
   </li>
 
@@ -169,7 +169,7 @@
             
   <li class="menu-item menu-item-resources">
 
-    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>资源</a>
+    <a href="/resources/" rel="section"><i class="fa fa-inbox fa-fw"></i>Resources</a>
 
   </li>
 
@@ -179,7 +179,7 @@
             
   <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About Me</a>
 
   </li>
 
@@ -187,26 +187,26 @@
       
         <li class="menu-item menu-item-showcase">
 
-    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>展示柜</a>
+    <a href="/showcase/" rel="section"><i class="fa fa-solid fa-trophy fa-fw"></i>ShowCase</a>
 
   </li>
         <li class="menu-item menu-item-changelog">
 
-    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>站点日志</a>
+    <a href="/changelog/" rel="section"><i class="fa fa-history fa-fw"></i>Site Log</a>
 
   </li>
         <li class="menu-item menu-item-opensource">
 
-    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>开源项目</a>
+    <a href="/opensource/" rel="section"><i class="fas fa-code-branch fa-fw"></i>Open Source</a>
 
   </li>
         <li class="menu-item menu-item-uewiki">
 
-    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>虚幻知识库</a>
+    <a href="https://ue5wiki.com/" rel="noopener" target="_blank"><i class="fab fa-wikipedia-w fa-fw"></i>Unreal Wiki</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站内搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
       </li>
   </ul>
@@ -222,7 +222,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -241,7 +241,7 @@
 
 
 <script type="text/javascript">
-  let domain='aW16bHAuY29t';
+  let domain='ZW4uaW16bHAuY29t';
   let domain_str = atob(domain);
   let pathname = location.pathname;
   if (domain_str!= location.host.toLowerCase()){
@@ -260,12 +260,12 @@
       // 获取当前页面的 URL
       const currentUrl = window.location.href;
       // 替换 URL 中的部分内容
-      const jumpToL10nLink = currentUrl.replace('imzlp.com', 'en.imzlp.com');
+      const jumpToL10nLink = currentUrl.replace('en.imzlp.com', 'imzlp.com');
       // 将 jumpToL10nLink 绑定到一个全局变量
       window.jumpToL10nLink = jumpToL10nLink;
     </script>
 
-    <a href="#" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
+    <a href="#" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: none;" rel="noopener" target="_blank" onclick="window.open(window.jumpToL10nLink, '_blank'); return false;">
       <i class="fa fa-solid fa-language"></i>
     </a>
   </div>
@@ -283,27 +283,27 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en"
   >
-    <link itemprop="mainEntityOfPage" href="https://imzlp.com/posts/66804/">
+    <link itemprop="mainEntityOfPage" href="https://en.imzlp.com/posts/66804/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="查利鹏">
-      <meta itemprop="description" content="唯有热爱可抵岁月漫长。">
+      <meta itemprop="name" content="LIPENGZHA">
+      <meta itemprop="description" content=""I think, therefore I am"">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="循迹研究室">
+      <meta itemprop="name" content="Z's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UE热更新：更新能力与热更安全<a href="https://github.com/imzlp/blog-md/blob/zh/_posts/2025-07-17-66804.md" class="post-edit-link" title="编辑" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://en.imzlp.com/posts/66804/" class="post-l10n-link" title="Switch to English" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
+          UE Hot Update: Updateability and Security<a href="https://github.com/imzlp/blog-md/blob/en/_posts/2025-07-17-66804.md" class="post-edit-link" title="Edit this post" style="float: right;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a><a href="https://imzlp.com/posts/66804/" class="post-l10n-link" title="切换至中文版本" style="float: left;border-bottom: 0px;" rel="noopener" target="_blank"><i class="fa fa-solid fa-language"></i></a>
         </h1>
 
         
           <div class="post-subtitle" style="text-align: center;line-height: 1;">
-            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE Hot Update: Updateability and Security</sub>
+            <sub text-align="center" style="font-size: 15px;align-content: center;font-style: italic;bottom: 0em;">UE热更新：更新能力与热更安全</sub>
           </div>
         
 
@@ -312,47 +312,47 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2025-07-17 14:03 14:03:51:03" itemprop="dateCreated datePublished" datetime="2025-07-17T14:03:51+00:00">2025-07-17 14:03</time>
+              <time title="Created: 2025-07-17 14:03 14:03:51:03" itemprop="dateCreated datePublished" datetime="2025-07-17T14:03:51+00:00">2025-07-17 14:03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/" itemprop="url" rel="index"><span itemprop="name">UnrealEngine</span></a>
                 </span>
-                  ，
+                  , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/UnrealEngine/%E7%83%AD%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">热更新</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/66804/" class="post-meta-item leancloud_visitors" data-flag-title="UE热更新：更新能力与热更安全" title="阅读次数">
+            <span id="/posts/66804/" class="post-meta-item leancloud_visitors" data-flag-title="UE Hot Update: Updateability and Security" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
   
   <br>
-            <span class="post-meta-item" title="本文字数">
+            <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>12k</span>
             </span>
-            <span class="post-meta-item" title="阅读时长">
+            <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>30 mins.</span>
             </span>
 
         </div>
@@ -364,46 +364,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在游戏开发过程中，热更新是非常重要的能力，它能够让我们在不换包的情况下更新功能、修复BUG。但是哪些东西可以热更，哪些不能热更，哪些存在风险、目前没有很详细地文章进行介绍。</p>
-<p>本篇文章我会介绍我在开发<a href="https://imzlp.com/posts/17590/">HotPatcher</a>及项目热更实践过程中，对热更能力和热更安全的一些思考。确保项目上线时，热更的能力和稳定性是有保障的，并且在热更迭代阶段，也能够清晰地知道哪些是可以热更的，这样也能很好地评估更新风险。<br>以及通过周边能力建设，提前进行风险排查，把热更新流程变成自动化的，只需要版本PM来控制补丁构建和发布时机，完全不需要程序参与到热更流程。</p>
+        <p>In the process of game development, hot update is a very important capability that allows us to update features and fix bugs without replacing the entire package. However, there aren’t many detailed articles currently introducing what can be hot-updated, what cannot, and what carries risks.</p>
+<p>In this article, I will introduce my thoughts on hot update capabilities and hot update security during the development of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> and project hot update practices. This ensures that the hot update capabilities and stability are guaranteed when the project goes online, and that it’s clear what can be hot-updated during the hot update iteration phase, allowing for a good assessment of update risks.<br>Additionally, by building peripheral capabilities, conducting risk assessments in advance, and automating the hot update process, only the version PM needs to control the patch construction and release timing, with no need for programmers to be involved in the hot update process at all.</p>
 <span id="more"></span>
 
-<h2 id="热更流程"><a href="#热更流程" class="headerlink" title="热更流程"></a>热更流程</h2><h3 id="补丁构建"><a href="#补丁构建" class="headerlink" title="补丁构建"></a>补丁构建</h3><p>基于<a href="https://imzlp.com/posts/17590/">HotPatcher</a>的热更打包机制：追踪原始工程变动，自动分析所有需要打包的资源，并与上个版本生成差异补丁。</p>
+<h2 id="Hot-Update-Process"><a href="#Hot-Update-Process" class="headerlink" title="Hot Update Process"></a>Hot Update Process</h2><h3 id="Patch-Construction"><a href="#Patch-Construction" class="headerlink" title="Patch Construction"></a>Patch Construction</h3><p>Based on the hot update packaging mechanism of <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a>: it tracks original project changes, automatically analyzes all resources that need to be packaged, and generates differential patches compared to the previous version.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/134000.png"></p>
-<p>补丁生成后会上传到CDN上，进行后续的测试和发布流程。</p>
-<p>基于这套方案的热更构建流程，热更补丁的启动构建、发布均由版本PM控制，<strong>无需程序参与</strong>，中间流程是全自动化的。</p>
-<h3 id="运行时"><a href="#运行时" class="headerlink" title="运行时"></a>运行时</h3><p>运行时需要实现补丁的动态下载流程，最好在下载完毕后再统一执行挂载：</p>
+<p>After the patch is generated, it will be uploaded to CDN for subsequent testing and release processes.</p>
+<p>Based on this hot update construction scheme, the initiation of patch construction and release are controlled by the version PM, <strong>no programmer involvement is required</strong>, and the intermediate process is fully automated.</p>
+<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>At runtime, a dynamic patch download process needs to be implemented, ideally, mounting should be performed uniformly after the download is complete:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/113137.png"></p>
-<p>热更发布的补丁的优先级是递增的：</p>
+<p>The priority of hot-updated patches is incremental:</p>
 <ol>
-<li>补丁的优先级比安装包内资源及全量下载资源更高</li>
-<li>最新的补丁(x.3)比次新的补丁(x.2)优先级更高，确保最新的补丁能够覆盖旧资源</li>
+<li>The patch priority is higher than resources within the installation package and full-downloaded resources.</li>
+<li>The latest patch (x.3) has higher priority than the second newest patch (x.2), ensuring that the latest patch can overwrite old resources.</li>
 </ol>
-<p>这样就能确保最新的资源能覆盖旧的，实现更新的目标。</p>
-<h2 id="更新能力"><a href="#更新能力" class="headerlink" title="更新能力"></a>更新能力</h2><h3 id="可更新内容"><a href="#可更新内容" class="headerlink" title="可更新内容"></a>可更新内容</h3><h4 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h4><p>游戏内的绝大部分资源都是可以热更的（无法更新的内容在后面有介绍），对资产的主动修改、新增都能够正常地打包，包含修改材质影响到的shader都能够增量追踪到。</p>
-<p>并且<a href="https://imzlp.com/posts/17590/">HotPatcher</a>能够分析引起的<strong>被动变更</strong>的资源，也同样会打包。</p>
-<p>下面的这些情况，就属于被动变更（<a href="https://imzlp.com/posts/17590/">HotPatcher</a>会自动追踪）：</p>
+<p>This ensures that the latest resources can overwrite older ones, achieving the update goal.</p>
+<h2 id="Update-Capabilities"><a href="#Update-Capabilities" class="headerlink" title="Update Capabilities"></a>Update Capabilities</h2><h3 id="Updatable-Content"><a href="#Updatable-Content" class="headerlink" title="Updatable Content"></a>Updatable Content</h3><h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><p>Most resources within the game can be hot-updated (content that cannot be updated is introduced later). Active modifications and additions to assets can be packaged normally, including shaders affected by material modifications, which can be incrementally tracked.</p>
+<p>Furthermore, <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> can analyze resources that cause <strong>passive changes</strong>, and these will also be packaged.</p>
+<p>The following situations are considered passive changes (<a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> tracks them automatically):</p>
 <ol>
-<li>父蓝图修改，影响到子蓝图</li>
-<li>UMG基础控件修改，影响到所有以Instanced方式引用它的控件</li>
-<li>母材质的修改，影响到它的所有材质实例</li>
+<li>Parent Blueprint modification affects child Blueprints</li>
+<li>UMG base widget modification affects all widgets that reference it in an Instanced manner</li>
+<li>Modification of a parent material affects all its material instances</li>
 <li>….</li>
 </ol>
-<p><a href="https://imzlp.com/posts/17590/">HotPatcher</a>会根据主动变更的资产，分析它们引起的所有被动变更列表，还会检查被动变更的资源存在于基础版本中（避免带入不必要的新增资源，只影响变化的部分）。</p>
-<p>另外，还需要尽可能地减少热更完成前加载的资源（如<strong>引擎依赖的关键资源</strong>、<strong>热更界面的资源</strong>等），这些无法热更，需要尽可能减少。<br>为了方便排查和清理非必要的资产，我在<a href="https://imzlp.com/posts/17590/">HotPatcher</a>中提供了辅助函数，可以在启动时记录所有热更前加载的资产，这样就可以精确地知道哪些资源无法热更，也能够在后续的前置检查中把它们给暴露出来。</p>
-<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>游戏中需要用到的绝大部分非资产文件都是可以热更的：</p>
+<p><a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> analyzes all passive change lists caused by actively changed assets, and also checks if the passively changed resources exist in the base version (to avoid introducing unnecessary new resources, only affecting changed parts).</p>
+<p>In addition, it’s necessary to minimize resources loaded before the hot update is complete (such as <strong>critical engine-dependent resources</strong>, <strong>hot update UI resources</strong>, etc.). These cannot be hot-updated and should be minimized.<br>To facilitate troubleshooting and cleaning up unnecessary assets, I have provided helper functions in <a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> which can record all assets loaded before the hot update at startup. This allows for precise knowledge of which resources cannot be hot-updated, and also allows them to be exposed in subsequent pre-checks.</p>
+<h4 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h4><p>Most non-asset files required in the game can be hot-updated:</p>
 <ol>
-<li>脚本代码（lua/ts/py etc.）</li>
+<li>Script code (lua/ts/py etc.)</li>
 <li>db</li>
 <li>pb</li>
-<li>多语言（game.locres）</li>
-<li>语音（wwise/wem）</li>
+<li>Multilingual (game.locres)</li>
+<li>Voice (wwise/wem)</li>
 <li>PSO</li>
-<li>其他自定义的非资产文件</li>
+<li>Other custom non-asset files</li>
 </ol>
-<p>只要它们能被打包追踪到，并且<strong>在热更完成之后</strong>才加载（或可重载），都是可以热更的。如本地化等还需要对引擎做一些改造延迟到热更后加载，这个需要根据业务情况自己评估。</p>
-<h4 id="ini"><a href="#ini" class="headerlink" title="ini"></a>ini</h4><p>我之前的一篇文章有过详细介绍：<a href="https://imzlp.com/posts/9028/">UE 热更新：Config 的重载与应用</a></p>
-<p>简单地说，通常对Ini的更新支持这三种配置情况：</p>
+<p>As long as they can be tracked during packaging and are loaded (or reloadable) <strong>after the hot update is complete</strong>, they can be hot-updated. For example, localization may require some engine modifications to defer loading until after the hot update; this needs to be assessed based on specific business requirements.</p>
+<h4 id="ini"><a href="#ini" class="headerlink" title="ini"></a>ini</h4><p>My previous article had a detailed introduction: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/9028/">UE Hot Update: Config Reload and Application</a></p>
+<p>Simply put, Ini updates typically support these three configuration scenarios:</p>
 <ol>
 <li><p>ConsoleVariables</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ConsoleVariables]</span></span><br><span class="line"><span class="attr">launcher.precompile.pso</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
@@ -417,101 +417,101 @@
 </li>
 </ol>
 <blockquote>
-<p>注：IOS无法动态修改<code>r.MobileContentScaleFactor</code>。Android会出现点击偏移。所以如果想要动态修改DeviceProfiles，不能修改<code>MobileContentScaleFactor</code>的值，需要自己处理延迟到下次启动。</p>
+<p>Note: IOS cannot dynamically modify <code>r.MobileContentScaleFactor</code>. Android may experience click offset. Therefore, if you want to dynamically modify DeviceProfiles, you cannot change the value of <code>MobileContentScaleFactor</code> and need to handle the delay until the next startup yourself.</p>
 </blockquote>
-<p>除此之外，在引擎启动时加载的ini配置，时机太早无法通过热更下发，需要通过重新出包进行修改（虽然把补丁放到自动挂载目录也可以，但这是一个危险行为，不建议这么做，后面热更安全部分会具体介绍）。</p>
+<p>Furthermore, ini configurations loaded during engine startup are too early to be delivered via hot update and require modification by repackaging the entire application (although putting patches in the auto-mount directory is possible, it is a dangerous practice and not recommended; this will be detailed in the hot update security section later).</p>
 <blockquote>
-<p>建议：线上版本的ini中的DeviceProfiles中的配置，非必要不改。如必须要修改，需在发热更时实际修改的内容具体评估能否热更以及风险。</p>
+<p>Suggestion: For the online version, configurations in DeviceProfiles within ini files should not be changed unless absolutely necessary. If modification is essential, the actual content to be modified needs to be specifically evaluated for hot update feasibility and risks during the hot update release.</p>
 </blockquote>
-<h4 id="PSO"><a href="#PSO" class="headerlink" title="PSO"></a>PSO</h4><p>虽然UE提供了在打包时就把PSO打进安装包的机制，但是我们并未采用，因为限定构建安装包之前采集PSO的流程我觉得不够灵活。</p>
-<p>我们目前的PSO流程，是与构建安装包无关的：</p>
+<h4 id="PSO"><a href="#PSO" class="headerlink" title="PSO"></a>PSO</h4><p>Although UE provides a mechanism to package PSO into the installation package during packaging, we did not adopt it because I find the process of collecting PSO before limiting the construction of the installation package not flexible enough.</p>
+<p>Our current PSO process is independent of building the installation package:</p>
 <ol>
-<li>构建安装包时，没有任何PSO相关的东西参与</li>
-<li>安装包打出后，自动化采集PSO</li>
-<li>采集完毕，自动化生成<code>stable.upipelinecache</code>并可以作为热更发布</li>
+<li>When building the installation package, no PSO-related elements are involved.</li>
+<li>After the installation package is built, PSO is collected automatically.</li>
+<li>After collection, <code>stable.upipelinecache</code> is automatically generated and can be released as a hot update.</li>
 </ol>
-<p>这样就把PSO作为一个独立的流程拆分出来了，并不是一个前置要求了。而且也能够实现直接实现PSO的热更新（后续有时间写一篇PSO热更的内容）。可以在发布了几个热更版本之后重新采集PSO，并热更发布。</p>
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><p>绝大部分情况下，我们只需要关注新增和修改的部分。但是有人会问，如果我把资产或文件删除了，能够通过热更下发到这个删除的行为吗？</p>
-<p>可以的！但是对于UFS层面的<strong>删除</strong>而言，要实现的并不是真实地把文件从用户磁盘上物理消除。因为文件是被打包到PAK中的，如果想要从PAK完全删除，需要重新生成PAK，这在本地执行有些风险。</p>
+<p>This separates PSO as an independent process, and it is no longer a prerequisite. It also allows for direct hot updating of PSO (I will write an article on PSO hot updates if I have time later). PSO can be re-collected and hot-released after several hot update versions have been published.</p>
+<h4 id="Deleting-Files"><a href="#Deleting-Files" class="headerlink" title="Deleting Files"></a>Deleting Files</h4><p>In most cases, we only need to focus on additions and modifications. But some might ask, if I delete an asset or file, can this deletion be delivered via hot update?</p>
+<p>Yes, it can! However, for <strong>deletion</strong> at the UFS level, what is to be achieved is not truly physically removing the file from the user’s disk. Because files are packaged into PAKs, if you want to completely delete from a PAK, you need to regenerate the PAK, which carries some risks when executed locally.</p>
 <blockquote>
-<p>可以通过让UFS找不到真实的文件，从而起到“删除”的作用。<br>如果需要执行实际的删除，则需要运行时重组PAK详见我之前写的这篇文章：<a href="https://imzlp.com/posts/12188">虚幻引擎中Pak的运行时重组方案</a>。</p>
+<p>This can be achieved by making UFS unable to find the actual file, thus serving as a ‘deletion’.<br>If actual deletion is required, runtime PAK recombination is needed, see my previous article: <a target="_blank" rel="noopener" href="https://imzlp.com/posts/12188">Runtime PAK Recombination Scheme in Unreal Engine</a>.</p>
 </blockquote>
-<p>分析引擎的代码能够知道，可以通过UnrealPak的response file文件，传递<code>-delete</code>参数：</p>
+<p>Analyzing the engine’s code reveals that the <code>-delete</code> parameter can be passed via UnrealPak’s response file:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;../../../Blank425/Blank425.uproject&quot; &quot;../../../Blank425/Blank425.uproject&quot; -delete</span><br></pre></td></tr></table></figure>
 
-<p>将它打包为Pak时，其实是添加了一个空的Entry，并且被标记为了Deleted：</p>
+<p>When packaging it into a Pak, an empty Entry is actually added and marked as Deleted:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/191721.png"></p>
-<p>通过UnrealPak的-list查看，它也像普通的文件一样，不过比较特殊，没有大小、offset为0，SHA1也为0：</p>
+<p>Viewing it with UnrealPak’s -list, it appears like a normal file, but it’s special, having no size, offset of 0, and SHA1 of 0:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/191845.png" alt="i"></p>
-<p>在运行时从UFS已挂载的PAK里查找文件时，如果标记了delete的Pak优先级比较高，就会触发FoundDeleted：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/192836.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/192135.png"></p>
-<p>还可以添加多个删除标记：</p>
+<p>When searching for files from mounted PAKs in UFS at runtime, if a PAK marked for delete has a higher priority, FoundDeleted will be triggered:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/192836.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/192135.png"></p>
+<p>Multiple deletion markers can also be added:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;../../../Blank245/Content/StarterContent/Maps/StarterMap.umap&quot; &quot;../../../Blank245/Content/StarterContent/Maps/StarterMap.umap&quot; -delete</span><br><span class="line">&quot;../../../Blank245/Content/StarterContent/Maps/StarterMap.uexp&quot; &quot;../../../Blank245/Content/StarterContent/Maps/StarterMap.uexp&quot; -delete</span><br><span class="line">&quot;../../../Blank425/Content/DefaultMap.umap&quot; &quot;../../../Blank425/Content/DefaultMap.umap&quot; -delete</span><br><span class="line">&quot;../../../Blank425/Content/DefaultMap.uexp&quot; &quot;../../../Blank425/Content/DefaultMap.uexp&quot; -delete</span><br><span class="line">&quot;../../../Blank425/Blank425.uproject&quot; &quot;../../../Blank425/Blank425.uproject&quot; -delete</span><br></pre></td></tr></table></figure>
 
-<p>删除的文件列表同样会参与MountPoint的计算：</p>
+<p>The list of deleted files also participates in MountPoint calculation:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/193606.png"></p>
-<p>其实，如果想要标记一个资源被删除，真实的物理文件都不需要存在，因为它不会被真的打包到pak里去。只是通过这个MountPath的路径，创建出一个空的PakEntry。</p>
-<p>让UFS查找文件时优先找到这个空的PakEntry，加载不到真实的资源，就是我们要实现的“删除”需求了。<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/194440.png"></p>
-<p>文件标记删除，PAK的创建过程：</p>
+<p>In fact, if you want to mark a resource as deleted, the actual physical file does not need to exist because it won’t actually be packaged into the pak. An empty PakEntry is simply created using the MountPath.</p>
+<p>By making UFS prioritize finding this empty PakEntry when searching for files, the actual resource cannot be loaded, which is the “deletion” requirement we aim to achieve.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/194440.png"></p>
+<p>File marking for deletion, PAK creation process:</p>
 <ol>
-<li>从PakList中读取所有行</li>
-<li>检查是否有-delete的token</li>
-<li>若有，则把Entrie标记为<code>bIsDeleted</code><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195121.png"></li>
-<li>在<code>CollectFilesToAdd</code>中，对于标记<code>bIsDeleted</code>的文件，会直接跳过，不会去查找实际的磁盘文件<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195239.png"></li>
-<li>在<code>CreatePakFile</code>中，会检查<code>FilesToAdd</code>的每个元素的<code>bIsDeleted</code>，并会给对应的PakEntry添加<code>Flag_Deleted</code>的标记，用于标识被删除。并且不会把该元素指向的本地文件给打包到Pak内（这也是随便指定一个路径也可以标记为删除的原因）<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195642.png"></li>
+<li>Read all lines from PakList</li>
+<li>Check for <code>-delete</code> token</li>
+<li>If present, mark the Entry as <code>bIsDeleted</code><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195121.png"></li>
+<li>In <code>CollectFilesToAdd</code>, files marked with <code>bIsDeleted</code> will be directly skipped, and the actual disk file will not be searched for.<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195239.png"></li>
+<li>In <code>CreatePakFile</code>, each element of <code>FilesToAdd</code> will be checked for <code>bIsDeleted</code>, and the corresponding PakEntry will be marked with <code>Flag_Deleted</code> to indicate deletion. Furthermore, the local file pointed to by that element will not be packaged into the Pak (this is also why any path can be specified and marked for deletion).<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/25/195642.png"></li>
 </ol>
-<p>这样就实现了从<code>paklist.txt</code> -&gt; UnrealPak -&gt; Deleted.pak -&gt; 运行时加载PakEntry这样的一套流程了。</p>
-<p><a href="https://imzlp.com/posts/17590/">HotPatcher</a>已经自动化了这一过程，对删除的资源和文件，如果Patch的配置中，使用了<code>bIgnoreDeletedFiles=false</code>，则会在打出的补丁中，将它们标记删除。</p>
+<p>This completes the workflow from <code>paklist.txt</code> -&gt; UnrealPak -&gt; Deleted.pak -&gt; runtime loading of PakEntry.</p>
+<p><a target="_blank" rel="noopener" href="https://imzlp.com/posts/17590/">HotPatcher</a> has automated this process. For deleted resources and files, if <code>bIgnoreDeletedFiles=false</code> is used in the Patch configuration, they will be marked as deleted in the generated patch.</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/26/125040.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2024/04/26/125129.png"></p>
-<p>这样就能够实现通过热更下发“<strong>删除文件</strong>”的行为了。</p>
-<h3 id="无法热更的内容"><a href="#无法热更的内容" class="headerlink" title="无法热更的内容"></a>无法热更的内容</h3><blockquote>
-<p><strong>无法热更的内容</strong>，是指无法通过在游戏内动态下载更新给玩家，只能重新打完整包发布。</p>
+<p>This enables the delivery of “<strong>file deletion</strong>“ actions via hot update.</p>
+<h3 id="Content-That-Cannot-Be-Hot-Updated"><a href="#Content-That-Cannot-Be-Hot-Updated" class="headerlink" title="Content That Cannot Be Hot-Updated"></a>Content That Cannot Be Hot-Updated</h3><blockquote>
+<p><strong>Content that cannot be hot-updated</strong> refers to content that cannot be dynamically downloaded and updated to players within the game and can only be released by repackaging the entire application.</p>
 </blockquote>
-<p><strong>无法热更新</strong>的部分：</p>
+<p>Parts that <strong>cannot be hot-updated</strong>:</p>
 <ol>
-<li>原生/C++代码（影响Runtime的代码，可转发到VM执行的不在此列）</li>
-<li>第三方库</li>
-<li>包的签名、Entitlements</li>
-<li>包内的文件（如GCloudVoice的模型文件）</li>
-<li>Android的Manifest、IOS的PLIST等</li>
+<li>Native/C++ code (code affecting Runtime; code that can be forwarded to a VM for execution is not included here)</li>
+<li>Third-party libraries</li>
+<li>Package signatures, Entitlements</li>
+<li>Files within the package (e.g., GCloudVoice model files)</li>
+<li>Android Manifest, IOS PLIST, etc.</li>
 </ol>
-<p><strong>不建议热更新</strong>的部分：</p>
-<ol start="2">
-<li>uproject、uplugin</li>
+<p>Parts <strong>not recommended for hot update</strong>:</p>
+<ol>
+<li>uproject, uplugin</li>
 <li>ush/usf/global shader</li>
-<li>WorldGridMaterial等基础材质的<strong>修改</strong>（如<code>/Engine/EngineMaterils</code>，pak的挂载与ShaderLibrary加载时机不同可能会导致crash）</li>
-<li>热更完成前，已加载的资源（<strong>引擎依赖的关键资源</strong>、<strong>热更界面的资源</strong>等，这些无法热更，需要尽可能减少，保持依赖最小化）</li>
+<li><strong>Modification</strong> of base materials like WorldGridMaterial (e.g., <code>/Engine/EngineMaterils</code>; different mounting times for PAKs and ShaderLibrary loading might lead to crashes)</li>
+<li>Resources already loaded before the hot update is complete (<strong>critical engine-dependent resources</strong>, <strong>hot update UI resources</strong>, etc., these cannot be hot-updated, need to be minimized, keeping dependencies minimal)</li>
 </ol>
-<p>除了完全无法热更新的之外，剩下的这些非要更新也不是不可以，只需要下载后放入自动挂载目录，设定一个比安装包内资产更高的优先级，然后重启生效。<br>因为UFS本身的机制，就是去加载当前时机下优先级最高的PAK中的文件，所以只要我们能保证引擎一启动，补丁的优先级就最高，那么UFS内的所有文件都是可以生效的。</p>
-<p>但为了安全考虑，我依然把他们列入无法热更的列表中（机制可以提供这样的能力，但不能轻易使用）。因为商业化产品的稳定与安全性是更重要的因素，我们需要在更新能力和安全做一些取舍，下一小结会具体介绍。</p>
-<h2 id="热更安全"><a href="#热更安全" class="headerlink" title="热更安全"></a>热更安全</h2><p>因为热更新<strong>非常重要</strong>，它是进入游戏的入口，也是版本迭代的基石，所以如何让热更本身具有比较强的健壮性是非常重要的。<br>有些项目可能踩过类似的坑，一个热更补丁下发下去，导致游戏无法正常启动了，只能重新换包。所以我把<strong>热更安全</strong>提到了一个非常重要的高度，哪怕牺牲一些更新能力也在所不惜。</p>
-<p>根据我的实践经验，对于热更安全的关注应该包含下面几个方面：</p>
+<p>Apart from those that absolutely cannot be hot-updated, the remaining ones are not impossible to update if necessary; just download them and place them in the auto-mount directory, set a higher priority than the assets within the installation package, and then restart to take effect.<br>Because UFS’s own mechanism is to load files from the PAK with the highest priority at the current time, as long as we ensure that the patch has the highest priority as soon as the engine starts, then all files within UFS can take effect.</p>
+<p>However, for security reasons, I still include them in the list of content that cannot be hot-updated (the mechanism can provide such capabilities, but they should not be easily used). Because the stability and security of commercial products are more important factors, we need to make trade-offs between update capabilities and security, which will be detailed in the next subsection.</p>
+<h2 id="Hot-Update-Security"><a href="#Hot-Update-Security" class="headerlink" title="Hot Update Security"></a>Hot Update Security</h2><p>Because hot updates are <strong>very important</strong>, they are the entry point into the game and the cornerstone of version iteration, thus, making the hot update itself robust is crucial.<br>Some projects might have encountered similar pitfalls, where a hot update patch was delivered, causing the game to fail to start properly, requiring a complete re-package. Therefore, I’ve elevated <strong>hot update security</strong> to a very important position, even at the cost of sacrificing some update capabilities.</p>
+<p>Based on my practical experience, the focus on hot update security should include the following aspects:</p>
 <ol>
-<li>更新的内容应该是稳定无害的</li>
-<li>更新的内容是可以撤销的</li>
-<li>更新的内容不会影响到下次程序启动</li>
-<li>更新的内容不会影响到其他热更能力</li>
+<li>The updated content should be stable and harmless.</li>
+<li>The updated content should be revocable.</li>
+<li>The updated content should not affect the next program startup.</li>
+<li>The updated content should not affect other hot update capabilities.</li>
 </ol>
-<p>所以，为了做到这一点，我做了下面的这些工作：</p>
+<p>Therefore, to achieve this, I have done the following work:</p>
 <ol>
-<li>完全不采用自动挂载机制，所有的补丁都由业务逻辑控制挂载，完全杜绝自动挂载行为。因为自动挂载时机太早了，如果出现问题，就是致命的。</li>
-<li>在1的基础上，拒绝强依赖重启生效的行为，所有的更新内容都必须实时生效（可根据项目情况评估，如对<code>r.MobileContentScaleFactor</code>等非资产属性的处理）</li>
-<li>统一PAK与ShaderLibrary的挂载/加载顺序以及加载时机，避免Shader和Pak内资产对不上的情况</li>
-<li>完全按照挂载Order来控制优先级</li>
-<li>每次初始启动游戏，直至热更完成，都跟新安装的情况一致，不做特殊逻辑。这样能够确保不管我们更新下去任何内容，都能正常走到热更流程，这样如果补丁有问题还有补救的空间。</li>
+<li>Completely abandoning the auto-mount mechanism, all patches are mounted by business logic control, completely eliminating auto-mount behavior. Because auto-mounting occurs too early, if problems arise, they are fatal.</li>
+<li>Based on point 1, rejecting strong reliance on restart for effectiveness; all updated content must take effect in real-time (can be evaluated according to project circumstances, such as handling non-asset attributes like <code>r.MobileContentScaleFactor</code>).</li>
+<li>Unifying the mounting/loading order and timing of PAKs and ShaderLibrary, to avoid mismatches between Shaders and assets within PAKs.</li>
+<li>Controlling priority strictly according to the mount Order.</li>
+<li>Every initial game startup, until the hot update is complete, is consistent with a fresh installation, with no special logic. This ensures that no matter what content we update, the hot update process can proceed normally, thus leaving room for remediation if there are issues with the patch.</li>
 </ol>
-<p>除了热更本身之外，资源管理也需要严格把控：</p>
+<p>In addition to hot updates themselves, resource management also needs strict control:</p>
 <ol>
-<li>确保每一次热更都是可以精确追溯的，精确记录每一个变更的资源、文件的信息，以及它们的cooked的信息，以及记录当前版本的仓库信息、生成的补丁信息。</li>
-<li>检查每一次热更的资产规范，避免资产修改引起的异常带入现网。</li>
+<li>Ensure that every hot update is precisely traceable, accurately recording information about every changed resource and file, as well as their cooked information, and recording the current version’s repository information and generated patch information.</li>
+<li>Check the asset specifications for each hot update to avoid introducing exceptions caused by asset modifications into the live network.</li>
 </ol>
-<p>对于资源管理而言，我们在每一次热更补丁构建之后，都充分记录了当前版本的信息：<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/131923.png"></p>
-<p>以及归档了补丁和Metadatas:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/132145.png"></p>
-<p>这样可以随时基于这些数据去回溯每个热更版本的变动情况，补丁生成后也可以进行检查是否符合预期。</p>
-<p>另外，对于参与热更的资产，我们会对所有参与进包的进行资产检查，如果有触发规则，则会同步归档并群提醒：</p>
+<p>For resource management, after each hot update patch construction, we fully record the current version’s information:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/131923.png"></p>
+<p>And archived patches and Metadatas:<br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/132145.png"></p>
+<p>This allows us to trace back the changes of each hot update version at any time based on this data, and also check if the generated patch meets expectations.</p>
+<p>Additionally, for assets involved in hot updates, we perform asset checks on all assets included in the package, and if rules are triggered, they will be archived synchronously and reminded in groups:</p>
 <p><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/132534.png"><br><img data-src="https://img.imzlp.com/imgs/zlp/picgo/2025/07/132640.png"></p>
-<p>这样就能够清晰地知道当前补丁内有哪些潜在风险了，方便评估补丁的负面影响，避免把问题带入现网。<br>关于资源检查的部分我之前也写了好几篇内容了，感兴趣的话，可以参考<a href="https://imzlp.com/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">资源管理</a>分类里的几篇文章。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>博客内的相关文章：<a href="https://imzlp.com/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/">热更新系列</a>、<a href="https://imzlp.com/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">资源管理系列</a>，本文提及的一些内容，会在这些文章中有更详细的介绍，感兴趣的可以前往查看。</p>
-<p>本篇文章介绍了我在UE热更新的更新能力和更新安全方面的一些思考，根据实际项目上线的情况<strong>热更机制是零故障</strong>的，可以作为一种工程实践参考。</p>
+<p>This allows for a clear understanding of potential risks within the current patch, facilitating the evaluation of the patch’s negative impact and preventing issues from being introduced into the live network.<br>I have written several articles on asset inspection before; if interested, you can refer to the articles in the <a target="_blank" rel="noopener" href="https://imzlp.com/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">Resource Management</a> category.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Related articles in the blog: <a target="_blank" rel="noopener" href="https://imzlp.com/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/">Hot Update Series</a>, <a target="_blank" rel="noopener" href="https://imzlp.com/categories/UnrealEngine/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">Resource Management Series</a>. Some content mentioned in this article will have more detailed introductions in these articles; those interested can go and view them.</p>
+<p>This article introduces some of my thoughts on UE hot update capabilities and hot update security. Based on actual project launch conditions, the <strong>hot update mechanism has had zero faults</strong> and can serve as a reference for engineering practices.</p>
 
     </div>
 
@@ -522,7 +522,7 @@
           
             <blockquote class="blockquote-center">
               
-                全文完，若有不足之处请评论指正。
+                The article is finished. If you have any questions, please comment and communicate.
               
             <br/>
             
@@ -532,7 +532,7 @@
                       
                         <img src="https://imzlp.com/images/wechat-qrcode.webp">
                       
-                    <p>微信扫描二维码，关注我的公众号。</p>
+                    <p>Scan the QR code on WeChat and follow me.</p>
                     </div>
                 </div>
             
@@ -542,37 +542,37 @@
 
         
           <div class="postCopyright" style="clear:both;">
-             <span>本文标题:</span><a href="/posts/66804/" target="_blank">UE热更新：更新能力与热更安全</a><br/>
-             <span>文章作者:</span><a href="/about" target="_blank" title="查看 查利鹏 的资料">查利鹏</a><br/>
-             <span>发布时间:</span>2025/07/17 14:03<br/>
+             <span>Title:</span><a href="/posts/66804/" target="_blank">UE Hot Update: Updateability and Security</a><br/>
+             <span>Author:</span><a href="/about" target="_blank" title="查看 LIPENGZHA 的资料">LIPENGZHA</a><br/>
+             <span>Publish Date:</span>2025/07/17 14:03<br/>
              
-             <span>本文字数:</span><span class="page-count">4.5k 字</span><br/>
+             <span>Word Count:</span><span class="page-count">12k Words</span><br/>
              
-             <span>原始链接:</span><a href="/posts/66804/" target="_blank" title="UE热更新：更新能力与热更安全">https://imzlp.com/posts/66804/</a>
-             <span class="copy-path" data-clipboard-text="原始链接: https://imzlp.com/posts/66804/ 文章作者: 查利鹏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+             <span>Link:</span><a href="/posts/66804/" target="_blank" title="UE Hot Update: Updateability and Security">https://en.imzlp.com/posts/66804/</a>
+             <span class="copy-path" data-clipboard-text="Link: https://en.imzlp.com/posts/66804/ Author: LIPENGZHA" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
              <script src="/js/jquery.min.js"></script>
              <script src="/js/clipboard.min.js"></script>
              <script> var clipboard = new Clipboard('.copy-path'); </script>
              <br/>
              
-             <span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
+             <span>License:</span><i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="Attribution-NonCommercial-ShareAlike 4.0 International">CC BY-NC-SA 4.0</a><br/>
              
-             <span>文章禁止全文转载，摘要转发请保留原文链接及作者信息，谢谢！</span>
+             <span>Reprinting of the full article is prohibited.</span>
           </div>
         
     
 
         
   <div class="reward-container">
-    <div>您的捐赠将鼓励我继续创作！</div>
+    <div>Your donation will encourage me to keep creating!</div>
     <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-      打赏
+      Donate
     </button>
     <div id="qr" style="display: none;">
         
         <div style="display: inline-block;">
-          <img src="/images/reward/wechatpay.webp" alt="查利鹏 微信支付">
-          <p>微信支付</p>
+          <img src="/images/reward/wechatpay.webp" alt="LIPENGZHA WeChat Pay">
+          <p>WeChat Pay</p>
         </div>
 
     </div>
@@ -593,12 +593,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/6069/" rel="prev" title="UE5虚拟资产的可用性分析">
-      <i class="fa fa-chevron-left"></i> UE5虚拟资产的可用性分析
+    <a href="/posts/6069/" rel="prev" title="Availability Analysis of UE5 Virtual Assets">
+      <i class="fa fa-chevron-left"></i> Availability Analysis of UE5 Virtual Assets
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/27510/" rel="next" title="UE插件与工具开发：可扩展性支持">
-      UE插件与工具开发：可扩展性支持 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/27510/" rel="next" title="UE Plugin and Tools Development: Extensibility Support">
+      UE Plugin and Tools Development: Extensibility Support <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -669,25 +669,25 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">热更流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E4%B8%81%E6%9E%84%E5%BB%BA"><span class="nav-number">1.1.</span> <span class="nav-text">补丁构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6"><span class="nav-number">1.2.</span> <span class="nav-text">运行时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%83%BD%E5%8A%9B"><span class="nav-number">2.</span> <span class="nav-text">更新能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.</span> <span class="nav-text">可更新内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-number">2.1.1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ini"><span class="nav-number">2.1.3.</span> <span class="nav-text">ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PSO"><span class="nav-number">2.1.4.</span> <span class="nav-text">PSO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.5.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E7%83%AD%E6%9B%B4%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">无法热更的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E5%AE%89%E5%85%A8"><span class="nav-number">3.</span> <span class="nav-text">热更安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hot-Update-Process"><span class="nav-number">1.</span> <span class="nav-text">Hot Update Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Patch-Construction"><span class="nav-number">1.1.</span> <span class="nav-text">Patch Construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">1.2.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update-Capabilities"><span class="nav-number">2.</span> <span class="nav-text">Update Capabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Updatable-Content"><span class="nav-number">2.1.</span> <span class="nav-text">Updatable Content</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Resources"><span class="nav-number">2.1.1.</span> <span class="nav-text">Resources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Files"><span class="nav-number">2.1.2.</span> <span class="nav-text">Files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ini"><span class="nav-number">2.1.3.</span> <span class="nav-text">ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PSO"><span class="nav-number">2.1.4.</span> <span class="nav-text">PSO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deleting-Files"><span class="nav-number">2.1.5.</span> <span class="nav-text">Deleting Files</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-That-Cannot-Be-Hot-Updated"><span class="nav-number">2.2.</span> <span class="nav-text">Content That Cannot Be Hot-Updated</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hot-Update-Security"><span class="nav-number">3.</span> <span class="nav-text">Hot Update Security</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person" oncontextmenu="return false" οndragstart="return false">
-    <img class="site-author-image" itemprop="image" alt="查利鹏"
+    <img class="site-author-image" itemprop="image" alt="LIPENGZHA"
       src="/images/avatar.webp">
-  <p class="site-author-name" itemprop="name">查利鹏</p>
-  <div class="site-description" itemprop="description">唯有热爱可抵岁月漫长。</div>
+  <p class="site-author-name" itemprop="name">LIPENGZHA</p>
+  <div class="site-description" itemprop="description">"I think, therefore I am"</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -695,19 +695,19 @@
           <a href="/archives/">
              
           <span class="site-state-item-count">198</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
         <span class="site-state-item-count">99</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">194</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -739,7 +739,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;">Open Source Projects</a>
+          <a href="https://imzlp.com/opensource/" title="https:&#x2F;&#x2F;imzlp.com&#x2F;opensource&#x2F;" rel="noopener" target="_blank">Open Source Projects</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ue5wiki.com/" title="https:&#x2F;&#x2F;ue5wiki.com&#x2F;" rel="noopener" target="_blank">Unreal Engine Wiki</a>
@@ -766,9 +766,6 @@
         
 
         
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021027036号 </a>
-      <img src="/images/beian_logo.webp" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502007298" rel="noopener" target="_blank">粤公网安备44030502007298号 </a>
-  </div>
 
 <div class="copyright">
   
@@ -777,12 +774,12 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">查利鹏</span>
+  <span class="author" itemprop="copyrightHolder">LIPENGZHA</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">794k</span>
+    <span title="Symbols count total">1.6m</span>
 </div>
   <div class="powered-by-other">
     
@@ -935,7 +932,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://imzlp.com/posts/66804/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://en.imzlp.com/posts/66804/',]
       });
       });
   </script>
@@ -958,12 +955,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : 'oCE6RMVkVoi5MgUhvFsn1EvV-gzGzoHsz',
       appKey     : 'K9SOaNYJ8PV6xaoFggWG5xvv',
-      placeholder: "留下点什么吧~",
+      placeholder: "Leave something behind~",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : true,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : true,
       serverURLs : 'https://appcounter.imzlp.com',
